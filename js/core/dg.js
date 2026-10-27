@@ -119,8 +119,9 @@ function dgSvg(b, cfg, opts = {}){
     h += `<g class="dn${dim(id) ? " dim" : ""}${st === "planned" ? " planned" : ""}" data-node="${id}">`;
     if (n.boxed){ h += `<rect x="${g.x}" y="${g.y}" width="${g.w}" height="${g.h}" rx="8" fill="#fff" stroke="${on ? "#ffb703" : st === "faulty" ? "#d63a3a" : "#33415f"}" stroke-width="${on ? 3 : 1.6}"${st === "planned" ? ' stroke-dasharray="5 3"' : ""}/>`;
       const s = Math.min(g.h - 12, 44); h += icn(devIcon(d), g.x + 8, g.y + (g.h - s) / 2, s);
-      h += svgt(g.x + s + 16, g.y + 20, devLabel(d), {size:12, weight:800});
-      sub.slice(0, Math.max(1, Math.floor((g.h - 28) / 13))).forEach((ln, i) => h += svgt(g.x + s + 16, g.y + 35 + i * 13, ln, {size:10, fill:"#59607a", mono:/\d+\.\d+\.\d+/.test(ln)}));
+      const fit = (txt, px, cw) => { const m = Math.max(4, Math.floor((g.w - s - 22) / (px * cw))); return txt.length > m ? txt.slice(0, m - 1) + "…" : txt; };
+      h += svgt(g.x + s + 16, g.y + 20, fit(devLabel(d), 12, .62), {size:12, weight:800});
+      sub.slice(0, Math.max(1, Math.floor((g.h - 28) / 13))).forEach((ln, i) => h += svgt(g.x + s + 16, g.y + 35 + i * 13, fit(ln, 10, .58), {size:10, fill:"#59607a", mono:/\d+\.\d+\.\d+/.test(ln)}));
       if (on && !print) h += `<rect class="rh" data-rh="dev:${id}" x="${g.x + g.w - 6}" y="${g.y + g.h - 6}" width="12" height="12" rx="2"/>`;
     } else {
       if (on && !print) h += `<rect class="selbox" x="${g.x - 5}" y="${g.y - 5}" width="${g.w + 10}" height="${g.h + 10}"/>`;
