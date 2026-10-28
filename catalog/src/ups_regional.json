@@ -1,0 +1,3239 @@
+[
+ {
+  "brand": "Makelsan",
+  "model": "Powerpack SE 1 kVA",
+  "sku": [
+   "MU01000N11EAV06"
+  ],
+  "kind": "ups",
+  "series": "Powerpack SE",
+  "desc": "1kVA/900W online double-conversion tower UPS, PF 0.9, 2x 12V 7Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 144,
+   "d": 336,
+   "h": 214
+  },
+  "weight_kg": 9.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "208/220/230/240V AC; 110-300V AC (176-280V no derating)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 900,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.makelsanjenerator.com.tr/katalog/powerpack-se-serisi-1-2-3-kva.pdf",
+  "source2": "https://www.reylenferna.com/?p=747",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 2x7Ah (24V DC) standard model; 3x7Ah long-run and external-battery variants exist. Weight = catalog net weight for 2x7Ah column. SKU from Turkish retail listings. Outlet count not stated. Retail listings also show 2x9Ah variant."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Powerpack SE 2 kVA",
+  "sku": [
+   "MU02000N11EAV06"
+  ],
+  "kind": "ups",
+  "series": "Powerpack SE",
+  "desc": "2kVA/1800W online double-conversion tower UPS, PF 0.9, 4x 12V 7Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 191,
+   "d": 418,
+   "h": 335
+  },
+  "weight_kg": 18,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "208/220/230/240V AC; 110-300V AC (176-280V no derating)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 2000,
+   "w": 1800,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.makelsanjenerator.com.tr/katalog/powerpack-se-serisi-1-2-3-kva.pdf",
+  "source2": "https://reylenferna.com/solutions/commercial/power-solutions-commercial/ups-power-solutions-commercial/makelsan-online-ups-powerpack-se-2kva-11-phase",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 4x7Ah (48V DC) standard; 6x7Ah long-run and external-battery variants. Weight = catalog net for 4x7Ah column. SKU from retailer incehesap.com (4x9Ah variant). Outlets not stated."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Powerpack SE 3 kVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Powerpack SE",
+  "desc": "3kVA/2700W online double-conversion tower UPS, PF 0.9, 6x 12V 7Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 191,
+   "d": 418,
+   "h": 335
+  },
+  "weight_kg": 27.2,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "208/220/230/240V AC; 110-300V AC (176-280V no derating)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.makelsanjenerator.com.tr/katalog/powerpack-se-serisi-1-2-3-kva.pdf",
+  "source2": "https://www.reylenferna.com/?p=750",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 6x7Ah (72V DC) standard; 8x7Ah long-run (96V) and external variants. Dimensions per reylenferna (catalog also lists 191x464x335 for one column - possibly long-run). Weight = catalog net for 6x7Ah column. Outlets not stated."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Powerpack SE 6 kVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Powerpack SE",
+  "desc": "6kVA/5400W online double-conversion tower UPS, PF 0.9",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 262,
+   "d": 650,
+   "h": 735
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC; 110-300V half load, 160-300V full load"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 6000,
+   "w": 5400,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.makelsanjenerator.com.tr/katalog/powerpack-se-serisi-6-10-kva.pdf",
+  "source2": "https://www.reylenferna.com/?p=751",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 16-20x 7-9Ah (192-240V DC) internal. Catalog lists net weights 64.1/70.8 kg without clear model mapping - left null. Output is terminal/rear outlets, count not stated."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Powerpack SE 10 kVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Powerpack SE",
+  "desc": "10kVA/9000W online double-conversion tower UPS, PF 0.9",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 262,
+   "d": 650,
+   "h": 735
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC; 110-300V half load, 160-300V full load"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 10000,
+   "w": 9000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.makelsanjenerator.com.tr/katalog/powerpack-se-serisi-6-10-kva.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Catalog: 10kVA/9000W, dimensions shared with 6kVA. Some Turkish retail listings advertise a PF=1 version (10kW, 16x9Ah) - not verified. Weight unmapped (64.1/70.8 kg listed) - null."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Lion Plus 650VA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Lion Plus",
+  "desc": "650VA/390W line-interactive UPS, modified sine wave, 1x 12V 7Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 100,
+   "d": 278,
+   "h": 143
+  },
+  "weight_kg": 4.35,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC; 162-290V AC ±7%"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 650,
+   "w": 390,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "IEC or Schuko outlets (count not stated)"
+  },
+  "source": "https://dubna.all-generators.ru/uploads/files/lion-plus-650-2000va-2019.pdf",
+  "source2": "https://www.reylenferna.com/?p=759",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Values from Lion Plus 650-2000VA brochure (2019) hosted by Russian distributor all-generators.ru and reylenferna.com. Modified sine wave output."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Lion Plus 850VA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Lion Plus",
+  "desc": "850VA/510W line-interactive UPS, modified sine wave, 1x 12V 9Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 100,
+   "d": 278,
+   "h": 143
+  },
+  "weight_kg": 5.15,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC; 162-290V AC ±7%"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 850,
+   "w": 510,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "IEC or Schuko outlets (count not stated)"
+  },
+  "source": "https://dubna.all-generators.ru/uploads/files/lion-plus-650-2000va-2019.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru; dimension assignment (small chassis shared with 650VA) inferred from brochure layout."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Lion Plus 1000VA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Lion Plus",
+  "desc": "1000VA/600W line-interactive UPS, modified sine wave, 2x 12V 7Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 139,
+   "d": 365,
+   "h": 195
+  },
+  "weight_kg": 9.07,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC; 162-290V AC ±7%"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 600,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "IEC or Schuko outlets (count not stated)"
+  },
+  "source": "https://dubna.all-generators.ru/uploads/files/lion-plus-650-2000va-2019.pdf",
+  "source2": "https://www.reylenferna.com/?p=760",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru and reylenferna.com."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Lion Plus 1500VA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Lion Plus",
+  "desc": "1500VA/900W line-interactive UPS, modified sine wave, 2x 12V 9Ah, LCD/USB",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 139,
+   "d": 365,
+   "h": 195
+  },
+  "weight_kg": 10.74,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC; 162-290V AC ±7%"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1500,
+   "w": 900,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "IEC or Schuko outlets (count not stated)"
+  },
+  "source": "https://dubna.all-generators.ru/uploads/files/lion-plus-650-2000va-2019.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru; dimension assignment (large chassis) inferred from brochure layout."
+ },
+ {
+  "brand": "Makelsan",
+  "model": "Lion Plus 2000VA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Lion Plus",
+  "desc": "2000VA/1200W line-interactive UPS, modified sine wave, 2x 12V 9Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 139,
+   "d": 365,
+   "h": 195
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC; 162-290V AC ±7%"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 2000,
+   "w": 1200,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "IEC or Schuko outlets (count not stated)"
+  },
+  "source": "https://dubna.all-generators.ru/uploads/files/lion-plus-650-2000va-2019.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru. Weight not clearly mapped for 2000VA - null; dimension assignment inferred."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus EVO 1 kVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus EVO",
+  "desc": "1kVA online double-conversion tower UPS, PF 0.9, 2x 12V 7Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 145,
+   "d": 282,
+   "h": 220
+  },
+  "weight_kg": 9.8,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "120-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 900,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "3x IEC + 1x Schuko"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_u__ru__n_fo__yu___TR_rev3_1550.pdf",
+  "source2": "https://www.inform.com.tr/kesintisiz-guc-kaynagi-inform-1-faz-sinusevo.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "W derived from vendor-stated output PF 0.9. Battery 2x12V 7Ah."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus EVO 2 kVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus EVO",
+  "desc": "2kVA online double-conversion tower UPS, PF 0.9, 4x 12V 9Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 145,
+   "d": 397,
+   "h": 220
+  },
+  "weight_kg": 17,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "120-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 2000,
+   "w": 1800,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "3x IEC + 2x Schuko"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_u__ru__n_fo__yu___TR_rev3_1550.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "W derived from vendor-stated output PF 0.9. Battery 4x12V 9Ah."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus EVO 3 kVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus EVO",
+  "desc": "3kVA online double-conversion tower UPS, PF 0.9, 6x 12V 9Ah",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 190,
+   "d": 421,
+   "h": 318
+  },
+  "weight_kg": 27.6,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "120-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_u__ru__n_fo__yu___TR_rev3_1550.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "W derived from vendor-stated output PF 0.9. Battery 6x12V 9Ah. Outlet configuration for 3kVA not clearly stated in brochure."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus EVO 1KVA RM",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus EVO RM",
+  "desc": "1kVA online double-conversion 2U rack UPS, PF 0.9, 2x 12V 9Ah",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 325,
+   "h": 86.5
+  },
+  "weight_kg": 11.3,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 900,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "2x IEC + 1x Schuko"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR__1636.pdf",
+  "source2": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR_1315.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus EVO 2KVA RM",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus EVO RM",
+  "desc": "2kVA online double-conversion 2U rack UPS, PF 0.9, 4x 12V 9Ah",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 460,
+   "h": 86.5
+  },
+  "weight_kg": 19.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 2000,
+   "w": 1800,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "2x IEC + 1x Schuko"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR__1636.pdf",
+  "source2": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR_1315.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus EVO 3KVA RM",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus EVO RM",
+  "desc": "3kVA online double-conversion 2U rack UPS, PF 0.9, 6x 12V 9Ah",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 600,
+   "h": 86.5
+  },
+  "weight_kg": 26.2,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "2x IEC + 1x Schuko"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR__1636.pdf",
+  "source2": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR_1315.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus PRO RT 1KVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus PRO RT",
+  "desc": "1kVA/1kW online rack/tower UPS, PF 1, 2x 12V 9Ah",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 325,
+   "h": 86.5
+  },
+  "weight_kg": 11.3,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC (load dependent)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 1000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "2x IEC C13 + 1x Schuko"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/sinus_prort.pdf",
+  "source2": "https://www.inform.com.tr/sinus-pro-1-10kva.html",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official brochure, but table layout ambiguous: weight listed as 'Net - Brut' without distinction; outlet mapping inferred; u derived from 86.5 mm height. Dimensions/weights identical to Sinus EVO RM 1kVA."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus PRO RT 2KVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus PRO RT",
+  "desc": "2kVA/2kW online rack/tower UPS, PF 1, 4x 12V 9Ah",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 460,
+   "h": 86.5
+  },
+  "weight_kg": 19.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC (load dependent)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 2000,
+   "w": 2000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "2x IEC C19 + 3x IEC C13 + terminal"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/sinus_prort.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official brochure, table layout ambiguous: outlet mapping inferred; weight net/gross unclear; u derived from 86.5 mm height."
+ },
+ {
+  "brand": "Inform",
+  "model": "Sinus PRO RT 3KVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Sinus PRO RT",
+  "desc": "3kVA/3kW online rack/tower UPS, PF 1, 6x 12V 9Ah",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 600,
+   "h": 86.5
+  },
+  "weight_kg": 26.2,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC (load dependent)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 3000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/sinus_prort.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official brochure, table layout ambiguous: weight net/gross unclear; outlets not stated; u derived from 86.5 mm height. 6/10 kVA RT variants exist but their dims/weights could not be mapped reliably - skipped."
+ },
+ {
+  "brand": "Inform",
+  "model": "DSP EVO 6K",
+  "sku": [],
+  "kind": "ups",
+  "series": "DSP EVO",
+  "desc": "6kVA/5.4kW online double-conversion tower UPS, PF 0.9, 16x 12V 7-9Ah internal",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 191,
+   "d": 460,
+   "h": 720
+  },
+  "weight_kg": 60,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC nominal; 120-276V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 6000,
+   "w": 5400,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "Terminal (L + N + PE)"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/Inform_DSP_EVO_6_10kVA_TR_1050.pdf",
+  "source2": "https://www.inform.com.tr/kesintisiz-guc-kaynagi-inform-1-faz-dspevo.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Battery count adjustable 16/18/20. Weight '60 61' listed without labels; 60 kg assigned to 6K by column order."
+ },
+ {
+  "brand": "Inform",
+  "model": "DSP EVO 10K",
+  "sku": [],
+  "kind": "ups",
+  "series": "DSP EVO",
+  "desc": "10kVA/9kW online double-conversion tower UPS, PF 0.9, 16x 12V 7-9Ah internal",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 191,
+   "d": 460,
+   "h": 720
+  },
+  "weight_kg": 61,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC nominal; 120-276V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 10000,
+   "w": 9000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "Terminal (L + N + PE)"
+  },
+  "source": "https://www.inform.com.tr/dosya/pdf/Inform_DSP_EVO_6_10kVA_TR_1050.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Battery count adjustable 16/18/20. Weight assigned by column order (61 kg); dimensions given once for series."
+ },
+ {
+  "brand": "Tescom",
+  "model": "NEOLINE RT 1000RT",
+  "sku": [],
+  "kind": "ups",
+  "series": "NEOLINE RT",
+  "desc": "1kVA/900W online rack/tower UPS, 2x 12V 7/9Ah (24V DC)",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 325,
+   "h": 86.5
+  },
+  "weight_kg": 11.3,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC (176-264V at 100% load)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 900,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Catalog_en_2026.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog."
+ },
+ {
+  "brand": "Tescom",
+  "model": "NEOLINE RT 2000RT",
+  "sku": [],
+  "kind": "ups",
+  "series": "NEOLINE RT",
+  "desc": "2kVA/1800W online rack/tower UPS, 4x 12V 7/9Ah (48V DC)",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 460,
+   "h": 86.5
+  },
+  "weight_kg": 19.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC (176-264V at 100% load)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 2000,
+   "w": 1800,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Catalog_en_2026.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog."
+ },
+ {
+  "brand": "Tescom",
+  "model": "NEOLINE RT 3000RT",
+  "sku": [],
+  "kind": "ups",
+  "series": "NEOLINE RT",
+  "desc": "3kVA/2700W online rack/tower UPS, 6x 12V 7/9Ah (72V DC)",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 600,
+   "h": 86.5
+  },
+  "weight_kg": 26,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC (176-264V at 100% load)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Catalog_en_2026.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog."
+ },
+ {
+  "brand": "Tescom",
+  "model": "NEOLINE PRO RT 3000RT",
+  "sku": [],
+  "kind": "ups",
+  "series": "NEOLINE PRO RT",
+  "desc": "3kVA/3kW online rack/tower UPS, PF 1, 6x 12V 7/9Ah (72V DC)",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 600,
+   "h": 86.5
+  },
+  "weight_kg": 26,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC (176-264V at 100% load)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 3000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Catalog_en_2026.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "u derived from 86.5 mm height (catalog does not state U). 1000RT (1kVA/1kW, 11.3 kg) and 2000RT (2kVA/2kW, 19.5 kg) share NEOLINE RT chassis dimensions."
+ },
+ {
+  "brand": "Tescom",
+  "model": "NEOLINE PRO 106 RT",
+  "sku": [],
+  "kind": "ups",
+  "series": "NEOLINE PRO RT",
+  "desc": "6kVA/6kW online rack/tower UPS, PF 1, internal VRLA (192V DC default)",
+  "mount": "rack-optional",
+  "u": 4,
+  "dims_mm": {
+   "w": 440,
+   "d": 621.5,
+   "h": 175
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 6000,
+   "w": 6000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "Programmable model: 2x IEC C19 + 3x IEC C13; non-programmable: hardwire terminal"
+  },
+  "source": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Catalog_en_2026.pdf",
+  "source2": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Katalog_tr_2026.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Weight printed as '57/65' (ambiguous) - null. XL variant (external battery) is 2U, 86.5 mm, 15 kg. Battery 192V DC default (216/240V options); lithium option."
+ },
+ {
+  "brand": "Tescom",
+  "model": "NEOLINE PRO 110 RT",
+  "sku": [],
+  "kind": "ups",
+  "series": "NEOLINE PRO RT",
+  "desc": "10kVA/10kW online rack/tower UPS, PF 1, internal VRLA (192V DC default)",
+  "mount": "rack-optional",
+  "u": 4,
+  "dims_mm": {
+   "w": 440,
+   "d": 621.5,
+   "h": 175
+  },
+  "weight_kg": 67,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 10000,
+   "w": 10000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "Programmable model: 2x IEC C19 + 3x IEC C13; non-programmable: hardwire terminal"
+  },
+  "source": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Catalog_en_2026.pdf",
+  "source2": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Katalog_tr_2026.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "XL variant (external battery) is 2U, 86.5 mm, 17 kg. Battery 192V DC default (216/240V options)."
+ },
+ {
+  "brand": "Legrand",
+  "model": "Keor SPE Tower 3kVA",
+  "sku": [
+   "311064"
+  ],
+  "kind": "ups",
+  "series": "Keor SPE",
+  "desc": "3000VA/2400W line-interactive tower UPS, 8x C13 + 1x C19",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 170,
+   "d": 438,
+   "h": 238
+  },
+  "weight_kg": 26.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "175-288V AC (C20 inlet)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2400,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "8x IEC C13 (10A), 1x IEC C19 (16A)"
+  },
+  "source": "https://legrand.com/ecatalogue/en/catalog/products/legrand-keor-spe-tower-3kva-ups-tower-311064",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "VRLA lead-acid battery, 4 cells listed."
+ },
+ {
+  "brand": "Legrand",
+  "model": "Keor SPE Rack 2U 1kVA",
+  "sku": [
+   "311067"
+  ],
+  "kind": "ups",
+  "series": "Keor SPE RT",
+  "desc": "1000VA/800W line-interactive 2U rack UPS",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 440,
+   "h": 88
+  },
+  "weight_kg": 16.8,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "175-288V AC (C14 inlet)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 800,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "8x IEC C13 (feature table; description says 4x IEC C13)"
+  },
+  "source": "https://legrand.es/productos/sai-rack-keor-spe-2u-1kva-legrand-311067",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Official Legrand Spain catalog page. Outlet count conflict on page: 8x C13 in table vs 4x C13 in description."
+ },
+ {
+  "brand": "Legrand",
+  "model": "Keor SPE R/T 3000VA",
+  "sku": [
+   "311073"
+  ],
+  "kind": "ups",
+  "series": "Keor SPE RT",
+  "desc": "3000VA/2700W line-interactive rack/tower UPS, LCD, 3U",
+  "mount": "rack-optional",
+  "u": 3,
+  "dims_mm": {
+   "w": 440,
+   "d": 500,
+   "h": 132
+  },
+  "weight_kg": 29.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "175-288V AC (C20 inlet)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "8x IEC C13 (10A), 1x IEC C19 (16A)"
+  },
+  "source": "https://www.legrand.com/ecatalogue/en/catalog/products/legrand-keor-spe-rt-3000va-ups-rack-tower-convertible-lcd-311073",
+  "source2": "https://legrand.pl/pl/e-katalog/produkty/ups-keor-spe-rack-3u-3kva-311073",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "VRLA battery, 6 cells listed."
+ },
+ {
+  "brand": "Legrand",
+  "model": "Keor LP 3000VA Tower",
+  "sku": [
+   "310158"
+  ],
+  "kind": "ups",
+  "series": "Keor LP",
+  "desc": "3000VA/2700W online double-conversion (VFI) tower UPS, 6x C13",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 189,
+   "d": 444,
+   "h": 322
+  },
+  "weight_kg": 23,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "210-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "6x IEC C13"
+  },
+  "source": "https://www.legrand.com/ecatalogue/en/catalog/products/on-line-double-conversion-ups-ups-keor-lp-3000va-tower-3000va-2700w-single-phase-vfi-210v-to-240v-input-230v-output-310158",
+  "source2": "https://ups.legrand.com/media/document/Keor_LP_GB_low.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Input range as listed on e-catalogue (210-240V)."
+ },
+ {
+  "brand": "CyberPower",
+  "model": "OL1000ERTXL2U",
+  "sku": [
+   "OL1000ERTXL2U"
+  ],
+  "kind": "ups",
+  "series": "Professional Online Rack/Tower",
+  "desc": "1000VA/900W online double-conversion 2U rack/tower UPS, 8x C13, extended-runtime capable",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "200-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 900,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "8x IEC C13"
+  },
+  "source": "https://www.cyberpower.com/global/en/product/sku/ol1000ertxl2u",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP with 3 batteries, 36V per pack."
+ },
+ {
+  "brand": "CyberPower",
+  "model": "OL3000ERTXL2U",
+  "sku": [
+   "OL3000ERTXL2U"
+  ],
+  "kind": "ups",
+  "series": "Professional Online Rack/Tower",
+  "desc": "3000VA/2700W online double-conversion 2U rack/tower UPS, 8x C13 + 1x C19",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "200-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 1x IEC C19 (5 critical / 4 non-critical)"
+  },
+  "source": "https://www.cyberpower.com/global/en/product/sku/ol3000ertxl2u",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP (RBP0076) with 6 batteries, 72V per pack."
+ },
+ {
+  "brand": "CyberPower",
+  "model": "PR1500ERT2U",
+  "sku": [
+   "PR1500ERT2U"
+  ],
+  "kind": "ups",
+  "series": "Professional Rackmount (Smart App Sinewave)",
+  "desc": "1500VA/1500W line-interactive sine-wave 2U rack/tower UPS, 10x C13",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "159-288V AC (adjustable 151-302V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1500,
+   "w": 1500,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "10x IEC C13 (5 critical / 5 non-critical)"
+  },
+  "source": "https://www.cyberpower.com/eu/en/product/sku/pr1500ert2u",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP (RBP0129) with 4 batteries."
+ },
+ {
+  "brand": "CyberPower",
+  "model": "PR3000ERT2U",
+  "sku": [
+   "PR3000ERT2U"
+  ],
+  "kind": "ups",
+  "series": "Professional Rackmount (Smart App Sinewave)",
+  "desc": "3000VA/3000W line-interactive sine-wave 2U rack/tower UPS, 6x C13 + 2x C19",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 433,
+   "d": 500,
+   "h": 86.5
+  },
+  "weight_kg": 32.3,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "159-288V AC (adjustable 151-302V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 3000,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "6x IEC C13, 2x IEC C19 (4 critical / 4 non-critical)"
+  },
+  "source": "https://www.cyberpower.com/eu/en/product/sku/pr3000ert2u",
+  "source2": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_PR3000ERT2U.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Electrical/outlet data from official CyberPower EU page; dimensions (433x500x86.5 mm) and weight 32.3 kg from third-party (Icecat-style) reseller datasheet. 1 RBP (RBP0129) with 4 batteries."
+ },
+ {
+  "brand": "Schneider Electric",
+  "model": "APC Easy UPS On-Line SRV RM 1000VA 230V",
+  "sku": [
+   "SRV1KRI"
+  ],
+  "kind": "ups",
+  "series": "Easy UPS On-Line SRV",
+  "desc": "1000VA/800W online double-conversion 2U rack UPS, 3x C13",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 800,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "3x IEC C13"
+  },
+  "source": "https://www.se.com/tr/tr/product/SRV1KRI/apc-easy-ups-online-srv-rm-1000va-230v/",
+  "source2": "https://eshop.se.com/sa/apc-easy-ups-on-line-1000va-800w-rackmount-2u-230v-3x-iec-c13-outlets-intelligent-card-slot-lcd-w-o-rail-kit-srv1kri.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Outlets from official Schneider e-shop title. Dimensions/weight not exposed in fetched page. Newer -E version (SRV1KRI-E) is 1000VA/900W. Rail kit version SRV1KRIRK."
+ },
+ {
+  "brand": "Schneider Electric",
+  "model": "APC Easy UPS On-Line SRV RM 3000VA 230V",
+  "sku": [
+   "SRV3KRI",
+   "SRV3KRIRK"
+  ],
+  "kind": "ups",
+  "series": "Easy UPS On-Line SRV",
+  "desc": "3000VA/2400W online double-conversion 2U rack UPS, 6x C13 + 1x C19",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 437,
+   "d": 632,
+   "h": 86
+  },
+  "weight_kg": 27.6,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "160-280V AC (IEC C14 inlet per spec sheet)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2400,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "6x IEC C13, 1x IEC C19"
+  },
+  "source": "https://www.se.com/nz/en/product/SRV3KRI/apc-easy-ups-online-srv-3000va-rm-230v/",
+  "source2": "https://ik.imagekit.io/pimberly/65707b38e31f5a94719d7ba0/77541c0e/65f8326067f84a0018fc2576/mmo_65457904_1559212701_8843_28100.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "VA/W/outlets/2U from official se.com page; dimensions, 27.6 kg net weight and input range from APC spec sheet for SRV3KRIRK (rail-kit variant) hosted by a reseller PIM. Newer SRV3KRI-E is 3000VA/2700W."
+ },
+ {
+  "brand": "Schneider Electric",
+  "model": "APC Easy UPS On-Line SRV 6000VA 230V",
+  "sku": [
+   "SRV6KI"
+  ],
+  "kind": "ups",
+  "series": "Easy UPS On-Line SRV",
+  "desc": "6kVA/6kW online double-conversion tower UPS, hardwire output",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 6000,
+   "w": 6000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "Hardwire 3-wire (1P+N+E)"
+  },
+  "source": "https://www.se.com/tr/tr/product/SRV6KI/apc-easy-ups-srv-6000-va-230-v/",
+  "source2": "https://se.com/th/en/product/SRV6KI/apc-easy-ups-on-line-srv-6000va-230v",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Output connection from official se.com (TH) product title. Dimensions/weight/input range not exposed in fetched pages."
+ },
+ {
+  "brand": "Riello UPS",
+  "model": "Sentinel Pro SEP 3000",
+  "sku": [
+   "SEP 3000 A5"
+  ],
+  "kind": "ups",
+  "series": "Sentinel Pro",
+  "desc": "3000VA/2700W online double-conversion (VFI) tower UPS",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 190,
+   "d": 446,
+   "h": 333
+  },
+  "weight_kg": 28,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V ±20%; 140-276V at 50% load, 184-276V at 100% load"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.riello-ups.com/product_models/368-sep-3000-a5.pdf",
+  "source2": "https://www.riello-ups.com/uploads/file/784/1784/DATSEPA1Y23NREN.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Topology from series datasheet (ON LINE double conversion, VFI-SS-111). Outlet mapping per model not clearly stated (series lists 4x C13 / 8x C13 / 8x C13 + 1x C19 configurations). ER version (no internal battery) 15 kg."
+ },
+ {
+  "brand": "Riello UPS",
+  "model": "Sentinel Dual SDH 1500",
+  "sku": [
+   "SDH 1500 A5"
+  ],
+  "kind": "ups",
+  "series": "Sentinel Dual (Low Power)",
+  "desc": "1500VA/1350W online double-conversion (VFI) rack/tower 2U UPS",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 450,
+   "d": 425,
+   "h": 87
+  },
+  "weight_kg": 18,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V ±20%; 140-276V at 50% load, 184-276V at 100% load"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1500,
+   "w": 1350,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.riello-ups.com/product_models/448-sdh-1500-a5.pdf",
+  "source2": "https://www.riello-ups.com/uploads/file/842/842/DATSDHA1Y23BREN.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Model sheet: tower 450x87x425 (h w d), rack 2U x 19in x 425 mm; recorded in rack orientation. Outlets: series lists 8x C13 or 8x C13 + 1x C19 without per-model mapping."
+ },
+ {
+  "brand": "Riello UPS",
+  "model": "Sentinel Dual SDH 3000",
+  "sku": [
+   "SDH 3000"
+  ],
+  "kind": "ups",
+  "series": "Sentinel Dual (Low Power)",
+  "desc": "3000VA/2700W online double-conversion (VFI) rack/tower 2U UPS",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 450,
+   "d": 625,
+   "h": 87
+  },
+  "weight_kg": 31,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "140-276V at 50% load, 184-276V at 100% load"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://www.riello-ups.com/product_models/187-sdh-3000.pdf",
+  "source2": "https://www.riello-ups.com/uploads/file/842/842/DATSDHA1Y23BREN.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Model sheet dims '450x87x625 / 87(2U)x450x625 (h w d)'; recorded in rack orientation. ER version 3000VA/2400W, 15 kg. Outlets not mapped per model."
+ },
+ {
+  "brand": "Socomec",
+  "model": "NETYS RT 3000VA/3000W Lithium",
+  "sku": [
+   "NRT4-LI-U030B"
+  ],
+  "kind": "ups",
+  "series": "NETYS RT (NRT4)",
+  "desc": "3kVA/3kW online double-conversion rack/tower UPS, integrated Li-ion battery, 8x C13 + 1x C19",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 438,
+   "d": 600,
+   "h": 85.5
+  },
+  "weight_kg": 21.3,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC, 40-70 Hz (C20 inlet)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 3000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 1x IEC C19"
+  },
+  "source": "https://emea.socomec.com/en/reference/nrt4-li-u030b",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "u derived from 85.5 mm height (page does not state U). Rails included."
+ },
+ {
+  "brand": "Socomec",
+  "model": "NETYS RT 3000VA/3000W Powerful Charger",
+  "sku": [
+   "NRT4-U030LB"
+  ],
+  "kind": "ups",
+  "series": "NETYS RT (NRT4)",
+  "desc": "3kVA/3kW online double-conversion rack/tower UPS, long-autonomy (external battery) version, 8x C13 + 1x C19",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 438,
+   "d": 600,
+   "h": 85.5
+  },
+  "weight_kg": 10.9,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "110-300V AC, 40-70 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 3000,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 1x IEC C19"
+  },
+  "source": "https://emea.socomec.com/en/reference/nrt4-u030lb",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "No internal battery (external battery cabinet required). u derived from 85.5 mm height. Standard-battery version NRT4-U030B page not reachable."
+ },
+ {
+  "brand": "Huawei",
+  "model": "UPS2000-A-3KTTS",
+  "sku": [
+   "UPS2000-A-3KTTS"
+  ],
+  "kind": "ups",
+  "series": "UPS2000-A (1-3 kVA)",
+  "desc": "3kVA/2.4kW online double-conversion tower UPS, internal battery (72V DC)",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 190,
+   "d": 421,
+   "h": 318
+  },
+  "weight_kg": 26.6,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "220/230/240V AC; 110-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2400,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://digitalpower.huawei.com/attachments/data_center_energy_new/b934ae39a60f49aa946908eda897365b.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Source is Huawei's Chinese-language datasheet (China-market variant with GB sockets); outlet type differs on international SKUs, so outlets left null. Standard (internal battery) unit; long-run unit 96V DC external battery, 8.2 kg. Dims given as DxWxH 421x190x318."
+ },
+ {
+  "brand": "Huawei",
+  "model": "UPS2000-G-3KRTS",
+  "sku": [
+   "UPS2000-G-3KRTS"
+  ],
+  "kind": "ups",
+  "series": "UPS2000-G (1-3 kVA)",
+  "desc": "3kVA/2.4kW online double-conversion rack/tower UPS, internal battery (72V DC)",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 438,
+   "d": 630,
+   "h": 88
+  },
+  "weight_kg": 29,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "200/208/220/230/240V AC; 110-300V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2400,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": null
+  },
+  "source": "https://digitalpower.huawei.com/attachments/data-center-facility/cf1941c9cead4e999f73a101a7d772be.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Source is Huawei's Chinese-language datasheet (China-market variant with GB sockets); outlet type differs on international SKUs, so outlets left null. u derived from 88 mm height. Standard unit; long-run unit 96V DC external battery, 438x410x88 mm, 9.3 kg."
+ },
+ {
+  "brand": "Delta",
+  "model": "Amplon RT Gen3 1kVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Amplon RT Gen3",
+  "desc": "1kVA/0.9kW online double-conversion 2U rack/tower UPS, 4x C13",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 438,
+   "d": 310,
+   "h": 86
+  },
+  "weight_kg": 10.6,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "180-280V AC at 100% load; 120-300V AC at 50-100% load (C14 inlet)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 900,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "4x IEC C13"
+  },
+  "source": "https://deltapowersolutions.com/media/download/Leaflet_UPS_RT-Gen3-1-3%20kVA_SB_en-gb_EKACCO-06-ZL.pdf",
+  "source2": "https://www.delta-emea.com/en-GB/products/Amplon/1kva-3kva-single-phase-ups-rt-gen3-series",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Standard-battery (SB) leaflet; batteries 2 pcs, 24V DC. Part number not stated in leaflet. 2U stated for series."
+ },
+ {
+  "brand": "Delta",
+  "model": "Amplon RT Gen3 3kVA",
+  "sku": [],
+  "kind": "ups",
+  "series": "Amplon RT Gen3",
+  "desc": "3kVA/2.7kW online double-conversion 2U rack/tower UPS, 4x C13 + 1x C19",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 438,
+   "d": 630,
+   "h": 86
+  },
+  "weight_kg": 26.6,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "180-280V AC at 100% load; 120-300V AC at 50-100% load (C20 inlet)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online",
+   "battery_wh": null,
+   "outlets": "4x IEC C13, 1x IEC C19"
+  },
+  "source": "https://deltapowersolutions.com/media/download/Leaflet_UPS_RT-Gen3-1-3%20kVA_SB_en-gb_EKACCO-06-ZL.pdf",
+  "source2": "https://www.delta-emea.com/en-GB/products/Amplon/1kva-3kva-single-phase-ups-rt-gen3-series",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Standard-battery (SB) leaflet; batteries 6 pcs, 72V DC. 2kVA model: 438x410x86 mm, 17.9 kg, 1.8 kW. Part number not stated in leaflet."
+ }
+]
