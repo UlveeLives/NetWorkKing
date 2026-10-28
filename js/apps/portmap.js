@@ -53,29 +53,49 @@ function portState(b, d, p){
   if (!pr.end) return "half";
   return isNet(devById(b, pr.end.d)) ? "uplink" : "up";
 }
-/* ---------- port grid ---------- */
+/* ---------- port grid (PortMap look: dark rack, units, ports coloured by the connected device type) ---------- */
+// Device-type colours of PortMap 1–3.
+const TCOL = {pc:"#2f7de1", laptop:"#2f7de1", workstation:"#2f7de1", ap:"#14a37f", camera:"#d9822b", printer:"#8a5cd6", phone:"#c9475d", server:"#4d5bd1", nas:"#4d5bd1", storage:"#4d5bd1",
+  nvr:"#8a6d3b", dvr:"#8a6d3b", firewall:"#b3262f", router:"#b3262f", tv:"#0e8fa8", monitor:"#0e8fa8", videowall:"#0e8fa8", touch:"#c2569f", intercom:"#5e8f2e", access:"#5e8f2e", outlet:"#8e9bd4", iot:"#2a9d8f", sensor:"#2a9d8f", ups:"#6d597a", pdu:"#6d597a", other:"#7c8a99"};
+const UPLINK = "#e0b51b";
+const tcol = k => TCOL[k] || TCOL.other;
+function portLook(b, d, p, st){
+  if (st === "free" || st === "down") return {c:"", k:""};
+  if (st === "cfg") return {c:"var(--filled)", k:""};
+  const pr = parts(b, d.id, p), ed = pr.end && devById(b, pr.end.d);
+  if (st === "uplink") return {c:UPLINK, k:"uplink", dir:!pr.panel && !passive(d)};
+  if (ed) return {c:tcol(ed.kind), k:ed.kind, dir:!pr.panel && !passive(d)};
+  return {c:"var(--filled)", k:""};
+}
 function grid(b, d){
   const n = Math.max(0, Math.round(num(d.ports))), sfp = clamp(Math.round(num(d.params.sfp)), 0, n), cu = n - sfp, s = UI.sel;
   const cell = i => { const p = String(i), st = portState(b, d, p), c = d.pcfg[p] || {}, v = c.vlan && vlanById(b, c.vlan), on = s && s.type === "port" && s.id === d.id && s.p === p;
-    const pr = st !== "free" ? parts(b, d.id, p) : null, ed = pr && pr.end && devById(b, pr.end.d);
+    const pr = st !== "free" ? parts(b, d.id, p) : null, ed = pr && pr.end && devById(b, pr.end.d), L = portLook(b, d, p, st);
     const tip = [`${devLabel(d)} :${p}`, ed ? "→ " + devLabel(ed) + (ed.room ? " · " + roomName(b, ed.room) : "") : "", v ? "VLAN " + v.vid : c.mode === "trunk" ? "trunk" : "", c.poe ? "PoE " + c.poe : ""].filter(Boolean).join("\n");
-    return `<button class="pt s-${st}${i > cu ? " sfp" : ""}${on ? " on" : ""}${c.mode === "trunk" ? " trunk" : ""}" data-port="${d.id}:${p}" title="${esc(tip)}"${v ? ` style="--vc:${esc(v.color)}"` : ""}>${esc(p)}${c.poe ? "<i>⚡</i>" : ""}</button>`; };
+    return `<button class="p s-${st}${L.c ? " in" : ""}${L.dir ? " dir" : ""}${st === "half" ? " later" : ""}${i > cu ? " sfp" : ""}${on ? " sel" : ""}${c.mode === "trunk" ? " trunk" : ""}" data-port="${d.id}:${p}" title="${esc(tip)}"${L.c ? ` style="--pc:${L.c}"` : ""}>${esc(p)}${c.poe ? "<i>⚡</i>" : ""}</button>`; };
   const half = Math.ceil(cu / 2), top = [], bot = [];
   for (let i = 1; i <= cu; i++) (i % 2 ? top : bot).push(cell(i));
   const sf = []; for (let i = cu + 1; i <= n; i++) sf.push(cell(i));
-  return `<div class="pgr${passive(d) ? " pas" : ""}"><div class="pgc" style="grid-template-columns:repeat(${Math.max(1, half)},26px)">${top.join("")}${bot.join("")}</div>${sf.length ? `<div class="pgc sf" style="grid-template-columns:repeat(${Math.ceil(sf.length / 2)},26px)">${sf.filter((_, i) => i % 2 === 0).join("")}${sf.filter((_, i) => i % 2 === 1).join("")}</div>` : ""}</div>`;
+  return `<div class="pgr"><div class="pgc" style="grid-template-columns:repeat(${Math.max(1, half)},minmax(22px,30px))">${top.join("")}${bot.join("")}</div>${sf.length ? `<div class="pgc sf" style="grid-template-columns:repeat(${Math.ceil(sf.length / 2)},minmax(22px,30px))">${sf.filter((_, i) => i % 2 === 0).join("")}${sf.filter((_, i) => i % 2 === 1).join("")}</div>` : ""}</div>`;
 }
 function devRow(b, d){
   const on = UI.sel && UI.sel.type === "dev" && UI.sel.id === d.id, used = Array.from({length:Math.round(num(d.ports))}, (_, i) => linksAt(b, d.id, i + 1).length ? 1 : 0).reduce((a, c) => a + c, 0);
-  return `<div class="pmr${on ? " on" : ""}"><div class="pml" data-sel="dev:${d.id}"><svg viewBox="0 0 48 48" width="26" height="26">${ICO[devIcon(d)] || ICO.box}</svg><span><b>${esc(devLabel(d))}</b><small>${esc([d.brand, d.model].filter(Boolean).join(" ") || kindName(d.kind))}${d.u ? " · U" + d.u : ""}</small><small class="muted">${used}/${Math.round(num(d.ports))} ${esc(t("pmUsed"))}${d.ip ? " · " + esc(d.ip.split("/")[0]) : ""}</small></span></div>${grid(b, d)}</div>`;
+  return `<div class="unit${isNet(d) ? " switch" : ""}${on ? " on" : ""}"><div class="lbl" data-sel="dev:${d.id}" title="${esc(t("edit"))}">${esc(devLabel(d))}<small>${esc([d.brand, d.model].filter(Boolean).join(" ") || kindName(d.kind))}${d.u ? " · U" + d.u : ""}</small><small>${used}/${Math.round(num(d.ports))}${d.ip ? " · " + esc(d.ip.split("/")[0]) : ""}</small></div>${grid(b, d)}</div>`;
+}
+function legend(b){
+  const kinds = [...new Set(b.devices.filter(d => !portDev(d) || !isNet(d)).filter(d => linksOf(b, d.id).length && !passive(d)).map(d => d.kind))];
+  const sw = (bg, l, cls = "") => `<span><i class="sw ${cls}" style="background:${bg}"></i>${esc(l)}</span>`;
+  return `<div class="pmlegend">${kinds.length ? kinds.map(k => sw(tcol(k), kindName(k))).join("") + `<span class="sep"></span>` : `<span>${esc(t("pmLgTypes"))}</span><span class="sep"></span>`}
+    ${sw("var(--port)", t("pmLgFree"))}${sw("var(--filled)", t("pmLgCfg"))}${sw(UPLINK, t("pmLgUplink"))}${sw("var(--port)", t("pmLgDir"), "dirk")}${sw("var(--port)", t("pmLgHalf"), "laterk")}${sw("var(--port)", t("pmLgBad"), "badk")}<span><i class="sw trk"></i>trunk</span><span>⚡ PoE</span></div>`;
 }
 function portsView(b){
-  const devs = b.devices.filter(portDev), byRack = b.racks.map(r => ({r, ds:devs.filter(d => d.rack === r.id).sort((a, c) => topU(c) - topU(a))})).filter(x => x.ds.length || true);
+  const devs = b.devices.filter(portDev), byRack = b.racks.map(r => ({r, ds:devs.filter(d => d.rack === r.id).sort((a, c) => topU(c) - topU(a))}));
   const loose = devs.filter(d => !d.rack && (isNet(d) || passive(d) || ["nvr","dvr","server","nas"].includes(d.kind)) && d.kind !== "outlet");
   if (!devs.length && !b.racks.length) return `<div class="empty"><h3>${esc(t("pmEmptyT"))}</h3><p>${esc(t("pmEmpty"))}</p></div>`;
-  return `${warnBox(warnings(b))}<div class="pmlegend">${[["up","pmLgUp"],["uplink","pmLgUplink"],["half","pmLgHalf"],["cfg","pmLgCfg"],["down","pmLgDown"],["bad","pmLgBad"],["free","pmLgFree"]].map(([k, l]) => `<span><i class="pt s-${k}"></i>${esc(t(l))}</span>`).join("")}<span><i class="pt trunk"></i>trunk</span><span>⚡ PoE</span></div>
-    ${byRack.map(({r, ds}) => `<div class="card pmrack"><h3>🗄 ${esc(r.name)} <small class="muted">${esc([floorName(b, r.floor), roomName(b, r.room)].filter(Boolean).join(" · "))}</small><span class="grow"></span><button class="btn small" data-pma="add:${r.id}">＋ ${esc(t("pmAddHere"))}</button></h3>${ds.length ? ds.map(d => devRow(b, d)).join("") : `<p class="muted small">${esc(t("pmRackEmpty"))}</p>`}</div>`).join("")}
-    ${loose.length ? `<div class="card pmrack"><h3>📦 ${esc(t("pmLoose"))}</h3>${loose.map(d => devRow(b, d)).join("")}</div>` : ""}`;
+  const rack = (title, sub, btn, body) => `<div class="rack pmrack"><div class="rack-title"><b>${esc(title)}</b><span class="rt-r"><small>${esc(sub)}</small>${btn}</span></div>${body}</div>`;
+  return `${warnBox(warnings(b))}${legend(b)}<div class="racks">
+    ${byRack.map(({r, ds}) => rack(r.name, [floorName(b, r.floor), roomName(b, r.room), r.u + "U"].filter(Boolean).join(" · "), `<button class="rk-btn" data-pma="add:${r.id}">＋ ${esc(t("pmAddHere"))}</button>`, ds.length ? ds.map(d => devRow(b, d)).join("") : `<p class="rk-empty">${esc(t("pmRackEmpty"))}</p>`)).join("")}
+    ${loose.length ? rack(t("pmLoose"), "", "", loose.map(d => devRow(b, d)).join("")) : ""}</div>`;
 }
 /* ---------- editing the chain ---------- */
 async function setPanel(b, d, p, ppId, ppPort){
@@ -169,12 +189,12 @@ function vlanIds(txt){ const out = []; if (String(txt).trim().toLowerCase() === 
 function pmWarnings(b){
   const W = [], vids = new Set(b.vlans.map(v => String(v.vid))), seen = new Set();
   b.devices.filter(d => !passive(d)).forEach(d => {
-    let poeW = 0, poeN = 0;
+    let poeW = 0, poeN = 0; const noPoe = [];
     Object.keys(d.pcfg).forEach(p => { const c = d.pcfg[p], nm = `${devLabel(d)} :${p}`;
       if (c.mode === "trunk" && c.allowed){ const L = vlanIds(c.allowed); if (L === null) W.push(["err", t("pw_allowed",{p:nm, v:c.allowed}), d.id]); else if (L !== "all" && b.vlans.length){ const miss = [...new Set(L.filter(x => !vids.has(String(x))))]; if (miss.length && miss.length <= 20) W.push(["", t("pw_unk",{p:nm, v:miss.join(", ")}), d.id]); } } });
     for (let i = 1; i <= Math.round(num(d.ports)); i++){ const p = String(i), L = linksAt(b, d.id, p); if (!L.length) continue; const pr = parts(b, d.id, p), ed = pr.end && devById(b, pr.end.d), c = d.pcfg[p] || {}, nm = `${devLabel(d)} :${p}`;
       if (ed && num(ed.params.poeIn) && (c.poe || KINDS[d.kind].sw && num(d.params.poePorts))){ poeW += num(ed.params.poeIn); poeN++; if (c.poe && num(ed.params.poeIn) > POE[c.poe]) W.push(["err", t("pw_poeClass",{p:nm, n:devLabel(ed), w:ed.params.poeIn, c:POE[c.poe]}), d.id]); }
-      if (ed && ["ap","camera","phone"].includes(ed.kind) && KINDS[d.kind].sw && num(d.params.poePorts) === 0 && !c.poe) W.push(["info", t("pw_noPoe",{p:nm, n:devLabel(ed)}), d.id]);
+      if (ed && ["ap","camera","phone"].includes(ed.kind) && KINDS[d.kind].sw && num(d.params.poePorts) === 0 && !c.poe) noPoe.push(p);
       const len = pr.chain.slice(pr.me + 1).reduce((s, h) => s + num(h.link && h.link.len), 0) + pr.chain.slice(0, pr.me + 1).reduce((s, h) => s + num(h.link && h.link.len), 0);
       if (len > 100 && pr.chain.every(h => !h.link || !isFiber(h.link.media))) W.push(["err", t("pw_chan",{p:nm, l:r1(len)}), d.id]);
       if (ed && isNet(ed) && pr.end.p){ const k = [d.id + ":" + p, ed.id + ":" + pr.end.p].sort().join("|"); if (seen.has(k)) continue; seen.add(k); const o = ed.pcfg[pr.end.p] || {};
@@ -183,6 +203,7 @@ function pmWarnings(b){
         if (c.mode === "trunk" && o.mode === "trunk" && c.native && o.native && c.native !== o.native) W.push(["err", t("pw_native",{a:nm, b:`${devLabel(ed)} :${pr.end.p}`}), d.id]);
         if (c.speed && o.speed && c.speed !== "auto" && o.speed !== "auto" && c.speed !== o.speed) W.push(["", t("pw_speed",{a:nm, b:`${devLabel(ed)} :${pr.end.p}`, x:c.speed, y:o.speed}), d.id]); }
     }
+    if (noPoe.length) W.push(["info", t("pw_noPoe2",{n:devLabel(d), c:noPoe.length, p:noPoe.slice(0, 8).join(", ") + (noPoe.length > 8 ? " …" : "")}), d.id]);
     if (num(d.params.poeBudget) && poeW > num(d.params.poeBudget)) W.push(["err", t("pw_budget",{n:devLabel(d), w:r1(poeW), b:d.params.poeBudget}), d.id]);
     if (num(d.params.poePorts) && poeN > num(d.params.poePorts)) W.push(["", t("pw_poePorts",{n:devLabel(d), c:poeN, m:d.params.poePorts}), d.id]);
   });
@@ -288,7 +309,7 @@ registerApp({
   glyph:`<rect x="7" y="15" width="34" height="18" rx="3" fill="#fff"/>${[0,1,2,3,4].map(i => `<rect x="${10 + i * 6}" y="18" width="4" height="5" fill="${i === 1 ? "#ffb703" : "#14a37f"}"/><rect x="${10 + i * 6}" y="25" width="4" height="5" fill="${i === 3 ? "#5ac8fa" : "#14a37f"}"/>`).join("")}`,
   tabs:[
     {id:"ports", label:"tabPorts", icon:"🔌", render(){ return portsView(B()); },
-      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".pmlegend", title:t("tPmT1"), text:t("tPm1")}, {sel:".pt", title:t("tPmT2"), text:t("tPm2")}, {sel:'[data-pma^="add:"]', title:t("tPmT3"), text:t("tPm3")}, {sel:'[data-tab="list"]', title:t("tPmT4"), text:t("tPm4")}, {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
+      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".pmlegend", title:t("tPmT1"), text:t("tPm1")}, {sel:".p", title:t("tPmT2"), text:t("tPm2")}, {sel:'[data-pma^="add:"]', title:t("tPmT3"), text:t("tPm3")}, {sel:'[data-tab="list"]', title:t("tPmT4"), text:t("tPm4")}, {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
     {id:"list", label:"tabPortList", icon:"📋", render(){ return listView(B()); }, tour:() => [{sel:"#q-pm", title:t("tPmT4"), text:t("tPm4b")}]},
     {id:"rooms", label:"tabRooms", icon:"🚪", render(){ return roomsView(B()); }, tour:() => [{sel:"#view .card, #view .empty", title:t("tPmT5"), text:t("tPm5")}]},
     {id:"cables", label:"tabCables", icon:"🧵", render(){ const b = B(); return `<div class="row" style="margin-bottom:10px"><button class="btn small" data-pm2="cid"># ${esc(t("autoCid"))}</button><button class="btn small" data-pm2="ccsv">⤓ CSV</button></div>${cableTable(b)}`; }},
