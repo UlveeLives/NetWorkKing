@@ -208,7 +208,7 @@ registerApp({
     {id:"gaps", label:"sm_tabGaps", icon:"⚠", render:gapsView},
     docTab("summary", docBody)
   ],
-  actions(){ return [{id:"csv", icon:"⤓", label:"sm_csv", fn:listCsv}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },
+  actions(){ return [{id:"timp", icon:"⤓", label:"tiBtn", fn:() => TIMP.open()}, {id:"labels", icon:"🏷", label:"lbBtn", fn:() => LABELS.open("devices")}, {id:"csv", icon:"⤒", label:"sm_csv", fn:listCsv}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },
   drawer(){ const b = B(), s = UI.sel; if (!s) return ""; if (s.type === "dev"){ const d = devById(b, s.id); return d ? deviceEditor(b, d) : ""; } if (s.type === "link"){ const l = linkById(b, s.id); return l ? linkEditor(b, l) : ""; } return ""; },
   exports(){ return [{icon:"▦", label:t("app_summary") + " (CSV)", fn:listCsv}, {icon:"▦", label:t("sm_bom") + " (CSV)", fn:bomCsv}]; },
   reveal(s){ if (s && s.type === "dev"){ UI.tabs.summary = "list"; render(); } },

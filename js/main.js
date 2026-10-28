@@ -8,7 +8,7 @@ const APP_VERSION = "3.4.0";
     $("#dl-brands").innerHTML = allBrands().map(x => `<option value="${esc(x)}">`).join("");
     wireShell(); wireEditors(); AI.init(); Object.values(APPS).forEach(a => a.init && a.init());
     const p = P(); UI.app = APPS[p.cur.app] ? p.cur.app : "building"; UI.tabs = Object.assign({}, p.cur.tabs || {});
-    render();
+    render(); HIST.reset();
     if (!store.settings.setupDone) openWizard();
     CAT.autoUpdate();
     if (/^https?:$/.test(location.protocol) && "serviceWorker" in navigator && !window.appBridge) navigator.serviceWorker.register("sw.js").catch(() => {});

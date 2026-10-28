@@ -220,7 +220,12 @@ async function resolveNew(kind, b, val, ctx = {}){
   if (val !== "__new") return val;
   if (kind === "floor"){ const n = await uiPrompt(t("floorNew")); if (!n || !n.trim()) return null; return ensureFloor(b, n.trim()).id; }
   if (kind === "room"){ const n = await uiPrompt(t("roomNew")); if (!n || !n.trim()) return null; return ensureRoom(b, ctx.floor && ctx.floor !== "__later" ? ctx.floor : "", n.trim()).id; }
-  if (kind === "vlan"){ const id = await uiPrompt(t("vlanIdQ")); if (!id || !/^\d+$/.test(id.trim()) || +id < 1 || +id > 4094){ if (id !== null) toast("⚠ " + t("vlanBad")); return null; } const n = await uiPrompt(t("vlanNameQ"), "VLAN " + id.trim()); if (n === null) return null; const sn = await uiPrompt(t("vlanSubnetQ"), ""); const v = {id:uid("v"), vid:id.trim(), name:n.trim() || "VLAN " + id.trim(), subnet:(sn || "").trim(), gw:"", dhcp:"", color:VCOLORS[b.vlans.length % VCOLORS.length]}; b.vlans.push(v); return v.id; }
+  if (kind === "vlan"){
+    // one window: ID, name, subnet; an ID that already exists is simply chosen
+    const v = await uiForm(t("vlanNew"), [{k:"vid", label:t("vlanIdQ"), mode:"numeric", ph:"20"}, {k:"name", label:t("vlanNameQ"), ph:"VLAN 20"}, {k:"subnet", label:t("vlanSubnetQ"), ph:"192.168.20.0/24"}],
+      x => !/^\d+$/.test(x.vid) || +x.vid < 1 || +x.vid > 4094 ? t("vlanBad") : x.subnet && !IP.valid(x.subnet.split("/")[0]) ? t("ipBad") : "");
+    if (!v) return null; const ex = b.vlans.find(x => String(x.vid) === String(+v.vid)); if (ex){ toast(t("vlanExists", {v:ex.vid + " · " + ex.name})); return ex.id; }
+    const o = {id:uid("v"), vid:String(+v.vid), name:v.name || "VLAN " + (+v.vid), subnet:v.subnet, gw:"", dhcp:"", color:VCOLORS[b.vlans.length % VCOLORS.length]}; b.vlans.push(o); return o.id; }
   return null;
 }
 const VCOLORS = ["#2f7de1","#14a37f","#d9822b","#8a5cd6","#c9475d","#4d5bd1","#0e8fa8","#b8860b","#6b8e23","#c2185b"];
@@ -236,7 +241,7 @@ UI.open = {gen:true, loc:true};
 function deviceEditor(b, d, opts = {}){
   const K = KINDS[d.kind] || KINDS.other, r = d.rack && rackById(b, d.rack), P2 = d.params;
   const head = `<div class="dhead"><svg viewBox="0 0 48 48" width="42" height="42">${ICO[devIcon(d)] || ICO.box}</svg><div><h3>${esc(devLabel(d))}</h3><div class="muted small">${esc(kindName(d.kind))}${d.brand || d.model ? " · " + esc([d.brand, d.model].filter(Boolean).join(" ")) : ""}</div></div><button class="x" data-dr="close" title="${esc(t("close"))}">×</button></div>`;
-  const cat = `<div class="catrow"><button class="btn small" data-dr="catalog">📚 ${esc(d.model ? t("catChange") : t("catPick"))}</button>${d.cat ? `<span class="pill ok" title="${esc(t("catLinked"))}">✓ ${esc(t("catFromDb"))}</span>` : ""}${opts.extraHead || ""}</div>`;
+  const cat = `<div class="catrow"><button class="btn small" data-dr="catalog">📚 ${esc(d.model ? t("catChange") : t("catPick"))}</button>${d.cat ? `<span class="pill ok" title="${esc(t("catLinked"))}">✓ ${esc(t("catFromDb"))}</span>` : ""}${d.model && !d.cat ? `<button class="btn small" data-dr="webFill" title="${esc(t("wfH"))}">🔎 ${esc(t("wfBtn"))}</button>` : ""}${opts.extraHead || ""}</div>`;
   let g = sel(t("f_kind"), "kind", d.kind, KIND_ORDER.map(k => opt(k, kindName(k), d.kind)).join("")) + fld(t("f_name"), "name", d.name)
     + `<div class="two">${fld(t("f_brand"), "brand", d.brand, "text", ' list="dl-brands"')}${fld(t("f_model"), "model", d.model, "text", ' list="dl-models"')}</div>${modelList(d.kind, d.brand)}`
     + sel(t("f_status"), "status", d.status, STATUSES.map(s => opt(s, t("st_" + s), d.status)).join(""));
@@ -284,6 +289,21 @@ function copyTwin(d){
   if (num(tw.ports) > num(d.ports)) d.ports = tw.ports;
   Object.entries(tw.params || {}).forEach(([k, v]) => { if (k === "h" && d.rack) return; d.params[k] = typeof v === "object" && v ? JSON.parse(JSON.stringify(v)) : v; });
   return true;
+}
+// "Fill from the internet": the model's datasheet is looked up (Claude with web search, the user's own API key),
+// shown for checking, then applied to the device and kept in the user's catalog for next time.
+async function webFill(d){
+  if (!d.model) return toast("⚠ " + t("wfNoModel"));
+  if (!(store.settings.ai && store.settings.ai.key)){
+    const c = await uiChoice(t("wfNoKey"), [["set", "⚙ " + t("wfSetKey"), "pri"], ["web", "🌐 " + t("wfGoogle")]]);
+    if (c === "set") openSettings("ai"); else if (c === "web") window.open("https://www.google.com/search?q=" + encodeURIComponent(`${d.brand} ${d.model} datasheet specifications`), "_blank");
+    return; }
+  toast("⏳ " + t("aiWorking"), 60000);
+  let rec; try { rec = await aiLookup(d.brand, d.model, d.kind); } catch(e){ toast("⚠ " + (e.message || e), 6000); return; }
+  toast("✓", 500);
+  modal(`<h3>🔎 ${esc(d.brand + " " + d.model)}</h3><div class="aibox">${specDetail(Object.assign({_src:"ai"}, rec))}</div><p class="muted small">${esc(t("aiCheck"))}</p>
+    <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><button class="btn pri" data-m="ok">✓ ${esc(t("wfApply"))}</button></div>`,
+    {ok:async () => { closeModal(); await CAT.saveUser(rec); const r = CAT.get(CAT.key(rec)) || rec; edit(() => applySpec(d, r)); toast("✓ " + t("catApplied", {m:rec.brand + " " + rec.model})); }}, {wide:true});
 }
 // When brand + model typed by hand match a catalog record, its parameters are filled in automatically.
 function catMatch(d){ const L = CAT.all().filter(r => same(r.model, d.model) && (!d.brand || same(r.brand, d.brand))); return L.length === 1 ? L[0] : null; }
@@ -488,6 +508,7 @@ function wireEditors(){
     if (!s) return;
     const d = s.type === "dev" && devById(b, s.id);
     if (k === "catalog" && d){ openCatalogPicker(d.kind, rec => edit(() => { applySpec(d, rec); })); return; }
+    if (k === "webFill" && d){ webFill(d); return; }
     if (k === "addLink" && d){ openLinkDialog(b, d.id); return; }
     if (k === "dupDev" && d){ edit(() => { const c = clone(d); c.id = uid("d"); c.name = autoName(b, d.kind); c.ip = ""; c.mac = ""; c.serial = ""; c.asset = ""; c.host = "";
       if (c.rack){ const rk = rackById(b, c.rack), u = rk && rackSpot(b, rk, devH(c), topU(d) + 1, null); if (u) c.u = u; else { c.rack = ""; c.u = 0; } }

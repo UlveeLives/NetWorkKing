@@ -79,7 +79,7 @@ function normLink(l){ l.a = l.a || {}; l.b = l.b || {}; ["cid","len","label","st
 /* ---------- persistence ---------- */
 let saveTimer = null;
 function persist(){
-  clearTimeout(saveTimer); setSaveState("…");
+  clearTimeout(saveTimer); setSaveState("…"); if (typeof HIST !== "undefined") HIST.note();
   saveTimer = setTimeout(async () => {
     try { const data = JSON.parse(JSON.stringify(store)); if (IDB.db) await IDB.put("state", data, "main"); else localStorage.setItem("networkking", JSON.stringify(data)); setSaveState("✓"); }
     catch(e){ setSaveState("⚠"); toast("⚠ " + t("saveFail") + " " + (e && e.message || "")); }
@@ -136,7 +136,8 @@ async function openVersions(){
   modal(`<h3>🕘 ${esc(t("versions"))}</h3><p class="muted small">${esc(t("verHint"))}</p>
   <div class="row"><input id="ver-lbl" placeholder="${esc(t("verLabel"))}"><button class="btn pri" data-m="verSave">💾 ${esc(t("verSave"))}</button></div>
   <div class="scroll" style="max-height:50vh"><table class="t">${list.length ? list.map(v => `<tr><td class="nw">${esc(new Date(v.date).toLocaleString())}</td><td>${v.auto ? `<span class="muted">${esc(t("verAuto"))}</span>` : esc(v.label || "—")}</td><td class="nw r"><button class="btn small" data-m="verRestore" data-v="${v.id}">↺ ${esc(t("verRestore"))}</button> <button class="btn small dan" data-m="verDel" data-v="${v.id}">×</button></td></tr>`).join("") : `<tr><td class="muted">—</td></tr>`}</table></div>
-  <div class="mfoot"><button class="btn" data-m="close">${esc(t("close"))}</button></div>`, {
+  <div class="mfoot"><button class="btn" data-m="hist">📜 ${esc(t("hT"))}</button><span class="grow"></span><button class="btn" data-m="close">${esc(t("close"))}</button></div>`, {
+    hist: () => HIST.open(),
     verSave: async () => { await saveVersion($("#ver-lbl").value.trim() || t("verManual")); openVersions(); },
     verRestore: async b => { const v = (await IDB.all("versions")).find(x => x.id === +b.dataset.v); if (!v || !await uiConfirm(t("verConf"))) return; await saveVersion(t("verBefore"), true); closeModal(); pushUndo(); restore(v.data); toast("↺ " + t("verDone")); },
     verDel: async b => { await IDB.del("versions", +b.dataset.v); openVersions(); }

@@ -99,5 +99,26 @@ function boundInsert(it, x, y){ const P = it.pts, n = P.length / 2; let best = 0
 function bgSvg(p, s){ let h = (p.items || []).filter(it => it.type === "boundary").map(it => boundSvg(it, s, false, true)).join("") + shapesSvg(p, s, null, true);
   (p.items || []).filter(it => isSym(it.type)).forEach(it => { const w = it.w * s, hh = it.h * s; h += `<g transform="translate(${it.x * s} ${it.y * s})${it.rot ? ` rotate(${it.rot} ${w / 2} ${hh / 2})` : ""}">${symSvg(it, w, hh)}</g>`; });
   return h; }
-return {bgSvg, SYM, GROUPS, isSym, symSvg, icon, WT, wallT, wallD, wallPt, wallLen, wallArc, shownWalls, wallsSvg, shapesSvg, boundSvg, boundBox, boundInsert};
+/* ---------- splitting a drawing piece ----------
+   The piece's lines (moved, turned and stretched as shown) are split into the groups of lines that touch each other;
+   a piece that is all one group is split into its single lines. Each group becomes a piece of its own. */
+function splitShape(sh){
+  const kx = sh.w / (sh.w0 || sh.w), ky = sh.h / (sh.h0 || sh.h), a = num(sh.rot) * Math.PI / 180, cx = sh.w / 2, cy = sh.h / 2, ca = Math.cos(a), sa = Math.sin(a);
+  const tf = (x, y) => { const X = x * kx - cx, Y = y * ky - cy; return [sh.x + cx + X * ca - Y * sa, sh.y + cy + X * sa + Y * ca]; };
+  const subs = [];
+  sh.p.forEach(([k, d]) => { let cur = null; (d.match(/[MLZ][^MLZ]*/g) || []).forEach(tok => { const c = tok[0], n = tok.slice(1).trim().split(/[\s,]+/).filter(Boolean).map(Number);
+    if (c === "M"){ cur = {k, P:tf(n[0], n[1]), z:false}; subs.push(cur); } else if (c === "L" && cur){ cur.P.push(...tf(n[0], n[1])); } else if (c === "Z" && cur) cur.z = true; }); });
+  if (subs.length < 2) return null;
+  subs.forEach(u => { let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity; for (let i = 0; i < u.P.length; i += 2){ x0 = Math.min(x0, u.P[i]); x1 = Math.max(x1, u.P[i]); y0 = Math.min(y0, u.P[i + 1]); y1 = Math.max(y1, u.P[i + 1]); } u.b = [x0, y0, x1, y1]; });
+  const par = subs.map((_, i) => i), find = i => { while (par[i] !== i) i = par[i] = par[par[i]]; return i; }, g = .03;
+  for (let i = 0; i < subs.length; i++) for (let j = i + 1; j < subs.length; j++){ const A = subs[i].b, B = subs[j].b; if (A[0] - g <= B[2] && B[0] - g <= A[2] && A[1] - g <= B[3] && B[1] - g <= A[3]){ const x = find(i), y = find(j); if (x !== y) par[x] = y; } }
+  const G = new Map(); subs.forEach((u, i) => { const r = find(i); (G.get(r) || G.set(r, []).get(r)).push(u); });
+  let groups = [...G.values()]; if (groups.length < 2) groups = subs.map(u => [u]);
+  const rr = v => Math.round(v * 100) / 100;
+  return groups.map(L => { let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity; L.forEach(u => { x0 = Math.min(x0, u.b[0]); y0 = Math.min(y0, u.b[1]); x1 = Math.max(x1, u.b[2]); y1 = Math.max(y1, u.b[3]); });
+    const w = Math.max(.05, x1 - x0), h = Math.max(.05, y1 - y0), by = {};
+    L.forEach(u => { let d = ""; for (let i = 0; i < u.P.length; i += 2) d += (i ? "L" : "M") + rr(u.P[i] - x0) + " " + rr(u.P[i + 1] - y0); by[u.k] = (by[u.k] || "") + d + (u.z ? "Z" : ""); });
+    return {id:uid("s"), k:sh.k, room:sh.room || "", x:rr(x0), y:rr(y0), w:rr(w), h:rr(h), w0:rr(w), h0:rr(h), rot:0, p:Object.entries(by)}; });
+}
+return {splitShape, bgSvg, SYM, GROUPS, isSym, symSvg, icon, WT, wallT, wallD, wallPt, wallLen, wallArc, shownWalls, wallsSvg, shapesSvg, boundSvg, boundBox, boundInsert};
 })();

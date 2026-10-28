@@ -27,11 +27,22 @@ function uiPrompt(msg, def = "", type = "text"){
     inp.addEventListener("keydown", e => { e.stopPropagation(); if (e.key === "Enter") end(true); else if (e.key === "Escape") end(false); });
   });
 }
+// Several fields in one small window: fields = [{k, label, val, ph, type}]; resolves to {k: value} or null.
+// check(values) may return an error text: the window stays open and shows it.
+function uiForm(title, fields, check){
+  return new Promise(res => {
+    const o = layer(`<p><b>${esc(title)}</b></p>${fields.map(f => `<label class="fld"><span>${esc(f.label)}</span><input data-k="${esc(f.k)}" type="${f.type || "text"}" value="${esc(f.val ?? "")}" placeholder="${esc(f.ph || "")}"${f.mode ? ` inputmode="${f.mode}"` : ""}></label>`).join("")}<p class="small bad uferr"></p><div class="mfoot"><button class="btn" data-x="0">${esc(t("cancel"))}</button><button class="btn pri" data-x="1">${esc(t("ok"))}</button></div>`);
+    const vals = () => Object.fromEntries([...o.querySelectorAll("[data-k]")].map(i => [i.dataset.k, i.value.trim()]));
+    const end = ok => { if (ok){ const v = vals(), err = check && check(v); if (err){ o.querySelector(".uferr").textContent = "⚠ " + err; return; } o.remove(); res(v); } else { o.remove(); res(null); } };
+    o.addEventListener("click", e => { const x = e.target.closest("[data-x]"); if (x) end(x.dataset.x === "1"); });
+    o.addEventListener("keydown", e => { e.stopPropagation(); if (e.key === "Enter"){ e.preventDefault(); end(true); } else if (e.key === "Escape") end(false); });
+  });
+}
 function uiConfirm(msg, okLabel, danger){
   return new Promise(res => {
     const o = layer(`<p style="white-space:pre-line">${esc(msg)}</p><div class="mfoot"><button class="btn" data-x="0">${esc(t("cancel"))}</button><button class="btn ${danger ? "dan-fill" : "pri"}" data-x="1">${esc(okLabel || t("ok"))}</button></div>`);
     const end = ok => { o.remove(); document.removeEventListener("keydown", key, true); res(ok); };
-    const key = e => { if (e.key === "Escape"){ e.stopPropagation(); end(false); } else if (e.key === "Enter"){ e.stopPropagation(); end(true); } };
+    const key = e => { if (!o.isConnected){ document.removeEventListener("keydown", key, true); return; } if (e.key === "Escape"){ e.stopPropagation(); end(false); } else if (e.key === "Enter"){ e.stopPropagation(); end(true); } };
     document.addEventListener("keydown", key, true);
     o.addEventListener("click", e => { const x = e.target.closest("[data-x]"); if (x) end(x.dataset.x === "1"); });
   });
@@ -47,7 +58,7 @@ function uiChoice(msg, choices){
 let modalActs = {};
 function modal(html, acts, opts = {}){ const m = $("#modal"); modalActs = acts || {}; m.innerHTML = `<div class="mbox${opts.wide ? " wide" : ""}${opts.xwide ? " xwide" : ""}">${html}</div>`; m.hidden = false; const f = m.querySelector("input:not([type=checkbox]):not([type=radio]),select,textarea"); if (f && !opts.nofocus) setTimeout(() => f.focus(), 0); }
 function uiAlert(msg){ return new Promise(res => { const o = layer(`<p style="white-space:pre-line">⚠ ${esc(msg)}</p><div class="mfoot"><span class="grow"></span><button class="btn pri" data-x="1">OK</button></div>`);
-  const end = () => { o.remove(); document.removeEventListener("keydown", key, true); res(); }, key = e => { if (e.key === "Escape" || e.key === "Enter"){ e.stopPropagation(); end(); } };
+  const end = () => { o.remove(); document.removeEventListener("keydown", key, true); res(); }, key = e => { if (!o.isConnected){ document.removeEventListener("keydown", key, true); return; } if (e.key === "Escape" || e.key === "Enter"){ e.stopPropagation(); end(); } };
   o.addEventListener("click", e => { if (e.target.closest("[data-x]")) end(); }); document.addEventListener("keydown", key, true); setTimeout(() => { const x = o.querySelector("[data-x]"); x && x.focus(); }, 0); }); }
 function closeModal(){ const m = $("#modal"); m.hidden = true; m.innerHTML = ""; modalActs = {}; }
 document.addEventListener("click", e => {
@@ -312,3 +323,20 @@ async function printNow(){
   if (window.appBridge && window.appBridge.savePdf){ await window.appBridge.savePdf({name:`${fileSafe(B().name)} - ${t(a.name)}.pdf`, pageSize:b.pagefmt.size, landscape:b.pagefmt.orient !== "portrait"}); return; }
   window.print();
 }
+/* ---------- a click right after typing ----------
+   Typing in a field and then pressing a button: leaving the field saves it and redraws the panel, which replaced the
+   button under the pointer, so the first click was lost. The field is finished first; if the button was redrawn, the
+   same button (same data attributes and text) in the new panel is pressed. */
+(function(){
+  const sig = el => el.tagName + "|" + [...el.attributes].filter(a => a.name.startsWith("data-") || a.name === "class").map(a => a.name + "=" + a.value).join("&") + "|" + el.textContent.trim();
+  document.addEventListener("pointerdown", e => {
+    if (e.button) return; const btn = e.target.closest && e.target.closest("button, .btn, [data-dr], [data-m], .lnk, .eprow"); if (!btn) return;
+    const a = document.activeElement; if (!a || a === btn || !/^(INPUT|TEXTAREA)$/.test(a.tagName)) return;
+    const box = btn.closest("#drawer, #modal, #view"); if (!box || !box.contains(a)) return;
+    const key = sig(btn), idx = [...box.querySelectorAll(btn.tagName)].filter(x => sig(x) === key).indexOf(btn);
+    a.blur();
+    if (btn.isConnected) return;
+    e.preventDefault(); const L = [...box.querySelectorAll(btn.tagName)].filter(x => sig(x) === key), nb = L[idx] || L[0];
+    if (nb) setTimeout(() => { if (nb.isConnected && !document.querySelector(".layer")) nb.click(); }, 0);
+  }, true);
+})();

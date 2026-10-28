@@ -45,11 +45,11 @@ function parts(b, id, p){
   return {chain:c, me, before, after, panel:pas[0] || null, outlet:pas.find(h => devById(b, h.d).kind === "outlet") || null, end, endLink:end ? end.link : null};
 }
 const cfgOf = (d, p) => { d.pcfg[p] = Object.assign({mode:"", vlan:"", native:"", allowed:"", speed:"", poe:"", admin:"up", desc:"", bad:false, note:""}, d.pcfg[p] || {}); return d.pcfg[p]; };
-const hasCfg = (d, p) => { const c = d.pcfg[p]; return !!(c && (c.mode || c.vlan || c.native || c.allowed || c.speed || c.poe || c.admin === "down" || c.desc || c.bad || c.note || c.cli)); };
+const hasCfg = (d, p) => { const c = d.pcfg[p]; return !!(c && (c.mode || c.vlan || c.native || c.allowed || c.speed || c.poe || c.admin === "down" || c.desc || c.bad || c.note || c.cli || c.later)); };
 function label606(b, pp, port){ if (!pp || !port) return ""; const r = pp.rack && rackById(b, pp.rack); return `${r ? String(r.name).replace(/\s+/g, "") + "-" : ""}${String(pp.name).replace(/\s+/g, "")}-${String(port).padStart(2, "0")}`; }
 function portState(b, d, p){
   const c = d.pcfg[p] || {}, L = linksAt(b, d.id, p);
-  if (c.bad) return "bad"; if (c.admin === "down") return "down"; if (!L.length) return hasCfg(d, p) ? "cfg" : "free";
+  if (c.bad) return "bad"; if (c.admin === "down") return "down"; if (!L.length) return c.later ? "half" : hasCfg(d, p) ? "cfg" : "free";
   const pr = parts(b, d.id, p); if (passive(d)) return pr.before.length && pr.after.length ? "up" : "half";
   if (!pr.end) return "half";
   return isNet(devById(b, pr.end.d)) ? "uplink" : "up";
@@ -121,13 +121,17 @@ function portsView(b){
     ${loose.length ? rack(t("pmLoose"), "", "", loose.map(d => devRow(b, d)).join("")) : ""}</div>`;
 }
 /* ---------- editing the chain ---------- */
+// "to be added later": the panel or the device at the end of a port is not known yet (shown as a half connection)
+const laterOf = (d, p) => !!(d.pcfg[p] && d.pcfg[p].later);
+function setLater(d, p, what, on){ const c = cfgOf(d, p); c.later = Object.assign({}, typeof c.later === "object" ? c.later : {}); if (on) c.later[what] = 1; else delete c.later[what]; if (!Object.keys(c.later).length) delete c.later; if (!hasCfg(d, p)) delete d.pcfg[p]; }
+const laterHas = (d, p, what) => !!(d.pcfg[p] && d.pcfg[p].later && d.pcfg[p].later[what]);
 async function setPanel(b, d, p, ppId, ppPort){
   const pr = parts(b, d.id, p), first = pr.after[0];
   const oldEnd = pr.end && !pr.panel ? pr.end : null;          // was connected directly
   if (ppId && ppPort){
     const pp = devById(b, ppId), busy = linksAt(b, ppId, ppPort).filter(l => { const w = walk(b, ppId, ppPort, l), last = w[w.length - 1]; return last && isNet(devById(b, last.d)) && !(last.d === d.id && last.p === P0(p)); });
     if (busy.length){ const o = endOf(busy[0], ppId, ppPort); if (!await uiConfirm(t("pmPanelBusy",{pp:devLabel(pp) + ":" + ppPort, sw:devLabel(devById(b, o.d)) + (o.p ? ":" + o.p : "")}), t("pmMove"))) return render(); }
-    edit(() => { if (first) b.links = b.links.filter(l => l !== first.link); busy.forEach(l => b.links = b.links.filter(x => x !== l));
+    edit(() => { if (first) b.links = b.links.filter(l => l !== first.link); busy.forEach(l => b.links = b.links.filter(x => x !== l)); setLater(d, p, "panel", false);
       addLink(b, d.id, ppId, "patch", {pa:p, pb:ppPort});
       if (oldEnd && !linksAt(b, ppId, ppPort).some(l => endOf(l, ppId, ppPort).d !== d.id)) addLink(b, ppId, oldEnd.d, "cat6", {pa:ppPort, pb:oldEnd.p, cid:first.link.cid, len:first.link.len});
     });
@@ -135,22 +139,22 @@ async function setPanel(b, d, p, ppId, ppPort){
 }
 function setEnd(b, d, p, endId, endPort){
   const pr = parts(b, d.id, p), tail = pr.after.filter(h => passive(devById(b, h.d))).slice(-1)[0] || {d:d.id, p:P0(p)};
-  edit(() => { if (pr.endLink) b.links = b.links.filter(l => l !== pr.endLink);
+  edit(() => { if (pr.endLink) b.links = b.links.filter(l => l !== pr.endLink); setLater(d, p, "end", false);
     if (endId){ const ed = devById(b, endId); addLink(b, tail.d, endId, ed && ed.kind === "camera" ? "poe" : "cat6", {pa:tail.p, pb:endPort || "", cid:pr.endLink ? pr.endLink.cid : "", len:pr.endLink ? pr.endLink.len : ""}); } });
 }
 function newEndpoint(b, done, preset = {}){
   const tp = "pc";
   modal(`<h3>＋ ${esc(t("pmNewEnd"))}</h3>
-    <div class="two"><label class="fld"><span>${esc(t("f_kind"))}</span><select id="ne-k">${ENDK.map(k => opt(k, kindName(k), preset.kind || tp)).join("")}</select></label><label class="fld"><span>${esc(t("f_name"))}</span><input id="ne-n" placeholder="${esc(autoName(b, preset.kind || tp))}"></label></div>
+    <div class="two"><label class="fld"><span>${esc(t("f_kind"))}</span><select id="ne-k">${ENDK.map(k => opt(k, kindName(k), preset.kind || tp)).join("")}</select></label><label class="fld"><span>${esc(t("f_name"))}</span><input id="ne-n" placeholder="${esc(autoName(b, preset.kind || tp))}" value="${esc(preset.name || "")}"></label></div>
     <div class="two"><label class="fld"><span>${esc(t("f_floor"))}</span><select id="ne-f">${floorOpts(b, preset.floor || "", false)}</select></label><label class="fld"><span>${esc(t("f_room"))}</span><input id="ne-r" list="ne-rl" value="${esc(preset.room ? roomName(b, preset.room) : "")}"><datalist id="ne-rl">${b.rooms.map(r => `<option value="${esc(r.name)}">`).join("")}</datalist></label></div>
     <div class="two"><label class="fld"><span>IP</span><input id="ne-ip" inputmode="decimal" placeholder="10.10.10.20/24"></label><label class="fld"><span>MAC</span><input id="ne-mac"></label></div>
     <label class="chk"><input type="checkbox" id="ne-pl"${store.settings.addPlanned ? " checked" : ""}> 📝 ${esc(t("addPlanned"))}</label>
     <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><button class="btn pri" data-m="ok">${esc(t("add"))}</button></div>`, {
-    ok: () => { const k = $("#ne-k").value, fl = $("#ne-f").value, rn = $("#ne-r").value.trim(), ip = $("#ne-ip").value.trim(), mac = $("#ne-mac").value.trim(), nm = $("#ne-n").value.trim();
+    ok: () => { const k = $("#ne-k").value, fl = $("#ne-f").value, rn = $("#ne-r").value.trim(), ip = $("#ne-ip").value.trim(), mac = $("#ne-mac").value.trim(), nm = $("#ne-n").value.trim(), planned = $("#ne-pl").checked;
       if (ip && !IP.valid(ip)) return toast("⚠ " + t("ipBad")); if (mac && !macValid(mac)) return toast("⚠ " + t("macBad"));
       if (nm && nameTaken(b, nm)){ $("#ne-n").classList.add("bad"); return nameOk(b, nm); }
       closeModal(); pushUndo(); const room = rn ? ensureRoom(b, fl, rn) : null;
-      const nd = newDevice(k, {name:nm, floor:fl || (room && room.floor) || "", room:room ? room.id : "", ip, mac, status:$("#ne-pl").checked ? "planned" : "installed"}); if (!nd.name) nd.name = autoName(b, k);
+      const nd = newDevice(k, {name:nm, floor:fl || (room && room.floor) || "", room:room ? room.id : "", ip, mac, status:planned ? "planned" : "installed"}); if (!nd.name) nd.name = autoName(b, k);
       b.devices.push(nd); undoStack.pop(); done(nd); }
   });
   $("#ne-k").addEventListener("change", () => { $("#ne-n").placeholder = autoName(b, $("#ne-k").value); });
@@ -161,19 +165,28 @@ function chainHtml(b, c, me){
     return `${i ? `<div class="chl" data-dr="link:${l.id}" title="${esc(mediaName(l.media))}"><i style="background:${(MEDIA[l.media] || MEDIA.cat6).c}"></i><small>${esc([l.cid, l.len ? l.len + " m" : ""].filter(Boolean).join(" · ") || mediaName(l.media))}</small></div>` : ""}
       <button class="chn${i === me ? " me" : ""}" ${portDev(d) && h.p ? `data-goport="${h.d}:${h.p}"` : `data-dr="sel:${h.d}"`}><svg viewBox="0 0 48 48" width="20" height="20">${ICO[devIcon(d)] || ICO.box}</svg><span><b>${esc(devLabel(d))}${h.p ? " :" + esc(h.p) : ""}</b><small>${esc([kindName(d.kind), roomName(b, d.room)].filter(Boolean).join(" · "))}</small></span></button>`; }).join("")}</div>`;
 }
+// Save: every field is already kept when it is left; Save (or Enter) finishes the field being typed and closes the card
+const savePortBtn = () => `<div class="btns savebar"><button class="btn pri" data-pma="savePort">💾 ${esc(t("save"))}</button><small class="muted">${esc(t("pmSaveH"))}</small></div>`;
+function savePort(){ const a = document.activeElement; if (a && a.closest && a.closest("#drawer") && a.blur) a.blur();
+  // a question opened by the field just finished (e.g. "port is busy") waits for its answer; the card stays open
+  setTimeout(() => { if (document.querySelector(".layer") || !$("#modal").hidden) return; if (UI.sel && UI.sel.type === "port"){ UI.sel = null; render(); toast("✓ " + t("saved")); } }, 120); }
+// pressed (not clicked): the field being typed is finished first and redraws the card, which would swallow a click
+document.addEventListener("pointerdown", e => { const b = e.target.closest && e.target.closest('[data-pma="savePort"]'); if (!b || e.button) return; e.preventDefault(); e.stopPropagation(); savePort(); }, true);
+document.addEventListener("keydown", e => { if (e.key !== "Enter" || e.shiftKey || UI.app !== "portmap" || !UI.sel || UI.sel.type !== "port" || EP) return;
+  const el = e.target; if (!el.closest || !el.closest("#drawer") || el.tagName === "TEXTAREA" || el.tagName === "BUTTON") return; e.preventDefault(); e.stopPropagation(); savePort(); }, true);
 function portCard(b, d, p){
   const pr = parts(b, d.id, p), c = cfgOf(d, p), pas = passive(d), ed = pr.end && devById(b, pr.end.d);
   const head = `<div class="dhead"><svg viewBox="0 0 48 48" width="42" height="42">${ICO[devIcon(d)] || ICO.box}</svg><div><h3>${esc(devLabel(d))} : ${esc(p)}</h3><div class="muted small">${esc(t("pmPortOf",{k:kindName(d.kind)}))}${d.rack ? " · " + esc(rackById(b, d.rack).name) + " U" + d.u : ""}</div></div><button class="x" data-dr="close">×</button></div>
-    <div class="btns"><button class="btn small" data-pmnav="-1">‹ ${esc(t("pmPrev"))}</button><button class="btn small" data-pmnav="1">${esc(t("pmNext"))} ›</button><span class="grow"></span><button class="btn small" data-dr="sel:${d.id}">${esc(t("pmDevice"))}</button></div>`;
+    <div class="btns"><button class="btn small" data-pmnav="-1">‹ ${esc(t("pmPrev"))}</button><button class="btn small" data-pmnav="1">${esc(t("pmNext"))} ›</button><span class="grow"></span><button class="btn small" data-dr="sel:${d.id}">${esc(t("pmDevice"))}</button></div>${isNet(d) && window.PMT ? `<div class="btns pmtools">${PMT.toolBtns(d)}</div>` : ""}`;
   const chain = sec("pchain", t("pmChain"), chainHtml(b, pr.chain, pr.me), true);
-  if (pas) return head + chain + panelPortSec(b, d, p, pr) + `<label class="fld"><span>${esc(t("f_notes"))}</span><textarea data-pc="note" rows="2">${esc(c.note)}</textarea></label>`;
+  if (pas) return head + chain + panelPortSec(b, d, p, pr) + `<label class="fld"><span>${esc(t("f_notes"))}</span><textarea data-pc="note" rows="2">${esc(c.note)}</textarea></label>` + savePortBtn();
   const panels = b.devices.filter(x => passive(x) && x.kind !== "outlet" && num(x.ports) > 0).sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const pnl = pr.panel ? devById(b, pr.panel.d) : null;
   const cand = b.devices.filter(x => x.id !== d.id && !passive(x) && x.kind !== "internet").sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
-  const link = sec("plink", t("pmConn"), `<div class="two"><label class="fld"><span>${esc(t("pmPanel"))}</span><select data-pc="__panel">${opt("", "— " + t("pmDirect") + " —", pnl ? pnl.id : "")}${panels.map(x => opt(x.id, devLabel(x) + (x.rack ? " (" + rackById(b, x.rack).name + ")" : ""), pnl ? pnl.id : "")).join("")}</select></label>
+  const link = sec("plink", t("pmConn"), `<div class="two"><label class="fld"><span>${esc(t("pmPanel"))}</span><select data-pc="__panel">${opt("", "— " + t("pmDirect") + " —", pnl ? pnl.id : laterHas(d, p, "panel") ? "x" : "")}${opt("__later", "⏳ " + t("later"), pnl ? "" : laterHas(d, p, "panel") ? "__later" : "x")}${panels.map(x => opt(x.id, devLabel(x) + (x.rack ? " (" + rackById(b, x.rack).name + ")" : ""), pnl ? pnl.id : "")).join("")}</select></label>
       <label class="fld"><span>${esc(t("pmPanelPort"))}</span><input data-pc="__pport" type="number" min="1" value="${esc(pr.panel ? pr.panel.p : "")}"${pnl ? ` max="${num(pnl.ports)}"` : ""}></label></div>
     ${pnl ? `<p class="small">🏷 TIA-606: <b class="mono">${esc(label606(b, pnl, pr.panel.p))}</b></p>` : ""}
-    <div class="two"><div class="fld"><span>${esc(t("pmEnd"))}</span><button type="button" class="endpick" data-endpick="1">${ed ? `<svg viewBox="0 0 48 48" width="16" height="16">${ICO[devIcon(ed)] || ICO.box}</svg> <b>${esc(devLabel(ed))}</b> <small class="muted">${esc([kindName(ed.kind), roomName(b, ed.room)].filter(Boolean).join(" · "))}</small>` : `<span class="muted">— ${esc(t("pmPickEnd"))} —</span>`}<i>▾</i></button></div>
+    <div class="two"><div class="fld"><span>${esc(t("pmEnd"))}</span><button type="button" class="endpick" data-endpick="1">${ed ? `<svg viewBox="0 0 48 48" width="16" height="16">${ICO[devIcon(ed)] || ICO.box}</svg> <b>${esc(devLabel(ed))}</b> <small class="muted">${esc([kindName(ed.kind), roomName(b, ed.room)].filter(Boolean).join(" · "))}</small>` : laterHas(d, p, "end") ? `<span>⏳ ${esc(t("later"))}</span>` : `<span class="muted">— ${esc(t("pmPickEnd"))} —</span>`}<i>▾</i></button></div>
       ${ed && portDev(ed) ? `<label class="fld"><span>${esc(t("pmEndPort"))}</span><input data-pc="__eport" value="${esc(pr.end.p)}"></label>` : "<span></span>"}</div>
     ${pr.endLink ? `<div class="two"><label class="fld"><span>${esc(t("f_cid"))}</span><input data-pl="cid" value="${esc(pr.endLink.cid)}"></label><label class="fld"><span>${esc(t("f_len"))}</span><input data-pl="len" type="number" min="0" step="0.1" value="${esc(pr.endLink.len)}"></label></div>` : ""}`, true);
   const endSec = ed && !isNet(ed) ? sec("pend", t("pmEndDev") + `: ${esc(devLabel(ed))}`, `<div class="two"><label class="fld"><span>${esc(t("f_kind"))}</span><select data-pe="kind">${ENDK.map(k => opt(k, kindName(k), ed.kind)).join("")}</select></label><label class="fld"><span>${esc(t("f_name"))}</span><input data-pe="name" value="${esc(ed.name)}"></label></div>
@@ -188,7 +201,7 @@ function portCard(b, d, p){
     <div class="two"><label class="fld"><span>${esc(t("pmAdmin"))}</span><select data-pc="admin">${opt("up", t("pmUp"), c.admin)}${opt("down", t("pmDown"), c.admin)}</select></label><label class="fld"><span>${esc(t("pmDesc"))}</span><input data-pc="desc" value="${esc(c.desc)}" placeholder="${esc(ed ? devLabel(ed) : "")}"></label></div>
     <label class="chk"><input type="checkbox" data-pc="bad"${c.bad ? " checked" : ""}> ${esc(t("pmBad"))}</label>
     <label class="fld"><span>${esc(t("f_notes"))}</span><textarea data-pc="note" rows="2">${esc(c.note)}</textarea></label>`, true);
-  return head + chain + link + endSec + sp + `<div class="btns"><button class="btn small" data-pma="cliPort">⌨ ${esc(t("pmCli"))}</button><button class="btn small dan" data-pma="clearPort">⌫ ${esc(t("pmClear"))}</button></div>`;
+  return head + chain + link + endSec + sp + savePortBtn() + `<div class="btns"><button class="btn small" data-pma="cliPort">⌨ ${esc(t("pmCli"))}</button><button class="btn small dan" data-pma="clearPort">⌫ ${esc(t("pmClear"))}</button></div>`;
 }
 function panelPortSec(b, d, p, pr){
   const front = pr.before.length ? pr.before[pr.before.length - 1] : null, fd = front && devById(b, front.d);
@@ -198,7 +211,7 @@ function panelPortSec(b, d, p, pr){
   const rearL = pr.after.length ? pr.after[0].link : null;
   return sec("plink", t("pmConn"), `<p class="small">🏷 TIA-606: <b class="mono">${esc(label606(b, d, p))}</b></p>
     <h4 class="sh">${esc(t("pmFront"))}</h4><div class="two"><label class="fld"><span>${esc(t("pmSwitch"))}</span><select data-pp="__fdev">${opt("", "—", fd ? fd.id : "")}${nets.map(x => opt(x.id, devFull(b, x), fd ? fd.id : "")).join("")}</select></label><label class="fld"><span>${esc(t("f_port"))}</span><input data-pp="__fport" value="${esc(front ? front.p : "")}"></label></div>
-    <h4 class="sh">${esc(t("pmRear"))}</h4><div class="two"><label class="fld"><span>${esc(t("pmEnd"))}</span><select data-pp="__bdev">${opt("", "—", bd ? bd.id : "")}${ends.map(x => opt(x.id, devFull(b, x) + (x.room ? " · " + roomName(b, x.room) : ""), bd ? bd.id : "")).join("")}${opt("__new", "＋ " + t("pmNewEnd") + "…", "")}</select></label><label class="fld"><span>${esc(t("f_port"))}</span><input data-pp="__bport" value="${esc(back ? back.p : "")}"></label></div>
+    <h4 class="sh">${esc(t("pmRear"))}</h4><div class="two"><label class="fld"><span>${esc(t("pmEnd"))}</span><select data-pp="__bdev">${opt("", "—", bd ? bd.id : laterHas(d, p, "end") ? "x" : "")}${opt("__later", "⏳ " + t("later"), bd ? "" : laterHas(d, p, "end") ? "__later" : "x")}${ends.map(x => opt(x.id, devFull(b, x) + (x.room ? " · " + roomName(b, x.room) : ""), bd ? bd.id : "")).join("")}${opt("__new", "＋ " + t("pmNewEnd") + "…", "")}</select></label><label class="fld"><span>${esc(t("f_port"))}</span><input data-pp="__bport" value="${esc(back ? back.p : "")}"></label></div>
     ${rearL ? `<div class="two"><label class="fld"><span>${esc(t("f_cid"))}</span><input data-plr="cid" value="${esc(rearL.cid)}"></label><label class="fld"><span>${esc(t("f_len"))}</span><input data-plr="len" type="number" min="0" step="0.1" value="${esc(rearL.len)}"></label></div>` : ""}`, true);
 }
 function cliText(b, d, p){
@@ -290,6 +303,7 @@ document.addEventListener("click", async e => {
   if (k === "csv") return csv(b);
   if (k.startsWith("add:")){ const rid = k.slice(4); const kind = await uiChoice(t("rackAddWhat"), ["switch","pp","fpp","firewall","router","coresw","nvr","server"].map(x => [x, kindName(x)])); if (!kind) return; const r = rackById(b, rid), h = KINDS[kind].h || 1, u = rackSpot(b, r, h, 0); if (!u) return toast("⚠ " + t("rackNoSpace")); edit(() => { const d = newDevice(kind, {rack:rid, u, floor:r.floor, room:r.room}); b.devices.push(d); UI.sel = {type:"dev", id:d.id}; }); return; }
   const s = UI.sel; if (!s || s.type !== "port") return; const d = devById(b, s.id);
+  if (k === "savePort") return;
   if (k === "clearPort"){ if (!await uiConfirm(t("pmClearConf",{p:devLabel(d) + " :" + s.p}), t("pmClear"), true)) return; const pr = parts(b, d.id, s.p), first = pr.after[0]; edit(() => { delete d.pcfg[s.p]; if (first) b.links = b.links.filter(l => l !== first.link); }); return; }
   if (k === "cliPort"){ const gen = cliText(b, d, s.p), own = (d.pcfg[s.p] || {}).cli, fn = `${devLabel(d)}_port${s.p}`.replace(/[\\/:*?"<>|\s]+/g, "_");
     const cur = () => ($("#clitx") || {}).value || "";
@@ -307,7 +321,7 @@ function epRows(b, d, p, q){
   const cand = b.devices.filter(x => x.id !== d.id && !passive(x) && x.kind !== "internet" && !(KINDS[x.kind] || {}).acc).sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const qq = nameKey(q || ""), L = qq ? cand.filter(x => nameKey([x.name, kindName(x.kind), roomName(b, x.room), x.ip, x.brand, x.model].join(" ")).includes(qq)) : cand;
   const where = x => { const l = b.links.find(k => (k.a.d === x.id || k.b.d === x.id)); if (!l) return ""; const o = devById(b, l.a.d === x.id ? l.b.d : l.a.d), op = l.a.d === x.id ? l.b.p : l.a.p; return o ? devLabel(o) + (op ? ":" + op : "") : ""; };
-  return `<div class="eprow${!cur ? " on" : ""}" data-epset=""><span class="muted">— ${esc(t("pmNoEnd"))} —</span></div><div class="eprow new" data-epnew="1">＋ ${esc(t("pmNewEnd"))}…</div>`
+  return `<div class="eprow${!cur && !laterHas(d, p, "end") ? " on" : ""}" data-epset=""><span class="muted">— ${esc(t("pmNoEnd"))} —</span></div><div class="eprow${laterHas(d, p, "end") && !cur ? " on" : ""}" data-eplater="1">⏳ ${esc(t("later"))}</div><div class="eprow new" data-epnew="1">＋ ${esc(t("pmNewEnd"))}…</div>`
     + L.slice(0, 300).map(x => { const w = where(x); return `<div class="eprow${x.id === cur ? " on" : ""}${dups.has(x.id) ? " dup" : ""}" data-epset="${x.id}"><svg viewBox="0 0 48 48" width="18" height="18">${ICO[devIcon(x)] || ICO.box}</svg><span class="epn"><b>${esc(devLabel(x))}</b>${dups.has(x.id) ? ` <em title="${esc(t("dupBadgeH"))}">⚠ ${esc(t("dupBadge"))}</em>` : ""}${x.status === "planned" ? ` <em class="pl">📝</em>` : ""}<small>${esc([kindName(x.kind), roomName(b, x.room), x.ip].filter(Boolean).join(" · "))}${w ? " · 🔌 " + esc(w) : ""}</small></span><button type="button" class="epdel" data-epdel="${x.id}" title="${esc(t("delete"))}">−</button></div>`; }).join("")
     + (L.length > 300 ? `<div class="eprow muted">… +${L.length - 300}</div>` : "");
 }
@@ -324,7 +338,11 @@ document.addEventListener("click", async e => {
   const pk = e.target.closest("[data-endpick]"); if (pk && UI.app === "portmap"){ EP ? epClose() : epOpen(pk); return; }
   if (!EP || !EP.el.contains(e.target)) return; const b = B(), {d, p} = EP;
   const del = e.target.closest("[data-epdel]"); if (del){ e.stopPropagation(); const x = devById(b, del.dataset.epdel); const keep = EP; EP.el.style.visibility = "hidden"; const ok = x && await delDeviceAsk(b, x); if (EP === keep){ EP.el.style.visibility = ""; EP.el.querySelector(".eplist").innerHTML = epRows(B(), d, p, EP.el.querySelector(".epq").value); } void ok; return; }
-  if (e.target.closest("[data-epnew]")){ epClose(); return newEndpoint(b, nd => { pushUndo(); undoStack.pop(); setEnd(b, d, p, nd.id, ""); }); }
+  if (e.target.closest("[data-eplater]")){ epClose(); const pr = parts(b, d.id, p); return edit(() => { if (pr.endLink) b.links = b.links.filter(l => l !== pr.endLink); setLater(d, p, "end", true); }); }
+  if (e.target.closest("[data-epnew]")){ const q = EP.el.querySelector(".epq").value.trim(); epClose();
+    // the new device starts in the room of the outlet / panel the port leads to, and with the name typed in the search
+    const pr = parts(b, d.id, p), last = pr.after.filter(h => passive(devById(b, h.d))).slice(-1)[0], at = last ? devById(b, last.d) : null;
+    return newEndpoint(b, nd => { pushUndo(); undoStack.pop(); setEnd(b, d, p, nd.id, ""); }, {name:q, floor:at ? at.floor : "", room:at && at.kind === "outlet" ? at.room : ""}); }
   const set = e.target.closest("[data-epset]"); if (set){ epClose(); setEnd(b, d, p, set.dataset.epset, ""); }
 });
 function wireDrawer(){
@@ -333,6 +351,7 @@ function wireDrawer(){
     if (UI.app !== "portmap" || !UI.sel || UI.sel.type !== "port") return;
     const el = e.target, b = B(), s = UI.sel, d = devById(b, s.id); if (!d) return; const p = s.p;
     if (el.dataset.pc){ const k = el.dataset.pc, v = el.type === "checkbox" ? el.checked : el.value;
+      if (k === "__panel" && v === "__later"){ const pr = parts(b, d.id, p), first = pr.after[0]; return edit(() => { if (first && pr.panel) b.links = b.links.filter(l => l !== first.link); setLater(d, p, "panel", true); }); }
       if (k === "__panel"){ const pp = $('[data-pc="__pport"]'); let port = pp && pp.value.trim();
         if (v && !port){ const P2 = devById(b, v), free = Array.from({length:Math.round(num(P2.ports))}, (_, i) => String(i + 1)).find(x => !linksAt(b, v, x).some(l => isNet(devById(b, endOf(l, v, x).d)))); port = (/^\d+$/.test(p) && +p <= num(P2.ports) && !linksAt(b, v, p).some(l => isNet(devById(b, endOf(l, v, p).d)))) ? p : free || "1"; }
         return setPanel(b, d, p, v, port); }
@@ -358,7 +377,8 @@ function wireDrawer(){
         if (busy.length && !await uiConfirm(t("pmPortBusy",{p:devLabel(devById(b, fdv)) + " :" + fpt}), t("pmMove"))) return renderDrawer();
         return edit(() => { const myFront = pr.chain[pr.me].link; if (myFront) b.links = b.links.filter(l => l !== myFront); busy.forEach(l => b.links = b.links.filter(x => x !== l)); if (fdv) addLink(b, fdv, d.id, "patch", {pa:fpt, pb:p}); }); }
       if (k === "__bdev" || k === "__bport"){ let bdv = $('[data-pp="__bdev"]').value; const bpt = $('[data-pp="__bport"]').value.trim(), rearL = pr.after.length ? pr.after[0].link : null;
-        const apply = id => edit(() => { if (rearL) b.links = b.links.filter(l => l !== rearL); if (id) addLink(b, d.id, id, "cat6", {pa:p, pb:bpt, cid:rearL ? rearL.cid : "", len:rearL ? rearL.len : ""}); });
+        if (bdv === "__later") return edit(() => { if (rearL) b.links = b.links.filter(l => l !== rearL); setLater(d, p, "end", true); });
+        const apply = id => edit(() => { if (rearL) b.links = b.links.filter(l => l !== rearL); setLater(d, p, "end", false); if (id) addLink(b, d.id, id, "cat6", {pa:p, pb:bpt, cid:rearL ? rearL.cid : "", len:rearL ? rearL.len : ""}); });
         if (bdv === "__new") return newEndpoint(b, nd => apply(nd.id), {room:d.room, floor:d.floor}); return apply(bdv); }
     }
   });
@@ -376,10 +396,10 @@ registerApp({
   ],
   actions(tab){ const n = dupGroups(B()).length; return [...(n ? [{id:"dups", icon:"⚠", label:"dupBtn", fn:dupTool}] : []), {id:"addRack", icon:"🗄", label:"rkAdd", fn:() => { const b = B(); edit(() => { const r = normRack({id:uid("k"), name:nextRackName(b)}); b.racks.push(r); }); }},
     {id:"addSw", icon:"＋", label:"pmAddDev", fn:async el => { const b = B(), kind = await uiChoice(t("rackAddWhat"), ["switch","pp","fpp","firewall","router","coresw","nvr","server"].map(x => [x, kindName(x)])); if (!kind) return; const r = b.racks[0]; let u = 0; if (r){ u = rackSpot(b, r, KINDS[kind].h || 1, 0); } edit(() => { const d = newDevice(kind, r && u ? {rack:r.id, u, floor:r.floor, room:r.room} : {}); b.devices.push(d); UI.sel = {type:"dev", id:d.id}; }); }},
-    {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },
+    {id:"labels", icon:"🏷", label:"lbBtn", fn:() => LABELS.open("ports")}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },
   drawer(tab){ const b = B(), s = UI.sel; if (!s) return "";
     if (s.type === "port"){ const d = devById(b, s.id); return d ? portCard(b, d, s.p) : ""; }
-    if (s.type === "dev"){ const d = devById(b, s.id); return d ? deviceEditor(b, d, {extraHead:portDev(d) ? `<button class="btn small" data-goport="${d.id}:1">🔌 ${esc(t("pmPorts"))}</button>` : ""}) : ""; }
+    if (s.type === "dev"){ const d = devById(b, s.id); return d ? deviceEditor(b, d, {extraHead:portDev(d) ? `<button class="btn small" data-goport="${d.id}:1">🔌 ${esc(t("pmPorts"))}</button>${isNet(d) && window.PMT ? PMT.toolBtns(d) : ""}` : ""}) : ""; }
     if (s.type === "link"){ const l = linkById(b, s.id); return l ? linkEditor(b, l) : ""; }
     if (s.type === "vlan"){ setTimeout(() => { UI.sel = null; openPlaces("vlans"); }, 0); } return ""; },
   onKey(e, tab){ const s = UI.sel; if (!s || s.type !== "port") return; const d = devById(B(), s.id); if (!d) return; const n = Math.round(num(d.ports));
@@ -391,5 +411,5 @@ registerApp({
 });
 document.addEventListener("click", e => { const a = e.target.closest("[data-pm2]"); if (!a || UI.app !== "portmap") return; const b = B(); if (a.dataset.pm2 === "cid") autoCableIds(b, null, "C"); else cableCsv(b); });
 APPS.portmap.init = () => wireDrawer();
-window.PM = {chainAt, parts, linksAt, label606, upstream, cliText, walk, passive, isNet};
+window.PM = {chainAt, parts, linksAt, label606, upstream, cliText, walk, passive, isNet, cfgOf, hasCfg, setLater, portDev};
 })();

@@ -53,7 +53,9 @@ function blobToDataURL(b){ return new Promise(r => { const rd = new FileReader()
 function dataURLToBlob(u){ const [h, d] = u.split(","), mime = (h.match(/data:([^;]+)/) || [])[1] || "application/octet-stream", bin = atob(d), a = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) a[i] = bin.charCodeAt(i); return new Blob([a], {type:mime}); }
 function openTextFile(accept){
   return new Promise(res => {
-    if (window.appBridge && window.appBridge.openFile){ window.appBridge.openFile({filters:[{name:"JSON", extensions:["json"]}]}).then(f => res(f ? f.data : null)); return; }
+    // the desktop app's open window offers the same file types as the browser one (it used to offer only .json)
+    const ext = String(accept || ".json").split(",").map(x => x.trim()).filter(x => x.startsWith(".")).map(x => x.slice(1));
+    if (window.appBridge && window.appBridge.openFile){ window.appBridge.openFile({filters:[{name:ext.map(x => x.toUpperCase()).join(" / "), extensions:ext}, {name:"*", extensions:["*"]}]}).then(f => res(f ? f.data : null)); return; }
     const inp = document.createElement("input"); inp.type = "file"; inp.accept = accept || ".json,application/json";
     inp.onchange = () => { const f = inp.files[0]; if (!f) return res(null); const rd = new FileReader(); rd.onload = () => res(rd.result); rd.readAsText(f); }; inp.click();
   });
