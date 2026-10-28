@@ -34,6 +34,20 @@ const CAT = {
   },
   autoUpdate(){ if (!store.settings.catalogAuto || !navigator.onLine) return; const last = CAT.remoteInfo && CAT.remoteInfo.checked; if (last && Date.now() - new Date(last).getTime() < 7 * 864e5) return; CAT.update(false); }
 };
+// Well-known brands offered when typing a brand (also those without models in the catalog yet).
+const BRANDS_KNOWN = [
+  // network / security
+  "Fortinet","Cisco","Cisco Meraki","Juniper","HPE Aruba Networking","Aruba Instant On","Ubiquiti","TP-Link","TP-Link Omada","MikroTik","Ruckus","Extreme Networks","Huawei","H3C","ZTE","Zyxel","D-Link","Netgear","Allied Telesis","Ruijie","Reyee","Grandstream","Cambium Networks","Mimosa","Palo Alto Networks","Check Point","Sophos","SonicWall","WatchGuard","Barracuda","pfSense / Netgate","Keenetic","Tenda","Mercusys","Edimax","Planet","Teltonika","Draytek","Cudy","Linksys","Asus","Superbox (Turkcell)","Airties","Nokia","Alcatel-Lucent Enterprise","Dell","Lenovo","Arista",
+  // CCTV / access / intercom
+  "Hikvision","Dahua","Uniview","Axis","Hanwha Vision","Bosch","Avigilon","Milestone","Tiandy","Ezviz","Imou","Reolink","Ajax","Paradox","Akuvox","2N","Commax","Kocom","Suprema","ZKTeco","Honeywell",
+  // power
+  "APC by Schneider Electric","APC","Schneider Electric","Eaton","Vertiv","Liebert","Makelsan","Inform","Tescom","Legrand","Riello","Socomec","CyberPower","Delta","Huawei UPS","Power Kinetics","Salicru","Gesan","Powerware","Tripp Lite","Raritan","Rittal","Lande","Triton","Canovate","Netrack","Lanberg","Hyperline",
+  // servers / storage / end devices
+  "HPE","Supermicro","Fujitsu","Synology","QNAP","Western Digital","Seagate","Yealink","Fanvil","Snom","Polycom (Poly)","Avaya","Panasonic","Siemens","HP","Canon","Epson","Brother","Kyocera","Xerox","Samsung","LG","Philips",
+  // cabling / passive
+  "Panduit","CommScope","Corning","Nexans","Legrand LCS","Belden","Brand-Rex","Excel","Schrack","Prysmian","Siemon","Molex"
+];
+const allBrands = () => [...new Set([...CAT.brands(), ...BRANDS_KNOWN])].sort((a, b) => a.localeCompare(b));
 // Fill a device from a catalog record (only values the record actually has are copied).
 function applySpec(d, r){
   if (!r) return;
@@ -124,7 +138,7 @@ function openNewModel(kind, onPick){
     return CAT.all().filter(r => (!b || same(r.brand, b)) && (r.model.toLowerCase().replace(/[\s-]/g, "").includes(m) || m.includes(r.model.toLowerCase().replace(/[\s-]/g, "")))).slice(0, 6); };
   const ai = store.settings.ai.enabled && store.settings.ai.key;
   modal(`<h3>＋ ${esc(t("catNew"))}</h3><p class="muted small">${esc(t("nmHint"))}</p>
-    <datalist id="dl-brands2">${CAT.brands().map(x => `<option value="${esc(x)}">`).join("")}</datalist>
+    <datalist id="dl-brands2">${allBrands().map(x => `<option value="${esc(x)}">`).join("")}</datalist>
     <div class="two"><label class="fld"><span>${esc(t("f_brand"))} *</span><input id="nm-b" list="dl-brands2" placeholder="Fortinet, Hikvision…"></label><label class="fld"><span>${esc(t("nmModel"))} *</span><input id="nm-m" placeholder="FortiSwitch 248E-FPOE"></label></div>
     <label class="fld"><span>${esc(t("f_kind"))}</span><select id="nm-k">${KIND_ORDER.map(k => opt(k, kindName(k), kind || "switch")).join("")}</select></label>
     <div id="nm-near"></div><div class="msg err" id="nm-err"></div>

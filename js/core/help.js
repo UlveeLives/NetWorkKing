@@ -1,10 +1,11 @@
 // Guided tours (balloons with "Got it" / "Done") shown when a page opens, and the written user guide in Settings.
 "use strict";
 const tourSeen = new Set();   // pages already shown in this session
+let tourSkipped = false;      // "Skip" pressed: no more automatic tours until the app is opened again
 const pageId = () => UI.app + "." + curTab().id;
 function maybeTour(){
   if (!store.settings.setupDone) return;
-  const id = pageId(); if (tourSeen.has(id) || store.settings.help.off[id] || store.settings.help.allOff) return;
+  const id = pageId(); if (tourSkipped || tourSeen.has(id) || store.settings.help.off[id] || store.settings.help.allOff) return;
   const steps = tourSteps(); if (!steps.length) return;
   tourSeen.add(id); setTimeout(() => runTour(steps, id), 250);
 }
@@ -21,7 +22,7 @@ function runTour(steps, id){
     const s = steps[tourState.i], last = tourState.i === steps.length - 1, tgt = s.sel && $(s.sel);
     el.innerHTML = `<div class="tb-head"><b>${esc(s.title)}</b><span class="muted">${tourState.i + 1} / ${steps.length}</span></div><div class="tb-body">${s.html || esc(s.text)}</div>
       <div class="tb-foot"><label class="chk small"><input type="checkbox" id="tour-off"${store.settings.help.off[id] ? " checked" : ""}> ${esc(t("tourNever"))}</label><span class="grow"></span>
-      ${tourState.i ? `<button class="btn small" data-tour="back">‹</button>` : ""}<button class="btn small pri" data-tour="${last ? "done" : "next"}">${esc(last ? t("tourDone") : t("tourNext"))}</button></div>`;
+      ${last ? "" : `<button class="btn small" data-tour="skip" title="${esc(t("tourSkipT"))}">${esc(t("tourSkip"))}</button>`}${tourState.i ? `<button class="btn small" data-tour="back">‹</button>` : ""}<button class="btn small pri" data-tour="${last ? "done" : "next"}">${esc(last ? t("tourDone") : t("tourNext"))}</button></div>`;
     const place = () => {
       const pad = 6, W = Math.min(360, innerWidth - 24); el.style.width = W + "px";
       if (tgt){ const r = tgt.getBoundingClientRect(); hl.style.display = "block"; Object.assign(hl.style, {left:(r.left - pad) + "px", top:(r.top - pad) + "px", width:(r.width + pad * 2) + "px", height:(r.height + pad * 2) + "px"});
@@ -36,6 +37,7 @@ function runTour(steps, id){
     const b = e.target.closest("[data-tour]"); if (!b) return; const k = b.dataset.tour;
     const off = $("#tour-off").checked; if (off) store.settings.help.off[id] = true; else delete store.settings.help.off[id]; persist();
     window.removeEventListener("resize", tourState.pos);
+    if (k === "skip"){ tourSkipped = true; endTour(); return; }
     if (k === "next"){ tourState.i++; show(); } else if (k === "back"){ tourState.i--; show(); } else endTour();
   });
   show();

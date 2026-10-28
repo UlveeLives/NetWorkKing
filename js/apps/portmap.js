@@ -73,6 +73,9 @@ function grid(b, d){
     const pr = st !== "free" ? parts(b, d.id, p) : null, ed = pr && pr.end && devById(b, pr.end.d), L = portLook(b, d, p, st);
     const tip = [`${devLabel(d)} :${p}`, ed ? "→ " + devLabel(ed) + (ed.room ? " · " + roomName(b, ed.room) : "") : "", v ? "VLAN " + v.vid : c.mode === "trunk" ? "trunk" : "", c.poe ? "PoE " + c.poe : ""].filter(Boolean).join("\n");
     return `<button class="p s-${st}${L.c ? " in" : ""}${L.dir ? " dir" : ""}${st === "half" ? " later" : ""}${i > cu ? " sfp" : ""}${on ? " sel" : ""}${c.mode === "trunk" ? " trunk" : ""}" data-port="${d.id}:${p}" title="${esc(tip)}"${L.c ? ` style="--pc:${L.c}"` : ""}>${esc(p)}${c.poe ? "<i>⚡</i>" : ""}</button>`; };
+  // Patch panels are numbered left to right in one row (24 per row, as on the panel itself); switches odd / even in two rows.
+  if (passive(d)){ const per = Math.min(24, Math.max(1, cu)), all = []; for (let i = 1; i <= n; i++) all.push(cell(i));
+    return `<div class="pgr"><div class="pgc pp" style="grid-template-columns:repeat(${per},minmax(20px,30px))">${all.join("")}</div></div>`; }
   const half = Math.ceil(cu / 2), top = [], bot = [];
   for (let i = 1; i <= cu; i++) (i % 2 ? top : bot).push(cell(i));
   const sf = []; for (let i = cu + 1; i <= n; i++) sf.push(cell(i));

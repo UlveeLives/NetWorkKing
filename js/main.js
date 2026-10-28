@@ -4,7 +4,7 @@ const APP_VERSION = "1.0.0";
 (async function start(){
   try {
     await loadStore(); await CAT.load(); applyTheme();
-    $("#dl-brands").innerHTML = CAT.brands().map(x => `<option value="${esc(x)}">`).join("");
+    $("#dl-brands").innerHTML = allBrands().map(x => `<option value="${esc(x)}">`).join("");
     wireShell(); wireEditors(); Object.values(APPS).forEach(a => a.init && a.init());
     const p = P(); UI.app = APPS[p.cur.app] ? p.cur.app : "topology"; UI.tabs = Object.assign({}, p.cur.tabs || {});
     render();

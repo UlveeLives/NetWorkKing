@@ -68,3 +68,5 @@ K("impPmOk","PortMap: {n} bina idxal olundu, {d} cihaz yaradıldı","PortMap: {n
 K("impRackOk","RackLayout: {n} rack idxal olundu","RackLayout: {n} rack","RackLayout: {n} rack(s) imported","RackLayout: импортировано стоек: {n}")
 K("impV2Ok","Wolf Suite 2.0: {n} sənəd idxal olundu","Wolf Suite 2.0: {n} belge","Wolf Suite 2.0: {n} document(s) imported","Wolf Suite 2.0: импортировано документов: {n}")
 K("impUnplaced","{n} cihaz sxemdə yerləşdirilməyib (sol paneldə)","{n} cihaz şemada değil","{n} devices are not on the diagram yet (left panel)","{n} устройств не размещены на схеме")
+K("tourSkip","Keç","Geç","Skip","Пропустить")
+K("tourSkipT","Təlimatı bağla — proqram yenidən açılana qədər başqa təlimat pəncərəsi açılmayacaq","Rehberi kapat — uygulama yeniden açılana kadar başka rehber açılmaz","Close the guide — no more guide balloons until the app is opened again","Закрыть подсказки — до следующего запуска они не появятся")
