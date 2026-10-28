@@ -6,7 +6,7 @@ const CODEC = {"H.264":1, "H.264+":.5, "H.265":.55, "H.265+":.3};
 const SENSOR = {"1/3\"":6.0, "1/2.9\"":6.2, "1/2.8\"":6.43, "1/2.7\"":6.6, "1/2.5\"":7.2, "1/2\"":8.0, "1/1.8\"":8.93, "1/1.2\"":13.3};
 const HPX = {1:1280, 2:1920, 3:2304, 4:2560, 5:2592, 6:3200, 8:3840, 12:4000};
 const DORI = [["D",25],["O",62.5],["R",125],["I",250]];       // IEC 62676-4 pixels per metre
-const CK = ["camera","nvr","dvr","switch","monitor","videowall","workstation","pp","outlet","server","ups","other"];
+const CK = ["camera","nvr","dvr","decoder","encoder","switch","monitor","videowall","joystick","workstation","poeinj","pp","outlet","server","ups","other"];
 const RAIDS = [["none","—"],["0","RAID 0"],["1","RAID 1"],["5","RAID 5"],["6","RAID 6"],["10","RAID 10"]];
 const cset = b => b.cctv = Object.assign({retain:30, fmt:0.9}, b.cctv || {});
 const cams = b => b.devices.filter(d => d.kind === "camera");

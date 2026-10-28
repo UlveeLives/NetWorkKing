@@ -1,6 +1,12 @@
 // SVG icon library (each icon drawn in a 48x48 box).
 "use strict";
 const ICO = {
+  decoder: `<rect x="4" y="15" width="40" height="18" rx="2" fill="#1d2433"/><rect x="8" y="20" width="14" height="8" rx="1" fill="#5ac8fa"/><path d="M26 24h8m-3-3 3 3-3 3" stroke="#ffb703" stroke-width="2" fill="none"/><circle cx="39" cy="24" r="2" fill="#33e07a"/>`,
+  encoder: `<rect x="4" y="15" width="40" height="18" rx="2" fill="#1d2433"/><circle cx="12" cy="24" r="4" fill="#e0661b"/><path d="M19 24h8m-3-3 3 3-3 3" stroke="#ffb703" stroke-width="2" fill="none"/><rect x="31" y="20" width="9" height="8" rx="1" fill="#5ac8fa"/>`,
+  joystick: `<rect x="6" y="28" width="36" height="12" rx="3" fill="#1d2433"/><path d="M24 28V14" stroke="#59607a" stroke-width="3"/><circle cx="24" cy="12" r="5" fill="#d63a3a"/><path d="M10 34h6M30 34h3M36 34h3" stroke="#5ac8fa" stroke-width="2"/>`,
+  poeinj: `<rect x="8" y="14" width="32" height="20" rx="3" fill="#2a3042"/><path d="M22 18l-4 7h5l-3 6 8-9h-5l3-4z" fill="#ffb703"/><rect x="10" y="29" width="5" height="4" fill="#5ac8fa"/><rect x="33" y="29" width="5" height="4" fill="#5ac8fa"/>`,
+  kvm: `<rect x="4" y="16" width="40" height="16" rx="2" fill="#1d2433"/>${[9,15,21,27,33].map(x => `<rect x="${x}" y="21" width="4" height="6" fill="#7fd1ff"/>`).join("")}<circle cx="40" cy="24" r="2" fill="#33e07a"/>`,
+  alarm: `<rect x="10" y="8" width="28" height="32" rx="3" fill="#2a3042"/><circle cx="24" cy="18" r="5" fill="#d63a3a"/>${[0,1,2].map(r => [0,1,2].map(c => `<rect x="${15 + c * 7}" y="${26 + r * 4.3}" width="4" height="3" rx=".5" fill="#c4cde3"/>`).join("")).join("")}`,
   shape: `<rect x="5" y="11" width="38" height="26" rx="6" fill="#fff8d6" stroke="#c9a227" stroke-width="2"/><path d="M12 20h24M12 27h16" stroke="#8a7520" stroke-width="2"/>`,
   image: `<rect x="5" y="9" width="38" height="30" rx="3" fill="#eef3fb" stroke="#59607a" stroke-width="1.8"/><circle cx="16" cy="18" r="3.5" fill="#ffb703"/><path d="M7 37l11-11 7 6 6-6 10 11z" fill="#5b8bd6"/>`,
   printer: `<rect x="13" y="6" width="22" height="10" fill="#fff" stroke="#2a3042" stroke-width="1.6"/><rect x="5" y="16" width="38" height="16" rx="2" fill="#4a5168"/><rect x="13" y="28" width="22" height="13" fill="#fff" stroke="#2a3042" stroke-width="1.6"/><path d="M17 33h14M17 37h10" stroke="#59607a"/><circle cx="37" cy="21" r="1.6" fill="#3fe07c"/>`,
@@ -56,7 +62,7 @@ const ICO = {
   group: `<rect x="2" y="16" width="12" height="9" rx="1" fill="#1d2433"/><rect x="18" y="16" width="12" height="9" rx="1" fill="#1d2433"/><rect x="34" y="16" width="12" height="9" rx="1" fill="#1d2433"/><path d="M4 30h40" stroke="#59607a" stroke-width="2" stroke-dasharray="2 3"/>`,
   camgrid: `${[[3,6],[19,6],[35,6],[3,26],[19,26],[35,26]].map(([x,y]) => `<g transform="translate(${x} ${y}) scale(.22)"><path d="M9 18h30v4a15 15 0 0 1-30 0z" fill="#f1f3f6" stroke="#59607a" stroke-width="3"/><circle cx="24" cy="25" r="8" fill="#1d2433"/></g>`).join("")}`
 };
-const ICON_LIST = ["pc","laptop","workstation","phone","printer","tv","camDome","camBullet","ptz","ap","apDisk","wlc","house","sw","coresw","router","fw","vpn","nvr","storage","nas","wall","monitor","ups","pdu","pp","fpp","odf","cm","server","splitter","cloud","internet","building","splice","adapter","cable","fiber","cardReader","intercom","sensor","ptp","user","ground","box"];
+const ICON_LIST = ["decoder","encoder","joystick","poeinj","kvm","alarm","pc","laptop","workstation","phone","printer","tv","camDome","camBullet","ptz","ap","apDisk","wlc","house","sw","coresw","router","fw","vpn","nvr","storage","nas","wall","monitor","ups","pdu","pp","fpp","odf","cm","server","splitter","cloud","internet","building","splice","adapter","cable","fiber","cardReader","intercom","sensor","ptp","user","ground","box"];
 function icon(name, x, y, size){ const s = (size || 48) / 48; return `<g transform="translate(${x} ${y}) scale(${s})">${ICO[name] || ICO.box}</g>`; }
 function iconSvg(name, w, h){ return `<svg viewBox="0 0 48 48"${w?` width="${w}" height="${h||w}"`:""}>${ICO[name] || ICO.box}</svg>`; }
 // Picks a rack-row icon from the row's text.

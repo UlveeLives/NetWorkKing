@@ -2,7 +2,7 @@
 "use strict";
 (function(){
 const cfg = {id:"topology", media:["cat6","cat6a","fiber_sm","fiber_mm","poe","isp","wifi","ptp","vpn","console","planned"],
-  kinds:["internet","modem","ont","firewall","router","coresw","switch","wlc","ap","server","nas","ups","camera","nvr","pc","laptop","printer","phone","tv","touch","intercom","access","iot","outlet","other"],
+  kinds:["internet","modem","ont","firewall","router","coresw","switch","wlc","ap","server","nas","ups","camera","nvr","decoder","encoder","joystick","poeinj","kvm","alarm","pc","laptop","printer","phone","tv","touch","intercom","access","iot","outlet","other"],
   // VLAN filter: members of the chosen VLAN stay as they are, everything else fades into the background.
   // A device is a member by its own VLAN, by an IP inside the VLAN subnet, or by a switch port that carries the VLAN (access, native or trunk-allowed).
   highlight(b, v){ const id = UI.hlVlan; if (!id) return null; return vlanMembers(b, id); },

@@ -85,7 +85,7 @@ function specLine(r){
   return bits.filter(Boolean).join(" · ");
 }
 /* ---------- picker ---------- */
-const KGROUPS = {net:["firewall","router","coresw","switch","modem","ont","wlc"], wifi:["ap","wlc"], cctv:["camera","nvr","dvr","monitor"], power:["ups","pdu"], compute:["server","nas","storage"], passive:["pp","fpp","splice","mediaconv"], end:["phone","printer","pc","workstation","other"]};
+const KGROUPS = {net:["firewall","router","coresw","switch","modem","ont","wlc"], wifi:["ap","wlc"], cctv:["camera","nvr","dvr","monitor","decoder","encoder","joystick"], power:["ups","pdu","poeinj"], compute:["server","nas","storage","kvm"], passive:["pp","fpp","splice","mediaconv"], end:["phone","printer","pc","workstation","other"]};
 function openCatalogPicker(kind, onPick){
   let kinds = kind ? [kind] : [], q = "", brand = "";
   const draw = () => {

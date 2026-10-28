@@ -23,14 +23,19 @@ const KINDS = {
   fan:{cat:"rackacc", icon:"fan", rack:true, h:1, acc:true},
   ups:{cat:"power", icon:"ups", rack:true, h:2},
   pdu:{cat:"power", icon:"pdu", rack:true, h:1},
+  poeinj:{cat:"power", icon:"poeinj", ports:2},
   server:{cat:"compute", icon:"server", rack:true, h:2, ports:4},
   nas:{cat:"compute", icon:"nas", rack:true, h:2, ports:4},
   storage:{cat:"compute", icon:"storage", rack:true, h:2, ports:2},
+  kvm:{cat:"compute", icon:"kvm", rack:true, h:1, ports:8},
   camera:{cat:"cctv", icon:"turret", ports:1},
   nvr:{cat:"cctv", icon:"nvr", rack:true, h:2, ports:2},
   dvr:{cat:"cctv", icon:"nvr", rack:true, h:1, ports:1},
+  decoder:{cat:"cctv", icon:"decoder", rack:true, h:1, ports:1},
+  encoder:{cat:"cctv", icon:"encoder", rack:true, h:1, ports:1},
   monitor:{cat:"cctv", icon:"monitor"},
   videowall:{cat:"cctv", icon:"wall"},
+  joystick:{cat:"cctv", icon:"joystick", ports:1},
   workstation:{cat:"end", icon:"workstation", ports:1},
   pc:{cat:"end", icon:"pc", ports:1},
   laptop:{cat:"end", icon:"laptop", ports:1},
@@ -40,6 +45,7 @@ const KINDS = {
   touch:{cat:"end", icon:"touch", ports:1},
   intercom:{cat:"end", icon:"intercom", ports:1},
   access:{cat:"end", icon:"access", ports:1},
+  alarm:{cat:"end", icon:"alarm", ports:1},
   sensor:{cat:"end", icon:"sensor", ports:1},
   iot:{cat:"end", icon:"iot", ports:1},
   outlet:{cat:"passive", icon:"outlet", ports:2, passive:true},
@@ -100,7 +106,7 @@ const linksOf = (b, id) => b.links.filter(l => l.a.d === id || l.b.d === id);
 const otherEnd = (l, id) => l.a.d === id ? l.b : l.a;
 const thisEnd = (l, id) => l.a.d === id ? l.a : l.b;
 function linkText(b, l){ const A = devById(b, l.a.d), Bd = devById(b, l.b.d); return `${devLabel(A)}${l.a.p ? " :" + l.a.p : ""} → ${devLabel(Bd)}${l.b.p ? " :" + l.b.p : ""}`; }
-function appForKind(k){ if (["camera","nvr","dvr","monitor","videowall"].includes(k)) return "cctv"; if (k === "ap") return "wifi"; if (["fpp","splice","mediaconv","ont"].includes(k)) return "fiber"; if (KINDS[k] && KINDS[k].rack) return "rack"; return "topology"; }
+function appForKind(k){ if (["camera","nvr","dvr","monitor","videowall","decoder","encoder","joystick"].includes(k)) return "cctv"; if (k === "ap") return "wifi"; if (["fpp","splice","mediaconv","ont"].includes(k)) return "fiber"; if (KINDS[k] && KINDS[k].rack) return "rack"; return "topology"; }
 const topU = d => d.u + Math.max(1, num(d.params.h, 1)) - 1;
 const devH = d => Math.max(1, Math.round(num(d.params.h, 1)));
 const rackDevices = (b, r) => b.devices.filter(d => d.rack === r.id && d.u > 0);
@@ -141,7 +147,7 @@ function newDevice(kind, o = {}){
   return d;
 }
 // Next free name like "SW-01", "CAM-07".
-const NAMEPFX = {switch:"SW", coresw:"CORE", firewall:"FW", router:"RTR", modem:"MODEM", ont:"ONT", wlc:"WLC", ap:"AP", camera:"CAM", nvr:"NVR", dvr:"DVR", server:"SRV", nas:"NAS", storage:"STG", ups:"UPS", pdu:"PDU", pp:"PP", fpp:"FPP", splice:"SC", mediaconv:"MC", pc:"PC", laptop:"NB", printer:"PRN", phone:"TEL", tv:"TV", workstation:"WS", monitor:"MON", videowall:"VW", touch:"TP", intercom:"INT", access:"ACS", sensor:"SNS", iot:"IOT", outlet:"TO", internet:"ISP", other:"DEV"};
+const NAMEPFX = {switch:"SW", coresw:"CORE", firewall:"FW", router:"RTR", modem:"MODEM", ont:"ONT", wlc:"WLC", ap:"AP", camera:"CAM", nvr:"NVR", dvr:"DVR", server:"SRV", nas:"NAS", storage:"STG", ups:"UPS", pdu:"PDU", pp:"PP", fpp:"FPP", splice:"SC", mediaconv:"MC", pc:"PC", laptop:"NB", printer:"PRN", phone:"TEL", tv:"TV", workstation:"WS", monitor:"MON", videowall:"VW", decoder:"DEC", encoder:"ENC", joystick:"KB", poeinj:"INJ", kvm:"KVM", alarm:"ALM", touch:"TP", intercom:"INT", access:"ACS", sensor:"SNS", iot:"IOT", outlet:"TO", internet:"ISP", other:"DEV"};
 function autoName(b, kind){
   if (KINDS[kind] && KINDS[kind].acc) return kindName(kind);
   const p = NAMEPFX[kind] || "DEV", used = new Set(b.devices.map(d => d.name)); let i = 1, n;

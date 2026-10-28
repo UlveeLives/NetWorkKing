@@ -16,10 +16,10 @@ const RDEF = {office:{outlet:4, phone:1}, meeting:{outlet:2, tv:1}, server:{outl
   kitchen:{outlet:1}, wc:{}, storage:{}, technical:{outlet:1}, other:{outlet:2}};
 // structure shapes (not devices)
 const ITEMS = {yard:{w:30, h:20}, stairs:{w:3, h:5}, elevator:{w:2, h:2}, shaft:{w:1, h:1}, door:{w:1, h:.2}, window:{w:1.5, h:.2}, column:{w:.5, h:.5}, label:{w:4, h:1}};
-const DEVK = ["outlet","ap","camera","tv","phone","printer","pc","laptop","access","intercom","touch","sensor","iot","switch","nvr","server","ups","workstation","monitor"];
+const DEVK = ["outlet","ap","camera","tv","phone","printer","pc","laptop","access","intercom","alarm","touch","sensor","iot","switch","nvr","decoder","server","ups","workstation","monitor"];
 let drag = null, place = null, lastDown = null;
 // apps that show this floor plan: Building structure (everything) and CCTV (cameras on the plan, rooms locked)
-const HOSTS = {building:{tab:"plan"}, cctv:{tab:"plan", kinds:["camera","nvr","dvr","switch","monitor","workstation","videowall","access","intercom"], cams:true, lockRooms:true}};
+const HOSTS = {building:{tab:"plan"}, cctv:{tab:"plan", kinds:["camera","nvr","dvr","decoder","encoder","switch","monitor","workstation","videowall","joystick","poeinj","access","intercom","alarm"], cams:true, lockRooms:true}};
 const host = () => HOSTS[UI.app] || null;
 const onPlanTab = () => !!host() && curTab().id === host().tab;
 const st = () => { UI.bld = UI.bld || {labels:true, grid:true}; return UI.bld; };

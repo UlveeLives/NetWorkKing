@@ -5,7 +5,7 @@
 (function(){
 const CATS = ["net","wifi","cctv","compute","end","passive","fiber","power","rackacc"];
 const catOf = d => (KINDS[d.kind] || KINDS.other).cat || "end";
-const NO_IP = new Set(["outlet","pp","fpp","splice","cablemgr","brush","blank","vent","shelf","fan","pdu","monitor","videowall","sensor","tv","internet","mediaconv"]);
+const NO_IP = new Set(["outlet","pp","fpp","splice","cablemgr","brush","blank","vent","shelf","fan","pdu","monitor","videowall","sensor","tv","internet","mediaconv","poeinj"]);
 const needsIp = d => !NO_IP.has(d.kind) && !(KINDS[d.kind] || {}).passive && !(KINDS[d.kind] || {}).acc;
 const isAcc = d => !!(KINDS[d.kind] || {}).acc;
 const st = () => { UI.sm = UI.sm || {q:"", cat:"", status:"", floor:"", miss:false, acc:false, sort:"name", dir:1}; return UI.sm; };

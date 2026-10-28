@@ -95,3 +95,12 @@ for k,az,tr,en,ru in [
  ("addPlannedOff","Yeni cihazlar «Quraşdırılıb» kimi əlavə olunacaq","Yeni cihazlar «Kuruldu» olacak","New devices will be added as «Installed»","Новые устройства — «Установлено»"),
 ]:
     K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("decoder","Video dekoder","Video dekoder","Video decoder","Видеодекодер"),
+ ("encoder","Video enkoder","Video enkoder","Video encoder","Видеоэнкодер"),
+ ("joystick","PTZ pult / joystick","PTZ klavye / joystick","PTZ keyboard / joystick","PTZ-пульт / джойстик"),
+ ("poeinj","PoE injektor","PoE enjektör","PoE injector","PoE-инжектор"),
+ ("kvm","KVM switch","KVM switch","KVM switch","KVM-переключатель"),
+ ("alarm","Siqnalizasiya paneli","Alarm paneli","Alarm panel","Охранная панель"),
+]:
+    K("k_"+k,az,tr,en,ru)

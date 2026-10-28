@@ -1,5 +1,5 @@
 // NetWorkKing service worker: keeps the app usable offline (phone / tablet install). Data itself lives in IndexedDB.
-const V = "networkking-3.2.0";
+const V = "networkking-3.2.1";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "css/app.css", "js/i18n.js", "js/catalog-data.js",
   ...["util","icons","store","ui","entities","catalog","tables","doc","help","settings","dg","importers","dxf","ai"].map(f => `js/core/${f}.js`),
   ...["building","topology","portmap","rack","fiber","cctv","wifi","summary"].map(f => `js/apps/${f}.js`), "js/main.js",

@@ -3,7 +3,7 @@
 "use strict";
 (function(){
 const UH = 20;                                   // pixels per rack unit on screen
-const RKINDS = ["switch","coresw","pp","fpp","firewall","router","wlc","modem","ont","server","nas","storage","nvr","dvr","ups","pdu","cablemgr","brush","blank","vent","shelf","fan","other"];
+const RKINDS = ["switch","coresw","pp","fpp","firewall","router","wlc","modem","ont","server","nas","storage","nvr","dvr","decoder","encoder","kvm","ups","pdu","cablemgr","brush","blank","vent","shelf","fan","other"];
 const rackable = d => !!(KINDS[d.kind] && KINDS[d.kind].rack) || !!d.rack;
 const loadDev = d => { const K = KINDS[d.kind] || KINDS.other; return !K.passive && d.kind !== "pdu" && d.kind !== "internet" && !(K.acc && d.kind !== "fan"); };
 const devW = d => num(d.params.powerW) || num(d.params.maxW) * 0.6 || 0;   // typical draw; without it 60 % of maximum
