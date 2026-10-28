@@ -78,7 +78,8 @@ function pmToBuilding(p, b){
   const panelUser = (rk, pid, pp) => { const ids = rk ? rk.units.filter(u => u.t === "s").map(u => u.sw) : []; for (const d of Object.values(p.ports)) if (ids.includes(d.sw) && d.panel === pid && +d.pp === +pp) return d; return null; };
   const rec = (sw, port) => { const r = p.ports[sw.id + "-" + port] || {}; let d = {panel:r.panel, pp:r.pp || ""}; if (r.panel === undefined){ d = defPanel(sw, port); if (d.panel && panelUser(rackOf(sw.id), d.panel, d.pp)) d = {panel:"", pp:""}; } return Object.assign({}, r, {panel:d.panel || "", pp:d.panel ? d.pp : ""}); };
   const F = {}, V = {}, T = {}, SWD = {}, PPD = {};
-  p.floors.forEach(f => { F[f.k] = ensureFloor(b, f.n).id; });
+  // a "floor" that only stands for the link between racks / floors (e.g. «Bağlantı») is not a storey of the building
+  p.floors.forEach(f => { F[f.k] = LINK_FLOOR.test(String(f.n).trim()) ? "" : ensureFloor(b, f.n).id; });
   p.vlans.forEach(v => { V[v.k] = impVlan(b, v.vid, v.n, v.sn); });
   p.types.forEach(x => { T[x.k] = kindFromText(x.n); });
   p.rooms.forEach(r => { if (r.n && r.n !== "__later") ensureRoom(b, F[r.f] || "", r.n); });

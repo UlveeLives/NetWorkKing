@@ -116,3 +116,13 @@ for k,az,tr,en,ru in [
  ("ov_done","Çertyoj oturduldu: {r} otaq, {p} cihaz yerinə qoyuldu, {n} yeni cihaz","Çizim oturtuldu: {r} oda, {p} cihaz yerleşti, {n} yeni","Drawing laid over: {r} rooms, {p} devices placed, {n} new devices","Чертёж наложен: комнат {r}, размещено {p}, новых {n}"),
 ]:
     K(k,az,tr,en,ru)
+K("bd_ext","Ətraf boş sahə","Çevre boş alan","Free space around","Свободная зона вокруг")
+for k,az,tr,en,ru in [
+ ("dx_optDevs2","Çertyojdakı cihazları da götür (növbəti addımda siyahıdan özünüz seçəcəksiniz)","Çizimdeki cihazları da al (sonraki adımda listeden seçeceksiniz)","Take the devices in the drawing too (you choose them from a list in the next step)","Взять устройства из чертежа (выбор списком на следующем шаге)"),
+ ("dxp_title","Çertyojdakı cihazlar","Çizimdeki cihazlar","Devices in the drawing","Устройства на чертеже"),
+ ("dxp_hint","Çertyojda {n} cihaz / giriş tapıldı. Əlavə ediləcəkləri işarələyin: növə görə (yuxarıda), mərtəbəyə görə və ya tək-tək. İşarəsizlər götürülmür.","Çizimde {n} cihaz bulundu. Eklenecekleri işaretleyin.","{n} devices / outlets were found in the drawing. Tick the ones to add: by kind (above), by floor, or one by one. Unticked ones are left out.","Найдено устройств: {n}. Отметьте, что добавить."),
+ ("dxp_ok","{n} cihazı əlavə et","{n} cihazı ekle","Add {n} devices","Добавить {n}"),
+ ("dxp_none","Heç birini əlavə etmə","Hiçbirini ekleme","Add none","Не добавлять"),
+ ("bd_wLinkFloor","«{f}» mərtəbə deyil, bağlantı kimi görünür. Lazım deyilsə, Struktur tabında 🗑 ilə silin — cihazlar və kabellər qalır, sadəcə mərtəbəsiz olur.","«{f}» kat değil, bağlantı gibi görünüyor; Yapı sekmesinde silebilirsiniz.","«{f}» looks like a link, not a floor. If so, delete it on the Structure tab (🗑) — devices and cables stay, just without a floor.","«{f}» похоже на связь, а не этаж; удалите во вкладке «Структура»."),
+]:
+    K(k,az,tr,en,ru)

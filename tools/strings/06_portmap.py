@@ -49,3 +49,11 @@ K("pmCords","Patch kabellər","Patch kablolar","Patch cords","Патч-корд�
 K("pmCordsAll","hamısı","hepsi","all","все")
 K("pmCordsSel","yalnız seçilmiş port","sadece seçili port","selected port only","только выбранный порт")
 K("pmCordsNone","gizlət","gizle","hide","скрыть")
+for k,az,tr,en,ru in [
+ ("pmPickEnd","cihaz seçin","cihaz seçin","pick a device","выберите устройство"),
+ ("pmNoEnd","heç nə qoşulmayıb","bağlı değil","nothing connected","не подключено"),
+ ("dupBadge","eyni ad","aynı ad","same name","то же имя"),
+ ("dupBadgeH","Bu adda bir neçə cihaz var — artığını silin və ya adını dəyişin","Bu adda birden fazla cihaz var","Several devices have this name — delete the extra one or rename it","Несколько устройств с этим именем"),
+ ("dupBtn","Təkrar adlar","Tekrar adlar","Duplicate names","Повторы имён"),
+]:
+    K(k,az,tr,en,ru)

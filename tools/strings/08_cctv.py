@@ -33,3 +33,11 @@ K("nvrNoneSel","Kamera hələ heç bir NVR-a təyin edilməyib.","Kamera henüz 
 K("nvrAdd","NVR əlavə et","NVR ekle","Add NVR","Добавить NVR")
 K("nvrAllCams","Bütün kameraları əlavə et","Tüm kameraları ekle","Add all cameras","Добавить все камеры")
 K("nvrAllDone","Bütün kameralar bu NVR-a əlavə olundu (boş kanallarla)","Tüm kameralar bu NVR'a eklendi","All cameras added to this NVR (on free channels)","Все камеры добавлены на этот NVR")
+for k,az,tr,en,ru in [
+ ("camPlanTab","Çertyoj","Plan","Floor plan","План"),
+ ("camPlanHint","Kameranı plana sürüşdürün; seçilmiş kameranın sarı dairəsini çəkərək baxış istiqamətini çevirin. Sarı sahə — müşahidə (Observe) məsafəsi. Ətraf boş sahədə həyət kameralarını yerləşdirin.","Kamerayı plana sürükleyin; sarı daireyle yönünü çevirin.","Drag cameras onto the plan; turn a selected camera with its yellow handle. The yellow area is the Observe distance. Place yard cameras in the free space around the house.","Перетащите камеры на план; поворот — жёлтой ручкой."),
+ ("camRotate","Sarı dairəni çəkərək kameranı çevirin","Sarı daireyi çekerek çevirin","Drag the yellow handle to turn the camera","Тяните жёлтую ручку, чтобы повернуть"),
+ ("camDir","Baxış istiqaməti","Bakış yönü","Viewing direction","Направление обзора"),
+ ("camCones","Kameraların görmə sahəsini göstər","Kamera görüş alanlarını göster","Show camera fields of view","Показывать зоны обзора камер"),
+]:
+    K(k,az,tr,en,ru)

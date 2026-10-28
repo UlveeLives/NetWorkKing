@@ -114,11 +114,12 @@ function applyOps(ops){
             else if (k === "u"){ const r = d.rack && rackById(b, d.rack), u = Math.round(num(v)); if (r && !rackFits(b, r, u, devH(d), d.id)) log.push(n + "⚠ " + d.name + " U" + u); else d.u = u; }
             else if (k === "rack"){ const r = rackById(b, v); if (!v){ d.rack = ""; d.u = 0; } else if (r){ const u = rackSpot(b, r, devH(d), 0, d.id); if (u){ d.rack = r.id; d.u = u; } else log.push(n + "⚠ " + r.name + " " + t("rackNoSpace")); } }
             else if (k === "ports") d.ports = Math.max(0, Math.round(num(v)));
+            else if (k === "name" && nameTaken(b, v, d.id)) log.push(n + "⚠ " + t("nameDupS",{n:v}));
             else if (["name","brand","model","ip","mac","notes","status","serial","floor","room","host","owner"].includes(k)) d[k] = String(v ?? "");
           });
           return log.push(n + "✎ " + d.name); }
         if (o.op === "add_device"){ const k = KINDS[o.kind] ? o.kind : "other", c = clamp(Math.round(num(o.count, 1)), 1, 200);
-          for (let q = 0; q < c; q++){ const d = newDevice(k, {floor:o.floor && floorById(b, o.floor) ? o.floor : "", room:o.room && roomById(b, o.room) ? o.room : ""}); d.name = o.name ? (c > 1 ? `${o.name}-${String(q + 1).padStart(2, "0")}` : o.name) : autoName(b, k);
+          for (let q = 0; q < c; q++){ const d = newDevice(k, {floor:o.floor && floorById(b, o.floor) ? o.floor : "", room:o.room && roomById(b, o.room) ? o.room : ""}); d.name = o.name ? (c > 1 ? `${o.name}-${String(q + 1).padStart(2, "0")}` : o.name) : autoName(b, k); if (nameTaken(b, d.name)){ log.push(n + "⚠ " + t("nameDupS",{n:d.name})); continue; }
             if (o.brand) d.brand = o.brand; if (o.model) d.model = o.model; if (o.ip && c === 1) d.ip = o.ip; if (o.vlan){ const id = vlanIdOf(b, o.vlan); if (id) d.vlan = id; }
             if (d.room && !d.floor) d.floor = roomById(b, d.room).floor;
             if (o.rack){ const r = rackById(b, o.rack); if (r){ const u = o.u && rackFits(b, r, o.u, devH(d)) ? o.u : rackSpot(b, r, devH(d), 0); if (u){ d.rack = r.id; d.u = u; d.floor = d.floor || r.floor; d.room = d.room || r.room; } else log.push(n + "⚠ " + r.name + " " + t("rackNoSpace")); } }

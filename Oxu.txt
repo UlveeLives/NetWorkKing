@@ -1,9 +1,29 @@
-NETWORKKING 3.0.1 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.1.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 7 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV və Wi-Fi Plan. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.1-DƏ YENİ
+ - Çertyojlar (Bina strukturu, CCTV, Wi-Fi Plan): siçan təkəri ilə yaxınlaşdır / uzaqlaşdır,
+   orta düymə (və ya Boşluq + sol düymə) ilə sürüşdür — AutoCAD-dəki kimi; telefonda iki barmaq.
+   ⤢ düyməsi binanı ekrana sığdırır.
+ - Bina və CCTV çertyojunun ətrafında boş sahə var (mərtəbə → "Ətraf boş sahə", standart 15 m;
+   kənara qoyulan hər şey sahəni özü böyüdür) — həyət, darvaza, xarici kameralar üçün.
+ - Otaq adlarını sürüşdürüb istədiyiniz yerə qoymaq olar.
+ - CCTV → "Çertyoj" tabı: kameraları bina planına (evin içinə və ya həyətə) qoyun, sarı sahə
+   görmə məsafəsini göstərir, sarı dairə ilə kameranı çevirin.
+ - Wi-Fi Plan otaqları çertyojdakı real sərhəd və ad yeri ilə göstərir.
+ - Topologiya: sxemin üstündə VLAN seçimi — seçilən VLAN-dakı cihazlar aydın, qalanları solğun;
+   "VLAN-sız" seçimi də var.
+ - Port Map: cihaz siyahısında axtarış, qırmızı ⊖ ilə silmə (təsdiqlə), eyni adlı cihazlar işarələnir;
+   "Təkrar adlar" düyməsi; eyni adla cihaz yaratmaq / ad vermək olmur.
+ - Bütün tətbiqlərdə palitranın üstündə "📝 Planlaşdırılır" — işarəli olanda yeni cihazlar
+   "Planlaşdırılıb" statusu ilə yaranır.
+ - DXF idxalı: çertyojdakı cihazlar (rozetka, AP, TV, telefon …) siyahı ilə göstərilir, hansının
+   əlavə ediləcəyini növə, mərtəbəyə görə və ya tək-tək seçirsiniz.
+ - PortMap idxalında "Bağlantı" adlı mərtəbə artıq mərtəbə kimi yaranmır.
 
 3.0-DA YENİ
  - DXF çertyojdan bina: Bina strukturu → "DXF çertyojdan yarat". Mərtəbələr, divarlar,
@@ -28,7 +48,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.0.1.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.1.0.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 

@@ -93,7 +93,7 @@ function dgSvg(b, cfg, opts = {}){
   // cables
   const links = b.links.filter(l => !cfg.linkFilter || cfg.linkFilter(l, b));
   const G = layoutLinks(b, v, links);
-  links.forEach(l => { const g = G[l.id]; if (!g) return; const M = MEDIA[l.media] || MEDIA.cat6, p = linkPath(g), on = isSel("link", l.id), dd = dim(l.a.d) && dim(l.b.d);
+  links.forEach(l => { const g = G[l.id]; if (!g) return; const M = MEDIA[l.media] || MEDIA.cat6, p = linkPath(g), on = isSel("link", l.id), dd = dim(l.a.d) || dim(l.b.d);
     const stc = l.status === "faulty" ? "#d63a3a" : M.c, dash = l.status === "planned" ? "6 4" : M.dash || "";
     h += `<g class="dl${dd ? " dim" : ""}" data-link="${l.id}"><path d="${p.d}" fill="none" stroke="transparent" stroke-width="12"/><path d="${p.d}" fill="none" stroke="${stc}" stroke-width="${M.w + (on ? 1.6 : 0)}"${dash ? ` stroke-dasharray="${dash}"` : ""} stroke-linejoin="round"/>`;
     const lab = [S.cid && l.cid, S.speed && l.speed, l.label].filter(Boolean).join(" · ");
@@ -254,7 +254,7 @@ function rackSwap(b, a, c){
 // Rename by double click / double tap (detected on pointerdown, because the first click redraws the diagram).
 async function dgRename(b, v, key){
   const [type, id] = key.split(/:(.+)/);
-  if (type === "dev" || type === "rack"){ const o = type === "dev" ? devById(b, id) : rackById(b, id); if (!o) return; const n = await uiPrompt(t("f_name"), o.name); if (n !== null && n.trim()) edit(() => { o.name = n.trim(); UI.sel = {type, id}; }); return; }
+  if (type === "dev" || type === "rack"){ const o = type === "dev" ? devById(b, id) : rackById(b, id); if (!o) return; const n = await uiPrompt(t("f_name"), o.name); if (type === "dev" && n && n.trim() && !await nameOk(b, n, o.id)) return; if (n !== null && n.trim()) edit(() => { o.name = n.trim(); UI.sel = {type, id}; }); return; }
   if (type === "box"){ const z = v.boxes.find(x => x.id === id); if (!z) return; const n = await uiPrompt(t("f_title"), z.label); if (n !== null) edit(() => { z.label = n; }); return; }
   if (type === "anno"){ const a = v.anno.find(x => x.id === id); if (!a || a.type === "image") return; const n = await uiPrompt(t("f_text"), a.text); if (n !== null) edit(() => { a.text = n; }); }
 }

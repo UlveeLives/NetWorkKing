@@ -129,6 +129,47 @@ function reIdBuilding(b){
   fix(b.wifi);
 }
 /* ---------- main render ---------- */
+
+document.addEventListener("change", e => { if (e.target.id === "add-planned"){ store.settings.addPlanned = e.target.checked; persist(); toast(e.target.checked ? "📝 " + t("addPlannedOn") : t("addPlannedOff")); } });
+/* ---------- zoom & pan for floor plans (Building, CCTV, Wi-Fi) ----------
+   Mouse wheel zooms at the cursor, the middle button drags the view (as in AutoCAD), Space + left drag too;
+   on touch screens two fingers pan and pinch. The view of each plan is remembered while the program is open. */
+const ZP = {st:{}, drag:null, touch:new Map(), space:false};
+function zpWrap(key, inner){ return `<div class="zp" data-zp="${esc(key)}"><div class="zpi">${inner}</div><div class="zpbtn"><button data-zpa="in" title="+">＋</button><button data-zpa="out" title="−">－</button><button data-zpa="fit" title="${esc(t("zpFit"))}">⤢</button><span class="zpz"></span></div><div class="zphint">${esc(t("zpHint"))}</div></div>`; }
+function zpEl(el){ return el && el.closest ? el.closest(".zp") : null; }
+function zpSize(el){ const c = el.querySelector(".zpi"), f = c && c.firstElementChild; if (!f) return {w:1, h:1}; const w = f.offsetWidth || num(f.getAttribute && f.getAttribute("width"), 1), h = f.offsetHeight || num(f.getAttribute && f.getAttribute("height"), 1); return {w:Math.max(1, w), h:Math.max(1, h)}; }
+// fit shows the main part (data-fit="x y w h" on the content, e.g. the building without its free surroundings), else everything
+function zpFit(el){ const S = zpSize(el), W = el.clientWidth, H = el.clientHeight; if (W < 40 || H < 40) return;
+  const c = el.querySelector(".zpi"), f = c && c.firstElementChild, fr = f && f.dataset && f.dataset.fit ? f.dataset.fit.split(" ").map(Number) : [0, 0, S.w, S.h];
+  const z = clamp(Math.min(W / fr[2], H / fr[3]) * .94, .05, 8); ZP.st[el.dataset.zp] = {z, x:(W - fr[2] * z) / 2 - fr[0] * z, y:(H - fr[3] * z) / 2 - fr[1] * z}; const an = f && f.dataset && f.dataset.anchor; if (an){ const a = an.split(" ").map(Number); ZP.st[el.dataset.zp].ax = a[0]; ZP.st[el.dataset.zp].ay = a[1]; } zpSet(el); }
+function zpSet(el){ const s = ZP.st[el.dataset.zp]; if (!s){ if (el.clientWidth >= 40 && el.clientHeight >= 40) zpFit(el); return; } const c = el.querySelector(".zpi");
+  // content that grew on the left / top (data-anchor = where its origin sits) must not jump
+  const f = c && c.firstElementChild, an = f && f.dataset && f.dataset.anchor ? f.dataset.anchor.split(" ").map(Number) : null;
+  if (an){ if (s.ax !== undefined){ s.x += (s.ax - an[0]) * s.z; s.y += (s.ay - an[1]) * s.z; } s.ax = an[0]; s.ay = an[1]; } if (c) c.style.transform = `translate(${s.x}px,${s.y}px) scale(${s.z})`; const z = el.querySelector(".zpz"); if (z) z.textContent = Math.round(s.z * 100) + "%"; }
+function zpZoom(el, f, cx, cy){ const s = ZP.st[el.dataset.zp] || (zpFit(el), ZP.st[el.dataset.zp]), R = el.getBoundingClientRect(), mx = cx === undefined ? R.width / 2 : cx - R.left, my = cy === undefined ? R.height / 2 : cy - R.top, nz = clamp(s.z * f, .05, 12);
+  s.x = mx - (mx - s.x) * nz / s.z; s.y = my - (my - s.y) * nz / s.z; s.z = nz; zpSet(el); }
+function zpAll(){ $$(".zp").forEach(el => zpSet(el)); }
+document.addEventListener("wheel", e => { const el = zpEl(e.target); if (!el) return; e.preventDefault(); zpZoom(el, Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0015)), e.clientX, e.clientY); }, {passive:false});
+document.addEventListener("keydown", e => { if (e.code === "Space" && !/INPUT|TEXTAREA|SELECT/.test((document.activeElement || {}).tagName || "")) { if ($(".zp")) { ZP.space = true; document.body.classList.add("zpspace"); e.preventDefault(); } } });
+document.addEventListener("keyup", e => { if (e.code === "Space"){ ZP.space = false; document.body.classList.remove("zpspace"); } });
+document.addEventListener("pointerdown", e => {
+  const el = zpEl(e.target); if (!el) return;
+  if (e.pointerType === "touch"){ ZP.touch.set(e.pointerId, {x:e.clientX, y:e.clientY}); if (ZP.touch.size === 2){ e.stopImmediatePropagation(); e.preventDefault(); const [a, b] = [...ZP.touch.values()]; ZP.drag = {el, pinch:true, d:Math.hypot(a.x - b.x, a.y - b.y), cx:(a.x + b.x) / 2, cy:(a.y + b.y) / 2}; } return; }
+  if (e.button === 1 || (e.button === 0 && ZP.space)){ e.preventDefault(); e.stopImmediatePropagation(); const s = ZP.st[el.dataset.zp] || (zpFit(el), ZP.st[el.dataset.zp]); ZP.drag = {el, x0:e.clientX, y0:e.clientY, sx:s.x, sy:s.y}; el.classList.add("panning"); }
+}, true);
+document.addEventListener("mousedown", e => { if (e.button === 1 && zpEl(e.target)) e.preventDefault(); }, true);   // no browser autoscroll
+document.addEventListener("pointermove", e => {
+  if (e.pointerType === "touch" && ZP.touch.has(e.pointerId)) ZP.touch.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  const D = ZP.drag; if (!D) return;
+  if (D.pinch){ if (ZP.touch.size < 2) return; const [a, b] = [...ZP.touch.values()], d = Math.hypot(a.x - b.x, a.y - b.y), cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2, s = ZP.st[D.el.dataset.zp];
+    s.x += cx - D.cx; s.y += cy - D.cy; zpSet(D.el); zpZoom(D.el, d / D.d, cx, cy); D.d = d; D.cx = cx; D.cy = cy; e.stopImmediatePropagation(); return; }
+  const s = ZP.st[D.el.dataset.zp]; s.x = D.sx + e.clientX - D.x0; s.y = D.sy + e.clientY - D.y0; zpSet(D.el); e.stopImmediatePropagation();
+}, true);
+const zpEnd = e => { if (e.pointerType === "touch") ZP.touch.delete(e.pointerId); if (ZP.drag && (!ZP.drag.pinch || ZP.touch.size < 2)){ ZP.drag.el.classList.remove("panning"); ZP.drag = null; e.stopImmediatePropagation(); } };
+document.addEventListener("pointerup", zpEnd, true); document.addEventListener("pointercancel", zpEnd, true);
+document.addEventListener("click", e => { const b = e.target.closest("[data-zpa]"); if (!b) return; const el = zpEl(b); if (!el) return; const k = b.dataset.zpa; if (k === "fit") zpFit(el); else zpZoom(el, k === "in" ? 1.25 : .8); });
+window.addEventListener("resize", debounce(() => $$(".zp").forEach(el => { if (!ZP.st[el.dataset.zp]) zpFit(el); }), 150));
+
 function render(){
   if (!store) return;
   document.documentElement.lang = store.settings.lang;
@@ -136,13 +177,14 @@ function render(){
   document.title = `${t(a.name)} — ${B().name} — NetWorkKing`;
   document.body.dataset.app = a.id; document.body.style.setProperty("--appc", a.color);
   renderHeader(); renderTabs(); renderBuildings();
-  const pal = tab.palette ? tab.palette() : "";
+  const pal0 = tab.palette ? tab.palette() : "", pal = pal0 ? `<label class="chk planck" title="${esc(t("addPlannedH"))}"><input type="checkbox" id="add-planned"${store.settings.addPlanned ? " checked" : ""}> 📝 ${esc(t("addPlanned"))}</label>` + pal0 : "";
   $("#pal").innerHTML = pal; $("#pal").hidden = !pal;
   const view = $("#view"); view.className = "view v-" + a.id + " t-" + tab.id;
   view.innerHTML = tab.render ? tab.render() : "";
   const dr = drawerHtml(a, tab);
   $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);
   if (UI.multi.size) $$("[data-sel]", view).forEach(el => { if (UI.multi.has(el.dataset.sel)){ const tr = el.closest("tr") || el; tr.classList.add("on"); } });
+  zpAll();
   if (tab.after) tab.after(view);
   restoreFocus();
   if (typeof AI !== "undefined" && UI.ai && UI.ai.open) AI.draw();

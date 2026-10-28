@@ -80,3 +80,18 @@ for k,az,tr,en,ru in [
  ("fitChMove","{d} {n} kanallı olacaq. {k} kamera yuxarı kanallardadır — boş kanallara köçürüləcək:","{d} {n} kanal olacak; {k} kamera taşınacak:","{d} becomes {n} channels. {k} cameras sit on higher channels — they move to free ones:","{d} станет {n} каналов; {k} камер переедут:"),
 ]:
     K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("nameDup","«{n}» adlı cihaz artıq var ({k}, {r}). Cihaz adları təkrarlana bilməz — başqa ad yazın (marka və model eyni ola bilər).","«{n}» adlı cihaz zaten var ({k}, {r}). Başka ad yazın.","A device named «{n}» already exists ({k}, {r}). Device names must be unique — choose another name (brand and model may be the same).","Устройство «{n}» уже есть ({k}, {r}). Имена не должны повторяться."),
+ ("nameDupS","«{n}» adı artıq var","«{n}» adı zaten var","«{n}» already exists","«{n}» уже существует"),
+ ("w_nameDup","«{n}» adlı {k} cihaz var — artığını silin və ya adını dəyişin (Port Map → Təkrar adlar)","«{n}» adlı {k} cihaz var","{k} devices are named «{n}» — delete the extra ones or rename them (Port Map → Duplicate names)","{k} устройств с именем «{n}»"),
+ ("dupT","Eyni adlı cihazlar","Aynı adlı cihazlar","Devices with the same name","Устройства с одинаковыми именами"),
+ ("dupH","Hər cihazın hara qoşulduğu göstərilir. Doğru olanı saxlayın; artığını ⊖ ilə silin (kabelləri də silinir) və ya ✎ ilə adını dəyişin.","Doğru olanı tutun, fazlayı silin veya adını değiştirin.","Each device shows what it is cabled to. Keep the right one; delete the extra with ⊖ (its cables go too) or rename it with ✎.","Оставьте нужное, лишнее удалите ⊖ или переименуйте ✎."),
+ ("dupNoCable","kabel yoxdur","kablo yok","no cable","нет кабеля"),
+ ("dupNoneT","Təkrar ad yoxdur","Tekrar ad yok","No duplicate names","Повторов нет"),("dupNone","Bütün cihaz adları fərqlidir.","Tüm adlar farklı.","All device names are different.","Все имена разные."),
+ ("delDevQ","«{d}» ({k}) silinsin? Ona bağlı {n} kabel də silinəcək. «Geri al» ilə qaytarmaq olar.","«{d}» silinsin mi? {n} kablosu da silinecek.","Delete «{d}» ({k})? Its {n} cable(s) go too. Undo brings it back.","Удалить «{d}»? Кабелей: {n}."),
+ ("addPlanned","Planlaşdırılır","Planlanıyor","Planned","Планируется"),
+ ("addPlannedH","İşarəli olanda əlavə etdiyiniz bütün cihazlar «Planlaşdırılıb» statusu ilə yaranır (bütün tətbiqlərdə)","İşaretliyken eklenen cihazlar «Planlandı» olur","While ticked, every device you add is created as «Planned» (in every app)","Новые устройства создаются как «Планируется»"),
+ ("addPlannedOn","Yeni cihazlar «Planlaşdırılıb» kimi əlavə olunacaq","Yeni cihazlar «Planlandı» olacak","New devices will be added as «Planned»","Новые устройства — «Планируется»"),
+ ("addPlannedOff","Yeni cihazlar «Quraşdırılıb» kimi əlavə olunacaq","Yeni cihazlar «Kuruldu» olacak","New devices will be added as «Installed»","Новые устройства — «Установлено»"),
+]:
+    K(k,az,tr,en,ru)

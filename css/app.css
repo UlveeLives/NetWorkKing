@@ -585,3 +585,38 @@ table.wzt td{padding:3px}table.wzt input,table.wzt select{padding:4px 5px}
 .aikey h4{margin:0 0 6px}.aikey ol{padding-left:18px;margin:0 0 8px}
 @media (max-width:700px){#aipanel{left:8px;right:8px;width:auto;top:56px;bottom:96px;max-width:none}#aibtn{bottom:56px;right:10px}}
 @media print{#aibtn,#aipanel{display:none!important}}
+/* zoom & pan */
+.zp{position:relative;overflow:hidden;height:calc(100vh - 250px);min-height:380px;background:repeating-conic-gradient(rgba(127,127,127,.05) 0 25%,transparent 0 50%) 0 0/24px 24px,var(--surface);border:1px solid var(--line);border-radius:10px;touch-action:none}
+.zpi{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.zp.panning,.zpspace .zp{cursor:grab}.zp.panning *{cursor:grabbing!important}
+.zpbtn{position:absolute;right:10px;top:10px;display:flex;gap:4px;align-items:center;z-index:3}
+.zpbtn button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:16px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.zpz{font:11px var(--f-mono);color:var(--muted);background:var(--surface);padding:3px 6px;border-radius:6px;border:1px solid var(--line)}
+.zphint{position:absolute;left:10px;bottom:8px;font-size:11px;color:var(--muted);background:color-mix(in srgb,var(--surface) 85%,transparent);padding:2px 7px;border-radius:6px;pointer-events:none}
+@media (max-width:700px){.zp{height:calc(100vh - 210px)}.zphint{display:none}}
+@media print{.zp{height:auto;overflow:visible;border:none;background:none}.zpi{position:static;transform:none!important}.zpbtn,.zphint{display:none}}
+.vlbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 10px;font-size:12.5px}
+.vlc{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:16px;padding:4px 10px;cursor:pointer;font-size:12.5px}
+.vlc i{width:10px;height:10px;border-radius:50%;background:var(--vc,#2f5fc4)}
+.vlc small{color:var(--muted)}
+.vlc.on{border-color:var(--vc,var(--pri));box-shadow:0 0 0 2px color-mix(in srgb,var(--vc,var(--pri)) 35%,transparent);font-weight:700}
+.dgsvg .dim{opacity:.15}
+/* Port Map end-device picker */
+.endpick{display:flex;align-items:center;gap:6px;width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:8px;padding:7px 9px;cursor:pointer;min-height:36px;font-size:13px}
+.endpick small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.endpick i{margin-left:auto;font-style:normal;color:var(--muted)}
+.epop{position:fixed;z-index:90;width:370px;max-width:calc(100vw - 16px);background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 34px rgba(0,0,0,.28);display:flex;flex-direction:column;max-height:350px}
+.epq{margin:8px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text);font-size:13px}
+.eplist{overflow:auto;padding:0 6px 6px}
+.eprow{display:flex;align-items:center;gap:8px;padding:6px 6px;border-radius:7px;cursor:pointer;font-size:12.5px}
+.eprow:hover{background:color-mix(in srgb,var(--pri) 9%,transparent)}.eprow.on{background:color-mix(in srgb,var(--pri) 16%,transparent)}
+.eprow.new{color:var(--pri);font-weight:700}
+.eprow .epn{flex:1;min-width:0;display:flex;flex-direction:column}.eprow .epn small{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.eprow em{font-style:normal;font-size:10.5px;color:#b3262f;font-weight:700}.eprow em.pl{color:#5b7fc4}
+.eprow.dup{box-shadow:inset 3px 0 #d63a3a}
+.epdel{flex:none;width:22px;height:22px;border-radius:50%;border:none;background:#d63a3a;color:#fff;font-weight:900;font-size:16px;line-height:20px;cursor:pointer;padding:0}
+.epdel:hover{background:#a81f26}
+.planck{margin:0 0 8px;padding:6px 8px;border:1px dashed #5b7fc4;border-radius:8px;font-size:12.5px}
+.dupg{margin:0 0 12px}.dupg table{margin-top:4px}
+input.bad{border-color:#d63a3a!important}
+.dxpk{display:flex;flex-wrap:wrap;gap:4px 16px;margin:6px 0 10px}
+.dxpk .chk{display:inline-flex;align-items:center;gap:6px}

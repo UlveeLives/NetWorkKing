@@ -70,7 +70,9 @@ function syncIn(){
   const floors = b.floors.slice().reverse().map((sf, i) => { const p = sf.plan;
     return {id:sf.id, name:sf.name, desc:p.desc || "", color:p.color || Object.keys(FC)[(n - 1 - i) % 6], wm:num(p.wm, 40), hm:num(p.hm, 14), img:p.img || null, op:p.op ?? 60, idf:p.idf || null,
       walls:p.walls, survey:p.survey, calibrated:!!p.cal,
-      rooms:b.rooms.filter(r => r.floor === sf.id && r.geo).map(r => ({id:r.id, label:r.name, wall:r.wall || "drywall", users:num(r.users), x:num(r.geo.x), y:num(r.geo.y), w:num(r.geo.w, 1), h:num(r.geo.h, 1)}))}; });
+      rooms:b.rooms.filter(r => r.floor === sf.id && r.geo).map(r => { const o = {id:r.id, label:r.name, wall:r.wall || "drywall", users:num(r.users), x:num(r.geo.x), y:num(r.geo.y), w:num(r.geo.w, 1), h:num(r.geo.h, 1)};
+        // outline and name position drawn from a DXF drawing (kept as they are; only x / y / w / h are edited here)
+        ["poly","pw","ph","lx","ly"].forEach(k => { if (r.geo[k] !== undefined) Object.defineProperty(o, k, {value:r.geo[k], enumerable:false, writable:true}); }); return o; })}; });
   const fids = new Set(floors.map(f => f.id));
   const aps = b.devices.filter(d => d.kind === "ap" && d.ap && d.ap.x !== null && d.ap.x !== undefined && d.ap.x !== "" && fids.has(d.floor)).map(d => apIn(b, d));
   FCD = {b, apIds:new Set(aps.map(a => a.id)), roomIds:new Set(floors.flatMap(f => f.rooms.map(r => r.id))),
@@ -87,7 +89,7 @@ function syncOut(){
     sf.plan = Object.assign(sf.plan || {}, {desc:ff.desc, color:ff.color, wm:ff.wm, hm:ff.hm, img:ff.img, op:ff.op, idf:ff.idf, walls:ff.walls, survey:ff.survey, cal:!!ff.calibrated});
     out.push(sf); byId.delete(ff.id);
     ff.rooms.forEach(r => { let sr = roomById(b, r.id); if (!sr){ sr = {id:r.id}; b.rooms.push(sr); }
-      sr.name = String(r.label || "").split("\n").join(" ").trim() || t("newRoom"); sr.floor = ff.id; sr.wall = r.wall; sr.users = num(r.users); sr.geo = {x:r.x, y:r.y, w:r.w, h:r.h}; }); });
+      sr.name = String(r.label || "").split("\n").join(" ").trim() || t("newRoom"); sr.floor = ff.id; sr.wall = r.wall; sr.users = num(r.users); sr.geo = Object.assign(sr.geo || {}, {x:r.x, y:r.y, w:r.w, h:r.h}); }); });
   byId.forEach(sf => { b.rooms.forEach(r => { if (r.floor === sf.id) r.floor = ""; }); b.devices.forEach(x => { if (x.floor === sf.id){ x.floor = ""; if (x.kind === "ap") x.ap.x = x.ap.y = null; } }); });
   b.floors = out;
   const seenR = new Set(d.floors.flatMap(f => f.rooms.map(r => r.id)));
@@ -352,12 +354,12 @@ function floorRow(d, f, print){
   return `<div class="frow"><div class="fcard${!print && S() === f.id ? " on" : ""}" data-fl="${f.id}" style="background:${bg};border-color:${fg}">
     <div class="ft" style="color:${fg}">${lines(f.name).map(esc).join("<br>")}</div><ul>${lines(f.desc).filter(Boolean).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
     <div class="cov">${nA ? `<span class="${E.pct >= P.cover ? "okc" : "badc"}">${esc(t("passS",{p:E.pct}))}</span><br>${esc(t("cardAps",{n:nA, a:Math.round(f.wm * f.hm)}))}` : esc(t("w_noAPs"))}</div></div>
-    <div class="planwrap"><div class="plan${tool !== "select" && !print ? " tool" : ""}" style="width:${PW}px;height:${H}px">
+    <div class="planwrap">${print ? "" : `<div class="zp" data-zp="wifi:${f.id}" style="height:min(78vh,${H + 60}px)"><div class="zpi">`}<div class="plan${tool !== "select" && !print ? " tool" : ""}" style="width:${PW}px;height:${H}px">
       ${url ? `<img src="${url}" alt="" style="opacity:${num(f.op, 60) / 100}">` : ""}
       <canvas class="heat" data-heat="${f.id}" width="${PW}" height="${H}"></canvas>
       <svg class="over" ${print ? "" : `data-ov="${f.id}"`} viewBox="0 0 ${PW} ${H}" width="${PW}" height="${H}">${overSvg(d, f, print)}</svg>
       <div class="scalebar">${scaleBar(f)}</div>
-    </div></div></div>`;
+    </div>${print ? "" : `</div><div class="zpbtn"><button data-zpa="in">＋</button><button data-zpa="out">－</button><button data-zpa="fit" title="${esc(t("zpFit"))}">⤢</button><span class="zpz"></span></div><div class="zphint">${esc(t("zpHint"))}</div></div>`}</div></div>`;
 }
 function scaleBar(f){ const s = PW / f.wm, m = [1,2,5,10,20,50].find(v => v * s >= 60) || 50; return `<i style="width:${m * s}px"></i>${m} m`; }
 function overSvg(d, f, print){
@@ -365,6 +367,13 @@ function overSvg(d, f, print){
   let h = `<rect class="bgp" x="0" y="0" width="${PW}" height="${H}" fill="transparent"/>`;
   f.rooms.forEach(r => {
     const x = r.x * s, y = r.y * s, w = r.w * s, hh = r.h * s, ls = lines(r.label);
+    if (Array.isArray(r.poly) && r.poly.length >= 6){ // room from a drawing: its real outline (thin), its name where the drawing has it
+      const sx = r.pw ? r.w / r.pw : 1, sy = r.ph ? r.h / r.ph : 1, pts = []; for (let i = 0; i + 1 < r.poly.length; i += 2) pts.push(((r.x + r.poly[i] * sx) * s).toFixed(1) + "," + ((r.y + r.poly[i + 1] * sy) * s).toFixed(1));
+      const lx = (r.x + (r.lx !== undefined ? r.lx * sx : r.w / 2)) * s, ly = (r.y + (r.ly !== undefined ? r.ly * sy : r.h / 2)) * s;
+      h += `<g class="rm" data-room="${r.id}"><polygon points="${pts.join(" ")}" fill="rgba(255,255,255,.01)" stroke="#8a93a8" stroke-width=".8" stroke-dasharray="4 3"/>
+        <text x="${lx}" y="${ly}" font-size="${clamp(s * .32, 7.5, 11)}" font-weight="700" text-anchor="middle" fill="#20242e" stroke="#fff" stroke-width="2.4" paint-order="stroke">${esc(ls.join(" "))}</text></g>`;
+      if (sel === r.id) h += `<rect class="rsel" x="${x - 3}" y="${y - 3}" width="${w + 6}" height="${hh + 6}"/>`;
+      return; }
     h += `<g class="rm" data-room="${r.id}"><rect x="${x}" y="${y}" width="${w}" height="${hh}" fill="rgba(255,255,255,.01)" ${MSTYLE[r.wall] || MSTYLE.drywall}/>
       <text x="${x + w/2}" y="${y + hh/2 - (ls.length - 1) * 6 + 4}" font-size="${ls.length > 1 || w < 70 ? 9.5 : 11}" font-weight="700" text-anchor="middle" fill="#20242e" stroke="#fff" stroke-width="2.4" paint-order="stroke">${ls.map((l, i) => `<tspan x="${x + w/2}" dy="${i ? 12 : 0}">${esc(l)}</tspan>`).join("")}</text>
       ${num(r.users) ? `<text x="${x + w - 4}" y="${y + 11}" font-size="8.5" text-anchor="end" fill="#3b4256">👤${num(r.users)}</text>` : ""}</g>`;

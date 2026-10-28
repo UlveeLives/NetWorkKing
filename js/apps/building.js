@@ -18,6 +18,10 @@ const RDEF = {office:{outlet:4, phone:1}, meeting:{outlet:2, tv:1}, server:{outl
 const ITEMS = {yard:{w:30, h:20}, stairs:{w:3, h:5}, elevator:{w:2, h:2}, shaft:{w:1, h:1}, door:{w:1, h:.2}, window:{w:1.5, h:.2}, column:{w:.5, h:.5}, label:{w:4, h:1}};
 const DEVK = ["outlet","ap","camera","tv","phone","printer","pc","laptop","access","intercom","touch","sensor","iot","switch","nvr","server","ups","workstation","monitor"];
 let drag = null, place = null, lastDown = null;
+// apps that show this floor plan: Building structure (everything) and CCTV (cameras on the plan, rooms locked)
+const HOSTS = {building:{tab:"plan"}, cctv:{tab:"plan", kinds:["camera","nvr","dvr","switch","monitor","workstation","videowall","access","intercom"], cams:true, lockRooms:true}};
+const host = () => HOSTS[UI.app] || null;
+const onPlanTab = () => !!host() && curTab().id === host().tab;
 const st = () => { UI.bld = UI.bld || {labels:true, grid:true}; return UI.bld; };
 
 /* ---------- helpers ---------- */
@@ -47,11 +51,23 @@ function guessType(n){ const x = String(n).toLocaleLowerCase("tr");
     : /oda|otaq|room|office|ofis|kabinet|çalışma|calisma|yatak|bedroom|master|кабинет|комнат|спальн/.test(x) ? "office" : "other"; }
 
 /* ---------- the floor plan (SVG) ---------- */
+// free space around the floor (metres): room for the yard, gates, outdoor cameras; grows with whatever is placed outside
+function extOf(b, f, print){
+  const p = f.plan; let x0 = 0, y0 = 0, x1 = p.wm, y1 = p.hm;
+  const add = (x, y, w = 0, h = 0) => { if (!isFinite(x) || !isFinite(y)) return; x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x + w); y1 = Math.max(y1, y + h); };
+  geoRooms(b, f).forEach(r => add(r.geo.x, r.geo.y, r.geo.w, r.geo.h)); (p.items || []).forEach(it => add(it.x, it.y, it.w, it.h));
+  b.devices.forEach(d => { if (devFloor(b, d) !== f.id) return; const q = posOf(d); if (q) add(q.x, q.y); }); b.racks.forEach(r => { if (r.floor === f.id && r.pos) add(r.pos.x, r.pos.y); });
+  const need = Math.max(-x0, -y0, x1 - p.wm, y1 - p.hm), pad = need > 0 ? need + (print ? 1.5 : 6) : 0;
+  return Math.ceil(Math.max(print ? 0 : num(p.ext, 15), pad));
+}
 function scaleFor(f){ const W = Math.max(320, (($("#view") && $("#view").clientWidth) || 1000) - 40); return clamp(W / Math.max(4, num(f.plan.wm, 40)), 6, 70); }
 function planSvg(b, f, opts = {}){
-  const p = fixFloorPlan(f), s = opts.s || scaleFor(f), W = p.wm * s, H = p.hm * s, sel = opts.print ? null : UI.sel, S = st();
+  const p = fixFloorPlan(f), s = opts.s || scaleFor(f), W = p.wm * s, H = p.hm * s, sel = opts.print ? null : UI.sel, S = st(), HO = opts.print ? null : host();
   const isSel = (type, id) => sel && sel.type === type && sel.id === id;
-  let h = `<rect class="bfl" x="0" y="0" width="${W}" height="${H}" fill="#fff" stroke="#1d2433" stroke-width="2.5"/>`;
+  const E = extOf(b, f, opts.print), es = E * s, TW = W + 2 * es, TH = H + 2 * es;
+  let h = "";
+  if (S.grid && !opts.print && E){ let g = ""; for (let x = -E; x <= p.wm + E; x++) g += `M${x * s} ${-es}V${H + es}`; for (let y = -E; y <= p.hm + E; y++) g += `M${-es} ${y * s}H${W + es}`; h += `<path d="${g}" stroke="#e3e7ee" stroke-width="1"/>`; }
+  h += `<rect class="bfl" x="0" y="0" width="${W}" height="${H}" fill="#fff" stroke="#1d2433" stroke-width="2.5"/>`;
   if (p.img && assetURL(p.img)) h += `<image href="${assetURL(p.img)}" x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="none" opacity="${num(p.op, 60) / 100}"/>`;
   if (S.grid && !opts.print){ let g = ""; for (let x = 1; x < p.wm; x++) g += `M${x * s} 0V${H}`; for (let y = 1; y < p.hm; y++) g += `M0 ${y * s}H${W}`; h += `<path d="${g}" stroke="#e8ebf0" stroke-width="1"/>`; }
   const drawn = p.img && assetURL(p.img), fo = drawn ? (num(p.op, 60) >= 90 ? ".3" : ".5") : ".82";
@@ -59,11 +75,11 @@ function planSvg(b, f, opts = {}){
     const miss = RK.filter(k => reqOf(r, k) > placedIn(b, r, k)), sum = RK.filter(k => reqOf(r, k)).map(k => `${RK_SHORT[k]} ${placedIn(b, r, k)}/${reqOf(r, k)}`).join(" · ");
     const shape = Array.isArray(g.poly) && g.poly.length >= 6 ? `<polygon points="${polyPts(g, s)}"` : `<rect x="${x}" y="${y}" width="${w}" height="${hh}"`;
     h += `<g class="brm" data-room="${r.id}">${shape} fill="${bg}" fill-opacity="${fo}" stroke="${fg}" stroke-width="${on ? 3 : drawn ? 1 : 1.6}"${r.type === "corridor" || drawn ? ' stroke-dasharray="6 4"' : ""}/>
-      ${g.lx !== undefined ? `<text x="${(g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s}" y="${(g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s}" text-anchor="middle" font-size="${clamp(s * .38, 9, 13)}" font-weight="700" fill="${fg}" stroke="#fff" stroke-width="3" paint-order="stroke">${esc(r.name)}</text>${w > 60 ? `<text x="${(g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s}" y="${(g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s + 12}" text-anchor="middle" font-size="9" fill="#4b5262" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(area(r) + " m²" + (g.est ? " ≈" : "") + (num(r.users) ? " · 👤" + num(r.users) : ""))}</text>` : ""}`
-      : `<text x="${x + 6}" y="${y + 15}" font-size="${clamp(s * .45, 10, 14)}" font-weight="700" fill="${fg}">${esc(r.name)}</text>
+      ${g.lx !== undefined ? `<text class="rlab" data-rlab="${r.id}" x="${(g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s}" y="${(g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s}" text-anchor="middle" font-size="${clamp(s * .38, 9, 13)}" font-weight="700" fill="${fg}" stroke="#fff" stroke-width="3" paint-order="stroke">${esc(r.name)}</text>${w > 60 ? `<text x="${(g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s}" y="${(g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s + 12}" text-anchor="middle" font-size="9" fill="#4b5262" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(area(r) + " m²" + (g.est ? " ≈" : "") + (num(r.users) ? " · 👤" + num(r.users) : ""))}</text>` : ""}`
+      : `<text class="rlab" data-rlab="${r.id}" x="${x + 6}" y="${y + 15}" font-size="${clamp(s * .45, 10, 14)}" font-weight="700" fill="${fg}">${esc(r.name)}</text>
       ${w > 70 ? `<text x="${x + 6}" y="${y + 28}" font-size="9.5" fill="#4b5262">${esc(area(r) + " m²" + (num(r.users) ? " · 👤" + num(r.users) : ""))}</text>` : ""}`}
       ${sum && w > 90 ? `<text x="${x + 6}" y="${y + hh - 6}" font-size="9" fill="${miss.length ? "#b3262f" : "#1f7a35"}">${esc(sum)}</text>` : ""}</g>`;
-    if (on && !opts.print) h += `<rect class="bres" data-res="room:${r.id}" x="${x + w - 7}" y="${y + hh - 7}" width="14" height="14" rx="3"/>`; });
+    if (on && !opts.print && !(HO && HO.lockRooms)) h += `<rect class="bres" data-res="room:${r.id}" x="${x + w - 7}" y="${y + hh - 7}" width="14" height="14" rx="3"/>`; });
   p.items.forEach(it => { const x = it.x * s, y = it.y * s, w = it.w * s, hh = it.h * s, on = isSel("bitem", it.id), c = "#3a4552";
     let g = "";
     if (it.type === "stairs"){ g = `<rect width="${w}" height="${hh}" fill="#fff" stroke="${c}" stroke-width="1.5"/>`; const n = Math.max(3, Math.round(it.h / .3)); for (let i = 1; i < n; i++) g += `<line x1="0" y1="${hh * i / n}" x2="${w}" y2="${hh * i / n}" stroke="${c}" stroke-width=".8"/>`; g += `<path d="M${w / 2} ${hh - 4}V6M${w / 2 - 4} 12L${w / 2} 5L${w / 2 + 4} 12" stroke="${c}" fill="none" stroke-width="1.2"/>`; }
@@ -79,12 +95,18 @@ function planSvg(b, f, opts = {}){
   b.racks.filter(r => r.floor === f.id && r.pos).forEach(r => { const x = r.pos.x * s, y = r.pos.y * s, on = isSel("rack", r.id);
     h += `<g class="bdev" data-brack="${r.id}" transform="translate(${x} ${y})"><rect x="-10" y="-13" width="20" height="26" rx="2" fill="#232a33" stroke="${on ? "#ffb703" : "#fff"}" stroke-width="${on ? 3 : 1.2}"/><path d="M-6 -8h12M-6 -3h12M-6 2h12M-6 7h12" stroke="#7fd1ff" stroke-width="1.6"/>
       ${S.labels ? `<text y="24" font-size="9" font-weight="700" text-anchor="middle" fill="#1d2433" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(r.name)}</text>` : ""}</g>`; });
-  b.devices.filter(d => devFloor(b, d) === f.id && posOf(d)).forEach(d => { const P0 = posOf(d), x = P0.x * s, y = P0.y * s, on = isSel("dev", d.id) || UI.multi.has("dev:" + d.id);
-    h += `<g class="bdev" data-bdev="${d.id}" transform="translate(${x} ${y})"><circle r="11" fill="#fff" stroke="${on ? "#ffb703" : "#1d2433"}" stroke-width="${on ? 3 : 1.1}"/><g transform="translate(-9 -9) scale(.375)">${ICO[devIcon(d)] || ICO.box}</g>
+  const camsOn = (HO && HO.cams) || (opts.print && opts.cams) || S.cones;
+  if (camsOn) b.devices.filter(d => d.kind === "camera" && devFloor(b, d) === f.id && posOf(d)).forEach(d => { const P0 = posOf(d), C = window.CCTV && CCTV.camCalc ? CCTV.camCalc(b, d) : {}, fov = clamp(num(C.fov, 90), 10, 360), R = clamp(num(C.dori && C.dori[1], 20), 3, 60) * s, a = num(d.camera && d.camera.dir, 0) * Math.PI / 180, h2 = fov * Math.PI / 360;
+    const x = P0.x * s, y = P0.y * s, ax = x + R * Math.cos(a - h2), ay = y + R * Math.sin(a - h2), bx = x + R * Math.cos(a + h2), by = y + R * Math.sin(a + h2), on = isSel("dev", d.id);
+    h += fov >= 359 ? `<circle cx="${x}" cy="${y}" r="${R}" fill="rgba(255,183,3,.14)" stroke="#e0a400" stroke-width="1" pointer-events="none"/>` : `<path d="M${x} ${y}L${ax} ${ay}A${R} ${R} 0 ${fov > 180 ? 1 : 0} 1 ${bx} ${by}Z" fill="rgba(255,183,3,${on ? .26 : .15})" stroke="#e0a400" stroke-width="${on ? 1.6 : 1}" pointer-events="none"/>`;
+    if (on && !opts.print){ const hx = x + R * .55 * Math.cos(a), hy = y + R * .55 * Math.sin(a); h += `<line x1="${x}" y1="${y}" x2="${hx}" y2="${hy}" stroke="#e0a400" stroke-width="1.5" stroke-dasharray="4 3" pointer-events="none"/><circle class="camrot" data-camrot="${d.id}" cx="${hx}" cy="${hy}" r="8" fill="#ffb703" stroke="#7a5600" stroke-width="1.5"><title>${esc(t("camRotate"))}</title></circle>`; } });
+  b.devices.filter(d => devFloor(b, d) === f.id && posOf(d)).forEach(d => { const P0 = posOf(d), x = P0.x * s, y = P0.y * s, on = isSel("dev", d.id) || UI.multi.has("dev:" + d.id), pl = d.status === "planned", fade = HO && HO.kinds && !HO.kinds.includes(d.kind);
+    h += `<g class="bdev${fade ? " fade" : ""}" data-bdev="${d.id}" transform="translate(${x} ${y})"${fade ? ' opacity=".35"' : ""}><circle r="11" fill="#fff" stroke="${on ? "#ffb703" : pl ? "#5b7fc4" : "#1d2433"}" stroke-width="${on ? 3 : pl ? 1.6 : 1.1}"${pl ? ' stroke-dasharray="3 2"' : ""}/><g transform="translate(-9 -9) scale(.375)">${ICO[devIcon(d)] || ICO.box}</g>
       ${S.labels ? `<text y="21" font-size="8.5" font-weight="700" text-anchor="middle" fill="#1d2433" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(d.name)}</text>` : ""}</g>`; });
   const m = [1,2,5,10,20].find(v => v * s >= 50) || 20;
-  h += `<g transform="translate(${W - m * s - 12} ${H - 12})" pointer-events="none"><rect x="-4" y="-14" width="${m * s + 8}" height="18" fill="#fff" opacity=".85" rx="3"/><path d="M0 0V-5M0 0H${m * s}V-5" stroke="#1d2433" fill="none" stroke-width="1.5"/><text x="${m * s / 2}" y="-5" font-size="9.5" font-weight="700" text-anchor="middle">${m} m</text></g>`;
-  return `<svg class="bplan" data-bfloor="${f.id}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="Barlow,Segoe UI,Arial,sans-serif">${h}</svg>`;
+  h = `<g transform="translate(${es} ${es})">${h}</g>`;
+  h += `<g transform="translate(${TW - m * s - 12} ${TH - 12})" pointer-events="none"><rect x="-4" y="-14" width="${m * s + 8}" height="18" fill="#fff" opacity=".85" rx="3"/><path d="M0 0V-5M0 0H${m * s}V-5" stroke="#1d2433" fill="none" stroke-width="1.5"/><text x="${m * s / 2}" y="-5" font-size="9.5" font-weight="700" text-anchor="middle">${m} m</text></g>`;
+  return `<svg class="bplan" data-bfloor="${f.id}" data-e="${E}" data-fit="${es - 10} ${es - 10} ${W + 20} ${H + 20}" data-anchor="${es} ${es}" viewBox="0 0 ${TW} ${TH}" width="${TW}" height="${TH}" font-family="Barlow,Segoe UI,Arial,sans-serif">${opts.print ? "" : `<rect x="0" y="0" width="${TW}" height="${TH}" fill="#f6f7f9"/>`}${h}</svg>`;
 }
 
 /* ---------- plan page ---------- */
@@ -93,13 +115,17 @@ function floorChips(b, f){ return `<div class="bfloors">${b.floors.slice().rever
 function planView(){
   const b = B(), f = curFloor(b);
   if (!f) return `<div class="empty"><h3>${esc(t("bd_emptyT"))}</h3><p>${esc(t("bd_empty"))}</p><div class="btns" style="justify-content:center"><button class="btn pri" data-ba="wizard">🧭 ${esc(t("bd_wizard"))}</button><button class="btn pri" data-ba="dxf">📐 ${esc(t("dx_btn"))}</button><button class="btn" data-ba="addFloor">＋ ${esc(t("floorNew"))}</button></div></div>`;
-  return `${crumbs(b, f)}${floorChips(b, f)}${warnBox(bWarnings(b, f))}<div class="bwrap">${planSvg(b, f)}</div><p class="dghint">${esc(place ? t("bd_hintPlace") : t("bd_hint"))}</p>`;
+  return `${crumbs(b, f)}${floorChips(b, f)}${warnBox(bWarnings(b, f))}${zpWrap(UI.app + ":" + f.id, planSvg(b, f))}<p class="dghint">${esc(place ? t("bd_hintPlace") : t("bd_hint"))}</p>`;
 }
 function palette(){
   const b = B(), f = curFloor(b); if (!f) return "";
   const P = (key, label, ic) => `<div class="pitem bpi${place === key ? " on" : ""}" draggable="true" data-bplace="${key}" title="${esc(label)}">${ic}<span>${esc(label)}</span></div>`;
   const svgI = ic => `<svg viewBox="0 0 48 48">${ICO[ic] || ICO.box}</svg>`;
-  const unplaced = b.devices.filter(d => devFloor(b, d) === f.id && !posOf(d) && DEVK.includes(d.kind));
+  const HO = host(), KS = HO && HO.kinds ? HO.kinds.filter(k => KINDS[k]) : DEVK;
+  const unplaced = b.devices.filter(d => (devFloor(b, d) === f.id || (HO && HO.kinds && !devFloor(b, d))) && !posOf(d) && KS.includes(d.kind) && !d.rack);
+  if (HO && HO.kinds) return `<div class="psec"><h4>${esc(t("bd_devs"))}</h4><div class="pgrid">${KS.map(k => P("dev:" + k, kindName(k), svgI(KINDS[k].icon))).join("")}</div><p class="muted small">${esc(t("camPlanHint"))}</p></div>
+    ${unplaced.length ? `<div class="psec"><h4>${esc(t("bd_unplaced"))} <span class="cnt">${unplaced.length}</span></h4><div class="ulist">${unplaced.slice(0, 80).map(d => `<button class="ub${place === "put:" + d.id ? " on" : ""}" data-bput="${d.id}">${esc(devLabel(d))}${d.room ? ` <small class="muted">${esc(roomName(b, d.room))}</small>` : ""}</button>`).join("")}</div></div>` : ""}
+    <div class="psec"><h4>${esc(t("palView"))}</h4><label class="chk"><input type="checkbox" data-bopt="labels"${st().labels ? " checked" : ""}> ${esc(t("bd_labels"))}</label><label class="chk"><input type="checkbox" data-bopt="grid"${st().grid ? " checked" : ""}> ${esc(t("bd_grid"))}</label></div>`;
   return `<div class="psec"><h4>${esc(t("bd_struct"))}</h4><div class="pgrid">
       ${P("room:office", t("bd_room"), `<svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" fill="#e8f0ff" stroke="#2f5fc4" stroke-width="3"/></svg>`)}
       ${P("room:corridor", t("rt_corridor"), `<svg viewBox="0 0 48 48"><rect x="4" y="18" width="40" height="12" fill="#f2f3f5" stroke="#7b8494" stroke-width="2.5" stroke-dasharray="5 3"/></svg>`)}
@@ -115,7 +141,7 @@ function palette(){
     </div></div>
     <div class="psec"><h4>${esc(t("bd_devs"))}</h4><div class="pgrid">${DEVK.map(k => P("dev:" + k, kindName(k), svgI(KINDS[k].icon))).join("")}${P("rack", t("k_rack") === "k_rack" ? "Rack" : t("k_rack"), svgI("rack"))}</div></div>
     ${unplaced.length ? `<div class="psec"><h4>${esc(t("bd_unplaced"))} <span class="cnt">${unplaced.length}</span></h4><div class="ulist">${unplaced.slice(0, 60).map(d => `<button class="ub${place === "put:" + d.id ? " on" : ""}" data-bput="${d.id}">${esc(devLabel(d))}${d.room ? ` <small class="muted">${esc(roomName(b, d.room))}</small>` : ""}</button>`).join("")}</div></div>` : ""}
-    <div class="psec"><h4>${esc(t("palView"))}</h4><label class="chk"><input type="checkbox" data-bopt="labels"${st().labels ? " checked" : ""}> ${esc(t("bd_labels"))}</label><label class="chk"><input type="checkbox" data-bopt="grid"${st().grid ? " checked" : ""}> ${esc(t("bd_grid"))}</label>
+    <div class="psec"><h4>${esc(t("palView"))}</h4><label class="chk"><input type="checkbox" data-bopt="labels"${st().labels ? " checked" : ""}> ${esc(t("bd_labels"))}</label><label class="chk"><input type="checkbox" data-bopt="grid"${st().grid ? " checked" : ""}> ${esc(t("bd_grid"))}</label><label class="chk"><input type="checkbox" data-bopt="cones"${st().cones ? " checked" : ""}> ${esc(t("camCones"))}</label>
       <button class="btn small wfull" data-ba="wizard">🧭 ${esc(t("bd_wizard"))}</button><button class="btn small wfull" data-ba="dxf">📐 ${esc(t("dx_btn"))}</button></div>`;
 }
 
@@ -155,6 +181,7 @@ function bWarnings(b, f){
   const W = [], R = roomsOf(b, f), miss = R.filter(r => RK.some(k => reqOf(r, k) > placedIn(b, r, k)));
   if (miss.length) W.push(["info", t("bd_wMiss",{n:miss.length, r:miss.slice(0, 4).map(r => r.name).join(", ") + (miss.length > 4 ? " …" : "")})]);
   const est = R.filter(r => r.geo && r.geo.est); if (est.length) W.push(["info", t("dx_wEst",{n:est.length, r:est.slice(0, 5).map(r => r.name).join(", ") + (est.length > 5 ? " …" : "")}), est[0].id]);
+  if (LINK_FLOOR.test(String(f.name).trim())) W.push(["", t("bd_wLinkFloor",{f:f.name})]);
   const nogeo = R.filter(r => !r.geo); if (nogeo.length) W.push(["info", t("bd_wNoGeo",{n:nogeo.length})]);
   const out = R.filter(r => r.geo && (r.geo.x + r.geo.w > f.plan.wm + .01 || r.geo.y + r.geo.h > f.plan.hm + .01 || r.geo.x < 0 || r.geo.y < 0)); if (out.length) W.push(["", t("bd_wOut",{r:out.map(r => r.name).join(", ")}), out[0].id]);
   return W;
@@ -190,7 +217,7 @@ function drawer(tab){
   if (s.type === "bfloor"){ const f = floorById(b, s.id); if (!f) return ""; const p = fixFloorPlan(f);
     return `${head(f.name, t("f_floor"))}<label class="fld"><span>${esc(t("f_name"))}</span><input data-f="f.name" value="${esc(f.name)}"></label>
       <div class="two"><label class="fld"><span>${esc(t("f_w"))} (m)</span><input data-f="f.wm" type="text" inputmode="decimal" value="${esc(p.wm)}"></label><label class="fld"><span>${esc(t("bd_depth"))} (m)</span><input data-f="f.hm" type="text" inputmode="decimal" value="${esc(p.hm)}"></label></div>
-      <div class="two"><label class="fld"><span>${esc(t("bd_fh"))} (m)</span><input data-f="f.h" type="text" inputmode="decimal" value="${esc(f.h || 3.5)}"></label><span></span></div>
+      <div class="two"><label class="fld"><span>${esc(t("bd_fh"))} (m)</span><input data-f="f.h" type="text" inputmode="decimal" value="${esc(f.h || 3.5)}"></label><label class="fld"><span>${esc(t("bd_ext"))} (m)</span><input data-f="f.ext" type="text" inputmode="decimal" value="${esc(num(p.ext, 15))}"></label></div>
       <div class="btns"><button class="btn" data-dr="bImg">🖼 ${esc(t("wf_loadImg"))}</button>${p.img ? `<button class="btn dan" data-dr="bImgRm">${esc(t("wf_rmImg"))}</button>` : ""}</div>
       <p class="muted small">${esc(t("bd_imgHint"))}</p>`; }
   return "";
@@ -206,7 +233,7 @@ function onField(path, v){
   if (s.type === "bitem"){ const f = curFloor(b), it = f && f.plan.items.find(x => x.id === s.id); if (!it) return;
     edit(() => { const k = path.split(".")[1]; if (k === "text") it.text = v; else if (k === "rot") it.rot = num(v); else it[k] = k === "w" || k === "h" ? Math.max(.1, n(v)) : k === "size" ? clamp(n(v), 8, 40) : n(v); }); return; }
   if (s.type === "rack"){ const r = rackById(b, s.id); if (!r) return; edit(() => { const k = path.split(".")[1]; if (k === "name") r.name = String(v).trim() || r.name; else r.room = v; }); return; }
-  if (s.type === "bfloor"){ const f = floorById(b, s.id); if (!f) return; edit(() => { const k = path.split(".")[1]; if (k === "name") f.name = String(v).trim() || f.name; else if (k === "h") f.h = Math.max(2, n(v)); else f.plan[k] = Math.max(2, n(v)); }); }
+  if (s.type === "bfloor"){ const f = floorById(b, s.id); if (!f) return; edit(() => { const k = path.split(".")[1]; if (k === "name") f.name = String(v).trim() || f.name; else if (k === "h") f.h = Math.max(2, n(v)); else if (k === "ext") f.plan.ext = clamp(n(v), 0, 500); else f.plan[k] = Math.max(2, n(v)); }); }
 }
 async function onDrawerAct(k){
   const b = B(), s = UI.sel; if (!s) return; const f = curFloor(b);
@@ -243,7 +270,8 @@ function createMissing(b, r){
 function freeRect(b, f, w, h){ const p = fixFloorPlan(f); for (let y = 0; y + h <= p.hm; y += .5) for (let x = 0; x + w <= p.wm; x += .5){ if (!geoRooms(b, f).some(r => x < r.geo.x + r.geo.w && x + w > r.geo.x && y < r.geo.y + r.geo.h && y + h > r.geo.y)) return {x, y, w, h}; } return {x:0, y:0, w, h}; }
 
 /* ---------- placing and dragging on the plan ---------- */
-function ptOf(e, svg, f){ const R = svg.getBoundingClientRect(); return {x:clamp((e.clientX - R.left) / R.width * f.plan.wm, 0, f.plan.wm), y:clamp((e.clientY - R.top) / R.height * f.plan.hm, 0, f.plan.hm)}; }
+function ptOf(e, svg, f){ const R = svg.getBoundingClientRect(), E = num(svg.dataset.e, 0), W = f.plan.wm + 2 * E, H = f.plan.hm + 2 * E;
+  return {x:clamp((e.clientX - R.left) / R.width * W - E, -E, f.plan.wm + E), y:clamp((e.clientY - R.top) / R.height * H - E, -E, f.plan.hm + E)}; }
 function doPlace(key, b, f, p){
   edit(() => {
     if (key.startsWith("room:")){ const type = key.slice(5), w = type === "corridor" ? 8 : 4, h = type === "corridor" ? 2 : 4;
@@ -257,21 +285,21 @@ function doPlace(key, b, f, p){
 }
 async function renameAt(b, f, type, id){
   if (type === "room"){ const r = roomById(b, id), n = await uiPrompt(t("f_name"), r.name); if (n && n.trim()) edit(() => { r.name = n.trim(); }); }
-  else if (type === "dev"){ const d = devById(b, id), n = await uiPrompt(t("f_name"), d.name); if (n && n.trim()) edit(() => { d.name = n.trim(); }); }
+  else if (type === "dev"){ const d = devById(b, id), n = await uiPrompt(t("f_name"), d.name); if (n && n.trim() && !await nameOk(b, n, d.id)) return; if (n && n.trim()) edit(() => { d.name = n.trim(); }); }
   else if (type === "rack"){ const r = rackById(b, id), n = await uiPrompt(t("f_name"), r.name); if (n && n.trim()) edit(() => { r.name = n.trim(); }); }
   else if (type === "bitem"){ const it = f.plan.items.find(x => x.id === id); if (it && (it.type === "label" || it.type === "yard")){ const n = await uiPrompt(t("f_text"), it.text || ""); if (n !== null) edit(() => { it.text = n; }); } }
 }
 function wire(){
-  const onPlan = () => UI.app === "building" && curTab().id === "plan";
+  const onPlan = onPlanTab;
   document.addEventListener("dragstart", e => { const el = e.target.closest && e.target.closest("[data-bplace]"); if (!el || !onPlan()) return; place = el.dataset.bplace; e.dataTransfer.setData("text/plain", place); e.dataTransfer.effectAllowed = "copy"; });
   document.addEventListener("dragover", e => { if (onPlan() && e.target.closest && e.target.closest("svg.bplan")) e.preventDefault(); });
   document.addEventListener("drop", e => { const svg = e.target.closest && e.target.closest("svg.bplan"); if (!svg || !onPlan()) return; e.preventDefault(); const b = B(), f = curFloor(b), key = e.dataTransfer.getData("text/plain") || place; place = null; if (key) doPlace(key, b, f, ptOf(e, svg, f)); });
-  document.addEventListener("click", e => { if (UI.app !== "building") return;
+  document.addEventListener("click", e => { if (!onPlanTab() && !(UI.app === "building")) return;
     const pl = e.target.closest("[data-bplace]"); if (pl){ place = place === pl.dataset.bplace ? null : pl.dataset.bplace; render(); return; }
     const pu = e.target.closest("[data-bput]"); if (pu){ const k = "put:" + pu.dataset.bput; place = place === k ? null : k; render(); return; }
     const fl = e.target.closest("[data-bfl]"); if (fl){ st().floor = fl.dataset.bfl; UI.sel = {type:"bfloor", id:fl.dataset.bfl}; render(); return; }
     const a = e.target.closest("[data-ba]"); if (a){ act(a.dataset.ba); return; } });
-  document.addEventListener("change", e => { if (UI.app !== "building") return; const el = e.target, b = B();
+  document.addEventListener("change", e => { if (UI.app !== "building" && !onPlanTab()) return; const el = e.target, b = B();
     if (el.dataset.bopt){ st()[el.dataset.bopt] = el.checked; render(); return; }
     if (el.dataset.bfn){ const f = floorById(b, el.dataset.bfn); if (f && el.value.trim()) edit(() => { f.name = el.value.trim(); }); return; }
     if (el.dataset.brn){ const r = roomById(b, el.dataset.brn); if (r && el.value.trim()) edit(() => { r.name = el.value.trim(); }); return; }
@@ -282,6 +310,12 @@ function wire(){
     if (!onPlan() || (e.button !== 0 && e.pointerType !== "touch")) return; const svg = e.target.closest("svg.bplan"); if (!svg) return;
     const b = B(), f = curFloor(b); if (!f) return; const p = ptOf(e, svg, f);
     if (place){ e.preventDefault(); const k = place; place = null; doPlace(k, b, f, p); return; }
+    const cr = e.target.closest("[data-camrot]");
+    if (cr){ const d = devById(b, cr.dataset.camrot); drag = {mode:"rot", d, snap:snapshot(), moved:false, p0:p}; e.preventDefault(); return; }
+    const lb = e.target.closest("[data-rlab]");
+    if (lb && !(host() && host().lockRooms && false)){ const r = roomById(b, lb.dataset.rlab), g = r.geo, sx = g.pw ? g.w / g.pw : 1, sy = g.ph ? g.h / g.ph : 1;
+      if (g.lx === undefined){ g.lx = .4 + 1.5 / sx; g.ly = .6 / sy; }
+      UI.sel = {type:"room", id:r.id}; drag = {mode:"lab", g, sx, sy, lx:g.lx, ly:g.ly, p0:p, snap:snapshot(), moved:false}; e.preventDefault(); render(); return; }
     const res = e.target.closest("[data-res]"), dv = e.target.closest("[data-bdev]"), rk = e.target.closest("[data-brack]"), it = e.target.closest("[data-bitem]"), rm = e.target.closest("[data-room]");
     let type = null, id = null;
     if (res){ const [ty, i] = res.dataset.res.split(":"), o = ty === "room" ? roomById(b, i).geo : f.plan.items.find(x => x.id === i); drag = {mode:"resize", o, p0:p, w0:o.w, h0:o.h, snap:snapshot(), moved:false}; e.preventDefault(); return; }
@@ -294,6 +328,7 @@ function wire(){
     if (type === "dev"){ const d = devById(b, id); items.push({d, ...posOf(d)}); }
     else if (type === "rack"){ const r = rackById(b, id); items.push({o:r.pos, x:r.pos.x, y:r.pos.y}); }
     else if (type === "bitem"){ const o = f.plan.items.find(x => x.id === id); items.push({o, x:o.x, y:o.y}); }
+    else if (host() && host().lockRooms){ render(); return; }
     else { const r = roomById(b, id); items.push({o:r.geo, x:r.geo.x, y:r.geo.y});
       // a room carries what lies inside it
       b.devices.filter(d => d.room === r.id && posOf(d)).forEach(d => items.push({d, ...posOf(d)}));
@@ -303,10 +338,12 @@ function wire(){
   });
   document.addEventListener("pointermove", e => { if (!drag) return; const svg = $("svg.bplan"); if (!svg) return; const b = B(), f = curFloor(b), p = ptOf(e, svg, f), dx = p.x - drag.p0.x, dy = p.y - drag.p0.y;
     if (!drag.moved && Math.hypot(dx, dy) * scaleFor(f) < 3) return; drag.moved = true;
-    if (drag.mode === "resize"){ drag.o.w = Math.max(.3, snap(drag.w0 + dx)); drag.o.h = Math.max(.2, snap(drag.h0 + dy)); delete drag.o.est; }
+    if (drag.mode === "rot"){ const q = posOf(drag.d); if (q) drag.d.camera.dir = Math.round(Math.atan2(p.y - q.y, p.x - q.x) * 180 / Math.PI + 360) % 360; }
+    else if (drag.mode === "lab"){ drag.g.lx = r1(drag.lx + dx / drag.sx); drag.g.ly = r1(drag.ly + dy / drag.sy); }
+    else if (drag.mode === "resize"){ drag.o.w = Math.max(.3, snap(drag.w0 + dx)); drag.o.h = Math.max(.2, snap(drag.h0 + dy)); delete drag.o.est; }
     else drag.items.forEach((it, i) => { const nx = (drag.type === "room" || drag.type === "bitem") && i === 0 ? snap(it.x + dx) : r1(it.x + dx), ny = (drag.type === "room" || drag.type === "bitem") && i === 0 ? snap(it.y + dy) : r1(it.y + dy);
-      if (it.d) setPos(it.d, clamp(nx, 0, f.plan.wm), clamp(ny, 0, f.plan.hm)); else { it.o.x = nx; it.o.y = ny; } });
-    const svgEl = $("svg.bplan"); if (svgEl) svgEl.outerHTML = planSvg(b, f); });
+      if (it.d) setPos(it.d, nx, ny); else { it.o.x = nx; it.o.y = ny; } });
+    const svgEl = $("svg.bplan"); if (svgEl){ svgEl.outerHTML = planSvg(b, f); zpAll(); } });
   const up = cancel => { if (!drag) return; const g = drag; drag = null; if (cancel){ render(); return; }
     if (g.moved){ const b = B(), f = curFloor(b);
       // a device or rack dropped in another room now belongs to that room
@@ -449,7 +486,7 @@ async function dxfImport(){
       <div class="two"><label class="fld"><span>${esc(t("dx_units"))}</span><select id="dx-u">${Object.values(DXF.UNITS).map(([u, k]) => opt(u, u + " (1 = " + k + " m)", S.units)).join("")}</select></label><span></span></div>
       <label class="chk"><input type="checkbox" id="dx-walls"${S.walls ? " checked" : ""}> ${esc(t("dx_optWalls"))}</label>
       <label class="chk"><input type="checkbox" id="dx-furn"${S.furn ? " checked" : ""}> ${esc(t("dx_optFurn"))}</label>
-      ${A.blocks.length ? `<label class="chk"><input type="checkbox" id="dx-req"${S.req ? " checked" : ""}> ${esc(t("dx_optReq",{n:nOut}))}</label><label class="chk"><input type="checkbox" id="dx-devs"${S.devs ? " checked" : ""}> ${esc(t("dx_optDevs"))}</label>
+      ${A.blocks.length ? `<label class="chk"><input type="checkbox" id="dx-req"${S.req ? " checked" : ""}> ${esc(t("dx_optReq",{n:nOut}))}</label><label class="chk"><input type="checkbox" id="dx-devs"${S.devs ? " checked" : ""}> ${esc(t("dx_optDevs2"))}</label>
         <details class="dsec"><summary>🔌 ${esc(t("dx_blocks"))} <span class="cnt">${A.blocks.length}</span></summary><div class="dsb"><table class="t">${A.blocks.map(x => `<tr><td>${esc(x.name)}</td><td class="c">${x.n}</td><td>${kindSel(x)}</td></tr>`).join("")}</table></div></details>` : ""}
       <details class="dsec"><summary>🗂 ${esc(t("dx_layers"))} <span class="cnt">${A.layers.length}</span> <small class="muted">${esc(["wallExt","wall","door","window","roomName","area","site"].map(r => t("dxr_" + r) + " " + cnt(r)).join(" · "))}</small></summary>
         <div class="dsb scroll" style="max-height:34vh"><p class="muted small">${esc(t("dx_layersH"))}</p><table class="t">${A.layers.filter(l => l.segs + l.texts + l.refs > 0).map(l => `<tr><td>${esc(l.name)}${l.hidden ? ` <small class="muted">(${esc(t("dx_hid"))})</small>` : ""}</td><td class="c small">${l.segs || ""}</td><td class="c small">${l.texts ? "T" + l.texts : ""}</td><td>${roleSel(l)}</td></tr>`).join("")}</table></div></details>
@@ -482,7 +519,10 @@ async function dxfImport(){
       r.outlets.forEach(o => { const rm = R.filter(x => o.x >= x.geo.x && o.x <= x.geo.x + x.geo.w && o.y >= x.geo.y && o.y <= x.geo.y + x.geo.h).sort((a, c) => a.geo.w * a.geo.h - c.geo.w * c.geo.h)[0];
         if (rm && S.req) rm.req[o.kind] = num(rm.req[o.kind]) + 1;
         const d = newDevice(o.kind, {floor:f.id, room:rm ? rm.id : ""}); d.name = ""; d.notes = o.block; setPos(d, o.x, o.y); src.devices.push(d); }); });
-    if (S.mode === "over") return overlayPlan(src, {devs:S.devs});
+    // the user decides which of the devices found in the drawing come along
+    if (!S.devs) src.devices = [];
+    else if (src.devices.length){ const keep = await pickDrawn(src); if (keep === null) return; src.devices = keep; }
+    if (S.mode === "over") return overlayPlan(src, {devs:true});
     let nD = 0;
     edit(() => {
       const below = src.floors.filter(f => f.lv < 0), above = src.floors.filter(f => f.lv >= 0); src.floors.forEach(f => { delete f.lv; });
@@ -497,6 +537,25 @@ async function dxfImport(){
   draw();
 }
 
+// list of the devices found in a drawing (outlets, APs, TV, phone …): grouped by floor and kind, each one can be ticked off
+function pickDrawn(src){
+  return new Promise(res => {
+    const D = src.devices, on = new Set(D.map(d => d.id)), rn = id => (src.rooms.find(r => r.id === id) || {}).name || "—", kinds = [...new Set(D.map(d => d.kind))];
+    const draw = () => {
+      const cnt = k => D.filter(d => d.kind === k), fl = src.floors.map(f => ({f, L:D.filter(d => d.floor === f.id)})).filter(x => x.L.length);
+      modal(`<h3>🔌 ${esc(t("dxp_title"))}</h3><p class="muted small">${esc(t("dxp_hint",{n:D.length}))}</p>
+        <div class="dxpk">${kinds.map(k => { const L = cnt(k), n = L.filter(d => on.has(d.id)).length; return `<label class="chk"><input type="checkbox" data-dxpk="${k}"${n === L.length ? " checked" : ""}${n && n < L.length ? " data-mixed=\"1\"" : ""}> <svg viewBox="0 0 48 48" width="18" height="18">${ICO[KINDS[k].icon] || ICO.box}</svg> ${esc(kindName(k))} <span class="cnt">${n}/${L.length}</span></label>`; }).join("")}</div>
+        <div class="scroll" style="max-height:48vh">${fl.map(({f, L}) => `<details class="dsec"${fl.length === 1 ? " open" : ""}><summary><input type="checkbox" data-dxpf="${f.id}"${L.every(d => on.has(d.id)) ? " checked" : ""}> 🏬 ${esc(f.name)} <span class="cnt">${L.filter(d => on.has(d.id)).length}/${L.length}</span></summary>
+          <div class="dsb"><table class="t">${L.slice().sort((a, c) => rn(a.room).localeCompare(rn(c.room)) || a.kind.localeCompare(c.kind)).map(d => `<tr><td style="width:28px"><input type="checkbox" data-dxpd="${d.id}"${on.has(d.id) ? " checked" : ""}></td><td><svg viewBox="0 0 48 48" width="16" height="16">${ICO[KINDS[d.kind].icon] || ICO.box}</svg> ${esc(kindName(d.kind))}</td><td>${esc(rn(d.room))}</td><td class="small muted">${esc(d.notes || "")}</td></tr>`).join("")}</table></div></details>`).join("")}</div>
+        <div class="mfoot"><button class="btn" data-m="cancel">${esc(t("cancel"))}</button><button class="btn" data-m="none">${esc(t("dxp_none"))}</button><span class="grow"></span><button class="btn pri" data-m="ok">✓ ${esc(t("dxp_ok",{n:on.size}))}</button></div>`,
+        {ok:() => { closeModal(); res(D.filter(d => on.has(d.id))); }, none:() => { closeModal(); res([]); }, cancel:() => { closeModal(); res(null); }}, {wide:true, nofocus:true});
+      $$("[data-dxpk]").forEach(el => { if (el.dataset.mixed) el.indeterminate = true; el.addEventListener("change", () => { cnt(el.dataset.dxpk).forEach(d => el.checked ? on.add(d.id) : on.delete(d.id)); draw(); }); });
+      $$("[data-dxpf]").forEach(el => { el.addEventListener("click", e => e.stopPropagation()); el.addEventListener("change", () => { D.filter(d => d.floor === el.dataset.dxpf).forEach(d => el.checked ? on.add(d.id) : on.delete(d.id)); draw(); }); });
+      $$("[data-dxpd]").forEach(el => el.addEventListener("change", () => { el.checked ? on.add(el.dataset.dxpd) : on.delete(el.dataset.dxpd); const sc = $(".mfoot [data-m=ok]"); if (sc) sc.textContent = "✓ " + t("dxp_ok",{n:on.size}); }));
+    };
+    draw();
+  });
+}
 /* ---------- a drawing (from DXF or from another project file) laid over the current building ----------
    Floors of the drawing are matched to the building's floors, rooms to rooms (by name; the user can change it).
    The building keeps its devices, cables, VLANs and racks; rooms get the drawn outline, devices get the drawn spots. */
@@ -601,5 +660,5 @@ registerApp({
 APPS.building.init = wire;
 // a building without floors opens the set-up once, the first time the app is shown for it
 APPS.building.afterRender = () => { const b = B(); if (b.floors.length || b.devices.length || b.racks.length || (b.struct && b.struct.wizard) || !store.settings.setupDone || !$("#modal").hidden || document.querySelector(".tour")) return; b.struct = Object.assign(b.struct || {}, {wizard:true}); persist(); setTimeout(wizard, 300); };
-window.BLD = {wizard, createMissing, posOf, dxfImport, guessType, planSvg, overlayPlan};
+window.BLD = {wizard, createMissing, posOf, dxfImport, guessType, planSvg, overlayPlan, palette, planView, drawer, onField, onDrawerAct, onKey};
 })();

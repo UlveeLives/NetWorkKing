@@ -143,11 +143,13 @@ function newEndpoint(b, done, preset = {}){
     <div class="two"><label class="fld"><span>${esc(t("f_kind"))}</span><select id="ne-k">${ENDK.map(k => opt(k, kindName(k), preset.kind || tp)).join("")}</select></label><label class="fld"><span>${esc(t("f_name"))}</span><input id="ne-n" placeholder="${esc(autoName(b, preset.kind || tp))}"></label></div>
     <div class="two"><label class="fld"><span>${esc(t("f_floor"))}</span><select id="ne-f">${floorOpts(b, preset.floor || "", false)}</select></label><label class="fld"><span>${esc(t("f_room"))}</span><input id="ne-r" list="ne-rl" value="${esc(preset.room ? roomName(b, preset.room) : "")}"><datalist id="ne-rl">${b.rooms.map(r => `<option value="${esc(r.name)}">`).join("")}</datalist></label></div>
     <div class="two"><label class="fld"><span>IP</span><input id="ne-ip" inputmode="decimal" placeholder="10.10.10.20/24"></label><label class="fld"><span>MAC</span><input id="ne-mac"></label></div>
+    <label class="chk"><input type="checkbox" id="ne-pl"${store.settings.addPlanned ? " checked" : ""}> 📝 ${esc(t("addPlanned"))}</label>
     <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><button class="btn pri" data-m="ok">${esc(t("add"))}</button></div>`, {
     ok: () => { const k = $("#ne-k").value, fl = $("#ne-f").value, rn = $("#ne-r").value.trim(), ip = $("#ne-ip").value.trim(), mac = $("#ne-mac").value.trim(), nm = $("#ne-n").value.trim();
       if (ip && !IP.valid(ip)) return toast("⚠ " + t("ipBad")); if (mac && !macValid(mac)) return toast("⚠ " + t("macBad"));
+      if (nm && nameTaken(b, nm)){ $("#ne-n").classList.add("bad"); return nameOk(b, nm); }
       closeModal(); pushUndo(); const room = rn ? ensureRoom(b, fl, rn) : null;
-      const nd = newDevice(k, {name:nm, floor:fl || (room && room.floor) || "", room:room ? room.id : "", ip, mac}); if (!nd.name) nd.name = autoName(b, k);
+      const nd = newDevice(k, {name:nm, floor:fl || (room && room.floor) || "", room:room ? room.id : "", ip, mac, status:$("#ne-pl").checked ? "planned" : "installed"}); if (!nd.name) nd.name = autoName(b, k);
       b.devices.push(nd); undoStack.pop(); done(nd); }
   });
   $("#ne-k").addEventListener("change", () => { $("#ne-n").placeholder = autoName(b, $("#ne-k").value); });
@@ -170,7 +172,7 @@ function portCard(b, d, p){
   const link = sec("plink", t("pmConn"), `<div class="two"><label class="fld"><span>${esc(t("pmPanel"))}</span><select data-pc="__panel">${opt("", "— " + t("pmDirect") + " —", pnl ? pnl.id : "")}${panels.map(x => opt(x.id, devLabel(x) + (x.rack ? " (" + rackById(b, x.rack).name + ")" : ""), pnl ? pnl.id : "")).join("")}</select></label>
       <label class="fld"><span>${esc(t("pmPanelPort"))}</span><input data-pc="__pport" type="number" min="1" value="${esc(pr.panel ? pr.panel.p : "")}"${pnl ? ` max="${num(pnl.ports)}"` : ""}></label></div>
     ${pnl ? `<p class="small">🏷 TIA-606: <b class="mono">${esc(label606(b, pnl, pr.panel.p))}</b></p>` : ""}
-    <div class="two"><label class="fld"><span>${esc(t("pmEnd"))}</span><select data-pc="__end">${opt("", "—", ed ? ed.id : "")}${cand.map(x => opt(x.id, devFull(b, x) + (x.room ? " · " + roomName(b, x.room) : ""), ed ? ed.id : "")).join("")}${opt("__new", "＋ " + t("pmNewEnd") + "…", "")}</select></label>
+    <div class="two"><div class="fld"><span>${esc(t("pmEnd"))}</span><button type="button" class="endpick" data-endpick="1">${ed ? `<svg viewBox="0 0 48 48" width="16" height="16">${ICO[devIcon(ed)] || ICO.box}</svg> <b>${esc(devLabel(ed))}</b> <small class="muted">${esc([kindName(ed.kind), roomName(b, ed.room)].filter(Boolean).join(" · "))}</small>` : `<span class="muted">— ${esc(t("pmPickEnd"))} —</span>`}<i>▾</i></button></div>
       ${ed && portDev(ed) ? `<label class="fld"><span>${esc(t("pmEndPort"))}</span><input data-pc="__eport" value="${esc(pr.end.p)}"></label>` : "<span></span>"}</div>
     ${pr.endLink ? `<div class="two"><label class="fld"><span>${esc(t("f_cid"))}</span><input data-pl="cid" value="${esc(pr.endLink.cid)}"></label><label class="fld"><span>${esc(t("f_len"))}</span><input data-pl="len" type="number" min="0" step="0.1" value="${esc(pr.endLink.len)}"></label></div>` : ""}`, true);
   const endSec = ed && !isNet(ed) ? sec("pend", t("pmEndDev") + `: ${esc(devLabel(ed))}`, `<div class="two"><label class="fld"><span>${esc(t("f_kind"))}</span><select data-pe="kind">${ENDK.map(k => opt(k, kindName(k), ed.kind)).join("")}</select></label><label class="fld"><span>${esc(t("f_name"))}</span><input data-pe="name" value="${esc(ed.name)}"></label></div>
@@ -291,6 +293,33 @@ document.addEventListener("click", async e => {
   if (k === "cliPort"){ const txt = cliText(b, d, s.p); modal(`<h3>⌨ ${esc(devLabel(d))} :${esc(s.p)}</h3><p class="muted small">${esc(t("pmCliNote"))}</p><textarea class="mono" rows="12" readonly style="width:100%">${esc(txt)}</textarea><div class="mfoot"><button class="btn" data-m="copy">⧉ ${esc(t("copy"))}</button><button class="btn pri" data-m="close">${esc(t("close"))}</button></div>`, {copy:() => { navigator.clipboard && navigator.clipboard.writeText(txt).then(() => toast("✓ " + t("copied"))); }}); }
 });
 document.addEventListener("click", e => { if (UI.app !== "portmap") return; const c = e.target.closest('[data-dr="catalogEnd"]'); if (!c) return; e.stopPropagation(); const b = B(), s = UI.sel, pr = parts(b, s.id, s.p), ed = pr.end && devById(b, pr.end.d); if (ed) openCatalogPicker(ed.kind, rec => edit(() => { applySpec(ed, rec); })); }, true);
+/* ---------- end device picker: search, connection shown, same names flagged, ⊖ deletes (with confirmation) ---------- */
+let EP = null;
+function epRows(b, d, p, q){
+  const pr = parts(b, d.id, p), cur = pr.end && pr.end.d, dups = new Set(dupGroups(b).flat().map(x => x.id));
+  const cand = b.devices.filter(x => x.id !== d.id && !passive(x) && x.kind !== "internet" && !(KINDS[x.kind] || {}).acc).sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
+  const qq = nameKey(q || ""), L = qq ? cand.filter(x => nameKey([x.name, kindName(x.kind), roomName(b, x.room), x.ip, x.brand, x.model].join(" ")).includes(qq)) : cand;
+  const where = x => { const l = b.links.find(k => (k.a.d === x.id || k.b.d === x.id)); if (!l) return ""; const o = devById(b, l.a.d === x.id ? l.b.d : l.a.d), op = l.a.d === x.id ? l.b.p : l.a.p; return o ? devLabel(o) + (op ? ":" + op : "") : ""; };
+  return `<div class="eprow${!cur ? " on" : ""}" data-epset=""><span class="muted">— ${esc(t("pmNoEnd"))} —</span></div><div class="eprow new" data-epnew="1">＋ ${esc(t("pmNewEnd"))}…</div>`
+    + L.slice(0, 300).map(x => { const w = where(x); return `<div class="eprow${x.id === cur ? " on" : ""}${dups.has(x.id) ? " dup" : ""}" data-epset="${x.id}"><svg viewBox="0 0 48 48" width="18" height="18">${ICO[devIcon(x)] || ICO.box}</svg><span class="epn"><b>${esc(devLabel(x))}</b>${dups.has(x.id) ? ` <em title="${esc(t("dupBadgeH"))}">⚠ ${esc(t("dupBadge"))}</em>` : ""}${x.status === "planned" ? ` <em class="pl">📝</em>` : ""}<small>${esc([kindName(x.kind), roomName(b, x.room), x.ip].filter(Boolean).join(" · "))}${w ? " · 🔌 " + esc(w) : ""}</small></span><button type="button" class="epdel" data-epdel="${x.id}" title="${esc(t("delete"))}">−</button></div>`; }).join("")
+    + (L.length > 300 ? `<div class="eprow muted">… +${L.length - 300}</div>` : "");
+}
+function epOpen(btn){
+  epClose(); const b = B(), s = UI.sel, d = devById(b, s.id), p = s.p, R = btn.getBoundingClientRect();
+  const el = document.createElement("div"); el.className = "epop"; el.style.left = Math.max(8, Math.min(R.left, innerWidth - 380)) + "px"; el.style.top = Math.min(R.bottom + 4, innerHeight - 360) + "px";
+  el.innerHTML = `<input class="epq" placeholder="🔍 ${esc(t("search"))}…"><div class="eplist">${epRows(b, d, p, "")}</div>`; document.body.appendChild(el); EP = {el, d, p};
+  const q = el.querySelector(".epq"); q.focus(); q.addEventListener("input", () => { el.querySelector(".eplist").innerHTML = epRows(B(), d, p, q.value); });
+}
+function epClose(){ if (EP){ EP.el.remove(); EP = null; } }
+document.addEventListener("pointerdown", e => { if (EP && !EP.el.contains(e.target) && !e.target.closest("[data-endpick]") && !e.target.closest(".layer")) epClose(); }, true);
+document.addEventListener("keydown", e => { if (EP && e.key === "Escape"){ e.stopPropagation(); epClose(); } }, true);
+document.addEventListener("click", async e => {
+  const pk = e.target.closest("[data-endpick]"); if (pk && UI.app === "portmap"){ EP ? epClose() : epOpen(pk); return; }
+  if (!EP || !EP.el.contains(e.target)) return; const b = B(), {d, p} = EP;
+  const del = e.target.closest("[data-epdel]"); if (del){ e.stopPropagation(); const x = devById(b, del.dataset.epdel); const keep = EP; EP.el.style.visibility = "hidden"; const ok = x && await delDeviceAsk(b, x); if (EP === keep){ EP.el.style.visibility = ""; EP.el.querySelector(".eplist").innerHTML = epRows(B(), d, p, EP.el.querySelector(".epq").value); } void ok; return; }
+  if (e.target.closest("[data-epnew]")){ epClose(); return newEndpoint(b, nd => { pushUndo(); undoStack.pop(); setEnd(b, d, p, nd.id, ""); }); }
+  const set = e.target.closest("[data-epset]"); if (set){ epClose(); setEnd(b, d, p, set.dataset.epset, ""); }
+});
 function wireDrawer(){
   const dr = $("#drawer");
   dr.addEventListener("change", async e => {
@@ -313,6 +342,7 @@ function wireDrawer(){
     if (el.dataset.pe){ const pr = parts(b, d.id, p), ed = pr.end && devById(b, pr.end.d); if (!ed) return; const k = el.dataset.pe; let v = el.value.trim();
       if (k === "floor" || k === "room"){ v = await resolveNew(k, b, el.value, {floor:ed.floor}); if (v === null) return renderDrawer(); }
       if (k === "ip" && v && !IP.valid(v)) toast("⚠ " + t("ipBad")); if (k === "mac" && v && !macValid(v)) toast("⚠ " + t("macBad"));
+      if (k === "name" && v && nameTaken(b, v, ed.id)){ await nameOk(b, v, ed.id); return renderDrawer(); }
       return edit(() => { ed[k] = v; if (k === "kind") normDevice(ed); if (k === "floor") ed.room = ""; }); }
     if (el.dataset.pp){ const k = el.dataset.pp, pr = parts(b, d.id, p);
       if (k === "__fdev" || k === "__fport"){ const fdv = $('[data-pp="__fdev"]').value, fpt = $('[data-pp="__fport"]').value.trim(); const front = pr.before.length ? pr.before[pr.before.length - 1] : null;
@@ -337,7 +367,7 @@ registerApp({
     {id:"cables", label:"tabCables", icon:"🧵", render(){ const b = B(); return `<div class="row" style="margin-bottom:10px"><button class="btn small" data-pm2="cid"># ${esc(t("autoCid"))}</button><button class="btn small" data-pm2="ccsv">⤓ CSV</button></div>${cableTable(b)}`; }},
     docTab("portmap", docBody)
   ],
-  actions(tab){ return [{id:"addRack", icon:"🗄", label:"rkAdd", fn:() => { const b = B(); edit(() => { const r = normRack({id:uid("k"), name:nextRackName(b)}); b.racks.push(r); }); }},
+  actions(tab){ const n = dupGroups(B()).length; return [...(n ? [{id:"dups", icon:"⚠", label:"dupBtn", fn:dupTool}] : []), {id:"addRack", icon:"🗄", label:"rkAdd", fn:() => { const b = B(); edit(() => { const r = normRack({id:uid("k"), name:nextRackName(b)}); b.racks.push(r); }); }},
     {id:"addSw", icon:"＋", label:"pmAddDev", fn:async el => { const b = B(), kind = await uiChoice(t("rackAddWhat"), ["switch","pp","fpp","firewall","router","coresw","nvr","server"].map(x => [x, kindName(x)])); if (!kind) return; const r = b.racks[0]; let u = 0; if (r){ u = rackSpot(b, r, KINDS[kind].h || 1, 0); } edit(() => { const d = newDevice(kind, r && u ? {rack:r.id, u, floor:r.floor, room:r.room} : {}); b.devices.push(d); UI.sel = {type:"dev", id:d.id}; }); }},
     {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },
   drawer(tab){ const b = B(), s = UI.sel; if (!s) return "";

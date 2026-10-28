@@ -112,8 +112,31 @@ function rackSpot(b, r, h, pref, ex){
 }
 /* ---------- create / delete ---------- */
 function nextRackName(b){ const used = new Set(b.racks.map(r => r.name)); let i = 1, n; do { n = `Rack-${String(i++).padStart(2, "0")}`; } while (used.has(n)); return n; }
+// device names are unique in a building (accessories such as blanking panels excepted)
+const nameKey = s => String(s || "").trim().toLocaleLowerCase("tr").replace(/\s+/g, " ");
+function nameTaken(b, name, exceptId){ const k = nameKey(name); if (!k) return null; return b.devices.find(d => d.id !== exceptId && !(KINDS[d.kind] && KINDS[d.kind].acc) && nameKey(d.name) === k) || null; }
+async function nameOk(b, name, exceptId){ const o = nameTaken(b, name, exceptId); if (!o) return true; await uiAlert(t("nameDup",{n:String(name).trim(), k:kindName(o.kind), r:[roomName(b, o.room), o.rack ? (rackById(b, o.rack) || {}).name : ""].filter(Boolean).join(" · ") || "—"})); return false; }
+function dupGroups(b){ const G = {}; b.devices.forEach(d => { if (KINDS[d.kind] && KINDS[d.kind].acc) return; const k = nameKey(d.name); if (k) (G[k] = G[k] || []).push(d); }); return Object.values(G).filter(g => g.length > 1); }
+// list of devices that share a name: what each one is connected to, so the right one can be kept
+function dupTool(){
+  const b = B(), G = dupGroups(b);
+  const conn = d => b.links.filter(l => l.a.d === d.id || l.b.d === d.id).map(l => { const o = devById(b, l.a.d === d.id ? l.b.d : l.a.d), op = l.a.d === d.id ? l.b.p : l.a.p; return o ? devLabel(o) + (op ? ":" + op : "") : "?"; });
+  if (!G.length){ modal(`<h3>✓ ${esc(t("dupNoneT"))}</h3><p>${esc(t("dupNone"))}</p><div class="mfoot"><span class="grow"></span><button class="btn pri" data-m="close">OK</button></div>`); return; }
+  modal(`<h3>⚠ ${esc(t("dupT"))} <span class="cnt">${G.length}</span></h3><p class="muted small">${esc(t("dupH"))}</p>
+    <div class="scroll" style="max-height:60vh">${G.map(g => `<div class="dupg"><b>${esc(g[0].name)}</b> <small class="muted">×${g.length}</small><table class="t">${g.map(d => { const c = conn(d);
+      return `<tr><td>${esc(kindName(d.kind))}</td><td class="small">${esc(t("st_" + d.status) === "st_" + d.status ? d.status : t("st_" + d.status))}</td><td class="small">${esc([floorName(b, d.floor), roomName(b, d.room)].filter(Boolean).join(" · ") || "—")}</td><td class="small">${c.length ? "🔌 " + esc(c.join(", ")) : `<span class="muted">${esc(t("dupNoCable"))}</span>`}</td>
+        <td class="nw"><button class="btn small" data-m="dren:${d.id}">✎</button><button class="btn small dan" data-m="ddel:${d.id}" title="${esc(t("delete"))}">⊖</button></td></tr>`; }).join("")}</table></div>`).join("")}</div>
+    <div class="mfoot"><span class="grow"></span><button class="btn pri" data-m="close">${esc(t("close"))}</button></div>`, {
+    ddel: async (el, e, id) => { const d = devById(b, id); if (!d) return; if (!await delDeviceAsk(b, d)) return; dupTool(); },
+    dren: async (el, e, id) => { const d = devById(b, id); if (!d) return; const n = await uiPrompt(t("f_name"), d.name); if (n === null || !n.trim() || nameKey(n) === nameKey(d.name)) return; if (!await nameOk(b, n, d.id)) return; edit(() => { d.name = n.trim(); }); dupTool(); } }, {wide:true});
+}
+// delete one device after confirming (says how many cables go with it)
+async function delDeviceAsk(b, d){ const n = b.links.filter(l => l.a.d === d.id || l.b.d === d.id).length;
+  if (!await uiConfirm(t("delDevQ",{d:devLabel(d), k:kindName(d.kind), n}), t("delete"), true)) return false;
+  edit(() => { removeDevices(b, [d.id]); if (UI.sel && UI.sel.id === d.id) UI.sel = null; }); toast("🗑 " + devLabel(d)); return true; }
 function newDevice(kind, o = {}){
   const d = normDevice(Object.assign({id:uid("d"), kind}, o));
+  if (o.status === undefined && store && store.settings && store.settings.addPlanned) d.status = "planned";
   if (!d.name) d.name = autoName(B(), kind);
   return d;
 }
@@ -133,6 +156,7 @@ function removeDevices(b, ids){
 }
 function addLink(b, a, bb, media, o = {}){ const l = normLink(Object.assign({id:uid("l"), a:{d:a, p:o.pa || ""}, b:{d:bb, p:o.pb || ""}, media:media || "cat6"}, o)); delete l.pa; delete l.pb; b.links.push(l); return l; }
 /* ---------- floors & rooms ---------- */
+const LINK_FLOOR = /^(bağlant|baglant|əlaqə|elaqe|uplink|link|trunk|connection|interconnect|backbone|magistral|магистр|связ)/i;
 function ensureFloor(b, name){ let f = b.floors.find(x => same(x.name, name)); if (!f){ f = {id:uid("f"), name, lvl:b.floors.length}; b.floors.push(f); normBuilding(b); } return f; }
 function ensureRoom(b, floorId, name){ let r = b.rooms.find(x => same(x.name, name) && (x.floor || "") === (floorId || "")); if (!r){ r = {id:uid("r"), name, floor:floorId || "", users:0, wall:"drywall"}; b.rooms.push(r); } return r; }
 const roomsOn = (b, fid) => b.rooms.filter(r => (r.floor || "") === (fid || ""));
@@ -151,7 +175,7 @@ const VCOLORS = ["#2f7de1","#14a37f","#d9822b","#8a5cd6","#c9475d","#4d5bd1","#0
 /* ---------- path helpers for form fields: "name", "params.depth", "camera.mp" ---------- */
 function getPath(o, p){ return p.split(".").reduce((x, k) => x == null ? x : x[k], o); }
 function setPath(o, p, v){ const ks = p.split("."), last = ks.pop(); let x = o; for (const k of ks){ if (x[k] == null || typeof x[k] !== "object") x[k] = {}; x = x[k]; } x[last] = v; }
-const NUMF = new Set(["ports","params.sfp","u","params.h","params.depth","params.weight","params.powerW","params.maxW","params.psu","params.poePorts","params.poeBudget","params.poeIn","params.va","params.upsW","params.wh","params.amps","camera.mp","camera.ir","camera.fps","camera.bitrate","camera.act","camera.hours","camera.retain","camera.hfov","nvrp.channels","nvrp.inMbps","nvrp.bays","nvrp.hdd","nvrp.maxMp","ap.h","ap.x","ap.y","ap.cable","len"]);
+const NUMF = new Set(["ports","params.sfp","u","params.h","params.depth","params.weight","params.powerW","params.maxW","params.psu","params.poePorts","params.poeBudget","params.poeIn","params.va","params.upsW","params.wh","params.amps","camera.mp","camera.ir","camera.fps","camera.bitrate","camera.act","camera.hours","camera.retain","camera.hfov","camera.dir","nvrp.channels","nvrp.inMbps","nvrp.bays","nvrp.hdd","nvrp.maxMp","ap.h","ap.x","ap.y","ap.cable","len"]);
 /* ---------- shared device editor (drawer) ---------- */
 const fld = (label, path, val, type = "text", extra = "") => `<label class="fld"><span>${esc(label)}</span><input data-f="${path}" type="${type}" value="${esc(val ?? "")}"${extra}></label>`;
 const sel = (label, path, val, optsHtml, extra = "") => `<label class="fld"><span>${esc(label)}</span><select data-f="${path}"${extra}>${optsHtml}</select></label>`;
@@ -363,6 +387,7 @@ function wireEditors(){
     let v = el.type === "checkbox" ? el.checked : el.value;
     if (s.type === "dev"){ const d = devById(b, s.id); if (!d) return;
       if (path === "floor" || path === "room" || path === "vlan"){ const r = await resolveNew(path, b, v, {floor:d.floor}); if (r === null){ renderDrawer(); return; } v = r; }
+      if (path === "name" && String(v).trim() && nameTaken(b, v, d.id)){ await nameOk(b, v, d.id); renderDrawer(); return; }
       if (path === "params.h" && d.rack){ if (!await setDevHeight(b, d, v)) renderDrawer(); return; }
       if (path === "rack" && v){ const rk = rackById(b, v); if (rk && !await putDevInRack(b, d, rk)) renderDrawer(); return; }
       if (path === "ports" && num(v) < num(d.ports)){ if (!await setPortCount(b, d, v)) renderDrawer(); return; }
@@ -435,6 +460,7 @@ function readPlaces(b){
 /* ---------- checks shared by all apps ---------- */
 function commonWarnings(b){
   const W = [], ips = {}, hosts = {}, macs = {}, sers = {}, ports = {}, cids = {};
+  dupGroups(b).forEach(g => W.push(["err", t("w_nameDup",{n:g[0].name, k:g.length}), g[0].id]));
   b.devices.forEach(d => { const n = devLabel(d);
     if (d.ip){ if (!IP.valid(d.ip)) W.push(["err", t("w_ipBad",{n, ip:d.ip}), d.id]); else { const k = d.ip.split("/")[0]; if (ips[k]) W.push(["err", t("w_ipDup",{ip:k, a:ips[k], b:n}), d.id]); ips[k] = n;
       const v = vlanById(b, d.vlan), c = v && IP.cidr(v.subnet); if (c && !IP.inside(IP.host(d.ip), c)) W.push(["", t("w_ipVlan",{n, ip:k, v:v.vid, s:v.subnet}), d.id]); } }
