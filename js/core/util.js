@@ -17,7 +17,7 @@ const lines = s => String(s ?? "").split("\n");
 const opt = (v, label, cur, attrs = "") => `<option value="${esc(v)}"${String(v) === String(cur ?? "") ? " selected" : ""}${attrs}>${esc(label)}</option>`;
 /* ---------- IPv4 ---------- */
 const IP = {
-  toInt(s){ const m = String(s || "").trim().split("/")[0].split("."); if (m.length !== 4) return null; let v = 0; for (const x of m){ if (!/^\d{1,3}$/.test(x) || +x > 255) return null; v = v * 256 + +x; } return v >>> 0; },
+  toInt(s){ const m = String(s || "").trim().replace(/,/g, ".").split("/")[0].split("."); if (m.length !== 4) return null; let v = 0; for (const x of m){ if (!/^\d{1,3}$/.test(x) || +x > 255) return null; v = v * 256 + +x; } return v >>> 0; },
   str(n){ return [n >>> 24, n >>> 16 & 255, n >>> 8 & 255, n & 255].join("."); },
   valid(s){ const t = String(s || "").trim(); if (!t) return false; const [a, p] = t.split("/"); return IP.toInt(a) !== null && (p === undefined || (/^\d+$/.test(p) && +p <= 32)); },
   cidr(s){ const [a, b] = String(s || "").trim().split("/"), ip = IP.toInt(a), p = +b; if (ip === null || !(b !== undefined && /^\d+$/.test(b) && p >= 0 && p <= 32)) return null;

@@ -32,7 +32,11 @@ function autoCableIds(b, filter, prefix){
 // table interactions
 document.addEventListener("click", e => {
   const s = e.target.closest("[data-sel]"); if (!s || e.target.closest("#modal") || e.target.closest("input,select")) return;
-  const [type, id] = s.dataset.sel.split(/:(.+)/); UI.sel = {type, id}; UI.multi.clear(); render();
+  const [type, id] = s.dataset.sel.split(/:(.+)/);
+  // Ctrl / Shift + click: add to / remove from a multi-selection (several devices edited together)
+  if ((e.ctrlKey || e.metaKey || e.shiftKey) && type === "dev"){ if (!UI.multi.size && UI.sel && UI.sel.type === "dev") UI.multi.add("dev:" + UI.sel.id); const k = "dev:" + id; UI.multi.has(k) ? UI.multi.delete(k) : UI.multi.add(k);
+    UI.sel = UI.multi.size === 1 ? {type:"dev", id:[...UI.multi][0].slice(4)} : null; if (UI.multi.size === 1) UI.multi.clear(); render(); return; }
+  UI.sel = {type, id}; UI.multi.clear(); render();
 });
 document.addEventListener("change", e => {
   const el = e.target.closest("[data-lk]"); if (!el || el.closest("#modal")) return;

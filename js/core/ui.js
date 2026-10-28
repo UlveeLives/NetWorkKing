@@ -137,16 +137,27 @@ function render(){
   $("#pal").innerHTML = pal; $("#pal").hidden = !pal;
   const view = $("#view"); view.className = "view v-" + a.id + " t-" + tab.id;
   view.innerHTML = tab.render ? tab.render() : "";
-  const dr = a.drawer ? a.drawer(tab) : "";
+  const dr = drawerHtml(a, tab);
   $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);
+  if (UI.multi.size) $$("[data-sel]", view).forEach(el => { if (UI.multi.has(el.dataset.sel)){ const tr = el.closest("tr") || el; tr.classList.add("on"); } });
   if (tab.after) tab.after(view);
   if (a.afterRender) a.afterRender(tab);
   maybeTour();
 }
 // Re-render only the drawer (used while typing in it).
-function renderDrawer(){ const a = curApp(), dr = a.drawer ? a.drawer(curTab()) : ""; $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr); }
+// Several devices selected: one editor for the fields they share (+ the app's own tools for a selection, e.g. align).
+function drawerHtml(a, tab){
+  if (UI.multi.size > 1){ const L = multiDevs(), extra = a.drawer ? a.drawer(tab) : "";
+    return `<div class="dhead"><div><h3>${esc(t("multiSel",{n:UI.multi.size}))}</h3></div><button class="x" data-dr="close">×</button></div>${L.length > 1 ? multiEditor(B(), L) : ""}${extra}`; }
+  return a.drawer ? a.drawer(tab) : "";
+}
+function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr); }
 /* ---------- header / tab / building events ---------- */
 function wireShell(){
+  // A field being edited is saved before a click elsewhere changes the selection (otherwise the typed text would be lost
+  // or land on the newly clicked device).
+  document.addEventListener("pointerdown", e => { const a = document.activeElement; if (a && a !== e.target && /INPUT|TEXTAREA|SELECT/.test(a.tagName) && !a.contains(e.target) && (a.closest("#drawer") || a.closest("#view") || a.closest("#pal"))) a.blur(); }, true);
+  document.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.matches && e.target.matches("#drawer input[data-f], #drawer input[data-mf], #view input[data-cf], #view input[data-lk]")){ e.preventDefault(); e.target.blur(); } });
   document.addEventListener("click", e => {
     if (e.target.closest("#modal") || e.target.closest(".layer")) return;
     const sw = e.target.closest("#appsw"); if (sw){ openAppSwitcher(sw); return; }

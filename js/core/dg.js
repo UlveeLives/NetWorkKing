@@ -184,8 +184,7 @@ function dgPlaceAll(cfg){ const b = B(), v = view(b, cfg.id), boxed = store.sett
 /* ---------- drawer for non-device selections ---------- */
 function dgDrawer(b, cfg){
   const s = UI.sel, v = view(b, cfg.id);
-  if (UI.multi.size > 1) return `<div class="dhead"><div><h3>${esc(t("multiSel",{n:UI.multi.size}))}</h3></div><button class="x" data-dr="close">×</button></div>
-    <div class="btns wrap">${[["l","⇤"],["c","⇔"],["r","⇥"],["t","⤒"],["m","⇕"],["bt","⤓"],["dh","↔"],["dv","↕"]].map(([k, ic]) => `<button class="btn small" data-dr="align:${k}" title="${esc(t("al_" + k))}">${ic} ${esc(t("al_" + k))}</button>`).join("")}</div>
+  if (UI.multi.size > 1) return `<h4 class="msub">↔ ${esc(t("alignT"))}</h4><div class="btns wrap">${[["l","⇤"],["c","⇔"],["r","⇥"],["t","⤒"],["m","⇕"],["bt","⤓"],["dh","↔"],["dv","↕"]].map(([k, ic]) => `<button class="btn small" data-dr="align:${k}" title="${esc(t("al_" + k))}">${ic} ${esc(t("al_" + k))}</button>`).join("")}</div>
     <div class="btns"><button class="btn" data-dr="mboxed:1">▭ ${esc(t("addBoxed"))}</button><button class="btn" data-dr="mboxed:0">◇ ${esc(t("addFree"))}</button></div>
     <div class="btns"><button class="btn" data-dr="unplace">⤴ ${esc(t("removeFromView"))}</button><button class="btn dan" data-dr="mdel">🗑 ${esc(t("delete"))}</button></div>`;
   if (!s) return "";
@@ -252,6 +251,13 @@ function rackSwap(b, a, c){
   const ok = nu.a >= lo && nu.c >= lo && rackFits(b, r, nu.a, ah, c.id) && rackFits(b, r, nu.c, ch, a.id);
   if (ok){ a.u = nu.a; c.u = nu.c; return true; } a.u = keepA; c.u = keepC; return false;
 }
+// Rename by double click / double tap (detected on pointerdown, because the first click redraws the diagram).
+async function dgRename(b, v, key){
+  const [type, id] = key.split(/:(.+)/);
+  if (type === "dev" || type === "rack"){ const o = type === "dev" ? devById(b, id) : rackById(b, id); if (!o) return; const n = await uiPrompt(t("f_name"), o.name); if (n !== null && n.trim()) edit(() => { o.name = n.trim(); UI.sel = {type, id}; }); return; }
+  if (type === "box"){ const z = v.boxes.find(x => x.id === id); if (!z) return; const n = await uiPrompt(t("f_title"), z.label); if (n !== null) edit(() => { z.label = n; }); return; }
+  if (type === "anno"){ const a = v.anno.find(x => x.id === id); if (!a || a.type === "image") return; const n = await uiPrompt(t("f_text"), a.text); if (n !== null) edit(() => { a.text = n; }); }
+}
 function dgWire(cfg){
   const host = $("#view");
   const onDown = e => {
@@ -273,6 +279,8 @@ function dgWire(cfg){
     else if (lk){ UI.sel = {type:"link", id:lk.dataset.link}; UI.multi.clear(); render(); return; }
     else if (zt) key = "box:" + zt.dataset.box;
     if (key){
+      const now = Date.now(); if (DG.lastDown && DG.lastDown.key === key && now - DG.lastDown.t < 450 && !e.shiftKey && !e.ctrlKey && !e.metaKey){ DG.lastDown = null; DG.drag = null; e.preventDefault(); dgRename(b, v, key); return; }
+      DG.lastDown = {key, t:now};
       if (e.shiftKey || e.ctrlKey || e.metaKey){ if (!UI.multi.size && UI.sel) UI.multi.add(selKey(UI.sel)); UI.multi.has(key) ? UI.multi.delete(key) : UI.multi.add(key); UI.sel = UI.multi.size === 1 ? (([t0, i0]) => ({type:t0, id:i0}))([...UI.multi][0].split(/:(.+)/)) : null; render(); return; }
       if (!UI.multi.has(key)){ UI.multi.clear(); const [type, id] = key.split(/:(.+)/); UI.sel = {type, id}; }
       let keys = UI.multi.size ? [...UI.multi] : [key];
@@ -316,9 +324,7 @@ function dgWire(cfg){
     if (curApp().dg !== cfg) return; const b = B(), v = view(b, cfg.id);
     const nd = e.target.closest("[data-node]"), zt = e.target.closest(".ztitle"), an = e.target.closest("[data-anno]"), row = e.target.closest("[data-row]");
     if (row){ const d = devById(b, row.dataset.row), n = await uiPrompt(t("f_name"), d.name); if (n !== null) edit(() => { d.name = n.trim(); }); return; }
-    if (nd){ const d = devById(b, nd.dataset.node), r = rackById(b, nd.dataset.node), o = d || r, n = await uiPrompt(t("f_name"), o.name); if (n !== null && n.trim()) edit(() => { o.name = n.trim(); }); return; }
-    if (zt || (e.target.closest(".dz") && !nd)){ const z = v.boxes.find(x => x.id === (zt || e.target.closest(".dz")).dataset.box), n = await uiPrompt(t("f_title"), z.label); if (n !== null) edit(() => { z.label = n; }); return; }
-    if (an){ const a = v.anno.find(x => x.id === an.dataset.anno); if (a.type === "image") return; const n = await uiPrompt(t("f_text"), a.text); if (n !== null) edit(() => { a.text = n; }); return; }
+    // nodes, boxes and notes: handled as a double click in onDown (dgRename)
   });
   // palette
   $("#pal").addEventListener("click", e => {

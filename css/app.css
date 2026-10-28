@@ -454,3 +454,12 @@ details.dsec input,details.dsec select,details.dsec textarea{background:var(--su
 .x{border:1px solid var(--line)!important;background:var(--surface)!important;width:30px;height:30px;padding:0!important;display:grid;place-items:center;font-size:16px!important}
 .x:hover{color:var(--bad);border-color:var(--bad)!important}
 .lnk .x{width:24px;height:24px}
+/* native dropdown lists follow the theme (no white list with white text) */
+:root{color-scheme:light} :root[data-theme="dark"]{color-scheme:dark}
+select option,select optgroup{background:var(--surface);color:var(--ink)}
+table.t select,table.t select:hover,table.t select:focus{background:var(--surface);color:var(--ink)}
+/* several devices edited at once */
+.msub{margin:10px 0 6px;font-family:var(--f-disp);font-size:16px}
+.mrow{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--line2);flex-wrap:wrap}
+.mrow>span:first-child{flex:1;min-width:120px}
+.mrow input{width:auto}

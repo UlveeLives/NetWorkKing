@@ -53,7 +53,7 @@ const STATUSES = ["planned","installed","active","maintenance","faulty","removed
 const AIRFLOW = ["f2b","b2f","side","passive"];
 // Cable / connection types with drawing style. fiber:true = optical.
 const MEDIA = {
-  cat6:{c:"#1f6fd6", w:1.8}, cat6a:{c:"#1f6fd6", w:2}, cat5e:{c:"#5b8fd6", w:1.6}, patch:{c:"#3d7fe0", w:1.4},
+  cat6:{c:"#1f6fd6", w:1.8}, cat6a:{c:"#1f6fd6", w:2}, cat5e:{c:"#5b8fd6", w:1.6}, patch:{c:"#3d7fe0", w:1.4}, patch6a:{c:"#3d7fe0", w:1.5}, patch5e:{c:"#5b8fd6", w:1.3},
   poe:{c:"#e0661b", w:1.8}, fiber_sm:{c:"#7d3cc8", w:2.2, fiber:true}, fiber_mm:{c:"#e08a1b", w:2.2, fiber:true}, fpatch:{c:"#b07be0", w:1.6, fiber:true},
   dac:{c:"#2b8a8a", w:2}, isp:{c:"#1d2433", w:2}, wifi:{c:"#16a3a3", w:1.6, dash:"2 4"}, ptp:{c:"#16a3a3", w:2, dash:"8 4"}, vpn:{c:"#c0392b", w:1.8, dash:"10 4 2 4"},
   console:{c:"#8a6d1f", w:1.4, dash:"1 3"}, power:{c:"#d7262e", w:1.8}, hdmi:{c:"#1d2433", w:1.6}, coax:{c:"#8a6d1f", w:1.8}, mgmt:{c:"#1f9d4c", w:1.6}, planned:{c:"#1f6fd6", w:1.8, dash:"5 4"}
@@ -68,6 +68,11 @@ function normDevice(d){
   for (const k in def) if (d[k] === undefined) d[k] = def[k];
   d.params = Object.assign({h:K.h || (K.rack ? 1 : 0), depth:0, weight:0, powerW:0, maxW:0, psu:1, airflow:K.acc || K.passive ? "passive" : "f2b", sfp:0, poePorts:0, poeBudget:0, poeStd:"", poeIn:0, va:0, upsW:0, wh:0, amps:0, feedA:"", feedB:"", feed:""}, d.params || {});
   d.pcfg = d.pcfg && typeof d.pcfg === "object" ? d.pcfg : {};
+  if (d.kind === "camera"){
+    // one camera can record on several NVRs: nvrs = [nvr ids], chs = {nvr id: channel}; nvr / ch mirror the first one
+    if (!Array.isArray(d.nvrs)) d.nvrs = d.nvr ? [d.nvr] : [];
+    if (!d.chs || typeof d.chs !== "object") d.chs = d.nvr && d.ch ? {[d.nvr]:d.ch} : {};
+    d.nvrs = [...new Set(d.nvrs.filter(Boolean))]; d.nvr = d.nvrs[0] || ""; d.ch = d.nvr ? (d.chs[d.nvr] || "") : ""; }
   if (d.kind === "camera") d.camera = Object.assign({style:"turret", mp:4, lens:"2.8", sensor:"1/3\"", hfov:0, ir:30, ipr:"", codec:"H.265+", fps:25, bitrate:"", rec:"cont", act:30, hours:24, retain:""}, d.camera || {});
   if (d.kind === "nvr" || d.kind === "dvr") d.nvrp = Object.assign({channels:16, inMbps:160, bays:2, hdd:8, raid:"none", maxMp:8}, d.nvrp || {});
   if (d.kind === "splice" || d.kind === "fpp") d.fbox = Object.assign({adapters:d.kind === "fpp" ? 12 : 8, atype:"lcd", trays:2, perTray:12}, d.fbox || {});
@@ -124,7 +129,7 @@ function removeDevices(b, ids){
   b.devices = b.devices.filter(d => !set.has(d.id)); b.links = b.links.filter(l => !set.has(l.a.d) && !set.has(l.b.d));
   P().links = P().links.filter(l => !set.has(l.a.d) && !set.has(l.b.d));
   Object.values(b.views).forEach(v => { if (v && v.nodes) ids.forEach(id => delete v.nodes[id]); });
-  b.devices.forEach(d => { if (set.has(d.nvr)) d.nvr = ""; if (set.has(d.params.feedA)) d.params.feedA = ""; if (set.has(d.params.feedB)) d.params.feedB = ""; });
+  b.devices.forEach(d => { if (set.has(d.nvr)) d.nvr = ""; if (Array.isArray(d.nvrs)){ d.nvrs = d.nvrs.filter(x => !set.has(x)); ids.forEach(x => { if (d.chs) delete d.chs[x]; }); } if (set.has(d.params.feedA)) d.params.feedA = ""; if (set.has(d.params.feedB)) d.params.feedB = ""; });
 }
 function addLink(b, a, bb, media, o = {}){ const l = normLink(Object.assign({id:uid("l"), a:{d:a, p:o.pa || ""}, b:{d:bb, p:o.pb || ""}, media:media || "cat6"}, o)); delete l.pa; delete l.pb; b.links.push(l); return l; }
 /* ---------- floors & rooms ---------- */
@@ -157,7 +162,7 @@ function deviceEditor(b, d, opts = {}){
   const head = `<div class="dhead"><svg viewBox="0 0 48 48" width="42" height="42">${ICO[devIcon(d)] || ICO.box}</svg><div><h3>${esc(devLabel(d))}</h3><div class="muted small">${esc(kindName(d.kind))}${d.brand || d.model ? " · " + esc([d.brand, d.model].filter(Boolean).join(" ")) : ""}</div></div><button class="x" data-dr="close" title="${esc(t("close"))}">×</button></div>`;
   const cat = `<div class="catrow"><button class="btn small" data-dr="catalog">📚 ${esc(d.model ? t("catChange") : t("catPick"))}</button>${d.cat ? `<span class="pill ok" title="${esc(t("catLinked"))}">✓ ${esc(t("catFromDb"))}</span>` : ""}${opts.extraHead || ""}</div>`;
   let g = sel(t("f_kind"), "kind", d.kind, KIND_ORDER.map(k => opt(k, kindName(k), d.kind)).join("")) + fld(t("f_name"), "name", d.name)
-    + `<div class="two">${fld(t("f_brand"), "brand", d.brand, "text", ' list="dl-brands"')}${fld(t("f_model"), "model", d.model)}</div>`
+    + `<div class="two">${fld(t("f_brand"), "brand", d.brand, "text", ' list="dl-brands"')}${fld(t("f_model"), "model", d.model, "text", ' list="dl-models"')}</div>${modelList(d.kind, d.brand)}`
     + sel(t("f_status"), "status", d.status, STATUSES.map(s => opt(s, t("st_" + s), d.status)).join(""));
   let loc = `<div class="two">${sel(t("f_floor"), "floor", d.floor, floorOpts(b, d.floor))}${sel(t("f_room"), "room", d.room, roomOpts(b, d.floor, d.room))}</div>`;
   if (K.rack) loc += `<div class="two">${sel(t("f_rack"), "rack", d.rack, opt("", t("none"), d.rack) + b.racks.map(x => opt(x.id, x.name, d.rack)).join(""))}${d.rack ? fld(t("f_u"), "u", d.u || "", "number", ` min="1" max="${r ? r.u : 60}"`) : "<span></span>"}</div>`
@@ -181,6 +186,61 @@ function deviceEditor(b, d, opts = {}){
   const notes = `<label class="fld"><span>${esc(t("f_notes"))}</span><textarea data-f="notes" rows="3">${esc(d.notes)}</textarea></label>`;
   return `${head}${cat}${sec("gen", t("sec_general"), g, true)}${sec("loc", t("sec_location"), loc)}${extra}${net ? sec("net", t("sec_network"), net) : ""}${sec("conn", t("sec_links") + ` <span class="cnt">${linksOf(b, d.id).length}</span>`, conn)}${phys ? sec("phys", t("sec_power"), phys) : ""}${sec("asset", t("sec_asset"), asset)}${notes}
     <div class="btns">${opts.btns || ""}<button class="btn" data-dr="dupDev">⧉ ${esc(t("duplicate"))}</button><button class="btn dan" data-dr="delDev">🗑 ${esc(t("delete"))}</button></div>`;
+}
+// Model suggestions from the catalog for this kind (and brand, when one is typed).
+function modelList(kind, brand){
+  const L = CAT.all().filter(r => (r.kind === kind || (KGROUP_OF[kind] || []).includes(r.kind)) && (!brand || same(r.brand, brand)));
+  return `<datalist id="dl-models">${L.slice(0, 400).map(r => `<option value="${esc(r.model)}">${esc(brand ? "" : r.brand)}</option>`).join("")}</datalist>`;
+}
+const KGROUP_OF = {switch:["coresw"], coresw:["switch"], nvr:["dvr"], dvr:["nvr"], server:["nas","storage"], nas:["server","storage"], firewall:["router"], router:["firewall","modem"], modem:["router","ont"]};
+// When brand + model typed by hand match a catalog record, its parameters are filled in automatically.
+function catMatch(d){ const L = CAT.all().filter(r => same(r.model, d.model) && (!d.brand || same(r.brand, d.brand))); return L.length === 1 ? L[0] : null; }
+/* ---------- several devices at once (Ctrl / Shift + click): change the fields they share ---------- */
+const multiDevs = () => { const b = B(); return [...UI.multi].filter(k => k.startsWith("dev:")).map(k => devById(b, k.slice(4))).filter(Boolean); };
+function multiEditor(b, L){
+  const kinds = [...new Set(L.map(d => d.kind))], one = kinds.length === 1 ? kinds[0] : null, K = one ? KINDS[one] : {};
+  const val = p => { const vs = [...new Set(L.map(d => JSON.stringify(getPath(d, p) ?? "")))]; return vs.length === 1 ? JSON.parse(vs[0]) : undefined; };
+  const MIX = esc(t("mixed"));
+  const f = (label, p, type = "text", extra = "") => { const v = val(p); return `<label class="fld"><span>${esc(label)}</span><input data-mf="${p}" type="${type}" value="${esc(v ?? "")}"${v === undefined ? ` placeholder="${MIX}"` : ""}${extra}></label>`; };
+  const s = (label, p, opts) => { const v = val(p); return `<label class="fld"><span>${esc(label)}</span><select data-mf="${p}">${v === undefined ? `<option value="__mix" selected>${MIX}</option>` : ""}${opts.map(([k, l]) => opt(k, l, v === undefined ? "\u0000" : String(v))).join("")}</select></label>`; };
+  const fl = val("floor");
+  let g = `<div class="two">${f(t("f_brand"), "brand", "text", ' list="dl-brands"')}${f(t("f_model"), "model", "text", ' list="dl-models"')}</div>${one ? modelList(one, val("brand") || "") : ""}
+    ${s(t("f_status"), "status", STATUSES.map(x => [x, t("st_" + x)]))}
+    <div class="two">${s(t("f_floor"), "floor", [["", t("none")], ...b.floors.map(x => [x.id, x.name])])}${s(t("f_room"), "room", [["", t("none")], ...(fl ? roomsOn(b, fl) : b.rooms).map(r => [r.id, r.name + (fl || !r.floor ? "" : " · " + floorName(b, r.floor))])])}</div>
+    ${s("VLAN", "vlan", [["", t("none")], ...b.vlans.map(v => [v.id, v.vid + " · " + v.name])])}
+    <div class="two">${f(t("f_owner"), "owner")}${f(t("f_fw"), "fw")}</div>`;
+  if (["ap","camera","phone","access","intercom","touch","iot","sensor"].includes(one)) g += `<div class="two">${f(t("f_poeIn"), "params.poeIn", "number", ' min="0" step="0.1"')}<span></span></div>`;
+  if (K.sw) g += `<div class="two">${f(t("f_ports"), "ports", "number")}${f(t("f_poeBudget"), "params.poeBudget", "number")}</div>`;
+  if (one === "camera") g += `<h4 class="msub">📷 ${esc(t("camSec"))}</h4><div class="two">${s(t("camStyle"), "camera.style", Object.keys(CAM_STYLES).map(k => [k, t("cs_" + k)]))}${s(t("camLoc"), "camera.loc", [["in", t("camIn")], ["out", t("camOut")]])}</div>
+    <div class="two">${f("MP", "camera.mp", "number", ' step="0.1"')}${f(t("camLens") + " (mm)", "camera.lens")}</div>
+    <div class="two">${f("IR (m)", "camera.ir", "number")}${f("FPS", "camera.fps", "number")}</div>
+    <div class="two">${s(t("camCodec"), "camera.codec", ["H.264","H.264+","H.265","H.265+"].map(x => [x, x]))}${s(t("camRec"), "camera.rec", [["cont", t("rec_cont")], ["motion", t("rec_motion")], ["sched", t("rec_sched")]])}</div>
+    <div class="two">${f(t("camHours"), "camera.hours", "number")}${f(t("camRetain"), "camera.retain", "number")}</div>
+    ${b.devices.some(x => x.kind === "nvr" || x.kind === "dvr") ? `<h4 class="msub">🗄 NVR</h4>${b.devices.filter(x => x.kind === "nvr" || x.kind === "dvr").map(nv => { const n = L.filter(d => (d.nvrs || []).includes(nv.id)).length;
+      return `<div class="mrow"><span><b>${esc(devLabel(nv))}</b> <small class="muted">${n}/${L.length}</small></span><button class="btn small" data-mdr="nvrAdd:${nv.id}">＋ ${esc(t("nvrAddAll"))}</button>${n ? `<button class="btn small dan" data-mdr="nvrRm:${nv.id}">×</button>` : ""}</div>`; }).join("")}` : ""}`;
+  if (one === "ap") g += `<div class="two">${s(t("wf_f_mount"), "ap.mount", [["ceiling", t("wf_m_ceil")], ["wall", t("wf_m_wall")]])}${f(t("wf_f_h"), "ap.h", "number", ' step="0.1"')}</div>${f(t("wf_f_vlans"), "ap.vlans")}`;
+  return `<p class="muted small">${esc(t("multiHint",{n:L.length}))}${one ? " · " + esc(kindName(one)) : ""}</p>
+    ${one ? `<div class="catrow"><button class="btn small" data-mdr="catalog">📚 ${esc(t("catPickAll"))}</button></div>` : ""}
+    ${sec("mgen", t("sec_general"), g, true)}
+    <div class="btns"><button class="btn dan" data-mdr="del">🗑 ${esc(t("delete"))} (${L.length})</button></div>`;
+}
+async function multiChange(el){
+  const b = B(), L = multiDevs(), path = el.dataset.mf; let v = el.value; if (!L.length) return;
+  if (v === "__mix") return;
+  if (path === "ip") return;
+  edit(() => L.forEach(d => { if (path.startsWith("camera.") && d.kind !== "camera") return;
+    setPath(d, path, NUMF.has(path) ? num(v, 0) : (typeof v === "string" ? v.trim() : v));
+    if (path === "floor"){ if (d.room && (roomById(b, d.room) || {}).floor !== v) d.room = ""; }
+    if (path === "room" && v){ const r = roomById(b, v); if (r && r.floor) d.floor = r.floor; }
+    if ((path === "model" || path === "brand") && d.model){ const r = catMatch(d); if (r) applySpec(d, r); } }));
+}
+async function multiAct(k){
+  const b = B(), L = multiDevs(); if (!L.length) return;
+  if (k === "catalog"){ openCatalogPicker(L[0].kind, rec => edit(() => L.forEach(d => applySpec(d, rec)))); return; }
+  if (k === "del"){ if (!await uiConfirm(t("delManyConf",{n:L.length}), t("delete"), true)) return; edit(() => { removeDevices(b, L.map(d => d.id)); UI.multi.clear(); UI.sel = null; }); return; }
+  if (k.startsWith("nvrAdd:")){ const id = k.slice(7); edit(() => { const used = new Set(b.devices.filter(d => d.kind === "camera" && (d.nvrs || []).includes(id)).map(d => +d.chs[id]).filter(Boolean)); let ch = 1;
+    L.forEach(d => { if (d.kind !== "camera" || d.nvrs.includes(id)) return; d.nvrs.push(id); while (used.has(ch)) ch++; d.chs[id] = String(ch); used.add(ch); }); }); return; }
+  if (k.startsWith("nvrRm:")){ const id = k.slice(6); edit(() => L.forEach(d => { if (!Array.isArray(d.nvrs)) return; d.nvrs = d.nvrs.filter(x => x !== id); delete d.chs[id]; })); }
 }
 function connectionsHtml(b, d){
   const L = linksOf(b, d.id);
@@ -225,6 +285,7 @@ function wireEditors(){
   const dr = $("#drawer");
   dr.addEventListener("toggle", e => { const s = e.target.closest && e.target.closest("details[data-sec]"); if (s) UI.open[s.dataset.sec] = s.open; }, true);
   dr.addEventListener("change", async e => {
+    if (e.target.dataset.mf){ multiChange(e.target); return; }
     const el = e.target, path = el.dataset.f; if (!path) return;
     const b = B(), s = UI.sel; if (!s) return;
     let v = el.type === "checkbox" ? el.checked : el.value;
@@ -238,11 +299,17 @@ function wireEditors(){
       }
       if (path === "ip" && v && !IP.valid(v)) toast("⚠ " + t("ipBad"));
       if (path === "mac" && v && !macValid(v)) toast("⚠ " + t("macBad"));
-      edit(() => { setPath(d, path, NUMF.has(path) ? num(v, 0) : (typeof v === "string" ? v.trim() : v)); if (path === "kind") normDevice(d); if (path === "floor") d.room = ""; if (curApp().onDevChange) curApp().onDevChange(b, d, path); });
+      if (path === "ip" && v) v = v.replace(/,/g, ".");
+      let applied = null;
+      edit(() => { setPath(d, path, NUMF.has(path) ? num(v, 0) : (typeof v === "string" ? v.trim() : v)); if (path === "kind") normDevice(d); if (path === "floor") d.room = "";
+        if ((path === "model" || path === "brand") && d.model && d.cat !== CAT.key(d)){ const r = catMatch(d); if (r){ applySpec(d, r); applied = r; } }
+        if (curApp().onDevChange) curApp().onDevChange(b, d, path); });
+      if (applied) toast("📚 " + t("catApplied",{m:applied.brand + " " + applied.model}));
     } else if (s.type === "link"){ const l = linkById(b, s.id); if (!l) return; edit(() => { setPath(l, path, NUMF.has(path) ? num(v, 0) : v); }); }
     else if (curApp().onField) curApp().onField(path, v, el);
   });
   dr.addEventListener("click", async e => {
+    const mx = e.target.closest("[data-mdr]"); if (mx){ e.stopPropagation(); multiAct(mx.dataset.mdr); return; }
     const x = e.target.closest("[data-dr]"); if (!x) return; e.stopPropagation();
     const k = x.dataset.dr, b = B(), s = UI.sel;
     if (k === "close"){ UI.sel = null; UI.multi.clear(); render(); return; }
