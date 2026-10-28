@@ -1,4 +1,4 @@
-// Import of files from the earlier separate programs into NetWorker:
+// Import of files from the earlier separate programs into NetWorkKing:
 //   PortMap 1.x / 2.x / 3.x (.portmap.json, or a PortMap backup with several buildings),
 //   RackLayout 2.x (.rack.json, app "rack-u-layout"),
 //   Wolf Suite 2.0 documents (.topology.json, .cctv.json, .fiber.json, .wifi.json).
@@ -230,7 +230,7 @@ async function importWolf2(j){
   return true;
 }
 
-/* ---------- entry point (called by importAny for files that are not NetWorker projects) ---------- */
+/* ---------- entry point (called by importAny for files that are not NetWorkKing projects) ---------- */
 async function importLegacy(j){
   if (!j || typeof j !== "object") return false;
   if (j.type === "portmap-project" && j.project) return importPortMap([j.project]);

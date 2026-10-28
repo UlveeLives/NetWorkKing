@@ -48,7 +48,7 @@ K("bldDelConf","“{n}” binası bütün cihaz, rack və kabelləri ilə silins
 K("bldInfo","{d} cihaz · {r} rack · {l} kabel","{d} cihaz · {r} rack · {l} kablo","{d} devices · {r} racks · {l} cables","{d} устр. · {r} стоек · {l} кабелей")
 K("moveLeft","Sola köçür","Sola taşı","Move left","Влево")
 K("moveRight","Sağa köçür","Sağa taşı","Move right","Вправо")
-K("exProject","Layihə faylı (.networker.json)","Proje dosyası (.networker.json)","Project file (.networker.json)","Файл проекта (.networker.json)")
+K("exProject","Layihə faylı (.networkking.json)","Proje dosyası (.networkking.json)","Project file (.networkking.json)","Файл проекта (.networkking.json)")
 K("exProjectSub","Bütün binalar, şəkillər — ehtiyat və başqa kompüterə köçürmə","Tüm binalar, görseller — yedek ve taşıma","All buildings and images — backup or move to another computer","Все здания и изображения — резервная копия или перенос")
 K("exPdf","PDF / çap","PDF / yazdır","PDF / print","PDF / печать")
 K("exPdfSub","Bu proqramın sənəd vərəqi","Bu uygulamanın belge sayfası","The document sheet of this app","Лист документа этого приложения")
@@ -104,3 +104,4 @@ K("cables","Kabel jurnalı","Kablo listesi","Cable schedule","Кабельный
 K("invEmpty","Bu binada hələ cihaz yoxdur","Bu binada henüz cihaz yok","No devices in this building yet","В здании пока нет устройств")
 K("autoCid","Kabel ID-lərini avtomatik ver","Kablo ID'lerini otomatik ver","Auto cable IDs","Авто ID кабелей")
 K("legend","Şərti işarələr","Lejant","Legend","Легенда")
+K("migrated","NetWorker 2.0-ın məlumatları NetWorkKing-ə köçürüldü (köhnə nüsxə toxunulmadan qalır)","NetWorker 2.0 verileri NetWorkKing'e kopyalandı","NetWorker 2.0 data was copied into NetWorkKing (the old copy is left untouched)","Данные NetWorker 2.0 скопированы в NetWorkKing")

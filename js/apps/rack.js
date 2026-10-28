@@ -47,24 +47,68 @@ function rackWarnings(b){
   return W;
 }
 const warnings = b => [...rackWarnings(b), ...commonWarnings(b).filter(w => !w[2] || (devById(b, w[2]) && devById(b, w[2]).rack))];
-/* ---------- elevation ---------- */
-function devFace(b, d, r, ghost){
-  const h = devH(d), K = KINDS[d.kind] || KINDS.other, sel = UI.sel && UI.sel.type === "dev" && UI.sel.id === d.id;
-  const sub = h >= 2 || K.acc ? "" : [d.brand, d.model].filter(Boolean).join(" ");
-  return `<div class="rkd k-${d.kind}${ghost ? " ghost" : ""}${sel ? " on" : ""}${d.status === "planned" ? " planned" : ""}${d.status === "faulty" ? " faulty" : ""}" data-rd="${d.id}" style="top:${(r.u - topU(d)) * UH}px;height:${h * UH}px" title="${esc(devFull(b, d) + (d.ip ? " · " + d.ip : ""))}">
-    <svg viewBox="0 0 48 48" class="ri">${ICO[devIcon(d)] || ICO.box}</svg><span class="rdn"><b>${esc(devLabel(d))}</b>${h >= 2 ? `<small>${esc([d.brand, d.model].filter(Boolean).join(" "))}</small>` : sub ? ` <small>${esc(sub)}</small>` : ""}</span>
-    ${d.ports && !K.acc && h >= 1 && (K.sw || K.passive) && !ghost ? `<span class="rdp">${esc(d.ports)}p</span>` : ""}${d.ip && !ghost ? `<span class="rdip">${esc(d.ip.split("/")[0])}</span>` : ""}</div>`;
+/* ---------- elevation: drawn like a real cabinet (RackLayout look) ---------- */
+// faceplate type of each device kind
+const FT = {pp:"pp", fpp:"fiberpp", switch:"sw", coresw:"coresw", firewall:"fw", router:"router", modem:"router", ont:"router", wlc:"router", mediaconv:"router",
+  nvr:"nvr", dvr:"nvr", server:"server", nas:"server", storage:"server", ups:"ups", pdu:"pdu", fan:"fan", cablemgr:"cablemgr", brush:"brush", vent:"vent", blank:"blank", shelf:"shelf"};
+const ftOf = d => FT[d.kind] || "other";
+function portRows(n, rows, grp){ n = Math.max(0, Math.min(96, n)); if (!n) return ""; const per = Math.ceil(n / rows); let h = "";
+  for (let r = 0; r < rows; r++){ let row = ""; for (let i = 0; i < per && r * per + i < n; i++) row += `<i${grp && i && i % grp === 0 ? ' class="g"' : ""}></i>`; h += `<div class="prow">${row}</div>`; }
+  return `<div class="ports">${h}</div>`; }
+function face(d){
+  const T = ftOf(d), h = devH(d), n = num(d.ports), brandTxt = (d.brand || d.model || "").toUpperCase(), m = brandTxt ? `<span class="brand${T === "fw" ? " red" : ""}">${esc(brandTxt)}</span>` : "";
+  switch (T){
+    case "pp": { const rows = n > 24 ? 2 : 1; return `<span class="lab"></span><div class="flex1"></div>${portRows(n || 24, Math.min(rows, h * 2), 6)}<div class="flex1"></div><span class="lab"></span>`; }
+    case "fiberpp": { const pr = Math.ceil((n || 24) / 2); let x = ""; for (let i = 0; i < Math.min(pr, 24); i++) x += `<i></i><i style="margin-right:${i < pr - 1 ? 5 : 0}px"></i>`; return `<div class="flex1"></div><div class="prow">${x}</div><div class="flex1"></div>`; }
+    case "coresw": case "sw": { const rows = n > 12 ? 2 : 1, sfp = Math.min(4, num(d.params.sfp) || 4); return `<span class="led"></span>${m || `<span class="brand">${T === "coresw" ? "L3" : "SW"}</span>`}<div class="flex1"></div>${portRows(n || 24, Math.min(rows, h * 2), 6)}<div class="sfp">${"<i></i>".repeat(sfp)}</div>`; }
+    case "fw": return `<span class="led"></span>${m || '<span class="brand red">FIREWALL</span>'}<div class="flex1"></div>${portRows(n || 8, (n || 8) > 8 ? 2 : 1, 0)}`;
+    case "router": return `<span class="led"></span>${m || `<span class="brand">${esc(kindName(d.kind).toUpperCase().slice(0, 12))}</span>`}<div class="flex1"></div>${portRows(n || 4, 1, 0)}`;
+    case "nvr": { let x = ""; for (let i = 0; i < Math.min(8, Math.max(2, num(d.nvrp && d.nvrp.bays) || h * 4)); i++) x += `<i style="height:${Math.min(14, h * UH / 2 - 4)}px"></i>`; return `${m || '<span class="brand">NVR</span>'}<div class="flex1"></div><span class="led"></span><span class="led o"></span><div class="bays" style="grid-template-rows:repeat(${h > 1 ? 2 : 1},auto)">${x}</div>`; }
+    case "server": { const rows = Math.max(1, Math.min(4, h * 2 - 1)); let x = ""; for (let i = 0; i < rows * 4; i++) x += `<i style="height:${Math.max(5, (h * UH - 8) / rows - 2)}px"></i>`; return `<div class="bays" style="grid-template-rows:repeat(${rows},auto)">${x}</div><div class="flex1"></div>${m}<span class="led"></span>`; }
+    case "ups": { const va = num(d.params.va); return `${m || '<span class="brand">UPS</span>'}<div class="lcd">${va ? Math.round(va / 100) / 10 + "kVA" : ""}</div><span class="led"></span><div class="grill"></div>`; }
+    case "pdu": return `<div class="outlets">${"<i></i>".repeat(8)}</div><div class="flex1"></div>${m}<span class="sw-red"></span>`;
+    case "fan": return `<div class="fans">${"<i></i>".repeat(4)}</div>`;
+    case "cablemgr": return `<div class="rings">${"<i></i>".repeat(8)}</div>`;
+    case "brush": return `<div class="brushs"></div>`;
+    case "shelf": return `<div class="tray"></div><span class="nm">${esc(devLabel(d))}</span>`;
+    case "vent": case "blank": return "";
+    default: return `${m}<span class="nm">${esc(devLabel(d))}</span>`;
+  }
+}
+function rearFace(d){
+  const T = ftOf(d), cab = d.kind === "camera" || d.kind === "nvr" ? "#e0661b" : "#1f6fd6";
+  switch (T){
+    case "pp": case "fiberpp": case "cablemgr": case "brush": case "vent": case "blank": return "";
+    case "shelf": return `<div class="tray"></div>`;
+    case "pdu": return `<span class="inlet"></span><span class="cord" style="background:#d32424"></span><div class="flex1"></div>`;
+    case "ups": return `<div class="outlets">${"<i></i>".repeat(6)}</div><div class="flex1"></div><span class="inlet"></span><span class="cord" style="background:#d32424"></span>`;
+    case "fan": return `<div class="fans">${"<i></i>".repeat(4)}</div>`;
+    default: return `<div class="fans" style="gap:6px;margin:0">${"<i style='width:12px;height:12px'></i>".repeat(Math.min(3, devH(d) + 1))}</div><div class="flex1"></div><span class="cord" style="background:${cab}"></span><span class="inlet"></span>`;
+  }
+}
+function devFace(b, d, r, rearSide, other){
+  const h = devH(d), sel = UI.sel && UI.sel.type === "dev" && UI.sel.id === d.id;
+  return `<div class="rkd dv t-${ftOf(d)} k-${d.kind}${other ? " ghost" : ""}${sel ? " on" : ""}${d.status === "planned" ? " planned" : ""}${d.status === "faulty" ? " faulty" : ""}" data-rd="${d.id}" style="top:${(r.u - topU(d)) * UH}px;height:${h * UH - 1}px" title="${esc(devFull(b, d) + " · U" + d.u + (h > 1 ? "–" + topU(d) : "") + (d.ip ? " · " + d.ip : ""))}">${rearSide ? rearFace(d) : face(d)}</div>`;
+}
+// right-hand column: what sits in each U (names, model), empty ranges marked
+function descCol(b, r){
+  const occ = rackOcc(b, r); let h = "", u = r.u;
+  while (u >= 1){ const d = occ[u];
+    if (d){ const hh = devH(d), on = UI.sel && UI.sel.type === "dev" && UI.sel.id === d.id; h += `<div class="dc${on ? " on" : ""}" data-rdsel="${d.id}" style="height:${(topU(d) - Math.max(1, d.u) + 1) * UH}px" title="${esc(devFull(b, d))}"><span>${esc(devLabel(d))}${d.model || d.brand ? ` <span class="muted">– ${esc([d.brand, d.model].filter(Boolean).join(" "))}</span>` : ""}</span></div>`; u = d.u - 1; void hh; }
+    else { let n = 0; while (u - n >= 1 && !occ[u - n]) n++; h += `<div class="dc e" style="height:${n * UH}px">${esc(t("rkEmptyU"))}</div>`; u -= n; } }
+  return `<div class="rkdesc"><div class="dch">${esc(t("rkDesc"))}</div>${h}</div>`;
 }
 function rackHtml(b, r, faces, print){
   const devs = rackDevices(b, r), zero = b.devices.filter(d => d.rack === r.id && zeroU(d)), on = !print && curRack(b) === r;
-  const p = rackPower(b, r);
-  const face = f => `<div class="rkf"><div class="rkft">${esc(t(f === "front" ? "sideFront" : "sideRear"))}</div><div class="rkframe">
-      <div class="rkz">${zero.filter((d, i) => (d.params.feed || (i % 2 ? "B" : "A")) === "A").map(d => `<div class="rk0${UI.sel && UI.sel.id === d.id ? " on" : ""}" data-rd0="${d.id}" title="${esc(devLabel(d))}"><span>${esc(devLabel(d))}</span></div>`).join("")}</div>
-      <div class="rkn">${Array.from({length:r.u}, (_, i) => `<i style="top:${i * UH}px">${r.u - i}</i>`).join("")}</div>
-      <div class="rkb" data-rkb="${r.id}" data-face="${f}" style="height:${r.u * UH}px">${print ? "" : Array.from({length:r.u}, (_, i) => `<div class="rku" data-ru="${r.u - i}" style="top:${i * UH}px"></div>`).join("")}
-        ${devs.map(d => devFace(b, d, r, (d.side || "front") !== f)).join("")}</div>
-      <div class="rkn r">${Array.from({length:r.u}, (_, i) => `<i style="top:${i * UH}px">${r.u - i}</i>`).join("")}</div>
-      <div class="rkz">${zero.filter((d, i) => (d.params.feed || (i % 2 ? "B" : "A")) === "B").map(d => `<div class="rk0 b${UI.sel && UI.sel.id === d.id ? " on" : ""}" data-rd0="${d.id}" title="${esc(devLabel(d))}"><span>${esc(devLabel(d))}</span></div>`).join("")}</div></div></div>`;
+  const p = rackPower(b, r), nums = side => `<div class="rkn${side ? " r" : ""}"><div class="dch">U</div>${Array.from({length:r.u}, (_, i) => `<i>${r.u - i}</i>`).join("")}</div>`;
+  const zcol = (f, ab) => zero.filter((d, i) => (d.params.feed || (i % 2 ? "B" : "A")) === ab).map(d => `<div class="rk0${ab === "B" ? " b" : ""}${UI.sel && UI.sel.id === d.id ? " on" : ""}" data-rd0="${d.id}" title="${esc(devLabel(d))}"><span>${esc(devLabel(d))}</span></div>`).join("");
+  const face = f => `<div class="rkf"><div class="rkft">${esc(t(f === "front" ? "sideFront" : "sideRear"))}</div><div class="rkcab">
+      ${f === "front" ? nums(false) : ""}
+      <div class="rkcase"><div class="rkz">${zcol(f, "A")}</div>
+        <div class="rkb ${f}" data-rkb="${r.id}" data-face="${f}" style="height:${r.u * UH}px">${print ? "" : Array.from({length:r.u}, (_, i) => rackFits(b, r, r.u - i, 1) ? `<div class="rku" data-ru="${r.u - i}" style="top:${i * UH}px"></div>` : "").join("")}
+          ${devs.map(d => devFace(b, d, r, f === "rear", (d.side || "front") !== f)).join("")}</div>
+        <div class="rkz">${zcol(f, "B")}</div></div>
+      ${f === "front" ? descCol(b, r) : nums(true)}</div></div>`;
   return `<div class="rk${on ? " on" : ""}" data-rk="${r.id}"><div class="rkh" data-rksel="${r.id}"><b>${esc(r.name)}</b><small>${r.u}U · ${esc([floorName(b, r.floor), roomName(b, r.room)].filter(Boolean).join(" · ") || "—")}</small>
       <span class="rks">${p.used}/${r.u}U · ${Math.round(p.tot)} W · ${r1(p.weight)} kg</span></div><div class="rkfs">${faces.map(face).join("")}</div></div>`;
 }
@@ -88,15 +132,18 @@ async function addToRack(kind, rackId, u0){
   let zero = false;
   if (kind === "pdu"){ const c = await uiChoice(t("rkPduQ"), [["0", t("rkPdu0")], ["1", t("rkPdu1")]]); if (!c) return; zero = c === "0"; }
   const h = zero ? 0 : (KINDS[kind] && KINDS[kind].h) || 1;
-  let u = 0; if (!zero){ u = u0 && rackFits(b, r, u0 - h + 1, h) ? u0 - h + 1 : u0 && rackFits(b, r, u0, h) ? u0 : rackSpot(b, r, h, u0 || 0); if (!u) return toast("⚠ " + t("rackNoSpace")); }
+  let u = 0; if (!zero){ u = u0 && rackFits(b, r, u0 - h + 1, h) ? u0 - h + 1 : u0 && rackFits(b, r, u0, h) ? u0 : rackSpot(b, r, h, u0 || 0);
+    if (!u){ // no free gap: make room by packing the rack down, or say how much is missing
+      const used = rackDevices(b, r).reduce((a, x) => a + devH(x), 0); if (used + h > r.u) return uiAlert(t("fitRackFull",{r:r.name, free:r.u - used, need:h}));
+      const R = rackRepack(b, r, r.u - h); if (!R.ok || !await uiConfirm(t("fitMakeRoom",{r:r.name, k:R.moves.length, d:kindName(kind)}) + "\n\n" + moveText(R.moves), t("fitApply"))) return;
+      edit(() => { R.moves.forEach(([x, , nu]) => { x.u = nu; }); }); u = r.u - h + 1; } }
   edit(() => { const d = newDevice(kind, {rack:r.id, u, floor:r.floor, room:r.room}); if (zero){ d.params.h = 0; d.params.feed = b.devices.filter(x => x.rack === r.id && zeroU(x)).length % 2 ? "B" : "A"; } else d.params.h = h;
     b.devices.push(d); UI.sel = {type:"dev", id:d.id}; UI.rackSel = r.id; });
 }
 function putInRack(id, rackId){
   const b = B(), d = devById(b, id), r = rackId ? rackById(b, rackId) : curRack(b); if (!d) return;
   if (!r) return toast("⚠ " + t("rkNoRack"));
-  const u = rackSpot(b, r, devH(d), 0, d.id); if (!u) return toast("⚠ " + t("rackNoSpace"));
-  edit(() => { d.rack = r.id; d.u = u; if (!d.floor) d.floor = r.floor; if (!d.room) d.room = r.room; UI.sel = {type:"dev", id:d.id}; UI.rackSel = r.id; });
+  UI.sel = {type:"dev", id:d.id}; UI.rackSel = r.id; putDevInRack(b, d, r);
 }
 /* ---------- drag devices between U positions and racks ---------- */
 let RD = null;
@@ -139,6 +186,7 @@ function wire(){
     if (UI.app !== "rack") return;
     const a = e.target.closest("[data-rka]"); if (a){ if (a.dataset.rka === "addRack"){ const b = B(); edit(() => { const r = newRack(b); b.racks.push(r); UI.sel = {type:"rack", id:r.id}; UI.rackSel = r.id; }); } return; }
     const z = e.target.closest("[data-rd0]"); if (z){ UI.sel = {type:"dev", id:z.dataset.rd0}; render(); return; }
+    const dsel = e.target.closest("[data-rdsel]"); if (dsel){ UI.sel = {type:"dev", id:dsel.dataset.rdsel}; UI.multi.clear(); render(); return; }
     const hd = e.target.closest("[data-rksel]"); if (hd){ UI.sel = {type:"rack", id:hd.dataset.rksel}; UI.rackSel = hd.dataset.rksel; render(); return; }
     const slot = e.target.closest(".rku"); if (slot){ const body = slot.closest("[data-rkb]"), rid = body.dataset.rkb, u = +slot.dataset.ru; UI.rackSel = rid;
       popMenu(slot, [{head:`${rackById(B(), rid).name} · U${u}`}, ...["switch","pp","fpp","firewall","router","server","nvr","ups","pdu","cablemgr","blank","shelf"].map(k => ({icon:`<svg viewBox="0 0 48 48" width="22" height="22">${ICO[KINDS[k].icon] || ICO.box}</svg>`, label:kindName(k), fn:() => addToRack(k, rid, u)}))]); return; }
@@ -225,7 +273,7 @@ registerApp({
   },
   async onField(path, v, el){ const b = B(), s = UI.sel; if (!s || s.type !== "rack") return; const r = rackById(b, s.id); if (!r) return; const k = path.slice(2);
     if (k === "floor" || k === "room"){ const x = await resolveNew(k, b, v, {floor:r.floor}); if (x === null) return render(); return edit(() => { r[k] = x; if (k === "floor") r.room = ""; b.devices.forEach(d => { if (d.rack === r.id){ if (k === "floor"){ d.floor = x; d.room = ""; } else d.room = x; } }); }); }
-    if (k === "u"){ const hi = rackDevices(b, r).reduce((m, d) => Math.max(m, topU(d)), 0), n = clamp(Math.round(num(v, r.u)), Math.max(4, hi), 60); if (n !== num(v)) toast(t("rkUMin",{n:hi})); return edit(() => { r.u = n; }); }
+    if (k === "u"){ if (!await setRackU(b, r, v)) render(); return; }
     edit(() => { setPath(r, k, ["dims.h","dims.w","dims.d","udepth","load","coolKw","volts","pf"].includes(k) ? num(v, 0) : String(v).trim()); }); },
   onKey(e, tab){ if (tab.id !== "rack" || !UI.sel || UI.sel.type !== "dev") return; const b = B(), d = devById(b, UI.sel.id); if (!d || !d.rack || !d.u) return;
     if (e.key === "ArrowUp" || e.key === "ArrowDown"){ e.preventDefault(); const r = rackById(b, d.rack), u = d.u + (e.key === "ArrowUp" ? 1 : -1); if (rackFits(b, r, u, devH(d), d.id)) edit(() => { d.u = u; }); }

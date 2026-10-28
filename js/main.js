@@ -1,6 +1,6 @@
 // Start-up: load data and catalog, wire the shell, open the last app, run the first-time setup if needed.
 "use strict";
-const APP_VERSION = "2.0.0";
+const APP_VERSION = "3.0.0";
 (async function start(){
   try {
     await loadStore(); await CAT.load(); applyTheme();
@@ -12,6 +12,6 @@ const APP_VERSION = "2.0.0";
     CAT.autoUpdate();
     if (/^https?:$/.test(location.protocol) && "serviceWorker" in navigator && !window.appBridge) navigator.serviceWorker.register("sw.js").catch(() => {});
     if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
-  } catch(e){ console.error(e); document.body.innerHTML = `<pre style="padding:20px;color:#c00">NetWorker failed to start:\n${String(e && e.stack || e)}</pre>`; }
+  } catch(e){ console.error(e); document.body.innerHTML = `<pre style="padding:20px;color:#c00">NetWorkKing failed to start:\n${String(e && e.stack || e)}</pre>`; }
 })();
 window.addEventListener("beforeunload", () => { if (saveTimer){ clearTimeout(saveTimer); try { IDB.db && IDB.put("state", JSON.parse(JSON.stringify(store)), "main"); } catch(e){} } });

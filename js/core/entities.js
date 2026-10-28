@@ -283,6 +283,75 @@ function openLinkDialog(b, fromId, done){
       .map(d => `<button class="pk" data-m="pick" data-id="${d.id}"><svg viewBox="0 0 48 48" width="22" height="22">${ICO[devIcon(d)] || ICO.box}</svg><span><b>${esc(devLabel(d))}</b><small>${esc([kindName(d.kind), roomName(b, d.room), d.ip].filter(Boolean).join(" · "))}</small></span></button>`).join("") || `<p class="muted">${esc(t("notFound"))}</p>`; };
   $("#lk-q").addEventListener("input", draw); draw();
 }
+/* ---------- "does it still fit?" — one rule for every shrink or resize ----------
+   Reducing a size (rack U, device height, port count, NVR channels) is allowed whenever the contents still fit;
+   the things that would fall outside are moved to free places, and the user sees what moves before it happens.
+   Only when they really don't fit is the change refused, with the numbers. */
+// rack: push devices down from the top so that everything fits under newU, keeping their order and moving as few as possible
+function rackRepack(b, r, newU, change){
+  const L = rackDevices(b, r).map(d => ({d, u:d.u, h:change && change.id === d.id ? change.h : devH(d)}));
+  const need = L.reduce((a, x) => a + x.h, 0); if (need > newU) return {ok:false, need, moves:[]};
+  // the device whose height changes keeps its bottom U if possible; the others make room by moving down
+  L.sort((a, c) => (c.u + c.h) - (a.u + a.h) || c.u - a.u); let ceil = newU; const moves = [];
+  L.forEach(x => { const top = Math.min(x.u + x.h - 1, ceil), u = top - x.h + 1; x.nu = u; ceil = u - 1; });
+  if (L.some(x => x.nu < 1)){ // something sticks out below: pack again from the bottom, same order
+    let floor = 1; L.slice().reverse().forEach(x => { x.nu = Math.max(x.nu, floor); floor = x.nu + x.h; }); if (floor - 1 > newU) return {ok:false, need, moves:[]}; }
+  L.forEach(x => { if (x.nu !== x.d.u) moves.push([x.d, x.d.u, x.nu]); });
+  return {ok:true, need, moves};
+}
+const moveText = M => M.slice(0, 12).map(([d, a, c]) => `${devLabel(d)}: U${a} → U${c}`).join("\n") + (M.length > 12 ? `\n… +${M.length - 12}` : "");
+async function setRackU(b, r, n){
+  n = clamp(Math.round(num(n, r.u)), 1, 60); if (n === r.u) return false;
+  if (n > r.u) return edit(() => { r.u = n; }), true;
+  const R = rackRepack(b, r, n);
+  if (!R.ok){ await uiAlert(t("fitRackNo",{r:r.name, n, need:R.need})); return false; }
+  if (R.moves.length && !await uiConfirm(t("fitRackMove",{r:r.name, n, k:R.moves.length}) + "\n\n" + moveText(R.moves), t("fitApply"))) return false;
+  edit(() => { R.moves.forEach(([d, , u]) => { d.u = u; }); r.u = n; });
+  if (R.moves.length) toast("✓ " + t("fitMoved",{k:R.moves.length})); return true;
+}
+// a device in a rack gets taller: room above or below it, else the rack makes room, else the numbers
+async function setDevHeight(b, d, h){
+  const r = d.rack && rackById(b, d.rack); h = clamp(Math.round(num(h, 1)), 1, 60);
+  if (!r) return edit(() => { d.params.h = h; }), true;
+  for (const u of [d.u, d.u - (h - devH(d))]) if (rackFits(b, r, u, h, d.id)) return edit(() => { d.u = u; d.params.h = h; }), true;
+  const R = rackRepack(b, r, r.u, {id:d.id, h});
+  if (!R.ok){ await uiAlert(t("fitHNo",{d:devLabel(d), h, r:r.name, free:r.u - (R.need - h), need:h})); return false; }
+  if (!await uiConfirm(t("fitHMove",{d:devLabel(d), h, k:R.moves.length}) + "\n\n" + moveText(R.moves.filter(m => m[0] !== d)), t("fitApply"))) return false;
+  edit(() => { R.moves.forEach(([x, , u]) => { x.u = u; }); d.params.h = h; }); return true;
+}
+// a device goes into a rack: a free spot, else the rack is packed down to open one at the top
+async function putDevInRack(b, d, r, pref){
+  const h = devH(d); let u = pref && rackFits(b, r, pref, h, d.id) ? pref : rackSpot(b, r, h, pref || 0, d.id);
+  if (u) return edit(() => { d.rack = r.id; d.u = u; if (!d.floor) d.floor = r.floor; if (!d.room) d.room = r.room; }), true;
+  const others = rackDevices(b, r).filter(x => x.id !== d.id), used = others.reduce((a, x) => a + devH(x), 0);
+  if (used + h > r.u){ await uiAlert(t("fitRackFull",{r:r.name, free:r.u - used, need:h})); return false; }
+  const R = rackRepack(b, r, r.u - h);
+  if (!R.ok || !await uiConfirm(t("fitMakeRoom",{r:r.name, k:R.moves.length, d:devLabel(d)}) + "\n\n" + moveText(R.moves), t("fitApply"))) return false;
+  edit(() => { R.moves.forEach(([x, , nu]) => { x.u = nu; }); d.rack = r.id; d.u = r.u - h + 1; if (!d.floor) d.floor = r.floor; if (!d.room) d.room = r.room; }); return true;
+}
+// fewer ports: cables on ports above the new count move to free ports below it (numbered ports only)
+async function setPortCount(b, d, n){
+  n = Math.max(0, Math.round(num(n, d.ports))); if (n >= num(d.ports)) return edit(() => { d.ports = n; }), true;
+  const ends = []; b.links.forEach(l => ["a", "b"].forEach(s => { if (l[s].d === d.id) ends.push({l, s, p:String(l[s].p || "")}); }));
+  const isNum = p => /^\d+$/.test(p), high = ends.filter(e => isNum(e.p) && +e.p > n);
+  if (!high.length) return edit(() => { d.ports = n; }), true;
+  const used = new Set(ends.filter(e => isNum(e.p)).map(e => +e.p)), free = []; for (let p = 1; p <= n; p++) if (!used.has(p)) free.push(p);
+  if (free.length < high.length){ await uiAlert(t("fitPortNo",{d:devLabel(d), n, k:high.length, f:free.length, m:used.size})); return false; }
+  high.sort((a, c) => +a.p - +c.p);
+  if (!await uiConfirm(t("fitPortMove",{d:devLabel(d), n, k:high.length}) + "\n\n" + high.slice(0, 16).map((e, i) => `${e.p} → ${free[i]}`).join(" · "), t("fitApply"))) return false;
+  edit(() => { high.forEach((e, i) => { e.l[e.s].p = String(free[i]); }); d.ports = n; }); toast("✓ " + t("fitPortsMoved",{k:high.length})); return true;
+}
+// fewer NVR channels: cameras on channels above the new count move to free channels
+async function setNvrChannels(b, nv, n){
+  n = Math.max(0, Math.round(num(n, nv.nvrp.channels))); const C = b.devices.filter(c => c.kind === "camera" && (c.nvrs || []).includes(nv.id));
+  if (!n || n >= num(nv.nvrp.channels) || !C.length) return edit(() => { nv.nvrp.channels = n; }), true;
+  if (C.length > n){ await uiAlert(t("fitChNo",{d:devLabel(nv), n, k:C.length})); return false; }
+  const ch = c => +c.chs[nv.id] || 0, high = C.filter(c => ch(c) > n || !ch(c)), used = new Set(C.map(ch).filter(x => x && x <= n)), free = []; for (let i = 1; i <= n; i++) if (!used.has(i)) free.push(i);
+  if (high.length && !await uiConfirm(t("fitChMove",{d:devLabel(nv), n, k:high.length}) + "\n\n" + high.slice(0, 16).map((c, i) => `${devLabel(c)}: ${ch(c) || "—"} → ${free[i]}`).join("\n"), t("fitApply"))) return false;
+  edit(() => { high.forEach((c, i) => { c.chs[nv.id] = String(free[i]); if (c.nvr === nv.id) c.ch = c.chs[nv.id]; }); nv.nvrp.channels = n; }); return true;
+}
+window.FIT = {rackRepack, setRackU, setDevHeight, putDevInRack, setPortCount, setNvrChannels};
+
 // Events of the shared editors (wired once, act on the current selection).
 function wireEditors(){
   const dr = $("#drawer");
@@ -294,10 +363,14 @@ function wireEditors(){
     let v = el.type === "checkbox" ? el.checked : el.value;
     if (s.type === "dev"){ const d = devById(b, s.id); if (!d) return;
       if (path === "floor" || path === "room" || path === "vlan"){ const r = await resolveNew(path, b, v, {floor:d.floor}); if (r === null){ renderDrawer(); return; } v = r; }
+      if (path === "params.h" && d.rack){ if (!await setDevHeight(b, d, v)) renderDrawer(); return; }
+      if (path === "rack" && v){ const rk = rackById(b, v); if (rk && !await putDevInRack(b, d, rk)) renderDrawer(); return; }
+      if (path === "ports" && num(v) < num(d.ports)){ if (!await setPortCount(b, d, v)) renderDrawer(); return; }
+      if (path === "nvrp.channels" && d.nvrp && num(v) < num(d.nvrp.channels)){ if (!await setNvrChannels(b, d, v)) renderDrawer(); return; }
       if (path === "u" || path === "params.h" || path === "rack"){
         const nr = path === "rack" ? v : d.rack, rk = nr && rackById(b, nr), h = path === "params.h" ? Math.max(1, Math.round(num(v, 1))) : devH(d);
         let u = path === "u" ? Math.round(num(v, 0)) : d.u;
-        if (rk){ if (path === "rack") u = rackSpot(b, rk, h, 0, d.id); if (!u || !rackFits(b, rk, u, h, d.id)){ toast("⚠ " + t("rackNoSpace")); renderDrawer(); return; } }
+        if (rk && (!u || !rackFits(b, rk, u, h, d.id))){ const occ = rackOcc(b, rk, d.id), who = [...new Set(occ.slice(u, u + h).filter(Boolean))]; await uiAlert(u < 1 || u + h - 1 > rk.u ? t("fitUOut",{u, h, r:rk.name, n:rk.u}) : t("fitUTaken",{u, d:who.map(devLabel).join(", ")})); renderDrawer(); return; }
         return edit(() => { d.rack = nr; d.u = rk ? u : 0; d.params.h = h; if (rk && !d.floor) d.floor = rk.floor; if (rk && !d.room) d.room = rk.room; });
       }
       if (path === "ip" && v && !IP.valid(v)) toast("⚠ " + t("ipBad"));
@@ -381,4 +454,4 @@ function warnBox(W){
   return `<details class="warns"${UI.warnOpen === false ? "" : " open"}><summary>⚠ ${esc(t("warnCount",{n:W.length}))}</summary><div class="wlist">${W.slice(0, 80).map(w => `<div class="warn ${w[0]}"${w[2] ? ` data-goto="${esc(w[2])}"` : ""}>${w[0] === "err" ? "⛔" : w[0] === "info" ? "ⓘ" : "⚠"} ${esc(w[1])}</div>`).join("")}${W.length > 80 ? `<div class="warn info">… +${W.length - 80}</div>` : ""}</div></details>`;
 }
 document.addEventListener("toggle", e => { if (e.target.matches && e.target.matches("details.warns")) UI.warnOpen = e.target.open; }, true);
-document.addEventListener("click", e => { const g = e.target.closest(".warn[data-goto]"); if (!g) return; const b = B(), id = g.dataset.goto; UI.sel = devById(b, id) ? {type:"dev", id} : rackById(b, id) ? {type:"rack", id} : {type:"any", id}; render(); const a = curApp(); if (a.reveal) a.reveal(UI.sel); });
+document.addEventListener("click", e => { const g = e.target.closest(".warn[data-goto]"); if (!g) return; const b = B(), id = g.dataset.goto; UI.sel = devById(b, id) ? {type:"dev", id} : rackById(b, id) ? {type:"rack", id} : roomById(b, id) ? {type:"room", id} : {type:"any", id}; render(); const a = curApp(); if (a.reveal) a.reveal(UI.sel); });

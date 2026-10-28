@@ -30,7 +30,7 @@ function openSettings(tab){
     <label class="fld"><span>${esc(t("projName"))}</span><input id="s-pname" value="${esc(p.name)}"></label>
     <label class="fld"><span>${esc(t("projCompany"))}</span><input id="s-pcomp" value="${esc(p.company)}"></label>
     <div class="btns"><button class="btn" data-m="places">🏢 ${esc(t("places"))}</button><button class="btn" data-m="dupProj">⧉ ${esc(t("projDup"))}</button><button class="btn dan" data-m="delProj"${Object.keys(store.projects).length < 2 ? " disabled" : ""}>🗑 ${esc(t("projDel"))}</button></div></div>
-  <div class="tsec" data-t="about"${cur === "about" ? "" : " hidden"}><p><b>NetWorker ${esc(APP_VERSION)}</b></p><p class="muted small">${esc(t("aboutText"))}</p><div id="s-storage" class="muted small"></div>
+  <div class="tsec" data-t="about"${cur === "about" ? "" : " hidden"}><p><b>NetWorkKing ${esc(APP_VERSION)}</b></p><p class="muted small">${esc(t("aboutText"))}</p><div id="s-storage" class="muted small"></div>
     <div class="btns"><button class="btn" data-m="wizard">🧭 ${esc(t("setupAgain"))}</button></div></div>
   <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><button class="btn pri" data-m="save">${esc(t("save"))}</button></div>`, {
     tab: (bt, e, k) => { $$(".mbox .tabb").forEach(x => x.classList.toggle("on", x === bt)); $$(".mbox .tsec").forEach(x => x.hidden = x.dataset.t !== k); },
@@ -38,7 +38,7 @@ function openSettings(tab){
     helpAll: () => { s.help.off = {}; s.help.allOff = false; tourSeen.clear(); $$(".s-pg").forEach(x => x.checked = true); $("#s-alloff").checked = false; persist(); toast("✓ " + t("setHelpDone")); },
     catUpd: async bt => { readSettings(); bt.disabled = true; await CAT.update(true); bt.disabled = false; openSettings("cat"); },
     catBrowse: () => { closeModal(); openCatalogPicker("", () => {}); },
-    catExport: () => saveText("networker-catalog-mine.json", JSON.stringify({app:"networker-catalog", version:today(), date:today(), models:CAT.user}, null, 1), "json", "application/json"),
+    catExport: () => saveText("networkking-catalog-mine.json", JSON.stringify({app:"networkking-catalog", version:today(), date:today(), models:CAT.user}, null, 1), "json", "application/json"),
     aiTest: () => { readSettings(); aiTest(); },
     places: () => { readSettings(); closeModal(); openPlaces(); },
     dupProj: () => { readSettings(); const c = clone(P()); c.id = uid("p"); c.name += " (" + t("copy") + ")"; store.projects[c.id] = c; store.cur = c.id; persist(); closeModal(); render(); },

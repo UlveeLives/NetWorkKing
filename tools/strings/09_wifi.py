@@ -265,7 +265,7 @@ K("wf_w_noIdf","{f}: IDF / rack yeri qeyd olunmayıb — kabel uzunluğu hesabla
 K("wf_w_survey","Ölçmə {p}: ölçülən {m} dBm, proqnoz {pr} dBm (fərq > 8 dB).","Ölçüm {p}: ölçülen {m} dBm, tahmin {pr} dBm (fark > 8 dB).","Survey {p}: measured {m} dBm vs predicted {pr} dBm (difference > 8 dB).","Замер {p}: измерено {m} дБм, прогноз {pr} дБм (разница > 8 дБ).")
 K("wf_w_more","… və daha {n} oxşar xəbərdarlıq","… ve {n} benzer uyarı daha","… and {n} more similar warnings","… и ещё {n} похожих предупреждений")
 
-# NetWorker-specific Wi-Fi strings
+# NetWorkKing-specific Wi-Fi strings
 for k,az,tr,en,ru in [
  ("app_wifi","Wi-Fi Plan","Wi-Fi Plan","Wi-Fi Plan","Wi-Fi Plan"),
  ("app_wifi_d","Mərtəbə planında Wi-Fi örtüyü, AP-lər, kanallar, PoE","Kat planında Wi-Fi kapsama, AP, kanal, PoE","Wi-Fi coverage on floor plans, APs, channels, PoE","Покрытие Wi-Fi на планах, AP, каналы, PoE"),

@@ -1,16 +1,25 @@
-// NetWorker — Electron main process (Windows desktop app).
+// NetWorkKing — Electron main process (Windows desktop app).
 const { app, BrowserWindow, ipcMain, dialog, Menu, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
 let win;
 if (!app.requestSingleInstanceLock()) app.quit();
+// NetWorkKing keeps its data in its own folder. On the first start it copies the data of NetWorker 1.x / 2.x
+// (the old folder is not changed, so the old version still opens with its own data).
+try {
+  const nu = app.getPath("userData"), old = path.join(app.getPath("appData"), "NetWorker");
+  if (path.resolve(nu).toLowerCase() !== path.resolve(old).toLowerCase() && fs.existsSync(old) && !fs.existsSync(path.join(nu, "IndexedDB"))){
+    fs.mkdirSync(nu, { recursive: true });
+    for (const d of ["IndexedDB", "Local Storage"]) if (fs.existsSync(path.join(old, d))) fs.cpSync(path.join(old, d), path.join(nu, d), { recursive: true });
+  }
+} catch (e) { console.error("data copy", e); }
 app.on("second-instance", () => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } });
 
 function createWindow() {
   win = new BrowserWindow({
     width: 1500, height: 950, minWidth: 1000, minHeight: 640,
-    title: "NetWorker", backgroundColor: "#eef1f4", autoHideMenuBar: true,
+    title: "NetWorkKing", backgroundColor: "#eef1f4", autoHideMenuBar: true,
     icon: path.join(__dirname, "build", "icon.png"),
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true }
   });

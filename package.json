@@ -1,8 +1,8 @@
 {
-  "name": "networker",
-  "productName": "NetWorker",
-  "version": "2.0.0",
-  "description": "NetWorker — network documentation: topology, Port Map, racks, fiber, CCTV and Wi-Fi in one app",
+  "name": "networkking",
+  "productName": "NetWorkKing",
+  "version": "3.0.0",
+  "description": "NetWorkKing — network documentation: building structure, topology, Port Map, racks, fiber, CCTV and Wi-Fi in one app",
   "author": "UlveeLives",
   "license": "UNLICENSED",
   "main": "main.js",
@@ -15,11 +15,11 @@
     "electron-builder": "^26.0.0"
   },
   "build": {
-    "appId": "local.ulveelives.networker",
-    "productName": "NetWorker",
+    "appId": "local.ulveelives.networkking",
+    "productName": "NetWorkKing",
     "files": ["index.html", "main.js", "preload.js", "css/**", "js/**", "icons/**", "vendor/**", "build/icon.png", "manifest.webmanifest", "!build.bat"],
     "directories": { "output": "dist", "buildResources": "build" },
-    "win": { "target": "nsis", "icon": "build/icon.ico", "artifactName": "NetWorker-Setup-${version}.exe" },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "shortcutName": "NetWorker" }
+    "win": { "target": "nsis", "icon": "build/icon.ico", "artifactName": "NetWorkKing-Setup-${version}.exe" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "shortcutName": "NetWorkKing" }
   }
 }

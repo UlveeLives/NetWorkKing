@@ -1,6 +1,6 @@
 {
-  "name": "NetWorker",
-  "short_name": "NetWorker",
+  "name": "NetWorkKing",
+  "short_name": "NetWorkKing",
   "description": "Network documentation: topology, Port Map, racks, fiber, CCTV and Wi-Fi",
   "start_url": "./index.html",
   "scope": "./",

@@ -1,8 +1,8 @@
-// NetWorker data store: one project = one company / branch, with buildings.
+// NetWorkKing data store: one project = one company / branch, with buildings.
 // Every app is a view of the same building data (devices, racks, cables, floors, rooms, VLANs),
 // so a change made in one app is immediately visible in all the others.
 "use strict";
-const DBNAME = "networker";
+const DBNAME = "networkking", OLD_DB = "networker";   // NetWorker 1.x / 2.x kept their data under the old name
 const IDB = {
   db:null,
   open(){ return new Promise(res => { let rq; try { rq = indexedDB.open(DBNAME, 1); } catch(e){ return res(null); }
@@ -78,15 +78,29 @@ let saveTimer = null;
 function persist(){
   clearTimeout(saveTimer); setSaveState("…");
   saveTimer = setTimeout(async () => {
-    try { const data = JSON.parse(JSON.stringify(store)); if (IDB.db) await IDB.put("state", data, "main"); else localStorage.setItem("networker", JSON.stringify(data)); setSaveState("✓"); }
+    try { const data = JSON.parse(JSON.stringify(store)); if (IDB.db) await IDB.put("state", data, "main"); else localStorage.setItem("networkking", JSON.stringify(data)); setSaveState("✓"); }
     catch(e){ setSaveState("⚠"); toast("⚠ " + t("saveFail") + " " + (e && e.message || "")); }
   }, 350);
 }
 function setSaveState(s){ const el = $("#savest"); if (el){ el.textContent = s === "✓" ? "✓ " + t("savedShort") : s === "…" ? "… " + t("saving") : "⚠ " + t("saveFailShort"); el.className = s === "⚠" ? "bad" : ""; } }
+// First start of NetWorkKing: copy the data of NetWorker 1.x / 2.x (the old copy is left as it is, so the old version keeps working).
+async function migrateOld(){
+  try {
+    if (!IDB.db || await IDB.get("state", "main")) return false;
+    if (indexedDB.databases){ const L = await indexedDB.databases(); if (!L.some(d => d.name === OLD_DB)) return false; }
+    const old = await new Promise(res => { const rq = indexedDB.open(OLD_DB); rq.onsuccess = () => res(rq.result); rq.onerror = () => res(null); rq.onupgradeneeded = () => { rq.transaction.abort(); res(null); }; });
+    if (!old || !old.objectStoreNames.contains("state")) { old && old.close(); return false; }
+    const read = st => new Promise(res => { if (!old.objectStoreNames.contains(st)) return res([]); const tx = old.transaction(st, "readonly"), o = tx.objectStore(st), out = []; const c = o.openCursor(); c.onsuccess = () => { const x = c.result; if (x){ out.push([x.key, x.value]); x.continue(); } else res(out); }; c.onerror = () => res(out); });
+    for (const st of ["state", "assets", "catalog", "versions"]){ const rows = await read(st); for (const [k, v] of rows){ if (st === "versions") await IDB.put(st, v).catch(() => {}); else await IDB.put(st, v, k).catch(() => {}); } }
+    old.close(); return true;
+  } catch(e){ console.warn("migrate", e); return false; }
+}
 async function loadStore(){
   await IDB.open();
+  const migrated = await migrateOld();
   let s = null;
-  try { s = IDB.db ? await IDB.get("state", "main") : JSON.parse(localStorage.getItem("networker") || "null"); } catch(e){ s = null; }
+  try { s = IDB.db ? await IDB.get("state", "main") : JSON.parse(localStorage.getItem("networkking") || localStorage.getItem("networker") || "null"); } catch(e){ s = null; }
+  if (migrated) setTimeout(() => toast("✓ " + t("migrated"), 6000), 1500);
   if (!s || !s.projects) s = {v:1, settings:defaultSettings(), projects:{}, cur:null};
   s.settings = Object.assign(defaultSettings(), s.settings || {}); s.settings.help = Object.assign({off:{}}, s.settings.help || {}); s.settings.ai = Object.assign(defaultSettings().ai, s.settings.ai || {});
   store = s;
@@ -127,13 +141,13 @@ async function openVersions(){
 async function exportProject(){
   const p = P(), assets = {};
   for (const id of assetIds(p)){ const a = ASSETS.get(id); if (a) assets[id] = await blobToDataURL(a.blob); }
-  saveText(`${fileSafe(p.name)} ${today()}.networker.json`, JSON.stringify({app:"networker", v:1, exported:new Date().toISOString(), project:p, assets}), "json", "application/json");
+  saveText(`${fileSafe(p.name)} ${today()}.networkking.json`, JSON.stringify({app:"networkking", v:1, exported:new Date().toISOString(), project:p, assets}), "json", "application/json");
 }
 async function importAny(){
   const txt = await openTextFile(); if (!txt) return;
   let j; try { j = JSON.parse(txt); } catch(e){ return toast("⚠ " + t("impBad")); }
   try {
-    if ((j.app === "networker" || j.app === "wolf-suite") && j.project){ await importProject(j); return; }
+    if ((j.app === "networkking" || j.app === "networker" || j.app === "wolf-suite") && j.project){ await importProject(j); return; }
     if (typeof importLegacy === "function" && await importLegacy(j)) return;
     toast("⚠ " + t("impBad"));
   } catch(e){ console.error(e); toast("⚠ " + t("impBad") + " " + (e.message || "")); }

@@ -1,4 +1,4 @@
-// Small helpers shared by every part of NetWorker.
+// Small helpers shared by every part of NetWorkKing.
 "use strict";
 const $ = (s, el) => (el || document).querySelector(s);
 const $$ = (s, el) => [...(el || document).querySelectorAll(s)];
@@ -12,7 +12,7 @@ const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const debounce = (fn, ms) => { let tm; return (...a) => { clearTimeout(tm); tm = setTimeout(() => fn(...a), ms); }; };
 const same = (a, b) => String(a ?? "").trim().toLowerCase() === String(b ?? "").trim().toLowerCase();
 const isPhone = () => matchMedia("(max-width: 900px)").matches;
-const fileSafe = s => String(s || "networker").replace(/[\\/:*?"<>|]+/g, "_").trim() || "networker";
+const fileSafe = s => String(s || "networkking").replace(/[\\/:*?"<>|]+/g, "_").trim() || "networkking";
 const lines = s => String(s ?? "").split("\n");
 const opt = (v, label, cur, attrs = "") => `<option value="${esc(v)}"${String(v) === String(cur ?? "") ? " selected" : ""}${attrs}>${esc(label)}</option>`;
 /* ---------- IPv4 ---------- */

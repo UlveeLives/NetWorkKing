@@ -11,7 +11,7 @@ const curTab = () => { const a = curApp(); const id = UI.tabs[a.id]; return a.ta
 function applyTheme(){ const th = store.settings.theme; document.documentElement.dataset.theme = th === "system" ? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : th; }
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => store && applyTheme());
 /* ---------- toast, prompt, confirm ---------- */
-let toastT; function toast(m){ const el = $("#toast"); if (!el) return; el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), 2800); }
+let toastT; function toast(m, ms){ const el = $("#toast"); if (!el) return; el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), ms || 2800); }
 function layer(html, onKey){
   const o = document.createElement("div"); o.className = "layer"; o.innerHTML = `<div class="lyrbox">${html}</div>`; document.body.appendChild(o);
   const f = o.querySelector("input,select,textarea,button.pri"); if (f) setTimeout(() => f.focus(), 0);
@@ -28,7 +28,7 @@ function uiPrompt(msg, def = "", type = "text"){
 }
 function uiConfirm(msg, okLabel, danger){
   return new Promise(res => {
-    const o = layer(`<p>${esc(msg)}</p><div class="mfoot"><button class="btn" data-x="0">${esc(t("cancel"))}</button><button class="btn ${danger ? "dan-fill" : "pri"}" data-x="1">${esc(okLabel || t("ok"))}</button></div>`);
+    const o = layer(`<p style="white-space:pre-line">${esc(msg)}</p><div class="mfoot"><button class="btn" data-x="0">${esc(t("cancel"))}</button><button class="btn ${danger ? "dan-fill" : "pri"}" data-x="1">${esc(okLabel || t("ok"))}</button></div>`);
     const end = ok => { o.remove(); document.removeEventListener("keydown", key, true); res(ok); };
     const key = e => { if (e.key === "Escape"){ e.stopPropagation(); end(false); } else if (e.key === "Enter"){ e.stopPropagation(); end(true); } };
     document.addEventListener("keydown", key, true);
@@ -45,6 +45,9 @@ function uiChoice(msg, choices){
 /* ---------- modal with named actions ---------- */
 let modalActs = {};
 function modal(html, acts, opts = {}){ const m = $("#modal"); modalActs = acts || {}; m.innerHTML = `<div class="mbox${opts.wide ? " wide" : ""}${opts.xwide ? " xwide" : ""}">${html}</div>`; m.hidden = false; const f = m.querySelector("input:not([type=checkbox]):not([type=radio]),select,textarea"); if (f && !opts.nofocus) setTimeout(() => f.focus(), 0); }
+function uiAlert(msg){ return new Promise(res => { const o = layer(`<p style="white-space:pre-line">⚠ ${esc(msg)}</p><div class="mfoot"><span class="grow"></span><button class="btn pri" data-x="1">OK</button></div>`);
+  const end = () => { o.remove(); document.removeEventListener("keydown", key, true); res(); }, key = e => { if (e.key === "Escape" || e.key === "Enter"){ e.stopPropagation(); end(); } };
+  o.addEventListener("click", e => { if (e.target.closest("[data-x]")) end(); }); document.addEventListener("keydown", key, true); setTimeout(() => { const x = o.querySelector("[data-x]"); x && x.focus(); }, 0); }); }
 function closeModal(){ const m = $("#modal"); m.hidden = true; m.innerHTML = ""; modalActs = {}; }
 document.addEventListener("click", e => {
   const m = $("#modal"); if (!m || m.hidden) return;
@@ -74,7 +77,7 @@ function appIcon(a, s = 26){ return `<svg viewBox="0 0 48 48" width="${s}" heigh
 function renderHeader(){
   const a = curApp(), p = P();
   const B2 = (act, ic, k, extra = "") => `<button class="hb" data-h="${act}" title="${esc(t(k))}"${extra}><span class="hi">${ic}</span><span class="ht">${esc(t(k))}</span></button>`;
-  $("#hdr").innerHTML = `<button class="brand" id="appsw" title="${esc(t("switchApp"))}">${appIcon(a)}<span class="bn"><b>${esc(t(a.name))}</b><small>NetWorker</small></span><span class="car">▾</span></button>
+  $("#hdr").innerHTML = `<button class="brand" id="appsw" title="${esc(t("switchApp"))}">${appIcon(a)}<span class="bn"><b>${esc(t(a.name))}</b><small>NetWorkKing</small></span><span class="car">▾</span></button>
     <div class="hproj"><select id="projsel" title="${esc(t("project"))}">${Object.values(store.projects).sort((x, y) => x.name.localeCompare(y.name)).map(x => opt(x.id, x.name, p.id)).join("")}<option value="__new">＋ ${esc(t("newProject"))}…</option></select></div>
     <span class="grow"></span>
     <div class="hacts">${B2("undo","↶","undo", undoStack.length ? "" : " disabled")}${B2("redo","↷","redo", redoStack.length ? "" : " disabled")}<span class="hsep"></span>
@@ -130,7 +133,7 @@ function render(){
   if (!store) return;
   document.documentElement.lang = store.settings.lang;
   const a = curApp(), tab = curTab();
-  document.title = `${t(a.name)} — ${B().name} — NetWorker`;
+  document.title = `${t(a.name)} — ${B().name} — NetWorkKing`;
   document.body.dataset.app = a.id; document.body.style.setProperty("--appc", a.color);
   renderHeader(); renderTabs(); renderBuildings();
   const pal = tab.palette ? tab.palette() : "";
