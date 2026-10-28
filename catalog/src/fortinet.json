@@ -1,0 +1,1964 @@
+[
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 108F",
+  "sku": [
+   "FS-108F"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "8x GE RJ45, 2x GE SFP, fanless desktop",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 180,
+   "d": 120,
+   "h": 30
+  },
+  "weight_kg": 0.62,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12V/1A DC adapter (included)"
+  },
+  "heat_btu_h": 21.142,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "One port is PoE-PD (can be powered by PoE)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 20,
+   "forwarding_mpps": 30,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Fanless. Dims stated as H x D x W; datasheet airflow row says side-to-back. Single power value 6.2 W stated (taken as max). Built-in PoE-PD."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 108F-POE",
+  "sku": [
+   "FS-108F-POE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "8x GE RJ45 PoE/PoE+ (65 W), 2x GE SFP, fanless",
+  "mount": "rack-optional",
+  "u": null,
+  "dims_mm": {
+   "w": 250,
+   "d": 209,
+   "h": 44
+  },
+  "weight_kg": 1.7,
+  "power": {
+   "typ_w": null,
+   "max_w": 74.4,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 34.12,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "7x GE RJ45 + 1x GE PoE-PD RJ45"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 65,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 20,
+   "forwarding_mpps": 30,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Fanless. Dims stated as H x D x W; datasheet airflow row says side-to-back. Desktop or 19-inch rack bracket. Single power value 74.4 W stated."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 108F-FPOE",
+  "sku": [
+   "FS-108F-FPOE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "8x GE RJ45 PoE/PoE+ (130 W), 2x GE SFP, fanless",
+  "mount": "rack-optional",
+  "u": null,
+  "dims_mm": {
+   "w": 250,
+   "d": 209,
+   "h": 44
+  },
+  "weight_kg": 1.84,
+  "power": {
+   "typ_w": null,
+   "max_w": 139.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 34.56,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 130,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 20,
+   "forwarding_mpps": 30,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Fanless. Dims stated as H x D x W; datasheet airflow row says side-to-back. Desktop or 19-inch rack bracket. Single power value 139.2 W stated."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 124F",
+  "sku": [
+   "FS-124F"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "24x GE RJ45, 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 330,
+   "d": 230,
+   "h": 44
+  },
+  "weight_kg": 2.03,
+  "power": {
+   "typ_w": 24.8,
+   "max_w": 26.3,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 89.683,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 190,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 124F-POE",
+  "sku": [
+   "FS-124F-POE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "24x GE RJ45 (12 PoE/PoE+, 185 W), 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 260,
+   "h": 44
+  },
+  "weight_kg": 3.56,
+  "power": {
+   "typ_w": 235.9,
+   "max_w": 237.4,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 102.982,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 12,
+   "budget_w": 185,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 190,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 124F-FPOE",
+  "sku": [
+   "FS-124F-FPOE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "24x GE RJ45 PoE/PoE+ (370 W), 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 260,
+   "h": 44
+  },
+  "weight_kg": 3.82,
+  "power": {
+   "typ_w": 449.8,
+   "max_w": 451.3,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 118.327,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 190,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 148F",
+  "sku": [
+   "FS-148F"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "48x GE RJ45, 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 260,
+   "h": 44
+  },
+  "weight_kg": 3.46,
+  "power": {
+   "typ_w": 55.8,
+   "max_w": 57,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 194.37,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 260,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 148F-POE",
+  "sku": [
+   "FS-148F-POE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "48x GE RJ45 (24 PoE/PoE+, 370 W), 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 310,
+   "h": 44
+  },
+  "weight_kg": 4.68,
+  "power": {
+   "typ_w": 474.8,
+   "max_w": 476.3,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 195.73,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 260,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 148F-FPOE",
+  "sku": [
+   "FS-148F-FPOE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (1xxF)",
+  "desc": "48x GE RJ45 PoE/PoE+ (740 W), 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 310,
+   "h": 44
+  },
+  "weight_kg": 4.68,
+  "power": {
+   "typ_w": 893.5,
+   "max_w": 895.7,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 198.46,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 260,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 224E",
+  "sku": [
+   "FS-224E"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (2xxE)",
+  "desc": "24x GE RJ45, 4x GE SFP, fanless",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 330,
+   "d": 230,
+   "h": 44
+  },
+  "weight_kg": 2.17,
+  "power": {
+   "typ_w": 17.2,
+   "max_w": 17.3,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC"
+  },
+  "heat_btu_h": 59.095,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "+1 RJ45 management port"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 56,
+   "forwarding_mpps": 83,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Fanless. Dims stated as H x D x W; datasheet airflow row says side-to-back."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 224E-POE",
+  "sku": [
+   "FS-224E-POE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (2xxE)",
+  "desc": "24x GE RJ45 (12 PoE/PoE+, 180 W), 4x GE SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 330,
+   "d": 230,
+   "h": 44
+  },
+  "weight_kg": 2.44,
+  "power": {
+   "typ_w": 220.18,
+   "max_w": 223.57,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC; optional FRPS-740 external RPS"
+  },
+  "heat_btu_h": 74.29554,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "+1 RJ45 management port"
+  },
+  "poe": {
+   "ports": 12,
+   "budget_w": 180,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 56,
+   "forwarding_mpps": 83,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 248E-POE",
+  "sku": [
+   "FS-248E-POE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (2xxE)",
+  "desc": "48x GE RJ45 (24 PoE/PoE+, 370 W), 4x GE SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 410,
+   "h": 44
+  },
+  "weight_kg": 5.5,
+  "power": {
+   "typ_w": 457.46,
+   "max_w": 466.47,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC; optional FRPS-740 external RPS"
+  },
+  "heat_btu_h": 177.14268,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "+1 RJ45 management port"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 104,
+   "forwarding_mpps": 155,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 248E-FPOE",
+  "sku": [
+   "FS-248E-FPOE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Access (2xxE)",
+  "desc": "48x GE RJ45 PoE/PoE+ (740 W), 4x GE SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 410,
+   "h": 44
+  },
+  "weight_kg": 6.1,
+  "power": {
+   "typ_w": 842,
+   "max_w": 855.02,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Built-in AC; optional FRPS-740 external RPS"
+  },
+  "heat_btu_h": 162.87865,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "+1 RJ45 management port"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 104,
+   "forwarding_mpps": 155,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiswitch-secure-access-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 40F",
+  "sku": [
+   "FG-40F"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate F-Series",
+  "desc": "Entry desktop NGFW, 5x GE RJ45, fanless",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 216,
+   "d": 160,
+   "h": 38.5
+  },
+  "weight_kg": 1.0,
+  "power": {
+   "typ_w": 7.74,
+   "max_w": 9.46,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12V DC 3A external adapter, 100-240V AC"
+  },
+  "heat_btu_h": 52.55,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 5,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x WAN, 3x internal, 1x FortiLink (default)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 5,
+   "ngfw_gbps": 0.8,
+   "threat_gbps": 0.6,
+   "ipsec_gbps": 4.4
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortigate-fortiwifi-40f-series.pdf",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Fanless. Dims H x W x L 38.5 x 216 x 160. fw_gbps = 1518B UDP; IPS 1 Gbps."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 60F",
+  "sku": [
+   "FG-60F"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate F-Series",
+  "desc": "Desktop NGFW, 10x GE RJ45, fanless",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 216,
+   "d": 160,
+   "h": 38
+  },
+  "weight_kg": 0.9,
+  "power": {
+   "typ_w": 17.0,
+   "max_w": 18.5,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12V DC external adapter, 100-240V AC"
+  },
+  "heat_btu_h": 63.1,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "2x WAN, 1x DMZ, 5x internal, 2x FortiLink"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 10,
+   "ngfw_gbps": 1,
+   "threat_gbps": 0.7,
+   "ipsec_gbps": 6.5
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortigate-fortiwifi-60f-series.pdf",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Fanless. IPS 1.4 Gbps."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 61F",
+  "sku": [
+   "FG-61F"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate F-Series",
+  "desc": "Desktop NGFW, 10x GE RJ45, 128 GB SSD, fanless",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 216,
+   "d": 160,
+   "h": 38
+  },
+  "weight_kg": 0.9,
+  "power": {
+   "typ_w": 17.2,
+   "max_w": 18.7,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12V DC external adapter, 100-240V AC"
+  },
+  "heat_btu_h": 63.8,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "2x WAN, 1x DMZ, 5x internal, 2x FortiLink"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 10,
+   "ngfw_gbps": 1,
+   "threat_gbps": 0.7,
+   "ipsec_gbps": 6.5
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortigate-fortiwifi-60f-series.pdf",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Fanless. 128 GB SSD local storage. IPS 1.4 Gbps."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 100F",
+  "sku": [
+   "FG-100F"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate F-Series",
+  "desc": "1U NGFW, 22x GE RJ45, 8x GE SFP (4 shared), 2x 10GE SFP+ FortiLink",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 432,
+   "d": 254,
+   "h": 44
+  },
+  "weight_kg": 3.29,
+  "power": {
+   "typ_w": 35.1,
+   "max_w": 38.7,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC, 50-60 Hz"
+  },
+  "heat_btu_h": 119.77,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 22,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 8,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "RJ45: 2x WAN, 1x DMZ, 1x MGMT, 2x HA, 12x internal, 4x RJ45/SFP shared; SFP: 4x dedicated + 4x shared; 2x 10GE SFP+ FortiLink"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 20,
+   "ngfw_gbps": 1.6,
+   "threat_gbps": 1,
+   "ipsec_gbps": 11.5
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortigate-100f-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dual PSU redundant, not hot-swappable. IPS 2.6 Gbps. Airflow not stated. Not in the Oct 2026 product matrix (superseded by 120G)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 600F",
+  "sku": [
+   "FG-600F"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate F-Series",
+  "desc": "1U NGFW, 18x GE RJ45, 8x GE SFP, 4x 10GE SFP+, 4x 25GE SFP28",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 432,
+   "d": 380,
+   "h": 44.45
+  },
+  "weight_kg": 7.1,
+  "power": {
+   "typ_w": 169,
+   "max_w": 255,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC, 50/60 Hz, hot-swappable"
+  },
+  "heat_btu_h": 871,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 18,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 8,
+   "sfp_plus": 4,
+   "sfp28": 4,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "16x GE RJ45 data + 2x GE RJ45 MGMT/HA; 4x 10GE SFP+ (X1-X2 FortiLink); 4x 25GE SFP28 ultra-low-latency; 2x SX SFP included"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 139,
+   "ngfw_gbps": 11.5,
+   "threat_gbps": 10.5,
+   "ipsec_gbps": 55
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://datacenter360.ca/download/fortinet-fortigate-600f-series-datasheet/",
+  "source2": "https://docs.fortinet.com/document/fortigate/7.6.4/hardware-acceleration/589036/fortigate-600f-and-601f-fast-path-architecture",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values read from official Fortinet datasheet FG-600F-DAT-R15-20240528 as hosted by distributor DataCenter360 (fortinet.com PDF blocked to crawler); port layout confirmed on docs.fortinet.com. Airflow stated 'side and front-to-back'. IPS 14 Gbps."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 30G",
+  "sku": [
+   "FG-30G"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate G-Series",
+  "desc": "Entry desktop NGFW, 4x GE RJ45",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Single AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Matrix lists 4x GE RJ45; console/USB not stated"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 4,
+   "ngfw_gbps": 0.57,
+   "threat_gbps": 0.5,
+   "ipsec_gbps": 3.5
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 800 Mbps. 30 GB local storage."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 50G",
+  "sku": [
+   "FG-50G"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate G-Series",
+  "desc": "Desktop NGFW, 5x GE RJ45",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Single AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 5,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Matrix lists 5x GE RJ45; console/USB not stated"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 5,
+   "ngfw_gbps": 1.25,
+   "threat_gbps": 1.1,
+   "ipsec_gbps": 4.5
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 2.25 Gbps. 64 GB local storage listed in matrix."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 70F",
+  "sku": [
+   "FG-70F"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate F-Series",
+  "desc": "Desktop NGFW, 10x GE RJ45",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Single AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Matrix lists 10x GE RJ45; console/USB not stated"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 10,
+   "ngfw_gbps": 1,
+   "threat_gbps": 0.8,
+   "ipsec_gbps": 6.1
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 1.4 Gbps. Matrix lists 128 GB local storage in the 70F column (may refer to 71F variant)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 80F",
+  "sku": [
+   "FG-80F"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate F-Series",
+  "desc": "Desktop NGFW, 8x GE RJ45 + 2x GE RJ45/SFP shared pairs",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Single AC, dual inputs"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "8x GE RJ45 + 2x shared RJ45/SFP port pairs (counted as 2 RJ45 + 2 SFP physical)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 10,
+   "ngfw_gbps": 1,
+   "threat_gbps": 0.9,
+   "ipsec_gbps": 6.5
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 1.4 Gbps."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 90G",
+  "sku": [
+   "FG-90G"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate G-Series",
+  "desc": "Desktop NGFW, 8x GE RJ45 + 2x 10GE RJ45/SFP+ shared pairs",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Single AC, dual inputs"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 2,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "8x GE RJ45 + 2x 10GE shared port pairs (RJ45/SFP+), counted as 2 RJ45 10G + 2 SFP+ physical"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 28,
+   "ngfw_gbps": 2.5,
+   "threat_gbps": 2.2,
+   "ipsec_gbps": 25
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 4.5 Gbps. 120 GB local storage listed. Shared-pair media type per matrix wording '2x 10GE shared port pairs'; verify against datasheet."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 120G",
+  "sku": [
+   "FG-120G"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate G-Series",
+  "desc": "1U NGFW, 18x GE RJ45, 8x GE SFP, 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": null,
+   "input": "Dual AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 18,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 8,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 39,
+   "ngfw_gbps": 3.1,
+   "threat_gbps": 2.8,
+   "ipsec_gbps": 35
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 5.3 Gbps. 480 GB local storage."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 900G",
+  "sku": [
+   "FG-900G"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate G-Series",
+  "desc": "1U NGFW, 17x GE RJ45, 1x 2.5GE RJ45, 8x GE SFP, 4x 10GE SFP+, 4x 25GE SFP28",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": null,
+   "input": "Dual PS (AC; DC variant available)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 17,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 8,
+   "sfp_plus": 4,
+   "sfp28": 4,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 164,
+   "ngfw_gbps": 31,
+   "threat_gbps": 30,
+   "ipsec_gbps": 55
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 42 Gbps. 960 GB local storage."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 23JF",
+  "sku": [
+   "FAP-23JF"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 6 (F-Series)",
+  "desc": "Wi-Fi 6 2x2 tri-radio wall-plate AP, 2x GE RJ45 + PoE out, pass-thru",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 31,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af/at"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "2x GE RJ45 (1x PoE-PD uplink, 1x 802.3af PSE out), 2x pass-thru (in/out), 1x RS-232 RJ45 serial"
+  },
+  "poe": {
+   "ports": 1,
+   "budget_w": null,
+   "std": "802.3af"
+  },
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 31
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, 3rd radio 1x1 2.4/5 GHz monitor",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 25,
+     "gain_dbi": 4.0
+    },
+    "5": {
+     "tx_dbm": 21,
+     "gain_dbi": 4.0
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x GE RJ45 (PoE-PD)"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Wireless_Product_Matrix.pdf",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiap-series.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Max power 17.5 W without PSE output / 31 W with PSE output. Accepts 802.3af/at. Tx power per matrix '2 chains combined' (matrix also shows 158 mW for both bands, inconsistent with 25 dBm). max_clients = up to 512 per radio. Dimensions/weight not in sources."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 431G",
+  "sku": [
+   "FAP-431G"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 6E (G-Series)",
+  "desc": "Wi-Fi 6E 4x4 tri-band indoor AP, 2x 5GbE RJ45",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 225,
+   "d": 225,
+   "h": 54
+  },
+  "weight_kg": 1.4,
+  "power": {
+   "typ_w": null,
+   "max_w": 31.7,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3bt or 2x 802.3at"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 2,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "2x 100/1000/2500/5000BASE-T RJ45 (datasheet summary says 1x 5Gb port; inconsistent)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 31.7
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, 6 GHz 4x4 (+2x2 scanning)",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 27,
+     "gain_dbi": 4.0
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 5.6
+    },
+    "6": {
+     "tx_dbm": 24,
+     "gain_dbi": 5.7
+    }
+   },
+   "max_clients": 512,
+   "uplink": "2x 5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiap-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Chinese-language official datasheet. 5 GHz gain 5.6 dBi (dual-band antenna) / 6.0 dBi (tri-band). Mounting: ceiling, T-rail, wall. max_clients = up to 512 per radio. Dims W x D x H assumed from '225 x 225 x 54'."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 441K",
+  "sku": [
+   "FAP-441K"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 7 (K-Series)",
+  "desc": "Wi-Fi 7 4x4 tri-band indoor AP, 2x 10GbE RJ45",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 250,
+   "d": 250,
+   "h": 57.5
+  },
+  "weight_kg": 1.98,
+  "power": {
+   "typ_w": null,
+   "max_w": 41.7,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3bt or 2x 802.3at (dual PoE current sharing)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 2,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "2x 10/5/2.5/1GbE RJ45, 1x RS-232 RJ45 serial"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 41.7
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, 6 GHz 4x4 (+2x2 scanning radio)",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 29,
+     "gain_dbi": 4.0
+    },
+    "5": {
+     "tx_dbm": 27.8,
+     "gain_dbi": 5.6
+    },
+    "6": {
+     "tx_dbm": 23,
+     "gain_dbi": 5.4
+    }
+   },
+   "max_clients": 512,
+   "uplink": "2x 10GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Wireless_Product_Matrix.pdf",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/zh_cn/fortiap-series.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Tx power from Wireless Product Matrix (6 GHz @160 MHz). Antenna gain, dims, weight from Chinese official datasheet (5 GHz 6.0 dBi on tri-band antenna; 6 GHz 5.7 dBi tri-band). Mounting: ceiling, T-rail, wall. max_clients = up to 512 per radio."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 200G",
+  "sku": [
+   "FG-200G"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate G-Series",
+  "desc": "1U NGFW, 10x GE RJ45, 8x 5GE RJ45, 4x GE SFP, 8x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": null,
+   "input": "Dual AC PS"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 8,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 8,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 39,
+   "ngfw_gbps": 7,
+   "threat_gbps": 6,
+   "ipsec_gbps": 36
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 9 Gbps. 480 GB storage only on 201G. Console/USB not stated in matrix. Listed in place of the 200F (not in current matrix)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 400G",
+  "sku": [
+   "FG-400G"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate G-Series",
+  "desc": "1U NGFW, 1x GE + 1x 2.5GE + 8x 5GE RJ45, 16x GE SFP, 4x 10GE SFP+, 4x 25GE SFP28",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": null,
+   "input": "Dual AC PS"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 9,
+   "rj45_10g": 0,
+   "sfp": 16,
+   "sfp_plus": 4,
+   "sfp28": 4,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "rj45_mgig = 8x 5GE + 1x 2.5GE"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 164,
+   "ngfw_gbps": 14,
+   "threat_gbps": 13,
+   "ipsec_gbps": 55
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/Fortinet_Product_Matrix.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 25 Gbps. 960 GB storage only on 401G. Console/USB not stated in matrix. Listed in place of the 400F (not in current matrix)."
+ }
+]

@@ -1,0 +1,2674 @@
+[
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-24P-4G",
+  "sku": [
+   "C9200L-24P-4G-E",
+   "C9200L-24P-4G-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "24x GE PoE+ access switch, 4x 1G SFP fixed uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.71,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. "
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 56,
+   "forwarding_mpps": 41.67,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 370W with default primary PSU PWR-C5-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-48P-4G",
+  "sku": [
+   "C9200L-48P-4G-E",
+   "C9200L-48P-4G-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "48x GE PoE+ access switch, 4x 1G SFP fixed uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.8,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. "
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 104,
+   "forwarding_mpps": 77.38,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 740W with default primary PSU PWR-C5-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-24P-4X",
+  "sku": [
+   "C9200L-24P-4X-E",
+   "C9200L-24P-4X-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "24x GE PoE+ access switch, 4x 1/10G SFP+ fixed uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.71,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. "
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 95.23,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 370W with default primary PSU PWR-C5-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-48P-4X",
+  "sku": [
+   "C9200L-48P-4X-E",
+   "C9200L-48P-4X-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "48x GE PoE+ access switch, 4x 1/10G SFP+ fixed uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.8,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. "
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 130.95,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 740W with default primary PSU PWR-C5-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200-24P",
+  "sku": [
+   "C9200-24P-E",
+   "C9200-24P-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200",
+  "desc": "24x GE PoE+ access switch, modular uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. Uplinks via network module C9200-NM-4G (4x1G) or C9200-NM-4X (4x1/10G), not included in port counts."
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 95.23,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 370W with default primary PSU PWR-C6-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: FRU redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200-48P",
+  "sku": [
+   "C9200-48P-E",
+   "C9200-48P-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200",
+  "desc": "48x GE PoE+ access switch, modular uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. Uplinks via network module C9200-NM-4G (4x1G) or C9200-NM-4X (4x1/10G), not included in port counts."
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 130.95,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 740W with default primary PSU PWR-C6-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: FRU redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9300-24P",
+  "sku": [
+   "C9300-24P-E",
+   "C9300-24P-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9300",
+  "desc": "24x GE PoE+ stackable access switch, modular uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 488,
+   "h": 44
+  },
+  "weight_kg": 7.4,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts. "
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 445,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 208,
+   "forwarding_mpps": 154.76,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9300-series-switches/nb-06-cat9300-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 445W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9300-48P",
+  "sku": [
+   "C9300-48P-E",
+   "C9300-48P-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9300",
+  "desc": "48x GE PoE+ stackable access switch, modular uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 488,
+   "h": 44
+  },
+  "weight_kg": 7.59,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts. "
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 437,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 256,
+   "forwarding_mpps": 190.47,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9300-series-switches/nb-06-cat9300-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 437W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9300-24UX",
+  "sku": [
+   "C9300-24UX-E",
+   "C9300-24UX-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9300",
+  "desc": "24x 100M-10G mGig UPOE stackable switch, modular uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 513,
+   "h": 44
+  },
+  "weight_kg": 8.25,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 24,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "24x 10G/5G/2.5G/1G/100M. Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts. "
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 560,
+   "std": "Cisco UPOE (60W)"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 640,
+   "forwarding_mpps": 476.19,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9300-series-switches/nb-06-cat9300-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 560W with default primary PSU PWR-C1-1100WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9300-48UXM",
+  "sku": [
+   "C9300-48UXM-E",
+   "C9300-48UXM-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9300",
+  "desc": "36x 2.5G + 12x 10G mGig UPOE stackable switch, modular uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 564,
+   "h": 44
+  },
+  "weight_kg": 9.34,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 48,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "36x 100M/1G/2.5G + 12x 100M-10G mGig. Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts. "
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 490,
+   "std": "Cisco UPOE (60W)"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 580,
+   "forwarding_mpps": 431.54,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9300-series-switches/nb-06-cat9300-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 490W with default primary PSU PWR-C1-1100WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9300L-24P-4X",
+  "sku": [
+   "C9300L-24P-4X-E",
+   "C9300L-24P-4X-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9300L",
+  "desc": "24x GE PoE+ switch, 4x 10G SFP+ fixed uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 488,
+   "h": 44
+  },
+  "weight_kg": 6.81,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 505,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 95.23,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9300-series-switches/nb-06-cat9300-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 505W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9300L-48P-4X",
+  "sku": [
+   "C9300L-48P-4X-E",
+   "C9300L-48P-4X-A"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9300L",
+  "desc": "48x GE PoE+ switch, 4x 10G SFP+ fixed uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 488,
+   "h": 44
+  },
+  "weight_kg": 7.03,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 505,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 130.95,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9300-series-switches/nb-06-cat9300-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE budget 505W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9300X-24Y",
+  "sku": [
+   "C9300X-24Y-E",
+   "C9300X-24Y-A"
+  ],
+  "kind": "coresw",
+  "series": "Catalyst 9300X",
+  "desc": "24x 25G SFP28 aggregation switch, modular uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 526,
+   "h": 44
+  },
+  "weight_kg": 7.35,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 24,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": null,
+   "notes": "Uplinks via C9300X network module (e.g. C9300X-NM-4C 4x 100G), not counted."
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 2000,
+   "forwarding_mpps": 1488,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9300-series-switches/nb-06-cat9300-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Default PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1000-8P-2G-L",
+  "sku": [
+   "C1000-8P-2G-L"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1000",
+  "desc": "8x GE PoE+ compact fanless switch, 2x SFP/RJ-45 combo uplinks",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 268,
+   "d": 323,
+   "h": 44
+  },
+  "weight_kg": 1.55,
+  "power": {
+   "typ_w": 11.48,
+   "max_w": 12.19,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "2 uplinks are SFP/RJ-45 combo ports (counted as sfp). USB-A for storage/Bluetooth console."
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 67,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 20,
+   "forwarding_mpps": 14.88,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1000-series-switches/nb-06-cat1k-ser-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims converted from inches (10.56 x 12.73 x 1.73 in). Power figures are datasheet weighted-average (typ) and 100% traffic (max) measurements, excluding PoE load. Rack mount needs optional RCKMNT-19-CMPCT=. Internal PSU."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1000-24P-4G-L",
+  "sku": [
+   "C1000-24P-4G-L"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1000",
+  "desc": "24x GE PoE+ switch, 4x 1G SFP uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 299,
+   "h": 44
+  },
+  "weight_kg": 3.53,
+  "power": {
+   "typ_w": 20.48,
+   "max_w": 23.16,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB-A for storage/Bluetooth console."
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 195,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 56,
+   "forwarding_mpps": 41.67,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1000-series-switches/nb-06-cat1k-ser-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims converted from inches (17.48 x 11.76 x 1.73 in). Power figures are datasheet weighted-average (typ) and 100% traffic (max), excluding PoE load. 19-in rack brackets included. Internal fixed PSU. Fanless. u=1 inferred from 1.73 in height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1000-48P-4G-L",
+  "sku": [
+   "C1000-48P-4G-L"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1000",
+  "desc": "48x GE PoE+ switch, 4x 1G SFP uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.43,
+  "power": {
+   "typ_w": 41.64,
+   "max_w": 54.25,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB-A for storage/Bluetooth console."
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 104,
+   "forwarding_mpps": 77.38,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1000-series-switches/nb-06-cat1k-ser-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims converted from inches (17.48 x 13.78 x 1.73 in). Power figures are datasheet weighted-average (typ) and 100% traffic (max), excluding PoE load. 19-in rack brackets included. Internal fixed PSU. Has fan; airflow direction not stated. u=1 inferred from 1.73 in height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-24P-4G",
+  "sku": [
+   "C1300-24P-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "24x GE PoE+ managed switch, 4x 1G SFP uplinks (CBS350 successor)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 299,
+   "h": 44
+  },
+  "weight_kg": 3.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 233.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": 795.2,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "RJ-45 console + USB Type-C port."
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 195,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 56,
+   "forwarding_mpps": 41.67,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "max_w = stated power consumption with PoE at 110V. Fanless.  u=1 inferred from 1.73 in height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-48P-4G",
+  "sku": [
+   "C1300-48P-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "48x GE PoE+ managed switch, 4x 1G SFP uplinks (CBS350 successor)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.43,
+  "power": {
+   "typ_w": null,
+   "max_w": 450.65,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": 1537.68,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "RJ-45 console + USB Type-C port."
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 104,
+   "forwarding_mpps": 77.38,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "max_w = stated power consumption with PoE at 110V. Datasheet PoE table lists 375W; ordering table 370W. 1 fan; airflow direction not stated.  u=1 inferred from 1.73 in height."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9500-24Y4C",
+  "sku": [
+   "C9500-24Y4C-E",
+   "C9500-24Y4C-A"
+  ],
+  "kind": "coresw",
+  "series": "Catalyst 9500",
+  "desc": "24x 1/10/25G SFP28 + 4x 40/100G QSFP28 core/aggregation switch",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 457,
+   "h": 44
+  },
+  "weight_kg": 9.52,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "90-264V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 24,
+   "qsfp_plus": 0,
+   "qsfp28": 4,
+   "console": 1,
+   "usb": null,
+   "notes": "Console/mgmt port details not stated in fetched sources."
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 2000,
+   "forwarding_mpps": 1000,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9500-series-switches/nb-06-cat9500-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9500/hardware/install/b_catalyst_9500_hig/9500_technical-specifications.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Forwarding 'up to 1 Bpps'. Weight with 2 PSUs + fans. Dual PSUs (650W/950W/1500W/1600W AC per datasheet; default per model not stated). Fan tray C9K-T1-FANTRAY. Airflow and power draw not stated."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9500-48Y4C",
+  "sku": [
+   "C9500-48Y4C-E",
+   "C9500-48Y4C-A"
+  ],
+  "kind": "coresw",
+  "series": "Catalyst 9500",
+  "desc": "48x 1/10/25G SFP28 + 4x 40/100G QSFP28 core/aggregation switch",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 457,
+   "h": 44
+  },
+  "weight_kg": 9.96,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "90-264V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 48,
+   "qsfp_plus": 0,
+   "qsfp28": 4,
+   "console": 1,
+   "usb": null,
+   "notes": "Console/mgmt port details not stated in fetched sources."
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 3200,
+   "forwarding_mpps": 1000,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9500-series-switches/nb-06-cat9500-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9500/hardware/install/b_catalyst_9500_hig/9500_technical-specifications.html",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Forwarding 'up to 1 Bpps'. Weight with 2 PSUs + fans. Dual PSUs (650W/950W/1500W/1600W AC per datasheet; default per model not stated). Fan tray C9K-T1-FANTRAY. Airflow and power draw not stated."
+ },
+ {
+  "brand": "Cisco",
+  "model": "ISR 1111-8P",
+  "sku": [
+   "C1111-8P"
+  ],
+  "kind": "router",
+  "series": "Cisco 1000 Series ISR",
+  "desc": "Branch router, 2x GE WAN (1 GE/SFP combo), 8x GE LAN switch ports",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 323,
+   "d": 229,
+   "h": 44
+  },
+  "weight_kg": 1.98,
+  "power": {
+   "typ_w": null,
+   "max_w": 19.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC (external, 12V DC 66W)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x GE WAN RJ45 + 1x GE WAN RJ45/SFP combo + 8x GE LAN; combo counted in both. Console Micro-USB/RJ-45. USB 3.0 Type A."
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": 0.6
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/routers/1000-series-integrated-services-routers-isr/datasheet-c78-739512.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "IPsec 600 Mbps (512B, autonomous); SD-WAN IPsec 650 Mbps (512B); IPv4 forwarding up to 1.8 Gbps (512B). Max power 19.2W row labelled 'C1111'. PoE optional: 4 PoE / 2 PoE+ on LAN ports with optional 150W PSU (budget not stated). Desktop mount; rack/wall kits not verified. Dims converted from inches."
+ },
+ {
+  "brand": "Cisco",
+  "model": "ISR 4321",
+  "sku": [
+   "ISR4321/K9"
+  ],
+  "kind": "router",
+  "series": "Cisco 4000 Series ISR",
+  "desc": "Branch router, 2x onboard GE (1 SFP), 2x NIM slots",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 370,
+   "d": 295,
+   "h": 45
+  },
+  "weight_kg": 3.22,
+  "power": {
+   "typ_w": 24,
+   "max_w": 125,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC (125W)"
+  },
+  "heat_btu_h": null,
+  "airflow": "side-to-side",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "2 onboard GE; datasheet lists 2 RJ-45 + 1 SFP (one combo). Consoles: USB mini-B + RJ45 serial. USB 2.0 Type A. 2x NIM, 0x SM-X."
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/routers/4000-series-integrated-services-routers-isr/data_sheet-c78-732542.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Aggregate throughput 50 Mbps default / 100 Mbps with performance license; firewall/IPsec throughput not stated. Weight with AC PSU, no modules. PoE (max 120W to endpoints) only with optional external PoE power supply. Airflow right-to-left (I/O side view). Confidence medium: fetched table rows partly misaligned."
+ },
+ {
+  "brand": "Cisco",
+  "model": "ISR 4331",
+  "sku": [
+   "ISR4331/K9"
+  ],
+  "kind": "router",
+  "series": "Cisco 4000 Series ISR",
+  "desc": "Branch router, 3x onboard GE (2 SFP), 2x NIM + 1x SM-X slot",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 438,
+   "h": 44
+  },
+  "weight_kg": 3.5,
+  "power": {
+   "typ_w": 36,
+   "max_w": 250,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC (250W)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "3 onboard GE; datasheet lists 2 RJ-45 + 2 SFP (one combo). Consoles: USB mini-B + RJ45 serial. USB 2.0 Type A. 2x NIM, 1x SM-X."
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/routers/4000-series-integrated-services-routers-isr/data_sheet-c78-732542.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Aggregate throughput 100 Mbps default / 300 Mbps with performance license; IPsec not stated. Weight 3.5 kg + 0.66 kg PSU per datasheet. PoE (250W) only with optional internal PoE PSU/modules. Airflow stated 'I/O side to bezel side' (not mapped to schema value). Confidence medium: fetched table rows partly misaligned."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst 8200-1N-4T",
+  "sku": [
+   "C8200-1N-4T"
+  ],
+  "kind": "router",
+  "series": "Catalyst 8200 Series Edge Platforms",
+  "desc": "SD-WAN edge router, 4x GE WAN (2 RJ45 + 2 SFP), 1 NIM + 1 PIM",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 300,
+   "h": 44
+  },
+  "weight_kg": 4.54,
+  "power": {
+   "typ_w": 35,
+   "max_w": 100,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "90-264V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": "4x built-in GE (2 SFP + 2 RJ45). 1 NIM + 1 PIM slot. Console/USB not stated."
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": 1.0
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8200-series-edge-platforms/nb-06-cat8200-series-edge-plat-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "IPsec up to 1 Gbps (1400B), 900 Mbps IMIX; SD-WAN IPsec 1 Gbps; IPv4 forwarding 3.8 Gbps (1400B). Default PSU 100W (max_w = PSU rating); optional PWR-CC1-150WAC for PoE. typ_w 35W listed under 'C8200-1N-4S' label in Table 10. Airflow not stated."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst 8300-1N1S-6T",
+  "sku": [
+   "C8300-1N1S-6T"
+  ],
+  "kind": "router",
+  "series": "Catalyst 8300 Series Edge Platforms",
+  "desc": "SD-WAN edge router, 6x GE WAN, 1 NIM + 1 SM + 1 PIM, dual PSU",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 413,
+   "h": 44
+  },
+  "weight_kg": 9.07,
+  "power": {
+   "typ_w": 82,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": null,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": "6x embedded L3 GE ports (RJ45/SFP split not stated in fetched datasheet). 1 SM, 1 NIM, 1 PIM. Console/USB not stated."
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": 1.9
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8300-series-edge-platforms/datasheet-c78-744088.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "IPsec up to 1.9 Gbps (1400B and IMIX); SD-WAN 2 Gbps (1400B); IPv4 forwarding 19.7 Gbps. Weight 20 lb with 2 AC PSUs + fan tray (converted). PSU options 250W/400W/500W AC (PWR-CC1-500WAC gives 250W PoE); default not stated. Typ 82W no modules, single PSU. Airflow not stated."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MX68",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Meraki MX",
+  "desc": "SD-WAN security appliance, 2x GE WAN, 10x GE LAN (2 PoE+), up to 50 devices",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 284,
+   "d": 148,
+   "h": 27
+  },
+  "weight_kg": 1.12,
+  "power": {
+   "typ_w": 11,
+   "max_w": 79,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100W external power adapter (DC)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 12,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": "2x GE WAN + 8x GE LAN + 2x GE LAN PoE+. USB not stated."
+  },
+  "poe": {
+   "ports": 2,
+   "budget_w": null,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 0.7,
+   "ngfw_gbps": 0.4,
+   "threat_gbps": null,
+   "ipsec_gbps": 0.4
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/SASE_and_SD-WAN/MX/Product_Information/Overviews_and_Datasheets/MX67_and_MX68_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "FW 700 Mbps, VPN 400 Mbps, advanced security 400 Mbps. typ_w = idle power load. Desktop or wall mount. PoE budget not stated. Wired-only model (not MX68W/MX68CW)."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MX75",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Meraki MX",
+  "desc": "SD-WAN security appliance, 2x GE + 1x SFP WAN, 10x GE LAN (2 PoE+), up to 200 devices",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 283,
+   "d": 148,
+   "h": 27
+  },
+  "weight_kg": 0.85,
+  "power": {
+   "typ_w": 12,
+   "max_w": 96,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "90-264V AC (MA-PWR-100WAC-A)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 12,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": 1,
+   "notes": "WAN: 2x GE RJ45 + 1x GE SFP; LAN: 10x GE RJ45 (2 with PoE+). USB 3.0."
+  },
+  "poe": {
+   "ports": 2,
+   "budget_w": null,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 1,
+   "ngfw_gbps": 1,
+   "threat_gbps": null,
+   "ipsec_gbps": 1
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/SASE_and_SD-WAN/MX/Product_Information/Overviews_and_Datasheets/MX75_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "FW 1 Gbps, VPN 1 Gbps, advanced security 1 Gbps. typ_w = idle power load. Dims order as listed (27 x 148 x 283 mm). PoE budget not stated."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MX85",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Meraki MX",
+  "desc": "SD-WAN security appliance, 2x GE + 2x SFP WAN, 8x GE + 2x SFP LAN, up to 250 devices",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 485,
+   "d": 250,
+   "h": 44
+  },
+  "weight_kg": 3.7,
+  "power": {
+   "typ_w": 12,
+   "max_w": 55,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Internal 100-127V / 200-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": 1,
+   "notes": "WAN: 2x GE RJ45 (1 PoE+) + 2x GE SFP; LAN: 8x GE RJ45 + 2x GE SFP. USB 3.0."
+  },
+  "poe": {
+   "ports": 1,
+   "budget_w": null,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 1,
+   "ngfw_gbps": 1,
+   "threat_gbps": null,
+   "ipsec_gbps": 1
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/SASE_and_SD-WAN/MX/Product_Information/Overviews_and_Datasheets/MX85_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "FW 1 Gbps, VPN 1 Gbps, NGFW 1 Gbps. typ_w = idle. Fanless per datasheet. u=1 inferred from 43.8 mm height; width 484.6 mm as listed. PoE+ on one WAN RJ45, budget not stated."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MX95",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Meraki MX",
+  "desc": "SD-WAN security appliance, 2x 10G SFP+ + 2x 2.5G WAN, 4x GE + 2x 10G SFP+ LAN",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 485,
+   "d": 285,
+   "h": 44
+  },
+  "weight_kg": 3.17,
+  "power": {
+   "typ_w": 42,
+   "max_w": 109,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 2,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": 1,
+   "notes": "WAN: 2x 2.5GbE RJ45 (1 PoE+) + 2x 10G SFP+; LAN: 4x GE RJ45 + 2x 10G SFP+. USB 3.0."
+  },
+  "poe": {
+   "ports": 1,
+   "budget_w": null,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 3,
+   "ngfw_gbps": 2,
+   "threat_gbps": null,
+   "ipsec_gbps": 2.5
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/SASE_and_SD-WAN/MX/Product_Information/Overviews_and_Datasheets/MX95%2F%2F105_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "FW 3 Gbps, VPN 2.5 Gbps, NGFW 2 Gbps. typ_w = idle. Recommended client count not stated. PSU details/fans not stated for MX95. u=1 inferred from 44 mm height."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MS120-24P",
+  "sku": [],
+  "kind": "switch",
+  "series": "Meraki MS120",
+  "desc": "Cloud-managed 24x GE PoE+ access switch, 4x 1G SFP uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 250,
+   "h": 44
+  },
+  "weight_kg": 4.2,
+  "power": {
+   "typ_w": 28,
+   "max_w": 425,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 56,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Switching/MS_-_Switches/Product_Information/Overviews_and_Datasheets/MS120_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU. typ_w = idle power load. Fans not stated. MS120 family has an end-of-sale announcement on Meraki docs (EOS PDF)."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MS120-48LP",
+  "sku": [],
+  "kind": "switch",
+  "series": "Meraki MS120",
+  "desc": "Cloud-managed 48x GE PoE+ (limited power) access switch, 4x 1G SFP uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 340,
+   "h": 44
+  },
+  "weight_kg": 5.7,
+  "power": {
+   "typ_w": 37,
+   "max_w": 477,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 104,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Switching/MS_-_Switches/Product_Information/Overviews_and_Datasheets/MS120_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU. typ_w = idle. Fans not stated. MS120 family has an end-of-sale announcement on Meraki docs (EOS PDF)."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MS125-48FP",
+  "sku": [],
+  "kind": "switch",
+  "series": "Meraki MS125",
+  "desc": "Cloud-managed 48x GE PoE+ (full power) access switch, 4x 10G SFP+ uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 340,
+   "h": 44
+  },
+  "weight_kg": 5.8,
+  "power": {
+   "typ_w": 52,
+   "max_w": 845.4,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Switching/MS_-_Switches/Product_Information/Overviews_and_Datasheets/MS125_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Built-in PSU. typ_w = idle. 1U front/mid rack mount. Fans not stated."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MS225-48FP",
+  "sku": [],
+  "kind": "switch",
+  "series": "Meraki MS225",
+  "desc": "Cloud-managed stackable 48x GE PoE+ switch, 4x 10G SFP+ uplinks, 2 stack ports",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 485,
+   "d": 340,
+   "h": 44
+  },
+  "weight_kg": 4.37,
+  "power": {
+   "typ_w": 54,
+   "max_w": 882,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": "2x dedicated hardware stack ports (80G stacking)."
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Switching/MS_-_Switches/Product_Information/Overviews_and_Datasheets/MS225_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU; optional external RPS (RPS2300 now end-of-sale). Fixed internal fans, airflow not stated. typ_w = idle. MS225 family has an EOS PDF on Meraki docs."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MS250-48FP",
+  "sku": [],
+  "kind": "switch",
+  "series": "Meraki MS250",
+  "desc": "Cloud-managed L3 stackable 48x GE PoE+ switch, 4x 10G SFP+ uplinks, dual hot-swap PSU",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 485,
+   "d": 519,
+   "h": 44
+  },
+  "weight_kg": 5.82,
+  "power": {
+   "typ_w": 25,
+   "max_w": 874,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": "2x dedicated hardware stack ports (80G stacking)."
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Switching/MS_-_Switches/Product_Information/Overviews_and_Datasheets/MS250_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Dual hot-swap PSUs (2x 1025W option); default PSU model not named. Fixed internal fans, airflow not stated. typ_w = idle."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR36",
+  "sku": [],
+  "kind": "ap",
+  "series": "Meraki MR",
+  "desc": "Wi-Fi 6 2x2 indoor AP, 1x GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 250,
+   "d": 120,
+   "h": 36
+  },
+  "weight_kg": 0.492,
+  "power": {
+   "typ_w": null,
+   "max_w": 15,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 15
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 20,
+     "gain_dbi": 5.4
+    },
+    "5": {
+     "tx_dbm": 17.5,
+     "gain_dbi": 6
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x 1GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR36_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). Plus dedicated WIDS/WIPS scanning radio and BLE radio. Dims exclude mount plate. Desktop/ceiling/wall mount."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR44",
+  "sku": [],
+  "kind": "ap",
+  "series": "Meraki MR",
+  "desc": "Wi-Fi 6 2x2:2 + 4x4:4 indoor AP, 1x 2.5GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 306,
+   "d": 128,
+   "h": 44
+  },
+  "weight_kg": 0.739,
+  "power": {
+   "typ_w": null,
+   "max_w": 30,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 30
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 18,
+     "gain_dbi": 5.1
+    },
+    "5": {
+     "tx_dbm": 18,
+     "gain_dbi": 5.9
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR44_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). 15W max low-power mode on 802.3af. Dims exclude mount plate. Desktop/ceiling/wall mount."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR46",
+  "sku": [],
+  "kind": "ap",
+  "series": "Meraki MR",
+  "desc": "Wi-Fi 6 4x4:4 indoor AP, 1x 2.5GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 306,
+   "d": 128,
+   "h": 44
+  },
+  "weight_kg": 0.8,
+  "power": {
+   "typ_w": null,
+   "max_w": 30,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 30
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 26,
+     "gain_dbi": 5.4
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 6
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR46_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). 802.3at required. Plus WIDS/WIPS scanning radio and BLE radio. Dims exclude mount plate."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR57",
+  "sku": [],
+  "kind": "ap",
+  "series": "Meraki MR",
+  "desc": "Wi-Fi 6E tri-band 4x4:4 indoor AP, 2x 5GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 260,
+   "d": 260,
+   "h": 56
+  },
+  "weight_kg": 1.7,
+  "power": {
+   "typ_w": null,
+   "max_w": 40,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 2,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 40
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, 6 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": null,
+     "gain_dbi": 4.5
+    },
+    "5": {
+     "tx_dbm": null,
+     "gain_dbi": 5.5
+    },
+    "6": {
+     "tx_dbm": null,
+     "gain_dbi": 5.5
+    }
+   },
+   "max_clients": null,
+   "uplink": "2x 5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR57_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "40W max with USB, 30W without (PoE+ works without USB). Dims include mount plate. AIR-AP-BRACKET-2 included. Tri-band scanning radio."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9162I",
+  "sku": [
+   "CW9162I"
+  ],
+  "kind": "ap",
+  "series": "Catalyst Wireless 9162",
+  "desc": "Wi-Fi 6E tri-band 2x2 indoor AP (Catalyst/Meraki), 1x 2.5GbE",
+  "mount": null,
+  "u": 0,
+  "dims_mm": {
+   "w": 200,
+   "d": 200,
+   "h": 44
+  },
+  "weight_kg": 0.93,
+  "power": {
+   "typ_w": null,
+   "max_w": 25.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 25.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, 6 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 20,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 20,
+     "gain_dbi": 5
+    },
+    "6": {
+     "tx_dbm": 20,
+     "gain_dbi": 5
+    }
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/wireless/catalyst-9100ax-access-points/cat-9162-series-access-points-ds.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Full function on 802.3at PoE+ or 802.3bt/UPOE (25.5W); 802.3af gives 13.3W with 1x1 on 5/6 GHz. Dims without bracket. Mounting not stated in fetched datasheet."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9166I",
+  "sku": [
+   "CW9166I"
+  ],
+  "kind": "ap",
+  "series": "Catalyst Wireless 9166",
+  "desc": "Wi-Fi 6E tri-band 4x4 indoor AP (Catalyst/Meraki), 1x 5GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 241,
+   "d": 241,
+   "h": 57
+  },
+  "weight_kg": 1.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 30.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 30.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, 6 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": null,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": null,
+     "gain_dbi": 5
+    },
+    "6": {
+     "tx_dbm": null,
+     "gain_dbi": 4
+    }
+   },
+   "max_clients": null,
+   "uplink": "1x 5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/CW9166_Datasheet",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "30.5W max on 802.3bt/UPOE with USB; 25W on 802.3at with USB disabled; 802.3af not supported. Dims exclude mount plate. Desktop/ceiling/wall/pole mount; AIR-AP-BRACKET-2 included."
+ }
+]

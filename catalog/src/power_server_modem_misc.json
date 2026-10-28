@@ -1,0 +1,2131 @@
+[
+ {
+  "brand": "APC",
+  "model": "Smart-UPS 1500VA LCD RM 2U 230V",
+  "sku": [
+   "SMT1500RMI2U"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SMT",
+  "desc": "1500VA/1000W line-interactive rack UPS, 4x C13",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 432,
+   "d": 457,
+   "h": 89
+  },
+  "weight_kg": 28.64,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal (160-286V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1500,
+   "w": 1000,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "4x IEC C13"
+  },
+  "source": "https://quickserv.co.th/ups/APC/RACK-:--Smart-UPS/detail/APC-Smart-UPS-SMT-RM-2U/SMT1500RMI2U.html",
+  "source2": "https://directdeal.imgbolt.de/media/22/04/e2/1786697260/85_6208377000_datasheet.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. A second distributor sheet (directdeal) lists 432x477x86 mm / 26.1 kg - conflicting; quickserv values used."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS 2200VA LCD RM 2U 230V",
+  "sku": [
+   "SMT2200RMI2U"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SMT",
+  "desc": "2200VA/1980W line-interactive rack UPS, 8x C13 + 1x C19",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 480,
+   "d": 683,
+   "h": 86
+  },
+  "weight_kg": 42.31,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal (160-285V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 2200,
+   "w": 1980,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 1x IEC C19"
+  },
+  "source": "https://www.quickserv.co.th/ups/APC/RACK-:--Smart-UPS/detail/APC-Smart-UPS-SMT-RM-2U/SMT2200RMI2U.html",
+  "source2": "https://www.regard.ru/api/site/files/goodspdf/download/29698",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. SmartConnect variant SMT2200RMI2UC datasheet (regard.ru) shows same dims/weight and 215 BTU/h."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS 3000VA LCD RM 2U 230V",
+  "sku": [
+   "SMT3000RMI2U"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SMT",
+  "desc": "3000VA/2700W line-interactive rack UPS, 8x C13 + 1x C19",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 480,
+   "d": 683,
+   "h": 86
+  },
+  "weight_kg": 44.28,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal (151-302V adjustable)"
+  },
+  "heat_btu_h": 348,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 1x IEC C19 (+3 IEC jumpers)"
+  },
+  "source": "https://www.upssystems.co.uk/media/wysiwyg/PDF/APC%20UPS%20Smart%20UPS%203KVA%20SMT3000RMI2U.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Battery stated as 547 VAh (no Wh figure)."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS 3000VA LCD RM 2U 230V with SmartConnect",
+  "sku": [
+   "SMT3000RMI2UC"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SMT",
+  "desc": "3000VA/2700W line-interactive rack UPS, SmartConnect cloud monitoring",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 432,
+   "d": 683,
+   "h": 86
+  },
+  "weight_kg": 44.28,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V AC (151-302V adjustable)"
+  },
+  "heat_btu_h": 348,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 1x IEC C19 (+3 IEC jumpers)"
+  },
+  "source": "https://cdn.blueally.com/apcguard/datasheets/SMT3000RMI2UC_datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Width given as 432 mm here vs 480 mm on SMT3000RMI2U sheet."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS C 1500VA LCD RM 2U 230V",
+  "sku": [
+   "SMC1500I-2U"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS C",
+  "desc": "1500VA/900W line-interactive rack UPS, 4x C13",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 432,
+   "d": 457,
+   "h": 89
+  },
+  "weight_kg": 28.64,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V (180-287V)"
+  },
+  "heat_btu_h": 90,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1500,
+   "w": 900,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "4x IEC C13 (+2 IEC jumpers)"
+  },
+  "source": "https://media.bechtle.com/asrc/180712/1c4b3d4ee288fc9434f5175bf56070570/c3/-/97ed8edcea1741ff8a212bb97b4f2997/apc-smart-ups-smc-1500va-lcd-rm-2u-data-sheet-1",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Battery stated as 260 VAh (no Wh figure)."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS SRT 1000VA RM 230V",
+  "sku": [
+   "SRT1000RMXLI"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SRT",
+  "desc": "1000VA/1000W online double-conversion rack/tower UPS, 6x C13",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 432,
+   "d": 505,
+   "h": 85
+  },
+  "weight_kg": 21,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1000,
+   "w": 1000,
+   "topology": "online double-conversion",
+   "battery_wh": null,
+   "outlets": "6x IEC C13"
+  },
+  "source": "https://prof-elec.com/all-categories/uninterruptible-power-supply-ups--en/srt1000rmxli-en/",
+  "source2": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_srt1000rmxli.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Dims/weight from aodatacloud copy of APC datasheet."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS SRT 2200VA RM 230V",
+  "sku": [
+   "SRT2200RMXLI"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SRT",
+  "desc": "2200VA/1980W online double-conversion rack/tower UPS",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 431.8,
+   "d": 583.94,
+   "h": 84.83
+  },
+  "weight_kg": 25,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal (160-275V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 2200,
+   "w": 1980,
+   "topology": "online double-conversion",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 2x IEC C19 (+2 IEC jumpers)"
+  },
+  "source": "https://happyware.com/uk-en/apc-srt2200rmxli",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS SRT 3000VA RM 230V",
+  "sku": [
+   "SRT3000RMXLI"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SRT",
+  "desc": "3000VA/2700W online double-conversion rack/tower UPS",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 431.8,
+   "d": 635,
+   "h": 84.83
+  },
+  "weight_kg": 31.3,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal (160-275V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 2700,
+   "topology": "online double-conversion",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 2x IEC C19 (+2 IEC jumpers)"
+  },
+  "source": "https://happyware.com/uk-en/apc-srt3000rmxli",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS SRT 5000VA RM 230V",
+  "sku": [
+   "SRT5KRMXLI"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SRT",
+  "desc": "5000VA/4500W online double-conversion rack/tower UPS",
+  "mount": "rack",
+  "u": 3,
+  "dims_mm": {
+   "w": 432,
+   "d": 719,
+   "h": 130
+  },
+  "weight_kg": 54.43,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal (160-275V)"
+  },
+  "heat_btu_h": 931,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 5000,
+   "w": 4500,
+   "topology": "online double-conversion",
+   "battery_wh": null,
+   "outlets": "6x IEC C13, 4x IEC C19 (+2 IEC jumpers)"
+  },
+  "source": "https://cdn.shopify.com/s/files/1/2027/7283/files/srt5krmxli.pdf",
+  "source2": "https://www.lambda-tek.com/APC-SRT5KRMXLI-shUS/B1887841?viewSpec=y",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Datasheet copy lists outlet rows twice; 6x C13 + 4x C19 confirmed by lambda-tek listing title. Battery nominal 192V, no Wh stated."
+ },
+ {
+  "brand": "APC",
+  "model": "Smart-UPS SRT 6000VA RM 230V",
+  "sku": [
+   "SRT6KRMXLI"
+  ],
+  "kind": "ups",
+  "series": "Smart-UPS SRT",
+  "desc": "6000VA/6000W online double-conversion rack/tower UPS",
+  "mount": "rack",
+  "u": 4,
+  "dims_mm": {
+   "w": 431.8,
+   "d": 719.32,
+   "h": 173.99
+  },
+  "weight_kg": 60,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal (100-275V at half load)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 6000,
+   "w": 6000,
+   "topology": "online double-conversion",
+   "battery_wh": null,
+   "outlets": "6x IEC C13, 4x IEC C19 (+2 IEC jumpers)"
+  },
+  "source": "https://happyware.com/uk-en/apc-srt6krmxli",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Replacement battery APCRBC140."
+ },
+ {
+  "brand": "Eaton",
+  "model": "5PX 1500i RT2U G2",
+  "sku": [
+   "5PX1500IRT2UG2"
+  ],
+  "kind": "ups",
+  "series": "5PX G2",
+  "desc": "1500VA/1500W line-interactive rack/tower UPS, 8x C13",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 438,
+   "d": 448,
+   "h": 85.5
+  },
+  "weight_kg": 22.4,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V, 160-294V, C14 inlet"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 1500,
+   "w": 1500,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "8x IEC C13"
+  },
+  "source": "https://www.dateks.lv/en/cenas/ups/761823-eaton-5px1500irt2ug2-1500va-1500w-iec-2u",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "eaton.com not reachable; distributor spec page. Net weight also given as 22.5 kg on same page. Supports up to 4 EBMs."
+ },
+ {
+  "brand": "Eaton",
+  "model": "5PX 3000i RT2U G2",
+  "sku": [
+   "5PX3000IRT2UG2"
+  ],
+  "kind": "ups",
+  "series": "5PX G2",
+  "desc": "3000VA/3000W line-interactive rack/tower UPS, 8x C13 + 2x C19",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 438,
+   "d": 603,
+   "h": 85.5
+  },
+  "weight_kg": 31.7,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V (200-240V selectable), 160-294V, C20 inlet"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 3000,
+   "topology": "line-interactive",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 2x IEC C19"
+  },
+  "source": "https://media.bechtle.com/asrc/180712/1c4b3d4ee288fc9434f5175bf56070570/c3/-/d7994f4a55864a9d9bbd06a5abd5a3fb/eaton-5px-3000-rt2u-g2-ups-230v-data-sheet-1",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "eaton.com not reachable; Bechtle distributor datasheet. Battery 6x 12V 9Ah (Wh not stated)."
+ },
+ {
+  "brand": "Eaton",
+  "model": "9PX 3000i RT2U",
+  "sku": [
+   "9PX3000IRT2U"
+  ],
+  "kind": "ups",
+  "series": "9PX",
+  "desc": "3000VA/3000W online double-conversion rack/tower UPS",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 440,
+   "d": 605,
+   "h": 86.5
+  },
+  "weight_kg": 28,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "230V nominal (176-276V; 100-276V with derating), C20 inlet"
+  },
+  "heat_btu_h": 614,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 3000,
+   "topology": "online double-conversion",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 2x IEC C19"
+  },
+  "source": "https://www.eaton.com/mx/es-mx/skuPage.9PX3000IRT2U.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Battery 6x 12V 9Ah VRLA, hot-swappable; up to 4 EBMs. Heat 614 BTU/h in online mode."
+ },
+ {
+  "brand": "Eaton",
+  "model": "9PX 6000i RT3U",
+  "sku": [
+   "9PX6KiRT"
+  ],
+  "kind": "ups",
+  "series": "9PX",
+  "desc": "6000VA/5400W online double-conversion rack/tower UPS",
+  "mount": "rack-optional",
+  "u": 3,
+  "dims_mm": {
+   "w": 440,
+   "d": 685,
+   "h": 130
+  },
+  "weight_kg": 48,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "200-240V AC (176-276V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 6000,
+   "w": 5400,
+   "topology": "online double-conversion",
+   "battery_wh": null,
+   "outlets": "8x IEC C13, 2x IEC C19, 1x hardwired output"
+  },
+  "source": "https://www.shi.com/product/29114103/Eaton-9PX-9PX6KiRT-UPS-(rack-mountable-external)",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "eaton.com not reachable; SHI reseller listing. Listing gives height 440 / width 130 / depth 685 mm - height and width evidently swapped for a 3U unit, recorded as w440 x h130. Newer G2 variants (9PX6KIRTNG2) differ."
+ },
+ {
+  "brand": "Vertiv",
+  "model": "Liebert GXT5-3000IRT2UXL",
+  "sku": [
+   "GXT5-3000IRT2UXL"
+  ],
+  "kind": "ups",
+  "series": "Liebert GXT5",
+  "desc": "3000VA/3000W online double-conversion rack/tower UPS",
+  "mount": "rack-optional",
+  "u": 2,
+  "dims_mm": {
+   "w": 430,
+   "d": 540,
+   "h": 85
+  },
+  "weight_kg": 28.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "115-288V operating, 40-70Hz, C20 inlet"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": {
+   "va": 3000,
+   "w": 3000,
+   "topology": "online double-conversion",
+   "battery_wh": null,
+   "outlets": "7 outlets total, C13 and C19 (split not stated)"
+  },
+  "source": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_gxt5-3000irt2uxln.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "vertiv.com not reachable; distributor copy of datasheet for GXT5-3000IRT2UXLN (network-card variant of same unit). Battery 6x 12V 9Ah VRLA."
+ },
+ {
+  "brand": "APC",
+  "model": "Rack PDU, Switched, 1U, 12A/208V, 10A/230V, (8)C13",
+  "sku": [
+   "AP7920B"
+  ],
+  "kind": "pdu",
+  "series": "NetShelter Switched Rack PDU",
+  "desc": "1U switched PDU, 8x C13, per-outlet switching",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 108,
+   "h": 44
+  },
+  "weight_kg": 2.27,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "10A 230V / 12A 208V (200-240V), C14 inlet"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://media.bechtle.com/asrc/180712/1c4b3d4ee288fc9434f5175bf56070570/c3/-/04f990205daf48039d80254e65972341/apc-switched-pdu-1ph-10a-iec320-datenblatt-1",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Outlets: 8x IEC C13. Max load 2300 VA. Bechtle distributor copy of APC datasheet (apc.com unreachable)."
+ },
+ {
+  "brand": "APC",
+  "model": "Rack PDU, Switched, 1U, 16A, 208/230V, (8)C13",
+  "sku": [
+   "AP7921B"
+  ],
+  "kind": "pdu",
+  "series": "NetShelter Switched Rack PDU",
+  "desc": "1U switched PDU, 8x C13, 16A",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 108,
+   "h": 44
+  },
+  "weight_kg": 2.27,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "16A 200-240V, C20 inlet"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://media.bechtle.com/asrc/180712/1c4b3d4ee288fc9434f5175bf56070570/c3/-/300e9524edcc4c05ac3a2e7e5c944845/apc-switched-pdu-1ph-16a-iec320-datablad-1",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Outlets: 8x IEC C13. Load capacity 3680 VA. Cord 2.5 m. Bechtle distributor copy of APC datasheet."
+ },
+ {
+  "brand": "APC",
+  "model": "Rack PDU 2G, Switched, ZeroU, 32A, 230V, (21)C13 & (3)C19",
+  "sku": [
+   "AP8953"
+  ],
+  "kind": "pdu",
+  "series": "Rack PDU 2G Switched",
+  "desc": "Zero-U switched PDU, 21x C13 + 3x C19, 32A",
+  "mount": "rack",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "32A 230V, IEC 60309 32A 2P+E"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://upssolutions.com.au/products/rack-pdu-2g-switched-zerou-32a-230v-21-c13-3-c19-ap8953",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Outlets: 21x IEC C13, 3x IEC C19. AP7953 (older 1st-gen equivalent) not found; AP8953 used. Reseller lists 2040x165x124 mm / 7.59 kg without labels - appears to be shipping size, so dims/weight left null."
+ },
+ {
+  "brand": "APC",
+  "model": "Rack PDU, Basic, Zero U, 10A, 230V, (15) C13",
+  "sku": [
+   "AP9568"
+  ],
+  "kind": "pdu",
+  "series": "NetShelter Basic Rack PDU",
+  "desc": "Zero-U basic (unmetered) PDU, 15x C13, 10A",
+  "mount": "rack",
+  "u": 0,
+  "dims_mm": {
+   "w": 44,
+   "d": 44,
+   "h": 610
+  },
+  "weight_kg": 2.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "10A 208-240V, C14 inlet (1.98 m cord)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://fleetnetwork.ca/rack-pdu-basic-zero-u-10a-230v-15-c13-15-x-iec-320-c13-2-3kva-zero-u-rack-mountable-ap9568/",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Outlets: 15x IEC C13. Max load 2.3 kVA. Reseller page (apc.com unreachable). Vertical 610 mm long (stored as h)."
+ },
+ {
+  "brand": "APC",
+  "model": "Easy Rack PDU, Basic, 1U, 16A, 230V, (8)C13",
+  "sku": [
+   "EPDU1016B"
+  ],
+  "kind": "pdu",
+  "series": "Easy PDU",
+  "desc": "1U basic PDU, 8x C13, 16A, C20 inlet",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": 44.4
+  },
+  "weight_kg": 0.58,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "16A 200-230V, C20 inlet"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://eshop.se.com/id/apc-easy-rack-pdu-basic-1u-1-phase-3-7kw-230v-16a-8-x-c13-outlets-iec60320-c20-inlet-epdu1016b.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Outlets: 8x IEC C13. Load capacity 3680 VA (3.7 kW). Schneider eshop page lists only depth/height 44.4 mm, no width."
+ },
+ {
+  "brand": "Eaton",
+  "model": "ePDU Basic 1U, L6-30P, 24A",
+  "sku": [
+   "EPBZ79"
+  ],
+  "kind": "pdu",
+  "series": "ePDU Basic",
+  "desc": "1U basic PDU, 16x C13 + 4x C19, 24A (North America)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 129.5,
+   "d": 431.8,
+   "h": 43.2
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "24A 200-250V, L6-30P plug"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.eaton.com/us/en-us/skuPage.EPBZ79.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Outlets: 16x C13, 4x C19 (20 total). Max load 4.99 kW. Eaton page states 431.8 mm length, 129.5 mm width, 43.2 mm height (as written); weight value on page is invalid (0.0001 lb), left null. North-American plug; an EU 16A C20 variant was not found on eaton.com."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R250",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 15G",
+  "desc": "1U single-socket entry rack server (Xeon E-2300)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 482,
+   "d": 563,
+   "h": 42.8
+  },
+  "weight_kg": 12.48,
+  "power": {
+   "typ_w": null,
+   "max_w": 450,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1871,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://dl.dell.com/topicspdf/poweredge-r250_owners-manual4_en-us.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Width 482 mm with rack ears (434 mm chassis). Depth 563 mm = Zc (ear to PSU surface 534.59 mm). PSU: 1x 450W cabled (Bronze or Platinum), non-redundant; power.max_w = PSU rating, not measured draw. Max heat 1871 BTU/h (Bronze) / 1725 (Platinum). u=1 from 42.8 mm chassis height (manual does not print 'U')."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R350",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 15G",
+  "desc": "1U single-socket rack server (Xeon E-2300), up to 2 PSUs",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 482,
+   "d": 563.3,
+   "h": 42.8
+  },
+  "weight_kg": 13.14,
+  "power": {
+   "typ_w": null,
+   "max_w": 600,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 2250,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://edshop.edsystem.cz/fileshare/products/datasheet/del/r350-ts-ism-pub-en-us(577379).pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dell Technical Specifications document (hosted by distributor). Depth: 4x3.5in config ear to PSU handle 563.3 mm (8x2.5in: 512.53 mm). Weight 13.14 kg max (4x3.5in), 11.74 kg (8x2.5in). PSU: up to 2x 600W Platinum; power.max_w = PSU rating. Max heat 2250 BTU/h per PSU."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R650",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 15G",
+  "desc": "1U dual-socket rack server (Xeon Scalable 3rd gen)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 482,
+   "d": 787.05,
+   "h": 42.8
+  },
+  "weight_kg": 21.2,
+  "power": {
+   "typ_w": null,
+   "max_w": 1800,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC (1800W: 200-240V AC)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://dl.dell.com/topicspdf/poweredge-r650_Owners-Manual2_en-us.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Depth ear to PSU handle 787.05 mm (4/10-drive), 736.27 mm (8-drive). Weight 21.2 kg max (4x3.5in). PSU options 800W Pt, 1100W Ti, 1100W -48VDC, 1400W Pt, 1800W Ti; up to 2 (redundant); power.max_w = largest PSU option rating. Fans front-to-rear not explicitly stated, airflow left null."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R660",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 16G",
+  "desc": "1U dual-socket rack server (Xeon Scalable 4th/5th gen)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 482,
+   "d": 822.88,
+   "h": 42.8
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 1800,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC / 200-240V AC depending on PSU"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/fr-fr/products/servers/technical-support/poweredge-r660-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Depth 822.88 mm with bezel (809.04 without). Weight not in spec sheet. PSU options 700W Ti, 800W Pt, 1100W Ti, 1100W -48VDC, 1400W Pt, 1800W Ti; hot-swap fully redundant (PSU count 2 per Dell R660 platform, spec sheet does not print the count); power.max_w = largest PSU option rating."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R750",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 15G",
+  "desc": "2U dual-socket rack server (Xeon Scalable 3rd gen)",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 482,
+   "d": 772.14,
+   "h": 86.8
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 2400,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC / 240V HVDC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.stikc.com/pages/refurbished-dell-servers/poweredge-r750",
+  "source2": "https://dl.dell.com/topicspdf/poweredge-r750_Owners-Manual_en-us.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Reseller page (Dell spec sheet not reachable); PSU count/redundancy from Dell R750 owner's manual ('two redundant AC or mixed mode PSUs'). Depth 772.14 mm with bezel (758.3 without). PSU options 800W Pt, 1100W Ti, 1400W Pt, 2400W Pt; power.max_w = largest PSU option rating. Up to 6 hot-plug fans."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R760",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 16G",
+  "desc": "2U dual-socket rack server (Xeon Scalable 4th/5th gen)",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 482,
+   "d": 772.13,
+   "h": 86.8
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 3200,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC / 200-240V AC / 277V AC depending on PSU"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/fr-ca/products/servers/technical-support/poweredge-r760-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Depth 772.13 mm with bezel (758.29 without). Weight not in spec sheet. PSU options 700W Ti to 3200W Ti (277VAC), incl. 800/1100/1400/1800/2400/2800W; hot-swap redundant (spec sheet does not print count; 2 bays); power.max_w = largest PSU option rating. Up to 6 hot-swap fans."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge T350",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 15G",
+  "desc": "4.5U-class single-socket tower server (Xeon E-2300)",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 175,
+   "d": 562.12,
+   "h": 369.5
+  },
+  "weight_kg": 25.34,
+  "power": {
+   "typ_w": null,
+   "max_w": 600,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://i.dell.com/sites/csdocuments/Product_Docs/fr/cd/dell-emc-poweredge-t350-technical-guide-fr.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dell technical guide (French). Height 369.5 mm (382.5 with feet); depth 562.12 mm with bezel. Weight 25.34 kg max (8x3.5in), 19.54 kg (4x3.5in). PSU: 1x 450W Bronze cabled (entry) or 2x 600W Platinum hot-plug redundant; power.max_w = PSU rating. Single fan (no fan redundancy). Tower, not rack-mounted (u=0)."
+ },
+ {
+  "brand": "HPE",
+  "model": "ProLiant DL20 Gen10 Plus",
+  "sku": [],
+  "kind": "server",
+  "series": "ProLiant Gen10 Plus",
+  "desc": "1U single-socket entry rack server (Xeon E-2300)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.6,
+   "d": 382.2,
+   "h": 43.2
+  },
+  "weight_kg": 10,
+  "power": {
+   "typ_w": null,
+   "max_w": 800,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC (290W/500W/800W), -48VDC option"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://support.hpe.com/hpesc/public/api/document/a50002583enw",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "HPE QuickSpecs (retired). Weight 10 kg fully loaded hot-plug 2LFF/4SFF (6.0 kg non-hot-plug 2LFF). PSU options: 290W non-hot-plug non-redundant (2LFF std), 500W Flex Slot Platinum, 800W Flex Slot Titanium, 800W -48VDC; redundancy needs 2 Flex Slot PSUs + RPS enablement kit P45948-B21. power.max_w = largest PSU rating. 3 non-hot-plug fans."
+ },
+ {
+  "brand": "HPE",
+  "model": "ProLiant DL360 Gen11",
+  "sku": [],
+  "kind": "server",
+  "series": "ProLiant Gen11",
+  "desc": "1U dual-socket rack server (Xeon Scalable 4th/5th gen)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.6,
+   "d": 753.1,
+   "h": 42.9
+  },
+  "weight_kg": 14.56,
+  "power": {
+   "typ_w": null,
+   "max_w": 2200,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC; 1600W/1800-2200W high-line only; -48VDC option"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.uk.shi.com/product/46105407/HPE-ProLiant-DL360-Gen11",
+  "source2": "https://support.hpe.com/hpesc/public/api/document/a50004306enw",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Dims/weight from SHI reseller listing for one 8SFF config (HPE QuickSpecs text available to this session lacked the system-unit section). PSU options per HPE QuickSpecs a50004306enw: 500W Pt, 800W Pt/Ti, 1000W Ti, 1600W -48VDC, 1600W Pt, 1800-2200W Ti; 2 bays, redundant. power.max_w = largest PSU option rating. Up to 7 fans with redundancy."
+ },
+ {
+  "brand": "HPE",
+  "model": "ProLiant DL380 Gen11",
+  "sku": [],
+  "kind": "server",
+  "series": "ProLiant Gen11",
+  "desc": "2U dual-socket rack server (Xeon Scalable 4th/5th gen)",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 448,
+   "d": 727,
+   "h": 87.5
+  },
+  "weight_kg": 16,
+  "power": {
+   "typ_w": null,
+   "max_w": 2200,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC; high-line only for 1600W+"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.uk.shi.com/product/49888765/HPE-ProLiant-DL380-Gen11",
+  "source2": "https://cdn.iceshop.nl/objects/mmo_122358792_1780593134_3707_3685987.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Dims/weight from SHI reseller listing (P81784-425 config). PSU: min 1, max 2 Flex Slot, options 800W to 2200W per HPE QuickSpecs; 1+1 redundant. power.max_w = largest PSU option rating."
+ },
+ {
+  "brand": "ZTE",
+  "model": "MF286R",
+  "sku": [
+   "MF286R",
+   "MF286R1"
+  ],
+  "kind": "modem",
+  "series": "MF28x 4G CPE",
+  "desc": "LTE Cat6 4G router (sold as Turkcell 'Superbox'), 4x GE, Wi-Fi 5 AC1300, 2x FXS",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 170,
+   "d": 30,
+   "h": 180
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 1,
+   "notes": "1x WAN/LAN + 3x LAN GE; 2x RJ11 FXS (VoLTE/CSFB/VoIP); 1x SIM 2FF; 2x SMA external antenna; USB for factory test only. LTE Cat6 300/50 Mbps, FDD B1/3/7/8/20/28, TDD B38"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "2.4 GHz 3x3, 5 GHz 2x2",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": 64,
+   "uplink": "LTE Cat6"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://asset.conrad.com/media10/add/160267/c1/-/en/002987273DS00/datasheet-2987273-zte-mf286r-wi-fi-router-24-ghz-5-ghz-300-mbits.pdf",
+  "source2": "https://forum.donanimhaber.com/zte-superbox-mf286r-4-port-300-mbps-4-5g-tasinabilir-modem--161327449",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Datasheet (Conrad copy of ZTE sheet, MF286R1) gives 180x170x30 mm as HxWxD: stored w=170, d=30, h=180 (upright desktop unit). Power adapter/consumption/weight not stated. SuperBox is Turkcell's (Türkiye; also KKTCell N. Cyprus) SIM-based 4.5G home-internet product, not an Azerbaijani operator; MF286R is one hardware model sold under that name (Turkish forum listings). Newer 5G/Wi-Fi 7 Superbox (Dec 2025-2026) is made by ZTE/Netaş, model number not published."
+ }
+]

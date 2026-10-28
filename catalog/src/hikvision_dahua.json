@@ -1,0 +1,2831 @@
+[
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2143G2-I",
+  "sku": [
+   "DS-2CD2143G2-I",
+   "DS-2CD2143G2-IS"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "4 MP AcuSense fixed dome, IR 30 m, IK10",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 110.8,
+   "d": 110.8,
+   "h": 84.7
+  },
+  "weight_kg": 0.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 5 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 6.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "dome",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4
+   ],
+   "hfov_deg": [
+    103,
+    84
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": "IK10",
+   "power_w": 6.5,
+   "poe_class": "802.3af Class 3",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/sm000058940/DS-2CD2143G2-I_Datasheet_20251021.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims are diameter x height (Ø110.8 x 84.7 mm). max_fps 25 @50 Hz / 30 @60 Hz. -IS variant adds audio + alarm I/O."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2043G2-I",
+  "sku": [
+   "DS-2CD2043G2-I",
+   "DS-2CD2043G2-IU"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "4 MP AcuSense fixed bullet, IR 40 m",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 70,
+   "d": 161.7,
+   "h": 70
+  },
+  "weight_kg": 0.49,
+  "power": {
+   "typ_w": null,
+   "max_w": 7,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 7
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4,
+    6
+   ],
+   "hfov_deg": [
+    103,
+    84,
+    52
+   ],
+   "ir_m": 40,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 7,
+   "poe_class": "802.3af Class 3",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000058905/DS-2CD2043G2-IU_Datasheet_V5.5.113_20230303.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø70 x 161.7 mm. max_fps 25 @50 Hz / 30 @60 Hz. -U variant has built-in mic."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2T47G2-L",
+  "sku": [
+   "DS-2CD2T47G2-L"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) ColorVu",
+  "desc": "4 MP ColorVu fixed bullet, 1/1.8\" sensor, white light 60 m",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 105,
+   "d": 289.5,
+   "h": 105
+  },
+  "weight_kg": 1.17,
+  "power": {
+   "typ_w": null,
+   "max_w": 10.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 10.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/1.8\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4,
+    6
+   ],
+   "hfov_deg": [
+    112,
+    95,
+    58
+   ],
+   "ir_m": null,
+   "white_light_m": 60,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 10.5,
+   "poe_class": "802.3af",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000058339/DS-2CD2T47G2-L-C_Datasheet_V5.5.112_20230418.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø105 x 289.5 mm. max_fps 25 @50 Hz / 30 @60 Hz. Max power value is the PoE figure."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2T43G2-4I",
+  "sku": [
+   "DS-2CD2T43G2-4I"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "4 MP AcuSense fixed bullet, IR 80 m",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 105,
+   "d": 299.7,
+   "h": 105
+  },
+  "weight_kg": 1.07,
+  "power": {
+   "typ_w": null,
+   "max_w": 12.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 11.5 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 12.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4,
+    6
+   ],
+   "hfov_deg": [
+    103,
+    84,
+    52
+   ],
+   "ir_m": 80,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 12.5,
+   "poe_class": "802.3af Class 3",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000058875/DS-2CD2T43G2-2I_4I_Datasheet_V5.5.113_20230303.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø105 x 299.7 mm. max_fps 25 @50 Hz / 30 @60 Hz."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2T43G2-2I",
+  "sku": [
+   "DS-2CD2T43G2-2I"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "4 MP AcuSense fixed bullet, IR 60 m",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 105,
+   "d": 299.7,
+   "h": 105
+  },
+  "weight_kg": 1.07,
+  "power": {
+   "typ_w": null,
+   "max_w": 9.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 8.5 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 9.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4,
+    6
+   ],
+   "hfov_deg": [
+    103,
+    84,
+    52
+   ],
+   "ir_m": 60,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 9.5,
+   "poe_class": "802.3af",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000058875/DS-2CD2T43G2-2I_4I_Datasheet_V5.5.113_20230303.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø105 x 299.7 mm. max_fps 25 @50 Hz / 30 @60 Hz."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2086G2-I",
+  "sku": [
+   "DS-2CD2086G2-I",
+   "DS-2CD2086G2-IU"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "8 MP (4K) AcuSense Darkfighter mini bullet, IR 40 m",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 70,
+   "d": 161.7,
+   "h": 70
+  },
+  "weight_kg": 0.485,
+  "power": {
+   "typ_w": null,
+   "max_w": 7.2,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 7.2
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 8,
+   "resolution": "3840x2160",
+   "sensor": "1/1.8\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4,
+    6
+   ],
+   "hfov_deg": [
+    111,
+    87,
+    51
+   ],
+   "ir_m": 40,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 7.2,
+   "poe_class": "802.3af Class 3",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000059115/DS-2CD2086G2-IU-C_Datasheet_V5.5.112_20230217.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø70 x 161.7 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. -U variant has built-in mic."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2186G2-ISU",
+  "sku": [
+   "DS-2CD2186G2-I",
+   "DS-2CD2186G2-ISU"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "8 MP (4K) AcuSense Darkfighter fixed dome, IR 30 m, IK10",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 121.4,
+   "d": 121.4,
+   "h": 92.2
+  },
+  "weight_kg": 0.59,
+  "power": {
+   "typ_w": null,
+   "max_w": 7.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 7.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "dome",
+   "mp": 8,
+   "resolution": "3840x2160",
+   "sensor": "1/1.8\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4
+   ],
+   "hfov_deg": [
+    111,
+    87
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": "IK10",
+   "power_w": 7.5,
+   "poe_class": "802.3af Class 3",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000059263/DS-2CD2186G2-ISU-C_Datasheet_V5.5.112_20230217.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø121.4 x 92.2 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. Audio (built-in mic) on -SU variant only."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2386G2-I",
+  "sku": [
+   "DS-2CD2386G2-I",
+   "DS-2CD2386G2-IU"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "8 MP (4K) AcuSense Darkfighter fixed turret, IR 30 m",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 138.3,
+   "d": 138.3,
+   "h": 126.3
+  },
+  "weight_kg": 0.74,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.8,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 6.8
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "turret",
+   "mp": 8,
+   "resolution": "3840x2160",
+   "sensor": "1/1.8\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4,
+    6
+   ],
+   "hfov_deg": [
+    111,
+    87,
+    51
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 6.8,
+   "poe_class": "802.3af Class 3",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000059270/DS-2CD2386G2-IU-C_Datasheet_V5.5.112_20230217.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø138.3 x 126.3 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. -U variant has built-in mic."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2343G2-I",
+  "sku": [
+   "DS-2CD2343G2-I",
+   "DS-2CD2343G2-IU"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "4 MP AcuSense fixed turret, IR 30 m",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 127.3,
+   "d": 127.3,
+   "h": 95.9
+  },
+  "weight_kg": 0.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 7,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 6 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 7
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "turret",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4
+   ],
+   "hfov_deg": [
+    103,
+    84
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 7,
+   "poe_class": "802.3af Class 3",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/sm000058932/DS-2CD2343G2-IU_Datasheet_V5.5.113_20230303.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø127.3 x 95.9 mm. max_fps 25 @50 Hz / 30 @60 Hz. -U variant has built-in mic."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2546G2-IS",
+  "sku": [
+   "DS-2CD2546G2-I",
+   "DS-2CD2546G2-IS"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "4 MP AcuSense EXIR fixed mini dome, IR 30 m, built-in mic",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 110,
+   "d": 110,
+   "h": 57.4
+  },
+  "weight_kg": 0.38,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 5.5 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 6.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "dome",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4
+   ],
+   "hfov_deg": [
+    102.7,
+    82.8
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": "IK08",
+   "power_w": 6.5,
+   "poe_class": "802.3af Class 3",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000059008/DS-2CD2546G2-IWS-C_Datasheet_V5.5.115_20230217.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø110 x 57.4 mm. max_fps 25 @50 Hz / 30 @60 Hz. Power values for -IS; -IWS (Wi-Fi) is max 7 W PoE."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2DE4425IW-DE(T5)",
+  "sku": [
+   "DS-2DE4425IW-DE(T5)",
+   "DS-2DE4425IW-DE"
+  ],
+  "kind": "camera",
+  "series": "Pro Series PTZ",
+  "desc": "4 MP 25x network IR speed dome, IR 100 m",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 164.5,
+   "d": 164.5,
+   "h": 290
+  },
+  "weight_kg": 2.0,
+  "power": {
+   "typ_w": null,
+   "max_w": 18,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC / PoE 802.3at"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": null
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "ptz",
+   "mp": 4,
+   "resolution": "2560x1440",
+   "sensor": "1/2.8\" progressive scan CMOS",
+   "lens_mm": [
+    4.8,
+    120
+   ],
+   "hfov_deg": [
+    55,
+    2.4
+   ],
+   "ir_m": 100,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP66",
+   "ik": null,
+   "power_w": 18,
+   "poe_class": "802.3at",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/m000048590/Datasheet-of-DS-2DE4425IW-DET5_V5.7.0_20220704.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "lens_mm/hfov_deg = wide and tele ends of 4.8-120 mm 25x zoom. Max 18 W is the 12 VDC figure (incl. 1.6 W heater, 9 W IR); PoE max W not stated. Dims Ø164.5 x 290 mm. Audio = line in/out. 25 fps @50 Hz / 30 @60 Hz."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2DE2A404IW-DE3(S6)",
+  "sku": [
+   "DS-2DE2A404IW-DE3(S6)",
+   "DS-2DE2A404IW-DE3"
+  ],
+  "kind": "camera",
+  "series": "Value Series PTZ",
+  "desc": "4 MP 4x mini IR PTZ, IR 20 m, built-in mic, IK10",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 130.7,
+   "d": 130.7,
+   "h": 101.7
+  },
+  "weight_kg": 0.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 9.2,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": null
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "ptz",
+   "mp": 4,
+   "resolution": "2560x1440",
+   "sensor": "1/2.8\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    12
+   ],
+   "hfov_deg": [
+    96.8,
+    31.7
+   ],
+   "ir_m": 20,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP66",
+   "ik": "IK10",
+   "power_w": 9.2,
+   "poe_class": "802.3af",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/m000045324/DS-2DE2A404IW-DE3S6-C_Datasheet_20250226.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "lens_mm/hfov_deg = wide and tele ends of 2.8-12 mm 4x zoom (HFOV 96.796-31.68 deg). Max 9.2 W is the 12 VDC figure; PoE max W not stated. Dims Ø130.7 x 101.7 mm. 25 fps @50 Hz / 30 @60 Hz."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD1043G2-I",
+  "sku": [
+   "DS-2CD1043G2-I",
+   "DS-2CD1043G2-IUF"
+  ],
+  "kind": "camera",
+  "series": "Value Series",
+  "desc": "4 MP (2560x1440) value fixed bullet, IR 30 m",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 66,
+   "d": 170.8,
+   "h": 69.1
+  },
+  "weight_kg": 0.27,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 5 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 6.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 4,
+   "resolution": "2560x1440",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4
+   ],
+   "hfov_deg": [
+    99,
+    76
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 20,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 6.5,
+   "poe_class": "802.3af Class 3",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000041022/DS-2CD1043G2-IUF_Datasheet_V5.7.1_20230425.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Datasheet dims 170.8 x 66 x 69.1 mm (L x W x H). -UF variant has built-in mic."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD1143G2-I",
+  "sku": [
+   "DS-2CD1143G2-I"
+  ],
+  "kind": "camera",
+  "series": "Value Series",
+  "desc": "4 MP (2560x1440) value fixed dome, IR 30 m, IK10",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 110.8,
+   "d": 110.8,
+   "h": 84.7
+  },
+  "weight_kg": 0.577,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 5 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 6.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "dome",
+   "mp": 4,
+   "resolution": "2560x1440",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    4
+   ],
+   "hfov_deg": [
+    99,
+    76
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 20,
+   "ip_rating": "IP67",
+   "ik": "IK10",
+   "power_w": 6.5,
+   "poe_class": "802.3af Class 3",
+   "audio": false
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000041020/DS-2CD1143G2-I_Datasheet_20240902.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims Ø110.8 x 84.7 mm."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7604NXI-K1/4P(D)",
+  "sku": [
+   "DS-7604NXI-K1/4P(D)",
+   "DS-7604NXI-K1/4P"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR",
+  "desc": "4-ch PoE 1U AcuSense NVR, 1 SATA, 4x PoE (50 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 320,
+   "d": 240,
+   "h": 48
+  },
+  "weight_kg": 1.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "48 VDC, 1.35 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 4,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "4x 10/100 PoE; 1x 10/100/1000 LAN (features list says 10/100); 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": 50,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 4,
+   "in_mbps": 40,
+   "out_mbps": 80,
+   "hdd_bays": 1,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 4,
+   "poe_budget_w": 50,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/m000141839/Datasheet-of-DS-7604NXI-K1_4PD_20241025.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Power consumption <=10 W without HDD and PoE off (max not stated). Weight <=1 kg without HDD. PoE IEEE 802.3af/at. HDMI 4K/30 Hz, VGA 1080p/60 Hz. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7608NXI-K2/8P(D)",
+  "sku": [
+   "DS-7608NXI-K2/8P(D)",
+   "DS-7608NXI-K2/8P"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR",
+  "desc": "8-ch PoE 1U AcuSense NVR, 2 SATA, 8x PoE (80 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 385,
+   "d": 315,
+   "h": 52
+  },
+  "weight_kg": 3.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "48 VDC, 2.5 A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 8,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 80,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 80,
+   "out_mbps": 160,
+   "hdd_bays": 2,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 8,
+   "poe_budget_w": 80,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/m000141847/Datasheet-of-DS-7608NXI-K2_8PD_20240826.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Power consumption <=15 W without HDD and PoE off (max not stated). Weight <=3 kg without HDD. PoE IEEE 802.3af/at. Mount type not stated; 1U case."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7716NXI-K4/16P",
+  "sku": [
+   "DS-7716NXI-K4/16P"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR",
+  "desc": "16-ch PoE 1.5U AcuSense NVR, 4 SATA, 16x PoE (200 W)",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 445,
+   "d": 400,
+   "h": 75
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "16x PoE; 1x GbE LAN; 2x USB 2.0 front, 1x USB 3.0 rear"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 160,
+   "hdd_bays": 4,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/m000059585/Datasheet-of-DS-7716NXI-K4_16P_V4.74.000_20230104.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "2023 datasheet (V4.74): 10 TB per HDD; newer (D) revision may allow 16 TB. Power <=20 W without HDD and PoE off (max not stated). Weight <=5 kg without HDD. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7732NXI-K4/16P(D)",
+  "sku": [
+   "DS-7732NXI-K4/16P(D)",
+   "DS-7732NXI-K4/16P"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR",
+  "desc": "32-ch 1.5U AcuSense NVR, 4 SATA, 16x PoE (200 W)",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 445,
+   "d": 400,
+   "h": 75
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "16x PoE; 1x GbE LAN; 2x USB 2.0 front, 1x USB 3.0 rear"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 256,
+   "out_mbps": 160,
+   "hdd_bays": 4,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000141857/DS-7732NXI-K4_16PD_Datasheet_20251218.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Power <=20 W without HDD and PoE off (max not stated). Weight <=5 kg without HDD. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-9632NI-M8",
+  "sku": [
+   "DS-9632NI-M8"
+  ],
+  "kind": "nvr",
+  "series": "M Series 8K NVR",
+  "desc": "32-ch 2U 8K NVR, 8 SATA hot-plug, RAID 0/1/5/6/10, 2x GbE",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 442,
+   "d": 462,
+   "h": 88
+  },
+  "weight_kg": 10,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 4,
+   "notes": "2x USB 2.0 front, 2x USB 3.0 rear; 1x eSATA"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 320,
+   "out_mbps": 400,
+   "hdd_bays": 8,
+   "hdd_max_tb": 16,
+   "raid": [
+    "RAID0",
+    "RAID1",
+    "RAID5",
+    "RAID6",
+    "RAID10"
+   ],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000000742/DS-9632NI-M8_Datasheet_20260817.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Picked DS-9632NI-M8 (DS-9632NXI-M8 has no standalone datasheet; AcuSense variant is iDS-9632NXI-M8/X). Power <=50 W without HDD. Weight <=10 kg without HDD. psu_redundant false = non-/R model; DS-9632NI-M8/R has redundant PSU."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-96128NI-M16",
+  "sku": [
+   "DS-96128NI-M16"
+  ],
+  "kind": "nvr",
+  "series": "M Series NVR",
+  "desc": "128-ch 3U NVR, 16 SATA, RAID 0/1/5/6/10, 2x GbE",
+  "mount": "rack",
+  "u": 3,
+  "dims_mm": {
+   "w": 442,
+   "d": 498,
+   "h": 146
+  },
+  "weight_kg": 12.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 4,
+   "notes": "2x USB 2.0 front, 2x USB 3.0 rear; 1x eSATA"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 128,
+   "in_mbps": 400,
+   "out_mbps": 400,
+   "hdd_bays": 16,
+   "hdd_max_tb": 16,
+   "raid": [
+    "RAID0",
+    "RAID1",
+    "RAID5",
+    "RAID6",
+    "RAID10"
+   ],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/m000067977/DS-96128NI-M16_Datasheet_20250121.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Datasheet title says 4K NVR; recording resolution list up to 32 MP. Key features say 14 TB per HDD, spec table says 16 TB (spec table used). Power <=50 W without HDD. Redundant PSU only on DS-96128NI-M16/R."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7608NI-K2/8P/4K",
+  "sku": [
+   "DS-7608NI-K2/8P/4K",
+   "DS-7608NI-K2/8P"
+  ],
+  "kind": "nvr",
+  "series": "K/C Series 4K NVR",
+  "desc": "8-ch PoE 1U NVR, 2 SATA, 8x PoE (80 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 384,
+   "d": 315,
+   "h": 52
+  },
+  "weight_kg": 1.74,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "48 VDC, 2.5 A, 120 W adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 8,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "8x PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 80,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 80,
+   "out_mbps": 160,
+   "hdd_bays": 2,
+   "hdd_max_tb": 12,
+   "raid": [],
+   "poe_ports": 8,
+   "poe_budget_w": 80,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000185948/DS-7608NI-K2_8P_4K_Datasheet_20260514.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Current listing of DS-7608NI-K2/8P is the /4K revision; datasheet title states 1U. Power <=15 W without HDD. Net weight <=1.74 kg without HDD."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7616NI-K2/16P/4K",
+  "sku": [
+   "DS-7616NI-K2/16P/4K",
+   "DS-7616NI-K2/16P"
+  ],
+  "kind": "nvr",
+  "series": "K/C Series 4K NVR",
+  "desc": "16-ch PoE 1U NVR, 2 SATA, 16x PoE (200 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 384,
+   "d": 315,
+   "h": 52
+  },
+  "weight_kg": 2.36,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz, 280 W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 160,
+   "hdd_bays": 2,
+   "hdd_max_tb": 12,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000185950/DS-7616NI-K2_16P_4K_Datasheet_20260514.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Datasheet title states 1U. Power <=15 W without HDD. Weight <=2.36 kg without HDD."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7616NXI-K2/16P(E)",
+  "sku": [
+   "DS-7616NXI-K2/16P(E)",
+   "DS-7616NXI-K2/16P"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR",
+  "desc": "16-ch PoE 1U AcuSense NVR, 2 SATA, 16x PoE (200 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 384,
+   "d": 317,
+   "h": 52
+  },
+  "weight_kg": 2.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 160,
+   "hdd_bays": 2,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000170624/DS-7616NXI-K2-16PE_Datasheet_20250716.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "(E) is the current revision of DS-7616NXI-K2/16P. Power <=15 W without HDD. Weight <=2.5 kg without HDD."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR2108HS-8P-I2",
+  "sku": [
+   "DHI-NVR2108HS-8P-I2"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR2-I2",
+  "desc": "8-ch compact 1U WizSense NVR, 1 SATA, 8x PoE (72 W)",
+  "mount": "desktop",
+  "u": 1,
+  "dims_mm": {
+   "w": 260,
+   "d": 232.7,
+   "h": 47.6
+  },
+  "weight_kg": 0.92,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "53 VDC, 1.8 A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 8,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "8x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 72,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 144,
+   "out_mbps": 72,
+   "hdd_bays": 1,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 8,
+   "poe_budget_w": 72,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr2-i2-series/nvr2108hs-8p-i2",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Bandwidth with AI off (AI on: 72 in / 36 out). PoE max 25.5 W per port; PoE standard not stated. NVR <=10 W without HDD. 'Compact 1U' per title. Picked -I2 (current) over -S3."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR4108HS-8P-EI",
+  "sku": [
+   "DHI-NVR4108HS-8P-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR4-EI",
+  "desc": "8-ch compact 1U WizSense NVR, 1 SATA, 8x PoE (78 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 260,
+   "d": 232.7,
+   "h": 47.6
+  },
+  "weight_kg": 0.92,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "53 VDC, 1.812 A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 8,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "8x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 78,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 256,
+   "out_mbps": 256,
+   "hdd_bays": 1,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 8,
+   "poe_budget_w": 78,
+   "max_mp": 16,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-4-ei-series/nvr4108hs-8p-ei",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Bandwidth with AI off (AI on: 180/180). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <10 W without HDD. 'Compact 1U' per title. Max HDD capacity varies with temperature."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR4216-16P-EI",
+  "sku": [
+   "DHI-NVR4216-16P-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR4-EI",
+  "desc": "16-ch 1U WizSense NVR, 2 SATA, 16x PoE (130 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 375,
+   "d": 329.3,
+   "h": 53
+  },
+  "weight_kg": 2.6,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 47-63 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 130,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 256,
+   "out_mbps": 256,
+   "hdd_bays": 2,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 130,
+   "max_mp": 16,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-4-ei-series/nvr4216-16p-ei",
+  "source2": "https://materialfile.dahuasecurity.com/uploads/cpq/57607/datasheet/DHI-NVR4216-16P-EI_S0_datasheet_20251129.pdf",
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Bandwidth with AI off (AI on: 180/180). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <10 W without HDD. 1U per title."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR5216-16P-EI",
+  "sku": [
+   "DHI-NVR5216-16P-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR5-EI",
+  "desc": "16-ch 1U WizSense NVR, 2 SATA, 16x PoE (130 W), 8K HDMI",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 375,
+   "d": 329.3,
+   "h": 53
+  },
+  "weight_kg": 2.66,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 47-63 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 1 rear USB 3.0"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 130,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 384,
+   "out_mbps": 384,
+   "hdd_bays": 2,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 130,
+   "max_mp": 32,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-5-ei-series/nvr5216-16p-ei",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Bandwidth with AI off (AI on: 200/200). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <=10 W without HDD. HDMI up to 8K. 1U per title."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR5432-16P-EI",
+  "sku": [
+   "DHI-NVR5432-16P-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR5-EI",
+  "desc": "32-ch 1.5U WizSense NVR, 4 SATA, 16x PoE (150 W)",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 415.1,
+   "h": 70
+  },
+  "weight_kg": 4.82,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 2 rear USB 3.0"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 150,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 384,
+   "out_mbps": 384,
+   "hdd_bays": 4,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 150,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-5-ei-series/nvr5432-16p-ei",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Bandwidth with AI off (AI on: 200/200). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <=13 W without HDD. RAID not stated on page. 1.5U per title; mount type not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR5464-EI",
+  "sku": [
+   "DHI-NVR5464-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR5-EI",
+  "desc": "64-ch 1.5U WizSense NVR, 4 SATA, 2x GbE",
+  "mount": "rack-optional",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 415.1,
+   "h": 70
+  },
+  "weight_kg": 4.74,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x GbE; 1 front USB 2.0, 2 rear USB 3.0; 1x eSATA"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 64,
+   "in_mbps": 384,
+   "out_mbps": 384,
+   "hdd_bays": 4,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-5-ei-series/nvr5464-ei",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Bandwidth with AI off (AI on: 200/200). Installation: rack or desktop. NVR <=13 W without HDD. RAID not stated on page. 1.5U per title."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR5864-EI",
+  "sku": [
+   "DHI-NVR5864-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR5-EI",
+  "desc": "64-ch 2U WizSense NVR, 8 SATA, RAID 0/1/5/6/10, 2x GbE",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 439.9,
+   "d": 457.9,
+   "h": 89
+  },
+  "weight_kg": 6.4,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 4,
+   "notes": "2x GbE; 2 front USB 2.0, 2 rear USB 3.0; 1x eSATA"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 64,
+   "in_mbps": 384,
+   "out_mbps": 384,
+   "hdd_bays": 8,
+   "hdd_max_tb": 20,
+   "raid": [
+    "RAID0",
+    "RAID1",
+    "RAID5",
+    "RAID6",
+    "RAID10"
+   ],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-5-ei-series/nvr5864-ei",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Bandwidth with AI off (AI on: 200/200). NVR <=13 W without HDD. Redundant PSU not mentioned. 2U per title; mount type not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "IPC-HFW2441S-S",
+  "sku": [
+   "DH-IPC-HFW2441S-S"
+  ],
+  "kind": "camera",
+  "series": "WizSense 2 Series",
+  "desc": "4 MP WizSense IR fixed-focal bullet, IR 30 m, built-in mic",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 70,
+   "d": 166.2,
+   "h": 70
+  },
+  "weight_kg": 0.48,
+  "power": {
+   "typ_w": null,
+   "max_w": 5.1,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC (max 4.2 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 5.1
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/2.9\" CMOS",
+   "lens_mm": [
+    2.8,
+    3.6
+   ],
+   "hfov_deg": [
+    95,
+    78
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265",
+    "H.264",
+    "H.264H",
+    "H.264B"
+   ],
+   "max_fps": 20,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 5.1,
+   "poe_class": "802.3af",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-2-Series/IR/IPC-HFW2441S-S",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Main stream 2688x1520 @1-20 fps. Smart H.265+/H.264+ supported. PoE class number not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "IPC-HDW2441T-S",
+  "sku": [
+   "DH-IPC-HDW2441T-S"
+  ],
+  "kind": "camera",
+  "series": "WizSense 2 Series",
+  "desc": "4 MP WizSense IR fixed eyeball (turret), IR 30 m, built-in mic",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 109.9,
+   "d": 109.9,
+   "h": 100.9
+  },
+  "weight_kg": 0.37,
+  "power": {
+   "typ_w": null,
+   "max_w": 5.1,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC (max 4.2 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 5.1
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "eyeball",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/2.9\" CMOS",
+   "lens_mm": [
+    2.8,
+    3.6
+   ],
+   "hfov_deg": [
+    95,
+    78
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265",
+    "H.264",
+    "H.264H",
+    "H.264B"
+   ],
+   "max_fps": 20,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 5.1,
+   "poe_class": "802.3af",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://dahuasecurity.com/products/All-Products/Network-Cameras/WizSense-Series/2-Series/IR/IPC-HDW2441T-S",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims 100.9 x Ø109.9 mm. Main stream 2688x1520 @1-20 fps. PoE class number not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "IPC-HDBW2441E-S",
+  "sku": [
+   "DH-IPC-HDBW2441E-S"
+  ],
+  "kind": "camera",
+  "series": "WizSense 2 Series",
+  "desc": "4 MP WizSense IR fixed dome, IR 30 m, IK10, built-in mic",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 109.9,
+   "d": 109.9,
+   "h": 81
+  },
+  "weight_kg": 0.34,
+  "power": {
+   "typ_w": null,
+   "max_w": 6,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC (max 5 W) / PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": null,
+   "max_w": 6
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "dome",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/2.9\" CMOS",
+   "lens_mm": [
+    2.8,
+    3.6
+   ],
+   "hfov_deg": [
+    102,
+    84
+   ],
+   "ir_m": 30,
+   "white_light_m": null,
+   "codec": [
+    "H.265",
+    "H.264",
+    "H.264H",
+    "H.264B"
+   ],
+   "max_fps": 20,
+   "ip_rating": "IP67",
+   "ik": "IK10",
+   "power_w": 6,
+   "poe_class": null,
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/wizsense-2-series/ir/ipc-hdbw2441e-s",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dims 81 x Ø109.9 mm. Main stream 2688x1520 @1-20 fps. Page states 12 VDC/PoE; PoE standard/class not stated (left null)."
+ },
+ {
+  "brand": "Dahua",
+  "model": "IPC-HFW3441E-AS-S2",
+  "sku": [
+   "DH-IPC-HFW3441E-AS-S2"
+  ],
+  "kind": "camera",
+  "series": "WizSense 3 Series",
+  "desc": "4 MP WizSense 3 Series IR bullet, IR 50 m, built-in mic, alarm/audio I/O",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 70.5,
+   "d": 192.7,
+   "h": 66.4
+  },
+  "weight_kg": 0.59,
+  "power": {
+   "typ_w": null,
+   "max_w": 7.2,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC (max 5.9 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 7.2
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/2.9\" CMOS",
+   "lens_mm": [
+    2.8,
+    3.6,
+    6
+   ],
+   "hfov_deg": [
+    107,
+    88,
+    54
+   ],
+   "ir_m": 50,
+   "white_light_m": null,
+   "codec": [
+    "H.265",
+    "H.264",
+    "H.264H",
+    "H.264B"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 7.2,
+   "poe_class": "802.3af",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/3-Series/IR/IPC-HFW3441E-AS-S2=S2",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Requested IPC-HFW3441E-AS is shown by Dahua as the -S2 revision and tagged DISCONTINUED/EOL. Main stream @1-25/30 fps."
+ },
+ {
+  "brand": "Dahua",
+  "model": "IPC-HFW2849S-S-IL",
+  "sku": [
+   "DH-IPC-HFW2849S-S-IL"
+  ],
+  "kind": "camera",
+  "series": "WizSense 2 Series",
+  "desc": "8 MP WizSense smart dual light bullet, IR/warm light 30 m, built-in mic",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 70,
+   "d": 166.2,
+   "h": 70
+  },
+  "weight_kg": 0.47,
+  "power": {
+   "typ_w": null,
+   "max_w": 5.9,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC (max 5 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 5.9
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 8,
+   "resolution": "3840x2160",
+   "sensor": "1/2.7\" CMOS",
+   "lens_mm": [
+    2.8,
+    3.6
+   ],
+   "hfov_deg": [
+    111,
+    87
+   ],
+   "ir_m": 30,
+   "white_light_m": 30,
+   "codec": [
+    "H.265",
+    "H.264",
+    "H.264H",
+    "H.264B"
+   ],
+   "max_fps": 20,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 5.9,
+   "poe_class": "802.3af",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/2-Series/Smart-Dual-Light/IPC-HFW2849S-S-IL",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "white_light_m = warm light distance. Main stream 3840x2160 @1-20 fps. MENA site lists it as discontinued, successor IPC-HFW2849S-S-IL-K."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD2H43G2-LIZS2U",
+  "sku": [
+   "DS-2CD2H43G2-LIZS2U"
+  ],
+  "kind": "camera",
+  "series": "Pro Series (EasyIP) AcuSense",
+  "desc": "4 MP AcuSense smart hybrid light motorized varifocal turret 2.8-12 mm, 40 m, IK10",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 138.6,
+   "d": 138.6,
+   "h": 123
+  },
+  "weight_kg": 0.86,
+  "power": {
+   "typ_w": null,
+   "max_w": 12.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 10.56 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 12.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "turret",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/3\" progressive scan CMOS",
+   "lens_mm": [
+    2.8,
+    12
+   ],
+   "hfov_deg": [
+    102.4,
+    31.2
+   ],
+   "ir_m": 40,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": "IP67",
+   "ik": "IK10",
+   "power_w": 12.5,
+   "poe_class": "802.3af Class 3",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000064841/DS-2CD2H43G2-LIZS2U_Datasheet_20250208.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Substitute for DS-2CD2H43G2-IZS (no readable official datasheet found). lens_mm/hfov_deg = wide and tele ends of motorized 2.8-12 mm. Supplement light (IR/white, smart hybrid) up to 40 m. Dims Ø138.6 x 123 mm. 25 fps @50 Hz / 30 @60 Hz. Dual mic."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-2CD3956G2-ISU",
+  "sku": [
+   "DS-2CD3956G2-IS",
+   "DS-2CD3956G2-ISU"
+  ],
+  "kind": "camera",
+  "series": "Pro Series AcuSense Fisheye",
+  "desc": "5 MP AcuSense fisheye, 1.05 mm 180 deg, IR 8 m",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 119.9,
+   "d": 119.9,
+   "h": 41.2
+  },
+  "weight_kg": 0.32,
+  "power": {
+   "typ_w": null,
+   "max_w": 7.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC ±25% (max 6 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 7.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "fisheye",
+   "mp": 5,
+   "resolution": "2560x1920",
+   "sensor": "1/2.7\" progressive scan CMOS",
+   "lens_mm": [
+    1.05
+   ],
+   "hfov_deg": [
+    180
+   ],
+   "ir_m": 8,
+   "white_light_m": null,
+   "codec": [
+    "H.265+",
+    "H.265",
+    "H.264+",
+    "H.264"
+   ],
+   "max_fps": 25,
+   "ip_rating": null,
+   "ik": null,
+   "power_w": 7.5,
+   "poe_class": "802.3af Class 3",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/public/all/doc/sm000041572/DS-2CD3956G2-ISU_Datasheet_20240801.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Current fisheye used instead of DS-2CD2955G0-IS(U) (its datasheet could not be fetched). IP/IK not listed. 25 fps @50 Hz / 30 @60 Hz. Built-in mic on -U; audio line in/out."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR5216-16P-EI2",
+  "sku": [
+   "DHI-NVR5216-16P-EI2"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR5-EI2",
+  "desc": "16-ch 1U WizSense NVR, 2 SATA (26 TB each), 16x PoE (130 W), 8K HDMI",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 375,
+   "d": 329.6,
+   "h": 53
+  },
+  "weight_kg": 2.62,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50/60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 1 rear USB 3.0"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 130,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 448,
+   "out_mbps": 448,
+   "hdd_bays": 2,
+   "hdd_max_tb": 26,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 130,
+   "max_mp": 32,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-5-ei2-series/nvr5216-16p-ei2",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Successor of NVR5216-16P-EI. Bandwidth with AI off (AI on: 200/200). PoE 802.3af/at, max 25.5 W per port. NVR <=10 W without HDD. 1U per title."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR4216-EI",
+  "sku": [
+   "DHI-NVR4216-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR4-EI",
+  "desc": "16-ch 1U WizSense NVR, 2 SATA, no PoE",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 375,
+   "d": 284.3,
+   "h": 53
+  },
+  "weight_kg": 1.51,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12 VDC, 4 A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x GbE; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 256,
+   "out_mbps": 256,
+   "hdd_bays": 2,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 16,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-4-ei-series/nvr4216-ei",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Bandwidth with AI off (AI on: 180/180). NVR <10 W without HDD. 1U per title."
+ },
+ {
+  "brand": "Dahua",
+  "model": "IPC-HFW2441T-ZS",
+  "sku": [
+   "DH-IPC-HFW2441T-ZS"
+  ],
+  "kind": "camera",
+  "series": "WizSense 2 Series",
+  "desc": "4 MP WizSense IR varifocal bullet 2.7-13.5 mm, IR 60 m, built-in mic",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 90.7,
+   "d": 238.5,
+   "h": 90.7
+  },
+  "weight_kg": 0.73,
+  "power": {
+   "typ_w": null,
+   "max_w": 10.1,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC (max 8.7 W) / PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": null,
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 10.1
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": {
+   "style": "bullet",
+   "mp": 4,
+   "resolution": "2688x1520",
+   "sensor": "1/2.9\" CMOS",
+   "lens_mm": [
+    2.7,
+    13.5
+   ],
+   "hfov_deg": [
+    104,
+    29
+   ],
+   "ir_m": 60,
+   "white_light_m": null,
+   "codec": [
+    "H.265",
+    "H.264",
+    "H.264H",
+    "H.264B"
+   ],
+   "max_fps": 20,
+   "ip_rating": "IP67",
+   "ik": null,
+   "power_w": 10.1,
+   "poe_class": "802.3af",
+   "audio": true
+  },
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-2-Series/IR/IPC-HFW2441T-ZS",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "lens_mm/hfov_deg = wide and tele ends of motorized 2.7-13.5 mm. IK10 optional. Main stream @1-20 fps."
+ }
+]

@@ -1,0 +1,2122 @@
+[
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U6 Lite",
+  "sku": [
+   "U6-Lite"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 6",
+  "desc": "Compact ceiling Wi-Fi 6 AP, 2x2 dual-band, 1x GbE PoE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 160,
+   "d": 160,
+   "h": 33
+  },
+  "weight_kg": 0.3,
+  "power": {
+   "typ_w": null,
+   "max_w": 12,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE (802.3af)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 1,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 12
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 2.8
+    },
+    "5": {
+     "tx_dbm": 23,
+     "gain_dbi": 3
+    },
+    "6": null
+   },
+   "max_clients": 300,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u6-lite",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Diameter 160 mm; ceiling or wall mount (mounts included); max clients stated as 300+; 315 g with mount"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U6+",
+  "sku": [
+   "U6+"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 6",
+  "desc": "Compact ceiling Wi-Fi 6 AP, 2x2 dual-band MU-MIMO, 1x GbE PoE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 160,
+   "d": 160,
+   "h": 33
+  },
+  "weight_kg": 0.338,
+  "power": {
+   "typ_w": null,
+   "max_w": 9,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE (802.3af)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 1,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 9
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": 23,
+     "gain_dbi": 5.4
+    },
+    "6": null
+   },
+   "max_clients": 300,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u6-plus",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Diameter 160 mm; ceiling or wall; max clients 300+; 413 g with mount"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U6 Long-Range",
+  "sku": [
+   "U6-LR"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 6",
+  "desc": "Long-range ceiling Wi-Fi 6 AP, 4x4 dual-band, 1x GbE PoE+",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 220,
+   "d": 220,
+   "h": 48
+  },
+  "weight_kg": 0.8,
+  "power": {
+   "typ_w": null,
+   "max_w": 18.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE+ (802.3at)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 1,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 18.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 26,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 5.5
+    },
+    "6": null
+   },
+   "max_clients": 350,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u6-lr",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Diameter 220 mm; ceiling or wall (Pro Mount included); max clients 350+; 930 g with mount"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U6 Pro",
+  "sku": [
+   "U6-Pro"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 6",
+  "desc": "Ceiling Wi-Fi 6 AP, 4x4 5 GHz + 2x2 2.4 GHz, 1x GbE PoE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 197,
+   "d": 197,
+   "h": 35
+  },
+  "weight_kg": 0.58,
+  "power": {
+   "typ_w": null,
+   "max_w": 13,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE (802.3af)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 1,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 13
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 22,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 6
+    },
+    "6": null
+   },
+   "max_clients": 250,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u6-pro",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Diameter 197 mm; ceiling or wall (Pro Mount included); max clients 250+; 720 g with mount"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U6 Enterprise",
+  "sku": [
+   "U6-Enterprise"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 6E",
+  "desc": "Tri-band Wi-Fi 6E ceiling AP, 4x4 5/6 GHz, 1x 2.5GbE PoE+",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 220,
+   "d": 220,
+   "h": 48
+  },
+  "weight_kg": 0.96,
+  "power": {
+   "typ_w": null,
+   "max_w": 22,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE+ (802.3at)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 22
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 2x2, 5 GHz 4x4, 6 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 22,
+     "gain_dbi": 3.2
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 5.3
+    },
+    "6": {
+     "tx_dbm": 26,
+     "gain_dbi": 6
+    }
+   },
+   "max_clients": 600,
+   "uplink": "1x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u6-enterprise",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Diameter 220 mm; max clients 600+; 1.1 kg with mount"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U6 Mesh",
+  "sku": [
+   "U6-Mesh"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 6",
+  "desc": "Indoor/outdoor Wi-Fi 6 mesh AP, 4x4 5 GHz, IPX5, 1x GbE PoE",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 48.5,
+   "d": 48.5,
+   "h": 159.5
+  },
+  "weight_kg": 0.4,
+  "power": {
+   "typ_w": null,
+   "max_w": 13,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE (802.3af)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 1,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 13
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 22,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 5
+    },
+    "6": null
+   },
+   "max_clients": 250,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u6-mesh",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Cylindrical Ø48.5 x 159.5 mm; wall or pole mount; IPX5; max clients 250+; power figure includes PoE adapter"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U7 Lite",
+  "sku": [
+   "U7-Lite"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 7",
+  "desc": "Compact ceiling Wi-Fi 7 AP, 2x2 dual-band, 1x 2.5GbE PoE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 171.5,
+   "d": 171.5,
+   "h": 33
+  },
+  "weight_kg": 0.313,
+  "power": {
+   "typ_w": null,
+   "max_w": 13,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE (802.3af)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 13
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 24,
+     "gain_dbi": 5
+    },
+    "6": null
+   },
+   "max_clients": 200,
+   "uplink": "1x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u7-lite?s=us",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Dual-band (no 6 GHz); max clients 200+; ceiling or wall (Lite Mount included)"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U7 Pro",
+  "sku": [
+   "U7-Pro"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 7",
+  "desc": "Tri-band Wi-Fi 7 ceiling AP, 2x2 per band (6 streams), 1x 2.5GbE PoE+",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 206,
+   "d": 206,
+   "h": 46
+  },
+  "weight_kg": 0.68,
+  "power": {
+   "typ_w": null,
+   "max_w": 21,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE+ (802.3at)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 21
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, 6 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 6
+    },
+    "6": {
+     "tx_dbm": 23,
+     "gain_dbi": 5.8
+    }
+   },
+   "max_clients": 300,
+   "uplink": "1x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u7-pro?s=eu",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Max clients 300+; ceiling or wall (Pro Mount included)"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U7 Pro Max",
+  "sku": [
+   "U7-Pro-Max"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 7",
+  "desc": "Tri-band Wi-Fi 7 ceiling AP, 4x4 5 GHz + 2x2 2.4/6 GHz, 1x 2.5GbE PoE+",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 206,
+   "d": 206,
+   "h": 46
+  },
+  "weight_kg": 0.68,
+  "power": {
+   "typ_w": null,
+   "max_w": 25,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE+ (802.3at)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 25
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 2x2, 5 GHz 4x4, 6 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 29,
+     "gain_dbi": 6
+    },
+    "6": {
+     "tx_dbm": 23,
+     "gain_dbi": 5.9
+    }
+   },
+   "max_clients": 500,
+   "uplink": "1x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u7-pro-max?s=eu",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Max clients 500+; TX power may differ by region (EU page read)"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U7 Outdoor",
+  "sku": [
+   "U7-Outdoor"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 7",
+  "desc": "Outdoor dual-band Wi-Fi 7 AP, 2x2, internal directional + external omni antennas, IPX6",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": {
+   "w": 170,
+   "d": 54.5,
+   "h": 208
+  },
+  "weight_kg": 1.2,
+  "power": {
+   "typ_w": null,
+   "max_w": 19,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE+ (802.3at)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 19
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 8
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 12.5
+    },
+    "6": null
+   },
+   "max_clients": 250,
+   "uplink": "1x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u7-outdoor?s=us",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Wall or pole mount; IPX6. Gain shown = internal directional (5 GHz 12.5 dBi 45x45, 2.4 GHz 8 dBi 90x90); external omni 4 dBi (5 GHz) / 3 dBi (2.4 GHz). Vendor dims 170 x 208 x 54.5 mm mapped as w x h x d"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch Lite 8 PoE",
+  "sku": [
+   "USW-Lite-8-PoE"
+  ],
+  "kind": "switch",
+  "series": "UniFi Switching Lite",
+  "desc": "Compact L2 managed switch, 8x GbE (4x PoE+), 52 W PoE, fanless",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 99.6,
+   "d": 163.7,
+   "h": 31.7
+  },
+  "weight_kg": 0.295,
+  "power": {
+   "typ_w": null,
+   "max_w": 60,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External AC/DC adapter 60W (50-57V DC input)"
+  },
+  "heat_btu_h": 27.3,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 8,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": 52,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 16,
+   "forwarding_mpps": 12,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Desktop or wall; max consumption 8W excluding PoE; 30W max per port; heat figure excludes PoE"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch Lite 16 PoE",
+  "sku": [
+   "USW-Lite-16-PoE"
+  ],
+  "kind": "switch",
+  "series": "UniFi Switching Lite",
+  "desc": "Compact L2 managed switch, 16x GbE (8x PoE+), 45 W PoE, fanless",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 192,
+   "d": 185,
+   "h": 44
+  },
+  "weight_kg": 1.2,
+  "power": {
+   "typ_w": null,
+   "max_w": 60,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 60W"
+  },
+  "heat_btu_h": 51.2,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 16,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 45,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 32,
+   "forwarding_mpps": 24,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/switching/usw-lite-16-poe",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Desktop or wall; 15W excl. PoE; heat dissipation 51.2 (unit not shown on page, assumed BTU/hr) excluding PoE; non-blocking throughput 16 Gbps"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch 24 PoE",
+  "sku": [
+   "USW-24-PoE"
+  ],
+  "kind": "switch",
+  "series": "UniFi Switching Standard",
+  "desc": "1U L2 managed switch, 24x GbE (16x PoE+), 2x 1G SFP, 95 W PoE, fanless",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 200,
+   "h": 44
+  },
+  "weight_kg": 3.0,
+  "power": {
+   "typ_w": null,
+   "max_w": 120,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 120W"
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 24,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 95,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 52,
+   "forwarding_mpps": 39,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/switching/usw-24-poe",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "25W excl. PoE; 3.1 kg with brackets; fanless per product description"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch Pro 24 PoE",
+  "sku": [
+   "USW-Pro-24-PoE"
+  ],
+  "kind": "switch",
+  "series": "UniFi Switching Pro",
+  "desc": "1U L3 switch, 24x GbE (16x PoE+, 8x PoE++), 2x 10G SFP+, 400 W PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 285,
+   "h": 44
+  },
+  "weight_kg": 4.3,
+  "power": {
+   "typ_w": null,
+   "max_w": 450,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 450W; USP RPS DC backup input"
+  },
+  "heat_btu_h": 170.6,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 24,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 400,
+   "std": "802.3bt"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 88,
+   "forwarding_mpps": 65,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/switching/usw-pro-24-poe",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE: 16x PoE+ (30W) + 8x PoE++ (60W); DC backup via USP RPS; 50W excl. PoE; heat excludes PoE; Layer 3"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch Pro 48 PoE",
+  "sku": [
+   "USW-Pro-48-PoE"
+  ],
+  "kind": "switch",
+  "series": "UniFi Switching Pro",
+  "desc": "1U L3 switch, 48x GbE (40x PoE+, 8x PoE++), 4x 10G SFP+, 600 W PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 400,
+   "h": 44
+  },
+  "weight_kg": 6.2,
+  "power": {
+   "typ_w": null,
+   "max_w": 660,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 660W; USP RPS DC backup input"
+  },
+  "heat_btu_h": 204.7,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 48,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 600,
+   "std": "802.3bt"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 131,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/switching/usw-pro-48-poe",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE: 40x PoE+ (32W) + 8x PoE++ (60W); 60W excl. PoE; heat excludes PoE; Layer 3"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch Pro Max 24 PoE",
+  "sku": [
+   "USW-Pro-Max-24-PoE"
+  ],
+  "kind": "switch",
+  "series": "UniFi Switching Pro Max",
+  "desc": "1U L3 switch, 16x GbE + 8x 2.5GbE (all PoE, 16x PoE++), 2x 10G SFP+, 400 W PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 325,
+   "h": 44
+  },
+  "weight_kg": 5.1,
+  "power": {
+   "typ_w": null,
+   "max_w": 450,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 550W; USP RPS DC backup input"
+  },
+  "heat_btu_h": 170.6,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 16,
+   "rj45_mgig": 8,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": 2,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "8x 2.5GbE RJ45"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 400,
+   "std": "802.3bt"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 112,
+   "forwarding_mpps": 83,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/switching/usw-pro-max-24-poe",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE: 8x PoE+ (32W) + 16x PoE++ (64W); 50W excl. PoE; heat excludes PoE; non-blocking 56 Gbps; Layer 3. Vendor names PoE/PoE+/PoE++ without IEEE numbers"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch Pro Max 48 PoE",
+  "sku": [
+   "USW-Pro-Max-48-PoE"
+  ],
+  "kind": "switch",
+  "series": "UniFi Switching Pro Max",
+  "desc": "1U L3 switch, 32x GbE + 16x 2.5GbE (all PoE, 16x PoE++), 4x 10G SFP+, 720 W PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442.4,
+   "d": 400,
+   "h": 44
+  },
+  "weight_kg": 6.2,
+  "power": {
+   "typ_w": null,
+   "max_w": 820,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 870W; USP RPS DC backup input"
+  },
+  "heat_btu_h": 341.2,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 32,
+   "rj45_mgig": 16,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": 4,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "16x 2.5GbE RJ45"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 720,
+   "std": "802.3bt"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 224,
+   "forwarding_mpps": 167,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/switching/usw-pro-max-48-poe?s=us",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "PoE: 32x PoE+ (32W) + 16x PoE++ (64W); 100W excl. PoE; heat excludes PoE; non-blocking 112 Gbps; Layer 3"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch Pro Aggregation",
+  "sku": [
+   "USW-Pro-Aggregation"
+  ],
+  "kind": "coresw",
+  "series": "UniFi Switching Aggregation",
+  "desc": "1U L3 aggregation switch, 28x 10G SFP+ + 4x 25G SFP28, 760 Gbps",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 325,
+   "h": 44
+  },
+  "weight_kg": 4.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 100,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 100W; USP-RPS DC backup input (11.5V DC)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": 28,
+   "sfp28": 4,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "1.3in touchscreen LCD; in-band Ethernet management"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 760,
+   "forwarding_mpps": 565.44,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://dl-cdn.ui.com.cn/ds/usw-pro-aggregation_ds_CN.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Official Ubiquiti datasheet (Chinese edition). u=1 implied by 19in/44 mm chassis, not stated explicitly. Non-blocking throughput 380 Gbps; 4.7 kg with brackets"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Dream Machine Pro",
+  "sku": [
+   "UDM-Pro"
+  ],
+  "kind": "firewall",
+  "series": "UniFi Cloud Gateways",
+  "desc": "1U UniFi OS gateway, 8x GbE LAN, 1x GbE WAN, 2x 10G SFP+ (WAN/LAN), 3.5 Gbps IDS/IPS",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442.4,
+   "d": 285.6,
+   "h": 43.7
+  },
+  "weight_kg": 3.9,
+  "power": {
+   "typ_w": null,
+   "max_w": 33,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 50W; USP-RPS DC input"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 9,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": 2,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "WAN: 1x GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 16 GB eMMC"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": 3.5,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.montersi.pl/instrukcje/UDM-PRO - Karta katalogowa.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Ubiquiti datasheet (c2023) hosted by distributor montersi.pl; techspecs.ui.com page not reachable. threat_gbps = IDS/IPS throughput (iPerf3). u=1 implied by 43.7 mm height. HDD bay not captured"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Dream Machine Special Edition",
+  "sku": [
+   "UDM-SE"
+  ],
+  "kind": "firewall",
+  "series": "UniFi Cloud Gateways",
+  "desc": "1U UniFi OS gateway, 8x GbE LAN (8x PoE), 2.5GbE WAN, 2x 10G SFP+, 3.5 Gbps IDS/IPS",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442.4,
+   "d": 285.6,
+   "h": 43.7
+  },
+  "weight_kg": 4.95,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 240W; USP-RPS DC input 52V"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 8,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": 2,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "WAN: 1x 2.5GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 128 GB SSD + 16 GB eMMC"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": null,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": 3.5,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://dl.ubnt.com/ds/udm_se_ds",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Max power 50W excluding PoE; PoE: 6x PoE (15.4W) + 2x PoE+ (30W), total budget not stated; IDS/IPS throughput measured with iPerf3; u=1 implied by 43.7 mm height"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Dream Machine Pro Max",
+  "sku": [
+   "UDM-Pro-Max"
+  ],
+  "kind": "firewall",
+  "series": "UniFi Cloud Gateways",
+  "desc": "1U UniFi OS gateway, 8x GbE LAN, 2.5GbE WAN, 2x 10G SFP+, 5 Gbps IDS/IPS",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442.4,
+   "d": 285.6,
+   "h": 43.7
+  },
+  "weight_kg": 4.7,
+  "power": {
+   "typ_w": null,
+   "max_w": 60,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 100W; USP-RPS DC input 12V"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 8,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": 2,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "WAN: 1x 2.5GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 128 GB SSD + 32 GB eMMC"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": 5,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://netxl.com/ubiquiti/docs/udm-pro-max-data-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Ubiquiti store spec printout hosted by distributor netxl.com; techspecs.ui.com blocked (robots). IDS/IPS 5 Gbps (iPerf3). u=1 implied by 43.7 mm height"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Cloud Gateway Ultra",
+  "sku": [
+   "UCG-Ultra"
+  ],
+  "kind": "firewall",
+  "series": "UniFi Cloud Gateways",
+  "desc": "Compact UniFi OS gateway, 4x GbE + 1x 2.5GbE WAN, 1 Gbps IDS/IPS",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 141.8,
+   "d": 127.6,
+   "h": 30
+  },
+  "weight_kg": 0.52,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "USB-C 5V DC/3A (adapter included, 100-240V AC)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "Default WAN = 2.5GbE; up to 4 WAN ports"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": 1,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/cloud-gateways/ucg-ultra?s=eu",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "IDS/IPS throughput 1 Gbps; 16 GB storage, 3 GB RAM"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Gateway Pro",
+  "sku": [
+   "UXG-Pro"
+  ],
+  "kind": "router",
+  "series": "UniFi Gateways",
+  "desc": "1U UniFi gateway (no console), 2x GbE + 2x 10G SFP+ (WAN/LAN)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442.4,
+   "d": 285.6,
+   "h": 43.7
+  },
+  "weight_kg": 3.42,
+  "power": {
+   "typ_w": null,
+   "max_w": 30,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC internal 50W; RPS DC input 11.5V"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": 2,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "WAN: 1x GbE RJ45 + 1x 10G SFP+; LAN: 1x GbE RJ45 + 1x 10G SFP+"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://dl.ubnt.com/ds/uxg-pro_ds",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Datasheet states no throughput figures; u=1 implied by 43.7 mm height"
+ },
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi Switch Aggregation",
+  "sku": [
+   "USW-Aggregation"
+  ],
+  "kind": "coresw",
+  "series": "UniFi Switching Aggregation",
+  "desc": "1U L2 aggregation switch, 8x 10G SFP+, 160 Gbps",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442.4,
+   "d": 120,
+   "h": 43.7
+  },
+  "weight_kg": 2.65,
+  "power": {
+   "typ_w": null,
+   "max_w": 30,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC, internal 36W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": 8,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 160,
+   "forwarding_mpps": 119.04,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://shop.allnet.de/media/pdf/a0/4b/ea/193170-2.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Ubiquiti datasheet hosted by distributor ALLNET; techspecs.ui.com page not reachable. u=1 implied by 43.7 mm height. 2.74 kg with mount"
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "AP-505",
+  "sku": [
+   "R2H28A",
+   "R2H29A",
+   "R2H38A",
+   "R2H39A",
+   "S3J27A"
+  ],
+  "kind": "ap",
+  "series": "500 Series Campus Access Points",
+  "desc": "Wi-Fi 6 campus AP, dual radio 2x2, internal antennas, 1x GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 160,
+   "d": 161,
+   "h": 37
+  },
+  "weight_kg": 0.5,
+  "power": {
+   "typ_w": null,
+   "max_w": 16.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af/at or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 1,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 1,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 16.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 21,
+     "gain_dbi": 4.9
+    },
+    "5": {
+     "tx_dbm": 21,
+     "gain_dbi": 5.7
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.hpe.com/us/en/collaterals/collateral.a00067744enw.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "SKUs: R2H28A RW, R2H29A US, R2H38A RW TAA, R2H39A US TAA, S3J27A RW 10-pack. PoE class 3 or 4; max 11.0W without USB, 16.5W (802.3at) / 13.5W (802.3af) with USB. TX = aggregate conducted (18 dBm/chain). 256 clients per radio. Weight excludes bracket; mount kits sold separately"
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "AP-515",
+  "sku": [
+   "Q9H62A",
+   "Q9H63A",
+   "Q9H59A",
+   "Q9H60A",
+   "Q9H61A",
+   "S5D86A",
+   "Q9H72A",
+   "Q9H73A",
+   "S3J29A",
+   "S3J30A"
+  ],
+  "kind": "ap",
+  "series": "510 Series Campus Access Points",
+  "desc": "Wi-Fi 6 campus AP, 4x4 5 GHz + 2x2 2.4 GHz, internal antennas, 2.5GbE + GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 200,
+   "d": 200,
+   "h": 46
+  },
+  "weight_kg": 0.81,
+  "power": {
+   "typ_w": 12.6,
+   "max_w": 20.8,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at/bt or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 1,
+   "rj45_mgig": 1,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 20.8
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 21,
+     "gain_dbi": 4.2
+    },
+    "5": {
+     "tx_dbm": 24,
+     "gain_dbi": 7.5
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE (Smart Rate, PoE) + 1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.hpe.com/us/en/collaterals/collateral.a00054054enw.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "SKUs: Q9H62A RW, Q9H63A US (Q9H59A EG, Q9H60A IL, Q9H61A JP, S5D86A ID; TAA Q9H72A RW / Q9H73A US; 10-packs S3J29A RW / S3J30A US). Full function on 802.3at class 4 or 802.3bt class 5; 802.3af only with IPM (restricted, 13.5W). typ_w = idle PoE. 512 clients per radio. TX = aggregate conducted"
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "AP-535",
+  "sku": [
+   "JZ336A",
+   "JZ337A",
+   "JZ346A",
+   "JZ347A"
+  ],
+  "kind": "ap",
+  "series": "530 Series Campus Access Points",
+  "desc": "Wi-Fi 6 campus AP, dual radio 4x4, internal antennas, 2x 5GbE Smart Rate",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 240,
+   "d": 240,
+   "h": 57
+  },
+  "weight_kg": 1.27,
+  "power": {
+   "typ_w": null,
+   "max_w": 26.4,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at/bt (or dual 802.3at) or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 26.4
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 24,
+     "gain_dbi": 3.5
+    },
+    "5": {
+     "tx_dbm": 24,
+     "gain_dbi": 5.4
+    },
+    "6": null
+   },
+   "max_clients": 2048,
+   "uplink": "2x 5GbE Smart Rate"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.hpe.com/us/en/collaterals/collateral.a00060238enw.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "SKUs: JZ336A RW, JZ337A US, JZ346A RW TAA, JZ347A US TAA. Class 4 or higher; 26.4W on 802.3bt/dual 802.3at, 23.3W on 802.3at IPM disabled (excl. USB; USB load adds up to 5.7W). 1024 clients per radio. Weight/dims exclude bracket"
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "AP-635",
+  "sku": [
+   "R7J27A",
+   "R7J28A",
+   "R7J32A",
+   "R7J33A",
+   "S3J35A",
+   "S3J36A"
+  ],
+  "kind": "ap",
+  "series": "630 Series Campus Access Points",
+  "desc": "Wi-Fi 6E tri-radio 2x2 campus AP, internal antennas, 2x 2.5GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 220,
+   "d": 220,
+   "h": 51
+  },
+  "weight_kg": 1.3,
+  "power": {
+   "typ_w": null,
+   "max_w": 23.8,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at/bt or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 1,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 23.8
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, 6 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 21,
+     "gain_dbi": 4.6
+    },
+    "5": {
+     "tx_dbm": 21,
+     "gain_dbi": 7.0
+    },
+    "6": {
+     "tx_dbm": 21,
+     "gain_dbi": 6.3
+    }
+   },
+   "max_clients": null,
+   "uplink": "2x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.hpe.com/us/en/collaterals/collateral.a50002582enw.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "SKUs: R7J27A RW, R7J28A US, TAA R7J32A RW / R7J33A US, 5-pack S3J35A RW / S3J36A US. Class 5 unrestricted; class 4 works (USB disabled). PoE max 23.8W without USB / 29.4W with USB (series figure). 512 clients per radio. Weight/dims exclude bracket"
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "AP-655",
+  "sku": [
+   "R7J38A",
+   "R7J39A",
+   "R7J43A",
+   "R7J44A"
+  ],
+  "kind": "ap",
+  "series": "650 Series Campus Access Points",
+  "desc": "Wi-Fi 6E tri-radio 4x4 campus AP, internal antennas, 2x 5GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 260,
+   "d": 260,
+   "h": 60
+  },
+  "weight_kg": 1.8,
+  "power": {
+   "typ_w": null,
+   "max_w": 40.3,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at/bt or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 1,
+   "notes": null
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 40.3
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, 6 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 24,
+     "gain_dbi": 4.8
+    },
+    "5": {
+     "tx_dbm": 24,
+     "gain_dbi": 5.3
+    },
+    "6": {
+     "tx_dbm": 24,
+     "gain_dbi": 5.4
+    }
+   },
+   "max_clients": null,
+   "uplink": "2x 5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.hpe.com/us/en/collaterals/collateral.a50004266enw.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "SKUs: R7J38A RW, R7J39A US, TAA R7J43A RW / R7J44A US. 802.3bt class 5 unrestricted; single 802.3at restricted; 802.3af not supported. PoE max 40.3W without USB / 46.5W with USB. 1024 clients per radio. Weight excludes bracket"
+ }
+]
