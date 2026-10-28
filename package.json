@@ -1,0 +1,25 @@
+{
+  "name": "networker",
+  "productName": "NetWorker",
+  "version": "1.0.0",
+  "description": "NetWorker — network documentation: topology, Port Map, racks, fiber, CCTV and Wi-Fi in one app",
+  "author": "UlveeLives",
+  "license": "UNLICENSED",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --x64"
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "local.ulveelives.networker",
+    "productName": "NetWorker",
+    "files": ["index.html", "main.js", "preload.js", "css/**", "js/**", "icons/**", "vendor/**", "build/icon.png", "manifest.webmanifest", "!build.bat"],
+    "directories": { "output": "dist", "buildResources": "build" },
+    "win": { "target": "nsis", "icon": "build/icon.ico", "artifactName": "NetWorker-Setup-${version}.exe" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "shortcutName": "NetWorker" }
+  }
+}

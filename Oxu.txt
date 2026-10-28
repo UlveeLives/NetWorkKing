@@ -1,0 +1,38 @@
+NETWORKER 1.0.0 — QURAŞDIRMA VƏ İSTİFADƏ
+
+NetWorker bir proqramda 6 tətbiqdir: Şəbəkə topologiyası, Port Map, Rack kabinetlər,
+Fiber magistral, CCTV və Wi-Fi Plan. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
+arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
+bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+A) Quraşdırmadan sınamaq
+   index.html faylını Chrome və ya Edge-də aç. Hər şey işləyir,
+   PDF isə "Çap" pəncərəsindən "PDF kimi saxla" ilə alınır.
+
+B) Windows proqramı (.exe) yığmaq
+   1. Bu qovluğu məs. C:\NetWorker-source-a köçür (Node.js quraşdırılmış olmalıdır).
+   2. build.bat faylına iki dəfə klik et.
+   3. Bitəndə dist qovluğu açılır: dist\NetWorker-Setup-1.0.0.exe
+      Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
+   start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
+
+C) Telefon / planşet
+   Qovluğu istənilən HTTPS veb-serverə (məs. GitHub Pages) yerləşdir və brauzerdə
+   "Əsas ekrana əlavə et" seç — proqram internetsiz də açılır.
+
+D) Köhnə proqramlardan məlumat köçürmək
+   "İdxal" düyməsi ilə bu faylları aç:
+   - PortMap 1.x / 2.x / 3.x ixrac faylı (.portmap.json)
+   - RackLayout 2.x (.rack.json)
+   - Wolf Suite 2.0 sənədləri (.topology.json, .cctv.json, .fiber.json, .wifi.json)
+   Proqram soruşur: yeni layihə, bu layihədə yeni bina, yoxsa cari bina.
+
+E) Cihaz kataloqu
+   Daxili kataloqda rəsmi datasheet-lərdən götürülmüş modellər var (marka, model,
+   U, güc, PoE, portlar, kamera / NVR / AP göstəriciləri və mənbə linki).
+   Ayarlar → Kataloq: internetdən yeniləmə (həftədə bir dəfə avtomatik).
+   Bazada olmayan model üçün: əl ilə daxil et, və ya istəsən AI axtarışı
+   (öz Anthropic API açarın lazımdır — Ayarlar → AI; açar yalnız bu kompüterdə saxlanılır).
+
+Məlumatlar kompüterdə avtomatik saxlanılır. Ehtiyat üçün vaxtaşırı
+"İxrac → Layihə faylı" et; başqa kompüterdə "İdxal" ilə açılır.
