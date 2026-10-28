@@ -1,9 +1,17 @@
-NETWORKKING 3.1.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.2.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
-NetWorkKing bir proqramda 7 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
-Fiber magistral, CCTV və Wi-Fi Plan. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
+NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
+Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.2-DƏ YENİ
+ - Xülasə tətbiqi: bütün cihaz, avadanlıq və aksesuarlar bir cədvəldə — ad, növ, marka / model,
+   status, mərtəbə / otaq, rack yeri, IP, MAC, VLAN, seriya, hara qoşulduğu. Xanalarda birbaşa
+   düzəldin (hər yerdə eyni anda dəyişir); qırmızı xana — çatışan məlumat; düymələrlə cihazı
+   müvafiq tətbiqdə açın. "Say və modellər" (BOM), "Çatışmayanlar", CSV və çap.
+ - Çertyojlarda zoom yalnız Ctrl + təkər ilə (adi təkər səhifəni sürüşdürür).
+ - Wi-Fi Plan: mərtəbələr tablarla seçilir; otaq adını otaqdan ayrı sürüşdürmək olar.
 
 3.1-DƏ YENİ
  - Çertyojlar (Bina strukturu, CCTV, Wi-Fi Plan): siçan təkəri ilə yaxınlaşdır / uzaqlaşdır,
@@ -48,7 +56,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.1.0.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.2.0.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 

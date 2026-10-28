@@ -144,4 +144,4 @@ for k,az,tr,en,ru in [
 ]:
     K(k,az,tr,en,ru)
 K("zpFit","Bütövlükdə göstər","Tümünü göster","Fit to view","Показать целиком")
-K("zpHint","Təkər — yaxınlaşdır / uzaqlaşdır · orta düymə və ya Boşluq + sürüşdür — hərəkət","Tekerlek — yakınlaştır · orta tuş veya Boşluk + sürükle — kaydır","Wheel — zoom · middle button or Space + drag — pan","Колесо — масштаб · средняя кнопка или Пробел + перетаскивание — сдвиг")
+K("zpHint","Ctrl + təkər — yaxınlaşdır / uzaqlaşdır · orta düymə və ya Boşluq + sürüşdür — hərəkət · otaq adını sürüşdürmək olar","Ctrl + tekerlek — yakınlaştır · orta tuş veya Boşluk + sürükle — kaydır","Ctrl + wheel — zoom · middle button or Space + drag — pan · room names can be dragged","Ctrl + колесо — масштаб · средняя кнопка или Пробел + перетаскивание — сдвиг")

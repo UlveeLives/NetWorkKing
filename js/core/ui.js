@@ -3,7 +3,7 @@
 const LANGS = [["az","Azərbaycanca"],["tr","Türkçe"],["en","English"],["ru","Русский"]];
 function L(){ return I18N[store && store.settings.lang] || I18N.az; }
 function t(k, v){ let s = L()[k] ?? I18N.az[k] ?? I18N.en[k] ?? k; if (v) for (const x in v) s = s.split("{" + x + "}").join(v[x]); return s; }
-const APPS = {}, APP_ORDER = ["building","topology","portmap","rack","fiber","cctv","wifi"];
+const APPS = {}, APP_ORDER = ["building","topology","portmap","rack","fiber","cctv","wifi","summary"];
 function registerApp(a){ APPS[a.id] = a; }
 const curApp = () => APPS[UI.app] || APPS.topology;
 const curTab = () => { const a = curApp(); const id = UI.tabs[a.id]; return a.tabs.find(x => x.id === id) || a.tabs[0]; };
@@ -149,7 +149,8 @@ function zpSet(el){ const s = ZP.st[el.dataset.zp]; if (!s){ if (el.clientWidth 
 function zpZoom(el, f, cx, cy){ const s = ZP.st[el.dataset.zp] || (zpFit(el), ZP.st[el.dataset.zp]), R = el.getBoundingClientRect(), mx = cx === undefined ? R.width / 2 : cx - R.left, my = cy === undefined ? R.height / 2 : cy - R.top, nz = clamp(s.z * f, .05, 12);
   s.x = mx - (mx - s.x) * nz / s.z; s.y = my - (my - s.y) * nz / s.z; s.z = nz; zpSet(el); }
 function zpAll(){ $$(".zp").forEach(el => zpSet(el)); }
-document.addEventListener("wheel", e => { const el = zpEl(e.target); if (!el) return; e.preventDefault(); zpZoom(el, Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0015)), e.clientX, e.clientY); }, {passive:false});
+// Ctrl + wheel zooms (a plain wheel scrolls the page as usual); a touchpad pinch arrives as Ctrl + wheel too
+document.addEventListener("wheel", e => { const el = zpEl(e.target); if (!el || !(e.ctrlKey || e.metaKey)) return; e.preventDefault(); zpZoom(el, Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0015)), e.clientX, e.clientY); }, {passive:false});
 document.addEventListener("keydown", e => { if (e.code === "Space" && !/INPUT|TEXTAREA|SELECT/.test((document.activeElement || {}).tagName || "")) { if ($(".zp")) { ZP.space = true; document.body.classList.add("zpspace"); e.preventDefault(); } } });
 document.addEventListener("keyup", e => { if (e.code === "Space"){ ZP.space = false; document.body.classList.remove("zpspace"); } });
 document.addEventListener("pointerdown", e => {

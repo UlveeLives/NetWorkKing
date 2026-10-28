@@ -89,7 +89,7 @@ function syncOut(){
     sf.plan = Object.assign(sf.plan || {}, {desc:ff.desc, color:ff.color, wm:ff.wm, hm:ff.hm, img:ff.img, op:ff.op, idf:ff.idf, walls:ff.walls, survey:ff.survey, cal:!!ff.calibrated});
     out.push(sf); byId.delete(ff.id);
     ff.rooms.forEach(r => { let sr = roomById(b, r.id); if (!sr){ sr = {id:r.id}; b.rooms.push(sr); }
-      sr.name = String(r.label || "").split("\n").join(" ").trim() || t("newRoom"); sr.floor = ff.id; sr.wall = r.wall; sr.users = num(r.users); sr.geo = Object.assign(sr.geo || {}, {x:r.x, y:r.y, w:r.w, h:r.h}); }); });
+      sr.name = String(r.label || "").split("\n").join(" ").trim() || t("newRoom"); sr.floor = ff.id; sr.wall = r.wall; sr.users = num(r.users); sr.geo = Object.assign(sr.geo || {}, {x:r.x, y:r.y, w:r.w, h:r.h}); if (r.lx !== undefined){ sr.geo.lx = r.lx; sr.geo.ly = r.ly; } }); });
   byId.forEach(sf => { b.rooms.forEach(r => { if (r.floor === sf.id) r.floor = ""; }); b.devices.forEach(x => { if (x.floor === sf.id){ x.floor = ""; if (x.kind === "ap") x.ap.x = x.ap.y = null; } }); });
   b.floors = out;
   const seenR = new Set(d.floors.flatMap(f => f.rooms.map(r => r.id)));
@@ -334,7 +334,10 @@ function exportCSV(name, header, rows){ saveText(fileSafe(B().name) + " - " + na
 /* ---------- plan rendering ---------- */
 function plansHtml(d, print){
   if (!d.floors.length) return `<div class="empty"><h3>${esc(t("wEmptyT"))}</h3><p>${esc(t("wEmpty"))}</p><div class="btns" style="justify-content:center"><button class="btn pri" data-wa="addFloor">＋ ${esc(t("addFloor"))}</button></div></div>`;
-  return `<div class="plans">${d.floors.map(f => floorRow(d, f, print)).join("")}</div>`;
+  if (print) return `<div class="plans">${d.floors.map(f => floorRow(d, f, print)).join("")}</div>`;
+  // one floor at a time, chosen with the floor tabs (same as Building structure and CCTV)
+  const cur = d.floors.find(f => f.id === UI.wfFloor) || d.floors[d.floors.length - 1]; UI.wfFloor = cur.id;
+  return `<div class="bfloors">${d.floors.map(f => `<button class="bfchip${f === cur ? " on" : ""}" data-wfl="${f.id}">🏬 ${esc(fName(f))} <small>${d.aps.filter(a => a.floor === f.id && a.status !== "removed").length} AP</small></button>`).join("")}</div><div class="plans">${floorRow(d, cur, print)}</div>`;
 }
 function legendHtml(d){
   const m = d.view.mode, P = prof(d), sw = (c, l) => `<div><i style="background:${c}"></i>${l}</div>`, rgb = c => `rgb(${c})`;
@@ -371,11 +374,11 @@ function overSvg(d, f, print){
       const sx = r.pw ? r.w / r.pw : 1, sy = r.ph ? r.h / r.ph : 1, pts = []; for (let i = 0; i + 1 < r.poly.length; i += 2) pts.push(((r.x + r.poly[i] * sx) * s).toFixed(1) + "," + ((r.y + r.poly[i + 1] * sy) * s).toFixed(1));
       const lx = (r.x + (r.lx !== undefined ? r.lx * sx : r.w / 2)) * s, ly = (r.y + (r.ly !== undefined ? r.ly * sy : r.h / 2)) * s;
       h += `<g class="rm" data-room="${r.id}"><polygon points="${pts.join(" ")}" fill="rgba(255,255,255,.01)" stroke="#8a93a8" stroke-width=".8" stroke-dasharray="4 3"/>
-        <text x="${lx}" y="${ly}" font-size="${clamp(s * .32, 7.5, 11)}" font-weight="700" text-anchor="middle" fill="#20242e" stroke="#fff" stroke-width="2.4" paint-order="stroke">${esc(ls.join(" "))}</text></g>`;
+        <text class="rlab" data-rlab="${r.id}" x="${lx}" y="${ly}" font-size="${clamp(s * .32, 7.5, 11)}" font-weight="700" text-anchor="middle" fill="#20242e" stroke="#fff" stroke-width="2.4" paint-order="stroke">${esc(ls.join(" "))}</text></g>`;
       if (sel === r.id) h += `<rect class="rsel" x="${x - 3}" y="${y - 3}" width="${w + 6}" height="${hh + 6}"/>`;
       return; }
     h += `<g class="rm" data-room="${r.id}"><rect x="${x}" y="${y}" width="${w}" height="${hh}" fill="rgba(255,255,255,.01)" ${MSTYLE[r.wall] || MSTYLE.drywall}/>
-      <text x="${x + w/2}" y="${y + hh/2 - (ls.length - 1) * 6 + 4}" font-size="${ls.length > 1 || w < 70 ? 9.5 : 11}" font-weight="700" text-anchor="middle" fill="#20242e" stroke="#fff" stroke-width="2.4" paint-order="stroke">${ls.map((l, i) => `<tspan x="${x + w/2}" dy="${i ? 12 : 0}">${esc(l)}</tspan>`).join("")}</text>
+      <text class="rlab" data-rlab="${r.id}" x="${r.lx !== undefined ? (r.x + r.lx) * s : x + w/2}" y="${r.ly !== undefined ? (r.y + r.ly) * s : y + hh/2 - (ls.length - 1) * 6 + 4}" font-size="${ls.length > 1 || w < 70 ? 9.5 : 11}" font-weight="700" text-anchor="middle" fill="#20242e" stroke="#fff" stroke-width="2.4" paint-order="stroke">${ls.map((l, i) => `<tspan x="${r.lx !== undefined ? (r.x + r.lx) * s : x + w/2}" dy="${i ? 12 : 0}">${esc(l)}</tspan>`).join("")}</text>
       ${num(r.users) ? `<text x="${x + w - 4}" y="${y + 11}" font-size="8.5" text-anchor="end" fill="#3b4256">👤${num(r.users)}</text>` : ""}</g>`;
     if (sel === r.id) h += `<rect class="rsel" x="${x - 3}" y="${y - 3}" width="${w + 6}" height="${hh + 6}"/><rect class="rh" data-rh="${r.id}" x="${x + w - 6}" y="${y + hh - 6}" width="12" height="12" rx="2"/>`;
   });
@@ -652,7 +655,8 @@ function wifiWire(){
     const cs = e.target.closest("[data-wcsv]"); if (cs){ CSV[cs.dataset.wcsv](); return; }
     if (e.target.closest("#modal,#drawer,#pal,#hdr,#ptabs,#btabs")) return;
     const g = e.target.closest("[data-wgo]"); if (g){ UI.tabs.wifi = "plan"; setSel(g.dataset.wgo); render(); reveal(UI.sel); return; }
-    const fc = e.target.closest("[data-fl]"); if (fc){ setSel(fc.dataset.fl); render(); } });
+    const fc = e.target.closest("[data-fl]"); if (fc){ setSel(fc.dataset.fl); render(); return; }
+    const ft = e.target.closest("[data-wfl]"); if (ft){ UI.wfFloor = ft.dataset.wfl; render(); } });
   document.addEventListener("change", e => { if (UI.app !== "wifi") return; const el = e.target;
     if (el.dataset.wv){ const d = D(), k = el.dataset.wv, v = el.type === "checkbox" ? el.checked : el.value;
       if (k === "mat"){ lastMat[tool] = v; return; }
@@ -671,6 +675,9 @@ function wifiWire(){
       edit(() => { dv.floor = f.id; dv.ap.x = r1(Math.min(f.wm, Math.max(0, p.x))); dv.ap.y = r1(Math.min(f.hm, Math.max(0, p.y))); UI.sel = {type:"dev", id}; }); return; }
     if (tool === "room"){ e.preventDefault(); const p = ptOf(e, ov, f); drag = {mode:"nr", f, k, x0:e.clientX, y0:e.clientY, p, snap:snapshot(), moved:false, o:{id:uid("r"), x:p.x, y:p.y, w:.1, h:.1, label:t("newRoom"), wall:"drywall", users:0}}; return; }
     if (tool !== "select"){ e.preventDefault(); toolClick(e, d, f, ov); return; }
+    const lab = e.target.closest("[data-rlab]");
+    if (lab){ const r = f.rooms.find(x => x.id === lab.dataset.rlab), sx = r.pw ? r.w / r.pw : 1, sy = r.ph ? r.h / r.ph : 1; if (r.lx === undefined){ r.lx = r1(r.w / 2 / sx); r.ly = r1(r.h / 2 / sy); }
+      setSel(r.id); drag = {f, k, x0:e.clientX, y0:e.clientY, snap:snapshot(), moved:false, mode:"lab", o:r, ox:r.lx, oy:r.ly, sx, sy}; e.preventDefault(); return; }
     const apg = e.target.closest("[data-ap]"), rh = e.target.closest("[data-rh]"), rm = e.target.closest("[data-room]"), wh = e.target.closest("[data-wh]"), wl = e.target.closest("[data-wall]"), sv = e.target.closest("[data-sv]"), idf = e.target.closest("[data-idf]");
     const base = {f, k, x0:e.clientX, y0:e.clientY, snap:snapshot(), moved:false};
     if (apg){ const a = d.aps.find(x => x.id === apg.dataset.ap); UI.sel = {type:"dev", id:a.id}; drag = Object.assign(base, {mode:"ap", o:a, ox:a.x, oy:a.y}); }
@@ -698,6 +705,7 @@ function wifiWire(){
     const o = drag.o, f = drag.f;
     if (drag.mode === "ap"){ o.x = r1(Math.min(f.wm, Math.max(0, drag.ox + dx))); o.y = r1(Math.min(f.hm, Math.max(0, drag.oy + dy))); }
     else if (drag.mode === "rm" || drag.mode === "pt"){ o.x = r1(drag.ox + dx); o.y = r1(drag.oy + dy); }
+    else if (drag.mode === "lab"){ o.lx = r1(drag.ox + dx / drag.sx); o.ly = r1(drag.oy + dy / drag.sy); }
     else if (drag.mode === "we"){ let q = {x:r1(drag.ox + dx), y:r1(drag.oy + dy)}; if (e.shiftKey){ const oth = drag.end === "1" ? {x:o.x2, y:o.y2} : {x:o.x1, y:o.y1}; q = ortho(oth, q); } o["x" + drag.end] = q.x; o["y" + drag.end] = q.y; }
     else if (drag.mode === "wl"){ const z = drag.o0; o.x1 = r1(z.x1 + dx); o.x2 = r1(z.x2 + dx); o.y1 = r1(z.y1 + dy); o.y2 = r1(z.y2 + dy); }
     else if (drag.mode === "nr"){ const p = drag.p; o.x = r1(Math.min(p.x, p.x + dx)); o.y = r1(Math.min(p.y, p.y + dy)); o.w = Math.max(.1, r1(Math.abs(dx))); o.h = Math.max(.1, r1(Math.abs(dy))); if (!f.rooms.includes(o)) f.rooms.push(o); }
@@ -831,7 +839,7 @@ const CSV = {
     exportCSV(t("ex_rooms"), [t("c_floorS"), t("c_room"), t("c_mat"), "m²", t("c_users"), t("c_pass",{p:prof(d).cover}) + ` (${b} GHz)`], R); },
   survey(){ const d = D(); exportCSV(t("ex_survey"), ["#", t("c_floorS"), "Band", t("c_meas"), t("c_pred"), "Δ dB", t("c_note")], surveyRows(d).map(r => [r.n, r.f, r.band, r.m, r.p, r.dl, r.note])); }
 };
-function reveal(s){ if (!s) return; setTimeout(() => { const el = document.querySelector(`[data-ap="${s.id}"],[data-room="${s.id}"],[data-wall="${s.id}"],[data-fl="${s.id}"],[data-sv="${s.id}"]`); if (el) el.scrollIntoView({block:"center", behavior:"smooth"}); }, 40); }
+function reveal(s){ if (!s) return; const d = D(), a = d.aps.find(x => x.id === s.id), fl = a ? a.floor : (d.floors.find(f => f.id === s.id || f.rooms.some(r => r.id === s.id)) || {}).id; if (fl && fl !== UI.wfFloor){ UI.wfFloor = fl; render(); } setTimeout(() => { const el = document.querySelector(`[data-ap="${s.id}"],[data-room="${s.id}"],[data-wall="${s.id}"],[data-fl="${s.id}"],[data-sv="${s.id}"]`); if (el) el.scrollIntoView({block:"center", behavior:"smooth"}); }, 40); }
 
 registerApp({
   id:"wifi", name:"app_wifi", desc:"app_wifi_d", docName:"doc_wifi", color:"#138a8a",
