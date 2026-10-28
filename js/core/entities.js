@@ -219,11 +219,27 @@ function deviceEditor(b, d, opts = {}){
     <div class="btns">${opts.btns || ""}<button class="btn" data-dr="dupDev">⧉ ${esc(t("duplicate"))}</button><button class="btn dan" data-dr="delDev">🗑 ${esc(t("delete"))}</button></div>`;
 }
 // Model suggestions from the catalog for this kind (and brand, when one is typed).
+// models for the model field: the catalog, plus every model already typed on a device of the same kind (any project)
+function usedModels(kind, brand){ const out = new Map(), ok = k => k === kind || (KGROUP_OF[kind] || []).includes(k);
+  Object.values(store.projects || {}).forEach(p => (p.buildings || []).forEach(b => (b.devices || []).forEach(d => { if (d.model && ok(d.kind) && (!brand || same(d.brand, brand))){ const key = (d.brand || "") + "|" + d.model.trim().toLowerCase(); if (!out.has(key)) out.set(key, {brand:d.brand || "", model:d.model.trim()}); } })));
+  return [...out.values()]; }
 function modelList(kind, brand){
   const L = CAT.all().filter(r => (r.kind === kind || (KGROUP_OF[kind] || []).includes(r.kind)) && (!brand || same(r.brand, brand)));
-  return `<datalist id="dl-models">${L.slice(0, 400).map(r => `<option value="${esc(r.model)}">${esc(brand ? "" : r.brand)}</option>`).join("")}</datalist>`;
+  const seen = new Set(L.map(r => r.model.toLowerCase())), U = usedModels(kind, brand).filter(r => !seen.has(r.model.toLowerCase()));
+  return `<datalist id="dl-models">${U.map(r => `<option value="${esc(r.model)}">${esc((brand ? "" : r.brand + " · ") + t("modelMine"))}</option>`).join("")}${L.slice(0, 400).map(r => `<option value="${esc(r.model)}">${esc(brand ? "" : r.brand)}</option>`).join("")}</datalist>`;
 }
 const KGROUP_OF = {switch:["coresw"], coresw:["switch"], nvr:["dvr"], dvr:["nvr"], server:["nas","storage"], nas:["server","storage"], firewall:["router"], router:["firewall","modem"], modem:["router","ont"]};
+// A model the user typed earlier on another device (not in the catalog): copy that device's port count and parameters.
+// Height (U) is not copied for a device already in a rack, so nothing in the rack moves.
+function copyTwin(d){
+  const ok = k => k === d.kind || (KGROUP_OF[d.kind] || []).includes(k); let tw = null;
+  Object.values(store.projects || {}).some(p => (p.buildings || []).some(b => (b.devices || []).some(x => { if (x !== d && x.id !== d.id && ok(x.kind) && same(x.model, d.model) && (!d.brand || same(x.brand, d.brand))){ tw = x; return true; } })));
+  if (!tw) return false;
+  if (!d.brand && tw.brand) d.brand = tw.brand;
+  if (num(tw.ports) > num(d.ports)) d.ports = tw.ports;
+  Object.entries(tw.params || {}).forEach(([k, v]) => { if (k === "h" && d.rack) return; d.params[k] = typeof v === "object" && v ? JSON.parse(JSON.stringify(v)) : v; });
+  return true;
+}
 // When brand + model typed by hand match a catalog record, its parameters are filled in automatically.
 function catMatch(d){ const L = CAT.all().filter(r => same(r.model, d.model) && (!d.brand || same(r.brand, d.brand))); return L.length === 1 ? L[0] : null; }
 /* ---------- several devices at once (Ctrl / Shift + click): change the fields they share ---------- */
@@ -410,7 +426,7 @@ function wireEditors(){
       if (path === "ip" && v) v = v.replace(/,/g, ".");
       let applied = null;
       edit(() => { setPath(d, path, NUMF.has(path) ? num(v, 0) : (typeof v === "string" ? v.trim() : v)); if (path === "kind") normDevice(d); if (path === "floor") d.room = "";
-        if ((path === "model" || path === "brand") && d.model && d.cat !== CAT.key(d)){ const r = catMatch(d); if (r){ applySpec(d, r); applied = r; } }
+        if ((path === "model" || path === "brand") && d.model && d.cat !== CAT.key(d)){ const r = catMatch(d); if (r){ applySpec(d, r); applied = r; } else if (copyTwin(d)) applied = {brand:d.brand || "", model:d.model}; }
         if (curApp().onDevChange) curApp().onDevChange(b, d, path); });
       if (applied) toast("📚 " + t("catApplied",{m:applied.brand + " " + applied.model}));
     } else if (s.type === "link"){ const l = linkById(b, s.id); if (!l) return; edit(() => { setPath(l, path, NUMF.has(path) ? num(v, 0) : v); }); }
@@ -482,9 +498,35 @@ function commonWarnings(b){
   });
   return W;
 }
+// Which message template a warning comes from (so «all warnings of this kind» can be hidden, e.g. every same-hostname warning)
+let WKIND = null, WKL = "";
+function warnKind(txt){
+  if (!WKIND || WKL !== store.settings.lang){ WKL = store.settings.lang; const T = I18N[store.settings.lang] || I18N.az; WKIND = Object.entries(T).filter(([k, v]) => typeof v === "string" && v.includes("{") && /^(w_|rw_|pw_|cw_|bd_w|dx_w|wf_w|fit|wn_)/.test(k))
+      .map(([k, v]) => [k, new RegExp("^" + v.replace(/[.*+?^$()|[\]\\]/g, "\\$&").replace(/\{[a-z0-9]+\}/gi, "[\\s\\S]*?") + "$")]); }
+  const m = WKIND.find(([, rx]) => rx.test(txt)); return m ? m[0] : null;
+}
+const ignOf = b => { b.ign = b.ign && typeof b.ign === "object" ? b.ign : {txt:[], kind:[]}; b.ign.txt = b.ign.txt || []; b.ign.kind = b.ign.kind || []; return b.ign; };
+const isIgnored = (b, w) => { const I = ignOf(b); return I.txt.includes(w[1]) || I.kind.includes(warnKind(w[1])); };
+// Warnings box of every app: each warning can be hidden ("ignore") — just this one, or every warning of its kind
 function warnBox(W){
   if (!W.length) return "";
-  return `<details class="warns"${UI.warnOpen === false ? "" : " open"}><summary>⚠ ${esc(t("warnCount",{n:W.length}))}</summary><div class="wlist">${W.slice(0, 80).map(w => `<div class="warn ${w[0]}"${w[2] ? ` data-goto="${esc(w[2])}"` : ""}>${w[0] === "err" ? "⛔" : w[0] === "info" ? "ⓘ" : "⚠"} ${esc(w[1])}</div>`).join("")}${W.length > 80 ? `<div class="warn info">… +${W.length - 80}</div>` : ""}</div></details>`;
+  const b = B(), shown = W.filter(w => !isIgnored(b, w)), hid = W.length - shown.length, I = ignOf(b);
+  if (!shown.length && !hid) return "";
+  const list = UI.showIgn ? W : shown;
+  return `<details class="warns"${UI.warnOpen === false ? "" : " open"}><summary>⚠ ${esc(t("warnCount",{n:shown.length}))}${hid ? ` <small class="muted">· ${esc(t("ignHidden",{n:hid}))}</small>` : ""}</summary><div class="wlist">${list.slice(0, 80).map(w => { const ig = isIgnored(b, w);
+      return `<div class="warn ${w[0]}${ig ? " ign" : ""}"${w[2] ? ` data-goto="${esc(w[2])}"` : ""}><span class="wtx">${w[0] === "err" ? "⛔" : w[0] === "info" ? "ⓘ" : "⚠"} ${esc(w[1])}</span>${ig ? `<button class="wign" data-wunign="${esc(w[1])}" title="${esc(t("ignUndo"))}">↺</button>` : `<button class="wign" data-wign="${esc(w[1])}" title="${esc(t("ignBtn"))}">🙈 ${esc(t("ignBtnS"))}</button>`}</div>`; }).join("")}${list.length > 80 ? `<div class="warn info">… +${list.length - 80}</div>` : ""}
+    ${hid || I.txt.length || I.kind.length ? `<div class="wfoot"><button class="btn small" data-wshow="1">${esc(UI.showIgn ? t("ignHideAgain") : t("ignShow",{n:hid}))}</button>${I.txt.length || I.kind.length ? `<button class="btn small" data-wreset="1">↺ ${esc(t("ignReset"))}</button>` : ""}</div>` : ""}</div></details>`;
 }
+document.addEventListener("click", async e => {
+  const ig = e.target.closest("[data-wign]"), un = e.target.closest("[data-wunign]"), sh = e.target.closest("[data-wshow]"), rs = e.target.closest("[data-wreset]");
+  if (!ig && !un && !sh && !rs) return; e.stopPropagation(); e.preventDefault(); const b = B(), I = ignOf(b);
+  if (sh){ UI.showIgn = !UI.showIgn; render(); return; }
+  if (rs){ if (await uiConfirm(t("ignResetQ"), t("ignReset"))) edit(() => { b.ign = {txt:[], kind:[]}; }); return; }
+  if (un){ const w = un.dataset.wunign, k = warnKind(w); edit(() => { I.txt = I.txt.filter(x => x !== w); I.kind = I.kind.filter(x => x !== k); }); return; }
+  const w = ig.dataset.wign, k = warnKind(w), n = k ? document.querySelectorAll(".warn .wtx").length : 0; void n;
+  const ch = await uiChoice(t("ignQ",{w}), [["one", t("ignOne"), "pri"], ...(k ? [["kind", t("ignKind")]] : [])]);
+  if (!ch) return; edit(() => { if (ch === "kind" && k){ if (!I.kind.includes(k)) I.kind.push(k); } else if (!I.txt.includes(w)) I.txt.push(w); });
+  toast("🙈 " + t("ignDone"));
+}, true);
 document.addEventListener("toggle", e => { if (e.target.matches && e.target.matches("details.warns")) UI.warnOpen = e.target.open; }, true);
 document.addEventListener("click", e => { const g = e.target.closest(".warn[data-goto]"); if (!g) return; const b = B(), id = g.dataset.goto; UI.sel = devById(b, id) ? {type:"dev", id} : rackById(b, id) ? {type:"rack", id} : roomById(b, id) ? {type:"room", id} : {type:"any", id}; render(); const a = curApp(); if (a.reveal) a.reveal(UI.sel); });

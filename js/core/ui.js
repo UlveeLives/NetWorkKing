@@ -39,7 +39,7 @@ function uiConfirm(msg, okLabel, danger){
 // Choice dialog: resolves to the chosen key or null.
 function uiChoice(msg, choices){
   return new Promise(res => {
-    const o = layer(`<p>${esc(msg)}</p><div class="choices">${choices.map(([k, l, cls]) => `<button class="btn ${cls || ""}" data-x="${esc(k)}">${esc(l)}</button>`).join("")}</div><div class="mfoot"><button class="btn" data-x="">${esc(t("cancel"))}</button></div>`);
+    const o = layer(`<p style="white-space:pre-line">${esc(msg)}</p><div class="choices">${choices.map(([k, l, cls]) => `<button class="btn ${cls || ""}" data-x="${esc(k)}">${esc(l)}</button>`).join("")}</div><div class="mfoot"><button class="btn" data-x="">${esc(t("cancel"))}</button></div>`);
     o.addEventListener("click", e => { const x = e.target.closest("[data-x]"); if (x){ o.remove(); res(x.dataset.x || null); } });
   });
 }
@@ -269,6 +269,10 @@ function wireShell(){
     if (mod && e.key.toLowerCase() === "f"){ e.preventDefault(); openSearch(); return; }
     if (e.key === "F1"){ e.preventDefault(); startTour(true); return; }
     const a = curApp(); if (a.onKey) a.onKey(e, curTab());
+    // Ctrl+A fallback: select every device visible on the current screen (tables, plans, racks)
+    if (mod && e.key.toLowerCase() === "a" && !e.defaultPrevented){ const ids = new Set();
+      document.querySelectorAll('#view [data-sel^="dev:"], #view [data-bdev], #view [data-rdsel], #view [data-rdev]').forEach(el => { const id = el.dataset.sel ? el.dataset.sel.slice(4) : (el.dataset.bdev || el.dataset.rdsel || el.dataset.rdev); if (id && devById(B(), id)) ids.add(id); });
+      if (ids.size){ e.preventDefault(); UI.multi.clear(); ids.forEach(id => UI.multi.add("dev:" + id)); UI.sel = ids.size === 1 ? {type:"dev", id:[...ids][0]} : null; if (ids.size === 1) UI.multi.clear(); render(); toast(t("selAll", {n:ids.size})); } }
   });
 }
 function exportMenu(anchor){

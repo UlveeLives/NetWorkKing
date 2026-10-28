@@ -14,6 +14,10 @@ const up = (b, d) => window.PM ? PM.upstream(b, d) : {};
 const linksOf = (b, d) => b.links.filter(l => l.a.d === d.id || l.b.d === d.id);
 const onPlan = d => window.BLD ? !!BLD.posOf(d) : false;
 /* ---------- what is missing for a device (each with the app that fixes it) ---------- */
+// d.na = {field:1} marks data the user declared "not applicable" ("-"): never reported as missing.
+const NAK = {model:["brand","model"], ip:["ip"], mac:["mac"], loc:["floor"], room:["room"], rack:["rack"], plan:["plan"], cable:["cable"], nvr:["nvr"]};
+const naOf = d => d.na || {}, isNa = (d, k) => (NAK[k] || [k]).some(f => naOf(d)[f]);
+const camOut = d => d.kind === "camera" && d.camera && d.camera.loc === "out";
 function gaps(b, d){
   const G = [], K = KINDS[d.kind] || KINDS.other;
   if (isAcc(d)) return G;
@@ -21,13 +25,14 @@ function gaps(b, d){
   if (needsIp(d) && !d.ip) G.push(["ip", "sm_gIp", "here"]);
   if (needsIp(d) && !d.mac && ["end","wifi","cctv","compute"].includes(K.cat)) G.push(["mac", "sm_gMac", "here"]);
   if (!d.floor && !d.rack) G.push(["loc", "sm_gLoc", "here"]);
-  else if (!d.room && !d.rack && ["end","wifi","cctv","passive"].includes(K.cat)) G.push(["room", "sm_gRoom", "here"]);
+  else if (!d.room && !d.rack && !camOut(d) && ["end","wifi","cctv","passive"].includes(K.cat)) G.push(["room", "sm_gRoom", "here"]);
   if (K.rack && !d.rack && !["ups","pdu"].includes(d.kind) && !(d.kind === "nvr" || d.kind === "dvr") ) G.push(["rack", "sm_gRack", "rack"]);
   if ((d.kind === "ap" || d.kind === "camera" || d.kind === "outlet") && !onPlan(d)) G.push(["plan", "sm_gPlan", d.kind === "ap" ? "wifi" : d.kind === "camera" ? "cctv" : "building"]);
   if (num(d.ports) > 0 && !K.passive && d.kind !== "internet" && !linksOf(b, d).length) G.push(["cable", "sm_gCable", "portmap"]);
   if (d.kind === "camera" && !(d.nvrs || []).length && b.devices.filter(x => x.kind === "nvr" || x.kind === "dvr").length !== 1) G.push(["nvr", "sm_gNvr", "cctv"]);
-  return G;
+  return G.filter(g => !isNa(d, g[0]));
 }
+function setNa(d, f, on){ if (on){ d.na = Object.assign({}, d.na, {[f]:1}); } else if (d.na){ delete d.na[f]; if (!Object.keys(d.na).length) delete d.na; } }
 /* ---------- going to the app that shows / fixes a device ---------- */
 function go(app, id){
   const b = B(), d = devById(b, id); if (!d) return;
@@ -55,7 +60,8 @@ function rows(b){
   const key = {name:d => devLabel(d), kind:d => kindName(d.kind), brand:d => [d.brand, d.model].join(" "), status:d => d.status, floor:d => floorName(b, d.floor) + " " + roomName(b, d.room), ip:d => d.ip ? String(IP.host(d.ip) ?? d.ip).padStart(12, "0") : "~", mac:d => d.mac || "~", vlan:d => (vlanById(b, d.vlan) || {}).vid || "~", serial:d => d.serial || "~", gaps:d => -gaps(b, d).length}[S.sort] || (d => devLabel(d));
   return L.sort((x, y) => String(key(x)).localeCompare(String(key(y)), undefined, {numeric:true}) * S.dir);
 }
-const inp = (d, k, v, attrs = "") => `<input data-sm="${d.id}:${k}" value="${esc(v || "")}"${attrs}>`;
+const inp = (d, k, v, attrs = "") => `<input data-sm="${d.id}:${k}" value="${esc(naOf(d)[k] ? "-" : v || "")}"${naOf(d)[k] ? ` class="na" title="${esc(t("naT"))}"` : ""}${attrs}>`;
+const NAO = (d, f) => `<option value="__na"${naOf(d)[f] ? " selected" : ""}>– ${esc(t("naOpt"))}</option>`;
 function listView(){
   const b = B(), S = st(), L = rows(b), all = b.devices.filter(d => !isAcc(d)), gN = all.filter(d => gaps(b, d).length).length;
   const th = (k, l) => `<th class="sortable${S.sort === k ? " on" : ""}" data-smsort="${k}">${esc(l)}${S.sort === k ? (S.dir > 0 ? " ▲" : " ▼") : ""}</th>`;
@@ -74,18 +80,19 @@ function listView(){
         const conn = u.sw ? `${devLabel(u.sw)}:${u.p}` : lk.length ? lk.map(l => { const o = devById(b, l.a.d === d.id ? l.b.d : l.a.d); return o ? devLabel(o) : "?"; }).slice(0, 2).join(", ") + (lk.length > 2 ? " +" + (lk.length - 2) : "") : "";
         return `<tr class="${UI.sel && UI.sel.id === d.id ? "on" : ""}${d.status === "planned" ? " planned" : ""}"><td class="c"><button class="btn small ghost" data-sel="dev:${d.id}" title="${esc(t("sm_open"))}"><svg viewBox="0 0 48 48" width="18" height="18">${ICO[devIcon(d)] || ICO.box}</svg></button></td>
           <td>${inp(d, "name", d.name, ' style="width:150px"')}</td><td class="small nw">${esc(kindName(d.kind))}</td>
-          <td${mc("model")}>${inp(d, "brand", d.brand, ` list="dl-brands" placeholder="${esc(t("f_brand"))}" style="width:90px"`)} ${inp(d, "model", d.model, ` placeholder="${esc(t("f_model"))}" style="width:110px"`)}</td>
+          <td${mc("model")}>${inp(d, "brand", d.brand, ` list="dl-brands" placeholder="${esc(t("f_brand"))}" style="width:90px"`)} ${inp(d, "model", d.model, ` list="dl-m-${d.kind}" placeholder="${esc(t("f_model"))}" style="width:110px"`)}</td>
           <td><select data-sm="${d.id}:status">${STATUSES.map(s => opt(s, t("st_" + s), d.status)).join("")}</select></td>
-          <td${mc("loc") || mc("room")}><select data-sm="${d.id}:floor">${opt("", "—", d.floor)}${b.floors.slice().reverse().map(f => opt(f.id, f.name, d.floor)).join("")}</select> <select data-sm="${d.id}:room">${opt("", "—", d.room)}${b.rooms.filter(r => !d.floor || r.floor === d.floor).map(r => opt(r.id, r.name, d.room)).join("")}</select></td>
+          <td${mc("loc") || mc("room")}><select data-sm="${d.id}:floor">${opt("", "—", naOf(d).floor ? "x" : d.floor)}${NAO(d, "floor")}${b.floors.slice().reverse().map(f => opt(f.id, f.name, d.floor)).join("")}</select> <select data-sm="${d.id}:room">${opt("", "—", naOf(d).room ? "x" : d.room)}${NAO(d, "room")}${b.rooms.filter(r => !d.floor || r.floor === d.floor).map(r => opt(r.id, r.name, d.room)).join("")}</select></td>
           <td class="small nw${gk.has("rack") || gk.has("plan") ? " miss" : ""}">${esc(where) || "—"}</td>
-          <td${mc("ip")}>${needsIp(d) || d.ip ? inp(d, "ip", d.ip, ' data-mask="ip" inputmode="decimal" style="width:118px"') : `<span class="muted">—</span>`}</td>
-          <td${mc("mac")}>${needsIp(d) || d.mac ? inp(d, "mac", d.mac, ' data-mask="mac" style="width:128px" class="mono"') : `<span class="muted">—</span>`}</td>
-          <td><select data-sm="${d.id}:vlan">${vlanOpts(b, d.vlan, false)}</select></td>
+          <td${mc("ip")}>${needsIp(d) || d.ip || naOf(d).ip ? inp(d, "ip", d.ip, ' data-mask="ip" inputmode="decimal" style="width:118px"') : `<span class="muted">—</span>`}</td>
+          <td${mc("mac")}>${needsIp(d) || d.mac || naOf(d).mac ? inp(d, "mac", d.mac, ' data-mask="mac" style="width:128px" class="mono"') : `<span class="muted">—</span>`}</td>
+          <td><select data-sm="${d.id}:vlan">${naOf(d).vlan ? vlanOpts(b, "", false).replace(/ selected/g, "") : vlanOpts(b, d.vlan, false)}${NAO(d, "vlan")}</select></td>
           <td>${inp(d, "serial", d.serial, ' placeholder="—" style="width:110px"')}</td>
           <td class="small${gk.has("cable") ? " miss" : ""}">${esc(conn) || "—"}${gk.has("nvr") ? ` <span class="bad">· ${esc(t("sm_gNvr"))}</span>` : ""}</td>
           <td class="c">${G.length ? `<span class="gapn" title="${esc(G.map(g => t(g[1])).join(" · "))}">${G.length}</span>` : `<span class="okc">✓</span>`}</td>
           <td class="nw">${appsFor(b, d).map(a => `<button class="btn small ghost" data-smgo="${a}:${d.id}" title="${esc(t(APPS[a].name))}">${APPICO[a]}</button>`).join("")}</td>
           <td class="c"><button type="button" class="epdel" data-smdel="${d.id}" title="${esc(t("delete"))}">−</button></td></tr>`; }).join("")}</tbody></table></div>` : `<div class="empty"><p>${esc(t("invEmpty"))}</p></div>`}
+    ${[...new Set(L.map(d => d.kind))].map(k => modelList(k, "").replace('id="dl-models"', `id="dl-m-${k}"`)).join("")}
     <p class="muted small">${esc(t("sm_hint"))}</p>`;
 }
 /* ---------- counts and models (bill of materials) ---------- */
@@ -113,7 +120,7 @@ function gapsView(){
     <div class="smchips">${Object.entries(C).map(([k, n]) => `<span class="pill">${esc(t({model:"sm_gModel", ip:"sm_gIp", mac:"sm_gMac", loc:"sm_gLoc", room:"sm_gRoom", rack:"sm_gRack", plan:"sm_gPlan", cable:"sm_gCable", nvr:"sm_gNvr"}[k]))}: <b>${n}</b></span>`).join("")}</div>
     ${L.length ? `<div class="scroll"><table class="t"><tr><th>${esc(t("f_name"))}</th><th>${esc(t("f_kind"))}</th><th>${esc(t("f_floor"))}</th><th>${esc(t("sm_missing"))}</th></tr>
       ${L.map(([d, G]) => `<tr><td><button class="lnkb" data-sel="dev:${d.id}">${esc(devLabel(d))}</button></td><td class="small">${esc(kindName(d.kind))}</td><td class="small">${esc([floorName(b, d.floor), roomName(b, d.room)].filter(Boolean).join(" · ") || "—")}</td>
-        <td>${G.map(g => g[2] === "here" ? `<button class="gapb" data-sel="dev:${d.id}">${esc(t(g[1]))} ✎</button>` : `<button class="gapb go" data-smgo="${g[2]}:${d.id}">${esc(t(g[1]))} → ${APPICO[g[2]]} ${esc(t(APPS[g[2]].name))}</button>`).join("")}</td></tr>`).join("")}</table></div>` : `<p class="okc">✓ ${esc(t("sm_noGaps"))}</p>`}</div>`;
+        <td>${G.map(g => `<span class="gapw">` + (g[2] === "here" ? `<button class="gapb" data-sel="dev:${d.id}">${esc(t(g[1]))} ✎</button>` : `<button class="gapb go" data-smgo="${g[2]}:${d.id}">${esc(t(g[1]))} → ${APPICO[g[2]]} ${esc(t(APPS[g[2]].name))}</button>`) + `<button class="gapna" data-smna="${d.id}:${g[0]}" title="${esc(t("naT"))}">–</button></span>`).join("")}</td></tr>`).join("")}</table></div>` : `<p class="okc">✓ ${esc(t("sm_noGaps"))}</p>`}${(() => { const n = b.devices.filter(d => d.na && Object.keys(d.na).length).length; return n ? `<p class="muted small">– ${esc(t("naCount", {n}))} <button class="btn small ghost" data-smnaclr="1">↺ ${esc(t("naClr"))}</button></p>` : ""; })()}</div>`;
 }
 /* ---------- floors (and their rooms): edit, order, add, delete — no drawing needed ---------- */
 const RTYPES = ["office","meeting","server","corridor","lobby","kitchen","wc","storage","technical","other"];
@@ -160,18 +167,23 @@ document.addEventListener("change", async e => {
   if (el.dataset.smrm){ const [id, k] = el.dataset.smrm.split(":"), r = roomById(b, id); if (!r) return; const v = el.value.trim();
     return edit(() => { if (k === "name") r.name = v || r.name; else if (k === "users") r.users = Math.max(0, Math.round(num(v, 0))); else r.type = v; }); }
   if (!el.dataset.sm) return; const [id, k] = el.dataset.sm.split(":"), d = devById(b, id); if (!d) return; let v = el.value.trim();
+  // "-" (or the "not applicable" option) = this data does not apply to the device; it is no longer reported as missing
+  if ((v === "-" || v === "—" || v === "–" || v === "__na") && k !== "name" && k !== "status") return edit(() => { setNa(d, k, true); if (k === "floor"){ d.floor = ""; d.room = ""; } else d[k] = ""; });
+  if (naOf(d)[k]) edit(() => setNa(d, k, false));
   if (k === "name"){ if (!v){ render(); return; } if (nameTaken(b, v, d.id)){ await nameOk(b, v, d.id); render(); return; } }
   if (k === "ip" && v){ v = v.replace(/,/g, "."); if (!IP.valid(v)) toast("⚠ " + t("ipBad")); }
   if (k === "mac" && v && !macValid(v)) toast("⚠ " + t("macBad"));
   edit(() => { if (k === "floor"){ d.floor = v; if (d.room && (roomById(b, d.room) || {}).floor !== v) d.room = ""; }
     else if (k === "room"){ d.room = v; const r = roomById(b, v); if (r && r.floor) d.floor = r.floor; }
-    else { d[k] = v; if ((k === "model" || k === "brand") && d.model && d.cat !== CAT.key(d)){ const r = catMatch(d); if (r) applySpec(d, r); } } });
+    else { d[k] = v; if ((k === "model" || k === "brand") && d.model && d.cat !== CAT.key(d)){ const r = catMatch(d); if (r) applySpec(d, r); else copyTwin(d); } } });
 });
 document.addEventListener("click", e => {
   if (UI.app !== "summary") return;
   const s = e.target.closest("[data-smsort]"); if (s){ const S = st(), k = s.dataset.smsort; if (S.sort === k) S.dir = -S.dir; else { S.sort = k; S.dir = k === "gaps" ? 1 : 1; } render(); return; }
   const del = e.target.closest("[data-smdel]"); if (del){ const b = B(), d = devById(b, del.dataset.smdel); if (d) delDeviceAsk(b, d); return; }
   const fa = e.target.closest("[data-smfa]"); if (fa){ floorAct(fa.dataset.smfa); return; }
+  const na = e.target.closest("[data-smna]"); if (na){ const [id, k] = na.dataset.smna.split(":"), d = devById(B(), id); if (d){ const f = (NAK[k] || [k]).slice(-1)[0]; edit(() => setNa(d, f, true)); toast("– " + t("naDone")); } return; }
+  if (e.target.closest("[data-smnaclr]")){ const b = B(), L = b.devices.filter(d => d.na); uiConfirm(t("naClrQ", {n:L.length})).then(ok => { if (ok) edit(() => L.forEach(d => { delete d.na; })); }); return; }
   const g = e.target.closest("[data-smgo]"); if (g){ const [a, id] = g.dataset.smgo.split(":"); go(a, id); return; }
   const x = e.target.closest("[data-smx]"); if (x){ if (x.dataset.smx === "bom") bomCsv(); else listCsv(); }
 });

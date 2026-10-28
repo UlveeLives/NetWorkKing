@@ -646,3 +646,12 @@ input.bad{border-color:#d63a3a!important}
 .smf td{vertical-align:middle;white-space:nowrap}
 .smrooms > td{background:color-mix(in srgb,var(--pri) 4%,transparent)}
 .eulabox{max-width:760px}.eulatx{white-space:pre-wrap;font:12.5px/1.5 var(--f-body,inherit);max-height:60vh;overflow:auto;background:var(--bg2,rgba(127,127,127,.08));padding:12px;border-radius:8px}
+.warn{display:flex;align-items:center;gap:8px}.warn .wtx{flex:1}
+.wign{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:12px;font-size:11px;padding:1px 8px;cursor:pointer;white-space:nowrap}
+.wign:hover{color:var(--text);border-color:var(--pri)}
+.warn.ign{opacity:.5}
+.wfoot{display:flex;gap:6px;margin-top:6px}
+/* v3.4: not-applicable marks */
+.gapw{display:inline-flex;align-items:stretch;margin:0 4px 4px 0}.gapw .gapb{margin:0;border-top-right-radius:0;border-bottom-right-radius:0}
+.gapna{border:1px solid var(--line);border-left:0;background:var(--surface);color:var(--muted);padding:0 7px;border-radius:0 6px 6px 0;cursor:pointer;font-weight:700}.gapna:hover{color:var(--ink);background:var(--surface2)}
+input.na{color:var(--muted);font-style:italic}

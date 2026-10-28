@@ -45,7 +45,7 @@ function parts(b, id, p){
   return {chain:c, me, before, after, panel:pas[0] || null, outlet:pas.find(h => devById(b, h.d).kind === "outlet") || null, end, endLink:end ? end.link : null};
 }
 const cfgOf = (d, p) => { d.pcfg[p] = Object.assign({mode:"", vlan:"", native:"", allowed:"", speed:"", poe:"", admin:"up", desc:"", bad:false, note:""}, d.pcfg[p] || {}); return d.pcfg[p]; };
-const hasCfg = (d, p) => { const c = d.pcfg[p]; return !!(c && (c.mode || c.vlan || c.native || c.allowed || c.speed || c.poe || c.admin === "down" || c.desc || c.bad || c.note)); };
+const hasCfg = (d, p) => { const c = d.pcfg[p]; return !!(c && (c.mode || c.vlan || c.native || c.allowed || c.speed || c.poe || c.admin === "down" || c.desc || c.bad || c.note || c.cli)); };
 function label606(b, pp, port){ if (!pp || !port) return ""; const r = pp.rack && rackById(b, pp.rack); return `${r ? String(r.name).replace(/\s+/g, "") + "-" : ""}${String(pp.name).replace(/\s+/g, "")}-${String(port).padStart(2, "0")}`; }
 function portState(b, d, p){
   const c = d.pcfg[p] || {}, L = linksAt(b, d.id, p);
@@ -291,7 +291,13 @@ document.addEventListener("click", async e => {
   if (k.startsWith("add:")){ const rid = k.slice(4); const kind = await uiChoice(t("rackAddWhat"), ["switch","pp","fpp","firewall","router","coresw","nvr","server"].map(x => [x, kindName(x)])); if (!kind) return; const r = rackById(b, rid), h = KINDS[kind].h || 1, u = rackSpot(b, r, h, 0); if (!u) return toast("⚠ " + t("rackNoSpace")); edit(() => { const d = newDevice(kind, {rack:rid, u, floor:r.floor, room:r.room}); b.devices.push(d); UI.sel = {type:"dev", id:d.id}; }); return; }
   const s = UI.sel; if (!s || s.type !== "port") return; const d = devById(b, s.id);
   if (k === "clearPort"){ if (!await uiConfirm(t("pmClearConf",{p:devLabel(d) + " :" + s.p}), t("pmClear"), true)) return; const pr = parts(b, d.id, s.p), first = pr.after[0]; edit(() => { delete d.pcfg[s.p]; if (first) b.links = b.links.filter(l => l !== first.link); }); return; }
-  if (k === "cliPort"){ const txt = cliText(b, d, s.p); modal(`<h3>⌨ ${esc(devLabel(d))} :${esc(s.p)}</h3><p class="muted small">${esc(t("pmCliNote"))}</p><textarea class="mono" rows="12" readonly style="width:100%">${esc(txt)}</textarea><div class="mfoot"><button class="btn" data-m="copy">⧉ ${esc(t("copy"))}</button><button class="btn pri" data-m="close">${esc(t("close"))}</button></div>`, {copy:() => { navigator.clipboard && navigator.clipboard.writeText(txt).then(() => toast("✓ " + t("copied"))); }}); }
+  if (k === "cliPort"){ const gen = cliText(b, d, s.p), own = (d.pcfg[s.p] || {}).cli, fn = `${devLabel(d)}_port${s.p}`.replace(/[\\/:*?"<>|\s]+/g, "_");
+    const cur = () => ($("#clitx") || {}).value || "";
+    modal(`<h3>⌨ ${esc(devLabel(d))} :${esc(s.p)}</h3><p class="muted small">${esc(t("pmCliNote"))}${own ? ` <b>· ${esc(t("pmCliOwn"))}</b>` : ""}</p><textarea id="clitx" class="mono" rows="12" style="width:100%" spellcheck="false">${esc(own || gen)}</textarea><div class="mfoot">${own ? `<button class="btn" data-m="reset">↺ ${esc(t("pmCliReset"))}</button>` : ""}<button class="btn" data-m="copy">⧉ ${esc(t("copy"))}</button><button class="btn" data-m="file">💾 ${esc(t("pmCliFile"))}</button><button class="btn pri" data-m="keep">✓ ${esc(t("save"))}</button><button class="btn" data-m="close">${esc(t("close"))}</button></div>`,
+      {copy:() => { navigator.clipboard && navigator.clipboard.writeText(cur()).then(() => toast("✓ " + t("copied"))); },
+       file:() => saveText(fn + ".txt", cur().replace(/\r?\n/g, "\r\n"), "txt"),
+       keep:() => { const v = cur(); edit(() => { const c = cfgOf(d, s.p); if (v.trim() && v.trim() !== gen.trim()) c.cli = v; else delete c.cli; if (!hasCfg(d, s.p)) delete d.pcfg[s.p]; }); closeModal(); toast("✓ " + t("saved")); },
+       reset:() => { edit(() => { const c = cfgOf(d, s.p); delete c.cli; if (!hasCfg(d, s.p)) delete d.pcfg[s.p]; }); closeModal(); }}); }
 });
 document.addEventListener("click", e => { if (UI.app !== "portmap") return; const c = e.target.closest('[data-dr="catalogEnd"]'); if (!c) return; e.stopPropagation(); const b = B(), s = UI.sel, pr = parts(b, s.id, s.p), ed = pr.end && devById(b, pr.end.d); if (ed) openCatalogPicker(ed.kind, rec => edit(() => { applySpec(ed, rec); })); }, true);
 /* ---------- end device picker: search, connection shown, same names flagged, ⊖ deletes (with confirmation) ---------- */

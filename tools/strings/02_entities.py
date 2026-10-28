@@ -105,3 +105,13 @@ for k,az,tr,en,ru in [
  ("alarm","Siqnalizasiya paneli","Alarm paneli","Alarm panel","Охранная панель"),
 ]:
     K("k_"+k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("ignBtn","Bu xəbərdarlığı görməzdən gəl","Bu uyarıyı yok say","Ignore this warning","Игнорировать"),("ignBtnS","Görməzdən gəl","Yok say","Ignore","Игнор."),
+ ("ignQ","Bu xəbərdarlıq gizlədilsin?\n\n«{w}»\n\nGizlədilən xəbərdarlıq bir daha görünmür (aşağıdakı «Gizlədilənlər» ilə geri qaytarmaq olar).","Bu uyarı gizlensin mi?\n\n«{w}»","Hide this warning?\n\n«{w}»\n\nA hidden warning is not shown again (you can bring it back with «Hidden»).","Скрыть это предупреждение?\n\n«{w}»"),
+ ("ignOne","Yalnız bu xəbərdarlıq","Yalnız bu uyarı","Just this warning","Только это"),("ignKind","Bu növ bütün xəbərdarlıqlar","Bu türdeki tüm uyarılar","All warnings of this kind","Все такого вида"),
+ ("ignDone","Xəbərdarlıq gizlədildi","Uyarı gizlendi","Warning hidden","Скрыто"),("ignHidden","{n} gizlədilib","{n} gizli","{n} hidden","{n} скрыто"),
+ ("ignShow","Gizlədilənləri göstər ({n})","Gizlileri göster ({n})","Show hidden ({n})","Показать скрытые ({n})"),("ignHideAgain","Gizlədilənləri gizlət","Gizlileri gizle","Hide the hidden ones","Скрыть скрытые"),
+ ("ignUndo","Yenidən göstər","Tekrar göster","Show again","Показывать снова"),("ignReset","Hamısını qaytar","Hepsini geri al","Bring all back","Вернуть все"),("ignResetQ","Gizlədilən bütün xəbərdarlıqlar yenidən göstərilsin?","Tüm gizli uyarılar gösterilsin mi?","Show all hidden warnings again?","Показать все скрытые?"),
+ ("modelMine","sizin əlavə etdiyiniz","sizin eklediğiniz","added by you","добавлено вами"),
+]:
+    K(k,az,tr,en,ru)
