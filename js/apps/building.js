@@ -512,5 +512,5 @@ registerApp({
 APPS.building.init = wire;
 // a building without floors opens the set-up once, the first time the app is shown for it
 APPS.building.afterRender = () => { const b = B(); if (b.floors.length || b.devices.length || b.racks.length || (b.struct && b.struct.wizard) || !store.settings.setupDone || !$("#modal").hidden || document.querySelector(".tour")) return; b.struct = Object.assign(b.struct || {}, {wizard:true}); persist(); setTimeout(wizard, 300); };
-window.BLD = {wizard, createMissing, posOf, dxfImport, guessType};
+window.BLD = {wizard, createMissing, posOf, dxfImport, guessType, planSvg};
 })();
