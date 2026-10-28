@@ -1960,5 +1960,909 @@
   "verified": "2026-10-28",
   "confidence": "high",
   "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 25 Gbps. 960 GB storage only on 401G. Console/USB not stated in matrix. Listed in place of the 400F (not in current matrix)."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 424E-POE",
+  "sku": [
+   "FS-424E-POE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Campus (4xxE)",
+  "desc": "24x GE RJ45 PoE/PoE+ (250 W), 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 410,
+   "h": 44.5
+  },
+  "weight_kg": 5.25,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC internal; optional redundant AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 250,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 190,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-424e-poe-switch/",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 31.8 dBA. Console port not stated."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 424E-FPOE",
+  "sku": [
+   "FS-424E-FPOE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Campus (4xxE)",
+  "desc": "24x GE RJ45 PoE/PoE+ (421 W), 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 410,
+   "h": 44.5
+  },
+  "weight_kg": 5.77,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC internal; optional redundant AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 421,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 190,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-424e-fpoe-switch/",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 30.9 dBA. Console port not stated."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 448E",
+  "sku": [
+   "FS-448E"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Campus (4xxE)",
+  "desc": "48x GE RJ45, 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 310,
+   "h": 44
+  },
+  "weight_kg": 4.16,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC internal; optional redundant AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 262,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-448e-switch/",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Console port not stated."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 448E-POE",
+  "sku": [
+   "FS-448E-POE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Campus (4xxE)",
+  "desc": "48x GE RJ45 PoE/PoE+ (421 W), 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 410,
+   "h": 44
+  },
+  "weight_kg": 6.26,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC internal; optional redundant AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 421,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 262,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-448e-poe-switch/",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 38.3 dBA. Console port not stated."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 448E-FPOE",
+  "sku": [
+   "FS-448E-FPOE"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Campus (4xxE)",
+  "desc": "48x GE RJ45 PoE/PoE+ (772 W), 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 409,
+   "h": 44
+  },
+  "weight_kg": 6.37,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC internal; optional redundant AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 772,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 262,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-448e-fpoe-switch/",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 50.7 dBA. Console port not stated."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiSwitch 424E",
+  "sku": [
+   "FS-424E"
+  ],
+  "kind": "switch",
+  "series": "FortiSwitch Secure Campus (4xxE)",
+  "desc": "24x GE RJ45, 4x 10GE SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 260,
+   "h": 44
+  },
+  "weight_kg": 3.1,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC internal; optional redundant AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 190,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-424e-switch/",
+  "source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 35.5 dBA. Console port not stated."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 221E",
+  "sku": [
+   "FAP-221E"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 5 (E-Series)",
+  "desc": "Wi-Fi 5 Wave 2 2x2 dual-radio indoor AP, 1x GE RJ45",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 160,
+   "d": 160,
+   "h": 47
+  },
+  "weight_kg": 0.5,
+  "power": {
+   "typ_w": null,
+   "max_w": 12.36,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or SP-FAP200-PA adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 12.36
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 24,
+     "gain_dbi": 5
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x GE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. Internal patch antennas. Mounting ceiling, T-rail, wall."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 231F",
+  "sku": [
+   "FAP-231F"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 6 (F-Series)",
+  "desc": "Wi-Fi 6 2x2 tri-radio indoor AP, 2x GE RJ45",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 153.2,
+   "d": 153.2,
+   "h": 53
+  },
+  "weight_kg": 0.543,
+  "power": {
+   "typ_w": null,
+   "max_w": 17,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at (GPI-130 injector)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "2x GE RJ45, 1x USB 2.0, 1x RS-232 RJ45 console (ports per Hitachi Solutions)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 17
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, scanning 1x1",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 4.5
+    },
+    "5": {
+     "tx_dbm": 22,
+     "gain_dbi": 5.5
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x GE RJ45 (PoE)"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+  "source2": "https://www.hitachi-solutions.co.jp/fortinet/function/lineup/close-ap.html",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. 802.3af also works without USB function. Internal PIFA antennas. Mounting ceiling, T-rail, wall."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 234F",
+  "sku": [
+   "FAP-234F"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 6 (F-Series)",
+  "desc": "Wi-Fi 6 2x2 rugged indoor/outdoor tri-radio AP, directional patch, 2x GE RJ45",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 316,
+   "d": 218,
+   "h": 42
+  },
+  "weight_kg": 1.307,
+  "power": {
+   "typ_w": null,
+   "max_w": 15.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at (GPI-130; injector shipped)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 15.5
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, scanning 1x1",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 27,
+     "gain_dbi": 10
+    },
+    "5": {
+     "tx_dbm": 25.5,
+     "gain_dbi": 10
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "2x GE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. Internal directional patch antenna (10 dBi). Also runs on 2x 802.3af (full) or 1x 802.3af (reduced 17 dBm). Datasheet lists ceiling, T-rail, wall mounting."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 431F",
+  "sku": [
+   "FAP-431F"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 6 (F-Series)",
+  "desc": "Wi-Fi 6 4x4 tri-radio indoor AP, 1x 2.5GbE + 1x GE RJ45",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 210,
+   "d": 210,
+   "h": 56.5
+  },
+  "weight_kg": 0.98,
+  "power": {
+   "typ_w": null,
+   "max_w": 24.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE or SP-FAP400-PA adapter / GPI-130 injector"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x 2.5GbE RJ45, 1x GE RJ45, USB-A, RS-232 RJ45 console (per Hitachi Solutions)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": null,
+   "max_w": 24.5
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, scanning 1x1",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 24,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 23,
+     "gain_dbi": 5
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x 2.5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+  "source2": "https://www.hitachi-solutions.co.jp/fortinet/function/lineup/close-ap.html",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. PoE class for full operation not explicitly stated (datasheet: single 802.3af gives 2x2 mode, 17 dBm, no USB; recommended injector GPI-130). Internal PIFA antennas."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 432F",
+  "sku": [
+   "FAP-432F"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 6 (F-Series)",
+  "desc": "Wi-Fi 6 4x4 tri-radio indoor AP, external antennas, 2.5GbE + GE (PSE out)",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 209,
+   "d": 209,
+   "h": 60.5
+  },
+  "weight_kg": 2.325,
+  "power": {
+   "typ_w": null,
+   "max_w": 37.9,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3bt (injector shipped)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 2.5GbE RJ45 uplink, 1x GE RJ45 with 802.3af PSE output"
+  },
+  "poe": {
+   "ports": 1,
+   "budget_w": null,
+   "std": "802.3af"
+  },
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 37.9
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, scanning 1x1",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 30,
+     "gain_dbi": 5.5
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 7.2
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x 2.5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. Max power 25 W without PSE out / 37.9 W with PSE out. 802.3at gives reduced power (17 dBm); no 802.3af support. External antennas."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiAP 433F",
+  "sku": [
+   "FAP-433F"
+  ],
+  "kind": "ap",
+  "series": "FortiAP Wi-Fi 6 (F-Series)",
+  "desc": "Wi-Fi 6 4x4 tri-radio indoor AP, 5x external RP-SMA antennas, 2.5GbE + GE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 210,
+   "d": 210,
+   "h": 56.5
+  },
+  "weight_kg": 0.995,
+  "power": {
+   "typ_w": null,
+   "max_w": 24.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE or SP-FAP400-PA adapter / GPI-130 injector"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": null,
+   "max_w": 24.5
+  },
+  "perf": null,
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, scanning 1x1",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 24,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": 23,
+     "gain_dbi": 6
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x 2.5GbE RJ45"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. PoE class for full operation not explicitly stated (single 802.3af = 2x2 mode, 17 dBm, no USB; recommended injector GPI-130). External omni rubber-duck antennas."
+ },
+ {
+  "brand": "Fortinet",
+  "model": "FortiGate 400F",
+  "sku": [
+   "FG-400F"
+  ],
+  "kind": "firewall",
+  "series": "FortiGate F-Series",
+  "desc": "1U NGFW, 18x GE RJ45, 8x GE SFP, 8x 10GE SFP+ (4 ultra-low-latency)",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 432,
+   "d": 380,
+   "h": 44.45
+  },
+  "weight_kg": 6.4,
+  "power": {
+   "typ_w": 154.8,
+   "max_w": 189.2,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "Dual AC, hot-swappable, 1+1"
+  },
+  "heat_btu_h": 645.58,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 18,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 8,
+   "sfp_plus": 8,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "16x GE RJ45 data + 2x GE RJ45 MGMT; 4x 10GE SFP+ + 4x 10GE SFP+ ultra-low-latency"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 79.5,
+   "ngfw_gbps": 10,
+   "threat_gbps": 9,
+   "ipsec_gbps": 55
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://datacenter360.ca/fortinet/fortigate/fortigate-400f-firewall/",
+  "source2": "https://docs.fortinet.com/document/fortigate/7.0.9/hardware-acceleration/785717/fortigate-400f-and-401f-fast-path-architecture",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Values from distributor DataCenter360 spec table (official datasheet PDF blocked to crawler). IPS 12 Gbps and NGFW 10 Gbps match the official datasheet title on fortinet.com. Airflow stated 'side and front to back'. Dims order as given (H x W x D). Verify ULL port type (SFP+ vs SFP28) against the datasheet."
  }
 ]

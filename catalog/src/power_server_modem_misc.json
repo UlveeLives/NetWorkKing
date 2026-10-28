@@ -2127,5 +2127,1113 @@
   "verified": "2026-10-28",
   "confidence": "medium",
   "notes": "Datasheet (Conrad copy of ZTE sheet, MF286R1) gives 180x170x30 mm as HxWxD: stored w=170, d=30, h=180 (upright desktop unit). Power adapter/consumption/weight not stated. SuperBox is Turkcell's (Türkiye; also KKTCell N. Cyprus) SIM-based 4.5G home-internet product, not an Azerbaijani operator; MF286R is one hardware model sold under that name (Turkish forum listings). Newer 5G/Wi-Fi 7 Superbox (Dec 2025-2026) is made by ZTE/Netaş, model number not published."
+ },
+ {
+  "brand": "Synology",
+  "model": "RS822+",
+  "sku": [
+   "RS822+"
+  ],
+  "kind": "nas",
+  "series": "RackStation",
+  "desc": "4-bay 1U rackmount NAS, 4x 1GbE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 480,
+   "d": 492.6,
+   "h": 44
+  },
+  "weight_kg": 6.4,
+  "power": {
+   "typ_w": 47.69,
+   "max_w": 150,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "1x eSATA (RX418 expansion), 1x PCIe Gen3 x8 slot (x4 link)"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://nascompares.com/news/synology-rs822-rs822rp4-bay-1u-rackmount-nas/",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "4-bay 1U. Typical = 47.69 W access (16.7 W HDD hibernation). PSU 150W single (RP+ variant is redundant); power.max_w = PSU rating. Source: NASCompares reproduction of Synology spec table (synology.com page not reached)."
+ },
+ {
+  "brand": "Synology",
+  "model": "RS1221+",
+  "sku": [
+   "RS1221+"
+  ],
+  "kind": "nas",
+  "series": "RackStation",
+  "desc": "8-bay 2U rackmount NAS, 4x 1GbE",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 482,
+   "d": 306.6,
+   "h": 88
+  },
+  "weight_kg": 6.9,
+  "power": {
+   "typ_w": 49.89,
+   "max_w": 250,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC 50/60Hz"
+  },
+  "heat_btu_h": 170,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "1x eSATA (RX418), 1x PCIe Gen3 x8 slot (x4 link); 10GbE via optional card"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://synology.com/en-in/products/RS1221+",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "8-bay 2U. Typical = 49.89 W access (22.64 W HDD hibernation); heat 170.23 BTU/h access. PSU 250W; power.max_w = PSU rating. Supports 2-post direct mount."
+ },
+ {
+  "brand": "Synology",
+  "model": "RS2423+",
+  "sku": [
+   "RS2423+"
+  ],
+  "kind": "nas",
+  "series": "RackStation",
+  "desc": "12-bay 2U rackmount NAS, 1x 10GbE + 2x 1GbE",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 482,
+   "d": 552,
+   "h": 88
+  },
+  "weight_kg": 11.5,
+  "power": {
+   "typ_w": 119.95,
+   "max_w": 500,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": 1,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "1x PCIe 3.0 x8 slot (x4 link). CDW also lists a management port"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdw.ca/product/synology-rackstation-rs2423-nas-server/7393771",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "12-bay 2U, AMD Ryzen V1780B. Typical = 119.95 W operational (CDW). Single fixed 500W PSU (RP+ variant redundant); power.max_w = PSU rating. Reseller page."
+ },
+ {
+  "brand": "Synology",
+  "model": "DS923+",
+  "sku": [
+   "DS923+"
+  ],
+  "kind": "nas",
+  "series": "DiskStation",
+  "desc": "4-bay desktop NAS, 2x 1GbE, 10GbE slot",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 199,
+   "d": 223,
+   "h": 166
+  },
+  "weight_kg": 2.24,
+  "power": {
+   "typ_w": 35.51,
+   "max_w": 100,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC (external 100W adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "1x eSATA (DX517), 1x PCIe Gen3 x2 network upgrade slot (E10G22-T1-Mini 10GbE), 2x M.2 2280 NVMe"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.adorama.com/syds9234nasa.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "4-bay desktop (up to 9 with DX517). Typical = 35.51 W access (11.52 W hibernation). 100W adapter; power.max_w = adapter rating. Retailer page."
+ },
+ {
+  "brand": "QNAP",
+  "model": "TS-873AU-RP",
+  "sku": [
+   "TS-873AU-RP"
+  ],
+  "kind": "nas",
+  "series": "TS-x73AU",
+  "desc": "8-bay 2U rackmount NAS, 2x 2.5GbE, redundant PSU",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 482,
+   "d": 425,
+   "h": 89
+  },
+  "weight_kg": 9.15,
+  "power": {
+   "typ_w": 61.25,
+   "max_w": 300,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 4,
+   "notes": "2x 2.5GbE; USB: 1x 3.2 Gen1 A, 1x 3.2 Gen2 A, 2x 3.2 Gen2 C; 2x PCIe Gen3 x4 (pre-2021 units 1x Gen3 x8)"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.qnap.com/da-dk/product/ts-873au-rp/specs",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "8-bay 2U. Dims exclude ears and PSU protrusion. Typical = 61.25 W operating (36.08 W disk standby). 2x 300W redundant PSU; power.max_w = single PSU rating."
+ },
+ {
+  "brand": "HUAWEI",
+  "model": "4G Router 3 Pro B535",
+  "sku": [
+   "B535-232",
+   "B535-232a",
+   "B535-235a",
+   "B535-333"
+  ],
+  "kind": "modem",
+  "series": "4G Router",
+  "desc": "LTE Cat7 4G router, 4x GE, Wi-Fi 5 AC1200 (sold in Türkiye as Turkcell Superbox)",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 219,
+   "d": 25.6,
+   "h": 138
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 12,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "100-240V AC adapter, 12V DC 1A out"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "1x WAN/LAN + 3x LAN GE; 2x external 4G antenna ports"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2 (1167 Mbps DBDC)",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "LTE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://consumer.huawei.com/hu/routers/4g-router-3pro/specs/",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Official page gives 219x138x25.6 mm (stored w219 h138 d25.6 as upright unit - orientation not labelled). Power consumption <12 W (stored as max_w). LTE category not stated on spec page (300 Mbps per retailers). Weight not stated. Turkish forums refer to it as 'Huawei Superbox B535'."
+ },
+ {
+  "brand": "HUAWEI",
+  "model": "5G CPE Pro 2",
+  "sku": [
+   "H122-373"
+  ],
+  "kind": "modem",
+  "series": "5G CPE",
+  "desc": "5G SA/NSA CPE, 2x GE, Wi-Fi 6 AX3000, 1x RJ11",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 96.6,
+   "d": 96.6,
+   "h": 178
+  },
+  "weight_kg": 0.54,
+  "power": {
+   "typ_w": null,
+   "max_w": 24,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "100-240V AC adapter, 12V DC 2A out"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "1x LAN/WAN + 1x LAN GE; 1x RJ11 phone. 5G SA DL up to 3.6 Gbps (2CC), NSA 1.8 Gbps; LTE 1.6 Gbps"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2 (300 Mbps), 5 GHz 2x2 (2.4 Gbps)",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "5G NR / LTE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.inet.se/pdf/5411847_0.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Huawei Product Description Issue 04 (2020-03-30), hosted by retailer inet.se. Tapered body: 90 mm top / 96.6 mm bottom x 178 mm height. Weight 540 g without adapter. Power <24 W (stored as max_w)."
+ },
+ {
+  "brand": "ZTE",
+  "model": "MF289F",
+  "sku": [
+   "MF289F"
+  ],
+  "kind": "modem",
+  "series": "MF28x 4G CPE",
+  "desc": "LTE Cat20 4G router, 2x GE, Wi-Fi 5",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 132,
+   "d": 78,
+   "h": 191.2
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12V DC adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "2x GE RJ45 (one can be WAN per dateks I/O list). LTE DL up to 2 Gbps / UL 150 Mbps (Cat20). External antenna connectors TS-9 (shopro.lt)"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "dual-band 2.4/5 GHz (streams not stated)",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "LTE Cat20"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.dateks.lv/en/cenas/wireless/906629-zte-router-mf289f-",
+  "source2": "https://www.shopro.lt/98079-zte-mf289f-cellular-network-device-cellular-network-router-en",
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "No ZTE official datasheet found; retailer listings only and they conflict (alternate box size 220x200x100 mm; weight 198 g vs 0.92 kg) - weight left null. Dims 191.2 H x 132 W x 78 D mm per shopro.lt."
+ },
+ {
+  "brand": "TP-Link",
+  "model": "Archer MR600",
+  "sku": [
+   "Archer MR600(EU) 2.0"
+  ],
+  "kind": "modem",
+  "series": "Archer MR",
+  "desc": "LTE Cat6 4G+ router, 4x GE, Wi-Fi 5 AC1200",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 202,
+   "d": 141,
+   "h": 33.6
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "100-240V AC adapter, 12V DC 1.5A out"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "1x WAN/LAN + 3x LAN GE; 2x detachable external LTE antennas. LTE Cat6 300/50 Mbps"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "2.4 GHz 300 Mbps, 5 GHz 867 Mbps",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "LTE Cat6"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://static.tp-link.com/2021/202105/20210514/Archer MR600(EU)2.0_datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "TP-Link datasheet for hardware v2.0 (EU). Dimensions given as 202x141x33.6 mm (W x D x H). Weight not stated."
+ },
+ {
+  "brand": "HUAWEI",
+  "model": "EchoLife HG8245H",
+  "sku": [
+   "HG8245H"
+  ],
+  "kind": "ont",
+  "series": "EchoLife",
+  "desc": "GPON ONT, 4x GE, 2x POTS, Wi-Fi 4 2x2, USB 2.0",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 176,
+   "d": 138.5,
+   "h": 28
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": 5.5,
+   "max_w": 15.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "180-240V AC adapter; device 11-14V DC 2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 1,
+   "notes": "1x GPON (Class B+, 1310/1490 nm, -27 dBm sens.); 2x POTS RJ11; USB 2.0"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 4",
+   "streams": "2.4 GHz 2x2 MIMO, 2 dBi antennas",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "GPON"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://carrier.huawei.com/~/media/cnbg/downloads/product/fixed network/access/chinese/hg8245h datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Huawei carrier datasheet (Chinese). Dimensions 176x138.5x28 mm (axis order not labelled). Weight stated only as <1 kg - left null. Typical 5.5 W static."
+ },
+ {
+  "brand": "HUAWEI",
+  "model": "EchoLife EG8145V5",
+  "sku": [
+   "EG8145V5",
+   "HG8145V5"
+  ],
+  "kind": "ont",
+  "series": "EchoLife",
+  "desc": "GPON ONT, 4x GE, 1x POTS, dual-band Wi-Fi 5 2x2, USB 2.0",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 173,
+   "d": 120,
+   "h": 30
+  },
+  "weight_kg": 0.25,
+  "power": {
+   "typ_w": 5.3,
+   "max_w": 18,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "100-240V AC adapter; device 11-14V DC 1.5A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 1,
+   "notes": "1x GPON Class B+; 1x POTS; USB 2.0"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "2.4 GHz 2x2 b/g/n, 5 GHz 2x2 a/n/ac",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "GPON"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.also.com/pub/assets/55779c46-d42f-4015-a3c0-7db58fb6c57e.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Datasheet (ALSO distributor copy) is for enterprise EG8145V5; HG8145V5 is the operator-branded same-platform model and is not documented separately - treat specs as applying by equivalence. Mount: desktop or wall. Dims exclude antennas/pads; 5.3 W static (stored as typ_w)."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-3E0310P-E/M",
+  "sku": [
+   "DS-3E0310P-E/M",
+   "DS-3E0310P-E/M(B)"
+  ],
+  "kind": "switch",
+  "series": "Unmanaged PoE",
+  "desc": "8x FE PoE + 2x RJ45 uplink unmanaged switch, 80W PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 217.6,
+   "d": 108.5,
+   "h": 27.6
+  },
+  "weight_kg": 1.13,
+  "power": {
+   "typ_w": 5,
+   "max_w": 86,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 8,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "8x 10/100 PoE + 2x RJ45 uplink (uplink speed not stated on source)"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 80,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 2,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.shopro.lt/584410-switch-hikvision-ds-3e0310p-e-m-b-en",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Retailer page for (B) hardware revision; hikvision.com datasheet not reached. typ_w = 5 W idle. Page also lists forwarding 41.66 Mpps (implausible for 2 Gbps fabric, left null) and an alternate box size 260x90x140 mm. PoE standard not stated. Tabletop or wall mount."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-3E1326P-EI",
+  "sku": [
+   "DS-3E1326P-EI"
+  ],
+  "kind": "switch",
+  "series": "Smart Managed PoE",
+  "desc": "24x FE PoE + 2x GE combo uplink smart managed switch, 370W PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 221,
+   "h": 44
+  },
+  "weight_kg": 2.83,
+  "power": {
+   "typ_w": null,
+   "max_w": 400,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "100-240V AC, max 6.5A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 24,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "2x gigabit combo uplinks (RJ45/SFP)"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 8.8,
+   "forwarding_mpps": 6.5472,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://us-legacy.hikvision.com/sites/default/files/data_sheet/ds-3e1326p-ei_switch_051021na_0.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "high",
+  "notes": "Hikvision datasheet. PoE 802.3af/at, max 30 W per port. Rack U not printed; u=1 from 44 mm height and 440 mm width (rack-mountable 19in)."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-KD8003-IME1",
+  "sku": [
+   "DS-KD8003-IME1"
+  ],
+  "kind": "other",
+  "series": "Pro Series modular video intercom",
+  "desc": "2MP modular IP video door station main unit, PoE",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 98,
+   "d": 43.9,
+   "h": 99.8
+  },
+  "weight_kg": 0.38,
+  "power": {
+   "typ_w": null,
+   "max_w": 4,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12V DC or PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "10/100 Ethernet"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 4
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.ipsecuritydepot.com/hikvision-ds-kd8003-ime1",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Reseller page (hikvision.com datasheet not reached). Dims 98 x 99.8 x 43.9 mm (stored w98 h99.8 d43.9). Weight 0.83 lb = 0.38 kg. IP65. 2MP fisheye camera, FOV not stated. Max power 4 W."
+ },
+ {
+  "brand": "Grandstream",
+  "model": "GXP2170",
+  "sku": [
+   "GXP2170"
+  ],
+  "kind": "phone",
+  "series": "GXP",
+  "desc": "12-line enterprise IP phone, 4.3in colour LCD, 2x GE, PoE, Bluetooth",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 228,
+   "d": 206,
+   "h": 46
+  },
+  "weight_kg": 0.98,
+  "power": {
+   "typ_w": null,
+   "max_w": 9.2,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or 12V 1A adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 1,
+   "notes": "2x 10/100/1000 switched; RJ9 headset with EHS; 6 SIP accounts"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 5.4
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://voipia.net/wp-content/uploads/2017/10/gxp2170_voipia_datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Grandstream datasheet (reseller-hosted copy). PoE max 5.4 W without expansion modules, 9.2 W with 4x GXP2200EXT (stored as power.max_w)."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T54W",
+  "sku": [
+   "SIP-T54W"
+  ],
+  "kind": "phone",
+  "series": "T5 Prime Business",
+  "desc": "16-account IP phone, 4.3in colour LCD, 2x GE, PoE, Wi-Fi, BT",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 233,
+   "d": 186.1,
+   "h": 222.6
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": 2.2,
+   "max_w": 5.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or 5V DC (adapter not included)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 1,
+   "notes": "USB 2.0 (headset / flash / up to 3 EXP50)"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af class 3",
+   "max_w": 5.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "dual-band 2.4/5 GHz, 433 Mbps",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "client"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://en.cdr.pl/p7203,yealink-sip-t54w-16-line-ip-phone-with-poe-gigabit-ethernet-ports-bluetooth-and-wifi.html",
+  "source2": null,
+  "verified": "2026-10-28",
+  "confidence": "medium",
+  "notes": "Retailer page reproducing Yealink spec. Dimensions printed as 233 x 222.6 x 186.1 x 41.7 mm (W x D x H at two stand angles x thickness); stored w233, d186.1, h222.6 - verify. Weight not stated. Bluetooth 4.2."
  }
 ]

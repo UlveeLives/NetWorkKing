@@ -1,7 +1,7 @@
 {
 "version": "2026-10-28",
 "date": "2026-10-28",
-"count": 171,
+"count": 226,
 "models": [
 {
 "brand": "APC",
@@ -5524,6 +5524,234 @@
 },
 {
 "brand": "Fortinet",
+"model": "FortiAP 221E",
+"sku": [
+"FAP-221E"
+],
+"kind": "ap",
+"series": "FortiAP Wi-Fi 5 (E-Series)",
+"desc": "Wi-Fi 5 Wave 2 2x2 dual-radio indoor AP, 1x GE RJ45",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 160,
+"d": 160,
+"h": 47
+},
+"weight_kg": 0.5,
+"power": {
+"typ_w": null,
+"max_w": 12.36,
+"psu": null,
+"psu_redundant": null,
+"input": "PoE 802.3af or SP-FAP200-PA adapter"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 1,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 0,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": {
+"class": "802.3af",
+"max_w": 12.36
+},
+"perf": null,
+"wifi": {
+"std": "Wi-Fi 5",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2",
+"bands": {
+"2.4": {
+"tx_dbm": 23,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 24,
+"gain_dbi": 5
+},
+"6": null
+},
+"max_clients": 512,
+"uplink": "1x GE RJ45"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. Internal patch antennas. Mounting ceiling, T-rail, wall."
+},
+{
+"brand": "Fortinet",
+"model": "FortiAP 231F",
+"sku": [
+"FAP-231F"
+],
+"kind": "ap",
+"series": "FortiAP Wi-Fi 6 (F-Series)",
+"desc": "Wi-Fi 6 2x2 tri-radio indoor AP, 2x GE RJ45",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 153.2,
+"d": 153.2,
+"h": 53
+},
+"weight_kg": 0.543,
+"power": {
+"typ_w": null,
+"max_w": 17,
+"psu": null,
+"psu_redundant": null,
+"input": "PoE 802.3at (GPI-130 injector)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 2,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 0,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 1,
+"usb": 1,
+"notes": "2x GE RJ45, 1x USB 2.0, 1x RS-232 RJ45 console (ports per Hitachi Solutions)"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": {
+"class": "802.3at",
+"max_w": 17
+},
+"perf": null,
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2, scanning 1x1",
+"bands": {
+"2.4": {
+"tx_dbm": 23,
+"gain_dbi": 4.5
+},
+"5": {
+"tx_dbm": 22,
+"gain_dbi": 5.5
+},
+"6": null
+},
+"max_clients": 512,
+"uplink": "1x GE RJ45 (PoE)"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+"source2": "https://www.hitachi-solutions.co.jp/fortinet/function/lineup/close-ap.html",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. 802.3af also works without USB function. Internal PIFA antennas. Mounting ceiling, T-rail, wall."
+},
+{
+"brand": "Fortinet",
+"model": "FortiAP 234F",
+"sku": [
+"FAP-234F"
+],
+"kind": "ap",
+"series": "FortiAP Wi-Fi 6 (F-Series)",
+"desc": "Wi-Fi 6 2x2 rugged indoor/outdoor tri-radio AP, directional patch, 2x GE RJ45",
+"mount": "wall",
+"u": 0,
+"dims_mm": {
+"w": 316,
+"d": 218,
+"h": 42
+},
+"weight_kg": 1.307,
+"power": {
+"typ_w": null,
+"max_w": 15.5,
+"psu": null,
+"psu_redundant": null,
+"input": "PoE 802.3at (GPI-130; injector shipped)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 2,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 0,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": {
+"class": "802.3at",
+"max_w": 15.5
+},
+"perf": null,
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2, scanning 1x1",
+"bands": {
+"2.4": {
+"tx_dbm": 27,
+"gain_dbi": 10
+},
+"5": {
+"tx_dbm": 25.5,
+"gain_dbi": 10
+},
+"6": null
+},
+"max_clients": 512,
+"uplink": "2x GE RJ45"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. Internal directional patch antenna (10 dBi). Also runs on 2x 802.3af (full) or 1x 802.3af (reduced 17 dBm). Datasheet lists ceiling, T-rail, wall mounting."
+},
+{
+"brand": "Fortinet",
 "model": "FortiAP 23JF",
 "sku": [
 "FAP-23JF"
@@ -5597,6 +5825,82 @@
 "verified": "2026-10-28",
 "confidence": "high",
 "notes": "Max power 17.5 W without PSE output / 31 W with PSE output. Accepts 802.3af/at. Tx power per matrix '2 chains combined' (matrix also shows 158 mW for both bands, inconsistent with 25 dBm). max_clients = up to 512 per radio. Dimensions/weight not in sources."
+},
+{
+"brand": "Fortinet",
+"model": "FortiAP 431F",
+"sku": [
+"FAP-431F"
+],
+"kind": "ap",
+"series": "FortiAP Wi-Fi 6 (F-Series)",
+"desc": "Wi-Fi 6 4x4 tri-radio indoor AP, 1x 2.5GbE + 1x GE RJ45",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 210,
+"d": 210,
+"h": 56.5
+},
+"weight_kg": 0.98,
+"power": {
+"typ_w": null,
+"max_w": 24.5,
+"psu": null,
+"psu_redundant": null,
+"input": "PoE or SP-FAP400-PA adapter / GPI-130 injector"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 1,
+"rj45_mgig": 1,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 0,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 1,
+"usb": 1,
+"notes": "1x 2.5GbE RJ45, 1x GE RJ45, USB-A, RS-232 RJ45 console (per Hitachi Solutions)"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": {
+"class": null,
+"max_w": 24.5
+},
+"perf": null,
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 4x4, 5 GHz 4x4, scanning 1x1",
+"bands": {
+"2.4": {
+"tx_dbm": 24,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 23,
+"gain_dbi": 5
+},
+"6": null
+},
+"max_clients": 512,
+"uplink": "1x 2.5GbE RJ45"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+"source2": "https://www.hitachi-solutions.co.jp/fortinet/function/lineup/close-ap.html",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. PoE class for full operation not explicitly stated (datasheet: single 802.3af gives 2x2 mode, 17 dBm, no USB; recommended injector GPI-130). Internal PIFA antennas."
 },
 {
 "brand": "Fortinet",
@@ -5676,6 +5980,158 @@
 "verified": "2026-10-28",
 "confidence": "high",
 "notes": "Chinese-language official datasheet. 5 GHz gain 5.6 dBi (dual-band antenna) / 6.0 dBi (tri-band). Mounting: ceiling, T-rail, wall. max_clients = up to 512 per radio. Dims W x D x H assumed from '225 x 225 x 54'."
+},
+{
+"brand": "Fortinet",
+"model": "FortiAP 432F",
+"sku": [
+"FAP-432F"
+],
+"kind": "ap",
+"series": "FortiAP Wi-Fi 6 (F-Series)",
+"desc": "Wi-Fi 6 4x4 tri-radio indoor AP, external antennas, 2.5GbE + GE (PSE out)",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 209,
+"d": 209,
+"h": 60.5
+},
+"weight_kg": 2.325,
+"power": {
+"typ_w": null,
+"max_w": 37.9,
+"psu": null,
+"psu_redundant": null,
+"input": "PoE 802.3bt (injector shipped)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 1,
+"rj45_mgig": 1,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 0,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": "1x 2.5GbE RJ45 uplink, 1x GE RJ45 with 802.3af PSE output"
+},
+"poe": {
+"ports": 1,
+"budget_w": null,
+"std": "802.3af"
+},
+"poe_in": {
+"class": "802.3bt",
+"max_w": 37.9
+},
+"perf": null,
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 4x4, 5 GHz 4x4, scanning 1x1",
+"bands": {
+"2.4": {
+"tx_dbm": 30,
+"gain_dbi": 5.5
+},
+"5": {
+"tx_dbm": 26,
+"gain_dbi": 7.2
+},
+"6": null
+},
+"max_clients": 512,
+"uplink": "1x 2.5GbE RJ45"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. Max power 25 W without PSE out / 37.9 W with PSE out. 802.3at gives reduced power (17 dBm); no 802.3af support. External antennas."
+},
+{
+"brand": "Fortinet",
+"model": "FortiAP 433F",
+"sku": [
+"FAP-433F"
+],
+"kind": "ap",
+"series": "FortiAP Wi-Fi 6 (F-Series)",
+"desc": "Wi-Fi 6 4x4 tri-radio indoor AP, 5x external RP-SMA antennas, 2.5GbE + GE",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 210,
+"d": 210,
+"h": 56.5
+},
+"weight_kg": 0.995,
+"power": {
+"typ_w": null,
+"max_w": 24.5,
+"psu": null,
+"psu_redundant": null,
+"input": "PoE or SP-FAP400-PA adapter / GPI-130 injector"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 1,
+"rj45_mgig": 1,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 0,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": {
+"class": null,
+"max_w": 24.5
+},
+"perf": null,
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 4x4, 5 GHz 4x4, scanning 1x1",
+"bands": {
+"2.4": {
+"tx_dbm": 24,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 23,
+"gain_dbi": 6
+},
+"6": null
+},
+"max_clients": 512,
+"uplink": "1x 2.5GbE RJ45"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://cdn.blueally.com/avfirewalls/datasheets/fortiap/fortiap-series.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from an older official Fortinet FortiAP Series datasheet as hosted by reseller BlueAlly (fortinet.com PDF blocked to crawler; current Fortinet datasheet no longer lists this model). Tx power = conducted, chains combined. max_clients = up to 512 per radio. Dims stated L x W x H. PoE class for full operation not explicitly stated (single 802.3af = 2x2 mode, 17 dBm, no USB; recommended injector GPI-130). External omni rubber-duck antennas."
 },
 {
 "brand": "Fortinet",
@@ -6011,6 +6467,70 @@
 "verified": "2026-10-28",
 "confidence": "high",
 "notes": "Values from Fortinet Product Matrix (PROMTX-2026-R177-OCT); dimensions, weight, power draw and heat not in matrix and the model datasheet PDF was not reachable. IPS 800 Mbps. 30 GB local storage."
+},
+{
+"brand": "Fortinet",
+"model": "FortiGate 400F",
+"sku": [
+"FG-400F"
+],
+"kind": "firewall",
+"series": "FortiGate F-Series",
+"desc": "1U NGFW, 18x GE RJ45, 8x GE SFP, 8x 10GE SFP+ (4 ultra-low-latency)",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 432,
+"d": 380,
+"h": 44.45
+},
+"weight_kg": 6.4,
+"power": {
+"typ_w": 154.8,
+"max_w": 189.2,
+"psu": 2,
+"psu_redundant": true,
+"input": "Dual AC, hot-swappable, 1+1"
+},
+"heat_btu_h": 645.58,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 18,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 8,
+"sfp_plus": 8,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 1,
+"usb": 1,
+"notes": "16x GE RJ45 data + 2x GE RJ45 MGMT; 4x 10GE SFP+ + 4x 10GE SFP+ ultra-low-latency"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": 79.5,
+"ngfw_gbps": 10,
+"threat_gbps": 9,
+"ipsec_gbps": 55
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://datacenter360.ca/fortinet/fortigate/fortigate-400f-firewall/",
+"source2": "https://docs.fortinet.com/document/fortigate/7.0.9/hardware-acceleration/785717/fortigate-400f-and-401f-fast-path-architecture",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from distributor DataCenter360 spec table (official datasheet PDF blocked to crawler). IPS 12 Gbps and NGFW 10 Gbps match the official datasheet title on fortinet.com. Airflow stated 'side and front to back'. Dims order as given (H x W x D). Verify ULL port type (SFP+ vs SFP28) against the datasheet."
 },
 {
 "brand": "Fortinet",
@@ -7485,6 +8005,457 @@
 "notes": "Dims stated as H x D x W; airflow stated as side-to-back (not in enum)."
 },
 {
+"brand": "Fortinet",
+"model": "FortiSwitch 424E",
+"sku": [
+"FS-424E"
+],
+"kind": "switch",
+"series": "FortiSwitch Secure Campus (4xxE)",
+"desc": "24x GE RJ45, 4x 10GE SFP+",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 260,
+"h": 44
+},
+"weight_kg": 3.1,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC internal; optional redundant AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 24,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 4,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 128,
+"forwarding_mpps": 190,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-424e-switch/",
+"source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 35.5 dBA. Console port not stated."
+},
+{
+"brand": "Fortinet",
+"model": "FortiSwitch 424E-FPOE",
+"sku": [
+"FS-424E-FPOE"
+],
+"kind": "switch",
+"series": "FortiSwitch Secure Campus (4xxE)",
+"desc": "24x GE RJ45 PoE/PoE+ (421 W), 4x 10GE SFP+",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 410,
+"h": 44.5
+},
+"weight_kg": 5.77,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC internal; optional redundant AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 24,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 4,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 24,
+"budget_w": 421,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 128,
+"forwarding_mpps": 190,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-424e-fpoe-switch/",
+"source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 30.9 dBA. Console port not stated."
+},
+{
+"brand": "Fortinet",
+"model": "FortiSwitch 424E-POE",
+"sku": [
+"FS-424E-POE"
+],
+"kind": "switch",
+"series": "FortiSwitch Secure Campus (4xxE)",
+"desc": "24x GE RJ45 PoE/PoE+ (250 W), 4x 10GE SFP+",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 410,
+"h": 44.5
+},
+"weight_kg": 5.25,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC internal; optional redundant AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 24,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 4,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 24,
+"budget_w": 250,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 128,
+"forwarding_mpps": 190,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-424e-poe-switch/",
+"source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 31.8 dBA. Console port not stated."
+},
+{
+"brand": "Fortinet",
+"model": "FortiSwitch 448E",
+"sku": [
+"FS-448E"
+],
+"kind": "switch",
+"series": "FortiSwitch Secure Campus (4xxE)",
+"desc": "48x GE RJ45, 4x 10GE SFP+",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 310,
+"h": 44
+},
+"weight_kg": 4.16,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC internal; optional redundant AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 48,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 4,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 176,
+"forwarding_mpps": 262,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-448e-switch/",
+"source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Console port not stated."
+},
+{
+"brand": "Fortinet",
+"model": "FortiSwitch 448E-FPOE",
+"sku": [
+"FS-448E-FPOE"
+],
+"kind": "switch",
+"series": "FortiSwitch Secure Campus (4xxE)",
+"desc": "48x GE RJ45 PoE/PoE+ (772 W), 4x 10GE SFP+",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 409,
+"h": 44
+},
+"weight_kg": 6.37,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC internal; optional redundant AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 48,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 4,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 48,
+"budget_w": 772,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 176,
+"forwarding_mpps": 262,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-448e-fpoe-switch/",
+"source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 50.7 dBA. Console port not stated."
+},
+{
+"brand": "Fortinet",
+"model": "FortiSwitch 448E-POE",
+"sku": [
+"FS-448E-POE"
+],
+"kind": "switch",
+"series": "FortiSwitch Secure Campus (4xxE)",
+"desc": "48x GE RJ45 PoE/PoE+ (421 W), 4x 10GE SFP+",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 410,
+"h": 44
+},
+"weight_kg": 6.26,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC internal; optional redundant AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 0,
+"rj45_1g": 48,
+"rj45_mgig": 0,
+"rj45_10g": 0,
+"sfp": 0,
+"sfp_plus": 4,
+"sfp28": 0,
+"qsfp_plus": 0,
+"qsfp28": 0,
+"console": 0,
+"usb": 0,
+"notes": null
+},
+"poe": {
+"ports": 48,
+"budget_w": 421,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 176,
+"forwarding_mpps": 262,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://datacenter360.ca/fortinet/fortiswitch/fortiswitch-448e-poe-switch/",
+"source2": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiswitch.pdf",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Values from distributor DataCenter360 spec page (official Fortinet datasheet PDF blocked to crawler); model/SKU confirmed in Fortinet FortiSwitch Ordering Guide FSW-OG-R24-20260921. Dims given unlabeled, taken as H x D x W (Fortinet convention). Power draw, heat, airflow not listed. PSU: internal AC 100-240V, optional redundant AC. Noise 38.3 dBA. Console port not stated."
+},
+{
+"brand": "Grandstream",
+"model": "GXP2170",
+"sku": [
+"GXP2170"
+],
+"kind": "phone",
+"series": "GXP",
+"desc": "12-line enterprise IP phone, 4.3in colour LCD, 2x GE, PoE, Bluetooth",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 228,
+"d": 206,
+"h": 46
+},
+"weight_kg": 0.98,
+"power": {
+"typ_w": null,
+"max_w": 9.2,
+"psu": null,
+"psu_redundant": null,
+"input": "PoE 802.3af or 12V 1A adapter"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 2,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 1,
+"notes": "2x 10/100/1000 switched; RJ9 headset with EHS; 6 SIP accounts"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": {
+"class": "802.3af",
+"max_w": 5.4
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://voipia.net/wp-content/uploads/2017/10/gxp2170_voipia_datasheet.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Grandstream datasheet (reseller-hosted copy). PoE max 5.4 W without expansion modules, 9.2 W with 4x GXP2200EXT (stored as power.max_w)."
+},
+{
 "brand": "Hikvision",
 "model": "DS-2CD1043G2-I",
 "sku": [
@@ -8627,6 +9598,135 @@
 },
 {
 "brand": "Hikvision",
+"model": "DS-3E0310P-E/M",
+"sku": [
+"DS-3E0310P-E/M",
+"DS-3E0310P-E/M(B)"
+],
+"kind": "switch",
+"series": "Unmanaged PoE",
+"desc": "8x FE PoE + 2x RJ45 uplink unmanaged switch, 80W PoE",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 217.6,
+"d": 108.5,
+"h": 27.6
+},
+"weight_kg": 1.13,
+"power": {
+"typ_w": 5,
+"max_w": 86,
+"psu": null,
+"psu_redundant": null,
+"input": null
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 8,
+"rj45_1g": null,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "8x 10/100 PoE + 2x RJ45 uplink (uplink speed not stated on source)"
+},
+"poe": {
+"ports": 8,
+"budget_w": 80,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 2,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.shopro.lt/584410-switch-hikvision-ds-3e0310p-e-m-b-en",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Retailer page for (B) hardware revision; hikvision.com datasheet not reached. typ_w = 5 W idle. Page also lists forwarding 41.66 Mpps (implausible for 2 Gbps fabric, left null) and an alternate box size 260x90x140 mm. PoE standard not stated. Tabletop or wall mount."
+},
+{
+"brand": "Hikvision",
+"model": "DS-3E1326P-EI",
+"sku": [
+"DS-3E1326P-EI"
+],
+"kind": "switch",
+"series": "Smart Managed PoE",
+"desc": "24x FE PoE + 2x GE combo uplink smart managed switch, 370W PoE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 221,
+"h": 44
+},
+"weight_kg": 2.83,
+"power": {
+"typ_w": null,
+"max_w": 400,
+"psu": null,
+"psu_redundant": null,
+"input": "100-240V AC, max 6.5A"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 24,
+"rj45_1g": null,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "2x gigabit combo uplinks (RJ45/SFP)"
+},
+"poe": {
+"ports": 24,
+"budget_w": 370,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 8.8,
+"forwarding_mpps": 6.5472,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://us-legacy.hikvision.com/sites/default/files/data_sheet/ds-3e1326p-ei_switch_051021na_0.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Hikvision datasheet. PoE 802.3af/at, max 30 W per port. Rack U not printed; u=1 from 44 mm height and 440 mm width (rack-mountable 19in)."
+},
+{
+"brand": "Hikvision",
 "model": "DS-7604NXI-K1/4P(D)",
 "sku": [
 "DS-7604NXI-K1/4P(D)",
@@ -9265,6 +10365,73 @@
 "notes": "Picked DS-9632NI-M8 (DS-9632NXI-M8 has no standalone datasheet; AcuSense variant is iDS-9632NXI-M8/X). Power <=50 W without HDD. Weight <=10 kg without HDD. psu_redundant false = non-/R model; DS-9632NI-M8/R has redundant PSU."
 },
 {
+"brand": "Hikvision",
+"model": "DS-KD8003-IME1",
+"sku": [
+"DS-KD8003-IME1"
+],
+"kind": "other",
+"series": "Pro Series modular video intercom",
+"desc": "2MP modular IP video door station main unit, PoE",
+"mount": "wall",
+"u": 0,
+"dims_mm": {
+"w": 98,
+"d": 43.9,
+"h": 99.8
+},
+"weight_kg": 0.38,
+"power": {
+"typ_w": null,
+"max_w": 4,
+"psu": null,
+"psu_redundant": null,
+"input": "12V DC or PoE"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 1,
+"rj45_1g": null,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "10/100 Ethernet"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": {
+"class": "802.3af",
+"max_w": 4
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.ipsecuritydepot.com/hikvision-ds-kd8003-ime1",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Reseller page (hikvision.com datasheet not reached). Dims 98 x 99.8 x 43.9 mm (stored w98 h99.8 d43.9). Weight 0.83 lb = 0.38 kg. IP65. 2MP fisheye camera, FOV not stated. Max power 4 W."
+},
+{
 "brand": "HPE",
 "model": "ProLiant DL20 Gen10 Plus",
 "sku": [],
@@ -9874,6 +11041,2522 @@
 "verified": "2026-10-28",
 "confidence": "high",
 "notes": "SKUs: R7J38A RW, R7J39A US, TAA R7J43A RW / R7J44A US. 802.3bt class 5 unrestricted; single 802.3at restricted; 802.3af not supported. PoE max 40.3W without USB / 46.5W with USB. 1024 clients per radio. Weight excludes bracket"
+},
+{
+"brand": "HPE Aruba Networking",
+"model": "CX 6000 48G Class4 PoE 4SFP 370W Switch",
+"sku": [
+"R8N85B",
+"R8N85A"
+],
+"kind": "switch",
+"series": "CX 6000 Switch Series",
+"desc": "1U L2 access switch, 48x GbE Class 4 PoE, 4x 1G SFP, 370 W PoE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 442.5,
+"d": 304.4,
+"h": 43.9
+},
+"weight_kg": 4.39,
+"power": {
+"typ_w": 24.9,
+"max_w": 439,
+"psu": 1,
+"psu_redundant": false,
+"input": "Fixed internal AC PSU"
+},
+"heat_btu_h": null,
+"airflow": "side-to-side",
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 48,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": 4,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": {
+"ports": 48,
+"budget_w": 370,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 104,
+"forwarding_mpps": 77.3,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.hpe.com/us/en/collaterals/collateral.a50002592enw.html",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "QuickSpecs list R8N85B (current SKU); R8N85A requested name not shown on page, kept as legacy alias. typ_w = idle; 41W without PoE. 740W variant is R9Y03A/B"
+},
+{
+"brand": "HPE Aruba Networking",
+"model": "CX 6100 48G Class4 PoE 4SFP+ 370W Switch",
+"sku": [
+"JL675A"
+],
+"kind": "switch",
+"series": "CX 6100 Switch Series",
+"desc": "1U access switch, 48x GbE Class 4 PoE, 4x 10G SFP+, 370 W PoE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 442,
+"d": 304.8,
+"h": 43.9
+},
+"weight_kg": 5.02,
+"power": {
+"typ_w": 30.6,
+"max_w": 480,
+"psu": 1,
+"psu_redundant": false,
+"input": "Fixed internal 500W AC PSU"
+},
+"heat_btu_h": null,
+"airflow": "side-to-side",
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 48,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": 4,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": 1,
+"usb": 1,
+"notes": "USB-C console + USB-A host"
+},
+"poe": {
+"ports": 48,
+"budget_w": 370,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 176,
+"forwarding_mpps": 98.6,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.hpe.com/us/en/collaterals/collateral.a00021859enw.html",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "typ_w = idle; 45W without PoE; 30W per port. PoE port count assumed all 48 copper ports (not explicitly stated)"
+},
+{
+"brand": "HPE Networking Instant On",
+"model": "Instant On AP22",
+"sku": [
+"R4W02A",
+"R6M51A"
+],
+"kind": "ap",
+"series": "Instant On Access Points",
+"desc": "Small-business Wi-Fi 6 AP, 2x2 dual-band, 1x GbE, 802.3af PoE",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 160,
+"d": 160,
+"h": 37
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 10.1,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3af PoE or 12V DC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 1,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": null,
+"poe_in": {
+"class": "802.3af",
+"max_w": 10.1
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2",
+"bands": {
+"2.4": null,
+"5": null,
+"6": null
+},
+"max_clients": null,
+"uplink": "1x GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.netxl.com/wifi-access-points/aruba-instant-on-ap22-rw-access-point-r4w02a.md",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Distributor (netxl.com) spec page; HPE PDF datasheet not retrievable (psnow redirect). R4W02A RW; R6M51A = bundle with PSU. 75 clients per radio. TX power / antenna gain not stated. Mount type not stated (kit included)"
+},
+{
+"brand": "HPE Networking Instant On",
+"model": "Instant On AP25",
+"sku": [
+"R9B28A"
+],
+"kind": "ap",
+"series": "Instant On Access Points",
+"desc": "Small-business Wi-Fi 6 AP, 4x4 5 GHz + 2x2 2.4 GHz, 1x 2.5GbE, 802.3at PoE",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 203,
+"d": 203,
+"h": 51
+},
+"weight_kg": 1.18,
+"power": {
+"typ_w": null,
+"max_w": 20.1,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3at PoE (class 4) or 12V DC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": null,
+"rj45_mgig": 1,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": null,
+"poe_in": {
+"class": "802.3at",
+"max_w": 20.1
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 4x4",
+"bands": {
+"2.4": {
+"tx_dbm": 21,
+"gain_dbi": 3.7
+},
+"5": {
+"tx_dbm": 24,
+"gain_dbi": 4.5
+},
+"6": null
+},
+"max_clients": null,
+"uplink": "1x 2.5GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://edshop.edsystem.cz/fileshare/products/datasheet/aru/hpe networking instant on indoor access point wi-fi 6 4x4 (rw) ap25 data sheet-psn1014652419czen(889745).pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Official HPE data sheet (PSN1014652419, c2025 HPE) hosted by distributor EDSystem. TX = 18 dBm/chain + MIMO gain. Dims stated 5.1 x 20.3 cm. DC 15.9W max. Ceiling/wall mount clip"
+},
+{
+"brand": "HUAWEI",
+"model": "4G Router 3 Pro B535",
+"sku": [
+"B535-232",
+"B535-232a",
+"B535-235a",
+"B535-333"
+],
+"kind": "modem",
+"series": "4G Router",
+"desc": "LTE Cat7 4G router, 4x GE, Wi-Fi 5 AC1200 (sold in Türkiye as Turkcell Superbox)",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 219,
+"d": 25.6,
+"h": 138
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 12,
+"psu": null,
+"psu_redundant": null,
+"input": "100-240V AC adapter, 12V DC 1A out"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 4,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "1x WAN/LAN + 3x LAN GE; 2x external 4G antenna ports"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 5",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2 (1167 Mbps DBDC)",
+"bands": {
+"2.4": null,
+"5": null,
+"6": null
+},
+"max_clients": null,
+"uplink": "LTE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://consumer.huawei.com/hu/routers/4g-router-3pro/specs/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official page gives 219x138x25.6 mm (stored w219 h138 d25.6 as upright unit - orientation not labelled). Power consumption <12 W (stored as max_w). LTE category not stated on spec page (300 Mbps per retailers). Weight not stated. Turkish forums refer to it as 'Huawei Superbox B535'."
+},
+{
+"brand": "HUAWEI",
+"model": "5G CPE Pro 2",
+"sku": [
+"H122-373"
+],
+"kind": "modem",
+"series": "5G CPE",
+"desc": "5G SA/NSA CPE, 2x GE, Wi-Fi 6 AX3000, 1x RJ11",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 96.6,
+"d": 96.6,
+"h": 178
+},
+"weight_kg": 0.54,
+"power": {
+"typ_w": null,
+"max_w": 24,
+"psu": null,
+"psu_redundant": null,
+"input": "100-240V AC adapter, 12V DC 2A out"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 2,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "1x LAN/WAN + 1x LAN GE; 1x RJ11 phone. 5G SA DL up to 3.6 Gbps (2CC), NSA 1.8 Gbps; LTE 1.6 Gbps"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2 (300 Mbps), 5 GHz 2x2 (2.4 Gbps)",
+"bands": {
+"2.4": null,
+"5": null,
+"6": null
+},
+"max_clients": null,
+"uplink": "5G NR / LTE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://cdn.inet.se/pdf/5411847_0.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Huawei Product Description Issue 04 (2020-03-30), hosted by retailer inet.se. Tapered body: 90 mm top / 96.6 mm bottom x 178 mm height. Weight 540 g without adapter. Power <24 W (stored as max_w)."
+},
+{
+"brand": "HUAWEI",
+"model": "EchoLife EG8145V5",
+"sku": [
+"EG8145V5",
+"HG8145V5"
+],
+"kind": "ont",
+"series": "EchoLife",
+"desc": "GPON ONT, 4x GE, 1x POTS, dual-band Wi-Fi 5 2x2, USB 2.0",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 173,
+"d": 120,
+"h": 30
+},
+"weight_kg": 0.25,
+"power": {
+"typ_w": 5.3,
+"max_w": 18,
+"psu": null,
+"psu_redundant": null,
+"input": "100-240V AC adapter; device 11-14V DC 1.5A"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 4,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 1,
+"notes": "1x GPON Class B+; 1x POTS; USB 2.0"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 5",
+"streams": "2.4 GHz 2x2 b/g/n, 5 GHz 2x2 a/n/ac",
+"bands": {
+"2.4": null,
+"5": null,
+"6": null
+},
+"max_clients": null,
+"uplink": "GPON"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.also.com/pub/assets/55779c46-d42f-4015-a3c0-7db58fb6c57e.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Datasheet (ALSO distributor copy) is for enterprise EG8145V5; HG8145V5 is the operator-branded same-platform model and is not documented separately - treat specs as applying by equivalence. Mount: desktop or wall. Dims exclude antennas/pads; 5.3 W static (stored as typ_w)."
+},
+{
+"brand": "HUAWEI",
+"model": "EchoLife HG8245H",
+"sku": [
+"HG8245H"
+],
+"kind": "ont",
+"series": "EchoLife",
+"desc": "GPON ONT, 4x GE, 2x POTS, Wi-Fi 4 2x2, USB 2.0",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 176,
+"d": 138.5,
+"h": 28
+},
+"weight_kg": null,
+"power": {
+"typ_w": 5.5,
+"max_w": 15.5,
+"psu": null,
+"psu_redundant": null,
+"input": "180-240V AC adapter; device 11-14V DC 2A"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 4,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 1,
+"notes": "1x GPON (Class B+, 1310/1490 nm, -27 dBm sens.); 2x POTS RJ11; USB 2.0"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 4",
+"streams": "2.4 GHz 2x2 MIMO, 2 dBi antennas",
+"bands": {
+"2.4": null,
+"5": null,
+"6": null
+},
+"max_clients": null,
+"uplink": "GPON"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://carrier.huawei.com/~/media/cnbg/downloads/product/fixed network/access/chinese/hg8245h datasheet.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Huawei carrier datasheet (Chinese). Dimensions 176x138.5x28 mm (axis order not labelled). Weight stated only as <1 kg - left null. Typical 5.5 W static."
+},
+{
+"brand": "MikroTik",
+"model": "cAP ax",
+"sku": [
+"cAPGi-5HaxD2HaxD"
+],
+"kind": "ap",
+"series": "cAP",
+"desc": "Ceiling/wall Wi-Fi 6 AP, dual-band 2x2, 2x GbE, PoE-in af/at + passive PoE-out",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 228,
+"d": 228,
+"h": 48
+},
+"weight_kg": null,
+"power": {
+"typ_w": 11,
+"max_w": 36,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3af/at PoE-in or DC jack 18-57V (24V 1.5A PSU included)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 2,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "Ether2 passive PoE-out"
+},
+"poe": null,
+"poe_in": {
+"class": "802.3at",
+"max_w": 36
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2",
+"bands": {
+"2.4": {
+"tx_dbm": 20,
+"gain_dbi": 5.5
+},
+"5": {
+"tx_dbm": 30,
+"gain_dbi": 5.5
+},
+"6": null
+},
+"max_clients": null,
+"uplink": "1x GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://manual.mikrotik.com/hardware/cap-ax",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Dimensions stated 228 x 48 mm (round, diameter x height). TX from CE regulatory table (5 GHz 14-30 dBm by sub-band). Antenna gain 5.5 dBi single figure. 36W max includes PoE-out; 11W without attachments"
+},
+{
+"brand": "MikroTik",
+"model": "CCR2004-16G-2S+",
+"sku": [
+"CCR2004-16G-2S+"
+],
+"kind": "router",
+"series": "Cloud Core Router",
+"desc": "1U router, 16x GbE + 2x 10G SFP+, quad-core ARM, dual PSU",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 443,
+"d": 210,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 48,
+"psu": 2,
+"psu_redundant": null,
+"input": "100-240V AC (IEC), dual integrated PSU"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 16,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": 2,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://help.mikrotik.com/docs/spaces/UM/pages/78086248/CCR2004-16G-2S",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official MikroTik user-manual page (product page not reached, so no test-result throughput). AL32400 4-core 1.7 GHz, 4 GB RAM, RouterOS L6. Redundancy not stated"
+},
+{
+"brand": "MikroTik",
+"model": "CCR2116-12G-4S+",
+"sku": [
+"CCR2116-12G-4S+"
+],
+"kind": "router",
+"series": "Cloud Core Router",
+"desc": "1U router, 12x GbE + 4x 10G SFP+, dual redundant PSU, M.2 slot",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": null,
+"d": null,
+"h": null
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 60,
+"psu": 2,
+"psu_redundant": true,
+"input": "2x 100-240V AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 12,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": 4,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": 1,
+"usb": 1,
+"notes": "M.2 PCIe x4 slot"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://help.mikrotik.com/docs/x/DgB-B",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official MikroTik user manual; product page with test results not reached, so dims/CPU/throughput null. Has fans (count not stated)"
+},
+{
+"brand": "MikroTik",
+"model": "CRS326-24G-2S+RM",
+"sku": [
+"CRS326-24G-2S+RM"
+],
+"kind": "switch",
+"series": "Cloud Router Switch",
+"desc": "1U switch, 24x GbE, 2x 10G SFP+, fanless",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 443,
+"d": 144,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 24,
+"psu": null,
+"psu_redundant": null,
+"input": "DC jack + PoE-in, 10-30V (24V 1.2A adapter included)"
+},
+"heat_btu_h": null,
+"airflow": "passive",
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 24,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": 2,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": 1,
+"usb": null,
+"notes": null
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": {
+"class": "passive",
+"max_w": null
+},
+"perf": {
+"switching_gbps": 86.9,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://mikrotik.com/product/CRS326-24G-2SplusRM",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "switching_gbps = non-blocking L2 capacity at 1518 B (test results). Switch chip 98DX3236. Two DC inputs; redundancy not stated"
+},
+{
+"brand": "MikroTik",
+"model": "CRS328-24P-4S+RM",
+"sku": [
+"CRS328-24P-4S+RM"
+],
+"kind": "switch",
+"series": "Cloud Router Switch",
+"desc": "1U PoE switch, 24x GbE PoE (af/at + passive), 4x 10G SFP+, 450 W PoE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 443,
+"d": 300,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": 44,
+"max_w": 494,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC, built-in 500W"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 24,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": 4,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": {
+"ports": 24,
+"budget_w": 450,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 126.3,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://mikrotik.com/product/crs328_24p_4s_rm",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "PoE-out 802.3af/at plus passive/low-voltage; 450W guaranteed (3x150W per 8 ports), 30W/port. typ_w = no attachments. switching_gbps = non-blocking L2 capacity (1518 B); routing w/ 25 filter rules 0.79 Gbps. 2 fans. Switch chip 98DX3236"
+},
+{
+"brand": "MikroTik",
+"model": "CRS354-48P-4S+2Q+RM",
+"sku": [
+"CRS354-48P-4S+2Q+RM"
+],
+"kind": "switch",
+"series": "Cloud Router Switch",
+"desc": "1U PoE switch, 48x GbE PoE, 4x 10G SFP+, 2x 40G QSFP+, 700 W PoE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 443,
+"d": 382,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": 85,
+"max_w": 800,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC, 1 PSU slot"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 1,
+"rj45_1g": 48,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": 4,
+"sfp28": null,
+"qsfp_plus": 2,
+"qsfp28": null,
+"console": 1,
+"usb": null,
+"notes": "10/100 port role not labelled (likely mgmt)"
+},
+"poe": {
+"ports": 48,
+"budget_w": 700,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 331.8,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://mikrotik.com/product/crs354_48p_4s_2q_rm",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "PoE-out 802.3af/at plus passive; 700W total. typ_w = no attachments; description mentions 750W PSU vs 800W max spec. switching_gbps = non-blocking L2 capacity (1518 B). 4 fans. Switch chip 98DX3257. u=1 implied by 44 mm"
+},
+{
+"brand": "MikroTik",
+"model": "CRS518-16XS-2XQ-RM",
+"sku": [
+"CRS518-16XS-2XQ-RM"
+],
+"kind": "coresw",
+"series": "Cloud Router Switch",
+"desc": "1U switch, 16x 25G SFP28 + 2x 100G QSFP28, dual AC inputs",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 443,
+"d": 265,
+"h": 44.5
+},
+"weight_kg": null,
+"power": {
+"typ_w": 45,
+"max_w": 77,
+"psu": 2,
+"psu_redundant": null,
+"input": "Dual 100-240V AC inputs"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": 1,
+"rj45_1g": null,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": 16,
+"qsfp_plus": null,
+"qsfp28": 2,
+"console": null,
+"usb": 1,
+"notes": null
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://help.mikrotik.com/docs/x/aACLC",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official MikroTik user-manual page; no throughput figures. Redundancy not stated. Switch chip 98DX8525. u=1 implied by 44.5 mm"
+},
+{
+"brand": "MikroTik",
+"model": "hAP ax3",
+"sku": [
+"C53UiG+5HPaxD2HPaxD"
+],
+"kind": "router",
+"series": "hAP",
+"desc": "Home/SOHO Wi-Fi 6 router, 4x GbE + 1x 2.5GbE, dual-band 2x2",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 251,
+"d": 130,
+"h": 39
+},
+"weight_kg": null,
+"power": {
+"typ_w": 15,
+"max_w": 38,
+"psu": null,
+"psu_redundant": null,
+"input": "DC jack 12-28V or PoE-in 18-28V (24V 1.5A adapter included)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 4,
+"rj45_mgig": 1,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 1,
+"notes": "2.5GbE port has PoE-in; Ether1 passive PoE-out 15W"
+},
+"poe": {
+"ports": 1,
+"budget_w": 15,
+"std": "passive-24V"
+},
+"poe_in": {
+"class": "passive",
+"max_w": 38
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2",
+"bands": {
+"2.4": {
+"tx_dbm": 20,
+"gain_dbi": 3.3
+},
+"5": {
+"tx_dbm": 27,
+"gain_dbi": 5.5
+},
+"6": null
+},
+"max_clients": null,
+"uplink": "1x 2.5GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://manual.mikrotik.com/hardware/hap-ax-3",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "TX from CE regulatory table (5 GHz 14-27 dBm by sub-band). IPQ-6010 4-core 1.8 GHz, 1 GB RAM. typ_w = no attachments"
+},
+{
+"brand": "MikroTik",
+"model": "RB5009UG+S+IN",
+"sku": [
+"RB5009UG+S+IN"
+],
+"kind": "router",
+"series": "RB5009",
+"desc": "Desktop/rack router, 7x GbE + 1x 2.5GbE + 1x 10G SFP+, quad-core ARM, PoE-in",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 220,
+"d": 125,
+"h": 22
+},
+"weight_kg": null,
+"power": {
+"typ_w": 14,
+"max_w": 25,
+"psu": null,
+"psu_redundant": true,
+"input": "DC jack 24-57V, 2-pin terminal 24-57V, PoE-in 802.3af/at (port 1)"
+},
+"heat_btu_h": null,
+"airflow": "passive",
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 7,
+"rj45_mgig": 1,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": 1,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 1,
+"notes": "USB 3.0 Type-A"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": {
+"class": "802.3at",
+"max_w": 25
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": 9.37,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": 1.42
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://mikrotik.com/product/rb5009ug_s_in",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Three power inputs (redundant). typ_w = 14W without attachments. Four units fit 1U with K-55 kit. fw_gbps = routing with 25 IP filter rules at 1518 B (fast path no rules 9.85 Gbps); ipsec_gbps = 256 tunnels AES-128-CBC+SHA1 at 1400 B. RouterOS v7 L5"
+},
+{
+"brand": "QNAP",
+"model": "TS-873AU-RP",
+"sku": [
+"TS-873AU-RP"
+],
+"kind": "nas",
+"series": "TS-x73AU",
+"desc": "8-bay 2U rackmount NAS, 2x 2.5GbE, redundant PSU",
+"mount": "rack",
+"u": 2,
+"dims_mm": {
+"w": 482,
+"d": 425,
+"h": 89
+},
+"weight_kg": 9.15,
+"power": {
+"typ_w": 61.25,
+"max_w": 300,
+"psu": 2,
+"psu_redundant": true,
+"input": "100-240V AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": null,
+"rj45_mgig": 2,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 4,
+"notes": "2x 2.5GbE; USB: 1x 3.2 Gen1 A, 1x 3.2 Gen2 A, 2x 3.2 Gen2 C; 2x PCIe Gen3 x4 (pre-2021 units 1x Gen3 x8)"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.qnap.com/da-dk/product/ts-873au-rp/specs",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "8-bay 2U. Dims exclude ears and PSU protrusion. Typical = 61.25 W operating (36.08 W disk standby). 2x 300W redundant PSU; power.max_w = single PSU rating."
+},
+{
+"brand": "Synology",
+"model": "DS923+",
+"sku": [
+"DS923+"
+],
+"kind": "nas",
+"series": "DiskStation",
+"desc": "4-bay desktop NAS, 2x 1GbE, 10GbE slot",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 199,
+"d": 223,
+"h": 166
+},
+"weight_kg": 2.24,
+"power": {
+"typ_w": 35.51,
+"max_w": 100,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC (external 100W adapter)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 2,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 2,
+"notes": "1x eSATA (DX517), 1x PCIe Gen3 x2 network upgrade slot (E10G22-T1-Mini 10GbE), 2x M.2 2280 NVMe"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.adorama.com/syds9234nasa.html",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "4-bay desktop (up to 9 with DX517). Typical = 35.51 W access (11.52 W hibernation). 100W adapter; power.max_w = adapter rating. Retailer page."
+},
+{
+"brand": "Synology",
+"model": "RS1221+",
+"sku": [
+"RS1221+"
+],
+"kind": "nas",
+"series": "RackStation",
+"desc": "8-bay 2U rackmount NAS, 4x 1GbE",
+"mount": "rack",
+"u": 2,
+"dims_mm": {
+"w": 482,
+"d": 306.6,
+"h": 88
+},
+"weight_kg": 6.9,
+"power": {
+"typ_w": 49.89,
+"max_w": 250,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC 50/60Hz"
+},
+"heat_btu_h": 170,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 4,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 2,
+"notes": "1x eSATA (RX418), 1x PCIe Gen3 x8 slot (x4 link); 10GbE via optional card"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://synology.com/en-in/products/RS1221+",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "8-bay 2U. Typical = 49.89 W access (22.64 W HDD hibernation); heat 170.23 BTU/h access. PSU 250W; power.max_w = PSU rating. Supports 2-post direct mount."
+},
+{
+"brand": "Synology",
+"model": "RS2423+",
+"sku": [
+"RS2423+"
+],
+"kind": "nas",
+"series": "RackStation",
+"desc": "12-bay 2U rackmount NAS, 1x 10GbE + 2x 1GbE",
+"mount": "rack",
+"u": 2,
+"dims_mm": {
+"w": 482,
+"d": 552,
+"h": 88
+},
+"weight_kg": 11.5,
+"power": {
+"typ_w": 119.95,
+"max_w": 500,
+"psu": 1,
+"psu_redundant": false,
+"input": null
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 2,
+"rj45_mgig": null,
+"rj45_10g": 1,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 2,
+"notes": "1x PCIe 3.0 x8 slot (x4 link). CDW also lists a management port"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://cdw.ca/product/synology-rackstation-rs2423-nas-server/7393771",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "12-bay 2U, AMD Ryzen V1780B. Typical = 119.95 W operational (CDW). Single fixed 500W PSU (RP+ variant redundant); power.max_w = PSU rating. Reseller page."
+},
+{
+"brand": "Synology",
+"model": "RS822+",
+"sku": [
+"RS822+"
+],
+"kind": "nas",
+"series": "RackStation",
+"desc": "4-bay 1U rackmount NAS, 4x 1GbE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 480,
+"d": 492.6,
+"h": 44
+},
+"weight_kg": 6.4,
+"power": {
+"typ_w": 47.69,
+"max_w": 150,
+"psu": 1,
+"psu_redundant": false,
+"input": null
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 4,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 2,
+"notes": "1x eSATA (RX418 expansion), 1x PCIe Gen3 x8 slot (x4 link)"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://nascompares.com/news/synology-rs822-rs822rp4-bay-1u-rackmount-nas/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "4-bay 1U. Typical = 47.69 W access (16.7 W HDD hibernation). PSU 150W single (RP+ variant is redundant); power.max_w = PSU rating. Source: NASCompares reproduction of Synology spec table (synology.com page not reached)."
+},
+{
+"brand": "TP-Link",
+"model": "Archer MR600",
+"sku": [
+"Archer MR600(EU) 2.0"
+],
+"kind": "modem",
+"series": "Archer MR",
+"desc": "LTE Cat6 4G+ router, 4x GE, Wi-Fi 5 AC1200",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 202,
+"d": 141,
+"h": 33.6
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": null,
+"psu_redundant": null,
+"input": "100-240V AC adapter, 12V DC 1.5A out"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 4,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "1x WAN/LAN + 3x LAN GE; 2x detachable external LTE antennas. LTE Cat6 300/50 Mbps"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 5",
+"streams": "2.4 GHz 300 Mbps, 5 GHz 867 Mbps",
+"bands": {
+"2.4": null,
+"5": null,
+"6": null
+},
+"max_clients": null,
+"uplink": "LTE Cat6"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://static.tp-link.com/2021/202105/20210514/Archer MR600(EU)2.0_datasheet.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "TP-Link datasheet for hardware v2.0 (EU). Dimensions given as 202x141x33.6 mm (W x D x H). Weight not stated."
+},
+{
+"brand": "TP-Link",
+"model": "Omada EAP610",
+"sku": [
+"EAP610"
+],
+"kind": "ap",
+"series": "Omada Wi-Fi 6 Ceiling Mount",
+"desc": "AX1800 ceiling Wi-Fi 6 AP, dual-band, 1x GbE, 802.3af PoE",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 160,
+"d": 160,
+"h": 33.6
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 10.9,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3af PoE, 48V passive PoE or 12V/1A DC (adapter included)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 1,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": null,
+"poe_in": {
+"class": "802.3af",
+"max_w": 10.9
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": null,
+"bands": {
+"2.4": {
+"tx_dbm": 24,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 24,
+"gain_dbi": 5
+},
+"6": null
+},
+"max_clients": 250,
+"uplink": "1x GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.tp-link.com/us/business-networking/omada-wifi-ceiling-mount/eap610/v4/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Hardware V4 page. TX = FCC max (CE: 20 dBm 2.4 GHz EIRP, 23-27 dBm 5 GHz EIRP). 2 antennas per band; marketed as 4-stream dual-band (streams not in spec table). Max clients 250+. Ceiling/wall/junction box mount"
+},
+{
+"brand": "TP-Link",
+"model": "Omada EAP613",
+"sku": [
+"EAP613"
+],
+"kind": "ap",
+"series": "Omada Wi-Fi 6 Ceiling Mount",
+"desc": "AX1800 ceiling Wi-Fi 6 AP, dual-band, 1x GbE, 802.3at PoE",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 160,
+"d": 160,
+"h": 33.6
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 11.0,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3at PoE, 48V passive PoE or 12V/1A DC (adapter not included)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 1,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": null,
+"poe_in": {
+"class": "802.3at",
+"max_w": 11.0
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": null,
+"bands": {
+"2.4": {
+"tx_dbm": 25,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 25,
+"gain_dbi": 5
+},
+"6": null
+},
+"max_clients": 250,
+"uplink": "1x GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.omadanetworks.com/sg/business-networking/omada-wifi-ceiling-mount/eap613/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official TP-Link Omada site (omadanetworks.com, SG region). TX = FCC '<25 dBm' (CE: <20 dBm 2.4 GHz, <23/<25 dBm 5 GHz). Dims for V2 and above. Max clients 250+"
+},
+{
+"brand": "TP-Link",
+"model": "Omada EAP650",
+"sku": [
+"EAP650"
+],
+"kind": "ap",
+"series": "Omada Wi-Fi 6 Ceiling Mount",
+"desc": "AX3000 ceiling Wi-Fi 6 AP, 2x2 dual-band, 1x GbE, 802.3at PoE",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 160,
+"d": 160,
+"h": 33.6
+},
+"weight_kg": 0.38,
+"power": {
+"typ_w": null,
+"max_w": 15.5,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3at PoE, 48V passive PoE or 12V DC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 1,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": null,
+"poe_in": {
+"class": "802.3at",
+"max_w": 15.5
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2",
+"bands": {
+"2.4": {
+"tx_dbm": 26,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 25,
+"gain_dbi": 5
+},
+"6": null
+},
+"max_clients": 250,
+"uplink": "1x GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://static.tp-link.com/upload/product-overview/2026/202603/20260327/Datasheet_EAP650 3.0.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Datasheet hardware V3.0. TX = FCC conducted (5 GHz 24-25 dBm by sub-band; CE EIRP 20 dBm 2.4 GHz, 22-27 dBm 5 GHz). Power 15.5W is US PoE figure. Ceiling/wall/junction box/T-bar mounts included. Max STAs 250+"
+},
+{
+"brand": "TP-Link",
+"model": "Omada EAP653",
+"sku": [
+"EAP653"
+],
+"kind": "ap",
+"series": "Omada Wi-Fi 6 Ceiling Mount",
+"desc": "AX3000 ceiling Wi-Fi 6 AP, 2x2 dual-band, 1x GbE, 802.3at PoE, BLE",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 160,
+"d": 160,
+"h": 33.6
+},
+"weight_kg": 0.38,
+"power": {
+"typ_w": 6.16,
+"max_w": 15.5,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3at PoE, 48V passive PoE or 12V DC (adapter not included)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 1,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": null,
+"poe_in": {
+"class": "802.3at",
+"max_w": 15.5
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 2x2",
+"bands": {
+"2.4": {
+"tx_dbm": 26,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 25,
+"gain_dbi": 5
+},
+"6": null
+},
+"max_clients": 250,
+"uplink": "1x GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://static.tp-link.com/upload/product-overview/2026/202607/20260716/Datasheet_EAP653.pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "TX = FCC conducted (CE 20 dBm 2.4 GHz, 22-27 dBm 5 GHz). Max 13.7W EU / 15.5W US on PoE; typ_w = idle on PoE. BLE 5.2. Max STAs 250+, 16 BSSIDs"
+},
+{
+"brand": "TP-Link",
+"model": "Omada EAP670",
+"sku": [
+"EAP670"
+],
+"kind": "ap",
+"series": "Omada Wi-Fi 6 Ceiling Mount",
+"desc": "AX5400 ceiling Wi-Fi 6 AP, 4x4 5 GHz + 2x2 2.4 GHz, 1x 2.5GbE PoE+",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 220,
+"d": 220,
+"h": 32.5
+},
+"weight_kg": 0.67,
+"power": {
+"typ_w": 6.6,
+"max_w": 22.3,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3at PoE+ or 12V/2A DC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": null,
+"rj45_mgig": 1,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": null,
+"poe_in": {
+"class": "802.3at",
+"max_w": 22.3
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": "2.4 GHz 2x2, 5 GHz 4x4",
+"bands": {
+"2.4": {
+"tx_dbm": 22,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 22,
+"gain_dbi": 5
+},
+"6": null
+},
+"max_clients": 250,
+"uplink": "1x 2.5GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://static.tp-link.com/upload/product-overview/2025/202512/20251216/Datasheet_EAP670 2.20_KR (MT).pdf",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official TP-Link datasheet, HW 2.20, Korea-region edition. TX = FCC conducted (CE EIRP 20 dBm 2.4 GHz; 23/23/30 dBm 5 GHz). typ_w = standby on PoE. Max STAs 250+. Ceiling/wall/junction box/T-bar kits included"
+},
+{
+"brand": "TP-Link",
+"model": "Omada EAP683 LR",
+"sku": [
+"EAP683 LR"
+],
+"kind": "ap",
+"series": "Omada Wi-Fi 6 Ceiling Mount",
+"desc": "AX6000 long-range ceiling Wi-Fi 6 AP, 4 antennas per band, 1x 2.5GbE PoE+",
+"mount": "ceiling",
+"u": 0,
+"dims_mm": {
+"w": 220,
+"d": 220,
+"h": 32.5
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 23.69,
+"psu": null,
+"psu_redundant": null,
+"input": "802.3at PoE or 12V/2A DC (adapter not included)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": null,
+"rj45_mgig": 1,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": null,
+"poe_in": {
+"class": "802.3at",
+"max_w": 23.69
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 6",
+"streams": null,
+"bands": {
+"2.4": {
+"tx_dbm": 26,
+"gain_dbi": 4
+},
+"5": {
+"tx_dbm": 26,
+"gain_dbi": 5
+},
+"6": null
+},
+"max_clients": 512,
+"uplink": "1x 2.5GbE"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.tp-link.com/us/business-networking/omada-wifi-ceiling-mount/eap683-lr/v1/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Marked End of Life on vendor page. 4 antennas per band (4x 4 dBi / 4x 5 dBi); stream count not in spec table. TX = FCC '<26 dBm' (CE <20 / <23 / <28 dBm EIRP). Max power 20.43W EU / 23.69W US"
+},
+{
+"brand": "TP-Link",
+"model": "Omada ER605",
+"sku": [
+"ER605",
+"TL-R605"
+],
+"kind": "router",
+"series": "Omada Gigabit VPN Router",
+"desc": "Desktop gigabit VPN router, 5x GbE (up to 4 WAN)",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 158,
+"d": 101,
+"h": 25
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": 1,
+"psu_redundant": false,
+"input": "External 9V/0.85A DC adapter"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 5,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "1 WAN + 1 LAN fixed + 3 WAN/LAN"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": 0.0415
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.omadanetworks.com/sg/business-networking/omada-router-wired-router/er605/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "No NAT throughput stated; packet forwarding 81,067 pps @1518 B, 1,308,139 pps @66 B. IPsec 41.5 Mbps. Hardware version not stated"
+},
+{
+"brand": "TP-Link",
+"model": "Omada ER7206",
+"sku": [
+"ER7206"
+],
+"kind": "router",
+"series": "Omada Gigabit VPN Router",
+"desc": "Desktop gigabit VPN router, 1x SFP WAN + 5x GbE, fanless",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 226,
+"d": 131,
+"h": 35
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 8.95,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC internal"
+},
+"heat_btu_h": null,
+"airflow": "passive",
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 5,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": 1,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "1 SFP WAN, 1 WAN, 2 LAN/WAN, 2 LAN"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": 0.93,
+"ngfw_gbps": null,
+"threat_gbps": 0.2,
+"ipsec_gbps": 0.217
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.omadanetworks.com/nordic/business-networking/omada-router-wired-router/er7206/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "fw_gbps = NAT throughput static IP (~930-937 Mbps); threat_gbps = IPS TCP 200 Mbps; IPsec AES128 217 Mbps; WireGuard 177.2 Mbps; 150,000 sessions"
+},
+{
+"brand": "TP-Link",
+"model": "Omada ER8411",
+"sku": [
+"ER8411"
+],
+"kind": "router",
+"series": "Omada VPN Router",
+"desc": "1U VPN router, 2x 10G SFP+, 1x 1G SFP, 8x GbE, dual PSU",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 220,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 26.36,
+"psu": 2,
+"psu_redundant": true,
+"input": "Redundant dual 100-240V AC"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 8,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": 1,
+"sfp_plus": 2,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": 1,
+"usb": 2,
+"notes": "SFP+: 1 WAN + 1 WAN/LAN"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": 9.45,
+"ngfw_gbps": null,
+"threat_gbps": 4.924,
+"ipsec_gbps": 2.14
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.omadanetworks.com/au/business-networking/omada-router-wired-router/er8411/v1/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "fw_gbps = NAT static IP; threat_gbps = IPS TCP; IPsec SHA1-AES256; WireGuard 1411 Mbps. 19.12W without USB 3.0. 2 fans. u=1 implied by 44 mm rack chassis"
+},
+{
+"brand": "TP-Link",
+"model": "Omada SX3008F",
+"sku": [
+"SX3008F",
+"TL-SX3008F"
+],
+"kind": "coresw",
+"series": "Omada Aggregation Switch",
+"desc": "1U L2+ aggregation switch, 8x 10G SFP+, fanless",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 180,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 15.46,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC, 50/60 Hz"
+},
+"heat_btu_h": 52.75,
+"airflow": "passive",
+"ports": {
+"rj45_100m": null,
+"rj45_1g": null,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": 8,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": 2,
+"usb": null,
+"notes": "1x RJ45 console + 1x Micro-USB console"
+},
+"poe": {
+"ports": 0,
+"budget_w": 0,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 160,
+"forwarding_mpps": 119.04,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.omadanetworks.com/en/business-networking/omada-switch-aggregation/sx3008f/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official TP-Link Omada site. Fanless. u=1 implied by 44 mm rack chassis"
+},
+{
+"brand": "TP-Link",
+"model": "Omada TL-SG2428P",
+"sku": [
+"TL-SG2428P"
+],
+"kind": "switch",
+"series": "Omada Smart Switch",
+"desc": "1U smart managed switch, 24x GbE PoE+, 4x 1G SFP, 250 W PoE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 220,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": 32.1,
+"max_w": 306.9,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC, 50/60 Hz"
+},
+"heat_btu_h": 1047.3,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 24,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": 4,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": null
+},
+"poe": {
+"ports": 24,
+"budget_w": 250,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 56,
+"forwarding_mpps": 41.7,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.omadanetworks.com/en/business-networking/omada-switch-access/tl-sg2428p/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Marked End of Sale (successor SG2428P). max_w/heat = V4 with 250W PD; typ_w = V1 no PD. 2 fans. u=1 implied by 44 mm rack chassis"
+},
+{
+"brand": "TP-Link",
+"model": "Omada TL-SG3428MP",
+"sku": [
+"TL-SG3428MP"
+],
+"kind": "switch",
+"series": "Omada L2+ Managed Switch",
+"desc": "1U L2+ managed switch, 24x GbE PoE+, 4x 1G SFP, 384 W PoE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 330,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": 456.4,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC, 50/60 Hz"
+},
+"heat_btu_h": 1557.47,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 24,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": 4,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": 2,
+"usb": null,
+"notes": "1x RJ45 console + 1x Micro-USB console"
+},
+"poe": {
+"ports": 24,
+"budget_w": 384,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 56,
+"forwarding_mpps": 41.66,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.omadanetworks.com/eg/business-networking/omada-sdn-switch/tl-sg3428mp/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official TP-Link Omada site. Power/heat are V5 figures with 384W PD load (V1 463.8W, V4 460.8W; no-PD V2 34.4W). 2 fans. u=1 implied by 44 mm rack-mountable chassis"
+},
+{
+"brand": "TP-Link",
+"model": "Omada TL-SG3452P",
+"sku": [
+"TL-SG3452P"
+],
+"kind": "switch",
+"series": "Omada L2+ Managed Switch",
+"desc": "1U L2+ managed switch, 48x GbE PoE+, 4x 1G SFP, 384 W PoE",
+"mount": "rack",
+"u": 1,
+"dims_mm": {
+"w": 440,
+"d": 330,
+"h": 44
+},
+"weight_kg": null,
+"power": {
+"typ_w": 52.53,
+"max_w": 485.4,
+"psu": 1,
+"psu_redundant": false,
+"input": "100-240V AC, 50/60 Hz"
+},
+"heat_btu_h": 1656.19,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 48,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": 4,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": 2,
+"usb": null,
+"notes": "1x RJ45 console + 1x Micro-USB console"
+},
+"poe": {
+"ports": 48,
+"budget_w": 384,
+"std": "802.3at"
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": 104,
+"forwarding_mpps": 77.4,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": null,
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.omadanetworks.com/uk/business-networking/omada-switch-access/tl-sg3452p/",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "high",
+"notes": "Official TP-Link Omada site. typ_w = no PD connected; max/heat with 384W PD. 3 fans. u=1 implied by 44 mm rack chassis"
 },
 {
 "brand": "Ubiquiti",
@@ -11641,6 +15324,83 @@
 "notes": "vertiv.com not reachable; distributor copy of datasheet for GXT5-3000IRT2UXLN (network-card variant of same unit). Battery 6x 12V 9Ah VRLA."
 },
 {
+"brand": "Yealink",
+"model": "SIP-T54W",
+"sku": [
+"SIP-T54W"
+],
+"kind": "phone",
+"series": "T5 Prime Business",
+"desc": "16-account IP phone, 4.3in colour LCD, 2x GE, PoE, Wi-Fi, BT",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 233,
+"d": 186.1,
+"h": 222.6
+},
+"weight_kg": null,
+"power": {
+"typ_w": 2.2,
+"max_w": 5.5,
+"psu": null,
+"psu_redundant": null,
+"input": "PoE 802.3af or 5V DC (adapter not included)"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 2,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": 1,
+"notes": "USB 2.0 (headset / flash / up to 3 EXP50)"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": {
+"class": "802.3af class 3",
+"max_w": 5.5
+},
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 5",
+"streams": "dual-band 2.4/5 GHz, 433 Mbps",
+"bands": {
+"2.4": null,
+"5": null,
+"6": null
+},
+"max_clients": null,
+"uplink": "client"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://en.cdr.pl/p7203,yealink-sip-t54w-16-line-ip-phone-with-poe-gigabit-ethernet-ports-bluetooth-and-wifi.html",
+"source2": null,
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "Retailer page reproducing Yealink spec. Dimensions printed as 233 x 222.6 x 186.1 x 41.7 mm (W x D x H at two stand angles x thickness); stored w233, d186.1, h222.6 - verify. Weight not stated. Bluetooth 4.2."
+},
+{
 "brand": "ZTE",
 "model": "MF286R",
 "sku": [
@@ -11714,6 +15474,80 @@
 "verified": "2026-10-28",
 "confidence": "medium",
 "notes": "Datasheet (Conrad copy of ZTE sheet, MF286R1) gives 180x170x30 mm as HxWxD: stored w=170, d=30, h=180 (upright desktop unit). Power adapter/consumption/weight not stated. SuperBox is Turkcell's (Türkiye; also KKTCell N. Cyprus) SIM-based 4.5G home-internet product, not an Azerbaijani operator; MF286R is one hardware model sold under that name (Turkish forum listings). Newer 5G/Wi-Fi 7 Superbox (Dec 2025-2026) is made by ZTE/Netaş, model number not published."
+},
+{
+"brand": "ZTE",
+"model": "MF289F",
+"sku": [
+"MF289F"
+],
+"kind": "modem",
+"series": "MF28x 4G CPE",
+"desc": "LTE Cat20 4G router, 2x GE, Wi-Fi 5",
+"mount": "desktop",
+"u": 0,
+"dims_mm": {
+"w": 132,
+"d": 78,
+"h": 191.2
+},
+"weight_kg": null,
+"power": {
+"typ_w": null,
+"max_w": null,
+"psu": null,
+"psu_redundant": null,
+"input": "12V DC adapter"
+},
+"heat_btu_h": null,
+"airflow": null,
+"ports": {
+"rj45_100m": null,
+"rj45_1g": 2,
+"rj45_mgig": null,
+"rj45_10g": null,
+"sfp": null,
+"sfp_plus": null,
+"sfp28": null,
+"qsfp_plus": null,
+"qsfp28": null,
+"console": null,
+"usb": null,
+"notes": "2x GE RJ45 (one can be WAN per dateks I/O list). LTE DL up to 2 Gbps / UL 150 Mbps (Cat20). External antenna connectors TS-9 (shopro.lt)"
+},
+"poe": {
+"ports": null,
+"budget_w": null,
+"std": null
+},
+"poe_in": null,
+"perf": {
+"switching_gbps": null,
+"forwarding_mpps": null,
+"fw_gbps": null,
+"ngfw_gbps": null,
+"threat_gbps": null,
+"ipsec_gbps": null
+},
+"wifi": {
+"std": "Wi-Fi 5",
+"streams": "dual-band 2.4/5 GHz (streams not stated)",
+"bands": {
+"2.4": null,
+"5": null,
+"6": null
+},
+"max_clients": null,
+"uplink": "LTE Cat20"
+},
+"camera": null,
+"nvr": null,
+"ups": null,
+"source": "https://www.dateks.lv/en/cenas/wireless/906629-zte-router-mf289f-",
+"source2": "https://www.shopro.lt/98079-zte-mf289f-cellular-network-device-cellular-network-router-en",
+"verified": "2026-10-28",
+"confidence": "medium",
+"notes": "No ZTE official datasheet found; retailer listings only and they conflict (alternate box size 220x200x100 mm; weight 198 g vs 0.92 kg) - weight left null. Dims 191.2 H x 132 W x 78 D mm per shopro.lt."
 }
 ]
 }
