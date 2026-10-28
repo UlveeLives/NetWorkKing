@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // NetWorkKing — Electron main process (Windows desktop app).
 const { app, BrowserWindow, ipcMain, dialog, Menu, shell } = require("electron");
 const path = require("path");

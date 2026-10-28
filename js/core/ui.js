@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Shell: header with app switcher, page tabs, building tabs (bottom, like Excel sheets), drawer, modals, menus.
 "use strict";
 const LANGS = [["az","Azərbaycanca"],["tr","Türkçe"],["en","English"],["ru","Русский"]];

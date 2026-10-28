@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // SVG icon library (each icon drawn in a 48x48 box).
 "use strict";
 const ICO = {

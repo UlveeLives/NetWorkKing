@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // AI assistant: a chat panel opened from a button in every app. It sees the open project (building, floors, rooms,
 // devices, cables, VLANs, racks), the open app and the selection, answers questions and can propose changes.
 // Changes are never made on its own: each proposal is shown as a list with Apply / Reject; Apply is one undo step.

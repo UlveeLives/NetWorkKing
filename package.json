@@ -3,8 +3,8 @@
   "productName": "NetWorkKing",
   "version": "3.3.0",
   "description": "NetWorkKing — network documentation: building structure, topology, Port Map, racks, fiber, CCTV and Wi-Fi in one app",
-  "author": "UlveeLives",
-  "license": "UNLICENSED",
+  "author": "Ulvi Badalov",
+  "license": "SEE LICENSE IN LICENSE",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -17,9 +17,36 @@
   "build": {
     "appId": "local.ulveelives.networkking",
     "productName": "NetWorkKing",
-    "files": ["index.html", "main.js", "preload.js", "css/**", "js/**", "icons/**", "vendor/**", "build/icon.png", "manifest.webmanifest", "!build.bat"],
-    "directories": { "output": "dist", "buildResources": "build" },
-    "win": { "target": "nsis", "icon": "build/icon.ico", "artifactName": "NetWorkKing-Setup-${version}.exe" },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "shortcutName": "NetWorkKing" }
+    "files": [
+      "index.html",
+      "main.js",
+      "preload.js",
+      "css/**",
+      "js/**",
+      "icons/**",
+      "vendor/**",
+      "build/icon.png",
+      "manifest.webmanifest",
+      "LICENSE",
+      "legal/**",
+      "!build.bat"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "artifactName": "NetWorkKing-Setup-${version}.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "NetWorkKing",
+      "license": "build/eula.txt"
+    },
+    "copyright": "© 2026 Ulvi Badalov. All rights reserved."
   }
 }

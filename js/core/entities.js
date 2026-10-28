@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Shared building entities: device kinds, devices, racks, cables, floors, rooms, VLANs — and the editors every app uses.
 "use strict";
 // cat: palette group; rack: can be mounted in a rack (h = default height in U); ports: default port count; sw: switching device

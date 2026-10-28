@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Safe bridge between the page and the main process (files and PDF only).
 const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld("appBridge", {

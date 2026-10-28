@@ -1,0 +1,21 @@
+NetWorkKing
+Copyright © 2026 Ulvi Badalov. All rights reserved. / Bütün hüquqlar qorunur.
+
+PROPRIETARY SOFTWARE — this is not open-source software.
+
+The source code, compiled program, documentation, icons, translations and device catalog in this
+repository are the property of Ulvi Badalov. No license is granted to copy, modify, distribute,
+sublicense, sell or create derivative works of any part of it without prior written permission
+from the copyright owner. Use of the program is governed by the End-User License Agreement in
+legal/EULA.txt (shown during installation).
+
+Bu depodakı mənbə kodu, proqram, sənədlər, ikonlar, tərcümələr və cihaz kataloqu Ulvi Badalova
+məxsusdur. Müəllif hüququ sahibinin yazılı icazəsi olmadan onun hər hansı hissəsini kopyalamaq,
+dəyişmək, yaymaq, satmaq və ya ondan törəmə əsər yaratmaq qadağandır. Proqramın istifadəsi
+legal/EULA.txt faylındakı Son İstifadəçi Lisenziya Müqaviləsi ilə tənzimlənir.
+
+Third-party components keep their own licenses:
+- Mozilla pdf.js (vendor/pdf.min.js, vendor/pdf.worker.min.js) — Apache License 2.0, see vendor/pdfjs-LICENSE.
+- Web fonts are loaded from Google Fonts under the SIL Open Font License.
+
+Contact: Ulvi Badalov — https://github.com/UlveeLives

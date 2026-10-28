@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 for k,az,tr,en,ru in [
  ("app_fiber","Fiber magistral","Fiber omurga","Fiber backbone","Оптическая магистраль"),("app_fiber_d","Optik kabellər, itki büdcəsi, liflər, binalar arası xətlər","Optik kablolar, kayıp bütçesi, binalar arası","Fibre cables, loss budget, strands, links between buildings","Оптика, бюджет потерь, волокна, связи между зданиями"),("doc_fiber","Fiber magistral sxemi","Fiber omurga şeması","Fiber backbone","Схема оптической магистрали"),
  ("building","Bina","Bina","Building","Здание"),("emptyPlace","Bu binada {n} cihaz var, amma sxemə hələ qoyulmayıb.","Bu binada {n} cihaz var, şemada değil.","This building has {n} devices that are not on the diagram yet.","В здании {n} устройств, ещё не на схеме."),

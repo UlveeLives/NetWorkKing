@@ -1,0 +1,65 @@
+NETWORKKING — SON İSTİFADƏÇİ LİSENZİYA MÜQAVİLƏSİ (EULA)
+© 2026 Ulvi Badalov. Bütün hüquqlar qorunur.
+
+Bu müqavilə NetWorkKing proqramının (bütün versiyaları, yeniləmələri, sənədləri, ikonları və kataloqu ilə birlikdə — "Proqram") müəllif hüququ sahibi Ulvi Badalov ("Sahib") ilə Proqramı quraşdıran və ya istifadə edən şəxs ("İstifadəçi") arasında bağlanır. Proqramı quraşdırmaqla və ya istifadə etməklə İstifadəçi bu şərtləri qəbul edir. Razı deyilsinizsə, Proqramı quraşdırmayın və istifadə etməyin.
+
+1. Mülkiyyət. Proqram satılmır, istifadə üçün lisenziya ilə verilir. Proqramın və onun bütün hissələrinin müəllif hüququ və digər əqli mülkiyyət hüquqları Sahibə məxsusdur.
+
+2. Lisenziya. Sahib İstifadəçiyə Proqramı öz daxili işi üçün istifadə etməyə qeyri-müstəsna, başqasına verilməyən hüquq verir. Sahibin yazılı icazəsi olmadan bundan artıq hüquq verilmir.
+
+3. Qadağalar. Sahibin yazılı icazəsi olmadan İstifadəçi:
+   a) Proqramı və ya onun hissələrini kopyalaya, yaya, sata, icarəyə verə, başqasına ötürə və ya internetdə paylaşa bilməz (ehtiyat nüsxə istisnadır);
+   b) Proqramı dəyişə, ondan törəmə proqram yarada, onu tərcümə edə bilməz;
+   c) Proqramın mənbə kodunu çıxarmağa, onu tərsinə mühəndisliyə (reverse engineering) uğratmağa, dekompilyasiya etməyə cəhd edə bilməz — qanunun açıq icazə verdiyi hallar istisnadır;
+   d) Müəllif hüququ, ad və lisenziya qeydlərini silə və ya dəyişə bilməz;
+   e) Proqramın adını, loqosunu və görünüşünü başqa məhsul üçün istifadə edə bilməz.
+
+4. Məlumatlar. İstifadəçinin layihə məlumatları onun öz cihazında saxlanılır və İstifadəçiyə məxsusdur. Ehtiyat nüsxələrin vaxtında götürülməsinə İstifadəçi özü cavabdehdir.
+
+5. AI funksiyası. AI köməkçisi İstifadəçinin öz Anthropic API açarı ilə işləyir; istifadə edildikdə layihə məlumatı Anthropic-ə göndərilir və onun şərtləri tətbiq olunur. Bu funksiyanı istifadə edib-etməmək İstifadəçinin seçimidir.
+
+6. Üçüncü tərəf komponentləri. Proqramda öz lisenziyaları ilə yayılan komponentlər var (məs. Mozilla pdf.js — Apache License 2.0, mətni vendor/pdfjs-LICENSE faylındadır). Həmin komponentlərə onların öz lisenziyası tətbiq olunur.
+
+7. Zəmanət yoxdur. Proqram "olduğu kimi" verilir. Sahib Proqramın xətasız işləyəcəyinə, hər hansı məqsədə uyğun olacağına və hesablamaların (PoE, Wi-Fi, yaddaş, güc və s.) dəqiqliyinə zəmanət vermir. Hesablamalar köməkçi xarakter daşıyır; layihə qərarları üçün İstifadəçi cavabdehdir.
+
+8. Məsuliyyətin məhdudlaşdırılması. Qanunun icazə verdiyi ən geniş həddə Sahib Proqramın istifadəsindən və ya istifadə edilə bilməməsindən yaranan heç bir birbaşa və ya dolayı zərərə (məlumat itkisi, gəlir itkisi və s.) görə məsuliyyət daşımır.
+
+9. Xitam. İstifadəçi bu şərtləri pozarsa, lisenziya avtomatik olaraq xitam olunur və İstifadəçi Proqramın bütün nüsxələrini silməlidir.
+
+10. Tətbiq olunan hüquq. Bu müqaviləyə Türkiyə Respublikasının qanunvericiliyi tətbiq olunur; mübahisələr Sahibin yaşadığı yerin məhkəmələrində həll edilir.
+
+Əlaqə: Ulvi Badalov — github.com/UlveeLives
+
+------------------------------------------------------------
+
+NETWORKKING — END-USER LICENSE AGREEMENT (EULA)
+© 2026 Ulvi Badalov. All rights reserved.
+
+This agreement is between Ulvi Badalov, the copyright owner ("Owner"), and the person who installs or uses the NetWorkKing program, including all versions, updates, documents, icons and catalog ("Software") ("User"). By installing or using the Software the User accepts these terms. If you do not agree, do not install or use the Software.
+
+1. Ownership. The Software is licensed, not sold. Copyright and all other intellectual property rights in the Software and all its parts belong to the Owner.
+
+2. License. The Owner grants the User a non-exclusive, non-transferable right to use the Software for the User's own internal work. No other right is granted without the Owner's written permission.
+
+3. Restrictions. Without the Owner's written permission the User may not:
+   a) copy, distribute, sell, rent, transfer or share the Software or any part of it online (a backup copy excepted);
+   b) modify, translate or create derivative works of the Software;
+   c) attempt to extract the source code, reverse engineer or decompile the Software, except where the law expressly allows it;
+   d) remove or change copyright, name or license notices;
+   e) use the Software's name, logo or look for another product.
+
+4. Data. The User's project data is stored on the User's own device and belongs to the User. The User is responsible for keeping backups.
+
+5. AI feature. The AI assistant works with the User's own Anthropic API key; when used, project data is sent to Anthropic and Anthropic's terms apply. Using it is the User's choice.
+
+6. Third-party components. The Software contains components distributed under their own licenses (e.g. Mozilla pdf.js — Apache License 2.0, text in vendor/pdfjs-LICENSE). Those components are governed by their own licenses.
+
+7. No warranty. The Software is provided "as is". The Owner does not warrant that it is error-free, fit for any purpose, or that its calculations (PoE, Wi-Fi, storage, power, etc.) are exact. Calculations are an aid; the User is responsible for design decisions.
+
+8. Limitation of liability. To the fullest extent permitted by law, the Owner is not liable for any direct or indirect damage (loss of data, loss of income, etc.) arising from the use of, or inability to use, the Software.
+
+9. Termination. If the User breaches these terms the license ends automatically and the User must delete all copies of the Software.
+
+10. Governing law. This agreement is governed by the laws of the Republic of Türkiye; disputes are settled by the courts of the Owner's place of residence.
+
+Contact: Ulvi Badalov — github.com/UlveeLives

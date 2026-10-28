@@ -12,3 +12,7 @@ All apps work on the same building data (devices, racks, cables, floors, rooms, 
 - Translations: `tools/strings/*.py` → `python3 tools/gen_i18n.py` (Azerbaijani, Turkish, English, Russian).
 
 This repository contains program code only — never project or customer data.
+
+© 2026 Ulvi Badalov. All rights reserved. Proprietary software — see [LICENSE](LICENSE) and [legal/EULA.txt](legal/EULA.txt).
+
+© 2026 Ulvi Badalov. All rights reserved. Proprietary software — see [LICENSE](LICENSE) and [legal/EULA.txt](legal/EULA.txt).

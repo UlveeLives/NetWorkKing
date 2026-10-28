@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Rack: front / rear elevations of every rack of the building, drag devices between U positions and racks,
 // A/B power feeds, PDU and UPS load, heat, weight, and the rack document.
 "use strict";

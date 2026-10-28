@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Import of files from the earlier separate programs into NetWorkKing:
 //   PortMap 1.x / 2.x / 3.x (.portmap.json, or a PortMap backup with several buildings),
 //   RackLayout 2.x (.rack.json, app "rack-u-layout"),

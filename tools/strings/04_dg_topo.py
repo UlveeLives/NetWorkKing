@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 for k,az,tr,en,ru in [
  ("app_topology","Şəbəkə topologiyası","Ağ topolojisi","Network topology","Топология сети"),("app_topology_d","Fiziki / məntiqi sxem, IP və VLAN planı","Fiziksel / mantıksal şema, IP ve VLAN","Physical / logical diagram, IP and VLAN plan","Физическая / логическая схема, IP и VLAN"),
  ("doc_topology","Fiziki şəbəkə topologiyası","Fiziksel ağ topolojisi","Physical network topology","Физическая топология сети"),

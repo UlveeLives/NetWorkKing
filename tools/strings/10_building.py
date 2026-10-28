@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 # Building structure app
 for k,az,tr,en,ru in [
  ("app_building","Bina strukturu","Bina yapısı","Building structure","Структура здания"),

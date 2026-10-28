@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 for k,az,tr,en,ru in [
  ("app_rack","Rack U-Layout","Rack U-Layout","Rack U-Layout","Rack U-Layout"),("app_rack_d","Ön / arxa görünüş, U yerləri, güc A/B, UPS, istilik","Ön / arka görünüm, U, güç A/B, UPS","Front / rear elevations, U positions, A/B power, UPS, heat","Фасады стоек, юниты, питание A/B, ИБП"),("doc_rack","Rack görünüşləri","Rack görünüşleri","Rack elevations","Фасады стоек"),
  ("tabRacks","Rack-lar","Rack'ler","Racks","Стойки"),("tabPower","Güc / UPS","Güç / UPS","Power / UPS","Питание / ИБП"),("total","Cəmi","Toplam","Total","Итого"),("min","dəq","dk","min","мин"),

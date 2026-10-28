@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 for k,az,tr,en,ru in [
  ("catTitle","Cihaz kataloqu","Cihaz kataloğu","Device catalog","Каталог устройств"),
  ("catHint","{n} model. Model seçəndə U, güc, çəki, dərinlik, portlar, PoE, kamera / NVR / AP göstəriciləri cihaza tətbiq olunur. Hər model rəsmi datasheet mənbəyi ilə.","{n} model. Seçilen modelin değerleri cihaza uygulanır; her model resmi kaynakla.","{n} models. Picking one applies its U height, power, weight, depth, ports, PoE and camera / NVR / AP values. Every model cites its official data sheet.","{n} моделей. При выборе к устройству применяются U, мощность, вес, глубина, порты, PoE и параметры камеры / NVR / AP. У каждой модели — ссылка на официальный даташит."),
@@ -70,3 +71,5 @@ K("impV2Ok","Wolf Suite 2.0: {n} sənəd idxal olundu","Wolf Suite 2.0: {n} belg
 K("impUnplaced","{n} cihaz sxemdə yerləşdirilməyib (sol paneldə)","{n} cihaz şemada değil","{n} devices are not on the diagram yet (left panel)","{n} устройств не размещены на схеме")
 K("tourSkip","Keç","Geç","Skip","Пропустить")
 K("tourSkipT","Təlimatı bağla — proqram yenidən açılana qədər başqa təlimat pəncərəsi açılmayacaq","Rehberi kapat — uygulama yeniden açılana kadar başka rehber açılmaz","Close the guide — no more guide balloons until the app is opened again","Закрыть подсказки — до следующего запуска они не появятся")
+K("rightsReserved","Bütün hüquqlar qorunur.","Tüm hakları saklıdır.","All rights reserved.","Все права защищены.")
+K("eulaBtn","Lisenziya müqaviləsi (EULA)","Lisans sözleşmesi (EULA)","License agreement (EULA)","Лицензионное соглашение (EULA)")

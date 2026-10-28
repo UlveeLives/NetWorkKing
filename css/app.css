@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 /* NetWorkKing — one stylesheet for all apps. Light and dark themes follow the system unless chosen in Settings. */
 :root{
   --bg:#eef1f4; --surface:#ffffff; --surface2:#f6f8fa; --ink:#18212b; --muted:#5b6774; --line:#d3d9e0; --line2:#e6eaef;
@@ -644,3 +645,4 @@ input.bad{border-color:#d63a3a!important}
 .smf input,.smf select{display:inline-block;font-size:12px;padding:3px 6px;height:28px;border:1px solid var(--line)!important;background:var(--surface)!important;border-radius:6px;color:var(--text)}
 .smf td{vertical-align:middle;white-space:nowrap}
 .smrooms > td{background:color-mix(in srgb,var(--pri) 4%,transparent)}
+.eulabox{max-width:760px}.eulatx{white-space:pre-wrap;font:12.5px/1.5 var(--f-body,inherit);max-height:60vh;overflow:auto;background:var(--bg2,rgba(127,127,127,.08));padding:12px;border-radius:8px}

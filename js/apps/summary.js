@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Summary: every device, piece of equipment and accessory of the building in one place — list, counts, models,
 // where it is, brand / model, IP, MAC, VLAN, serial, what it is cabled to — editable right here (same data as every
 // other app, so a change here is a change everywhere), with what is still missing and a jump to the app that fixes it.

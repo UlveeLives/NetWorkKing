@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 for k,az,tr,en,ru in [
  ("app_portmap","Port Map","Port Map","Port Map","Port Map"),("app_portmap_d","Switch və patch panel portları, otaqlar, VLAN, PoE","Switch ve panel portları, odalar, VLAN, PoE","Switch and patch-panel ports, rooms, VLAN, PoE","Порты коммутаторов и панелей, VLAN, PoE"),("doc_portmap","Port xəritəsi","Port haritası","Port map","Карта портов"),
  ("add","Əlavə et","Ekle","Add","Добавить"),("copied","Kopyalandı","Kopyalandı","Copied","Скопировано"),("f_sfp","Onlardan SFP / optik","SFP / optik","Of which SFP / optical","Из них SFP"),

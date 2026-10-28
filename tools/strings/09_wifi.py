@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 # Wi-Fi Plan strings (ported from Wolf Suite v2), stored with the wf_ prefix; js/apps/wifi.js looks them up first.
 K("wf_appName","Wi-Fi Plan","Wi-Fi Planı","Wi-Fi Plan","План Wi-Fi")
 K("wf_addFloor","Mərtəbə","Kat","Floor","Этаж")

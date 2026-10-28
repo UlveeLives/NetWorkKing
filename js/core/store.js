@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // NetWorkKing data store: one project = one company / branch, with buildings.
 // Every app is a view of the same building data (devices, racks, cables, floors, rooms, VLANs),
 // so a change made in one app is immediately visible in all the others.

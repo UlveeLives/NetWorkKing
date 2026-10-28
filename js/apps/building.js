@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Building structure: floors and rooms of every building, drawn on a floor plan by drag and drop, with small ready-made
 // shapes for structure (rooms, corridors, stairs, lifts, doors, windows, columns) and devices (data outlets, APs, cameras,
 // TVs, phones, racks …). A guided set-up asks for floors, rooms, server rooms and what each room needs.

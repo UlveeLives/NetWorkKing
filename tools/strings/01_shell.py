@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 K("ok","OK","Tamam","OK","OK")
 K("cancel","Ləğv et","İptal","Cancel","Отмена")
 K("close","Bağla","Kapat","Close","Закрыть")

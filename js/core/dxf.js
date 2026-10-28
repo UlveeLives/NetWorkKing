@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // DXF reader: AutoCAD drawing exchange files (text DXF, R12 … 2018) read in the browser, without any library.
 // parse() reads group codes into blocks and entities; flatten() expands block references (INSERT) into world coordinates
 // and keeps track of the layer each piece really belongs to; analyze() guesses what each layer is (walls, doors, windows,

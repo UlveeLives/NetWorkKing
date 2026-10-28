@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Port Map: every switch / patch panel port of the building, the chain switch port → patch panel → outlet → device,
 // switch-port settings (access / trunk, VLAN, PoE, speed), TIA-606 labels, checks and port lists.
 "use strict";

@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Wi-Fi Plan: predictive Wi-Fi design on the building's floor plans (ported from Wolf Suite v2 Wi-Fi Plan).
 // Walls with per-band losses, doors / windows, scale calibration, multi-band AP radios, RSSI / SNR / secondary coverage /
 // AP count / co-channel / data-rate / best-AP / pass views, requirement profiles, automatic channel plan, floor-to-floor

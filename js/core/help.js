@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Guided tours (balloons with "Got it" / "Done") shown when a page opens, and the written user guide in Settings.
 "use strict";
 const tourSeen = new Set();   // pages already shown in this session

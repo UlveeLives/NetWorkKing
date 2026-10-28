@@ -94,3 +94,7 @@ E) Cihaz kataloqu
 
 Məlumatlar kompüterdə avtomatik saxlanılır. Ehtiyat üçün vaxtaşırı
 "İxrac → Layihə faylı" et (.networkking.json); başqa kompüterdə "İdxal" ilə açılır.
+
+© 2026 Ulvi Badalov. Bütün hüquqlar qorunur. Proqramın istifadəsi legal/EULA.txt (Lisenziya müqaviləsi) ilə tənzimlənir.
+
+© 2026 Ulvi Badalov. Bütün hüquqlar qorunur. Proqramın istifadəsi legal/EULA.txt (Lisenziya müqaviləsi) ilə tənzimlənir.

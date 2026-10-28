@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Diagram engine for Topology, Fiber and CCTV. Devices, racks and cables are building entities;
 // the view only stores where each one is drawn, plus free boxes (zones), texts, shapes and images.
 "use strict";

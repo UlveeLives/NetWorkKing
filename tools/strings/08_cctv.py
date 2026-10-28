@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 for k,az,tr,en,ru in [("turret","Turret","Turret","Turret","Турель"),("dome","Dome","Dome","Dome","Купольная"),("bullet","Bullet (silindr)","Bullet","Bullet","Цилиндрическая"),("ptz","PTZ (fırlanan)","PTZ","PTZ","PTZ"),("fisheye","Fisheye (360°)","Fisheye","Fisheye (360°)","Fisheye (360°)"),("box","Box","Box","Box","Корпусная"),("cube","Cube","Cube","Cube","Кубическая")]:
     K("cs_"+k,az,tr,en,ru)
 for k,az,tr,en,ru in [

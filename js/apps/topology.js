@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Network topology: physical / logical diagram of the building, IP & VLAN plan, inventory, cable schedule, document.
 "use strict";
 (function(){

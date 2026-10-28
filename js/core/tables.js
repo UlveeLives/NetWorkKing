@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Tables shared by several apps: device inventory and cable schedule (both editable, both exportable to CSV).
 "use strict";
 function invRows(b, kinds){ return b.devices.filter(d => !kinds || kinds.includes(d.kind)).filter(d => !(KINDS[d.kind] || {}).acc).sort((a, c) => (a.kind + devLabel(a)).localeCompare(c.kind + devLabel(c), undefined, {numeric:true})); }

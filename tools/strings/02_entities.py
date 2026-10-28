@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 for k,az,tr,en,ru in [
  ("internet","İnternet / ISP","İnternet / ISP","Internet / ISP","Интернет / провайдер"),("modem","Modem / 4G-5G router","Modem / 4G-5G router","Modem / 4G-5G router","Модем / 4G-5G роутер"),("ont","ONT / GPON terminal","ONT / GPON terminal","ONT / GPON terminal","ONT / GPON терминал"),
  ("firewall","Firewall","Firewall","Firewall","Межсетевой экран"),("router","Router","Router","Router","Маршрутизатор"),("coresw","Core switch (L3)","Core switch (L3)","Core switch (L3)","Ядро (L3 коммутатор)"),("switch","Switch","Switch","Switch","Коммутатор"),

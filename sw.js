@@ -1,7 +1,8 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // NetWorkKing service worker: keeps the app usable offline (phone / tablet install). Data itself lives in IndexedDB.
 const V = "networkking-3.3.0";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "css/app.css", "js/i18n.js", "js/catalog-data.js",
-  ...["util","icons","store","ui","entities","catalog","tables","doc","help","settings","dg","importers","dxf","ai"].map(f => `js/core/${f}.js`),
+  ...["legal","util","icons","store","ui","entities","catalog","tables","doc","help","settings","dg","importers","dxf","ai"].map(f => `js/core/${f}.js`),
   ...["building","topology","portmap","rack","fiber","cctv","wifi","summary"].map(f => `js/apps/${f}.js`), "js/main.js",
   "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "vendor/pdf.min.js", "vendor/pdf.worker.min.js"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });

@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Settings window (language, theme, help, user guide, device catalog, AI lookup, project) and the first-run setup.
 "use strict";
 function openSettings(tab){
@@ -30,9 +31,11 @@ function openSettings(tab){
     <label class="fld"><span>${esc(t("projName"))}</span><input id="s-pname" value="${esc(p.name)}"></label>
     <label class="fld"><span>${esc(t("projCompany"))}</span><input id="s-pcomp" value="${esc(p.company)}"></label>
     <div class="btns"><button class="btn" data-m="places">🏢 ${esc(t("places"))}</button><button class="btn" data-m="dupProj">⧉ ${esc(t("projDup"))}</button><button class="btn dan" data-m="delProj"${Object.keys(store.projects).length < 2 ? " disabled" : ""}>🗑 ${esc(t("projDel"))}</button></div></div>
-  <div class="tsec" data-t="about"${cur === "about" ? "" : " hidden"}><p><b>NetWorkKing ${esc(APP_VERSION)}</b></p><p class="muted small">${esc(t("aboutText"))}</p><div id="s-storage" class="muted small"></div>
+  <div class="tsec" data-t="about"${cur === "about" ? "" : " hidden"}><p><b>NetWorkKing ${esc(APP_VERSION)}</b></p><p class="small"><b>${esc(COPYRIGHT)}.</b> ${esc(t("rightsReserved"))}</p><p class="muted small">${esc(t("aboutText"))}</p>
+    <div class="btns"><button class="btn" data-m="eula">📜 ${esc(t("eulaBtn"))}</button></div><div id="s-storage" class="muted small"></div>
     <div class="btns"><button class="btn" data-m="wizard">🧭 ${esc(t("setupAgain"))}</button></div></div>
   <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><button class="btn pri" data-m="save">${esc(t("save"))}</button></div>`, {
+    eula: () => showEula(),
     tab: (bt, e, k) => { $$(".mbox .tabb").forEach(x => x.classList.toggle("on", x === bt)); $$(".mbox .tsec").forEach(x => x.hidden = x.dataset.t !== k); },
     save: () => { readSettings(); closeModal(); applyTheme(); render(); toast("✓ " + t("saved")); },
     helpAll: () => { s.help.off = {}; s.help.allOff = false; tourSeen.clear(); $$(".s-pg").forEach(x => x.checked = true); $("#s-alloff").checked = false; persist(); toast("✓ " + t("setHelpDone")); },
@@ -91,5 +94,14 @@ function openWizard(again){
     const r = $('input[name="w-ai"]:checked'); if (r){ s.ai.enabled = r.value === "key" && !!$("#w-key").value.trim(); s.ai.key = $("#w-key").value.trim(); }
     persist();
   };
+  draw();
+}
+
+// licence agreement (the same text the Windows installer shows)
+function showEula(){
+  let lang = store.settings.lang === "az" ? "az" : "en";
+  const o = layer(`<div class="eulabox"><div class="btns"><button class="btn small" data-el="az">Azərbaycanca</button><button class="btn small" data-el="en">English</button></div><pre class="eulatx"></pre><div class="mfoot"><span class="grow"></span><button class="btn pri" data-x="1">OK</button></div></div>`);
+  const draw = () => { o.querySelector(".eulatx").textContent = EULA[lang]; o.querySelectorAll("[data-el]").forEach(b => b.classList.toggle("pri", b.dataset.el === lang)); };
+  o.addEventListener("click", e => { const b = e.target.closest("[data-el]"); if (b){ lang = b.dataset.el; draw(); return; } if (e.target.closest("[data-x]")) o.remove(); });
   draw();
 }

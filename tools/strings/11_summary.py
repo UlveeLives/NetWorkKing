@@ -1,3 +1,4 @@
+# NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE.
 # Summary app
 for k,az,tr,en,ru in [
  ("app_summary","Xülasə","Özet","Summary","Сводка"),

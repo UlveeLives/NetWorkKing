@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Device catalog: built-in models (from official data sheets), online updates, user-added models and optional AI lookup.
 "use strict";
 const CAT = {

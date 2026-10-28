@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // CCTV: every camera is its own device (model, lens, field of view, DORI, IP, NVR channel, PoE switch port);
 // NVR channels / bandwidth / storage with RAID and retention, PoE budget, camera schedule and document.
 "use strict";

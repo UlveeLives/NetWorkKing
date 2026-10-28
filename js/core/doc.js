@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // "Document" tab of every app: a printable sheet (title, app content, ISO 7200 style title block) fitted to the window.
 "use strict";
 function docTitle(b, app){ b.docs = b.docs || {}; return b.docs[app] = Object.assign({title:"", sub:""}, b.docs[app] || {}); }

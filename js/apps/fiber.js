@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Fiber: optical backbone of the building and the campus — fibre cables with TIA-568.3-D loss budget against
 // IEEE 802.3 applications, TIA-598-C core colours, splice-box capacity, strand tables and links between buildings.
 "use strict";

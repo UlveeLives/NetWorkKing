@@ -1,3 +1,4 @@
+/*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Small helpers shared by every part of NetWorkKing.
 "use strict";
 const $ = (s, el) => (el || document).querySelector(s);
