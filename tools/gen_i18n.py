@@ -13,5 +13,7 @@ print(len(D), "keys")
 # check: keys used in code
 src = "".join(open(f, encoding="utf-8").read() for f in glob.glob(os.path.join(ROOT, "js", "**", "*.js"), recursive=True) if not f.endswith("i18n.js") and not f.endswith("catalog-data.js"))
 used = set(re.findall(r'\bt\("([A-Za-z0-9_]+)"', src)) | set(re.findall(r'label:"([A-Za-z0-9_]+)"', src)) | set(re.findall(r'name:"(app_[a-z]+)"', src)) | set(re.findall(r'(?:desc|docName):"([a-z_]+)"', src))
-miss = sorted(k for k in used if k not in D and not k.endswith("_"))
+wsrc = open(os.path.join(ROOT, "js", "apps", "wifi.js"), encoding="utf-8").read()
+wused = set(re.findall(r'\bt\("([A-Za-z0-9_]+)"', wsrc))
+miss = sorted(k for k in used if k not in D and "wf_" + k not in D and not k.endswith("_"))
 if miss: print("MISSING", len(miss), " ".join(miss))
