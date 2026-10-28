@@ -276,6 +276,10 @@ details.guide h4{margin:10px 0 4px}details.guide p{margin:0 0 6px;font-size:13px
   body{background:#fff;overflow:visible;height:auto;display:block}
   #hdr,#ptabs,#btabs,#pal,#drawer,#modal,#toast,.docbar,.noprint,.tour,.tour-hl,details.warns{display:none!important}
   #main{display:block}#view{overflow:visible;padding:0}
+  #sheetwrap{height:auto!important;overflow:visible!important}
+  html,body{height:auto!important;overflow:visible!important}
+  table.t tr,.tblock{break-inside:avoid}
+  .sheet svg{max-height:var(--pgh,none);width:auto;max-width:100%}
   .sheet{box-shadow:none;margin:0;padding:0;transform:none!important;zoom:var(--pz,1)}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }

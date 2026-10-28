@@ -214,7 +214,11 @@ async function printNow(){
   const b = B(), [pw, ph] = pageMM(b), M = 8, sh = $(".sheet");
   let st = $("#pagecss"); if (!st){ st = document.createElement("style"); st.id = "pagecss"; document.head.appendChild(st); }
   st.textContent = `@media print{@page{size:${pw}mm ${ph}mm;margin:${M}mm}}`;
-  if (sh){ const w = sh.scrollWidth, h = sh.scrollHeight; const pz = Math.min((pw - 2*M) / 25.4 * 96 / w, (ph - 2*M) / 25.4 * 96 / h) * .985; document.documentElement.style.setProperty("--pz", pz.toFixed(4)); }
+  // A sheet that still reads well on one page is fitted onto it (drawing sheet with title block); a long one (big tables)
+  // is fitted to the page width and continues on further pages.
+  if (sh){ const w = sh.scrollWidth, h = sh.scrollHeight, fw = (pw - 2*M) / 25.4 * 96 / w, fp = Math.min(fw, (ph - 2*M) / 25.4 * 96 / h);
+    const pz = fp >= fw * .55 ? fp * .95 : fw * .98; document.documentElement.style.setProperty("--pz", pz.toFixed(4));
+    document.documentElement.style.setProperty("--pgh", Math.round((ph - 2*M) / 25.4 * 96 / pz * .8) + "px"); }
   if (window.appBridge && window.appBridge.savePdf){ await window.appBridge.savePdf({name:`${fileSafe(B().name)} - ${t(a.name)}.pdf`, pageSize:b.pagefmt.size, landscape:b.pagefmt.orient !== "portrait"}); return; }
   window.print();
 }
