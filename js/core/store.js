@@ -48,7 +48,7 @@ let store = null;
 const UI = {app:"topology", tabs:{}, sel:null, multi:new Set(), drawer:false};
 const P = () => store.projects[store.cur];
 const B = () => { const p = P(); return p.buildings.find(b => b.id === p.cur.b) || p.buildings[0]; };
-function defaultSettings(){ return {lang:"az", theme:"system", help:{off:{}}, ai:{enabled:false, key:"", model:"claude-sonnet-5-5"}, catalogUrl:"https://raw.githubusercontent.com/UlveeLives/networker/main/catalog/catalog.json", catalogAuto:true, setupDone:false, addBoxed:true}; }
+function defaultSettings(){ return {lang:"az", theme:"system", help:{off:{}}, ai:{enabled:false, key:"", model:"claude-sonnet-5-5"}, catalogUrl:"https://raw.githubusercontent.com/UlveeLives/NetWorkKing/main/catalog/catalog.json", catalogAuto:true, setupDone:false, addBoxed:true}; }
 function newBuilding(name){
   return {id:uid("b"), name:name || t("bldN",{n:1}), address:"", floors:[], rooms:[], vlans:[], racks:[], devices:[], links:[],
     views:{}, wifi:{}, cctv:{}, fiber:{}, tb:{}, revs:[], notes:{}, pagefmt:{size:"A3", orient:"landscape"}};
@@ -104,7 +104,9 @@ async function loadStore(){
   try { s = IDB.db ? await IDB.get("state", "main") : JSON.parse(localStorage.getItem("networkking") || localStorage.getItem("networker") || "null"); } catch(e){ s = null; }
   if (migrated) setTimeout(() => toast("✓ " + t("migrated"), 6000), 1500);
   if (!s || !s.projects) s = {v:1, settings:defaultSettings(), projects:{}, cur:null};
-  s.settings = Object.assign(defaultSettings(), s.settings || {}); s.settings.help = Object.assign({off:{}}, s.settings.help || {}); s.settings.ai = Object.assign(defaultSettings().ai, s.settings.ai || {});
+  s.settings = Object.assign(defaultSettings(), s.settings || {});
+  // the program moved to the NetWorkKing repository: the catalog is updated from there
+  if (/UlveeLives\/networker\//i.test(s.settings.catalogUrl || "")) s.settings.catalogUrl = defaultSettings().catalogUrl; s.settings.help = Object.assign({off:{}}, s.settings.help || {}); s.settings.ai = Object.assign(defaultSettings().ai, s.settings.ai || {});
   store = s;
   if (!Object.keys(s.projects).length){ const p = newProject(); s.projects[p.id] = p; s.cur = p.id; }
   if (!s.projects[s.cur]) s.cur = Object.keys(s.projects)[0];
