@@ -53,7 +53,9 @@ function newBuilding(name){
   return {id:uid("b"), name:name || t("bldN",{n:1}), address:"", floors:[], rooms:[], vlans:[], racks:[], devices:[], links:[],
     views:{}, wifi:{}, cctv:{}, fiber:{}, tb:{}, revs:[], notes:{}, pagefmt:{size:"A3", orient:"landscape"}};
 }
-function newProject(name){ const b = newBuilding(t("bldN",{n:1})); return {id:uid("p"), name:name || t("newProject"), company:"", buildings:[b], links:[], cur:{b:b.id}, created:today()}; }
+// a new project is called «Project 1», «Project 2» … (the first free number)
+function projDefaultName(){ const used = new Set(Object.values((typeof store !== "undefined" && store && store.projects) || {}).map(p => p.name)); let n = 1; while (used.has(t("projDefault",{n}))) n++; return t("projDefault",{n}); }
+function newProject(name){ const b = newBuilding(t("bldN",{n:1})); return {id:uid("p"), name:name || projDefaultName(), company:"", buildings:[b], links:[], cur:{b:b.id}, created:today()}; }
 function normProject(p){
   p.buildings = p.buildings && p.buildings.length ? p.buildings : [newBuilding(t("bldN",{n:1}))];
   p.buildings.forEach(normBuilding); p.links = p.links || []; p.links.forEach(normLink);

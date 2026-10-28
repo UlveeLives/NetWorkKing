@@ -252,7 +252,7 @@ function wireShell(){
   document.addEventListener("dblclick", e => { const bt = e.target.closest("#btabs [data-b]"); if (bt){ const b = P().buildings.find(x => x.id === bt.dataset.b); uiPrompt(t("bldName"), b.name).then(n => { if (n && n.trim()) edit(() => { b.name = n.trim(); }); }); } });
   document.addEventListener("change", e => {
     if (e.target.id === "projsel"){ const v = e.target.value;
-      if (v === "__new"){ uiPrompt(t("projName"), t("newProject")).then(n => { if (n === null){ render(); return; } const p = newProject(n.trim() || t("newProject")); store.projects[p.id] = p; store.cur = p.id; undoStack = []; redoStack = []; persist(); render(); }); return; }
+      if (v === "__new"){ uiPrompt(t("projName"), projDefaultName()).then(n => { if (n === null){ render(); return; } const p = newProject(n.trim() || projDefaultName()); store.projects[p.id] = p; store.cur = p.id; undoStack = []; redoStack = []; persist(); render(); }); return; }
       store.cur = v; undoStack = []; redoStack = []; UI.sel = null; UI.app = P().cur.app || UI.app; persist(); render(); }
   });
   document.addEventListener("keydown", e => {

@@ -28,3 +28,11 @@ for k,az,tr,en,ru in [
     K(k,az,tr,en,ru)
 for c,az,tr,en,ru in [("net","Şəbəkə","Ağ","Network","Сеть"),("wifi","Wi-Fi","Wi-Fi","Wi-Fi","Wi-Fi"),("cctv","CCTV","CCTV","CCTV","Видеонаблюдение"),("compute","Server / saxlama","Sunucu / depolama","Servers / storage","Серверы / СХД"),("end","Son cihazlar","Uç cihazlar","End devices","Оконечные"),("passive","Passiv (panel, rozetka)","Pasif","Passive (panels, outlets)","Пассивное"),("fiber","Fiber","Fiber","Fiber","Оптика"),("power","Enerji (UPS, PDU)","Enerji","Power (UPS, PDU)","Питание"),("rackacc","Rack aksesuarları","Rack aksesuarları","Rack accessories","Аксессуары стоек")]:
     K("sm_cat_"+c,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("sm_tabFloors","Mərtəbələr","Katlar","Floors","Этажи"),
+ ("sm_floorsT","Mərtəbələr və otaqlar","Katlar ve odalar","Floors and rooms","Этажи и комнаты"),
+ ("sm_floorsH","Ad, hündürlük və ölçünü burada dəyişin; ▲▼ ilə sıralayın; otaq sayına basın — otaqlar açılır (ad, növ, adam sayı, sil / əlavə et). Mərtəbə silinəndə onun otaqları silinir, cihazlar və kabellər qalır (mərtəbəsiz olur). Çertyoj lazım deyil.","Ad, yükseklik, boyut; ▲▼ sıralama; oda sayısına tıklayın. Silinince cihazlar kalır.","Change name, height and size here; reorder with ▲▼; click the room count to open the rooms (name, type, people, delete / add). Deleting a floor removes its rooms; devices and cables stay (without a floor). No drawing needed.","Имя, высота, размер; порядок ▲▼; комнаты — по клику. При удалении этажа устройства остаются."),
+ ("sm_size","Ölçü","Boyut","Size","Размер"),("sm_plan","Çertyoj","Çizim","Drawing","Чертёж"),
+ ("sm_delRoomQ","«{r}» otağı silinsin? İçindəki {n} cihaz qalır, sadəcə otaqsız olur.","«{r}» silinsin mi? {n} cihaz kalır.","Delete room «{r}»? Its {n} devices stay, just without a room.","Удалить «{r}»? Устройства ({n}) останутся."),
+]:
+    K(k,az,tr,en,ru)

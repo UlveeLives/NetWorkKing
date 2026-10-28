@@ -641,3 +641,6 @@ input.bad{border-color:#d63a3a!important}
 .gapb{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:2px 9px;margin:2px 4px 2px 0;font-size:12px;cursor:pointer}
 .gapb.go{border-color:#2f5fc4;color:#2f5fc4}
 .lnkb{border:none;background:none;color:var(--pri);font-weight:700;cursor:pointer;padding:0}
+.smf input,.smf select{display:inline-block;font-size:12px;padding:3px 6px;height:28px;border:1px solid var(--line)!important;background:var(--surface)!important;border-radius:6px;color:var(--text)}
+.smf td{vertical-align:middle;white-space:nowrap}
+.smrooms > td{background:color-mix(in srgb,var(--pri) 4%,transparent)}

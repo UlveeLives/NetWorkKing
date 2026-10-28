@@ -66,7 +66,7 @@ function openWizard(again){
       <label class="fld"><span>${esc(t("theme"))}</span><select id="w-theme">${[["system", t("thSystem")], ["light", t("thLight")], ["dark", t("thDark")]].map(([k, l]) => opt(k, l, s.theme)).join("")}</select></label>`,
     () => `<h3>🏢 ${esc(t("wzProject"))}</h3><p class="muted small">${esc(t("wzProjectHint"))}</p>
       <label class="fld"><span>${esc(t("projCompany"))}</span><input id="w-comp" value="${esc(P().company)}" placeholder="Palladium Group"></label>
-      <label class="fld"><span>${esc(t("projName"))}</span><input id="w-proj" value="${esc(P().name === t("newProject") ? "" : P().name)}" placeholder="${esc(t("wzProjPh"))}"></label>
+      <label class="fld"><span>${esc(t("projName"))}</span><input id="w-proj" value="${esc(/^(Project|Yeni layihə|New project) ?\d*$/i.test(P().name) ? "" : P().name)}" placeholder="${esc(t("wzProjPh"))}"></label>
       <label class="fld"><span>${esc(t("wzBuilding"))}</span><input id="w-bld" value="${esc(B().name)}"></label>`,
     () => `<h3>🤖 ${esc(t("wzAi"))}</h3><p class="small">${esc(t("aiIntro"))}</p>
       <label class="chk"><input type="radio" name="w-ai" value="key"${s.ai.enabled ? " checked" : ""}> ${esc(t("wzAiYes"))}</label>
