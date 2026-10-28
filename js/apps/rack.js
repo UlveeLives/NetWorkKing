@@ -4,8 +4,8 @@
 "use strict";
 (function(){
 const UH = 20;                                   // pixels per rack unit on screen
-const RKINDS = ["switch","coresw","pp","fpp","firewall","router","wlc","modem","ont","server","nas","storage","nvr","dvr","decoder","encoder","kvm","ups","pdu","cablemgr","brush","blank","vent","shelf","fan","other"];
-const rackKinds = () => RKINDS.concat(Object.keys(KINDS).filter(k => KINDS[k].custom && KINDS[k].rack && !RKINDS.includes(k)));
+const RKINDS = ukList(["switch","coresw","pp","fpp","firewall","router","wlc","modem","ont","server","nas","storage","nvr","dvr","decoder","encoder","kvm","ups","pdu","cablemgr","brush","blank","vent","shelf","fan","other"], "rack");
+const rackKinds = () => RKINDS.filter(k => KINDS[k]);
 const rackable = d => !!(KINDS[d.kind] && KINDS[d.kind].rack) || !!d.rack;
 const loadDev = d => { const K = KINDS[d.kind] || KINDS.other; return !K.passive && d.kind !== "pdu" && d.kind !== "internet" && !(K.acc && d.kind !== "fan"); };
 const devW = d => num(d.params.powerW) || num(d.params.maxW) * 0.6 || 0;   // typical draw; without it 60 % of maximum
@@ -124,7 +124,7 @@ function palette(b){
   const r = curRack(b), un = b.devices.filter(d => KINDS[d.kind] && KINDS[d.kind].rack && !d.rack);
   return `<div class="psec"><h4>${esc(t("rkTarget"))}</h4>${b.racks.length ? `<select id="rk-target">${b.racks.map(x => opt(x.id, x.name, r && r.id)).join("")}</select>` : `<p class="muted small">${esc(t("rkNoRack"))}</p>`}
       <div class="btns"><button class="btn small" data-rka="addRack">＋ ${esc(t("rkAdd"))}</button></div></div>
-    <div class="psec"><h4>${esc(t("palAdd"))}</h4><div class="pgrid">${rackKinds().map(k => `<button class="pitem" data-rkadd="${k}" title="${esc(kindName(k))}"><svg viewBox="0 0 48 48">${ICO[(KINDS[k] || KINDS.other).icon] || ICO.box}</svg><span>${esc(kindName(k))}</span></button>`).join("")}</div></div>
+    <div class="psec"><h4>${esc(t("palAdd"))}</h4><div class="pgrid">${rackKinds().map(k => `<button class="pitem" data-rkadd="${k}" title="${esc(kindName(k))}"><svg viewBox="0 0 48 48">${ICO[(KINDS[k] || KINDS.other).icon] || ICO.box}</svg><span>${esc(kindName(k))}</span></button>`).join("")}${ukBtn("rack")}</div></div>
     ${un.length ? `<div class="psec"><h4>${esc(t("rkUnracked"))} <span class="cnt">${un.length}</span></h4><p class="muted small">${esc(t("rkUnrackedHint"))}</p><div class="ulist">${un.slice(0, 80).map(d => `<button class="uitem" data-rkput="${d.id}"><svg viewBox="0 0 48 48">${ICO[devIcon(d)] || ICO.box}</svg><span>${esc(devLabel(d))}</span></button>`).join("")}</div></div>` : ""}
     <div class="psec"><h4>${esc(t("palView"))}</h4><div class="seg">${["front","rear","both"].map(f => `<button class="${(UI.rackFace || "front") === f ? "on" : ""}" data-rkface="${f}">${esc(t(f === "front" ? "sideFront" : f === "rear" ? "sideRear" : "rkBoth"))}</button>`).join("")}</div></div>`;
 }

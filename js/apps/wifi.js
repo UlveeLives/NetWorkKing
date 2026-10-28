@@ -74,6 +74,8 @@ function syncIn(){
       rooms:b.rooms.filter(r => r.floor === sf.id && r.geo).map(r => { const o = {id:r.id, label:r.name, wall:r.wall || "drywall", users:num(r.users), x:num(r.geo.x), y:num(r.geo.y), w:num(r.geo.w, 1), h:num(r.geo.h, 1)};
         // outline and name position drawn from a DXF drawing (kept as they are; only x / y / w / h are edited here)
         ["poly","pw","ph","lx","ly"].forEach(k => { if (r.geo[k] !== undefined) Object.defineProperty(o, k, {value:r.geo[k], enumerable:false, writable:true}); }); return o; })}; });
+  // the Building plan of each floor (an edited drawing is shown instead of the picture)
+  floors.forEach(f => { const sf = b.floors.find(x => x.id === f.id); Object.defineProperty(f, "pv", {value:sf && sf.plan, enumerable:false, writable:true}); });
   const fids = new Set(floors.map(f => f.id));
   const aps = b.devices.filter(d => d.kind === "ap" && d.ap && d.ap.x !== null && d.ap.x !== undefined && d.ap.x !== "" && fids.has(d.floor)).map(d => apIn(b, d));
   FCD = {b, apIds:new Set(aps.map(a => a.id)), roomIds:new Set(floors.flatMap(f => f.rooms.map(r => r.id))),
@@ -168,7 +170,9 @@ function wallsOf(f, b){
   const W = [], i = BI[b];
   f.rooms.forEach(r => { const L = (MAT[r.wall] || MAT.drywall)[i]; if (!L) return;
     W.push([r.x, r.y, r.x + r.w, r.y, L, 0], [r.x + r.w, r.y, r.x + r.w, r.y + r.h, L, 0], [r.x, r.y + r.h, r.x + r.w, r.y + r.h, L, 0], [r.x, r.y, r.x, r.y + r.h, L, 0]); });
-  f.walls.forEach(w => { const L = (MAT[w.mat] || MAT.drywall)[i]; W.push([w.x1, w.y1, w.x2, w.y2, L, w.kind === "wall" ? 0 : 1]); });
+  // a bent wall (drawn in Building structure) counts as 8 short straight pieces along its arc
+  f.walls.forEach(w => { const L = (MAT[w.mat] || MAT.drywall)[i], o = w.kind === "wall" ? 0 : 1;
+    if (!num(w.bend)) return W.push([w.x1, w.y1, w.x2, w.y2, L, o]); let a = DRAW.wallPt(w, 0); for (let k = 1; k <= 8; k++){ const q = DRAW.wallPt(w, k / 8); W.push([a.x, a.y, q.x, q.y, L, o]); a = q; } });
   return W;
 }
 // Sum of wall losses along a ray; a door / window lying on a wall replaces that wall's loss at the same point.
@@ -206,7 +210,7 @@ function sigAt(d, b, A, x, y, walls){
 const HCACHE = new Map();
 function heat(d, f, b, step){
   const s = PW / f.wm, H = Math.round(f.hm * s), A = apsFor(d, f, b);
-  const key = JSON.stringify([b, step, f.wm, f.hm, f.rooms.map(r => [r.x, r.y, r.w, r.h, r.wall]), f.walls.map(w => [w.x1, w.y1, w.x2, w.y2, w.mat, w.kind]), A.map(q => [q.a.id, q.a.x, q.a.y, q.k, q.dz, q.eirp, q.sp]), d.cfg.n, d.cfg.cg, d.cfg.fl[b]]);
+  const key = JSON.stringify([b, step, f.wm, f.hm, f.rooms.map(r => [r.x, r.y, r.w, r.h, r.wall]), f.walls.map(w => [w.x1, w.y1, w.x2, w.y2, w.mat, w.kind, w.bend]), A.map(q => [q.a.id, q.a.x, q.a.y, q.k, q.dz, q.eirp, q.sp]), d.cfg.n, d.cfg.cg, d.cfg.fl[b]]);
   if (HCACHE.has(key)) return HCACHE.get(key);
   const cols = Math.ceil(PW / step), rows = Math.ceil(H / step), nA = A.length, R = new Float32Array(cols * rows * Math.max(1, nA)).fill(-200);
   const walls = wallsOf(f, b);
@@ -359,7 +363,7 @@ function floorRow(d, f, print){
     <div class="ft" style="color:${fg}">${lines(f.name).map(esc).join("<br>")}</div><ul>${lines(f.desc).filter(Boolean).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
     <div class="cov">${nA ? `<span class="${E.pct >= P.cover ? "okc" : "badc"}">${esc(t("passS",{p:E.pct}))}</span><br>${esc(t("cardAps",{n:nA, a:Math.round(f.wm * f.hm)}))}` : esc(t("w_noAPs"))}</div></div>
     <div class="planwrap">${print ? "" : `<div class="zp" data-zp="wifi:${f.id}" style="height:min(78vh,${H + 60}px)"><div class="zpi">`}<div class="plan${tool !== "select" && !print ? " tool" : ""}" style="width:${PW}px;height:${H}px">
-      ${url ? `<img src="${url}" alt="" style="opacity:${num(f.op, 60) / 100}">` : ""}
+      ${f.pv && f.pv.vec ? `${url && num(f.pv.bgop, 0) ? `<img src="${url}" alt="" style="opacity:${num(f.pv.bgop, 0) / 100}">` : ""}<svg class="bgv" viewBox="0 0 ${PW} ${H}" width="${PW}" height="${H}" style="position:absolute;left:0;top:0;pointer-events:none">${DRAW.bgSvg(f.pv, s)}</svg>` : url ? `<img src="${url}" alt="" style="opacity:${num(f.op, 60) / 100}">` : ""}
       <canvas class="heat" data-heat="${f.id}" width="${PW}" height="${H}"></canvas>
       <svg class="over" ${print ? "" : `data-ov="${f.id}"`} viewBox="0 0 ${PW} ${H}" width="${PW}" height="${H}">${overSvg(d, f, print)}</svg>
       <div class="scalebar">${scaleBar(f)}</div>
@@ -384,9 +388,10 @@ function overSvg(d, f, print){
     if (sel === r.id) h += `<rect class="rsel" x="${x - 3}" y="${y - 3}" width="${w + 6}" height="${hh + 6}"/><rect class="rh" data-rh="${r.id}" x="${x + w - 6}" y="${y + hh - 6}" width="12" height="12" rx="2"/>`;
   });
   f.walls.forEach(w => { const st = MSTYLE[w.mat] || MSTYLE.drywall;
-    h += `<g data-wall="${w.id}" class="wl"><line x1="${w.x1 * s}" y1="${w.y1 * s}" x2="${w.x2 * s}" y2="${w.y2 * s}" stroke="transparent" stroke-width="12"/><line x1="${w.x1 * s}" y1="${w.y1 * s}" x2="${w.x2 * s}" y2="${w.y2 * s}" ${st} stroke-linecap="round"/>
+    const wd = DRAW.wallD(w, s);
+    h += `<g data-wall="${w.id}" class="wl"><path d="${wd}" fill="none" stroke="transparent" stroke-width="12"/><path d="${wd}" fill="none" ${st} stroke-linecap="round"/>
       ${w.kind === "door" ? `<circle cx="${(w.x1 + w.x2) / 2 * s}" cy="${(w.y1 + w.y2) / 2 * s}" r="3" fill="#b0702a"/>` : w.kind === "window" ? `<line x1="${w.x1 * s}" y1="${w.y1 * s}" x2="${w.x2 * s}" y2="${w.y2 * s}" stroke="#fff" stroke-width="1"/>` : ""}</g>`;
-    if (sel === w.id) h += `<line x1="${w.x1 * s}" y1="${w.y1 * s}" x2="${w.x2 * s}" y2="${w.y2 * s}" stroke="#ffb703" stroke-width="7" opacity=".45" pointer-events="none"/><circle class="wh" data-wh="${w.id}:1" cx="${w.x1 * s}" cy="${w.y1 * s}" r="6"/><circle class="wh" data-wh="${w.id}:2" cx="${w.x2 * s}" cy="${w.y2 * s}" r="6"/>`; });
+    if (sel === w.id) h += `<path d="${DRAW.wallD(w, s)}" fill="none" stroke="#ffb703" stroke-width="7" opacity=".45" pointer-events="none"/><circle class="wh" data-wh="${w.id}:1" cx="${w.x1 * s}" cy="${w.y1 * s}" r="6"/><circle class="wh" data-wh="${w.id}:2" cx="${w.x2 * s}" cy="${w.y2 * s}" r="6"/>`; });
   if (f.idf){ const x = f.idf.x * s, y = f.idf.y * s;
     if (d.view.cable) d.aps.filter(a => a.floor === f.id && a.status !== "removed").forEach(a => { h += `<path d="M${x} ${y}H${a.x * s}V${a.y * s}" fill="none" stroke="#8a6d1f" stroke-width="1.2" stroke-dasharray="4 3" opacity=".8"/>`; });
     h += `<g class="idf" data-idf="${f.id}" transform="translate(${x} ${y})"><rect x="-11" y="-13" width="22" height="26" rx="3" fill="#1d2433" stroke="#fff" stroke-width="1.5"/><path d="M-6 -7h12M-6 -2h12M-6 3h12M-6 8h12" stroke="#7fd1ff" stroke-width="2"/><text y="24" font-size="9" font-weight="700" text-anchor="middle" fill="#1d2433" stroke="#fff" stroke-width="2.5" paint-order="stroke">IDF</text></g>`; }

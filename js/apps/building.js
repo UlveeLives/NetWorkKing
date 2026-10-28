@@ -17,10 +17,12 @@ const RDEF = {office:{outlet:4, phone:1}, meeting:{outlet:2, tv:1}, server:{outl
   kitchen:{outlet:1}, wc:{}, storage:{}, technical:{outlet:1}, other:{outlet:2}};
 // structure shapes (not devices)
 const ITEMS = {yard:{w:30, h:20}, stairs:{w:3, h:5}, elevator:{w:2, h:2}, shaft:{w:1, h:1}, door:{w:1, h:.2}, window:{w:1.5, h:.2}, column:{w:.5, h:.5}, label:{w:4, h:1}};
-const DEVK = ["outlet","ap","camera","tv","phone","printer","pc","laptop","access","intercom","alarm","touch","sensor","iot","switch","nvr","decoder","server","ups","workstation","monitor"];
-let drag = null, place = null, lastDown = null;
+const itemDef = k => ITEMS[k] || (DRAW.SYM[k] ? {w:DRAW.SYM[k][0], h:DRAW.SYM[k][1]} : {w:1, h:1});
+const itemName = k => { const a = t("bi_" + k); return a === "bi_" + k ? k : a; };
+const DEVK = ukList(["outlet","ap","camera","tv","phone","printer","pc","laptop","access","intercom","alarm","touch","sensor","iot","switch","nvr","decoder","server","ups","workstation","monitor"], "building");
+let drag = null, place = null, lastDown = null, poly = null;
 // apps that show this floor plan: Building structure (everything) and CCTV (cameras on the plan, rooms locked)
-const HOSTS = {building:{tab:"plan"}, cctv:{tab:"plan", kinds:["camera","nvr","dvr","decoder","encoder","switch","monitor","workstation","videowall","joystick","poeinj","access","intercom","alarm"], cams:true, lockRooms:true}};
+const HOSTS = {building:{tab:"plan"}, cctv:{tab:"plan", kinds:ukList(["camera","nvr","dvr","decoder","encoder","switch","monitor","workstation","videowall","joystick","poeinj","access","intercom","alarm"], "cctvplan"), cams:true, lockRooms:true}};
 const host = () => HOSTS[UI.app] || null;
 const onPlanTab = () => !!host() && curTab().id === host().tab;
 const st = () => { UI.bld = UI.bld || {labels:true, grid:true}; return UI.bld; };
@@ -56,12 +58,20 @@ function guessType(n){ const x = String(n).toLocaleLowerCase("tr");
 function extOf(b, f, print){
   const p = f.plan; let x0 = 0, y0 = 0, x1 = p.wm, y1 = p.hm;
   const add = (x, y, w = 0, h = 0) => { if (!isFinite(x) || !isFinite(y)) return; x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x + w); y1 = Math.max(y1, y + h); };
-  geoRooms(b, f).forEach(r => add(r.geo.x, r.geo.y, r.geo.w, r.geo.h)); (p.items || []).forEach(it => add(it.x, it.y, it.w, it.h));
+  geoRooms(b, f).forEach(r => add(r.geo.x, r.geo.y, r.geo.w, r.geo.h)); (p.items || []).forEach(it => add(it.x, it.y, it.w, it.h)); (p.shapes || []).forEach(o => add(o.x, o.y, o.w, o.h)); DRAW.shownWalls(p).forEach(w => { add(w.x1, w.y1); add(w.x2, w.y2); });
   b.devices.forEach(d => { if (devFloor(b, d) !== f.id) return; const q = posOf(d); if (q) add(q.x, q.y); }); b.racks.forEach(r => { if (r.floor === f.id && r.pos) add(r.pos.x, r.pos.y); });
   const need = Math.max(-x0, -y0, x1 - p.wm, y1 - p.hm), pad = need > 0 ? need + (print ? 1.5 : 6) : 0;
   return Math.ceil(Math.max(print ? 0 : num(p.ext, 15), pad));
 }
-function scaleFor(f){ const W = Math.max(320, (($("#view") && $("#view").clientWidth) || 1000) - 40); return clamp(W / Math.max(4, num(f.plan.wm, 40)), 6, 70); }
+// pixels per metre: fixed for a floor (zoom and fit are done by the zoom / pan frame), so the plan never changes size under
+// the pointer when the side panel opens or closes
+function scaleFor(f){ return clamp(1100 / Math.max(4, num(f.plan.wm, 40)), 6, 70); }
+// handle above a selected shape to turn it freely (Shift: steps of 15°)
+const rotHandle = (key, x, y) => `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 22}" stroke="#ffb703" stroke-width="1.5" pointer-events="none"/><circle class="brot" data-brot="${key}" cx="${x}" cy="${y - 26}" r="7" fill="#ffb703" stroke="#7a5600" stroke-width="1.5"><title>${esc(t("dw_rotH"))}</title></circle>`;
+// an invisible, generous area around a room name, so the name is easy to grab and move
+function labHit(r, g, s, x, y){ const fs = g.lx !== undefined ? clamp(s * .38, 9, 13) : clamp(s * .45, 10, 14), tw = String(r.name).length * fs * .62 + 18, th = fs + 14;
+  const cx = g.lx !== undefined ? (g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s : x + 6 + tw / 2 - 9, cy = g.lx !== undefined ? (g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s - fs * .35 : y + 15 - fs * .35;
+  return `<rect class="rlabh" data-rlab="${r.id}" x="${(cx - tw / 2).toFixed(1)}" y="${(cy - th / 2).toFixed(1)}" width="${tw.toFixed(1)}" height="${th.toFixed(1)}" fill="transparent"/>`; }
 function planSvg(b, f, opts = {}){
   const p = fixFloorPlan(f), s = opts.s || scaleFor(f), W = p.wm * s, H = p.hm * s, sel = opts.print ? null : UI.sel, S = st(), HO = opts.print ? null : host();
   const isSel = (type, id) => sel && sel.type === type && sel.id === id;
@@ -69,19 +79,29 @@ function planSvg(b, f, opts = {}){
   let h = "";
   if (S.grid && !opts.print && E){ let g = ""; for (let x = -E; x <= p.wm + E; x++) g += `M${x * s} ${-es}V${H + es}`; for (let y = -E; y <= p.hm + E; y++) g += `M${-es} ${y * s}H${W + es}`; h += `<path d="${g}" stroke="#e3e7ee" stroke-width="1"/>`; }
   h += `<rect class="bfl" x="0" y="0" width="${W}" height="${H}" fill="#fff" stroke="#1d2433" stroke-width="2.5"/>`;
-  if (p.img && assetURL(p.img)) h += `<image href="${assetURL(p.img)}" x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="none" opacity="${num(p.op, 60) / 100}"/>`;
+  const vec = !!p.vec, imgOp = vec ? num(p.bgop, 0) : num(p.op, 60);
+  if (p.img && assetURL(p.img) && imgOp > 0) h += `<image href="${assetURL(p.img)}" x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="none" opacity="${imgOp / 100}" pointer-events="none"/>`;
   if (S.grid && !opts.print){ let g = ""; for (let x = 1; x < p.wm; x++) g += `M${x * s} 0V${H}`; for (let y = 1; y < p.hm; y++) g += `M0 ${y * s}H${W}`; h += `<path d="${g}" stroke="#e8ebf0" stroke-width="1"/>`; }
-  const drawn = p.img && assetURL(p.img), fo = drawn ? (num(p.op, 60) >= 90 ? ".3" : ".5") : ".82";
+  const drawn = p.img && assetURL(p.img), fo = vec ? ".3" : drawn ? (num(p.op, 60) >= 90 ? ".3" : ".5") : ".82", quiet = (drawn || vec) && !S.outlines;
+  // boundaries (yard, plot, house edge) under everything
+  p.items.filter(it => it.type === "boundary").forEach(it => { h += DRAW.boundSvg(it, s, isSel("bitem", it.id), opts.print); });
+  let labs = "";
   geoRooms(b, f).forEach(r => { normRoom(r); const g = r.geo, [bg, fg] = RT[r.type], x = g.x * s, y = g.y * s, w = g.w * s, hh = g.h * s, on = isSel("room", r.id);
     const miss = RK.filter(k => reqOf(r, k) > placedIn(b, r, k)), sum = RK.filter(k => reqOf(r, k)).map(k => `${RK_SHORT[k]} ${placedIn(b, r, k)}/${reqOf(r, k)}`).join(" · ");
     const shape = Array.isArray(g.poly) && g.poly.length >= 6 ? `<polygon points="${polyPts(g, s)}"` : `<rect x="${x}" y="${y}" width="${w}" height="${hh}"`;
-    h += `<g class="brm" data-room="${r.id}">${shape} fill="${bg}" fill-opacity="${fo}" stroke="${fg}" stroke-width="${on ? 3 : drawn ? 1 : 1.6}"${r.type === "corridor" || drawn ? ' stroke-dasharray="6 4"' : ""}/>
-      ${g.lx !== undefined ? `<text class="rlab" data-rlab="${r.id}" x="${(g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s}" y="${(g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s}" text-anchor="middle" font-size="${clamp(s * .38, 9, 13)}" font-weight="700" fill="${fg}" stroke="#fff" stroke-width="3" paint-order="stroke">${esc(r.name)}</text>${w > 60 ? `<text x="${(g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s}" y="${(g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s + 12}" text-anchor="middle" font-size="9" fill="#4b5262" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(area(r) + " m²" + (g.est ? " ≈" : "") + (num(r.users) ? " · 👤" + num(r.users) : ""))}</text>` : ""}`
+    h += `<g class="brm" data-room="${r.id}">${shape} fill="${bg}" fill-opacity="${fo}" stroke="${fg}" stroke-width="${on ? 3 : drawn ? 1 : 1.6}"${quiet && !on ? ' stroke-opacity="0"' : ""}${r.type === "corridor" || drawn || vec ? ' stroke-dasharray="6 4"' : ""}/></g>`;
+    // names on a layer of their own above every room and drawing piece, so they can always be grabbed
+    labs += `<g class="brl">${labHit(r, g, s, x, y)}${g.lx !== undefined ? `<text class="rlab" data-rlab="${r.id}" x="${(g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s}" y="${(g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s}" text-anchor="middle" font-size="${clamp(s * .38, 9, 13)}" font-weight="700" fill="${fg}" stroke="#fff" stroke-width="3" paint-order="stroke">${esc(r.name)}</text>${w > 60 ? `<text data-rlab="${r.id}" x="${(g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s}" y="${(g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s + 12}" text-anchor="middle" font-size="9" fill="#4b5262" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(area(r) + " m²" + (g.est ? " ≈" : "") + (num(r.users) ? " · 👤" + num(r.users) : ""))}</text>` : ""}`
       : `<text class="rlab" data-rlab="${r.id}" x="${x + 6}" y="${y + 15}" font-size="${clamp(s * .45, 10, 14)}" font-weight="700" fill="${fg}">${esc(r.name)}</text>
-      ${w > 70 ? `<text x="${x + 6}" y="${y + 28}" font-size="9.5" fill="#4b5262">${esc(area(r) + " m²" + (num(r.users) ? " · 👤" + num(r.users) : ""))}</text>` : ""}`}
-      ${sum && w > 90 ? `<text x="${x + 6}" y="${y + hh - 6}" font-size="9" fill="${miss.length ? "#b3262f" : "#1f7a35"}">${esc(sum)}</text>` : ""}</g>`;
+      ${w > 70 ? `<text data-rlab="${r.id}" x="${x + 6}" y="${y + 28}" font-size="9.5" fill="#4b5262">${esc(area(r) + " m²" + (num(r.users) ? " · 👤" + num(r.users) : ""))}</text>` : ""}`}
+      ${sum && w > 90 ? `<text x="${x + 6}" y="${y + hh - 6}" pointer-events="none" font-size="9" fill="${miss.length ? "#b3262f" : "#1f7a35"}">${esc(sum)}</text>` : ""}</g>`;
     if (on && !opts.print && !(HO && HO.lockRooms)) h += `<rect class="bres" data-res="room:${r.id}" x="${x + w - 7}" y="${y + hh - 7}" width="14" height="14" rx="3"/>`; });
-  p.items.forEach(it => { const x = it.x * s, y = it.y * s, w = it.w * s, hh = it.h * s, on = isSel("bitem", it.id), c = "#3a4552";
+  if (vec) h += DRAW.shapesSvg(p, s, sel, opts.print);
+  if (!drawn || vec) h += DRAW.wallsSvg(p, s, sel, opts.print);
+  h += labs;
+  const shSel = sel && sel.type === "bshape" && p.shapes && p.shapes.find(o => o.id === sel.id);
+  if (shSel && !opts.print){ const o = shSel, cx = (o.x + o.w / 2) * s, cy = (o.y + o.h / 2) * s; h += `<g transform="rotate(${o.rot || 0} ${cx} ${cy})">${rotHandle("bshape:" + o.id, cx, o.y * s)}<rect class="bres" data-res="bshape:${o.id}" x="${(o.x + o.w) * s - 6}" y="${(o.y + o.h) * s - 6}" width="12" height="12" rx="3"/></g>`; }
+  p.items.filter(it => it.type !== "boundary").forEach(it => { const x = it.x * s, y = it.y * s, w = it.w * s, hh = it.h * s, on = isSel("bitem", it.id), c = "#3a4552";
     let g = "";
     if (it.type === "stairs"){ g = `<rect width="${w}" height="${hh}" fill="#fff" stroke="${c}" stroke-width="1.5"/>`; const n = Math.max(3, Math.round(it.h / .3)); for (let i = 1; i < n; i++) g += `<line x1="0" y1="${hh * i / n}" x2="${w}" y2="${hh * i / n}" stroke="${c}" stroke-width=".8"/>`; g += `<path d="M${w / 2} ${hh - 4}V6M${w / 2 - 4} 12L${w / 2} 5L${w / 2 + 4} 12" stroke="${c}" fill="none" stroke-width="1.2"/>`; }
     else if (it.type === "elevator") g = `<rect width="${w}" height="${hh}" fill="#fff" stroke="${c}" stroke-width="1.8"/><path d="M0 0L${w} ${hh}M${w} 0L0 ${hh}" stroke="${c}" stroke-width="1"/>`;
@@ -90,9 +110,10 @@ function planSvg(b, f, opts = {}){
     else if (it.type === "window") g = `<rect width="${w}" height="${Math.max(3, hh)}" fill="#d6ecff" stroke="#3b82c4" stroke-width="1.5"/>`;
     else if (it.type === "column") g = `<rect width="${w}" height="${hh}" fill="#59607a"/>`;
     else if (it.type === "yard") g = `<rect width="${w}" height="${hh}" fill="#e6f6ea" fill-opacity=".35" stroke="#2e9d57" stroke-width="2.5" stroke-dasharray="10 5"/><text x="6" y="16" font-size="12" font-weight="700" fill="#2e9d57">${esc(it.text || t("bi_yard"))}</text>`;
+    else if (DRAW.isSym(it.type)) g = DRAW.symSvg(it, w, hh);
     else g = `<text x="2" y="${Math.min(hh, 16) - 3}" font-size="${clamp(it.size || 12, 8, 30)}" font-weight="700" fill="#1d2433">${esc(it.text || t("bd_label"))}</text>`;
     h += `<g class="bit" data-bitem="${it.id}" transform="translate(${x} ${y})${it.rot ? ` rotate(${it.rot} ${w / 2} ${hh / 2})` : ""}">${g}${on && !opts.print ? `<rect width="${w}" height="${Math.max(hh, 4)}" fill="none" stroke="#ffb703" stroke-width="2.5" stroke-dasharray="5 3"/>` : ""}</g>`;
-    if (on && !opts.print && it.type !== "label") h += `<rect class="bres" data-res="bitem:${it.id}" x="${x + w - 6}" y="${y + Math.max(hh, 4) - 6}" width="12" height="12" rx="3"/>`; });
+    if (on && !opts.print) h += `<g transform="rotate(${it.rot || 0} ${x + w / 2} ${y + hh / 2})">${rotHandle("bitem:" + it.id, x + w / 2, y)}${it.type !== "label" ? `<rect class="bres" data-res="bitem:${it.id}" x="${x + w - 6}" y="${y + Math.max(hh, 4) - 6}" width="12" height="12" rx="3"/>` : ""}</g>`; });
   b.racks.filter(r => r.floor === f.id && r.pos).forEach(r => { const x = r.pos.x * s, y = r.pos.y * s, on = isSel("rack", r.id);
     h += `<g class="bdev" data-brack="${r.id}" transform="translate(${x} ${y})"><rect x="-10" y="-13" width="20" height="26" rx="2" fill="#232a33" stroke="${on ? "#ffb703" : "#fff"}" stroke-width="${on ? 3 : 1.2}"/><path d="M-6 -8h12M-6 -3h12M-6 2h12M-6 7h12" stroke="#7fd1ff" stroke-width="1.6"/>
       ${S.labels ? `<text y="24" font-size="9" font-weight="700" text-anchor="middle" fill="#1d2433" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(r.name)}</text>` : ""}</g>`; });
@@ -116,7 +137,8 @@ function floorChips(b, f){ return `<div class="bfloors">${b.floors.slice().rever
 function planView(){
   const b = B(), f = curFloor(b);
   if (!f) return `<div class="empty"><h3>${esc(t("bd_emptyT"))}</h3><p>${esc(t("bd_empty"))}</p><div class="btns" style="justify-content:center"><button class="btn pri" data-ba="wizard">🧭 ${esc(t("bd_wizard"))}</button><button class="btn pri" data-ba="dxf">📐 ${esc(t("dx_btn"))}</button><button class="btn" data-ba="addFloor">＋ ${esc(t("floorNew"))}</button></div></div>`;
-  return `${crumbs(b, f)}${floorChips(b, f)}${warnBox(bWarnings(b, f))}${zpWrap(UI.app + ":" + f.id, planSvg(b, f))}<p class="dghint">${esc(place ? t("bd_hintPlace") : t("bd_hint"))}</p>`;
+  const dups = dupRooms(b, f);
+  return `${crumbs(b, f)}${floorChips(b, f)}${warnBox(bWarnings(b, f))}${dups.length ? `<div class="lbox row">🧩 ${esc(t("dw_dupFix",{n:dups.length}))}<span class="grow"></span><button class="btn small pri" data-ba="mergeDup">${esc(t("dw_dupBtn"))}</button></div>` : ""}${zpWrap(UI.app + ":" + f.id, planSvg(b, f))}<p class="dghint">${esc(place ? t("bd_hintPlace") : t("bd_hint"))}</p>`;
 }
 function palette(){
   const b = B(), f = curFloor(b); if (!f) return "";
@@ -124,7 +146,7 @@ function palette(){
   const svgI = ic => `<svg viewBox="0 0 48 48">${ICO[ic] || ICO.box}</svg>`;
   const HO = host(), KS = HO && HO.kinds ? HO.kinds.filter(k => KINDS[k]) : DEVK;
   const unplaced = b.devices.filter(d => (devFloor(b, d) === f.id || (HO && HO.kinds && !devFloor(b, d))) && !posOf(d) && KS.includes(d.kind) && !d.rack);
-  if (HO && HO.kinds) return `<div class="psec"><h4>${esc(t("bd_devs"))}</h4><div class="pgrid">${KS.map(k => P("dev:" + k, kindName(k), svgI(KINDS[k].icon))).join("")}</div><p class="muted small">${esc(t("camPlanHint"))}</p></div>
+  if (HO && HO.kinds) return `<div class="psec"><h4>${esc(t("bd_devs"))}</h4><div class="pgrid">${KS.map(k => P("dev:" + k, kindName(k), svgI(KINDS[k].icon))).join("")}${ukBtn("cctvplan")}</div><p class="muted small">${esc(t("camPlanHint"))}</p></div>
     ${unplaced.length ? `<div class="psec"><h4>${esc(t("bd_unplaced"))} <span class="cnt">${unplaced.length}</span></h4><div class="ulist">${unplaced.slice(0, 80).map(d => `<button class="ub${place === "put:" + d.id ? " on" : ""}" data-bput="${d.id}">${esc(devLabel(d))}${d.room ? ` <small class="muted">${esc(roomName(b, d.room))}</small>` : ""}</button>`).join("")}</div></div>` : ""}
     <div class="psec"><h4>${esc(t("palView"))}</h4><label class="chk"><input type="checkbox" data-bopt="labels"${st().labels ? " checked" : ""}> ${esc(t("bd_labels"))}</label><label class="chk"><input type="checkbox" data-bopt="grid"${st().grid ? " checked" : ""}> ${esc(t("bd_grid"))}</label></div>`;
   return `<div class="psec"><h4>${esc(t("bd_struct"))}</h4><div class="pgrid">
@@ -140,9 +162,17 @@ function palette(){
       ${P("item:yard", t("bi_yard"), `<svg viewBox="0 0 48 48"><rect x="4" y="8" width="40" height="32" fill="#e6f6ea" stroke="#2e9d57" stroke-width="2.5" stroke-dasharray="6 3"/><path d="M14 30c2-6 6-6 8 0M28 22c2-6 6-6 8 0" stroke="#2e9d57" fill="none" stroke-width="2"/></svg>`)}
       ${P("item:label", t("bd_label"), `<svg viewBox="0 0 48 48">${ICO.text || ""}</svg>`)}
     </div></div>
-    <div class="psec"><h4>${esc(t("bd_devs"))}</h4><div class="pgrid">${DEVK.map(k => P("dev:" + k, kindName(k), svgI(KINDS[k].icon))).join("")}${P("rack", t("k_rack") === "k_rack" ? "Rack" : t("k_rack"), svgI("rack"))}</div></div>
+    <div class="psec"><h4>${esc(t("dw_secWalls"))}</h4><div class="pgrid">
+      ${P("tool:wall", t("dw_wall"), `<svg viewBox="0 0 48 48"><path d="M6 38L42 10" stroke="#3a3f4b" stroke-width="8"/><path d="M6 38L42 10" stroke="#d9dde4" stroke-width="4"/></svg>`)}
+      ${P("tool:wallc", t("dw_wallC"), `<svg viewBox="0 0 48 48"><path d="M6 38A24 24 0 0 1 42 12" stroke="#3a3f4b" stroke-width="8" fill="none"/><path d="M6 38A24 24 0 0 1 42 12" stroke="#d9dde4" stroke-width="4" fill="none"/></svg>`)}
+      ${P("tool:bound", t("dw_bound"), `<svg viewBox="0 0 48 48"><path d="M6 14L24 6L42 16L38 40L10 36Z" fill="#e6f6ea" stroke="#2e9d57" stroke-width="2.5" stroke-dasharray="5 3"/></svg>`)}
+      ${P("tool:house", t("dw_house"), `<svg viewBox="0 0 48 48"><path d="M8 12H30V22H40V38H8Z" fill="none" stroke="#111722" stroke-width="3.5"/></svg>`)}
+    </div><p class="muted small">${esc(t("dw_wallHint"))}</p></div>
+    ${DRAW.GROUPS.map(gr => `<details class="psec pdet"${(st().pdet || {})[gr] ? " open" : ""} data-bpdet="${gr}"><summary><h4>${esc(t("dw_grp_" + gr))}</h4></summary><div class="pgrid">${Object.keys(DRAW.SYM).filter(k => DRAW.SYM[k][2] === gr).map(k => P("item:" + k, itemName(k), DRAW.icon(k))).join("")}</div></details>`).join("")}
+    <div class="psec"><h4>${esc(t("bd_devs"))}</h4><div class="pgrid">${DEVK.map(k => P("dev:" + k, kindName(k), svgI(KINDS[k].icon))).join("")}${ukBtn("building")}${P("rack", t("k_rack") === "k_rack" ? "Rack" : t("k_rack"), svgI("rack"))}</div></div>
     ${unplaced.length ? `<div class="psec"><h4>${esc(t("bd_unplaced"))} <span class="cnt">${unplaced.length}</span></h4><div class="ulist">${unplaced.slice(0, 60).map(d => `<button class="ub${place === "put:" + d.id ? " on" : ""}" data-bput="${d.id}">${esc(devLabel(d))}${d.room ? ` <small class="muted">${esc(roomName(b, d.room))}</small>` : ""}</button>`).join("")}</div></div>` : ""}
-    <div class="psec"><h4>${esc(t("palView"))}</h4><label class="chk"><input type="checkbox" data-bopt="labels"${st().labels ? " checked" : ""}> ${esc(t("bd_labels"))}</label><label class="chk"><input type="checkbox" data-bopt="grid"${st().grid ? " checked" : ""}> ${esc(t("bd_grid"))}</label><label class="chk"><input type="checkbox" data-bopt="cones"${st().cones ? " checked" : ""}> ${esc(t("camCones"))}</label>
+    <div class="psec"><h4>${esc(t("palView"))}</h4><label class="chk"><input type="checkbox" data-bopt="labels"${st().labels ? " checked" : ""}> ${esc(t("bd_labels"))}</label><label class="chk"><input type="checkbox" data-bopt="grid"${st().grid ? " checked" : ""}> ${esc(t("bd_grid"))}</label><label class="chk"><input type="checkbox" data-bopt="cones"${st().cones ? " checked" : ""}> ${esc(t("camCones"))}</label>${f.plan.img || f.plan.vec ? `<label class="chk"><input type="checkbox" data-bopt="outlines"${st().outlines ? " checked" : ""}> ${esc(t("dw_outlines"))}</label>` : ""}
+      ${f.plan.img ? `<label class="chk"><input type="checkbox" data-bvec="1"${f.plan.vec ? " checked" : ""}> ✏ ${esc(t("dw_vec"))}</label>${f.plan.vec ? `<label class="fld"><span>${esc(t("dw_bgop"))}: ${num(f.plan.bgop, 0)}%</span><input type="range" min="0" max="100" step="5" value="${num(f.plan.bgop, 0)}" data-bbgop="1"></label>${(f.plan.shapes || []).length ? "" : `<p class="muted small">${esc(t("dw_vecNoPieces"))}</p>`}` : ""}` : ""}
       <button class="btn small wfull" data-ba="wizard">🧭 ${esc(t("bd_wizard"))}</button><button class="btn small wfull" data-ba="dxf">📐 ${esc(t("dx_btn"))}</button></div>`;
 }
 
@@ -178,17 +208,25 @@ function docBody(b){
   return b.floors.slice().reverse().map(f => `<h3>🏬 ${esc(f.name)} <small class="muted">${esc(r1(f.plan.wm) + " × " + r1(f.plan.hm) + " m")}</small></h3><div style="border:1px solid #c7d1e6">${planSvg(b, f, {print:true, s:clamp(1100 / Math.max(4, num(f.plan.wm, 40)), 4, 60)}).replace(/width="[\d.]+" height="[\d.]+" font/, 'width="100%" font')}</div>`).join("")
     + `<h3>${esc(t("bd_reqT"))}</h3>` + reqView().replace(/<button[^>]*>.*?<\/button>/g, "");
 }
+// the same room twice on a floor: an estimated box with the name of an outlined room («TEKNİK ODA 1» over «TEKNİK ODA»)
+function dupRooms(b, f){ const R = roomsOf(b, f).filter(r => r.geo), base = n => nrm(n).replace(/\s*\(?\d+\)?$/, "").trim(), out = [];
+  const ov = (a, c) => { const x = Math.max(0, Math.min(a.x + a.w, c.x + c.w) - Math.max(a.x, c.x)), y = Math.max(0, Math.min(a.y + a.h, c.y + c.h) - Math.max(a.y, c.y)); return x * y / Math.max(.01, Math.min(a.w * a.h, c.w * c.h)); };
+  R.filter(r => r.geo.est).forEach(r => { const tw = R.find(o => o !== r && !o.geo.est && base(o.name) === base(r.name) && ov(o.geo, r.geo) > .5); if (tw) out.push([r, tw]); });
+  return out; }
 function bWarnings(b, f){
   const W = [], R = roomsOf(b, f), miss = R.filter(r => RK.some(k => reqOf(r, k) > placedIn(b, r, k)));
   if (miss.length) W.push(["info", t("bd_wMiss",{n:miss.length, r:miss.slice(0, 4).map(r => r.name).join(", ") + (miss.length > 4 ? " …" : "")})]);
   const est = R.filter(r => r.geo && r.geo.est); if (est.length) W.push(["info", t("dx_wEst",{n:est.length, r:est.slice(0, 5).map(r => r.name).join(", ") + (est.length > 5 ? " …" : "")}), est[0].id]);
   if (LINK_FLOOR.test(String(f.name).trim())) W.push(["", t("bd_wLinkFloor",{f:f.name})]);
   const nogeo = R.filter(r => !r.geo); if (nogeo.length) W.push(["info", t("bd_wNoGeo",{n:nogeo.length})]);
+  dupRooms(b, f).forEach(([r, tw]) => W.push(["", t("dw_wDupRoom",{a:r.name, b:tw.name}), r.id]));
   const out = R.filter(r => r.geo && (r.geo.x + r.geo.w > f.plan.wm + .01 || r.geo.y + r.geo.h > f.plan.hm + .01 || r.geo.x < 0 || r.geo.y < 0)); if (out.length) W.push(["", t("bd_wOut",{r:out.map(r => r.name).join(", ")}), out[0].id]);
   return W;
 }
 
 /* ---------- drawer ---------- */
+// free angle: a number (degrees) with quick buttons
+const rotFld = (path, v, label) => `<label class="fld"><span>${esc(label || t("bd_rot"))} (°)</span><span class="rotf"><input data-f="${path}" type="text" inputmode="decimal" value="${esc(r1(num(v, 0)))}">${[0, 45, 90, 180, 270].map(a => `<button type="button" class="btn small ghost" data-brotset="${path}:${a}">${a}°</button>`).join("")}</span></label>`;
 function drawer(tab){
   const b = B(), s = UI.sel; if (!s) return "";
   if (s.type === "dev"){ const d = devById(b, s.id); return d ? deviceEditor(b, d, {btns:posOf(d) ? `<button class="btn" data-dr="bUnplace">⤴ ${esc(t("removeFromView"))}</button>` : ""}) : ""; }
@@ -205,12 +243,33 @@ function drawer(tab){
       ${sec("bdevs", "🔌 " + t("devices") + ` <span class="cnt">${b.devices.filter(d => d.room === r.id).length}</span>`, b.devices.filter(d => d.room === r.id).map(d => `<div class="lnk" data-dr="sel:${d.id}"><svg viewBox="0 0 48 48" width="18" height="18">${ICO[devIcon(d)] || ICO.box}</svg><span><b>${esc(devLabel(d))}</b> <small class="muted">${esc(kindName(d.kind))}${posOf(d) ? "" : " · " + t("bd_notOnPlan")}</small></span></div>`).join("") || `<p class="muted small">—</p>`)}
       <div class="btns"><button class="btn" data-dr="bDupRoom">⧉ ${esc(t("duplicate"))}</button><button class="btn dan" data-dr="bDelRoom">🗑 ${esc(t("delete"))}</button></div>`; }
   if (s.type === "bitem"){ const f = curFloor(b), it = f && fixFloorPlan(f).items.find(x => x.id === s.id); if (!it) return "";
-    return `${head(t("bi_" + it.type) === "bi_" + it.type ? it.type : t("bi_" + it.type), f.name)}
-      ${it.type === "yard" ? `<label class="fld"><span>${esc(t("f_text"))}</span><input data-f="i.text" value="${esc(it.text || t("bi_yard"))}"></label>` : ""}
+    if (it.type === "boundary") return `${head(t(it.style === "house" ? "dw_house" : "dw_bound"), f.name)}
+      <label class="fld"><span>${esc(t("f_text"))}</span><input data-f="i.text" value="${esc(it.text || "")}"></label>
+      <label class="fld"><span>${esc(t("dw_bStyle"))}</span><select data-f="i.style">${opt("yard", t("dw_bound"), it.style || "yard")}${opt("house", t("dw_house"), it.style || "yard")}</select></label>
+      <p class="muted small">${esc(t("dw_bInfo", {n:(it.pts || []).length / 2, w:r1(it.w), h:r1(it.h)}))}</p><p class="muted small">${esc(t("dw_bHint"))}</p>
+      <div class="btns"><button class="btn" data-dr="bDupItem">⧉ ${esc(t("duplicate"))}</button><button class="btn dan" data-dr="bDelItem">🗑 ${esc(t("delete"))}</button></div>`;
+    return `${head(itemName(it.type), f.name)}
+      ${it.type === "yard" || DRAW.isSym(it.type) ? `<label class="fld"><span>${esc(t("f_text"))}</span><input data-f="i.text" value="${esc(it.text || (it.type === "yard" ? t("bi_yard") : ""))}"></label>` : ""}
       ${it.type === "label" ? `<label class="fld"><span>${esc(t("f_text"))}</span><input data-f="i.text" value="${esc(it.text || "")}"></label><label class="fld"><span>${esc(t("bd_fsize"))}</span><input data-f="i.size" type="text" inputmode="numeric" value="${esc(it.size || 12)}"></label>` : ""}
       <div class="two">${["x","y","w","h"].map(k => `<label class="fld"><span>${k === "w" ? esc(t("f_w")) : k === "h" ? esc(t("f_hgt")) : k.toUpperCase()} (m)</span><input data-f="i.${k}" type="text" inputmode="decimal" value="${esc(it[k])}"></label>`).join("")}</div>
-      <label class="fld"><span>${esc(t("bd_rot"))}</span><select data-f="i.rot">${[0, 90, 180, 270].map(a => opt(a, a + "°", String(it.rot || 0))).join("")}</select></label>
+      ${rotFld("i.rot", it.rot)}
       <div class="btns"><button class="btn" data-dr="bDupItem">⧉ ${esc(t("duplicate"))}</button><button class="btn dan" data-dr="bDelItem">🗑 ${esc(t("delete"))}</button></div>`; }
+  if (s.type === "bwall"){ const f = curFloor(b), w = f && (f.plan.walls || []).find(x => x.id === s.id); if (!w) return "";
+    const L = DRAW.wallLen(w), A = Math.round(Math.atan2(w.y2 - w.y1, w.x2 - w.x1) * 180 / Math.PI * 10) / 10, mats = ["drywall","brick","block","concrete","rcon","glass","wood","door","metal"];
+    return `${head(t("dw_wall"), f.name)}
+      <div class="two"><label class="fld"><span>${esc(t("dw_len"))} (m)</span><input data-f="w.len" type="text" inputmode="decimal" value="${esc(r1(L))}"></label>${rotFld("w.ang", A, t("dw_ang"))}</div>
+      <div class="two"><label class="fld"><span>${esc(t("dw_thick"))} (cm)</span><input data-f="w.t" type="text" inputmode="decimal" value="${esc(Math.round(DRAW.wallT(w) * 100))}"></label><label class="fld"><span>${esc(t("dw_bend"))} (°)</span><input data-f="w.bend" type="text" inputmode="decimal" value="${esc(num(w.bend, 0))}"></label></div>
+      <label class="fld"><span>${esc(t("dw_mat"))}</span><select data-f="w.mat">${mats.map(m => opt(m, t("wf_mat_" + m), w.mat || "drywall")).join("")}</select></label>
+      <div class="two">${["x1","y1"].map(k => `<label class="fld"><span>${k.toUpperCase()} (m)</span><input data-f="w.${k}" type="text" inputmode="decimal" value="${esc(r1(w[k]))}"></label>`).join("")}</div>
+      <p class="muted small">${esc(t("dw_wallInfo", {a:r1(DRAW.wallArc(w))}))}</p><p class="muted small">${esc(t("dw_wallHint2"))}</p>
+      <div class="btns"><button class="btn" data-dr="bDupWall">⧉ ${esc(t("duplicate"))}</button><button class="btn" data-dr="bWallNext">↪ ${esc(t("dw_next"))}</button><button class="btn dan" data-dr="bDelWall">🗑 ${esc(t("delete"))}</button></div>`; }
+  if (s.type === "bshape"){ const f = curFloor(b), o = f && (f.plan.shapes || []).find(x => x.id === s.id); if (!o) return "";
+    return `${head(t("dw_pc_" + o.k) === "dw_pc_" + o.k ? o.k : t("dw_pc_" + o.k), f.name + (o.room && roomById(b, o.room) ? " · " + roomById(b, o.room).name : ""))}
+      <div class="two">${["x","y","w","h"].map(k => `<label class="fld"><span>${k === "w" ? esc(t("f_w")) : k === "h" ? esc(t("f_hgt")) : k.toUpperCase()} (m)</span><input data-f="o.${k}" type="text" inputmode="decimal" value="${esc(r1(o[k]))}"></label>`).join("")}</div>
+      ${rotFld("o.rot", o.rot)}
+      ${o.k === "rwall" ? `<label class="fld"><span>${esc(t("dw_pcRoom"))}</span><select data-f="o.room">${opt("", t("none"), o.room || "")}${roomsOf(b, f).map(r => opt(r.id, r.name, o.room || "")).join("")}</select></label><p class="muted small">${esc(t("dw_pcRoomH"))}</p>` : ""}
+      <p class="muted small">${esc(t("dw_pcHint"))}</p>
+      <div class="btns">${o.w !== o.w0 || o.h !== o.h0 ? `<button class="btn" data-dr="bShReset">↺ ${esc(t("dw_pcReset"))}</button>` : ""}<button class="btn" data-dr="bDupShape">⧉ ${esc(t("duplicate"))}</button><button class="btn dan" data-dr="bDelShape">🗑 ${esc(t("delete"))}</button></div>`; }
   if (s.type === "rack"){ const r = rackById(b, s.id); if (!r) return "";
     return `${head(r.name, t("k_rack") === "k_rack" ? "Rack" : t("k_rack"))}<label class="fld"><span>${esc(t("f_name"))}</span><input data-f="k.name" value="${esc(r.name)}"></label>
       <label class="fld"><span>${esc(t("f_room"))}</span><select data-f="k.room">${opt("", t("none"), r.room)}${roomsOf(b, curFloor(b) || {}).map(x => opt(x.id, x.name, r.room)).join("")}</select></label>
@@ -232,7 +291,17 @@ function onField(path, v){
       else if (g === "g"){ r.geo[k] = k === "w" || k === "h" ? Math.max(.5, n(v)) : n(v); delete r.geo.est; }
       else if (g === "q"){ r.req[k] = Math.round(n(v)); } }); return; }
   if (s.type === "bitem"){ const f = curFloor(b), it = f && f.plan.items.find(x => x.id === s.id); if (!it) return;
-    edit(() => { const k = path.split(".")[1]; if (k === "text") it.text = v; else if (k === "rot") it.rot = num(v); else it[k] = k === "w" || k === "h" ? Math.max(.1, n(v)) : k === "size" ? clamp(n(v), 8, 40) : n(v); }); return; }
+    edit(() => { const k = path.split(".")[1]; if (k === "text") it.text = v; else if (k === "style") it.style = v; else if (k === "rot") it.rot = ((num(String(v).replace(",", "."), 0) % 360) + 360) % 360; else it[k] = k === "w" || k === "h" ? Math.max(.1, n(v)) : k === "size" ? clamp(n(v), 8, 40) : n(v); }); return; }
+  if (s.type === "bwall"){ const f = curFloor(b), w = f && (f.plan.walls || []).find(x => x.id === s.id); if (!w) return; const k = path.split(".")[1], x = num(String(v).replace(",", "."), NaN);
+    edit(() => { if (k === "mat"){ w.mat = v; return; } if (!isFinite(x)) return;
+      const L = DRAW.wallLen(w), A = Math.atan2(w.y2 - w.y1, w.x2 - w.x1);
+      if (k === "len"){ const n = Math.max(.1, x); w.x2 = r2(w.x1 + Math.cos(A) * n); w.y2 = r2(w.y1 + Math.sin(A) * n); }
+      else if (k === "ang"){ const a = x * Math.PI / 180; w.x2 = r2(w.x1 + Math.cos(a) * L); w.y2 = r2(w.y1 + Math.sin(a) * L); }
+      else if (k === "t") w.t = clamp(x / 100, .02, 1.5);
+      else if (k === "bend") w.bend = clamp(Math.round(x), -300, 300);
+      else if (k === "x1" || k === "y1"){ const d = x - w[k], o = k === "x1" ? "x2" : "y2"; w[k] = r2(x); w[o] = r2(w[o] + d); } }); return; }
+  if (s.type === "bshape"){ const f = curFloor(b), o = f && (f.plan.shapes || []).find(x => x.id === s.id); if (!o) return; const k = path.split(".")[1];
+    edit(() => { if (k === "room"){ o.room = v; return; } const x = num(String(v).replace(",", "."), NaN); if (!isFinite(x)) return; if (k === "rot") o.rot = ((x % 360) + 360) % 360; else if (k === "w" || k === "h") o[k] = Math.max(.05, r2(x)); else o[k] = r2(x); }); return; }
   if (s.type === "rack"){ const r = rackById(b, s.id); if (!r) return; edit(() => { const k = path.split(".")[1]; if (k === "name") r.name = String(v).trim() || r.name; else r.room = v; }); return; }
   if (s.type === "bfloor"){ const f = floorById(b, s.id); if (!f) return; edit(() => { const k = path.split(".")[1]; if (k === "name") f.name = String(v).trim() || f.name; else if (k === "h") f.h = Math.max(2, n(v)); else if (k === "ext") f.plan.ext = clamp(n(v), 0, 500); else f.plan[k] = Math.max(2, n(v)); }); }
 }
@@ -247,6 +316,14 @@ async function onDrawerAct(k){
     if (k === "bDelRoom") return delRoom(b, r);
     if (k === "bDupRoom"){ edit(() => { const c = Object.assign(clone(r), {id:uid("r"), name:r.name + " (2)"}); if (c.geo){ c.geo.x = r1(c.geo.x + 1); c.geo.y = r1(c.geo.y + 1); } b.rooms.push(c); UI.sel = {type:"room", id:c.id}; }); return; }
     if (k === "bDrawRoom"){ const fl = floorById(b, r.floor) || f; if (!fl) return; edit(() => { r.geo = freeRect(b, fl, 4, 4); st().floor = fl.id; UI.tabs.building = "plan"; }); return; } }
+  if (s.type === "bwall" && f){ const W = f.plan.walls, w = W.find(x => x.id === s.id); if (!w) return;
+    if (k === "bDelWall") return edit(() => { f.plan.walls = W.filter(x => x !== w); UI.sel = null; });
+    if (k === "bDupWall") return edit(() => { const c = Object.assign(clone(w), {id:uid("w"), x1:r2(w.x1 + .5), y1:r2(w.y1 + .5), x2:r2(w.x2 + .5), y2:r2(w.y2 + .5)}); W.push(c); UI.sel = {type:"bwall", id:c.id}; });
+    if (k === "bWallNext") return edit(() => { const A = Math.atan2(w.y2 - w.y1, w.x2 - w.x1) + Math.PI / 2, L = DRAW.wallLen(w); const c = Object.assign(clone(w), {id:uid("w"), x1:w.x2, y1:w.y2, x2:r2(w.x2 + Math.cos(A) * L), y2:r2(w.y2 + Math.sin(A) * L), bend:0}); W.push(c); UI.sel = {type:"bwall", id:c.id}; }); }
+  if (s.type === "bshape" && f){ const o = (f.plan.shapes || []).find(x => x.id === s.id); if (!o) return;
+    if (k === "bDelShape") return edit(() => { f.plan.shapes = f.plan.shapes.filter(x => x !== o); UI.sel = null; });
+    if (k === "bDupShape") return edit(() => { const c = Object.assign(clone(o), {id:uid("s"), x:r2(o.x + .5), y:r2(o.y + .5), room:""}); f.plan.shapes.push(c); UI.sel = {type:"bshape", id:c.id}; });
+    if (k === "bShReset") return edit(() => { o.w = o.w0; o.h = o.h0; }); }
   if (s.type === "bitem" && f){ const it = f.plan.items.find(x => x.id === s.id); if (!it) return;
     if (k === "bDelItem") edit(() => { f.plan.items = f.plan.items.filter(x => x !== it); UI.sel = null; });
     if (k === "bDupItem") edit(() => { const c = Object.assign(clone(it), {id:uid("i"), x:r1(it.x + .5), y:r1(it.y + .5)}); f.plan.items.push(c); UI.sel = {type:"bitem", id:c.id}; }); }
@@ -278,7 +355,7 @@ function doPlace(key, b, f, p){
     if (key.startsWith("room:")){ const type = key.slice(5), w = type === "corridor" ? 8 : 4, h = type === "corridor" ? 2 : 4;
       const r = normRoom({id:uid("r"), name:type === "office" ? t("roomN",{n:roomsOf(b, f).length + 1}) : t("rt_" + type), floor:f.id, users:0, wall:"drywall", type, req:Object.assign({}, RDEF[type]), geo:{x:snap(Math.min(p.x, f.plan.wm - w)), y:snap(Math.min(p.y, f.plan.hm - h)), w, h}});
       b.rooms.push(r); UI.sel = {type:"room", id:r.id}; }
-    else if (key.startsWith("item:")){ const type = key.slice(5), D = ITEMS[type]; const it = {id:uid("i"), type, x:snap(p.x), y:snap(p.y), w:D.w, h:D.h, rot:0}; if (type === "label"){ it.text = t("bd_label"); it.size = 14; } fixFloorPlan(f).items.push(it); UI.sel = {type:"bitem", id:it.id}; }
+    else if (key.startsWith("item:")){ const type = key.slice(5), D = itemDef(type); const it = {id:uid("i"), type, x:snap(p.x), y:snap(p.y), w:D.w, h:D.h, rot:0}; if (type === "label"){ it.text = t("bd_label"); it.size = 14; } fixFloorPlan(f).items.push(it); UI.sel = {type:"bitem", id:it.id}; }
     else if (key === "rack"){ const r = {id:uid("k"), name:nextRackName(b), u:42, floor:f.id}; normRack(r); const rm = roomAtPt(b, f, p.x, p.y); if (rm) r.room = rm.id; r.pos = {x:r1(p.x), y:r1(p.y)}; b.racks.push(r); UI.sel = {type:"rack", id:r.id}; }
     else if (key.startsWith("dev:")){ const k = key.slice(4), rm = roomAtPt(b, f, p.x, p.y), d = newDevice(k, {floor:f.id, room:rm ? rm.id : ""}); d.name = autoName(b, k); setPos(d, p.x, p.y); b.devices.push(d); UI.sel = {type:"dev", id:d.id}; }
     else if (key.startsWith("put:")){ const d = devById(b, key.slice(4)); if (d){ setPos(d, p.x, p.y); d.floor = f.id; const rm = roomAtPt(b, f, p.x, p.y); if (rm && !d.room) d.room = rm.id; UI.sel = {type:"dev", id:d.id}; } }
@@ -290,6 +367,30 @@ async function renameAt(b, f, type, id){
   else if (type === "rack"){ const r = rackById(b, id), n = await uiPrompt(t("f_name"), r.name); if (n && n.trim()) edit(() => { r.name = n.trim(); }); }
   else if (type === "bitem"){ const it = f.plan.items.find(x => x.id === id); if (it && (it.type === "label" || it.type === "yard")){ const n = await uiPrompt(t("f_text"), it.text || ""); if (n !== null) edit(() => { it.text = n; }); } }
 }
+// wall ends snap to the ends of other walls (30 cm), else to the grid; Shift keeps the wall at steps of 15°
+function wallSnap(f, p, self, ang, from){ let best = null, bd = .3;
+  (f.plan.walls || []).forEach(w => { if (w === self) return; [[w.x1, w.y1], [w.x2, w.y2]].forEach(([x, y]) => { const d = Math.hypot(p.x - x, p.y - y); if (d < bd){ bd = d; best = {x, y}; } }); });
+  if (best) return best;
+  if (ang && from){ const L = Math.hypot(p.x - from.x, p.y - from.y), a = Math.round(Math.atan2(p.y - from.y, p.x - from.x) / (Math.PI / 12)) * (Math.PI / 12), Ls = st().grid ? Math.round(L * 2) / 2 : r1(L); return {x:r2(from.x + Math.cos(a) * Ls), y:r2(from.y + Math.sin(a) * Ls)}; }
+  return {x:snap(p.x), y:snap(p.y)}; }
+// drawing tools: a wall (press, drag, release; the tool stays on for the next wall) and outlines (click the corners;
+// click the first corner again, double-click or Enter to close; Esc stops)
+function toolDown(tool, b, f, p, e){
+  const P = fixFloorPlan(f); P.walls = Array.isArray(P.walls) ? P.walls : [];
+  if (tool === "wall" || tool === "wallc"){ const q = wallSnap(f, p, null, false), w = {id:uid("w"), x1:q.x, y1:q.y, x2:q.x, y2:q.y, kind:"wall", mat:"brick", t:.2, bend:tool === "wallc" ? 90 : 0};
+    // the drawer opens only when the wall is finished, so the plan does not shift under the pointer while drawing
+    const sn = snapshot(); P.walls.push(w); drag = {mode:"draw", w, k:"2", snap:sn, moved:false, p0:p}; const el = $("svg.bplan"); if (el){ el.outerHTML = planSvg(b, f); zpAll(); } return; }
+  if (tool === "bound" || tool === "house"){ const x = snap(p.x), y = snap(p.y);
+    if (poly && poly.f === f.id){ const it = P.items.find(o => o.id === poly.id); if (!it){ poly = null; return; }
+      const n = it.pts.length / 2, close = n >= 3 && Math.hypot(x - it.pts[0], y - it.pts[1]) < .45, dbl = Date.now() - poly.t < 400 && n >= 3 && Math.hypot(x - it.pts[it.pts.length - 2], y - it.pts[it.pts.length - 1]) < .3;
+      if (close || dbl){ finishPoly(); return; }
+      it.pts.push(x, y); DRAW.boundBox(it); poly.t = Date.now(); persist(); render(); return; }
+    const it = {id:uid("i"), type:"boundary", style:tool === "house" ? "house" : "yard", pts:[x, y], x, y, w:0, h:0, rot:0, text:""};
+    pushUndo(snapshot()); P.items.push(it); poly = {id:it.id, f:f.id, t:Date.now()}; UI.sel = {type:"bitem", id:it.id}; persist(); render(); toast(t("dw_polyHint")); }
+}
+function finishPoly(cancel){ if (!poly) return; const b = B(), f = floorById(b, poly.f), it = f && f.plan.items.find(o => o.id === poly.id); poly = null; place = null;
+  if (it && (cancel || it.pts.length < 6)){ f.plan.items = f.plan.items.filter(o => o !== it); UI.sel = null; } else if (it) DRAW.boundBox(it);
+  persist(); render(); }
 function wire(){
   const onPlan = onPlanTab;
   document.addEventListener("dragstart", e => { const el = e.target.closest && e.target.closest("[data-bplace]"); if (!el || !onPlan()) return; place = el.dataset.bplace; e.dataTransfer.setData("text/plain", place); e.dataTransfer.effectAllowed = "copy"; });
@@ -299,9 +400,13 @@ function wire(){
     const pl = e.target.closest("[data-bplace]"); if (pl){ place = place === pl.dataset.bplace ? null : pl.dataset.bplace; render(); return; }
     const pu = e.target.closest("[data-bput]"); if (pu){ const k = "put:" + pu.dataset.bput; place = place === k ? null : k; render(); return; }
     const fl = e.target.closest("[data-bfl]"); if (fl){ st().floor = fl.dataset.bfl; UI.sel = {type:"bfloor", id:fl.dataset.bfl}; render(); return; }
-    const a = e.target.closest("[data-ba]"); if (a){ act(a.dataset.ba); return; } });
+    const a = e.target.closest("[data-ba]"); if (a){ act(a.dataset.ba); return; }
+    const rs = e.target.closest("[data-brotset]"); if (rs){ const [pth, v] = rs.dataset.brotset.split(":"); onField(pth, v); return; } });
+  document.addEventListener("toggle", e => { const d = e.target; if (d && d.dataset && d.dataset.bpdet){ const S = st(); S.pdet = S.pdet || {}; S.pdet[d.dataset.bpdet] = d.open; } }, true);
   document.addEventListener("change", e => { if (UI.app !== "building" && !onPlanTab()) return; const el = e.target, b = B();
     if (el.dataset.bopt){ st()[el.dataset.bopt] = el.checked; render(); return; }
+    if (el.dataset.bvec){ const f = curFloor(b); if (f) edit(() => { f.plan.vec = el.checked; if (el.checked && f.plan.bgop === undefined) f.plan.bgop = (f.plan.shapes || []).length ? 0 : 35; }); return; }
+    if (el.dataset.bbgop){ const f = curFloor(b); if (f) edit(() => { f.plan.bgop = clamp(num(el.value, 0), 0, 100); }); return; }
     if (el.dataset.bfn){ const f = floorById(b, el.dataset.bfn); if (f && el.value.trim()) edit(() => { f.name = el.value.trim(); }); return; }
     if (el.dataset.brn){ const r = roomById(b, el.dataset.brn); if (r && el.value.trim()) edit(() => { r.name = el.value.trim(); }); return; }
     if (el.dataset.brt){ const r = roomById(b, el.dataset.brt); if (r) edit(() => { r.type = el.value; }); return; }
@@ -310,42 +415,71 @@ function wire(){
   document.addEventListener("pointerdown", e => {
     if (!onPlan() || (e.button !== 0 && e.pointerType !== "touch")) return; const svg = e.target.closest("svg.bplan"); if (!svg) return;
     const b = B(), f = curFloor(b); if (!f) return; const p = ptOf(e, svg, f);
+    if (place && place.startsWith("tool:")){ e.preventDefault(); return toolDown(place.slice(5), b, f, p, e); }
     if (place){ e.preventDefault(); const k = place; place = null; doPlace(k, b, f, p); return; }
+    const ro = e.target.closest("[data-brot]");
+    if (ro){ const [ty, id] = ro.dataset.brot.split(":"), o = ty === "bshape" ? f.plan.shapes.find(x => x.id === id) : f.plan.items.find(x => x.id === id); if (o){ drag = {mode:"rot2", o, cx:o.x + o.w / 2, cy:o.y + o.h / 2, snap:snapshot(), moved:false, p0:p}; e.preventDefault(); } return; }
+    const wh = e.target.closest("[data-bwh]");
+    if (wh){ const [id, k] = wh.dataset.bwh.split(":"), w = f.plan.walls.find(x => x.id === id); if (w){ drag = {mode:"wend", w, k, snap:snapshot(), moved:false, p0:p}; e.preventDefault(); } return; }
+    const wb = e.target.closest("[data-bwb]");
+    if (wb){ const w = f.plan.walls.find(x => x.id === wb.dataset.bwb); if (w){ drag = {mode:"wbend", w, snap:snapshot(), moved:false, p0:p}; e.preventDefault(); } return; }
+    const vx = e.target.closest("[data-bvx]");
+    if (vx){ const [id, i] = vx.dataset.bvx.split(":"), it = f.plan.items.find(x => x.id === id); if (!it) return; e.preventDefault();
+      if (e.altKey){ if (it.pts.length > 6) edit(() => { it.pts.splice(+i * 2, 2); DRAW.boundBox(it); }); return; }
+      drag = {mode:"vx", it, i:+i, snap:snapshot(), moved:false, p0:p}; return; }
     const cr = e.target.closest("[data-camrot]");
     if (cr){ const d = devById(b, cr.dataset.camrot); drag = {mode:"rot", d, snap:snapshot(), moved:false, p0:p}; e.preventDefault(); return; }
     const lb = e.target.closest("[data-rlab]");
     if (lb && !(host() && host().lockRooms && false)){ const r = roomById(b, lb.dataset.rlab), g = r.geo, sx = g.pw ? g.w / g.pw : 1, sy = g.ph ? g.h / g.ph : 1;
       if (g.lx === undefined){ g.lx = .4 + 1.5 / sx; g.ly = .6 / sy; }
       UI.sel = {type:"room", id:r.id}; drag = {mode:"lab", g, sx, sy, lx:g.lx, ly:g.ly, p0:p, snap:snapshot(), moved:false}; e.preventDefault(); render(); return; }
-    const res = e.target.closest("[data-res]"), dv = e.target.closest("[data-bdev]"), rk = e.target.closest("[data-brack]"), it = e.target.closest("[data-bitem]"), rm = e.target.closest("[data-room]");
+    const res = e.target.closest("[data-res]"), dv = e.target.closest("[data-bdev]"), rk = e.target.closest("[data-brack]"), it = e.target.closest("[data-bitem]") || e.target.closest("[data-bbound]"), rm = e.target.closest("[data-room]"), wl = e.target.closest("[data-bwall]"), sh = e.target.closest("[data-bshape]");
     let type = null, id = null;
-    if (res){ const [ty, i] = res.dataset.res.split(":"), o = ty === "room" ? roomById(b, i).geo : f.plan.items.find(x => x.id === i); drag = {mode:"resize", o, p0:p, w0:o.w, h0:o.h, snap:snapshot(), moved:false}; e.preventDefault(); return; }
-    if (dv){ type = "dev"; id = dv.dataset.bdev; } else if (rk){ type = "rack"; id = rk.dataset.brack; } else if (it){ type = "bitem"; id = it.dataset.bitem; } else if (rm){ type = "room"; id = rm.dataset.room; }
+    if (res){ const [ty, i] = res.dataset.res.split(":"), o = ty === "room" ? roomById(b, i).geo : ty === "bshape" ? f.plan.shapes.find(x => x.id === i) : f.plan.items.find(x => x.id === i);
+      // a room name keeps its place on the plan while the room outline is resized
+      const lab = ty === "room" && o.lx !== undefined ? {x:o.lx * (o.pw ? o.w / o.pw : 1), y:o.ly * (o.ph ? o.h / o.ph : 1)} : null;
+      drag = {mode:"resize", o, lab, p0:p, w0:o.w, h0:o.h, snap:snapshot(), moved:false}; e.preventDefault(); return; }
+    if (dv){ type = "dev"; id = dv.dataset.bdev; } else if (rk){ type = "rack"; id = rk.dataset.brack; } else if (it){ type = "bitem"; id = it.dataset.bitem || it.dataset.bbound; } else if (wl){ type = "bwall"; id = wl.dataset.bwall; } else if (sh){ type = "bshape"; id = sh.dataset.bshape; } else if (rm){ type = "room"; id = rm.dataset.room; }
     if (!type){ if (UI.sel || UI.multi.size){ UI.sel = null; UI.multi.clear(); render(); } return; }
-    const now = Date.now(); if (lastDown && lastDown.id === id && now - lastDown.t < 450){ lastDown = null; drag = null; e.preventDefault(); renameAt(b, f, type, id); return; } lastDown = {id, t:now};
+    const now = Date.now(); if (lastDown && lastDown.id === id && now - lastDown.t < 450){ lastDown = null; drag = null; e.preventDefault();
+      const bo = type === "bitem" && f.plan.items.find(x => x.id === id); if (bo && bo.type === "boundary"){ edit(() => DRAW.boundInsert(bo, p.x, p.y)); return; }
+      renameAt(b, f, type, id); return; } lastDown = {id, t:now};
     if (type === "dev" && (e.ctrlKey || e.metaKey || e.shiftKey)){ if (!UI.multi.size && UI.sel && UI.sel.type === "dev") UI.multi.add("dev:" + UI.sel.id); const k = "dev:" + id; UI.multi.has(k) ? UI.multi.delete(k) : UI.multi.add(k); UI.sel = null; render(); return; }
     UI.multi.clear(); UI.sel = {type, id}; e.preventDefault();
     const items = [];
     if (type === "dev"){ const d = devById(b, id); items.push({d, ...posOf(d)}); }
     else if (type === "rack"){ const r = rackById(b, id); items.push({o:r.pos, x:r.pos.x, y:r.pos.y}); }
-    else if (type === "bitem"){ const o = f.plan.items.find(x => x.id === id); items.push({o, x:o.x, y:o.y}); }
+    else if (type === "bitem"){ const o = f.plan.items.find(x => x.id === id); if (o.type === "boundary") items.push({pts:o.pts, p0:o.pts.slice(), o}); else items.push({o, x:o.x, y:o.y}); }
+    else if (type === "bwall"){ const w = f.plan.walls.find(x => x.id === id); items.push({w, a:[w.x1, w.y1, w.x2, w.y2]}); }
+    else if (type === "bshape"){ const o = f.plan.shapes.find(x => x.id === id); items.push({o, x:o.x, y:o.y}); }
     else if (host() && host().lockRooms){ render(); return; }
     else { const r = roomById(b, id); items.push({o:r.geo, x:r.geo.x, y:r.geo.y});
       // a room carries what lies inside it
       b.devices.filter(d => d.room === r.id && posOf(d)).forEach(d => items.push({d, ...posOf(d)}));
-      b.racks.filter(k => k.room === r.id && k.pos).forEach(k => items.push({o:k.pos, x:k.pos.x, y:k.pos.y})); }
+      b.racks.filter(k => k.room === r.id && k.pos).forEach(k => items.push({o:k.pos, x:k.pos.x, y:k.pos.y}));
+      // … and its walls, doors and windows read from the drawing
+      (f.plan.shapes || []).filter(o => o.room === r.id).forEach(o => items.push({o, x:o.x, y:o.y})); }
     drag = {mode:"move", type, id, items, p0:p, snap:snapshot(), moved:false};
     render();
   });
   document.addEventListener("pointermove", e => { if (!drag) return; const svg = $("svg.bplan"); if (!svg) return; const b = B(), f = curFloor(b), p = ptOf(e, svg, f), dx = p.x - drag.p0.x, dy = p.y - drag.p0.y;
     if (!drag.moved && Math.hypot(dx, dy) * scaleFor(f) < 3) return; drag.moved = true;
     if (drag.mode === "rot"){ const q = posOf(drag.d); if (q) drag.d.camera.dir = Math.round(Math.atan2(p.y - q.y, p.x - q.x) * 180 / Math.PI + 360) % 360; }
+    else if (drag.mode === "rot2"){ let a = Math.atan2(p.y - drag.cy, p.x - drag.cx) * 180 / Math.PI + 90; a = e.shiftKey ? Math.round(a / 15) * 15 : Math.round(a); drag.o.rot = ((a % 360) + 360) % 360; }
+    else if (drag.mode === "wend" || drag.mode === "draw"){ const w = drag.w, k = drag.k || "2", o = k === "1" ? "2" : "1", q = wallSnap(f, p, w, e.shiftKey, {x:w["x" + o], y:w["y" + o]}); w["x" + k] = q.x; w["y" + k] = q.y; }
+    else if (drag.mode === "wbend"){ const w = drag.w, L = DRAW.wallLen(w); if (L > .05){ const mx = (w.x1 + w.x2) / 2, my = (w.y1 + w.y2) / 2, nx = (w.y2 - w.y1) / L, ny = -(w.x2 - w.x1) / L, hh = (p.x - mx) * nx + (p.y - my) * ny, a = 4 * Math.atan(2 * hh / L) * 180 / Math.PI; w.bend = Math.abs(a) < 3 ? 0 : clamp(Math.round(e.shiftKey ? Math.round(a / 15) * 15 : a), -300, 300); } }
+    else if (drag.mode === "vx"){ drag.it.pts[drag.i * 2] = snap(p.x); drag.it.pts[drag.i * 2 + 1] = snap(p.y); DRAW.boundBox(drag.it); }
     else if (drag.mode === "lab"){ drag.g.lx = r1(drag.lx + dx / drag.sx); drag.g.ly = r1(drag.ly + dy / drag.sy); }
-    else if (drag.mode === "resize"){ drag.o.w = Math.max(.3, snap(drag.w0 + dx)); drag.o.h = Math.max(.2, snap(drag.h0 + dy)); delete drag.o.est; }
+    else if (drag.mode === "resize"){ const o = drag.o; o.w = Math.max(.3, snap(drag.w0 + dx)); o.h = Math.max(.2, snap(drag.h0 + dy)); delete o.est; if (drag.lab){ o.lx = r1(drag.lab.x / (o.pw ? o.w / o.pw : 1)); o.ly = r1(drag.lab.y / (o.ph ? o.h / o.ph : 1)); } }
     else drag.items.forEach((it, i) => { const nx = (drag.type === "room" || drag.type === "bitem") && i === 0 ? snap(it.x + dx) : r1(it.x + dx), ny = (drag.type === "room" || drag.type === "bitem") && i === 0 ? snap(it.y + dy) : r1(it.y + dy);
-      if (it.d) setPos(it.d, nx, ny); else { it.o.x = nx; it.o.y = ny; } });
+      if (it.pts){ for (let k = 0; k < it.pts.length; k += 2){ it.pts[k] = r2(it.p0[k] + snap(dx)); it.pts[k + 1] = r2(it.p0[k + 1] + snap(dy)); } DRAW.boundBox(it.o); }
+      else if (it.w){ it.w.x1 = r2(it.a[0] + snap(dx)); it.w.y1 = r2(it.a[1] + snap(dy)); it.w.x2 = r2(it.a[2] + snap(dx)); it.w.y2 = r2(it.a[3] + snap(dy)); }
+      else if (it.d) setPos(it.d, nx, ny); else { it.o.x = nx; it.o.y = ny; } });
     const svgEl = $("svg.bplan"); if (svgEl){ svgEl.outerHTML = planSvg(b, f); zpAll(); } });
   const up = cancel => { if (!drag) return; const g = drag; drag = null; if (cancel){ render(); return; }
+    // a wall drawn by a click without dragging (or too short) is not kept
+    if (g.mode === "draw" && DRAW.wallLen(g.w) < .15){ const f = curFloor(B()); f.plan.walls = f.plan.walls.filter(x => x !== g.w); UI.sel = null; render(); return; }
+    if (g.mode === "draw"){ UI.sel = {type:"bwall", id:g.w.id}; pushUndo(g.snap); persist(); render(); return; }
     if (g.moved){ const b = B(), f = curFloor(b);
       // a device or rack dropped in another room now belongs to that room
       if (g.mode === "move" && (g.type === "dev" || g.type === "rack")){ const o = g.type === "dev" ? devById(b, g.id) : rackById(b, g.id), P1 = g.type === "dev" ? posOf(o) : o.pos, rm = roomAtPt(b, f, P1.x, P1.y); if (rm) o.room = rm.id; }
@@ -355,15 +489,20 @@ function wire(){
   document.addEventListener("pointercancel", () => up(true));
 }
 function onKey(e){
+  if (poly && e.key === "Enter"){ e.preventDefault(); finishPoly(); return; }
   const b = B(), f = curFloor(b), s = UI.sel; if (!s || !f) return;
   if (e.key === "Delete" || e.key === "Backspace"){ e.preventDefault();
     if (s.type === "room") return delRoom(b, roomById(b, s.id));
     if (s.type === "bitem") return edit(() => { f.plan.items = f.plan.items.filter(x => x.id !== s.id); UI.sel = null; });
     if (s.type === "dev") return edit(() => { clearPos(devById(b, s.id)); UI.sel = null; });
-    if (s.type === "rack") return edit(() => { delete rackById(b, s.id).pos; UI.sel = null; }); }
+    if (s.type === "rack") return edit(() => { delete rackById(b, s.id).pos; UI.sel = null; });
+    if (s.type === "bwall") return edit(() => { f.plan.walls = f.plan.walls.filter(x => x.id !== s.id); UI.sel = null; });
+    if (s.type === "bshape") return edit(() => { f.plan.shapes = f.plan.shapes.filter(x => x.id !== s.id); UI.sel = null; }); }
   if (e.key.startsWith("Arrow")){ e.preventDefault(); const k = e.shiftKey ? .1 : .5, dx = e.key === "ArrowLeft" ? -k : e.key === "ArrowRight" ? k : 0, dy = e.key === "ArrowUp" ? -k : e.key === "ArrowDown" ? k : 0;
     edit(() => { if (s.type === "room"){ const g = roomById(b, s.id).geo; if (g){ g.x = r1(g.x + dx); g.y = r1(g.y + dy); } } else if (s.type === "bitem"){ const o = f.plan.items.find(x => x.id === s.id); o.x = r1(o.x + dx); o.y = r1(o.y + dy); }
-      else if (s.type === "dev"){ const d = devById(b, s.id), P1 = posOf(d); if (P1) setPos(d, P1.x + dx, P1.y + dy); } else if (s.type === "rack"){ const r = rackById(b, s.id); if (r.pos){ r.pos.x = r1(r.pos.x + dx); r.pos.y = r1(r.pos.y + dy); } } }); }
+      else if (s.type === "dev"){ const d = devById(b, s.id), P1 = posOf(d); if (P1) setPos(d, P1.x + dx, P1.y + dy); }
+      else if (s.type === "bwall"){ const w = f.plan.walls.find(x => x.id === s.id); if (w){ w.x1 = r2(w.x1 + dx); w.x2 = r2(w.x2 + dx); w.y1 = r2(w.y1 + dy); w.y2 = r2(w.y2 + dy); } }
+      else if (s.type === "bshape"){ const o = f.plan.shapes.find(x => x.id === s.id); if (o){ o.x = r2(o.x + dx); o.y = r2(o.y + dy); } } else if (s.type === "rack"){ const r = rackById(b, s.id); if (r.pos){ r.pos.x = r1(r.pos.x + dx); r.pos.y = r1(r.pos.y + dy); } } }); }
 }
 async function act(k){
   const b = B();
@@ -371,6 +510,10 @@ async function act(k){
   if (k === "dxf") return dxfImport();
   if (k === "addFloor"){ const n = await uiPrompt(t("floorNew"), t("floorN",{n:b.floors.length + 1})); if (n === null) return;
     return edit(() => { const f = {id:uid("f"), name:n.trim() || t("floorN",{n:b.floors.length + 1}), lvl:b.floors.length}; b.floors.push(f); normBuilding(b); const p = b.floors[b.floors.length - 2]; if (p){ f.plan.wm = p.plan.wm; f.plan.hm = p.plan.hm; } st().floor = f.id; UI.sel = {type:"bfloor", id:f.id}; }); }
+  if (k === "mergeDup"){ const f = curFloor(b), L = f ? dupRooms(b, f) : []; if (!L.length) return;
+    if (!await uiConfirm(t("dw_dupQ",{l:L.map(([r, tw]) => `${r.name} → ${tw.name}`).join("\n")}))) return;
+    return edit(() => L.forEach(([r, tw]) => { b.devices.forEach(d => { if (d.room === r.id) d.room = tw.id; }); b.racks.forEach(k2 => { if (k2.room === r.id) k2.room = tw.id; });
+      RK.forEach(k2 => { if (num(r.req[k2]) > num(tw.req && tw.req[k2])){ tw.req = tw.req || {}; tw.req[k2] = num(r.req[k2]); } }); if (!num(tw.users) && num(r.users)) tw.users = r.users; b.rooms = b.rooms.filter(x => x !== r); })); }
   if (k === "createAll"){ let n = 0; edit(() => { b.rooms.forEach(r => { n += createMissing(b, normRoom(r)); }); }); toast("✓ " + t("bd_createdN",{n})); return; }
   if (k === "reqCsv"){ saveText(`${fileSafe(b.name)} - ${t("bd_reqT")}.csv`, csvText([t("f_floor"), t("f_room"), t("bd_type"), "m²", t("f_users"), ...RK.flatMap(x => [kindName(x) + " (" + t("bd_req") + ")", kindName(x) + " (" + t("bd_placed") + ")"])],
       b.rooms.map(r => [floorName(b, r.floor), r.name, t("rt_" + normRoom(r).type), area(r), num(r.users), ...RK.flatMap(x => [reqOf(r, x), placedIn(b, r, x)])])), "csv", "text/csv"); return; }
@@ -512,10 +655,13 @@ async function dxfImport(){
     // the drawing as a building of its own: floors, rooms, outlets
     const src = {name:file.name, floors:[], rooms:[], devices:[]};
     out.forEach(([F, r]) => {
-      const f = {id:uid("f"), name:F.name, lvl:F.lv, lv:F.lv, h:3.2}; f.plan = {wm:r.wm, hm:r.hm, img:r.img, op:100, cal:true, idf:null, walls:S.walls ? r.walls.map(w => Object.assign({id:uid("w")}, w)) : [], survey:[], items:[], src:{dxf:file.name}};
+      const f = {id:uid("f"), name:F.name, lvl:F.lv, lv:F.lv, h:3.2}; f.plan = {wm:r.wm, hm:r.hm, img:r.img, op:100, cal:true, idf:null, walls:S.walls ? r.walls.map(w => Object.assign({id:uid("w"), src:"dxf"}, w)) : [], survey:[], items:[], src:{dxf:file.name}};
+      // the drawing as editable pieces (the picture stays underneath, hidden, for comparison)
+      if (r.pieces){ f.plan.vec = true; f.plan.bgop = 0; f.plan.items = r.pieces.boundaries.map(P => { const it = {id:uid("i"), type:"boundary", style:"yard", pts:P, rot:0, text:""}; DRAW.boundBox(it); return it; }); }
       const R = r.rooms.map(x => { const g = x.geo, room = {id:uid("r"), name:x.name, floor:f.id, users:0, wall:S.walls ? "none" : "drywall", type:guessType(x.name), req:{}, geo:{x:g.x, y:g.y, w:g.w, h:g.h}};
         if (g.poly){ room.geo.poly = g.poly.map((v, i) => Math.round((v - (i % 2 ? g.y : g.x)) * 100) / 100); room.geo.pw = g.w; room.geo.ph = g.h; room.geo.area = x.area; } else room.geo.est = true;
         room.geo.lx = g.lx; room.geo.ly = g.ly; return normRoom(room); });
+      if (r.pieces) f.plan.shapes = r.pieces.shapes.filter(o => S.furn || o.k !== "furn").map(o => Object.assign({}, o, {id:uid("s"), room:o.room !== undefined && R[o.room] ? R[o.room].id : ""}));
       src.floors.push(f); src.rooms.push(...R);
       r.outlets.forEach(o => { const rm = R.filter(x => o.x >= x.geo.x && o.x <= x.geo.x + x.geo.w && o.y >= x.geo.y && o.y <= x.geo.y + x.geo.h).sort((a, c) => a.geo.w * a.geo.h - c.geo.w * c.geo.h)[0];
         if (rm && S.req) rm.req[o.kind] = num(rm.req[o.kind]) + 1;
@@ -605,7 +751,7 @@ async function overlayPlan(src, opts = {}){
         else { d = floorById(b, tgt); const old = d.plan;
           // devices already on this floor keep their place relative to their room; others wait in "not on the plan"
           const oldGeo = {}; b.rooms.filter(r => r.floor === d.id && r.geo).forEach(r => { oldGeo[r.id] = clone(r.geo); });
-          d.plan = Object.assign({}, old, {wm:f.plan.wm, hm:f.plan.hm, img:f.plan.img, op:f.plan.op ?? 100, cal:true, walls:clone(f.plan.walls || []), items:[...(f.plan.items || [])], src:f.plan.src || null, idf:old.idf || null, survey:[]});
+          d.plan = Object.assign({}, old, {wm:f.plan.wm, hm:f.plan.hm, img:f.plan.img, op:f.plan.op ?? 100, cal:true, walls:clone(f.plan.walls || []), items:[...(f.plan.items || [])], shapes:clone(f.plan.shapes || []), vec:!!f.plan.vec, bgop:f.plan.bgop, src:f.plan.src || null, idf:old.idf || null, survey:[]});
           d.__old = oldGeo; }
         fmap[f.id] = d; });
       // rooms
@@ -615,6 +761,8 @@ async function overlayPlan(src, opts = {}){
         const x = roomById(b, tgt); if (!x) return; x.geo = clone(r.geo); x.wall = r.wall || x.wall; if (!x.type || x.type === "office") x.type = r.type || x.type;
         if (O.req && r.req && !Object.values(x.req || {}).some(v => num(v))) x.req = clone(r.req);
         rmap[r.id] = x; nRooms++; });
+      // drawing pieces that belong to a room follow it to the room it was matched with
+      Object.values(fmap).forEach(d => (d.plan.shapes || []).forEach(o => { if (o.room) o.room = rmap[o.room] ? rmap[o.room].id : ""; }));
       // rooms of a re-drawn floor that got no outline: their old box no longer fits the drawing
       Object.values(fmap).forEach(d => { if (!d.__old) return; const matched = new Set(Object.values(rmap).map(x => x.id)); b.rooms.filter(x => x.floor === d.id && !matched.has(x.id) && d.__old[x.id]).forEach(x => { delete x.geo; }); });
       // devices already in the building
@@ -653,7 +801,7 @@ registerApp({
   ],
   actions(tab){ return [{id:"wiz", icon:"🧭", label:"bd_wizard", fn:wizard}, {id:"addFloor", icon:"＋", label:"floorNew", fn:() => act("addFloor")}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },
   drawer, onField, onDrawerAct, onKey(e, tab){ if (tab.id === "plan") onKey(e); },
-  onEsc(){ if (place){ place = null; render(); return true; } return false; },
+  onEsc(){ if (poly){ finishPoly(true); return true; } if (place){ place = null; render(); return true; } return false; },
   exports(){ return [{icon:"▦", label:t("bd_reqT") + " (CSV)", fn:() => act("reqCsv")}]; },
   reveal(s){ if (!s) return; const b = B(); if (s.type === "dev"){ const d = devById(b, s.id); if (d && devFloor(b, d)) st().floor = devFloor(b, d); } if (s.type === "room"){ const r = roomById(b, s.id); if (r) st().floor = r.floor; } UI.tabs.building = "plan"; render(); },
   guide:() => [[t("bd_g1h"), t("bd_g1")], [t("bd_g2h"), t("bd_g2")], [t("bd_g3h"), t("bd_g3")], [t("bd_g4h"), t("bd_g4")]]

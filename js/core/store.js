@@ -146,6 +146,9 @@ async function openVersions(){
 async function exportProject(){
   const p = P(), assets = {};
   for (const id of assetIds(p)){ const a = ASSETS.get(id); if (a) assets[id] = await blobToDataURL(a.blob); }
+  // device kinds the user added that this project uses travel with the file
+  const usedK = new Set(p.buildings.flatMap(b => b.devices.map(d => d.kind))), UK = typeof ukAll === "function" ? ukAll().filter(u => usedK.has(u.key)) : [];
+  if (UK.length) p.ukinds = [...(p.ukinds || []).filter(u => !UK.some(x => x.key === u.key)), ...UK];
   saveText(`${fileSafe(p.name)} ${today()}.networkking.json`, JSON.stringify({app:"networkking", v:1, exported:new Date().toISOString(), project:p, assets}), "json", "application/json");
 }
 async function importAny(){
@@ -169,7 +172,7 @@ async function importProject(j, where){
   if (where === "over"){ let sb = p.buildings.filter(x => (x.floors || []).some(f => f.plan && f.plan.img));
     let pick = sb[0]; if (sb.length > 1){ const k = await uiChoice(t("ov_whichBld"), sb.map(x => [x.id, x.name])); if (!k) return; pick = sb.find(x => x.id === k); }
     normBuilding(pick); return BLD.overlayPlan(pick, {devs:true}); }
-  if (where === "bld"){ pushUndo(); const P0 = P(); p.buildings.forEach(x => { x.id = uid("b"); if (P0.buildings.some(y => y.name === x.name)) x.name += " (" + t("imported") + ")"; normBuilding(x); P0.buildings.push(x); }); P0.cur.b = p.buildings[0].id; UI.sel = null; normProject(P0); persist(); render(); toast("✓ " + t("impOk")); return; }
+  if (where === "bld"){ pushUndo(); const P0 = P(); (src.ukinds || []).forEach(u => { P0.ukinds = P0.ukinds || []; if (u && u.key && !P0.ukinds.some(x => x.key === u.key)) P0.ukinds.push(u); }); p.buildings.forEach(x => { x.id = uid("b"); if (P0.buildings.some(y => y.name === x.name)) x.name += " (" + t("imported") + ")"; normBuilding(x); P0.buildings.push(x); }); P0.cur.b = p.buildings[0].id; UI.sel = null; normProject(P0); regUKinds(true); persist(); render(); toast("✓ " + t("impOk")); return; }
   p.id = uid("p"); if (Object.values(store.projects).some(x => x.name === p.name)) p.name += " (" + t("imported") + ")";
-  normProject(p); store.projects[p.id] = p; store.cur = p.id; undoStack = []; redoStack = []; persist(); render(); toast("✓ " + t("impOk"));
+  normProject(p); store.projects[p.id] = p; store.cur = p.id; undoStack = []; redoStack = []; regUKinds(true); persist(); render(); toast("✓ " + t("impOk"));
 }

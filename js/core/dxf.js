@@ -299,7 +299,40 @@ ${gS("door", 'stroke="#a8641f" stroke-width=".04"')}
   const outlets = flat.refs.filter(r => opts.kinds && opts.kinds[r.name] && inBox(BB, r.x, r.y)).map(r => ({kind:opts.kinds[r.name], block:r.name, x:Math.round(tx(r.x) * 10) / 10, y:Math.round(ty(r.y) * 10) / 10}));
   // no floor title: the floor part shared by room names ("1 KAT HOLÜ", "1 KAT BALKON" → "1 KAT")
   if (!ftitles.length){ const C = {}; rooms.forEach(r => { const m = r.name.match(/^(.{1,14}?\s(kat|katı|mərtəbə|mertebe|floor|etaj|этаж))\b/i); if (m) C[m[1]] = (C[m[1]] || 0) + 1; }); const best = Object.entries(C).sort((a, b) => b[1] - a[1])[0]; if (best && best[1] >= 2) ftitles.push(best[0]); }
-  return {svg, title:ftitles[0] || "", wm:Math.round(wm * 10) / 10, hm:Math.round(hm * 10) / 10, rooms, walls, outlets, doors:top.filter(r => R[r.L] === "door").length, windows:top.filter(r => R[r.L] === "window").length, site:!!sb};
+  // the same room found twice (a second copy of its name outside the outline → an estimated box over the real room): dropped
+  const nk = s => s.toLocaleLowerCase("tr").replace(/\s*\d+$/, "").trim(), ov = (a, b) => { const x = Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)), y = Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y)); return x * y / Math.max(.01, Math.min(a.w * a.h, b.w * b.h)); };
+  for (let i = rooms.length - 1; i >= 0; i--){ const r = rooms[i]; if (r.exact) continue; const tw = rooms.find(o => o !== r && nk(o.name) === nk(r.name) && ov(o.geo, r.geo) > .5); if (tw) rooms.splice(i, 1); }
+  // editable drawing: every wall line of a room (with its doors and windows) as one piece of that room; furniture, stairs,
+  // columns and the yard in pieces of what touches; closed yard outlines as boundaries the user can reshape point by point
+  const pieces = opts.pieces === false ? null : piecesOf(S, rooms, tx, ty, sc, R);
+  return {svg, title:ftitles[0] || "", pieces, wm:Math.round(wm * 10) / 10, hm:Math.round(hm * 10) / 10, rooms, walls, outlets, doors:top.filter(r => R[r.L] === "door").length, windows:top.filter(r => R[r.L] === "window").length, site:!!sb};
+}
+function piecesOf(S, rooms, tx, ty, sc, R){
+  const rr = v => Math.round(v * 100) / 100, M = s => { const o = new Array(s.p.length); for (let k = 0; k < s.p.length; k += 2){ o[k] = tx(s.p[k]); o[k + 1] = ty(s.p[k + 1]); } return o; };
+  const bbM = P => bbox(P), WALLR = {wall:1, wallExt:1, door:1, window:1};
+  // units: {r:role, P:[x,y…] metres, c:closed}
+  const units = []; S.forEach(s => { const r = R[s.L]; if (!r || r === "area") return; const P = M(s), b = bbM(P); if (!b) return;
+    if (WALLR[r] && P.length > 4 && !(s.c && Math.max(b[2] - b[0], b[3] - b[1]) < 2.5)){ for (let k = 0; k + 3 < P.length; k += 2) units.push({r, P:[P[k], P[k + 1], P[k + 2], P[k + 3]], c:false}); }
+    else units.push({r, P, c:!!s.c}); });
+  units.forEach(u => { u.b = bbM(u.P); u.cx = (u.b[0] + u.b[2]) / 2; u.cy = (u.b[1] + u.b[3]) / 2; });
+  const roomOf = u => { let best = -1, ba = Infinity; rooms.forEach((rm, i) => { const g = rm.geo, m = .35; if (u.cx < g.x - m || u.cx > g.x + g.w + m || u.cy < g.y - m || u.cy > g.y + g.h + m) return; const a = g.w * g.h; if (a < ba){ ba = a; best = i; } }); return best; };
+  const out = [], boundaries = [];
+  const mk = (k, list, extra) => { const B = bbox(list.flatMap(u => [u.b[0], u.b[1], u.b[2], u.b[3]])); if (!B) return; const x0 = B[0], y0 = B[1], w = Math.max(.05, B[2] - B[0]), h = Math.max(.05, B[3] - B[1]);
+    const by = {}; list.forEach(u => { const key = u.r + (u.c && (u.r === "column" || u.r === "wall" || u.r === "wallExt") ? ":f" : ""); let d = ""; for (let k2 = 0; k2 < u.P.length; k2 += 2) d += (k2 ? "L" : "M") + rr(u.P[k2] - x0) + " " + rr(u.P[k2 + 1] - y0); by[key] = (by[key] || "") + d + (u.c ? "Z" : ""); });
+    out.push(Object.assign({k, x:rr(x0), y:rr(y0), w:rr(w), h:rr(h), w0:rr(w), h0:rr(h), rot:0, p:Object.entries(by)}, extra || {})); };
+  // walls, doors, windows → by room
+  const byRoom = new Map(), loose = [];
+  units.filter(u => WALLR[u.r]).forEach(u => { const i = roomOf(u); if (i < 0) loose.push(u); else (byRoom.get(i) || byRoom.set(i, []).get(i)).push(u); });
+  byRoom.forEach((L, i) => mk("rwall", L, {room:i}));
+  // the rest: groups of pieces that touch each other (gap 3 cm), split by role
+  const groups = (L, gap) => { const par = L.map((_, i) => i), find = i => { while (par[i] !== i) i = par[i] = par[par[i]]; return i; }, cell = 1, grid = new Map();
+    L.forEach((u, i) => { const b = u.b; for (let gx = Math.floor((b[0] - gap) / cell); gx <= Math.floor((b[2] + gap) / cell); gx++) for (let gy = Math.floor((b[1] - gap) / cell); gy <= Math.floor((b[3] + gap) / cell); gy++){ const key = gx + "," + gy; let a = grid.get(key); if (!a) grid.set(key, a = []);
+      for (const j of a){ const c = L[j].b; if (b[0] - gap <= c[2] && c[0] - gap <= b[2] && b[1] - gap <= c[3] && c[1] - gap <= b[3]){ const x = find(i), y = find(j); if (x !== y) par[x] = y; } } a.push(i); } });
+    const G = new Map(); L.forEach((u, i) => { const r = find(i); (G.get(r) || G.set(r, []).get(r)).push(u); }); return [...G.values()]; };
+  groups(loose, .05).forEach(L => mk("wall", L));
+  ["furn", "stair", "column", "other"].forEach(r => groups(units.filter(u => u.r === r), .03).forEach(L => { const B = bbox(L.flatMap(u => u.b)); if (B && Math.max(B[2] - B[0], B[3] - B[1]) > 12) L.forEach(u => mk(r, [u])); else mk(r, L); }));
+  units.filter(u => u.r === "site").forEach(u => { if (u.c && u.P.length >= 8 && u.P.length <= 800){ const P = u.P.slice(0, -2).map(rr); boundaries.push(P); } else mk("site", [u]); });
+  return {shapes:out, boundaries};
 }
 // preview of the whole file: plain lines by role, plan groups outlined
 function preview(flat, roles, groups, maxW = 900){

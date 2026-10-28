@@ -65,7 +65,7 @@ function fWarnings(b){
 }
 /* ---------- diagram config ---------- */
 const cfg = {id:"fiber", media:["fiber_sm","fiber_mm","fpatch","isp","cat6","ptp"],
-  kinds:["fpp","splice","mediaconv","ont","switch","coresw","firewall","router","modem","internet","server","other"],
+  kinds:ukList(["fpp","splice","mediaconv","ont","switch","coresw","firewall","router","modem","internet","server","other"], "fiber"),
   linkFilter:(l, b) => fiberLink(l) || [l.a.d, l.b.d].some(id => FK.has((devById(b, id) || {}).kind)),
   nodeLines(b, d, v){ if (d.fbox){ const C = boxCap(b, d); return [[d.brand, d.model].filter(Boolean).join(" "), `${t("capPorts")} ${C.term}/${C.ports || "—"} · ${t("capSplice")} ${C.spl}/${C.splCap || "—"}`, roomName(b, d.room)]; } return defaultLines(b, d, v); },
   devExtra(b, d){ if (!d.fbox) return ""; const f = d.fbox, C = boxCap(b, d);

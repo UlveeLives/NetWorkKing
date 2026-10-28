@@ -655,3 +655,10 @@ input.bad{border-color:#d63a3a!important}
 .gapw{display:inline-flex;align-items:stretch;margin:0 4px 4px 0}.gapw .gapb{margin:0;border-top-right-radius:0;border-bottom-right-radius:0}
 .gapna{border:1px solid var(--line);border-left:0;background:var(--surface);color:var(--muted);padding:0 7px;border-radius:0 6px 6px 0;cursor:pointer;font-weight:700}.gapna:hover{color:var(--ink);background:var(--surface2)}
 input.na{color:var(--muted);font-style:italic}
+/* v3.4: drawing tools */
+.rotf{display:flex;gap:4px;align-items:center;flex-wrap:wrap}.rotf input{width:70px}.rotf .btn{padding:2px 6px}
+#pal details.pdet>summary{list-style:none;cursor:pointer}#pal details.pdet>summary::-webkit-details-marker{display:none}#pal details.pdet>summary h4{display:inline}#pal details.pdet>summary h4::after{content:" ▾";color:var(--muted)}#pal details.pdet[open]>summary h4::after{content:" ▴"}
+svg.bplan .bwl,svg.bplan .bsh,svg.bplan .bbd{cursor:move}svg.bplan .brot{cursor:grab}svg.bplan .bwh{cursor:crosshair}svg.bplan .rlabh{cursor:move}
+/* v3.4: user device kinds */
+.pitem.ukadd{border-style:dashed;color:var(--muted)}.pitem.ukadd:hover{color:var(--ink)}
+.ukicons{display:flex;flex-wrap:wrap;gap:4px;max-height:150px;overflow:auto;padding:2px}.ukic{width:38px;height:38px;border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:4px;cursor:pointer}.ukic.on{border-color:var(--acc,#2f5fc4);box-shadow:0 0 0 2px var(--accSoft,#dbe7ff)}.ukic svg{width:100%;height:100%}

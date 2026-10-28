@@ -1,9 +1,40 @@
-NETWORKKING 3.3.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.4.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.4-DƏ YENİ
+ - Bütün tətbiqlərdə xəbərdarlıqların yanında «Görməzdən gəl»: təsdiqdən sonra həmin xəbərdarlıq
+   (və ya istəsəniz eyni növdən olanların hamısı, məs. bütün cihazlarda eyni «admin» hostname)
+   bir daha göstərilmir. Aşağıdakı «Gizlədilənlər» ilə geri qaytarmaq olar.
+ - Ctrl + A — ekrandakı bütün cihazları seçir (cədvəllər, plan, rack).
+ - Bir dəfə yazdığınız model (məs. Hikvision iDS-9664NXI-P8) sonrakı cihazlarda siyahıda
+   «sizin əlavə etdiyiniz» kimi çıxır; seçəndə port sayı və parametrləri də köçürülür.
+ - Port Map → port kartı → Konfiqurasiya: mətni düzəldib «Yadda saxla» (port üçün saxlanır)
+   və ya «.txt kimi saxla».
+ - Rack U-Layout: boş U yerinə basanda video dekoder, enkoder, KVM və «Digər cihazlar…» da var.
+ - Hər «əlavə et» siyahısının sonunda «＋ Öz cihazım»: öz cihaz növünüzü (ad, nişan, oxşar
+   cihaz, port sayı, U hündürlüyü) bir dəfə əlavə edin — bütün layihələrdə siyahıda qalır.
+ - Xülasə: «-» yazmaq və ya «aid deyil» seçmək — bu məlumat həmin cihaza aid deyil, çatışmayan
+   kimi göstərilmir. Çatışmayanlar tabında hər qeydin yanında «–» düyməsi.
+ - Bayır kamerası üçün otaq tələb olunmur.
+ - Bina strukturu → çertyoj:
+   • Divar və əyri divar aləti: uzunluq, bucaq, qalınlıq, əyilmə (°), material; Wi-Fi Plan-da da işləyir.
+   • Həyət / sahə sərhədi və binanın xarici sərhədi: nöqtə-nöqtə çəkilir və düzəldilir.
+   • Yeni simvollar: hovuz, pergola, ağac, kol, çəmən, yol, səki, bayır pilləkəni, hasar, darvaza,
+     avtomobil yeri, terras, fəvvarə; dam yamacı, mansard pəncərəsi, dam pəncərəsi, baca, balkon;
+     mebel (çarpayı, divan, masa, stul, şkaf, mətbəx, unitaz, vanna, duş …).
+   • Bütün simvollar istənilən bucaqla döndərilir (sarı nöqtə və ya rəqəm).
+   • DXF-dən gələn çertyoj artıq şəkil deyil, hissələrdən ibarətdir: hər otağın divarları qapı və
+     pəncərələri ilə birlikdə bir hissədir (otaq köçəndə onlar da köçür), hər mebel ayrıca hissədir —
+     köçürmək, döndərmək, ölçüsünü dəyişmək, silmək olar. Köhnə layihədə bunun üçün DXF-i yenidən
+     «bu layihənin üzərinə» idxal edin.
+   • Otaqların qırıq xətli sərhədləri çertyojlu mərtəbədə gizlidir (Görünüş → göstərmək olar).
+   • Otaq adının tutma sahəsi böyüdü; otağın ölçüsünü dəyişəndə ad yerində qalır.
+   • DXF-də eyni otağın adı iki dəfə yazılıbsa («TEKNİK ODA» / «TEKNİK ODA 1») — bir otaq yaranır;
+     köhnə layihədə planın üstündəki «Birləşdir» düyməsi ilə düzəldilir.
 
 3.3-DƏ YENİ
  - Xülasə → Cihazlar: hər sətrin sonunda qırmızı ⊖ — cihazı silir (təsdiq soruşulur, «Geri al» ilə qaytarılır).
@@ -65,7 +96,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.3.0.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.4.0.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 

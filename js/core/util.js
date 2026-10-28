@@ -9,6 +9,7 @@ const num = (v, d = 0) => { const n = parseFloat(String(v ?? "").replace(",", ".
 const clone = o => o === undefined ? undefined : JSON.parse(JSON.stringify(o));
 const today = () => new Date().toISOString().slice(0, 10);
 const r1 = v => Math.round(v * 10) / 10;
+const r2 = v => Math.round(v * 100) / 100;
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const debounce = (fn, ms) => { let tm; return (...a) => { clearTimeout(tm); tm = setTimeout(() => fn(...a), ms); }; };
 const same = (a, b) => String(a ?? "").trim().toLowerCase() === String(b ?? "").trim().toLowerCase();

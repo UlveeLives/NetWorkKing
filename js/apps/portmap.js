@@ -5,7 +5,7 @@
 (function(){
 const PKINDS = ["switch","coresw","pp","fpp","firewall","router","wlc","modem","ont","server","nas","nvr","dvr","outlet","mediaconv"];
 const NETK = new Set(["switch","coresw","firewall","router","wlc","modem","ont","mediaconv"]);
-const ENDK = ["pc","laptop","printer","phone","ap","camera","tv","touch","intercom","access","iot","sensor","server","nas","nvr","decoder","encoder","joystick","alarm","kvm","poeinj","workstation","switch","firewall","router","outlet","other"];
+const ENDK = ukList(["pc","laptop","printer","phone","ap","camera","tv","touch","intercom","access","iot","sensor","server","nas","nvr","decoder","encoder","joystick","alarm","kvm","poeinj","workstation","switch","firewall","router","outlet","other"], "portmap");
 const POE = {"":0, af:15.4, at:30, bt3:60, bt4:90};
 const passive = d => !!(d && KINDS[d.kind] && KINDS[d.kind].passive);
 const portDev = d => d && num(d.ports) > 0 && !["internet","splice"].includes(d.kind) && !(KINDS[d.kind] || {}).acc;

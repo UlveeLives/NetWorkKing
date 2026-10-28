@@ -53,7 +53,52 @@ const KINDS = {
   other:{cat:"end", icon:"box", ports:1}
 };
 const KIND_ORDER = Object.keys(KINDS);
-const kindName = k => t("k_" + (KINDS[k] ? k : "other"));
+const kindName = k => KINDS[k] && KINDS[k].label ? KINDS[k].label : t("k_" + (KINDS[k] ? k : "other"));
+/* ---------- device kinds the user adds ("＋ My device" in an add list) ----------
+   Kept in the settings (offered in every project) and in each project that uses them (so a project file opened on
+   another computer still knows them). A user kind behaves like the built-in kind it is based on for ports, rack height,
+   category and lists; special functions of a few built-in kinds (camera view cone, AP signal, NVR channels) stay with them. */
+const UK_LISTS = [], UK_IDS = {};
+const ukList = (arr, id) => { UK_LISTS.push(arr); if (id) UK_IDS[id] = arr.slice(); return arr; };
+document.addEventListener("click", async e => { const el = e.target.closest && e.target.closest("[data-ukadd]"); if (!el) return; e.preventDefault(); e.stopPropagation(); const k = await ukDialog(UK_IDS[el.dataset.ukadd]); if (k) render(); }, true);
+function ukAll(){ const M = new Map(); [...(store.settings.ukinds || []), ...Object.values(store.projects || {}).flatMap(p => p.ukinds || [])].forEach(u => { if (u && u.key && !M.has(u.key)) M.set(u.key, u); }); return [...M.values()]; }
+function regUKinds(scan){
+  ukAll().forEach(u => { const B0 = KINDS[u.base] && !KINDS[u.base].custom ? KINDS[u.base] : KINDS.other, k = u.key;
+    KINDS[k] = {cat:B0.cat, icon:ICO[u.icon] ? u.icon : B0.icon, rack:!!B0.rack, h:Math.max(1, num(u.h, B0.h || 1)), ports:Math.max(0, num(u.ports, B0.ports || 0)), sw:!!B0.sw, passive:!!B0.passive, acc:!!B0.acc, phys:B0.phys, custom:true, base:u.base, label:u.name};
+    if (!KIND_ORDER.includes(k)) KIND_ORDER.push(k);
+    UK_LISTS.forEach(L => { if (L.includes(u.base) && !L.includes(k)) L.push(k); }); });
+  // a device of a kind nobody described (a file from a newer version): shown as "other" under its own name
+  if (scan) Object.values(store.projects || {}).forEach(p => (p.buildings || []).forEach(b => (b.devices || []).forEach(d => { if (d.kind && !KINDS[d.kind]) KINDS[d.kind] = Object.assign({}, KINDS.other, {custom:true, base:"other", label:d.kind}); })));
+}
+// the dialog: name, which built-in kind it is like, icon, ports, height
+async function ukDialog(bases){
+  bases = (bases || KIND_ORDER).filter(k => KINDS[k] && !KINDS[k].custom);
+  const icons = [...new Set([...Object.values(KINDS).filter(k => !k.custom).map(k => k.icon), ...ICON_LIST])].filter(i => ICO[i]);
+  const mine = ukAll(), used = k => Object.values(store.projects).some(p => p.buildings.some(b => b.devices.some(d => d.kind === k)));
+  return new Promise(res => {
+    const st = {base:bases[0], icon:KINDS[bases[0]].icon};
+    const draw = () => modal(`<h3>＋ ${esc(t("ukT"))}</h3><p class="muted small">${esc(t("ukH"))}</p>
+      <label class="fld"><span>${esc(t("f_name"))}</span><input id="uk-n" placeholder="${esc(t("ukNameP"))}" value="${esc(st.name || "")}"></label>
+      <label class="fld"><span>${esc(t("ukBase"))}</span><select id="uk-b">${bases.map(k => opt(k, kindName(k), st.base)).join("")}</select></label>
+      <div class="two"><label class="fld"><span>${esc(t("f_ports"))}</span><input id="uk-p" type="text" inputmode="numeric" value="${esc(st.ports ?? (KINDS[st.base].ports || 0))}"></label>${KINDS[st.base].rack ? `<label class="fld"><span>${esc(t("ukH_U"))}</span><input id="uk-h" type="text" inputmode="numeric" value="${esc(st.h ?? (KINDS[st.base].h || 1))}"></label>` : "<span></span>"}</div>
+      <div class="fld"><span>${esc(t("ukIcon"))}</span><div class="ukicons">${icons.map(i => `<button type="button" class="ukic${st.icon === i ? " on" : ""}" data-ukic="${i}"><svg viewBox="0 0 48 48">${ICO[i]}</svg></button>`).join("")}</div></div>
+      ${mine.length ? `<details class="dsec"><summary>${esc(t("ukMine"))} <span class="cnt">${mine.length}</span></summary><div class="dsb"><table class="t">${mine.map(u => `<tr><td><svg viewBox="0 0 48 48" width="18" height="18">${ICO[(KINDS[u.key] || {}).icon] || ICO.box}</svg> ${esc(u.name)}</td><td class="small muted">${esc(kindName(u.base))}</td><td>${used(u.key) ? `<small class="muted">${esc(t("ukUsed"))}</small>` : `<button type="button" class="epdel" data-ukdel="${u.key}" title="${esc(t("delete"))}">−</button>`}</td></tr>`).join("")}</table></div></details>` : ""}
+      <div class="mfoot"><button class="btn" data-m="cancel">${esc(t("cancel"))}</button><span class="grow"></span><button class="btn pri" data-m="ok">✓ ${esc(t("ukAdd"))}</button></div>`,
+      {ok:() => { read(); const n = String(st.name || "").trim(); if (!n){ toast("⚠ " + t("ukNoName")); return; }
+          if (KIND_ORDER.some(k => same(kindName(k), n))){ toast("⚠ " + t("ukDup", {n})); return; }
+          const u = {key:"u_" + uid(""), name:n, base:st.base, icon:st.icon, ports:Math.max(0, Math.round(num(st.ports, 0))), h:Math.max(1, Math.round(num(st.h, 1)))};
+          store.settings.ukinds = [...(store.settings.ukinds || []), u]; const p = P(); p.ukinds = [...(p.ukinds || []), u]; regUKinds(); persist(); closeModal(); toast("✓ " + t("ukDone", {n})); res(u.key); },
+       cancel:() => { closeModal(); res(null); }}, {nofocus:true});
+    const read = () => { const v = id => ($(id) || {}).value; if ($("#uk-n")) st.name = v("#uk-n"); if ($("#uk-p")) st.ports = v("#uk-p"); if ($("#uk-h")) st.h = v("#uk-h"); };
+    const wire = () => { const b = $("#uk-b"); if (b) b.addEventListener("change", () => { read(); st.base = b.value; st.icon = KINDS[b.value].icon; delete st.ports; delete st.h; draw(); wire(); });
+      $$("[data-ukic]").forEach(el => el.addEventListener("click", () => { read(); st.icon = el.dataset.ukic; draw(); wire(); }));
+      $$("[data-ukdel]").forEach(el => el.addEventListener("click", () => { const k = el.dataset.ukdel; store.settings.ukinds = (store.settings.ukinds || []).filter(u => u.key !== k); Object.values(store.projects).forEach(p => { if (p.ukinds) p.ukinds = p.ukinds.filter(u => u.key !== k); });
+        delete KINDS[k]; const i = KIND_ORDER.indexOf(k); if (i >= 0) KIND_ORDER.splice(i, 1); UK_LISTS.forEach(L => { const j = L.indexOf(k); if (j >= 0) L.splice(j, 1); }); persist(); read(); mine.splice(mine.findIndex(u => u.key === k), 1); draw(); wire(); })); };
+    draw(); wire();
+  });
+}
+// the "＋ My device" button at the end of an add list (list: the kinds that list offers)
+const ukBtn = id => `<button type="button" class="pitem ukadd" data-ukadd="${id}" title="${esc(t("ukT"))}"><svg viewBox="0 0 48 48"><path d="M24 10v28M10 24h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg><span>${esc(t("ukBtn"))}</span></button>`;
 const CAM_STYLES = {turret:"turret", dome:"camDome", bullet:"camBullet", ptz:"ptz", fisheye:"fisheye", box:"camBullet", cube:"camDome"};
 function devIcon(d){ if (!d) return "box"; if (d.kind === "camera") return CAM_STYLES[d.camera && d.camera.style] || "turret"; return (KINDS[d.kind] || KINDS.other).icon; }
 const STATUSES = ["planned","installed","active","maintenance","faulty","removed"];

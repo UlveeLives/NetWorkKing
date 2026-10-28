@@ -150,7 +150,7 @@ function dgPalette(b, cfg){
       <button class="btn small" data-pal="placeAll">⤵ ${esc(t("placeAll"))}</button></div>` : ""}
     <div class="psec"><h4>${esc(t("palAdd"))}</h4><div class="seg"><button class="${boxed ? "on" : ""}" data-pal="boxed:1" title="${esc(t("addBoxedT"))}">▭ ${esc(t("addBoxed"))}</button><button class="${boxed ? "" : "on"}" data-pal="boxed:0" title="${esc(t("addFreeT"))}">◇ ${esc(t("addFree"))}</button></div>
     <div class="pgrid">${cfg.kinds.map(k => `<button class="pitem" data-add="${k}" draggable="false" title="${esc(kindName(k))}"><svg viewBox="0 0 48 48">${ICO[k === "camera" ? "turret" : (KINDS[k] || KINDS.other).icon] || ICO.box}</svg><span>${esc(kindName(k))}</span></button>`).join("")}
-      <button class="pitem" data-add="__rack"><svg viewBox="0 0 48 48">${ICO.rack}</svg><span>${esc(t("rack"))}</span></button></div></div>
+      ${ukBtn(cfg.id)}<button class="pitem" data-add="__rack"><svg viewBox="0 0 48 48">${ICO.rack}</svg><span>${esc(t("rack"))}</span></button></div></div>
     ${cfg.extraPalette ? cfg.extraPalette(b, v) : ""}
     <div class="psec"><h4>${esc(t("palDraw"))}</h4><div class="pgrid">
       <button class="pitem" data-add="__box"><svg viewBox="0 0 48 48">${ICO.zone}</svg><span>${esc(t("box"))}</span></button>
