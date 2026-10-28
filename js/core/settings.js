@@ -78,7 +78,7 @@ function openWizard(again){
   const draw = () => {
     modal(`<div class="wz">${steps[step]()}</div><div class="wzdots">${steps.map((_, i) => `<i class="${i === step ? "on" : ""}"></i>`).join("")}</div>
       <div class="mfoot">${step ? `<button class="btn" data-m="back">‹ ${esc(t("back"))}</button>` : ""}<span class="grow"></span><button class="btn pri" data-m="next">${esc(step === steps.length - 1 ? t("wzStart") : t("next") + " ›")}</button></div>`, {
-      next: () => { read(); if (step === steps.length - 1){ s.setupDone = true; persist(); closeModal(); render(); return; } step++; draw(); },
+      next: () => { read(); if (step === steps.length - 1){ s.setupDone = true; persist(); closeModal(); if (!B().floors.length && APPS.building){ UI.app = "building"; P().cur.app = "building"; } render(); return; } step++; draw(); },
       back: () => { read(); step--; draw(); }
     }, {nofocus:true});
     $(".mbox").classList.add("lock");

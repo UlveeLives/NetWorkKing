@@ -45,3 +45,7 @@ for k,az,tr,en,ru in [
 K("pw_noPoe2","{n}: {c} PoE ilə qidalanan cihaz qoşulub (port {p}), amma switch-in PoE port sayı qeyd olunmayıb — modeli 📚 kataloqdan seçin və ya injektor istifadə edin.","{n}: {c} PoE cihaz bağlı (port {p}), switch'te PoE port sayısı yok — modeli katalogdan seçin veya enjektör kullanın.","{n}: {c} usually PoE-powered devices connected (ports {p}), but the switch has no PoE ports recorded — pick its model from 📚 Catalog or use injectors.","{n}: подключено {c} PoE-устройств (порты {p}), но PoE-порты коммутатора не указаны — выберите модель в каталоге или используйте инжекторы.")
 K("pmLgTypes","Cihaz rəngləri cihaz əlavə etdikcə burada görünür.","Cihaz renkleri cihaz ekledikçe burada görünür.","Device colours appear here as you add devices.","Цвета устройств появятся здесь по мере добавления.")
 K("pmLgDir","birbaşa kabel (panelsiz)","doğrudan kablo (panelsiz)","direct cable (no panel)","прямой кабель (без панели)")
+K("pmCords","Patch kabellər","Patch kablolar","Patch cords","Патч-корды")
+K("pmCordsAll","hamısı","hepsi","all","все")
+K("pmCordsSel","yalnız seçilmiş port","sadece seçili port","selected port only","только выбранный порт")
+K("pmCordsNone","gizlət","gizle","hide","скрыть")

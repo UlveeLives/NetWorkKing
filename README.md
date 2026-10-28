@@ -1,6 +1,6 @@
 # NetWorker
 
-Network documentation in one app: **Topology**, **Port Map**, **Rack cabinets**, **Fiber backbone**, **CCTV** and **Wi-Fi Plan**.
+Network documentation in one app: **Building structure**, **Topology**, **Port Map**, **Rack cabinets**, **Fiber backbone**, **CCTV** and **Wi-Fi Plan**.
 All apps work on the same building data (devices, racks, cables, floors, rooms, VLANs), so a change in one app shows up in all of them.
 
 - Runs in the browser (open `index.html`), as a Windows desktop app (Electron, `build.bat`) and as an installable phone app (PWA).

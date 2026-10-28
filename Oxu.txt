@@ -1,6 +1,6 @@
-NETWORKER 1.0.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKER 2.0.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
-NetWorker bir proqramda 6 tətbiqdir: Şəbəkə topologiyası, Port Map, Rack kabinetlər,
+NetWorker bir proqramda 7 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack kabinetlər,
 Fiber magistral, CCTV və Wi-Fi Plan. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
@@ -12,7 +12,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorker-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorker-Setup-1.0.0.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorker-Setup-2.0.0.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 

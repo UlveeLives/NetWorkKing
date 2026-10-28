@@ -463,3 +463,32 @@ table.t select,table.t select:hover,table.t select:focus{background:var(--surfac
 .mrow{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--line2);flex-wrap:wrap}
 .mrow>span:first-child{flex:1;min-width:120px}
 .mrow input{width:auto}
+.rack.pmrack{position:relative}
+svg.cords{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:2}
+svg.cords path{fill:none;stroke-width:1.8;stroke-linecap:round;opacity:.8}
+svg.cords.dim path{opacity:.15}
+svg.cords path.on{stroke-width:3.2;opacity:1}
+/* ---------- Building structure ---------- */
+.bcrumb{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-family:var(--f-disp);font-size:18px;margin:0 0 8px}
+.bcrumb small{font-family:var(--f-body);font-size:12px}
+.bfloors{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.bfchip{border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:5px 12px;font-weight:600;color:var(--ink)}
+.bfchip small{color:var(--muted);font-weight:400;margin-left:4px}
+.bfchip.on{background:var(--appc);border-color:var(--appc);color:#fff}.bfchip.on small{color:#e9ddff}
+.bfchip.add{border-style:dashed;color:var(--pri)}
+.bwrap{overflow:auto;max-width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px}
+svg.bplan{display:block;touch-action:pan-x pan-y;user-select:none}
+svg.bplan .brm,svg.bplan .bit{cursor:move}
+svg.bplan .bdev{cursor:grab;touch-action:none}
+svg.bplan .bres{fill:#ffb703;stroke:#7a5600;cursor:nwse-resize;touch-action:none}
+.pitem.bpi{cursor:grab}.pitem.bpi.on{border-color:#f3c66b;background:color-mix(in srgb,#ffb703 22%,var(--surface))}
+.btree{display:grid;gap:12px}
+.bfcard{border:1px solid var(--line);border-left:5px solid var(--appc);border-radius:10px;padding:10px 12px;background:var(--bg)}
+.bfhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.bfhead .bin{font-family:var(--f-disp);font-size:18px;font-weight:700;width:auto;min-width:160px;background:var(--surface)}
+.bfcard table.t td{padding:4px 5px}
+input.breq{width:40px;text-align:center;padding:3px 4px}
+input.breq.miss{border-color:var(--bad)!important;color:var(--bad)}
+input.breq.ok{border-color:var(--ok)!important}
+td small{display:block;font-size:10px;color:var(--muted)}
+table.wzt td{padding:3px}table.wzt input,table.wzt select{padding:4px 5px}

@@ -89,8 +89,27 @@ function legend(b){
   const kinds = [...new Set(b.devices.filter(d => !portDev(d) || !isNet(d)).filter(d => linksOf(b, d.id).length && !passive(d)).map(d => d.kind))];
   const sw = (bg, l, cls = "") => `<span><i class="sw ${cls}" style="background:${bg}"></i>${esc(l)}</span>`;
   return `<div class="pmlegend">${kinds.length ? kinds.map(k => sw(tcol(k), kindName(k))).join("") + `<span class="sep"></span>` : `<span>${esc(t("pmLgTypes"))}</span><span class="sep"></span>`}
-    ${sw("var(--port)", t("pmLgFree"))}${sw("var(--filled)", t("pmLgCfg"))}${sw(UPLINK, t("pmLgUplink"))}${sw("var(--port)", t("pmLgDir"), "dirk")}${sw("var(--port)", t("pmLgHalf"), "laterk")}${sw("var(--port)", t("pmLgBad"), "badk")}<span><i class="sw trk"></i>trunk</span><span>⚡ PoE</span></div>`;
+    ${sw("var(--port)", t("pmLgFree"))}${sw("var(--filled)", t("pmLgCfg"))}${sw(UPLINK, t("pmLgUplink"))}${sw("var(--port)", t("pmLgDir"), "dirk")}${sw("var(--port)", t("pmLgHalf"), "laterk")}${sw("var(--port)", t("pmLgBad"), "badk")}<span><i class="sw trk"></i>trunk</span><span>⚡ PoE</span><span class="sep"></span><label class="row small">${esc(t("pmCords"))} <select id="pm-cords" style="width:auto">${[["all", t("pmCordsAll")], ["sel", t("pmCordsSel")], ["none", t("pmCordsNone")]].map(([k, l]) => opt(k, l, UI.cords)).join("")}</select></label></div>`;
 }
+/* ---------- patch cords drawn between the ports of one rack (as in PortMap) ---------- */
+UI.cords = UI.cords || "all";
+function drawCords(){
+  const b = B(); $$(".rack.pmrack").forEach(rk => { rk.querySelector("svg.cords") && rk.querySelector("svg.cords").remove();
+    if (UI.cords === "none") return;
+    const btn = (id, p) => rk.querySelector(`[data-port="${CSS.escape(id + ":" + p)}"]`), R0 = rk.getBoundingClientRect(), s = UI.sel;
+    let h = "";
+    b.links.forEach(l => { const A = btn(l.a.d, P0(l.a.p)), Bn = btn(l.b.d, P0(l.b.p)); if (!A || !Bn) return;
+      const on = s && s.type === "port" && ((s.id === l.a.d && s.p === P0(l.a.p)) || (s.id === l.b.d && s.p === P0(l.b.p)));
+      if (UI.cords === "sel" && !on) return;
+      const ra = A.getBoundingClientRect(), rb = Bn.getBoundingClientRect(), up = ra.top <= rb.top, a = up ? ra : rb, c = up ? rb : ra;
+      const x1 = a.left + a.width / 2 - R0.left, y1 = a.bottom - R0.top - 2, x2 = c.left + c.width / 2 - R0.left, y2 = c.top - R0.top + 2, dy = Math.max(14, Math.abs(y2 - y1) * .45);
+      const col = getComputedStyle(A).getPropertyValue("--pc").trim() || getComputedStyle(Bn).getPropertyValue("--pc").trim() || (MEDIA[l.media] || MEDIA.cat6).c;
+      h += `<path class="${on ? "on" : ""}" style="stroke:${col}" d="M${x1.toFixed(1)} ${y1.toFixed(1)} C${x1.toFixed(1)} ${(y1 + dy).toFixed(1)} ${x2.toFixed(1)} ${(y2 - dy).toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}"/>`; });
+    if (!h) return;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "cords" + (s && s.type === "port" ? " dim" : "")); svg.setAttribute("width", R0.width); svg.setAttribute("height", R0.height); svg.innerHTML = h; rk.appendChild(svg); });
+}
+window.addEventListener("resize", debounce(() => { if (UI.app === "portmap" && curTab().id === "ports") drawCords(); }, 120));
+document.addEventListener("change", e => { if (e.target.id === "pm-cords"){ UI.cords = e.target.value; drawCords(); } });
 function portsView(b){
   const devs = b.devices.filter(portDev), byRack = b.racks.map(r => ({r, ds:devs.filter(d => d.rack === r.id).sort((a, c) => topU(c) - topU(a))}));
   const loose = devs.filter(d => !d.rack && (isNet(d) || passive(d) || ["nvr","dvr","server","nas"].includes(d.kind)) && d.kind !== "outlet");
@@ -311,7 +330,7 @@ registerApp({
   id:"portmap", name:"app_portmap", desc:"app_portmap_d", docName:"doc_portmap", color:"#14a37f",
   glyph:`<rect x="7" y="15" width="34" height="18" rx="3" fill="#fff"/>${[0,1,2,3,4].map(i => `<rect x="${10 + i * 6}" y="18" width="4" height="5" fill="${i === 1 ? "#ffb703" : "#14a37f"}"/><rect x="${10 + i * 6}" y="25" width="4" height="5" fill="${i === 3 ? "#5ac8fa" : "#14a37f"}"/>`).join("")}`,
   tabs:[
-    {id:"ports", label:"tabPorts", icon:"🔌", render(){ return portsView(B()); },
+    {id:"ports", label:"tabPorts", icon:"🔌", render(){ return portsView(B()); }, after:drawCords,
       tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".pmlegend", title:t("tPmT1"), text:t("tPm1")}, {sel:".p", title:t("tPmT2"), text:t("tPm2")}, {sel:'[data-pma^="add:"]', title:t("tPmT3"), text:t("tPm3")}, {sel:'[data-tab="list"]', title:t("tPmT4"), text:t("tPm4")}, {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
     {id:"list", label:"tabPortList", icon:"📋", render(){ return listView(B()); }, tour:() => [{sel:"#q-pm", title:t("tPmT4"), text:t("tPm4b")}]},
     {id:"rooms", label:"tabRooms", icon:"🚪", render(){ return roomsView(B()); }, tour:() => [{sel:"#view .card, #view .empty", title:t("tPmT5"), text:t("tPm5")}]},

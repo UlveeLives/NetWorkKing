@@ -3,7 +3,7 @@
 const LANGS = [["az","Azərbaycanca"],["tr","Türkçe"],["en","English"],["ru","Русский"]];
 function L(){ return I18N[store && store.settings.lang] || I18N.az; }
 function t(k, v){ let s = L()[k] ?? I18N.az[k] ?? I18N.en[k] ?? k; if (v) for (const x in v) s = s.split("{" + x + "}").join(v[x]); return s; }
-const APPS = {}, APP_ORDER = ["topology","portmap","rack","fiber","cctv","wifi"];
+const APPS = {}, APP_ORDER = ["building","topology","portmap","rack","fiber","cctv","wifi"];
 function registerApp(a){ APPS[a.id] = a; }
 const curApp = () => APPS[UI.app] || APPS.topology;
 const curTab = () => { const a = curApp(); const id = UI.tabs[a.id]; return a.tabs.find(x => x.id === id) || a.tabs[0]; };

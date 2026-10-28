@@ -1,12 +1,12 @@
 // Start-up: load data and catalog, wire the shell, open the last app, run the first-time setup if needed.
 "use strict";
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "2.0.0";
 (async function start(){
   try {
     await loadStore(); await CAT.load(); applyTheme();
     $("#dl-brands").innerHTML = allBrands().map(x => `<option value="${esc(x)}">`).join("");
     wireShell(); wireEditors(); Object.values(APPS).forEach(a => a.init && a.init());
-    const p = P(); UI.app = APPS[p.cur.app] ? p.cur.app : "topology"; UI.tabs = Object.assign({}, p.cur.tabs || {});
+    const p = P(); UI.app = APPS[p.cur.app] ? p.cur.app : "building"; UI.tabs = Object.assign({}, p.cur.tabs || {});
     render();
     if (!store.settings.setupDone) openWizard();
     CAT.autoUpdate();
