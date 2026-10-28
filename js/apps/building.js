@@ -429,7 +429,7 @@ async function dxfImport(){
   try { doc = DXF.parse(DXF.decode(await file.arrayBuffer())); flat = DXF.flatten(doc); A = DXF.analyze(doc, flat); }
   catch(e){ console.error(e); return uiAlert(e.message === "binary" ? t("dx_binary") : t("dx_fail") + " " + e.message); }
   if (!flat.segs.length) return uiAlert(t("dx_empty"));
-  const S = {roles:{}, kinds:{}, scale:A.scale, units:A.units, devs:true, req:true, walls:true, furn:true, F:[]};
+  const S = {roles:{}, kinds:{}, scale:A.scale, units:A.units, devs:true, req:true, walls:true, furn:true, F:[], mode:B().floors.length || B().devices.length ? "over" : "add"};
   A.layers.forEach(l => S.roles[l.name] = l.role); A.blocks.forEach(x => S.kinds[x.name] = x.kind);
   const ROLES = ["wallExt","wall","door","window","column","stair","area","roomName","site","furn","other","ignore"];
   const lvOf = n => { const x = String(n).toLocaleLowerCase("tr"); if (/bodrum|zirzəmi|zirzemi|basement|podval|подвал|цокол/.test(x)) return -1; if (/zemin|ground|giriş|giris|1-?ci mərtəbə|первый/.test(x)) return 0; if (/çatı|cati|roof|çardaq|cherdak/.test(x)) return 50; const m = x.match(/(\d+)/); return m ? +m[1] : null; };
@@ -445,6 +445,7 @@ async function dxfImport(){
       <div class="dxprev">${DXF.preview(flat, S.roles, S.F.map(F => Object.assign({}, F.g, {title:F.name})), 760)}</div>
       <div class="scroll"><table class="t"><tr><th></th><th>#</th><th>${esc(t("f_floor"))}</th><th title="${esc(t("dx_lvH"))}">${esc(t("dx_lv"))}</th><th>${esc(t("dx_size"))}</th><th>${esc(t("rooms"))}</th><th>🚪</th><th>🪟</th></tr>
         ${S.F.map((F, i) => `<tr><td><input type="checkbox" data-dxf="${i}:on"${F.on ? " checked" : ""}></td><td>${i + 1}</td><td><input data-dxf="${i}:name" value="${esc(F.name)}" style="min-width:140px"></td><td><input data-dxf="${i}:lv" type="text" inputmode="numeric" value="${F.lv}" style="width:48px"></td><td class="nw">${esc(F.wm + " × " + F.hm + " m")}</td><td class="c">${F.rooms}</td><td class="c">${F.doors}</td><td class="c">${F.windows}</td></tr>`).join("")}</table></div>
+      ${B().floors.length || B().devices.length ? `<div class="lbox"><b>${esc(t("ov_whereT"))}</b><label class="chk"><input type="radio" name="dx-mode" value="over"${S.mode === "over" ? " checked" : ""}> ${esc(t("ov_modeOver",{b:B().name}))}</label><label class="chk"><input type="radio" name="dx-mode" value="add"${S.mode === "add" ? " checked" : ""}> ${esc(t("ov_modeAdd"))}</label></div>` : ""}
       <div class="two"><label class="fld"><span>${esc(t("dx_units"))}</span><select id="dx-u">${Object.values(DXF.UNITS).map(([u, k]) => opt(u, u + " (1 = " + k + " m)", S.units)).join("")}</select></label><span></span></div>
       <label class="chk"><input type="checkbox" id="dx-walls"${S.walls ? " checked" : ""}> ${esc(t("dx_optWalls"))}</label>
       <label class="chk"><input type="checkbox" id="dx-furn"${S.furn ? " checked" : ""}> ${esc(t("dx_optFurn"))}</label>
@@ -462,6 +463,7 @@ async function dxfImport(){
     $$("[data-dxr]").forEach(el => S.roles[el.dataset.dxr] = el.value); $$("[data-dxk]").forEach(el => S.kinds[el.dataset.dxk] = el.value);
     const u = $("#dx-u"); if (u){ const U = Object.values(DXF.UNITS).find(x => x[0] === u.value); if (U){ S.units = U[0]; S.scale = U[1]; } }
     ["walls","furn","req","devs"].forEach(k => { const c = $("#dx-" + k); if (c) S[k] = c.checked; });
+    const md = $('input[name="dx-mode"]:checked'); if (md) S.mode = md.value;
   };
   const create = async () => {
     const L = S.F.filter(F => F.on).sort((a, b) => a.lv - b.lv); if (!L.length) return;
@@ -469,25 +471,112 @@ async function dxfImport(){
     const b = B(), out = [];
     for (const F of L){ const r = DXF.build(flat, {bb:F.g.bb, roles:Object.assign({}, S.roles, S.furn ? {} : Object.fromEntries(Object.entries(S.roles).filter(([, v]) => v === "furn").map(([k]) => [k, "ignore"]))), scale:S.scale, kinds:S.kinds});
       r.img = await putAsset(new Blob([r.svg], {type:"image/svg+xml"})); out.push([F, r]); }
-    let nR = 0, nD = 0;
+    // the drawing as a building of its own: floors, rooms, outlets
+    const src = {name:file.name, floors:[], rooms:[], devices:[]};
+    out.forEach(([F, r]) => {
+      const f = {id:uid("f"), name:F.name, lvl:F.lv, lv:F.lv, h:3.2}; f.plan = {wm:r.wm, hm:r.hm, img:r.img, op:100, cal:true, idf:null, walls:S.walls ? r.walls.map(w => Object.assign({id:uid("w")}, w)) : [], survey:[], items:[], src:{dxf:file.name}};
+      const R = r.rooms.map(x => { const g = x.geo, room = {id:uid("r"), name:x.name, floor:f.id, users:0, wall:S.walls ? "none" : "drywall", type:guessType(x.name), req:{}, geo:{x:g.x, y:g.y, w:g.w, h:g.h}};
+        if (g.poly){ room.geo.poly = g.poly.map((v, i) => Math.round((v - (i % 2 ? g.y : g.x)) * 100) / 100); room.geo.pw = g.w; room.geo.ph = g.h; room.geo.area = x.area; } else room.geo.est = true;
+        room.geo.lx = g.lx; room.geo.ly = g.ly; return normRoom(room); });
+      src.floors.push(f); src.rooms.push(...R);
+      r.outlets.forEach(o => { const rm = R.filter(x => o.x >= x.geo.x && o.x <= x.geo.x + x.geo.w && o.y >= x.geo.y && o.y <= x.geo.y + x.geo.h).sort((a, c) => a.geo.w * a.geo.h - c.geo.w * c.geo.h)[0];
+        if (rm && S.req) rm.req[o.kind] = num(rm.req[o.kind]) + 1;
+        const d = newDevice(o.kind, {floor:f.id, room:rm ? rm.id : ""}); d.name = ""; d.notes = o.block; setPos(d, o.x, o.y); src.devices.push(d); }); });
+    if (S.mode === "over") return overlayPlan(src, {devs:S.devs});
+    let nD = 0;
     edit(() => {
-      const made = [];
-      out.forEach(([F, r]) => {
-        const f = {id:uid("f"), name:F.name, lvl:0, h:3.2}; f.plan = {wm:r.wm, hm:r.hm, img:r.img, op:100, cal:true, idf:null, walls:S.walls ? r.walls.map(w => Object.assign({id:uid("w")}, w)) : [], survey:[], items:[], src:{dxf:file.name}};
-        const R = r.rooms.map(x => { const g = x.geo, room = {id:uid("r"), name:x.name, floor:f.id, users:0, wall:S.walls ? "none" : "drywall", type:guessType(x.name), req:{}, geo:{x:g.x, y:g.y, w:g.w, h:g.h}};
-          if (g.poly){ room.geo.poly = g.poly.map((v, i) => Math.round((v - (i % 2 ? g.y : g.x)) * 100) / 100); room.geo.pw = g.w; room.geo.ph = g.h; room.geo.area = x.area; } else room.geo.est = true;
-          room.geo.lx = g.lx; room.geo.ly = g.ly; return normRoom(room); });
-        b.rooms.push(...R); nR += R.length;
-        // outlets found in the drawing: needs of the room they are in, and (optionally) devices at their exact place
-        r.outlets.forEach(o => { const rm = R.filter(x => o.x >= x.geo.x && o.x <= x.geo.x + x.geo.w && o.y >= x.geo.y && o.y <= x.geo.y + x.geo.h).sort((a, c) => a.geo.w * a.geo.h - c.geo.w * c.geo.h)[0];
-          if (rm && S.req) rm.req[o.kind] = num(rm.req[o.kind]) + 1;
-          if (S.devs){ const d = newDevice(o.kind, {floor:f.id, room:rm ? rm.id : ""}); d.name = autoName(b, o.kind); d.note = o.block; setPos(d, o.x, o.y); b.devices.push(d); nD++; } });
-        made.push([F.lv, f]); });
-      const below = made.filter(([lv]) => lv < 0).map(x => x[1]), above = made.filter(([lv]) => lv >= 0).map(x => x[1]);
-      b.floors = [...below, ...b.floors, ...above]; b.floors.forEach((f, i) => f.lvl = i); normBuilding(b);
+      const below = src.floors.filter(f => f.lv < 0), above = src.floors.filter(f => f.lv >= 0); src.floors.forEach(f => { delete f.lv; });
+      b.floors = [...below, ...b.floors, ...above]; b.floors.forEach((f, i) => f.lvl = i);
+      b.rooms.push(...src.rooms);
+      if (S.devs) src.devices.forEach(d => { d.name = autoName(b, d.kind); b.devices.push(d); nD++; });
+      normBuilding(b);
       b.struct = Object.assign(b.struct || {}, {wizard:true}); st().floor = (above[0] || below[0]).id; UI.tabs.building = "plan"; UI.sel = null; UI.app = "building";
     });
-    toast("✓ " + t("dx_done",{f:out.length, r:nR, d:nD}), 6000);
+    toast("✓ " + t("dx_done",{f:out.length, r:src.rooms.length, d:nD}), 6000);
+  };
+  draw();
+}
+
+/* ---------- a drawing (from DXF or from another project file) laid over the current building ----------
+   Floors of the drawing are matched to the building's floors, rooms to rooms (by name; the user can change it).
+   The building keeps its devices, cables, VLANs and racks; rooms get the drawn outline, devices get the drawn spots. */
+// names compared without case and accents, so «FITNESS» = «Fitness», «Üst Salon» = «UST SALON», «Mətbəx» = «Metbex»
+const nrm = s => String(s || "").toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/ə/g, "e").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+function lvOfName(n){ const x = nrm(n); if (/bodrum|zirzəmi|zirzemi|basement|podval|подвал|цокол/.test(x)) return -1; if (/zemin|ground|giriş|giris|первый/.test(x)) return 0; if (/çatı|cati|roof|çardaq/.test(x)) return 50; const m = x.match(/(\d+)/); return m ? +m[1] : null; }
+async function overlayPlan(src, opts = {}){
+  const b = B(), SF = src.floors.slice().sort((a, c) => (a.lv ?? a.lvl ?? 0) - (c.lv ?? c.lvl ?? 0)), DF = b.floors;
+  // floors: same name, else same level number, else same position counted from the bottom
+  const used = new Set(), FM = {};
+  SF.forEach(f => { let d = DF.find(x => !used.has(x.id) && nrm(x.name) === nrm(f.name)); if (!d){ const lv = lvOfName(f.name); d = lv !== null && DF.find(x => !used.has(x.id) && lvOfName(x.name) === lv); }
+    if (!d && SF.length === DF.length) d = DF[SF.indexOf(f)]; FM[f.id] = d ? d.id : "new"; if (d) used.add(d.id); });
+  // rooms: same name on the target floor, else a name that contains the other
+  const RM = {}, roomsOn = fid => b.rooms.filter(r => r.floor === fid);
+  const autoRooms = () => { SF.forEach(f => { const tgt = FM[f.id], cand = tgt && tgt !== "new" && tgt !== "skip" ? roomsOn(tgt) : [], taken = new Set();
+    src.rooms.filter(r => r.floor === f.id).forEach(r => { const n = nrm(r.name); let m = cand.find(x => !taken.has(x.id) && nrm(x.name) === n) || (n.length > 3 && cand.find(x => !taken.has(x.id) && nrm(x.name).length > 3 && (nrm(x.name).includes(n) || n.includes(nrm(x.name)))));
+      RM[r.id] = m ? m.id : "new"; if (m) taken.add(m.id); }); }); };
+  autoRooms();
+  const O = {place:true, extra:false, req:true, devs:opts.devs !== false};
+  const srcDevs = src.devices || [];
+  const draw = () => {
+    const fsel = f => `<select data-ovf="${f.id}">${opt("new", "＋ " + t("ov_newFloor"), FM[f.id])}${opt("skip", "— " + t("ov_skip"), FM[f.id])}${DF.map(x => opt(x.id, x.name, FM[f.id])).join("")}</select>`;
+    const rsel = (r, fid) => `<select data-ovr="${r.id}">${opt("new", "＋ " + t("ov_newRoom"), RM[r.id])}${opt("skip", "— " + t("ov_skip"), RM[r.id])}${roomsOn(fid).map(x => opt(x.id, x.name, RM[r.id])).join("")}</select>`;
+    const nMatch = Object.values(RM).filter(v => v !== "new" && v !== "skip").length;
+    modal(`<h3>🧩 ${esc(t("ov_title"))}</h3><p class="muted small">${esc(t("ov_hint",{b:b.name}))}</p>
+      <div class="scroll"><table class="t"><tr><th>${esc(t("ov_drawing"))}</th><th>→ ${esc(b.name)}</th><th>${esc(t("rooms"))}</th></tr>${SF.map(f => `<tr><td><b>${esc(f.name)}</b></td><td>${fsel(f)}</td><td class="c">${src.rooms.filter(r => r.floor === f.id).length}</td></tr>`).join("")}</table></div>
+      ${SF.filter(f => FM[f.id] !== "skip" && FM[f.id] !== "new").map(f => `<details class="dsec"><summary>🚪 ${esc(f.name)} → ${esc((floorById(b, FM[f.id]) || {}).name)} <span class="cnt">${src.rooms.filter(r => r.floor === f.id && RM[r.id] !== "new" && RM[r.id] !== "skip").length}/${src.rooms.filter(r => r.floor === f.id).length}</span></summary>
+        <div class="dsb scroll" style="max-height:32vh"><table class="t">${src.rooms.filter(r => r.floor === f.id).map(r => `<tr><td>${esc(r.name)}</td><td>${rsel(r, FM[f.id])}</td></tr>`).join("")}</table></div></details>`).join("")}
+      <p class="small">${esc(t("ov_sum",{m:nMatch, n:Object.keys(RM).length - nMatch}))}</p>
+      <label class="chk"><input type="checkbox" id="ov-place"${O.place ? " checked" : ""}> ${esc(t("ov_place"))}</label>
+      <label class="chk"><input type="checkbox" id="ov-req"${O.req ? " checked" : ""}> ${esc(t("ov_req"))}</label>
+      ${srcDevs.length ? `<label class="chk"><input type="checkbox" id="ov-extra"${O.extra ? " checked" : ""}> ${esc(t("ov_extra"))}</label>` : ""}
+      <p class="muted small">${esc(t("ov_keep"))}</p>
+      <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><span class="grow"></span><button class="btn pri" data-m="go">✓ ${esc(t("ov_go"))}</button></div>`, {go:() => { read(); apply(); }}, {wide:true, nofocus:true});
+    $$("[data-ovf]").forEach(el => el.addEventListener("change", () => { read(); autoRooms(); draw(); }));
+  };
+  const read = () => { $$("[data-ovf]").forEach(el => { FM[el.dataset.ovf] = el.value; }); $$("[data-ovr]").forEach(el => { RM[el.dataset.ovr] = el.value; });
+    ["place","req","extra"].forEach(k => { const c = $("#ov-" + k); if (c) O[k] = c.checked; }); };
+  const apply = () => {
+    closeModal(); let nPlaced = 0, nNew = 0, nRooms = 0;
+    edit(() => {
+      const fmap = {}, rmap = {};
+      SF.forEach(f => { const tgt = FM[f.id]; if (tgt === "skip") return;
+        let d;
+        if (tgt === "new"){ d = {id:uid("f"), name:f.name, lvl:0, h:f.h || 3.2, plan:clone(f.plan)}; const lv = f.lv ?? lvOfName(f.name) ?? 0; if (lv < 0) b.floors.unshift(d); else b.floors.push(d); }
+        else { d = floorById(b, tgt); const old = d.plan;
+          // devices already on this floor keep their place relative to their room; others wait in "not on the plan"
+          const oldGeo = {}; b.rooms.filter(r => r.floor === d.id && r.geo).forEach(r => { oldGeo[r.id] = clone(r.geo); });
+          d.plan = Object.assign({}, old, {wm:f.plan.wm, hm:f.plan.hm, img:f.plan.img, op:f.plan.op ?? 100, cal:true, walls:clone(f.plan.walls || []), items:[...(f.plan.items || [])], src:f.plan.src || null, idf:old.idf || null, survey:[]});
+          d.__old = oldGeo; }
+        fmap[f.id] = d; });
+      // rooms
+      src.rooms.forEach(r => { const d = fmap[r.floor]; if (!d) return; const tgt = RM[r.id] || "new";
+        if (tgt === "skip") return;
+        if (tgt === "new"){ const c = Object.assign(clone(r), {id:uid("r"), floor:d.id}); b.rooms.push(c); rmap[r.id] = c; nRooms++; return; }
+        const x = roomById(b, tgt); if (!x) return; x.geo = clone(r.geo); x.wall = r.wall || x.wall; if (!x.type || x.type === "office") x.type = r.type || x.type;
+        if (O.req && r.req && !Object.values(x.req || {}).some(v => num(v))) x.req = clone(r.req);
+        rmap[r.id] = x; nRooms++; });
+      // rooms of a re-drawn floor that got no outline: their old box no longer fits the drawing
+      Object.values(fmap).forEach(d => { if (!d.__old) return; const matched = new Set(Object.values(rmap).map(x => x.id)); b.rooms.filter(x => x.floor === d.id && !matched.has(x.id) && d.__old[x.id]).forEach(x => { delete x.geo; }); });
+      // devices already in the building
+      Object.values(fmap).forEach(d => {
+        const devs = b.devices.filter(x => (x.floor === d.id || (x.room && (roomById(b, x.room) || {}).floor === d.id)) && !x.rack);
+        devs.forEach(x => { const p = posOf(x), rm = x.room && roomById(b, x.room), og = d.__old && d.__old[x.room];
+          if (p && rm && rm.geo && og && og.w && og.h){ setPos(x, rm.geo.x + (p.x - og.x) / og.w * rm.geo.w, rm.geo.y + (p.y - og.y) / og.h * rm.geo.h); }
+          else if (p && d.__old) clearPos(x); });
+        delete d.__old; });
+      // drawn spots → existing devices of the same room and kind (a data outlet spot also takes a PC, printer … of that room)
+      const left = [];
+      if (O.place){ const ENDS = ["pc","printer","workstation","laptop","phone","tv","monitor","touch","iot"];
+        srcDevs.forEach(sd => { const x = rmap[sd.room]; if (!x) return left.push(sd); const p = posOf(sd);
+          const cand = b.devices.filter(q => q.room === x.id && !q.rack && !posOf(q));
+          const m = cand.find(q => q.kind === sd.kind) || (sd.kind === "outlet" && cand.find(q => ENDS.includes(q.kind)));
+          if (m && p){ setPos(m, p.x, p.y); m.floor = x.floor; nPlaced++; } else left.push(sd); }); }
+      else left.push(...srcDevs);
+      if (O.extra) left.forEach(sd => { const x = rmap[sd.room], d = fmap[sd.floor]; if (!d) return; const c = Object.assign(clone(sd), {id:uid("d"), floor:d.id, room:x ? x.id : "", status:"planned"}); c.name = autoName(b, c.kind); b.devices.push(c); nNew++; });
+      b.floors.forEach((f, i) => f.lvl = i); normBuilding(b);
+      b.struct = Object.assign(b.struct || {}, {wizard:true}); const first = Object.values(fmap)[0]; if (first) st().floor = first.id; UI.app = "building"; UI.tabs.building = "plan"; UI.sel = null;
+    });
+    toast("✓ " + t("ov_done",{r:nRooms, p:nPlaced, n:nNew}), 7000);
   };
   draw();
 }
@@ -512,5 +601,5 @@ registerApp({
 APPS.building.init = wire;
 // a building without floors opens the set-up once, the first time the app is shown for it
 APPS.building.afterRender = () => { const b = B(); if (b.floors.length || b.devices.length || b.racks.length || (b.struct && b.struct.wizard) || !store.settings.setupDone || !$("#modal").hidden || document.querySelector(".tour")) return; b.struct = Object.assign(b.struct || {}, {wizard:true}); persist(); setTimeout(wizard, 300); };
-window.BLD = {wizard, createMissing, posOf, dxfImport, guessType, planSvg};
+window.BLD = {wizard, createMissing, posOf, dxfImport, guessType, planSvg, overlayPlan};
 })();

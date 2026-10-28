@@ -1,4 +1,4 @@
-NETWORKKING 3.0.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.0.1 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 7 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV və Wi-Fi Plan. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
@@ -28,7 +28,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.0.0.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.0.1.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 
@@ -43,6 +43,11 @@ D) Köhnə proqramlardan məlumat köçürmək
    - RackLayout 2.x (.rack.json)
    - Wolf Suite 2.0 sənədləri (.topology.json, .cctv.json, .fiber.json, .wifi.json)
    Proqram soruşur: yeni layihə, bu layihədə yeni bina, yoxsa cari bina.
+   NetWorkKing layihə faylında çertyoj (plan) varsa, üçüncü seçim: "Çertyoju cari binanın
+   üzərinə oturt" — çertyojun mərtəbələri sizin mərtəbələrinizə, otaqları otaqlarınıza
+   (adlara görə, dəyişmək olar) bağlanır; cihazlarınız çertyojdakı rozetka / AP yerlərinə
+   qoyulur; kabellər, portlar, VLAN-lar, rack-lar olduğu kimi qalır. DXF idxalında da
+   eyni seçim var ("Hara?").
 
 E) Cihaz kataloqu
    Daxili kataloqda rəsmi datasheet-lərdən götürülmüş modellər var (marka, model,

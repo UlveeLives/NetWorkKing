@@ -1,6 +1,6 @@
 // Start-up: load data and catalog, wire the shell, open the last app, run the first-time setup if needed.
 "use strict";
-const APP_VERSION = "3.0.0";
+const APP_VERSION = "3.0.1";
 (async function start(){
   try {
     await loadStore(); await CAT.load(); applyTheme();

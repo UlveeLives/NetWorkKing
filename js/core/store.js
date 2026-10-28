@@ -152,10 +152,19 @@ async function importAny(){
     toast("⚠ " + t("impBad"));
   } catch(e){ console.error(e); toast("⚠ " + t("impBad") + " " + (e.message || "")); }
 }
-async function importProject(j){
+// A project file: as a new project, as new buildings of this project, or (when it has floor plans) laid over the current building.
+async function importProject(j, where){
+  const src = j.project || {}, bl = Array.isArray(src.buildings) ? src.buildings : [], drawn = bl.filter(x => (x.floors || []).some(f => f.plan && f.plan.img));
+  if (!where){ const C = [["new", t("impNewProj"), "pri"], ["bld", t("impNewBld")]]; if (drawn.length && typeof BLD !== "undefined") C.push(["over", t("ov_impOver",{b:B().name})]);
+    where = await uiChoice(t("impProjQ",{p:src.name || "?", n:bl.length}), C); if (!where) return; }
   const map = {};
   for (const [id, url] of Object.entries(j.assets || {})){ try { map[id] = await putAsset(dataURLToBlob(url)); } catch(e){} }
   const remap = o => { if (!o || typeof o !== "object") return; for (const k in o){ const v = o[k]; if (typeof v === "string" && map[v]) o[k] = map[v]; else if (v && typeof v === "object") remap(v); } };
-  const p = clone(j.project); remap(p); p.id = uid("p"); if (Object.values(store.projects).some(x => x.name === p.name)) p.name += " (" + t("imported") + ")";
+  const p = clone(src); remap(p);
+  if (where === "over"){ let sb = p.buildings.filter(x => (x.floors || []).some(f => f.plan && f.plan.img));
+    let pick = sb[0]; if (sb.length > 1){ const k = await uiChoice(t("ov_whichBld"), sb.map(x => [x.id, x.name])); if (!k) return; pick = sb.find(x => x.id === k); }
+    normBuilding(pick); return BLD.overlayPlan(pick, {devs:true}); }
+  if (where === "bld"){ pushUndo(); const P0 = P(); p.buildings.forEach(x => { x.id = uid("b"); if (P0.buildings.some(y => y.name === x.name)) x.name += " (" + t("imported") + ")"; normBuilding(x); P0.buildings.push(x); }); P0.cur.b = p.buildings[0].id; UI.sel = null; normProject(P0); persist(); render(); toast("✓ " + t("impOk")); return; }
+  p.id = uid("p"); if (Object.values(store.projects).some(x => x.name === p.name)) p.name += " (" + t("imported") + ")";
   normProject(p); store.projects[p.id] = p; store.cur = p.id; undoStack = []; redoStack = []; persist(); render(); toast("✓ " + t("impOk"));
 }

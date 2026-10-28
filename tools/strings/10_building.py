@@ -96,3 +96,23 @@ for k,az,tr,en,ru in [("wallExt","Xarici divar","Dış duvar","Outer wall","На
  ("site","Həyət / ərazi","Bahçe / arsa","Yard / site","Участок"),("furn","Mebel / santexnika","Mobilya / vitrifiye","Furniture / fittings","Мебель / сантехника"),("other","Digər (göstərilmir)","Diğer (gösterilmez)","Other (not drawn)","Другое (не рисуется)"),("ignore","Götürmə","Alma","Skip","Пропустить")]:
     K("dxr_"+k,az,tr,en,ru)
 K("dx_wEst","{n} otağın sərhədi çertyojda tapılmadı, divarlara görə təxmin edildi (≈) — yoxlayıb lazım olsa ölçüsünü düzəldin: {r}","{n} odanın sınırı tahmin edildi (≈), kontrol edin: {r}","{n} room outlines were not in the drawing and were estimated from the walls (≈) — check and resize if needed: {r}","Границы {n} комнат оценены по стенам (≈) — проверьте: {r}")
+for k,az,tr,en,ru in [
+ ("impProjQ","«{p}» layihəsi ({n} bina). Necə əlavə edilsin?","«{p}» projesi ({n} bina). Nasıl eklensin?","Project «{p}» ({n} buildings). How should it be added?","Проект «{p}» ({n} зданий). Как добавить?"),
+ ("ov_impOver","Çertyoju cari binanın üzərinə oturt ({b})","Çizimi mevcut binanın üzerine oturt ({b})","Lay its drawing over the current building ({b})","Наложить чертёж на текущее здание ({b})"),
+ ("ov_whichBld","Hansı binanın çertyojunu götürək?","Hangi binanın çizimi?","Which building's drawing?","Чертёж какого здания?"),
+ ("ov_whereT","Hara?","Nereye?","Where to?","Куда?"),
+ ("ov_modeOver","Cari binanın üzərinə oturt ({b}) — mövcud mərtəbə, otaq və cihazlara bağla","Mevcut binanın üzerine oturt ({b})","Lay over the current building ({b}) — attach to its floors, rooms and devices","Наложить на текущее здание ({b})"),
+ ("ov_modeAdd","Yeni mərtəbələr kimi əlavə et","Yeni katlar olarak ekle","Add as new floors","Добавить как новые этажи"),
+ ("ov_title","Çertyoju binanın üzərinə oturt","Çizimi binanın üzerine oturt","Lay the drawing over the building","Наложить чертёж на здание"),
+ ("ov_hint","Çertyojun hər mərtəbəsini «{b}» binasının mərtəbəsinə, otaqlarını da otaqlarına bağlayın. Adlar eyni və ya oxşar olanlar avtomatik seçilib — yoxlayın. Cihazlar, kabellər, portlar, VLAN-lar və rack-lar toxunulmaz qalır.","Çizimin katlarını ve odalarını «{b}» binasına bağlayın. Benzer adlar otomatik seçildi.","Match each floor of the drawing to a floor of «{b}», and its rooms to your rooms. Same or similar names are matched already — check them. Devices, cables, ports, VLANs and racks stay as they are.","Сопоставьте этажи и комнаты чертежа со зданием «{b}». Устройства, кабели, порты, VLAN и стойки не меняются."),
+ ("ov_drawing","Çertyojda","Çizimde","In the drawing","В чертеже"),
+ ("ov_newFloor","yeni mərtəbə","yeni kat","new floor","новый этаж"),("ov_newRoom","yeni otaq","yeni oda","new room","новая комната"),("ov_skip","götürmə","alma","skip","пропустить"),
+ ("ov_sum","{m} otaq sizin otaqlarınıza bağlanır, {n} otaq yeni yaranır (və ya götürülmür).","{m} oda eşleşti, {n} yeni.","{m} rooms attach to your rooms, {n} become new rooms (or are skipped).","{m} комнат сопоставлено, {n} новых."),
+ ("ov_place","Mövcud cihazlarımı çertyojdakı rozetka / AP / TV / telefon yerlərinə qoy (eyni otaq, eyni növ)","Mevcut cihazlarımı çizimdeki yerlere koy","Put my existing devices on the outlet / AP / TV / phone spots of the drawing (same room, same kind)","Разместить мои устройства в точках чертежа (та же комната, тот же тип)"),
+ ("ov_req","Ehtiyacı boş olan otaqlara çertyojdakı prizlərin sayını yaz","İhtiyacı boş odalara priz sayılarını yaz","Fill empty room needs from the outlets in the drawing","Заполнить пустые потребности комнат по чертежу"),
+ ("ov_extra","Artıq qalan çertyoj prizlərini «planlaşdırılan» cihaz kimi əlavə et","Kalan prizleri «planlanan» cihaz olarak ekle","Add leftover drawing outlets as «planned» devices","Добавить оставшиеся точки как «планируемые» устройства"),
+ ("ov_keep","Mərtəbənin köhnə planı çertyojla əvəz olunur. Otağı tapılmayan köhnə otaqlar və cihazlar «planda olmayanlar» siyahısına keçir. Hamısı bir addımdır — «Geri al» ilə qaytarılır.","Eski plan çizimle değişir; eşleşmeyenler «planda olmayanlar»a geçer. Geri al ile dönülür.","The floor's old plan is replaced by the drawing. Old rooms and devices without a match move to «not on the plan». All in one step — Undo brings it back.","Старый план заменяется чертежом; несопоставленное уходит в «вне плана». Всё отменяется одним шагом."),
+ ("ov_go","Oturt","Oturt","Lay over","Наложить"),
+ ("ov_done","Çertyoj oturduldu: {r} otaq, {p} cihaz yerinə qoyuldu, {n} yeni cihaz","Çizim oturtuldu: {r} oda, {p} cihaz yerleşti, {n} yeni","Drawing laid over: {r} rooms, {p} devices placed, {n} new devices","Чертёж наложен: комнат {r}, размещено {p}, новых {n}"),
+]:
+    K(k,az,tr,en,ru)
