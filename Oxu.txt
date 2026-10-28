@@ -1,18 +1,34 @@
-NETWORKER 2.0.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.0.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
-NetWorker bir proqramda 7 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack kabinetlər,
+NetWorkKing bir proqramda 7 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV və Wi-Fi Plan. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.0-DA YENİ
+ - DXF çertyojdan bina: Bina strukturu → "DXF çertyojdan yarat". Mərtəbələr, divarlar,
+   qapılar, pəncərələr, otaq adları və çertyojdakı prizlər (data, TV, telefon, AP …)
+   avtomatik götürülür. Bir faylda bir neçə mərtəbə varsa, ayrılır. DWG-ni əvvəlcə
+   AutoCAD-də "Save As → DXF" və ya pulsuz ODA File Converter ilə DXF edin.
+ - Rack U-Layout: rack-lar yenidən real kabinet kimi çəkilir (RackLayout görünüşü).
+ - Ölçünü kiçiltmək (rack U, cihaz hündürlüyü, port sayı, NVR kanalları) yalnız
+   həqiqətən sığmayanda rədd edilir; sığırsa, nəyin hara köçəcəyi göstərilir və təsdiqlə edilir.
+ - AI köməkçi: hər tətbiqdə sağ aşağıdakı ✨ AI düyməsi. Layihə haqqında sual verin və
+   ya dəyişiklik istəyin — dəyişikliklər əvvəlcə siyahı kimi göstərilir, "Tətbiq et"
+   basılmadan heç nə dəyişmir, "Geri al" ilə qaytarılır.
+   Öz Anthropic API açarınız lazımdır (console.anthropic.com → API Keys); açar yalnız
+   bu cihazda saxlanılır. Layihə məlumatı hər sualla AI-a göndərilir.
+ - Ad: NetWorkKing. İlk açılışda NetWorker 2.0-ın məlumatları avtomatik köçürülür,
+   köhnə nüsxəyə toxunulmur (2.0 öz məlumatı ilə açılmağa davam edir).
 
 A) Quraşdırmadan sınamaq
    index.html faylını Chrome və ya Edge-də aç. Hər şey işləyir,
    PDF isə "Çap" pəncərəsindən "PDF kimi saxla" ilə alınır.
 
 B) Windows proqramı (.exe) yığmaq
-   1. Bu qovluğu məs. C:\NetWorker-source-a köçür (Node.js quraşdırılmış olmalıdır).
+   1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorker-Setup-2.0.0.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.0.0.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 
@@ -22,6 +38,7 @@ C) Telefon / planşet
 
 D) Köhnə proqramlardan məlumat köçürmək
    "İdxal" düyməsi ilə bu faylları aç:
+   - NetWorker 1.x / 2.x layihə faylı (.networker.json)
    - PortMap 1.x / 2.x / 3.x ixrac faylı (.portmap.json)
    - RackLayout 2.x (.rack.json)
    - Wolf Suite 2.0 sənədləri (.topology.json, .cctv.json, .fiber.json, .wifi.json)
@@ -31,8 +48,7 @@ E) Cihaz kataloqu
    Daxili kataloqda rəsmi datasheet-lərdən götürülmüş modellər var (marka, model,
    U, güc, PoE, portlar, kamera / NVR / AP göstəriciləri və mənbə linki).
    Ayarlar → Kataloq: internetdən yeniləmə (həftədə bir dəfə avtomatik).
-   Bazada olmayan model üçün: əl ilə daxil et, və ya istəsən AI axtarışı
-   (öz Anthropic API açarın lazımdır — Ayarlar → AI; açar yalnız bu kompüterdə saxlanılır).
+   Bazada olmayan model üçün: əl ilə daxil et, və ya istəsən AI axtarışı (Ayarlar → AI).
 
 Məlumatlar kompüterdə avtomatik saxlanılır. Ehtiyat üçün vaxtaşırı
-"İxrac → Layihə faylı" et; başqa kompüterdə "İdxal" ilə açılır.
+"İxrac → Layihə faylı" et (.networkking.json); başqa kompüterdə "İdxal" ilə açılır.

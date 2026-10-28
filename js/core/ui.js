@@ -145,6 +145,7 @@ function render(){
   if (UI.multi.size) $$("[data-sel]", view).forEach(el => { if (UI.multi.has(el.dataset.sel)){ const tr = el.closest("tr") || el; tr.classList.add("on"); } });
   if (tab.after) tab.after(view);
   restoreFocus();
+  if (typeof AI !== "undefined" && UI.ai && UI.ai.open) AI.draw();
   if (a.afterRender) a.afterRender(tab);
   maybeTour();
 }

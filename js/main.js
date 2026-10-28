@@ -5,7 +5,7 @@ const APP_VERSION = "3.0.0";
   try {
     await loadStore(); await CAT.load(); applyTheme();
     $("#dl-brands").innerHTML = allBrands().map(x => `<option value="${esc(x)}">`).join("");
-    wireShell(); wireEditors(); Object.values(APPS).forEach(a => a.init && a.init());
+    wireShell(); wireEditors(); AI.init(); Object.values(APPS).forEach(a => a.init && a.init());
     const p = P(); UI.app = APPS[p.cur.app] ? p.cur.app : "building"; UI.tabs = Object.assign({}, p.cur.tabs || {});
     render();
     if (!store.settings.setupDone) openWizard();
