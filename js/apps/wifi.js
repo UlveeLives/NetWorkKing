@@ -50,10 +50,17 @@ function wset(b){
    floors (top floor first) with rooms (b.rooms with r.geo), walls, survey points, IDF; aps = placed AP devices.
    Built on every render; changes go through commit(), which writes them back to the building. */
 let FCD = null;
+// VLANs an AP carries, as set elsewhere: the switch port it is cabled to (Port Map: access VLAN, or trunk native + allowed), else the device VLAN.
+function portVlans(b, d){
+  const up = window.PM ? PM.upstream(b, d) : {}, c = up.sw && up.sw.pcfg && up.sw.pcfg[up.p], vid = id => (vlanById(b, id) || {}).vid, out = [];
+  if (c){ if (c.mode === "trunk"){ if (c.native) out.push(vid(c.native)); String(c.allowed || "").split(/[\s,;]+/).filter(Boolean).forEach(x => out.push(x)); } else if (c.vlan) out.push(vid(c.vlan)); }
+  if (!out.length && d.vlan) out.push(vid(d.vlan));
+  return [...new Set(out.filter(Boolean))].join(",");
+}
 function apIn(b, d){
   const up = window.PM ? PM.upstream(b, d) : {};
   const a = {id:d.id, name:d.name, floor:d.floor, x:num(d.ap.x), y:num(d.ap.y), h:num(d.ap.h, 3), mount:d.ap.mount || "ceiling", status:d.status, radios:d.ap.radios,
-    model:[d.brand, d.model].filter(Boolean).join(" "), ip:d.ip, mac:d.mac, serial:d.serial, note:d.notes, cable:d.ap.cable || "", vlans:d.ap.vlans || "",
+    model:[d.brand, d.model].filter(Boolean).join(" "), ip:d.ip, mac:d.mac, serial:d.serial, note:d.notes, cable:d.ap.cable || "", vlans:d.ap.vlans || portVlans(b, d), vlansOwn:d.ap.vlans || "",
     sw:up.sw ? devLabel(up.sw) : "", swId:up.sw ? up.sw.id : "", port:up.p || ""};
   Object.defineProperty(a, "__d", {value:d, enumerable:false, writable:true});
   return a;
@@ -93,7 +100,7 @@ function syncOut(){
       if (tpl){ ["brand","model","cat"].forEach(k => { if (tpl[k] !== undefined) dv[k] = clone(tpl[k]); }); dv.params = clone(tpl.params); dv.ap.std = tpl.ap.std; dv.ap.maxClients = tpl.ap.maxClients; }
       b.devices.push(dv); }
     dv.name = a.name; dv.floor = a.floor; dv.status = a.status; dv.notes = a.note || ""; dv.ip = a.ip || ""; dv.mac = a.mac || ""; dv.serial = a.serial || "";
-    Object.assign(dv.ap, {x:a.x, y:a.y, h:a.h, mount:a.mount, cable:a.cable, vlans:a.vlans, radios:a.radios});
+    Object.assign(dv.ap, {x:a.x, y:a.y, h:a.h, mount:a.mount, cable:a.cable, vlans:a.vlansOwn !== undefined ? a.vlansOwn : a.vlans, radios:a.radios});
     a.__d = dv; });
   const gone = [...FCD.apIds].filter(id => !seenA.has(id));
   if (gone.length) removeDevices(b, gone);
@@ -537,7 +544,7 @@ function apExtra(b, dv){
     <div class="two">${sel(t("f_mount"), "ap.mount", dv.ap.mount, opt("ceiling", t("m_ceil"), dv.ap.mount) + opt("wall", t("m_wall"), dv.ap.mount))}${fld(t("f_h"), "ap.h", dv.ap.h, "number", ' step="0.1" min="0.5"')}</div>
     <div class="scroll"><table class="t rtab"><tr><th>Band</th><th>${esc(t("c_ch"))}</th><th>MHz</th><th>Tx dBm</th><th></th></tr>${rad}</table></div>
     <div class="muted small" style="margin:4px 0">${esc([dv.ap.std, dv.params.poeIn ? "PoE " + dv.params.poeIn + " W" : "", dv.ap.maxClients ? t("maxCl") + " " + dv.ap.maxClients : ""].filter(Boolean).join(" · ") || t("apNoModel"))}</div>
-    <div class="two">${fld(t("f_vlans"), "ap.vlans", dv.ap.vlans || "", "text", ' placeholder="10,60,70"')}${fld(t("f_cable"), "ap.cable", dv.ap.cable || "", "number", ` min="0" placeholder="${L === null ? t("noIdf") : "auto " + L}"`)}</div>
+    <div class="two">${fld(t("f_vlans"), "ap.vlans", dv.ap.vlans || "", "text", ` placeholder="${esc(portVlans(b, dv) ? "auto: " + portVlans(b, dv) : "10,60,70")}"`)}${fld(t("f_cable"), "ap.cable", dv.ap.cable || "", "number", ` min="0" placeholder="${L === null ? t("noIdf") : "auto " + L}"`)}</div>
     ${a ? `<div class="lbox ${L !== null && L > 90 ? "bad" : "ok"}">${esc(t("c_cable"))}: <b>${L === null ? "—" : L + " m"}</b>${L !== null && L > 90 ? " > 90 m (TIA-568)" : ""} · ${esc(t("c_cl"))}: <b>${cl}</b> / ${d.cfg.cpa}</div>` : ""}`, true);
 }
 function wifiField(k, raw){
@@ -555,7 +562,7 @@ function nextAPName(d){ const used = new Set([...B().devices.map(x => x.name), .
 function newAP(d, f, x, y){
   const last = d.aps[d.aps.length - 1], R = {};
   BANDS.forEach(b => { const L = last && last.radios[b]; R[b] = L ? clone(L) : {on:b !== "6", ch:b === "2.4" ? 1 : b === "5" ? 36 : 5, w:b === "2.4" ? 20 : b === "5" ? num(d.cfg.w5, 40) : num(d.cfg.w6, 80), tx:b === "2.4" ? 14 : 20, maxTx:b === "2.4" ? 20 : 23, gain:b === "2.4" ? 3 : 5}; });
-  const a = {id:uid("d"), name:nextAPName(d), floor:f.id, x:r1(x), y:r1(y), h:last ? last.h : 3, mount:last ? last.mount : "ceiling", status:"planned", radios:R, model:last ? last.model : "", ip:"", mac:"", serial:"", note:"", cable:"", vlans:last ? last.vlans : "", sw:"", swId:"", port:""};
+  const a = {id:uid("d"), name:nextAPName(d), floor:f.id, x:r1(x), y:r1(y), h:last ? last.h : 3, mount:last ? last.mount : "ceiling", status:"planned", radios:R, model:last ? last.model : "", ip:"", mac:"", serial:"", note:"", cable:"", vlans:last ? last.vlansOwn || "" : "", vlansOwn:last ? last.vlansOwn || "" : "", sw:"", swId:"", port:""};
   if (last) a.__tpl = last.id;
   return a;
 }

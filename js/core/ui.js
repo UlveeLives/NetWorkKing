@@ -141,6 +141,7 @@ function render(){
   $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);
   if (UI.multi.size) $$("[data-sel]", view).forEach(el => { if (UI.multi.has(el.dataset.sel)){ const tr = el.closest("tr") || el; tr.classList.add("on"); } });
   if (tab.after) tab.after(view);
+  restoreFocus();
   if (a.afterRender) a.afterRender(tab);
   maybeTour();
 }
@@ -151,8 +152,34 @@ function drawerHtml(a, tab){
     return `<div class="dhead"><div><h3>${esc(t("multiSel",{n:UI.multi.size}))}</h3></div><button class="x" data-dr="close">×</button></div>${L.length > 1 ? multiEditor(B(), L) : ""}${extra}`; }
   return a.drawer ? a.drawer(tab) : "";
 }
-function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr); }
+function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);  restoreFocus(); }
 /* ---------- header / tab / building events ---------- */
+/* ---------- typing masks: IP fields take only an IPv4 address (digits, dots, "/mask"), MAC fields only hex with ":" added ---------- */
+const IP_FIELDS = '[data-f="ip"],[data-cf$=":ip"],#bk-ip,#ne-ip,#lk-ip,[data-c="gw"],[data-c="subnet"],[data-v="gw"],[data-v="subnet"],input[data-mask="ip"]';
+const MAC_FIELDS = '[data-f="mac"],[data-cf$=":mac"],#ne-mac,input[data-mask="mac"]';
+function maskIp(v){
+  v = v.replace(/,/g, ".").replace(/[^\d./]/g, "").replace(/\.{2,}/g, ".").replace(/^\./, "");
+  let [a, m] = v.split("/"); const parts = a.split(".").slice(0, 4).map(x => x.slice(0, 3)); a = parts.join(".");
+  if (parts.length < 4 && parts[parts.length - 1].length === 3 && m === undefined) a += ".";
+  return m !== undefined ? a + "/" + m.replace(/\D/g, "").slice(0, 2) : a;
+}
+function maskMac(v){ const h = v.replace(/[^0-9a-f]/gi, "").toUpperCase().slice(0, 12); return h.replace(/(..)(?=.)/g, "$1:"); }
+document.addEventListener("input", e => { const el = e.target; if (!el.matches || el.tagName !== "INPUT") return;
+  const ip = el.matches(IP_FIELDS), mac = !ip && el.matches(MAC_FIELDS); if (!ip && !mac) return;
+  const atEnd = el.selectionStart === el.value.length, del = e.inputType && e.inputType.startsWith("delete");
+  let v = ip ? (del ? el.value.replace(/,/g, ".").replace(/[^\d./]/g, "") : maskIp(el.value)) : (del ? el.value.replace(/[^0-9a-f:]/gi, "").toUpperCase() : maskMac(el.value));
+  if (v !== el.value){ const pos = el.selectionStart; el.value = v; if (!atEnd) el.setSelectionRange(Math.min(pos, v.length), Math.min(pos, v.length)); } }, true);
+/* ---------- keep the field the user moved to focused when saving the previous field redraws the page ---------- */
+const FKEYS = ["data-f","data-mf","data-cf","data-wr","data-cch","data-wc","data-wp","data-wt","data-lk","data-cs","id"];
+function fieldKey(el){ if (!el || !/INPUT|SELECT|TEXTAREA/.test(el.tagName)) return null; for (const k of FKEYS){ const v = el.getAttribute(k); if (v) return k === "id" ? "#" + CSS.escape(v) : `[${k}="${CSS.escape(v)}"]`; } return null; }
+let refocus = null;
+// (deferred: the mouse-down that started this would otherwise move the focus to the old, removed field)
+function restoreFocus(){ if (!refocus) return; const key = refocus; refocus = null; setTimeout(() => focusField(key), 0); }
+function focusField(key){ const el = document.querySelector(key); if (el && document.activeElement !== el){ el.focus(); if (el.select && el.tagName === "INPUT" && /text|search|number|tel|email|url/.test(el.type)) try { el.select(); } catch(e){} } }
+document.addEventListener("pointerdown", e => { const k = fieldKey(e.target.closest && e.target.closest("input,select,textarea")); if (k){ refocus = k; setTimeout(() => { refocus = null; }, 400); } }, true);
+document.addEventListener("keydown", e => { if (e.key !== "Tab") return; const el = e.target, box = el.closest && el.closest("#drawer,#view,.mbox"); if (!box || !fieldKey(el)) return;
+  const L = $$("input:not([type=hidden]):not([disabled]),select:not([disabled]),textarea:not([disabled])", box).filter(x => x.offsetParent), i = L.indexOf(el), nx = L[i + (e.shiftKey ? -1 : 1)];
+  const k = fieldKey(nx); if (!k) return; e.preventDefault(); refocus = k; el.blur(); restoreFocus(); }, true);
 function wireShell(){
   // A field being edited is saved before a click elsewhere changes the selection (otherwise the typed text would be lost
   // or land on the newly clicked device).

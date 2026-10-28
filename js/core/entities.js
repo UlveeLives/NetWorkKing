@@ -245,7 +245,10 @@ async function multiAct(k){
 function connectionsHtml(b, d){
   const L = linksOf(b, d.id);
   return (L.length ? L.map(l => { const o = otherEnd(l, d.id), od = devById(b, o.d), me = thisEnd(l, d.id), M = MEDIA[l.media] || MEDIA.cat6;
-    return `<div class="lnk" data-dr="link:${l.id}"><i style="background:${M.c}"></i><span><b>${esc(me.p ? ":" + me.p : "")}</b> → <b>${esc(devLabel(od))}</b>${o.p ? " :" + esc(o.p) : ""}<br><small class="muted">${esc(mediaName(l.media))}${l.cid ? " · " + esc(l.cid) : ""}${l.len ? " · " + esc(l.len) + " m" : ""}</small></span><button class="x" data-dr="unlink:${l.id}" title="${esc(t("delete"))}">×</button></div>`; }).join("") : `<p class="muted small">${esc(t("noLinks"))}</p>`)
+    // through a patch panel / outlet: also show where that panel port goes (switch and port), with the rack names
+    let via = ""; if (od && window.PM && PM.passive(od) && !PM.passive(d)){ const w = PM.walk(b, d.id, me.p, l), k = w.findIndex(h => !PM.passive(devById(b, h.d)));
+      if (k > 0){ const sw = devById(b, w[k].d); via = `<br><small>⇢ <b>${esc(devFull(b, sw))}</b>${w[k].p ? " :" + esc(w[k].p) : ""}</small>`; } }
+    return `<div class="lnk" data-dr="link:${l.id}"><i style="background:${M.c}"></i><span><b>${esc(me.p ? ":" + me.p : "")}</b> → <b>${esc(od ? devFull(b, od) : "?")}</b>${o.p ? " :" + esc(o.p) : ""}${via}<br><small class="muted">${esc(mediaName(l.media))}${l.cid ? " · " + esc(l.cid) : ""}${l.len ? " · " + esc(l.len) + " m" : ""}</small></span><button class="x" data-dr="unlink:${l.id}" title="${esc(t("delete"))}">×</button></div>`; }).join("") : `<p class="muted small">${esc(t("noLinks"))}</p>`)
     + `<button class="btn small" data-dr="addLink">＋ ${esc(t("linkAdd"))}</button>`;
 }
 function linkEditor(b, l){

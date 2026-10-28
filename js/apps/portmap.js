@@ -335,5 +335,5 @@ registerApp({
 });
 document.addEventListener("click", e => { const a = e.target.closest("[data-pm2]"); if (!a || UI.app !== "portmap") return; const b = B(); if (a.dataset.pm2 === "cid") autoCableIds(b, null, "C"); else cableCsv(b); });
 APPS.portmap.init = () => wireDrawer();
-window.PM = {chainAt, parts, linksAt, label606, upstream, cliText};
+window.PM = {chainAt, parts, linksAt, label606, upstream, cliText, walk, passive, isNet};
 })();
