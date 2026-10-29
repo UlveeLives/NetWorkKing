@@ -31,3 +31,9 @@ LOQO v3 (branding/v3) — SEÇİLƏN İSTİQAMƏT
   arxada ayrıca qlobus yoxdur — 8 dairəni bir-birinə bağlayan xətlər özü qlobusu əmələ gətirir
   (çevrə boyunca qonşular, meridianlar, paralellər, ekvator).
   logo-dark / logo-light, mark-* (çərçivəsiz), small-* (16–48 px), *-2048.png, logo-v3-muqayise.png
+
+LOQO v4 (branding/v4) — arxada qlobus yoxdur, yalnız dairələrin öz əlaqələri:
+  - hər dairə əvvəlki və sonrakı dairə ilə oval xətlə (ilk loqodakı rəng #3a4f9e);
+  - ortadakı «N» dairəsindən hər dairəyə düz xətt (ilk loqodakı rəng #9fb0e6) — açılış animasiyası bunlarda;
+  - hər dairədən qarşısındakı dairənin sağ və solundakı dairələrə nazik, xəfif neon-yaşıl xətt
+    (ortadakı dairənin üstündən keçməsin deyə bir az əyilib), başqa dairələrin üstünə çıxmır.

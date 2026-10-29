@@ -99,3 +99,43 @@ for th in T3:
     open(os.path.join(OUT3, f"mark-{th}.svg"), "w").write(logo3(th, frame=False))
     open(os.path.join(OUT3, f"small-{th}.svg"), "w").write(logo3(th, small=True))
 print("v3", sorted(os.listdir(OUT3)))
+
+# ---------- v4: only the devices' own links. Every device ↔ its neighbours (arcs) and ↔ the centre (spokes) in the colours
+# of the first logo; every device ↔ the two devices beside the one opposite it (i ↔ i±3), thin and faintly neon green,
+# bent outward a little so they pass the centre disc instead of crossing it ----------
+OUT4 = os.path.join(ROOT, "branding", "v4"); os.makedirs(OUT4, exist_ok=True)
+T4 = {"dark": {"bg": "#14204f", "rim": "#2448a8"}, "light": {"bg": "#f3f6fb", "rim": "#c3cde3"}}
+SPOKE, RING = "#9fb0e6", "#3a4f9e"        # the line colours of the first NetWorkKing logo
+def logo4(theme, frame=True, small=False):
+    T = T4[theme]; C, R, NR = 256, 168, 46
+    if small: R, NR = 172, 50
+    A = [math.radians(-90 + i * 45) for i in range(8)]
+    P = [(C + R * math.cos(a), C + R * math.sin(a)) for a in A]
+    s = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">',
+         '<defs><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>']
+    if frame: s.append(f'<rect x="16" y="16" width="480" height="480" rx="104" fill="{T["bg"]}" stroke="{T["rim"]}" stroke-width="10"/>')
+    # cross links i ↔ i+3 (8 of them: i ↔ i+5 is the same set seen from the other end)
+    cross = []
+    for i in range(8):
+        j = (i + 3) % 8; mx, my = (P[i][0] + P[j][0]) / 2, (P[i][1] + P[j][1]) / 2
+        dx, dy = mx - C, my - C; L = math.hypot(dx, dy) or 1; want = 2 * 94 - L     # curve's middle passes ~94 from the centre
+        cx, cy = C + dx / L * want, C + dy / L * want
+        cross.append(f'M{P[i][0]:.1f} {P[i][1]:.1f}Q{cx:.1f} {cy:.1f} {P[j][0]:.1f} {P[j][1]:.1f}')
+    s.append(f'<g id="cross" fill="none" stroke="{NEON}" stroke-opacity="{.28 if theme == "dark" else .24}" stroke-width="{9 if small else 7}" stroke-linecap="round">' + "".join(f'<path d="{x}"/>' for x in cross) + '</g>')
+    # neighbours: arcs along the ring
+    s.append(f'<g id="ring" fill="none" stroke="{RING}" stroke-width="{14 if small else 12}" stroke-linecap="round">' + "".join(f'<path d="M{P[i][0]:.1f} {P[i][1]:.1f}A{R} {R} 0 0 1 {P[(i+1)%8][0]:.1f} {P[(i+1)%8][1]:.1f}"/>' for i in range(8)) + '</g>')
+    # spokes: centre ↔ every device (the splash animates these)
+    s.append(f'<g id="spokes" stroke="{SPOKE}" stroke-width="{20 if small else 18}" stroke-linecap="round">' + "".join(f'<path d="M{C} {C}L{x:.1f} {y:.1f}"/>' for x, y in P) + '</g>')
+    cr, k = (96, 1.45) if small else (70, 1)
+    s.append(f'<circle cx="{C}" cy="{C}" r="{cr}" fill="#050806" stroke="{NEON}" stroke-width="{5*k:.0f}" stroke-opacity=".9"/>')
+    s.append(f'<g transform="translate({C} {C}) scale({k})"><path d="M-29 31v-62l58 62v-62" fill="none" stroke="{NEON}" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/></g>')
+    for i, (gl, col) in enumerate(SETS["net"]):
+        x, y = P[i]
+        s.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{NR}" fill="{col}" stroke="#ffffff" stroke-width="7"/>')
+        if not small: s.append(f'<g transform="translate({x - NR*.82:.1f} {y - NR*.82:.1f}) scale({NR*1.64/48:.3f})" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">{G[gl]}</g>')
+    s.append('</svg>'); return "\n".join(s)
+for th in T4:
+    open(os.path.join(OUT4, f"logo-{th}.svg"), "w").write(logo4(th))
+    open(os.path.join(OUT4, f"mark-{th}.svg"), "w").write(logo4(th, frame=False))
+    open(os.path.join(OUT4, f"small-{th}.svg"), "w").write(logo4(th, small=True))
+print("v4", sorted(os.listdir(OUT4)))
