@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. -->
+<!-- Minimise / restore effect: a transparent window over the whole screen draws the photographed app window flowing
+     into the taskbar like the macOS "genie" (and back out of it on restore). Nothing else lives here. -->
+<html><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<style>html,body{margin:0;height:100%;background:transparent;overflow:hidden}canvas{position:fixed;inset:0;width:100%;height:100%}</style>
+</head><body><canvas id="c"></canvas>
+<script>
+"use strict";
+const cv = document.getElementById("c"), ctx = cv.getContext("2d");
+let img = null, R = null, T = null, dir = "min";
+const TW = 46;                                     // width of the "neck" at the taskbar (≈ a taskbar button)
+const clamp = v => Math.max(0, Math.min(1, v)), lerp = (a, b, k) => a + (b - a) * k;
+const ease = k => k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+const sm = v => v * v * (3 - 2 * v);
+function size(){ const d = devicePixelRatio || 1; cv.width = Math.round(innerWidth * d); cv.height = Math.round(innerHeight * d); ctx.setTransform(d, 0, 0, d, 0, 0); ctx.imageSmoothingQuality = "high"; }
+// p = 0: the window where it is; p = 1: gone into the taskbar
+function frame(p){
+  ctx.clearRect(0, 0, innerWidth, innerHeight); if (!img || p >= 1) return;
+  const span = Math.max(40, T.y - R.y);
+  const a = ease(clamp(p / .5));                   // 1st half: the bottom of the window bends towards the taskbar button
+  const s = ease(clamp((p - .28) / .72));          // then the whole picture slides down through the bend
+  const shift = s * span, step = 2, sh = img.naturalHeight / R.h;
+  ctx.globalAlpha = 1 - clamp((p - .82) / .18) * .7;
+  for (let sy = 0; sy < R.h; sy += step){
+    const y = R.y + sy + shift; if (y > T.y) break;
+    const v = clamp((y - R.y) / span), k = a * sm(Math.pow(v, .85));
+    const L = lerp(R.x, T.x - TW / 2, k), Rt = lerp(R.x + R.w, T.x + TW / 2, k);
+    ctx.drawImage(img, 0, sy * sh, img.naturalWidth, step * sh, L, y, Rt - L, step + .6);
+  }
+  ctx.globalAlpha = 1;
+}
+function play(ms){ return new Promise(res => { const t0 = performance.now();
+  const go = now => { const k = clamp((now - t0) / ms); frame(dir === "min" ? k : 1 - k); if (k < 1) requestAnimationFrame(go); else res(); };
+  requestAnimationFrame(go); }); }
+addEventListener("resize", size); size();
+window.fxBridge && fxBridge.on("fx-load", async d => {
+  size(); R = d.rect; T = d.to; dir = d.dir; img = new Image(); img.src = d.img;
+  try { await img.decode(); } catch(e){}
+  frame(dir === "min" ? 0 : 1); requestAnimationFrame(() => fxBridge.send("fx-ready"));
+});
+window.fxBridge && fxBridge.on("fx-go", async () => { await play(dir === "min" ? 460 : 400); if (dir === "restore") frame(0); fxBridge.send("fx-done"); if (dir === "min") frame(1); });
+// for testing outside the app
+window.__fx = { frame, set(d){ R = d.rect; T = d.to; dir = d.dir || "min"; img = d.imgEl; size(); } };
+</script></body></html>

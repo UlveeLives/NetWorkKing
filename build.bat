@@ -7,7 +7,7 @@ call npm install || goto :err
 echo [2/2] Setup .exe yigilir ...
 call npm run dist || goto :err
 echo.
-echo HAZIRDIR: dist\NetWorkKing-Setup-3.7.0.exe
+echo HAZIRDIR: dist\NetWorkKing-Beta-Setup-3.8.0-beta.1.exe  (stabil NetWorkKing-in yaninda ayrica qurasdirilir)
 start "" "%~dp0dist"
 pause
 exit /b 0

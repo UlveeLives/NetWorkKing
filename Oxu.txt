@@ -1,9 +1,22 @@
-NETWORKKING 3.7.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.0-beta.1 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.8.0-beta.1 (BETA)
+ - Beta ayrıca proqram kimi quraşdırılır: «NetWorkKing Beta» (öz qısayolu və öz məlumat qovluğu ilə).
+   İlk açılışda stabil NetWorkKing-in layihələrinin surətini götürür; beta-da edilən dəyişikliklər
+   stabil versiyaya keçmir. Stabil versiya olduğu kimi qalır.
+ - Mac üslubunda başlıq sətri: qırmızı (bağla), sarı (kiçilt), yaşıl (tam ekran). Başlıq sətrindən
+   tutub pəncərəni sürüşdürmək, iki dəfə klik — böyüt / kiçilt.
+ - Kiçiltmə effekti: sarı düymə ilə kiçildəndə pəncərə macOS-dakı kimi tapşırıq panelinə «axır»,
+   paneldən açanda tərsinə çıxır (Ayarlar → Ümumi → Görünüş → Başlıq sətri — söndürmək olar).
+ - Başlıq sətrinin arxasında xəfif kod fonu, 7 variant: sadə, ikilik kod, proqram kodu, hex dump,
+   elektron plata, şəbəkə paketləri, terminal (Ayarlar → Ümumi → Görünüş → Başlıq sətri).
+ - branding qovluğu: loqonun böyük (2048 px) və redaktə olunan (SVG) variantları; açılış ekranının
+   ayrıca testi (splash-test.bat və ya branding\splash-test\splash.html).
 
 3.7-DƏ YENİ
  - Bütün cihaz növləri üçün yeni şəkillər (proqramın öz rəsmləri, bir üslubda, fonsuz): rack cihazları öndən,

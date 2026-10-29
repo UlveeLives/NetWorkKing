@@ -1,16 +1,17 @@
 /*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // NetWorkKing — Electron main process (Windows desktop app).
-const { app, BrowserWindow, ipcMain, dialog, Menu, shell } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, Menu, shell, screen } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
 let win;
 if (!app.requestSingleInstanceLock()) app.quit();
-// NetWorkKing keeps its data in its own folder. On the first start it copies the data of NetWorker 1.x / 2.x
-// (the old folder is not changed, so the old version still opens with its own data).
+// NetWorkKing keeps its data in its own folder. On the first start it copies the data of the version installed before it
+// (the beta copies NetWorkKing; NetWorkKing copies NetWorker 1.x / 2.x). The old folder is never changed, so the other
+// version still opens with its own data — work done in the beta does not reach the stable version.
 try {
-  const nu = app.getPath("userData"), old = path.join(app.getPath("appData"), "NetWorker");
-  if (path.resolve(nu).toLowerCase() !== path.resolve(old).toLowerCase() && fs.existsSync(old) && !fs.existsSync(path.join(nu, "IndexedDB"))){
+  const nu = app.getPath("userData"), old = ["NetWorkKing", "NetWorker"].map(n => path.join(app.getPath("appData"), n)).find(f => path.resolve(f).toLowerCase() !== path.resolve(nu).toLowerCase() && fs.existsSync(path.join(f, "IndexedDB"))) || "";
+  if (old && !fs.existsSync(path.join(nu, "IndexedDB"))){
     fs.mkdirSync(nu, { recursive: true });
     for (const d of ["IndexedDB", "Local Storage"]) if (fs.existsSync(path.join(old, d))) fs.cpSync(path.join(old, d), path.join(nu, d), { recursive: true });
   }
@@ -19,8 +20,8 @@ app.on("second-instance", () => { if (win) { if (win.isMinimized()) win.restore(
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 1500, height: 950, minWidth: 1000, minHeight: 640,
-    title: "NetWorkKing", backgroundColor: "#eef1f4", autoHideMenuBar: true,
+    width: 1500, height: 950, minWidth: 1000, minHeight: 640, frame: false,
+    title: app.getName(), backgroundColor: "#14204f", autoHideMenuBar: true,
     icon: path.join(__dirname, "build", "icon.png"),
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true }
   });
@@ -28,7 +29,66 @@ function createWindow() {
   win.loadFile("index.html");
   win.webContents.setWindowOpenHandler(({ url }) => { if (/^https?:/.test(url)) shell.openExternal(url); return { action: "deny" }; });
   win.webContents.on("will-navigate", e => e.preventDefault());
+  // the page draws its own title bar (red / yellow / green buttons); it needs to know focus and full-screen state
+  const st = () => { if (win && !win.isDestroyed()) win.webContents.send("win-state", { focused: win.isFocused(), full: win.isFullScreen(), max: win.isMaximized() }); };
+  ["focus", "blur", "enter-full-screen", "leave-full-screen", "maximize", "unmaximize"].forEach(ev => win.on(ev, st));
+  win.webContents.on("did-finish-load", st);
+  win.on("restore", () => { if (fxMin){ fxMin = false; restoreFx().catch(() => { try { win.setOpacity(1); } catch(e){} }); } });
 }
+/* ---------- minimise / restore effect (like the macOS "genie") ----------
+   The window is photographed, a transparent window over the whole screen plays the picture flowing into the
+   taskbar, then the real window is minimised. On restore the same is played backwards. The app window itself stays a
+   normal window (resizing, snapping and the taskbar keep working). If anything goes wrong it falls back to a plain
+   minimise. Only when the taskbar is at the bottom of the screen; otherwise a plain minimise. */
+let fx = null, fxBusy = false, fxMin = false, iconX = null;
+function fxWindow(){
+  if (fx && !fx.isDestroyed()) return Promise.resolve(fx);
+  fx = new BrowserWindow({ frame: false, transparent: true, resizable: false, movable: false, focusable: false, skipTaskbar: true, alwaysOnTop: true,
+    show: false, hasShadow: false, backgroundColor: "#00000000", webPreferences: { preload: path.join(__dirname, "fxpreload.js"), contextIsolation: true, sandbox: true } });
+  fx.setIgnoreMouseEvents(true);
+  return new Promise(res => { fx.webContents.once("did-finish-load", () => res(fx)); fx.loadFile("fx.html"); });
+}
+const fxAsk = (ch, data, reply) => new Promise((res, rej) => { const t = setTimeout(() => rej(new Error("fx timeout")), 2500);
+  ipcMain.once(reply, (_e, v) => { clearTimeout(t); res(v); }); fx.webContents.send(ch, data); });
+function geom(){
+  const b = win.getBounds(), d = screen.getDisplayMatching(b), wa = d.workArea, db = d.bounds;
+  const bottom = wa.y + wa.height < db.y + db.height - 4 && wa.x === db.x && wa.width === db.width;
+  if (!bottom) return null;
+  const tx = iconX !== null && iconX >= db.x && iconX <= db.x + db.width ? iconX : wa.x + wa.width / 2;
+  return { d, rect: { x: b.x - db.x, y: b.y - db.y, w: b.width, h: b.height }, to: { x: tx - db.x, y: wa.y + wa.height - db.y + (db.y + db.height - wa.y - wa.height) / 2 } };
+}
+async function snap(){ const img = await win.webContents.capturePage(); return "data:image/jpeg;base64," + img.toJPEG(90).toString("base64"); }
+async function minimizeFx(){
+  if (fxBusy) return; const g = win.isFullScreen() ? null : geom(); if (!g){ win.minimize(); return; }
+  fxBusy = true;
+  try {
+    const [img, o] = await Promise.all([snap(), fxWindow()]);
+    o.setBounds(g.d.bounds); await fxAsk("fx-load", { img, rect: g.rect, to: g.to, dir: "min" }, "fx-ready");
+    o.showInactive(); await new Promise(r => setTimeout(r, 34)); win.setOpacity(0);
+    await fxAsk("fx-go", null, "fx-done");
+    fxMin = true; win.minimize(); setTimeout(() => o.hide(), 60);
+  } catch(e){ try { win.setOpacity(1); if (fx) fx.hide(); } catch(x){} win.minimize(); }
+  finally { fxBusy = false; }
+}
+async function restoreFx(){
+  // the taskbar button was just clicked: the mouse is over it — remember where it is for the next minimise
+  const c = screen.getCursorScreenPoint(), g0 = geom(); if (g0 && c.y >= g0.d.workArea.y + g0.d.workArea.height - 2) iconX = c.x;
+  const g = geom(); if (!g){ win.setOpacity(1); return; }
+  fxBusy = true;
+  try {
+    const [img, o] = await Promise.all([snap(), fxWindow()]);
+    o.setBounds(g.d.bounds); await fxAsk("fx-load", { img, rect: g.rect, to: g.to, dir: "restore" }, "fx-ready");
+    o.showInactive(); await fxAsk("fx-go", null, "fx-done");
+    win.setOpacity(1); setTimeout(() => o.hide(), 50);
+  } catch(e){ win.setOpacity(1); try { if (fx) fx.hide(); } catch(x){} }
+  finally { fxBusy = false; }
+}
+ipcMain.on("win", (_e, act, o) => { if (!win) return;
+  if (act === "close") win.close();
+  else if (act === "min"){ if (o && o.fx === false) win.minimize(); else minimizeFx(); }
+  else if (act === "full") win.setFullScreen(!win.isFullScreen());
+  else if (act === "max") win.isMaximized() ? win.unmaximize() : win.maximize();
+});
 app.whenReady().then(() => { Menu.setApplicationMenu(null); createWindow(); });
 app.on("window-all-closed", () => app.quit());
 

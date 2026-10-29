@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- NetWorkKing mark without the rounded-square frame (for the splash screen, documents, light or dark backgrounds) -->
+  <g stroke-linecap="round">
+    <path d="M140 140L372 140M140 372L372 372" stroke="#3a4f9e" stroke-width="14"/>
+    <path d="M256 256L140 140M256 256L372 140M256 256L140 372M256 256L372 372" stroke="#2448a8" stroke-width="20"/>
+  </g>
+  <circle cx="256" cy="256" r="66" fill="#ffffff" stroke="#14204f" stroke-width="10"/>
+  <path d="M226 284v-56l60 56v-56" fill="none" stroke="#14204f" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <g stroke="#ffffff" stroke-width="8">
+    <circle cx="140" cy="140" r="42" fill="#ffb703"/>
+    <circle cx="372" cy="140" r="42" fill="#5ac8fa"/>
+    <circle cx="140" cy="372" r="42" fill="#2ecc71"/>
+    <circle cx="372" cy="372" r="42" fill="#ff6b6b"/>
+  </g>
+</svg>

@@ -9,7 +9,7 @@ function registerApp(a){ APPS[a.id] = a; }
 const curApp = () => APPS[UI.app] || APPS.topology;
 const curTab = () => { const a = curApp(); const id = UI.tabs[a.id]; return a.tabs.find(x => x.id === id) || a.tabs[0]; };
 /* ---------- theme ---------- */
-function applyTheme(){ const th = store.settings.theme; document.documentElement.dataset.theme = th === "system" ? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : th; }
+function applyTheme(){ const th = store.settings.theme; document.documentElement.dataset.theme = th === "system" ? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : th; if (typeof applyTitleBg === "function") applyTitleBg(); }
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => store && applyTheme());
 /* ---------- toast, prompt, confirm ---------- */
 let toastT; function toast(m, ms){ const el = $("#toast"); if (!el) return; el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), ms || 2800); }
@@ -96,7 +96,7 @@ function appIcon(a, s = 26){ return `<svg viewBox="0 0 48 48" width="${s}" heigh
 function renderHeader(){
   const a = curApp(), p = P();
   const B2 = (act, ic, k, extra = "") => `<button class="hb" data-h="${act}" title="${esc(t(k))}"${extra}><span class="hi">${ic}</span><span class="ht">${esc(t(k))}</span></button>`;
-  $("#hdr").innerHTML = `<button class="brand" id="appsw" title="${esc(t("switchApp"))}">${appIcon(a)}<span class="bn"><b>${esc(t(a.name))}</b><small>NetWorkKing</small></span><span class="car">▾</span></button>
+  $("#hdr").innerHTML = `${typeof winLights === "function" ? winLights() : ""}<button class="brand" id="appsw" title="${esc(t("switchApp"))}">${appIcon(a)}<span class="bn"><b>${esc(t(a.name))}</b><small>NetWorkKing${IS_BETA ? ` <span class="betap">beta</span>` : ""}</small></span><span class="car">▾</span></button>
     <div class="hproj"><select id="projsel" title="${esc(t("project"))}">${Object.values(store.projects).sort((x, y) => x.name.localeCompare(y.name)).map(x => opt(x.id, x.name, p.id)).join("")}<option value="__new">＋ ${esc(t("newProject"))}…</option></select></div>
     <span class="grow"></span>
     <div class="hacts">${B2("undo","↶","undo", undoStack.length ? "" : " disabled")}${B2("redo","↷","redo", redoStack.length ? "" : " disabled")}<span class="hsep"></span>

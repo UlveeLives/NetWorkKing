@@ -728,3 +728,25 @@ table.ddb tr.on td{background:color-mix(in srgb,var(--pri) 10%,transparent)}
 .ddbd .dpic.fv{zoom:.9}
 .cppic{display:flex;justify-content:center;margin-bottom:8px}.cppic .dpic.fv{zoom:.75}
 table.ddb .pill{display:inline-block;width:auto;padding:0 6px}
+/* 3.8 beta — own title bar (desktop app): macOS-style buttons, the bar drags the window, faint code background */
+#hdr{background-image:var(--hdrbg,none);background-repeat:repeat-x;background-position:0 50%}
+html.frameless #hdr{-webkit-app-region:drag}
+html.frameless #hdr button,html.frameless #hdr select,html.frameless #hdr input,html.frameless #hdr a,html.frameless #savest,html.frameless .tlights{-webkit-app-region:no-drag}
+.tlights{display:flex;align-items:center;gap:8px;padding:0 10px 0 4px;flex:none}
+.tl{width:13px;height:13px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;cursor:default;color:transparent;box-shadow:inset 0 0 0 .6px rgba(0,0,0,.28)}
+.tl svg{width:9px;height:9px}
+.tl-close{background:#ff5f57}.tl-min{background:#febc2e}.tl-full{background:#28c840}
+.tlights:hover .tl-close{color:#7a1612}.tlights:hover .tl-min{color:#8a5a00}.tlights:hover .tl-full{color:#0a5a17}
+.tl:active{filter:brightness(.82)}
+html.winblur .tlights:not(:hover) .tl{background:#5d6377;box-shadow:inset 0 0 0 .6px rgba(0,0,0,.35)}
+.betap{display:inline-block;font-size:8.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:#e2572b;border-radius:4px;padding:0 4px;line-height:13px;vertical-align:1px}
+/* Settings → General → Appearance: title bar background picker */
+.tbpick{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:6px 0 10px}
+.tbopt{display:flex;flex-direction:column;gap:5px;cursor:pointer;border:2px solid var(--line);border-radius:10px;padding:6px;background:var(--surface)}
+.tbopt.on{border-color:var(--pri);box-shadow:0 0 0 2px color-mix(in srgb,var(--pri) 25%,transparent)}
+.tbopt input{display:none}
+.tbprev{height:40px;border-radius:6px;background-color:#14204f;background-repeat:repeat-x;background-position:0 50%;display:flex;align-items:center;padding-left:10px;color:#fff;font-size:13px}
+.tbopt small{text-align:center;color:var(--muted)}
+.subtabs{display:flex;gap:6px;margin:2px 0 12px;border-bottom:1px solid var(--line)}
+.subtabs button{border:0;background:none;padding:6px 12px;font:inherit;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer}
+.subtabs button.on{color:var(--pri);border-bottom-color:var(--pri);font-weight:600}

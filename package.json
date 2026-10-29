@@ -1,7 +1,7 @@
 {
   "name": "networkking",
-  "productName": "NetWorkKing",
-  "version": "3.7.0",
+  "productName": "NetWorkKing Beta",
+  "version": "3.8.0-beta.1",
   "description": "NetWorkKing — network documentation: building structure, topology, Port Map, racks, fiber, CCTV and Wi-Fi in one app",
   "author": "Ulvi Badalov",
   "license": "SEE LICENSE IN LICENSE",
@@ -15,11 +15,13 @@
     "electron-builder": "^26.0.0"
   },
   "build": {
-    "appId": "local.ulveelives.networkking",
-    "productName": "NetWorkKing",
+    "appId": "local.ulveelives.networkking.beta",
+    "productName": "NetWorkKing Beta",
     "files": [
       "index.html",
       "main.js",
+      "fx.html",
+      "fxpreload.js",
       "preload.js",
       "css/**",
       "js/**",
@@ -38,13 +40,13 @@
     "win": {
       "target": "nsis",
       "icon": "build/icon.ico",
-      "artifactName": "NetWorkKing-Setup-${version}.exe"
+      "artifactName": "NetWorkKing-Beta-Setup-${version}.exe"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "shortcutName": "NetWorkKing",
+      "shortcutName": "NetWorkKing Beta",
       "license": "build/eula.txt"
     },
     "copyright": "© 2026 Ulvi Badalov. All rights reserved."

@@ -264,3 +264,13 @@ for k,az,tr,en,ru in [
  ("ddbFoot","Şəkillər proqramın öz rəsmləridir; port sayı modelin rəsmi məlumatından götürülür.","Görseller programın kendi çizimleridir; port sayısı resmi verilerden alınır.","Pictures are the program's own drawings; port counts come from the official data.","Изображения — собственные рисунки программы; число портов — из официальных данных."),
 ]:
     K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("winClose","Bağla","Kapat","Close","Закрыть"),("winMin","Kiçilt","Simge durumuna küçült","Minimise","Свернуть"),("winFull","Tam ekran","Tam ekran","Full screen","Во весь экран"),
+ ("setMain","Əsas","Genel","Main","Основные"),("setLook","Görünüş","Görünüm","Appearance","Внешний вид"),("setTheme","Rəng mövzusu","Tema","Theme","Тема"),("setTitleBar","Başlıq sətri","Başlık çubuğu","Title bar","Заголовок окна"),
+ ("tbHint","Başlıq sətrinin arxasında xəfif görünən fon. Seçim dərhal tətbiq olunur.","Başlık çubuğunun arkasında soluk arka plan. Seçim hemen uygulanır.","A faint background behind the title bar. Applied at once.","Едва заметный фон заголовка. Применяется сразу."),
+ ("tbNone","Sadə (fonsuz)","Sade","Plain","Без фона"),("tbBinary","İkilik kod (0 1)","İkili kod (0 1)","Binary (0 1)","Двоичный код (0 1)"),("tbCode","Proqram kodu","Program kodu","Source code","Программный код"),
+ ("tbHex","Hex dump","Hex dökümü","Hex dump","Hex-дамп"),("tbCircuit","Elektron plata","Devre kartı","Circuit board","Печатная плата"),("tbPackets","Şəbəkə paketləri","Ağ paketleri","Network packets","Сетевые пакеты"),("tbTerminal","Terminal","Terminal","Terminal","Терминал"),
+ ("winFxOpt","Kiçildəndə və bərpa edəndə animasiya (macOS «genie» effekti)","Küçültme ve geri yüklemede animasyon (macOS «genie»)","Animate minimise and restore (macOS “genie” effect)","Анимация сворачивания и восстановления (эффект «джинн» macOS)"),
+ ("winWebOnly","Pəncərə düymələri və kiçiltmə effekti yalnız masaüstü (.exe) versiyadadır.","Pencere düğmeleri ve efekt yalnızca masaüstü sürümde.","Window buttons and the minimise effect are in the desktop (.exe) version only.","Кнопки окна и эффект — только в настольной версии."),
+]:
+    K(k,az,tr,en,ru)

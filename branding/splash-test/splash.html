@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- NetWorkKing — © 2026 Ulvi Badalov. All rights reserved. -->
+<!-- Splash screen TEST. Open in a browser to see it, or run it as a real frameless window: splash-test.bat -->
+<html lang="az"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NetWorkKing — açılış ekranı (test)</title>
+<style>
+  :root{--ink:#14204f;--blue:#2448a8;--sub:#5b6684}
+  html,body{margin:0;height:100%;background:transparent;font-family:"Segoe UI Variable","Segoe UI",system-ui,sans-serif;overflow:hidden;user-select:none}
+  /* test page only: sample desktops behind the splash */
+  body.page{background:var(--desk);transition:background .3s}
+  body.page[data-bg="dark"]{--desk:#1b2130}
+  body.page[data-bg="light"]{--desk:#eef1f6}
+  body.page[data-bg="wall"]{--desk:linear-gradient(135deg,#0f3d6e 0%,#3b7bbf 45%,#f0a35e 100%)}
+  .stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .splash{position:relative;width:360px;padding:34px 0 30px;display:flex;flex-direction:column;align-items:center;gap:14px;animation:in .6s cubic-bezier(.2,.9,.3,1.2) both}
+  /* variant B: soft card behind the logo */
+  .splash.card{background:rgba(255,255,255,.92);border-radius:28px;box-shadow:0 24px 60px rgba(10,20,50,.35);backdrop-filter:blur(12px)}
+  @keyframes in{from{opacity:0;transform:scale(.86) translateY(10px)}to{opacity:1;transform:none}}
+  .splash.out{animation:out .45s ease-in both}
+  @keyframes out{to{opacity:0;transform:scale(1.06)}}
+  /* the logo: soft light behind it so it reads on any desktop */
+  .logo{position:relative;width:176px;height:176px}
+  .logo::before{content:"";position:absolute;inset:-26px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,rgba(255,255,255,0));filter:blur(2px)}
+  .splash.card .logo::before{display:none}
+  .logo svg{position:relative;width:100%;height:100%;overflow:visible}
+  /* packets running from the centre to the four devices */
+  .pk{stroke-dasharray:2 22;stroke-dashoffset:0;animation:run 1.2s linear infinite}
+  @keyframes run{to{stroke-dashoffset:-48}}
+  /* devices light up one after another */
+  .nd{transform-box:fill-box;transform-origin:center;animation:pulse 1.6s ease-in-out infinite}
+  .nd.b{animation-delay:.4s}.nd.c{animation-delay:.8s}.nd.d{animation-delay:1.2s}
+  @keyframes pulse{0%,60%,100%{transform:scale(1)}30%{transform:scale(1.14)}}
+  /* turning ring around the "N" */
+  .ring{transform-origin:256px 256px;animation:spin 1.4s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  /* frameless: a small frosted strip under the text so it reads on any desktop; on the card it is not needed */
+  .txt{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px 22px 10px;border-radius:18px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(10,20,50,.25)}
+  .splash.card .txt{background:none;box-shadow:none;backdrop-filter:none;padding:0}
+  .name{font-size:30px;font-weight:800;letter-spacing:.3px;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .name b{color:var(--blue)}
+  .beta{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#fff;background:#e2572b;border-radius:6px;padding:2px 7px;text-shadow:none}
+  .bar{width:200px;height:5px;border-radius:5px;background:rgba(36,72,168,.18);overflow:hidden;}
+  .bar i{display:block;height:100%;width:38%;border-radius:5px;background:linear-gradient(90deg,#5ac8fa,#2448a8);animation:slide 1.3s cubic-bezier(.6,.1,.4,.9) infinite}
+  @keyframes slide{0%{transform:translateX(-110%)}100%{transform:translateX(290%)}}
+  .msg{font-size:12.5px;color:var(--sub);min-height:16px}
+  .ver{font-size:11px;color:var(--sub);opacity:.8}
+  /* test controls (hidden inside the real splash window) */
+  .ctl{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:6px;flex-wrap:wrap;justify-content:center;background:rgba(255,255,255,.95);padding:8px 10px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.25);font-size:13px}
+  .ctl button{border:1px solid #c6cfe0;background:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font:inherit}
+  .ctl button.on{background:#2448a8;color:#fff;border-color:#2448a8}
+  body.win .ctl{display:none}
+  @media (prefers-reduced-motion:reduce){.pk,.nd,.ring,.bar i{animation:none}}
+</style></head>
+<body class="page" data-bg="dark">
+<div class="stage"><div class="splash" id="sp">
+  <div class="logo"><svg viewBox="0 0 512 512" aria-hidden="true">
+    <g stroke-linecap="round" fill="none">
+      <path d="M140 140L372 140M140 372L372 372" stroke="#3a4f9e" stroke-width="14"/>
+      <path d="M256 256L140 140M256 256L372 140M256 256L140 372M256 256L372 372" stroke="#2448a8" stroke-width="20"/>
+      <path class="pk" d="M256 256L140 140M256 256L372 140M256 256L140 372M256 256L372 372" stroke="#ffffff" stroke-width="10"/>
+    </g>
+    <circle cx="256" cy="256" r="66" fill="#ffffff" stroke="#14204f" stroke-width="10"/>
+    <circle class="ring" cx="256" cy="256" r="84" fill="none" stroke="#5ac8fa" stroke-width="7" stroke-linecap="round" stroke-dasharray="90 438"/>
+    <path d="M226 284v-56l60 56v-56" fill="none" stroke="#14204f" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke="#ffffff" stroke-width="8">
+      <circle class="nd a" cx="140" cy="140" r="42" fill="#ffb703"/>
+      <circle class="nd b" cx="372" cy="140" r="42" fill="#5ac8fa"/>
+      <circle class="nd d" cx="140" cy="372" r="42" fill="#2ecc71"/>
+      <circle class="nd c" cx="372" cy="372" r="42" fill="#ff6b6b"/>
+    </g>
+  </svg></div>
+  <div class="txt"><div class="name"><span>Net<b>Work</b>King</span><span class="beta">beta</span></div>
+  <div class="bar"><i></i></div>
+  <div class="msg" id="msg">Yüklənir…</div>
+  <div class="ver">3.8.0-beta.1</div></div>
+</div></div>
+<div class="ctl">
+  <span style="align-self:center">Arxa fon:</span>
+  <button data-bg="dark" class="on">Tünd masaüstü</button><button data-bg="light">Açıq masaüstü</button><button data-bg="wall">Divar kağızı</button>
+  <span style="align-self:center;margin-left:8px">Görünüş:</span>
+  <button data-v="free" class="on">Çərçivəsiz (şəffaf)</button><button data-v="card">Kart üzərində</button>
+  <button data-a="replay">↻ Yenidən oynat</button>
+</div>
+<script>
+  // inside the real test window (splash-test.bat) the controls are hidden and the window closes by itself
+  const inWin = /[?&]win=1/.test(location.search); if (inWin){ document.body.className = "win"; }
+  const msgs = ["Yüklənir…", "Layihələr açılır…", "Cihaz bazası hazırlanır…", "Hazırdır"]; let i = 0;
+  const tick = () => { document.getElementById("msg").textContent = msgs[i % msgs.length]; i++; };
+  let timer = setInterval(tick, 900);
+  document.querySelector(".ctl").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.bg){ document.body.dataset.bg = b.dataset.bg; document.querySelectorAll("[data-bg]").forEach(x => x.classList.toggle("on", x === b)); }
+    if (b.dataset.v){ document.getElementById("sp").classList.toggle("card", b.dataset.v === "card"); document.querySelectorAll("[data-v]").forEach(x => x.classList.toggle("on", x === b)); }
+    if (b.dataset.a === "replay"){ const s = document.getElementById("sp"), c = s.cloneNode(true); s.replaceWith(c); i = 0; clearInterval(timer); timer = setInterval(tick, 900); } });
+  if (inWin){ if (/[?&]card=1/.test(location.search)) document.getElementById("sp").classList.add("card");
+    setTimeout(() => document.getElementById("sp").classList.add("out"), 4200); }
+</script>
+</body></html>
