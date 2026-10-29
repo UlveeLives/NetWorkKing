@@ -764,3 +764,11 @@ html.winblur .tlights:not(:hover) .tl{background:#5d6377;box-shadow:inset 0 0 0 
 #hdr .hb:hover{border-color:#24603e}
 .tbprev{background-color:#0d2a1a}
 #hdr .hsep{background:#24603e!important;border-color:#24603e!important}
+/* beta: the accent colour follows the green title bar everywhere (buttons, tabs, chips, selections, focus, links) */
+:root{--pri:#1d7a47;--priInk:#ffffff;--accSoft:#dcf1e4}
+:root[data-theme="dark"]{--pri:#2a9156;--priInk:#ffffff;--accSoft:#173326}
+:root[data-theme="dark"] a{color:#5fd08c}
+.btn.pri,.tabb.on,.chip.on,.seg button.on{font-weight:700;letter-spacing:.1px}
+.aim.u{background:var(--pri)}
+.gapb.go{border-color:var(--pri);color:var(--pri)}
+input[type=checkbox],input[type=radio],input[type=range],progress{accent-color:var(--pri)}

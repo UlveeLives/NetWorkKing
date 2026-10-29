@@ -54,6 +54,8 @@ function createWindow() {
    normal window (resizing, snapping and the taskbar keep working). If anything goes wrong it falls back to a plain
    minimise. Only when the taskbar is at the bottom of the screen; otherwise a plain minimise. */
 let fx = null, fxBusy = false, fxMin = false, iconX = null;
+const fxPos = () => path.join(app.getPath("userData"), "taskbar-pos.json");
+try { iconX = JSON.parse(fs.readFileSync(fxPos(), "utf8")).x; if (typeof iconX !== "number") iconX = null; } catch(e){ iconX = null; }
 // beta: step log of the minimise effect (NWK_FXLOG file next to the app files), to find timing problems on real PCs
 const fxLogFile = path.join(__dirname, "fx.log"), T0 = Date.now();
 function flog(...a){ try { fs.appendFileSync(fxLogFile, `${((Date.now() - T0) / 1000).toFixed(3)} ${a.map(x => typeof x === "string" ? x : JSON.stringify(x)).join(" ")}\n`); } catch(e){} }
@@ -62,10 +64,15 @@ function fxWindow(){
   fx = new BrowserWindow({ frame: false, transparent: true, resizable: false, movable: false, focusable: false, skipTaskbar: true, alwaysOnTop: true,
     show: false, hasShadow: false, backgroundColor: "#00000000", webPreferences: { preload: path.join(__dirname, "fxpreload.js"), contextIsolation: true, sandbox: true, backgroundThrottling: false } });
   fx.setIgnoreMouseEvents(true);
-  return new Promise(res => { fx.webContents.once("did-finish-load", () => res(fx)); fx.loadFile("fx.html"); });
+  const o = fx;
+  return new Promise(res => { o.webContents.once("did-finish-load", () => {
+    // warm-up: Windows draws a new transparent window late the first time it is shown — show it once now, empty,
+    // so the first minimise / restore animation is not lost
+    try { o.setBounds(screen.getDisplayMatching(win.getBounds()).bounds); o.showInactive(); setTimeout(() => { try { if (!fxBusy) o.hide(); } catch(e){} res(o); }, 120); } catch(e){ res(o); } });
+    o.loadFile("fx.html"); });
 }
-// throw the effect window away and make a fresh, hidden one a moment later (ready for the next time)
-function fxDrop(){ try { if (fx && !fx.isDestroyed()) fx.destroy(); } catch(e){} fx = null; setTimeout(() => { if (win && !win.isDestroyed() && !fx) fxWindow().catch(() => {}); }, 1500); }
+// hide the effect window (it stays ready for the next time)
+function fxDrop(){ try { if (fx && !fx.isDestroyed()) fx.hide(); } catch(e){} }
 const fxAsk = (ch, data, reply) => new Promise((res, rej) => { const t = setTimeout(() => rej(new Error("fx timeout")), 900);
   ipcMain.once(reply, (_e, v) => { clearTimeout(t); res(v); }); fx.webContents.send(ch, data); });
 function geom(){
@@ -96,7 +103,7 @@ async function minimizeFx(){
 async function restoreFx(){
   flog("restoreFx start");
   // the taskbar button was just clicked: the mouse is over it — remember where it is for the next minimise
-  const c = screen.getCursorScreenPoint(), g0 = geom(); if (g0 && c.y >= g0.d.workArea.y + g0.d.workArea.height - 2) iconX = c.x;
+  const c = screen.getCursorScreenPoint(), g0 = geom(); if (g0 && c.y >= g0.d.workArea.y + g0.d.workArea.height - 2){ iconX = c.x; try { fs.writeFileSync(fxPos(), JSON.stringify({ x: iconX })); } catch(e){} }
   const g = geom(); if (!g){ win.setOpacity(1); return; }
   fxBusy = true;
   try {
