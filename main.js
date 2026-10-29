@@ -94,7 +94,7 @@ const fxPos = () => path.join(app.getPath("userData"), "taskbar-pos.json");
 try { iconX = JSON.parse(fs.readFileSync(fxPos(), "utf8")).x; if (typeof iconX !== "number") iconX = null; } catch(e){ iconX = null; }
 // beta: step log of the minimise effect (NWK_FXLOG file next to the app files), to find timing problems on real PCs
 const fxLogFile = path.join(__dirname, "fx.log"), T0 = Date.now();
-function flog(...a){ try { fs.appendFileSync(fxLogFile, `${((Date.now() - T0) / 1000).toFixed(3)} ${a.map(x => typeof x === "string" ? x : JSON.stringify(x)).join(" ")}\n`); } catch(e){} }
+function flog(...a){ if (!process.env.NWK_FXLOG) return; try { fs.appendFileSync(fxLogFile, `${((Date.now() - T0) / 1000).toFixed(3)} ${a.map(x => typeof x === "string" ? x : JSON.stringify(x)).join(" ")}\n`); } catch(e){} }
 function fxWindow(){
   if (fx && !fx.isDestroyed()) return Promise.resolve(fx);
   fx = new BrowserWindow({ frame: false, transparent: true, resizable: false, movable: false, focusable: false, skipTaskbar: true, alwaysOnTop: true,

@@ -1,40 +1,36 @@
-NETWORKKING 3.8.0-beta.3 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
 
-3.8.0-beta.3 (BETA)
- - Köməkçi balonlar çoxaldı. Fiber magistral: sxem, itki büdcəsi (cədvəli necə oxumaq, itki əmsalları,
-   tələb olunan ehtiyat, «Keçmir»in səbəbləri), liflər (TIA-598-C rəng kodu, istifadə statusları),
-   binalar arası xətlər. Digər tətbiqlərdə yeni və çətin mövzular: təsvir sütunu, patch cord-lar, uplink
-   kartları, təkrar adlar, kamera növləri, miqyas, kanal planı, real ölçmə, DXF, natamamlar və s.
- - Yan panellərin öz balonları: panel ilk dəfə açılanda (fiber kabel, ODF / mufta, binalar arası xətt,
-   port kartı, kamera, istənilən cihaz) sahələrin mənası izah olunur. «Kömək» düyməsi panel açıqdırsa
-   panelin balonlarını göstərir.
- - «Bir daha göstərmə» ilə bağlanmış səhifələr yeni balonlara görə bir dəfə yenidən göstərilir.
-
-3.8.0-beta.2 (BETA)
- - Açılış ekranı: proqram açılanda loqo animasiyası (elektron plata xətləri, mərkəzdən dairələrə paketlər,
-   dairələr arasında məlumat axını, çarpaz xətlərdə neyron siqnalları), yüklənmə addımları kod kimi;
-   sonda loqo ekranın ortasına böyüyür, N-in neonu sönür, loqo sönüb proqram açılır.
- - Açılış ekranı proqramın dilində (AZ / TR / EN / RU) və mövzusunda (tünd / açıq) göstərilir — son
-   açılışda seçilmiş ayarlarla. Açılış ekranına klik — sürətləndirir.
- - Söndürmək olar: Ayarlar → Ümumi → Görünüş → Başlıq sətri → «Açılış ekranını göstər».
-
-3.8.0-beta.1 (BETA)
- - Beta ayrıca proqram kimi quraşdırılır: «NetWorkKing Beta» (öz qısayolu və öz məlumat qovluğu ilə).
-   İlk açılışda stabil NetWorkKing-in layihələrinin surətini götürür; beta-da edilən dəyişikliklər
-   stabil versiyaya keçmir. Stabil versiya olduğu kimi qalır.
- - Mac üslubunda başlıq sətri: qırmızı (bağla), sarı (kiçilt), yaşıl (tam ekran). Başlıq sətrindən
-   tutub pəncərəni sürüşdürmək, iki dəfə klik — böyüt / kiçilt.
- - Kiçiltmə effekti: sarı düymə ilə kiçildəndə pəncərə macOS-dakı kimi tapşırıq panelinə «axır»,
-   paneldən açanda tərsinə çıxır (Ayarlar → Ümumi → Görünüş → Başlıq sətri — söndürmək olar).
- - Başlıq sətrinin arxasında xəfif kod fonu, 7 variant: sadə, ikilik kod, proqram kodu, hex dump,
-   elektron plata, şəbəkə paketləri, terminal (Ayarlar → Ümumi → Görünüş → Başlıq sətri).
- - branding qovluğu: loqonun böyük (2048 px) və redaktə olunan (SVG) variantları; açılış ekranının
-   ayrıca testi (splash-test.bat və ya branding\splash-test\splash.html).
+3.8-DƏ YENİ
+ - «⇄ Tətbiqləri sinxronlaşdır» (başlıq sətri): son yoxlamadan bəri nəyin dəyişdiyini tətbiqlərə görə
+   göstərir, tətbiqlərin bir-biri ilə uyğun gəlmədiyi yerləri tapır (silinmiş cihaza bağlı kabel, bir porta
+   iki kabel, cihazda olmayan port, eyni U-da iki cihaz, silinmiş rack / otaq / mərtəbə / VLAN / NVR,
+   otaq başqa mərtəbədə, lif cədvəli ≠ lif sayı, binalar arası xətt, eyni ad iki dəfə, sxemdə olmayan
+   cihazlar) və hər biri üçün həll variantları təklif edir (★ — tövsiyə olunan; hamısını bir düymə ilə).
+   Uyğunsuzluq varsa düymədə qırmızı nöqtə görünür. Hər düzəliş «Geri al» ilə qaytarılır.
+ - Kataloqda real port sayları: 315 model rəsmi datasheet-lərə görə yoxlandı — RJ45 (sürətə görə),
+   SFP, USB, konsol, idarəetmə (iDRAC / iLO), HDMI, VGA. Kataloqdan model seçəndə bunların hamısı
+   cihaza özü yazılır (NVR-də PoE portları da port sayına daxildir); rack şəklində kiçik konnektorlar.
+ - Cihaz bazası → «＋ Kataloqda olmayan cihazı əlavə et»: marka və model yazılır, göstəricilər internetdən
+   (AI axtarışı, Ayarlar → AI) və ya əl ilə; cihazın şəkli yazılan portlara görə dərhal çəkilir.
+ - Bir pəncərədən açılan pəncərədə «‹ Geri» düyməsi (məs. Ayarlar → Cihaz bazası → Ayarlar). Esc da geri qaytarır.
+ - Rack U-Layout: patch cord-lar üst-üstə düşmür — eyni sütundakı portlar düz xətlə, qalanları ayrı
+   zolaqlarla; hər cord öz çaları və ucunda nöqtə ilə.
+ - Açılış ekranı: loqo animasiyası (elektron plata xətləri, mərkəzdən dairələrə paketlər, dairələr arasında
+   məlumat axını, çarpaz xətlərdə neyron siqnalları), yüklənmə addımları kod kimi; sonda loqo ekranın
+   ortasına böyüyür, N-in neonu sönür, proqram açılır. Proqramın dilində (AZ / TR / EN / RU) və mövzusunda.
+   Klik — sürətləndirir. Söndürmək: Ayarlar → Ümumi → Görünüş → Başlıq sətri → «Açılış ekranını göstər».
+ - Köməkçi balonlar çoxaldı (xüsusən Fiber magistral) və yan panellərin öz balonları var (fiber kabel,
+   ODF / mufta, port kartı, kamera, istənilən cihaz). «Kömək» panel açıqdırsa panelin balonlarını göstərir.
+ - Mac üslubunda başlıq sətri (qırmızı / sarı / yaşıl), kiçiltmə effekti (macOS «genie»), başlıq sətrinin
+   arxasında 7 kod fonu variantı; yeni loqo; ilk açılışda tünd / açıq mövzu seçimi.
+ - branding qovluğu: loqonun böyük (2048 px) və SVG variantları; açılış ekranının ayrıca testi (splash-test.bat).
+ - Beta («NetWorkKing Beta») ayrıca proqram idi və öz məlumat qovluğunu işlədirdi. 3.8.0 stabil NetWorkKing-in
+   öz məlumatı ilə açılır; beta-da yaradılan layihəni köçürmək üçün beta-da İxrac → layihə faylı, 3.8.0-da İdxal.
 
 3.7-DƏ YENİ
  - Bütün cihaz növləri üçün yeni şəkillər (proqramın öz rəsmləri, bir üslubda, fonsuz): rack cihazları öndən,
