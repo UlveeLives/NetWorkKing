@@ -136,7 +136,8 @@ function dgSvg(b, cfg, opts = {}){
     h += `</g>`;
   }
   if (!print && DG.mode === "link" && DG.linkFrom){ const A = anchorOf(b, v, DG.linkFrom); if (A) h += `<rect class="lfrom" x="${A.x - 4}" y="${A.y - 4}" width="${A.w + 8}" height="${A.h + 8}"/>`; }
-  h += `<rect id="band" x="0" y="0" width="0" height="0" fill="rgba(36,72,168,.08)" stroke="#2448a8" stroke-dasharray="4 3" hidden/></svg>`;
+  // selection band (screen only). hidden="" — a bare «hidden» is not valid XML and broke the PNG / SVG export
+  h += `${print ? "" : `<rect id="band" x="0" y="0" width="0" height="0" fill="rgba(36,72,168,.08)" stroke="#2448a8" stroke-dasharray="4 3" hidden=""/>`}</svg>`;
   return h;
 }
 function defaultLines(b, d, v){ const S = v.show; return [S.model && [d.brand, d.model].filter(Boolean).join(" "), S.ip && d.ip ? d.ip.split("/")[0] : "", roomName(b, d.room)]; }
