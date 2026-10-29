@@ -76,7 +76,8 @@ function openWizard(again){
   const steps = [
     () => `<h3>👋 ${esc(t("wzWelcome"))}</h3><p>${esc(t("wzIntro"))}</p>
       <label class="fld"><span>${esc(t("lang"))}</span><select id="w-lang">${LANGS.map(([k, l]) => opt(k, l, s.lang)).join("")}</select></label>
-      <label class="fld"><span>${esc(t("theme"))}</span><select id="w-theme">${[["system", t("thSystem")], ["light", t("thLight")], ["dark", t("thDark")]].map(([k, l]) => opt(k, l, s.theme)).join("")}</select></label>`,
+      <div class="fld"><span>${esc(t("wzThemeQ"))}</span><div class="thpick">${[["dark", t("thDark")], ["light", t("thLight")]].map(([k, l]) => `<label class="thcard th-${k}${s.theme === k ? " on" : ""}"><input type="radio" name="w-th" value="${k}"${s.theme === k ? " checked" : ""}><img src="icons/logo-${k}.png" alt="" width="96" height="96"><b>${esc(l)}</b></label>`).join("")}</div>
+      <label class="chk"><input type="radio" name="w-th" value="system"${s.theme === "system" ? " checked" : ""}> ${esc(t("thSystem"))} <small class="muted">— ${esc(t("wzThemeSys"))}</small></label></div>`,
     () => `<h3>🏢 ${esc(t("wzProject"))}</h3><p class="muted small">${esc(t("wzProjectHint"))}</p>
       <label class="fld"><span>${esc(t("projCompany"))}</span><input id="w-comp" value="${esc(P().company)}" placeholder="Company name"></label>
       <label class="fld"><span>${esc(t("projName"))}</span><input id="w-proj" value="${esc(/^(Project|Yeni layihə|New project) ?\d*$/i.test(P().name) ? "" : P().name)}" placeholder="${esc(t("wzProjPh"))}"></label>
@@ -96,7 +97,7 @@ function openWizard(again){
     }, {nofocus:true});
     $(".mbox").classList.add("lock");
     const lg = $("#w-lang"); if (lg) lg.addEventListener("change", () => { s.lang = lg.value; render(); draw(); });
-    const th = $("#w-theme"); if (th) th.addEventListener("change", () => { s.theme = th.value; applyTheme(); });
+    $$('input[name="w-th"]').forEach(x => x.addEventListener("change", () => { s.theme = x.value; $$(".thcard").forEach(c => c.classList.toggle("on", c.querySelector("input").checked)); applyTheme(); }));
     $$('input[name="w-ai"]').forEach(x => x.addEventListener("change", () => { $("#w-keybox").hidden = $('input[name="w-ai"]:checked').value !== "key"; }));
   };
   const read = () => {

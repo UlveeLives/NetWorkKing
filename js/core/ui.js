@@ -9,7 +9,11 @@ function registerApp(a){ APPS[a.id] = a; }
 const curApp = () => APPS[UI.app] || APPS.topology;
 const curTab = () => { const a = curApp(); const id = UI.tabs[a.id]; return a.tabs.find(x => x.id === id) || a.tabs[0]; };
 /* ---------- theme ---------- */
-function applyTheme(){ const th = store.settings.theme; document.documentElement.dataset.theme = th === "system" ? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : th; if (typeof applyTitleBg === "function") applyTitleBg(); }
+function applyTheme(){ const th = store.settings.theme, eff = th === "system" ? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : th;
+  document.documentElement.dataset.theme = eff; if (typeof applyTitleBg === "function") applyTitleBg();
+  // the logo follows the theme: dark logo with the dark theme, light logo with the light one (page icon, window / taskbar icon)
+  const fav = document.getElementById("favicon"); if (fav) fav.href = `icons/fav-${eff}.png`;
+  if (window.appBridge && appBridge.win && appBridge.win.setIcon) appBridge.win.setIcon(eff); }
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => store && applyTheme());
 /* ---------- toast, prompt, confirm ---------- */
 let toastT; function toast(m, ms){ const el = $("#toast"); if (!el) return; el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), ms || 2800); }

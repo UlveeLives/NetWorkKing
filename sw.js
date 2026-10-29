@@ -4,7 +4,7 @@ const V = "networkking-3.8.0-beta.1";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "css/app.css", "js/i18n.js", "js/catalog-data.js",
   ...["legal","util","icons","art","store","ui","chrome","entities","catalog","tables","doc","help","settings","dg","importers","dxf","draw","tableimp","qr","labels","history","ai"].map(f => `js/core/${f}.js`),
   ...["building","topology","portmap","pmtools","rack","fiber","cctv","wifi","summary"].map(f => `js/apps/${f}.js`), "js/main.js",
-  "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "vendor/pdf.min.js", "vendor/pdf.worker.min.js"];
+  "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/fav-dark.png", "icons/fav-light.png", "icons/logo-dark.png", "icons/logo-light.png", "vendor/pdf.min.js", "vendor/pdf.worker.min.js"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", e => {

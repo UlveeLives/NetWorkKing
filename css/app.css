@@ -750,3 +750,10 @@ html.winblur .tlights:not(:hover) .tl{background:#5d6377;box-shadow:inset 0 0 0 
 .subtabs{display:flex;gap:6px;margin:2px 0 12px;border-bottom:1px solid var(--line)}
 .subtabs button{border:0;background:none;padding:6px 12px;font:inherit;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer}
 .subtabs button.on{color:var(--pri);border-bottom-color:var(--pri);font-weight:600}
+/* first-run wizard: the theme as two logo cards */
+.thpick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 8px}
+.thcard{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;border-radius:14px;border:2px solid var(--line);cursor:pointer}
+.thcard input{display:none}
+.thcard.th-dark{background:#0d1530;color:#e6ebff}.thcard.th-light{background:#f3f6fb;color:#14204f}
+.thcard.on{border-color:var(--pri);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 30%,transparent)}
+.thcard img{filter:drop-shadow(0 4px 10px rgba(0,0,0,.25))}

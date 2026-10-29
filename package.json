@@ -28,6 +28,8 @@
       "icons/**",
       "vendor/**",
       "build/icon.png",
+      "build/icon-light.png",
+      "build/icon-dark.png",
       "manifest.webmanifest",
       "LICENSE",
       "legal/**",

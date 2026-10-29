@@ -22,7 +22,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1500, height: 950, minWidth: 1000, minHeight: 640, frame: false,
     title: app.getName(), backgroundColor: "#14204f", autoHideMenuBar: true,
-    icon: path.join(__dirname, "build", "icon.png"),
+    icon: path.join(__dirname, "build", "icon-dark.png"),
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true }
   });
   win.maximize();
@@ -83,6 +83,8 @@ async function restoreFx(){
   } catch(e){ win.setOpacity(1); try { if (fx) fx.hide(); } catch(x){} }
   finally { fxBusy = false; }
 }
+// window / taskbar icon follows the theme: dark logo for the dark theme, light logo for the light one
+ipcMain.on("set-icon", (_e, th) => { if (win && !win.isDestroyed()) win.setIcon(path.join(__dirname, "build", th === "light" ? "icon-light.png" : "icon-dark.png")); });
 ipcMain.on("win", (_e, act, o) => { if (!win) return;
   if (act === "close") win.close();
   else if (act === "min"){ if (o && o.fx === false) win.minimize(); else minimizeFx(); }

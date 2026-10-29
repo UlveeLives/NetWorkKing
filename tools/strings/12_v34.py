@@ -274,3 +274,8 @@ for k,az,tr,en,ru in [
  ("winWebOnly","Pəncərə düymələri və kiçiltmə effekti yalnız masaüstü (.exe) versiyadadır.","Pencere düğmeleri ve efekt yalnızca masaüstü sürümde.","Window buttons and the minimise effect are in the desktop (.exe) version only.","Кнопки окна и эффект — только в настольной версии."),
 ]:
     K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("wzThemeQ","Proqramı hansı görünüşdə istifadə etmək istəyirsiniz?","Programı hangi görünümde kullanmak istersiniz?","Which look would you like to use?","Какое оформление вы хотите использовать?"),
+ ("wzThemeSys","Windows-un rəng rejiminə görə dəyişir","Windows renk moduna göre değişir","follows the Windows colour mode","меняется вместе с режимом Windows"),
+]:
+    K(k,az,tr,en,ru)
