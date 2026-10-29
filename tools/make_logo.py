@@ -139,3 +139,32 @@ for th in T4:
     open(os.path.join(OUT4, f"mark-{th}.svg"), "w").write(logo4(th, frame=False))
     open(os.path.join(OUT4, f"small-{th}.svg"), "w").write(logo4(th, small=True))
 print("v4", sorted(os.listdir(OUT4)))
+
+# ---------- splash: logo v4 on the title-bar green, frame in the neon of the centre ring; parts carry classes for animation ----------
+BAR = "#0d2a1a"
+def logo_splash():
+    C, R, NR = 256, 168, 46
+    A = [math.radians(-90 + i * 45) for i in range(8)]
+    P = [(C + R * math.cos(a), C + R * math.sin(a)) for a in A]
+    s = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="lg">',
+         '<defs><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>',
+         f'<rect class="frame" x="16" y="16" width="480" height="480" rx="104" fill="{BAR}" stroke="{NEON}" stroke-width="8"/>']
+    cross = []
+    for i in range(8):
+        j = (i + 3) % 8; mx, my = (P[i][0] + P[j][0]) / 2, (P[i][1] + P[j][1]) / 2
+        dx, dy = mx - C, my - C; L = math.hypot(dx, dy) or 1; want = 2 * 94 - L
+        cross.append(f'M{P[i][0]:.1f} {P[i][1]:.1f}Q{C + dx / L * want:.1f} {C + dy / L * want:.1f} {P[j][0]:.1f} {P[j][1]:.1f}')
+    s.append(f'<g class="cross" fill="none" stroke="{NEON}" stroke-opacity=".28" stroke-width="7" stroke-linecap="round">' + "".join(f'<path d="{x}"/>' for x in cross) + '</g>')
+    s.append(f'<g class="ring" fill="none" stroke="{RING}" stroke-width="12" stroke-linecap="round">' + "".join(f'<path d="M{P[i][0]:.1f} {P[i][1]:.1f}A{R} {R} 0 0 1 {P[(i+1)%8][0]:.1f} {P[(i+1)%8][1]:.1f}"/>' for i in range(8)) + '</g>')
+    s.append(f'<g class="spokes" stroke="{SPOKE}" stroke-width="18" stroke-linecap="round">' + "".join(f'<path d="M{C} {C}L{x:.1f} {y:.1f}"/>' for x, y in P) + '</g>')
+    # packets: short neon dashes running out along every spoke
+    s.append(f'<g class="pk" stroke="{NEON}" stroke-width="9" stroke-linecap="round" fill="none">' + "".join(f'<path style="--i:{i}" d="M{C} {C}L{x:.1f} {y:.1f}"/>' for i, (x, y) in enumerate(P)) + '</g>')
+    s.append(f'<circle class="core" cx="{C}" cy="{C}" r="70" fill="#050806" stroke="{NEON}" stroke-width="5" stroke-opacity=".9"/>')
+    s.append(f'<path class="n" d="M227 287v-62l58 62v-62" fill="none" stroke="{NEON}" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>')
+    for i, (gl, col) in enumerate(SETS["net"]):
+        x, y = P[i]
+        s.append(f'<g class="nd" style="--i:{i};transform-origin:{x:.1f}px {y:.1f}px"><circle cx="{x:.1f}" cy="{y:.1f}" r="{NR}" fill="{col}" stroke="#ffffff" stroke-width="7"/>'
+                 f'<g transform="translate({x - NR*.82:.1f} {y - NR*.82:.1f}) scale({NR*1.64/48:.3f})" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">{G[gl]}</g></g>')
+    s.append('</svg>'); return "".join(s)
+open(os.path.join(ROOT, "branding", "splash-test", "logo-splash.svg"), "w").write(logo_splash())
+print("splash logo ok")
