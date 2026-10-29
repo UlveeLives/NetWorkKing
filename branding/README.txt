@@ -25,3 +25,9 @@ LOQO v2 (branding/v2) — ortada qara fonda neon yaşıl «N», ətrafda veb-qlo
   *-2048.png      2048×2048 piksel, şəffaf fon
   logo-v2-muqayise.png   hamısı yan-yana
   Yenidən yaratmaq / dəyişmək: python3 tools/make_logo.py (rənglər, simvollar, ölçülər faylın əvvəlindədir)
+
+LOQO v3 (branding/v3) — SEÇİLƏN İSTİQAMƏT
+  Şəbəkənin 8 təməl simvolu; «N» dairəsindən hər 8 dairəyə xətt (açılış animasiyası bu xətlərdə oynayacaq);
+  arxada ayrıca qlobus yoxdur — 8 dairəni bir-birinə bağlayan xətlər özü qlobusu əmələ gətirir
+  (çevrə boyunca qonşular, meridianlar, paralellər, ekvator).
+  logo-dark / logo-light, mark-* (çərçivəsiz), small-* (16–48 px), *-2048.png, logo-v3-muqayise.png

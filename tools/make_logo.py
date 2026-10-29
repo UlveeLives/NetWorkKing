@@ -1,5 +1,5 @@
 # NetWorkKing — © 2026 Ulvi Badalov. All rights reserved.
-# Logo v2 generator: neon-green "N" on black in the centre (like cmd "color a"), 8 devices on a web globe around it.
+# Logo v2 / v3 generator: neon-green "N" on black in the centre (like cmd "color a"), 8 devices on a web globe around it.
 #   python3 tools/make_logo.py  → branding/v2/*.svg
 import math, os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -63,3 +63,39 @@ for st in SETS:
         open(os.path.join(OUT, f"mark-{st}-{th}.svg"), "w").write(logo(st, th, frame=False))
         open(os.path.join(OUT, f"small-{st}-{th}.svg"), "w").write(logo(st, th, small=True))
 print("ok", sorted(os.listdir(OUT)))
+
+# ---------- v3 (chosen): network symbols; spokes from the centre to every device (the splash animates them);
+# no background globe — the links between the 8 devices themselves make the globe (ring, meridians, parallels) ----------
+OUT3 = os.path.join(ROOT, "branding", "v3"); os.makedirs(OUT3, exist_ok=True)
+T3 = {"dark": {"bg": "#0d1530", "rim": "#2448a8", "spoke": "#8fa8f0", "web": "#3f63d8"},
+      "light": {"bg": "#f3f6fb", "rim": "#c3cde3", "spoke": "#2448a8", "web": "#7f95d6"}}
+def logo3(theme, frame=True, small=False):
+    T = T3[theme]; C, R, NR = 256, 168, 46
+    if small: R, NR = 172, 50
+    P = [(C + R * math.cos(math.radians(-90 + i * 45)), C + R * math.sin(math.radians(-90 + i * 45))) for i in range(8)]
+    q = lambda a, b, cx, cy: f'M{P[a][0]:.1f} {P[a][1]:.1f}Q{cx:.1f} {cy:.1f} {P[b][0]:.1f} {P[b][1]:.1f}'
+    d = .7071 * R
+    web = [  # ring: each device to its neighbours along the outline of the globe
+      " ".join(f'M{P[i][0]:.1f} {P[i][1]:.1f}A{R} {R} 0 0 1 {P[(i+1)%8][0]:.1f} {P[(i+1)%8][1]:.1f}' for i in range(8)),
+      q(0, 4, C - R * .62, C), q(0, 4, C + R * .62, C),               # meridians: top ↔ bottom
+      q(7, 5, C - d + R * .42, C), q(1, 3, C + d - R * .42, C),       # meridians: the side pairs
+      q(7, 1, C, C - d + R * .30), q(5, 3, C, C + d + R * .30),       # parallels (bent like a globe seen from a little above)
+      q(6, 2, C, C + R * .30)]                                        # equator
+    s = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">',
+         '<defs><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>']
+    if frame: s.append(f'<rect x="16" y="16" width="480" height="480" rx="104" fill="{T["bg"]}" stroke="{T["rim"]}" stroke-width="8"/>')
+    s.append(f'<g id="web" fill="none" stroke="{T["web"]}" stroke-width="{9 if small else 7}" stroke-linecap="round">' + "".join(f'<path d="{x}"/>' for x in web) + '</g>')
+    s.append(f'<g id="spokes" stroke="{T["spoke"]}" stroke-width="{18 if small else 15}" stroke-linecap="round">' + "".join(f'<path d="M{C} {C}L{x:.1f} {y:.1f}"/>' for x, y in P) + '</g>')
+    cr, k = (96, 1.45) if small else (70, 1)
+    s.append(f'<circle cx="{C}" cy="{C}" r="{cr}" fill="#050806" stroke="{NEON}" stroke-width="{5*k:.0f}" stroke-opacity=".9"/>')
+    s.append(f'<g transform="translate({C} {C}) scale({k})"><path d="M-29 31v-62l58 62v-62" fill="none" stroke="{NEON}" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/></g>')
+    for i, (gl, col) in enumerate(SETS["net"]):
+        x, y = P[i]
+        s.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{NR}" fill="{col}" stroke="#ffffff" stroke-width="7"/>')
+        if not small: s.append(f'<g transform="translate({x - NR*.82:.1f} {y - NR*.82:.1f}) scale({NR*1.64/48:.3f})" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">{G[gl]}</g>')
+    s.append('</svg>'); return "\n".join(s)
+for th in T3:
+    open(os.path.join(OUT3, f"logo-{th}.svg"), "w").write(logo3(th))
+    open(os.path.join(OUT3, f"mark-{th}.svg"), "w").write(logo3(th, frame=False))
+    open(os.path.join(OUT3, f"small-{th}.svg"), "w").write(logo3(th, small=True))
+print("v3", sorted(os.listdir(OUT3)))
