@@ -1,0 +1,2332 @@
+[
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-410",
+  "sku": [
+   "PA-410"
+  ],
+  "kind": "firewall",
+  "series": "PA-400 Series",
+  "desc": "Branch NGFW, 7x GE RJ45 + MGT",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 242.1,
+   "d": 167.6,
+   "h": 43.9
+  },
+  "weight_kg": 1.36,
+  "power": {
+   "typ_w": 17,
+   "max_w": 23,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC external adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 7,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "+1x GE MGT RJ45; console RJ45; 2x USB (admin/debug)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 1.4,
+   "ngfw_gbps": null,
+   "threat_gbps": 0.8,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-400-hardware-reference/pa-400-firewall-overview/pa-400-front-panel.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from Palo Alto PA-400 hardware reference (front panel, physical, electrical spec pages). Throughput (fw = App-ID firewall, threat = threat prevention) from paloguard.com reseller comparison (PAN-OS version not stated) - hence medium. PA-410 does not support dual power adapters."
+ },
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-440",
+  "sku": [
+   "PA-440"
+  ],
+  "kind": "firewall",
+  "series": "PA-400 Series",
+  "desc": "Branch NGFW, 8x GE RJ45 + MGT",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 203.2,
+   "d": 223.5,
+   "h": 44.5
+  },
+  "weight_kg": 2.27,
+  "power": {
+   "typ_w": 29,
+   "max_w": 34,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "100-240V AC external adapter (optional 2nd adapter for redundancy)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "+1x GE MGT RJ45; console RJ45 + micro-USB; 2x USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 2.6,
+   "ngfw_gbps": null,
+   "threat_gbps": 1.25,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-400-hardware-reference/pa-400-firewall-overview/pa-400-front-panel.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from Palo Alto PA-400 hardware reference (front panel, physical, electrical spec pages). Throughput (fw = App-ID firewall, threat = threat prevention) from paloguard.com reseller comparison (PAN-OS version not stated) - hence medium. Vendor lists 1U rack units; ships as desktop, rack kit separate."
+ },
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-450",
+  "sku": [
+   "PA-450"
+  ],
+  "kind": "firewall",
+  "series": "PA-400 Series",
+  "desc": "Branch NGFW, 8x GE RJ45 + MGT",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 203.2,
+   "d": 223.5,
+   "h": 44.5
+  },
+  "weight_kg": 2.27,
+  "power": {
+   "typ_w": 32,
+   "max_w": 41,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "100-240V AC external adapter (optional 2nd adapter for redundancy)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "+1x GE MGT RJ45; console RJ45 + micro-USB; 2x USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 3.3,
+   "ngfw_gbps": null,
+   "threat_gbps": 2.1,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-400-hardware-reference/pa-400-firewall-overview/pa-400-front-panel.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from Palo Alto PA-400 hardware reference (front panel, physical, electrical spec pages). Throughput (fw = App-ID firewall, threat = threat prevention) from paloguard.com reseller comparison (PAN-OS version not stated) - hence medium. Vendor lists 1U rack units; ships as desktop, rack kit separate."
+ },
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-460",
+  "sku": [
+   "PA-460"
+  ],
+  "kind": "firewall",
+  "series": "PA-400 Series",
+  "desc": "Branch NGFW, 8x GE RJ45 + MGT",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 203.2,
+   "d": 223.5,
+   "h": 44.5
+  },
+  "weight_kg": 2.27,
+  "power": {
+   "typ_w": 32,
+   "max_w": 41,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "100-240V AC external adapter (optional 2nd adapter for redundancy)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "+1x GE MGT RJ45; console RJ45 + micro-USB; 2x USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 4.6,
+   "ngfw_gbps": null,
+   "threat_gbps": 3.0,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-400-hardware-reference/pa-400-firewall-overview/pa-400-front-panel.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from Palo Alto PA-400 hardware reference (front panel, physical, electrical spec pages). Throughput (fw = App-ID firewall, threat = threat prevention) from paloguard.com reseller comparison (PAN-OS version not stated) - hence medium. Vendor lists 1U rack units; ships as desktop, rack kit separate."
+ },
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-445",
+  "sku": [
+   "PA-445"
+  ],
+  "kind": "firewall",
+  "series": "PA-400 Series",
+  "desc": "Branch NGFW, 8x GE RJ45 (4 PoE), SFP/RJ45 combo",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 330.2,
+   "d": 225.6,
+   "h": 42.2
+  },
+  "weight_kg": 3.94,
+  "power": {
+   "typ_w": 140,
+   "max_w": 146,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "100-240V AC external adapter (optional 2nd adapter); figures incl. 90W PoE load"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "+1x SFP/RJ45 combo data port (counted as sfp) +1x SFP/RJ45 combo MGT + GE MGT; PoE on ports 6-9"
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": 91,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 2.7,
+   "ngfw_gbps": null,
+   "threat_gbps": 1.2,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-400-hardware-reference/pa-400-firewall-overview/pa-400-front-panel.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from Palo Alto PA-400 hardware reference (front panel, physical, electrical spec pages). Throughput (fw = App-ID firewall, threat = threat prevention) from paloguard.com reseller comparison (PAN-OS version not stated) - hence medium. PoE: total budget 91W, max 60W reserved per port."
+ },
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-1410",
+  "sku": [
+   "PA-1410"
+  ],
+  "kind": "firewall",
+  "series": "PA-1400 Series",
+  "desc": "NGFW, 8x GE + 4x 5G RJ45 (4 PoE), 6x SFP, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.9,
+   "d": 361.4,
+   "h": 43.2
+  },
+  "weight_kg": 6.35,
+  "power": {
+   "typ_w": 100,
+   "max_w": 140,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "2x 450W AC (100-240V) or DC (-48 to -60V), load sharing"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 4,
+   "rj45_10g": 0,
+   "sfp": 6,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "Mgig ports 1/2.5/5G; +1x SFP+ HSCI, 2x RJ45 HA1, 1x RJ45 MGT; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 8.5,
+   "ngfw_gbps": null,
+   "threat_gbps": 4.5,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-1400-hardware-reference/pa-1400-series-overview/front-panel-1400-series.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from PA-1400 hardware reference. PoE on ports 9-12; vendor power figures quoted with 150W PoE load (avg/max with PoE: 250/290 W), power above is without PoE. Throughput from paloguard.com reseller (PAN-OS version not stated)."
+ },
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-1420",
+  "sku": [
+   "PA-1420"
+  ],
+  "kind": "firewall",
+  "series": "PA-1400 Series",
+  "desc": "NGFW, 4x GE + 8x 5G RJ45 (4 PoE), 2x SFP, 8x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.9,
+   "d": 361.4,
+   "h": 43.2
+  },
+  "weight_kg": 6.35,
+  "power": {
+   "typ_w": 110,
+   "max_w": 150,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "2x 450W AC (100-240V) or DC (-48 to -60V), load sharing"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 8,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 8,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "Mgig ports 1/2.5/5G; +1x SFP+ HSCI, 2x RJ45 HA1, 1x RJ45 MGT; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 9.5,
+   "ngfw_gbps": null,
+   "threat_gbps": 6.2,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-1400-hardware-reference/pa-1400-series-overview/front-panel-1400-series.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from PA-1400 hardware reference. PoE on ports 9-12; vendor power figures quoted with 150W PoE load (avg/max with PoE: 260/300 W), power above is without PoE. Throughput from paloguard.com reseller (PAN-OS version not stated)."
+ },
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-3410",
+  "sku": [
+   "PA-3410"
+  ],
+  "kind": "firewall",
+  "series": "PA-3400 Series",
+  "desc": "NGFW, 12x 10G RJ45, 10x SFP+, 4x SFP28",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.9,
+   "d": 361.4,
+   "h": 43.2
+  },
+  "weight_kg": 7.03,
+  "power": {
+   "typ_w": 133,
+   "max_w": 170,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "2x 450W AC (100-240V) or DC (-48 to -60V), load sharing"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 12,
+   "sfp": 0,
+   "sfp_plus": 10,
+   "sfp28": 4,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "RJ45 ports 1G-10G multi-gig; +1x SFP+ HSCI, 2x RJ45 HA1, 1x RJ45 MGT; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 14.0,
+   "ngfw_gbps": null,
+   "threat_gbps": 7.5,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-3400-hardware-reference/pa-3400-series-overview/front-panel-3400-series.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from PA-3400 hardware reference. Throughput from paloguard.com reseller (PAN-OS version not stated)."
+ },
+ {
+  "brand": "Palo Alto Networks",
+  "model": "PA-3420",
+  "sku": [
+   "PA-3420"
+  ],
+  "kind": "firewall",
+  "series": "PA-3400 Series",
+  "desc": "NGFW, 12x 10G RJ45, 10x SFP+, 4x SFP28",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.9,
+   "d": 361.4,
+   "h": 43.2
+  },
+  "weight_kg": 7.03,
+  "power": {
+   "typ_w": 145,
+   "max_w": 178,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "2x 450W AC (100-240V) or DC (-48 to -60V), load sharing"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 12,
+   "sfp": 0,
+   "sfp_plus": 10,
+   "sfp28": 4,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "RJ45 ports 1G-10G multi-gig; +1x SFP+ HSCI, 2x RJ45 HA1, 1x RJ45 MGT; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 19.0,
+   "ngfw_gbps": null,
+   "threat_gbps": 10.0,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://docs.paloaltonetworks.com/content/techdocs/en_US/hardware/pa-3400-hardware-reference/pa-3400-series-overview/front-panel-3400-series.html",
+  "source2": "https://paloguard.com/compare-spec.asp",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Ports/dims/power from PA-3400 hardware reference. Throughput from paloguard.com reseller (PAN-OS version not stated)."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 87",
+  "sku": [
+   "XGS 87"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "Desktop firewall, 4x GE + 1x SFP",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 230,
+   "d": 205.5,
+   "h": 44
+  },
+  "weight_kg": 1.36,
+  "power": {
+   "typ_w": 23.2,
+   "max_w": 43.4,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External AC-DC 12V 5A 60W"
+  },
+  "heat_btu_h": 148.09,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "Console RJ45 + micro-USB; USB 2.0 front, USB 3.0 rear"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 3.85,
+   "ngfw_gbps": 0.7,
+   "threat_gbps": 0.85,
+   "ipsec_gbps": 3.0
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "source2": "https://media.bechtle.com/asrc/180712/1c4b3d4ee288fc9434f5175bf56070570/c3/-/86f51e47f95948eaa8778fd028e70216/sophos-xgs-87-std-prot-smb-36m-data-sheet",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy. Power typ = idle, max = full load (non-w)."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 107",
+  "sku": [
+   "XGS 107"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "Desktop firewall, 8x GE + 1x SFP",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 230,
+   "d": 205.5,
+   "h": 44
+  },
+  "weight_kg": 1.4,
+  "power": {
+   "typ_w": 26.1,
+   "max_w": 53.9,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "External AC-DC 12V 5A 60W (optional external redundant PSU)"
+  },
+  "heat_btu_h": 183.91,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "Console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 7.0,
+   "ngfw_gbps": 1.05,
+   "threat_gbps": 1.11,
+   "ipsec_gbps": 4.0
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "source2": "https://media.bechtle.com/asrc/180712/1c4b3d4ee288fc9434f5175bf56070570/c3/-/f1923febf3fb44d6808efecb761c1f72/sophos-xgs-107-std-protect-smb-12m-data-sheet",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 116",
+  "sku": [
+   "XGS 116"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "Desktop firewall, 8x GE (1 PoE) + 1x SFP, 1 expansion bay",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 320,
+   "d": 213,
+   "h": 44
+  },
+  "weight_kg": 2.2,
+  "power": {
+   "typ_w": 28,
+   "max_w": 57,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "External AC-DC 12V 12.5A 150W (optional external redundant PSU)"
+  },
+  "heat_btu_h": 195,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "1 expansion bay; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 1,
+   "budget_w": 30,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 7.7,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "source2": "https://www.avanet.com/en/shop/sophos-xgs-116-security-appliance",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy. Only firewall throughput set: avanet.com (distributor) shows conflicting IPsec/threat values. PoE 30W max per port."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 126",
+  "sku": [
+   "XGS 126"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "Desktop firewall, 12x GE (2 PoE) + 2x SFP, 1 expansion bay",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 320,
+   "d": 213,
+   "h": 44
+  },
+  "weight_kg": 2.4,
+  "power": {
+   "typ_w": 30,
+   "max_w": 59,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "External AC-DC 12V 12.5A 150W (optional external redundant PSU)"
+  },
+  "heat_btu_h": 202,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 12,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "1 expansion bay; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 2,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 10.5,
+   "ngfw_gbps": 2.5,
+   "threat_gbps": 0.9,
+   "ipsec_gbps": 4.1
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "source2": "https://accessnetworks.com/wp-content/uploads/2022/08/XGS126-and-136.pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy. PoE 30W max per port; total budget not stated."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 136",
+  "sku": [
+   "XGS 136"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "Desktop firewall, 10x GE + 2x 2.5GE PoE + 2x SFP, 1 expansion bay",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 320,
+   "d": 213,
+   "h": 44
+  },
+  "weight_kg": 2.4,
+  "power": {
+   "typ_w": 30,
+   "max_w": 62,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "External AC-DC 12V 12.5A 150W (optional external redundant PSU)"
+  },
+  "heat_btu_h": 212,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 2,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "2x 2.5GE are the PoE ports; 1 expansion bay"
+  },
+  "poe": {
+   "ports": 2,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 11.5,
+   "ngfw_gbps": 3.0,
+   "threat_gbps": 1.0,
+   "ipsec_gbps": 4.8
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "source2": "https://accessnetworks.com/wp-content/uploads/2022/08/XGS126-and-136.pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy. PoE 30W max per port; total budget not stated."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 2100",
+  "sku": [
+   "XGS 2100"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "1U firewall, 8x GE + 2x SFP, 1 Flexi Port bay",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 405,
+   "h": 44
+  },
+  "weight_kg": 4.7,
+  "power": {
+   "typ_w": 43,
+   "max_w": 162,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Internal auto-ranging AC-DC 100-240VAC (optional external redundant PSU)"
+  },
+  "heat_btu_h": 533.5,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 3,
+   "notes": "+1x RJ45 MGMT; 1 Flexi Port bay (e.g. 4x 2.5GE PoE or 4x SFP+); console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 30.0,
+   "ngfw_gbps": 5.2,
+   "threat_gbps": 1.25,
+   "ipsec_gbps": 12.0
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "source2": "https://accessnetworks.com/wp-content/uploads/2022/08/XGS-2100.pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 2300",
+  "sku": [
+   "XGS 2300"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "1U firewall, 8x GE + 2x SFP, 1 Flexi Port bay",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 405,
+   "h": 44
+  },
+  "weight_kg": 4.7,
+  "power": {
+   "typ_w": 45,
+   "max_w": 167,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Internal auto-ranging AC-DC 100-240VAC (optional external redundant PSU)"
+  },
+  "heat_btu_h": 570.74,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 3,
+   "notes": "+1x RJ45 MGMT; 1 Flexi Port bay; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 39.0,
+   "ngfw_gbps": 6.3,
+   "threat_gbps": 5.5,
+   "ipsec_gbps": 20.5
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "source2": "https://www.firewalls.com/blog/sophos-xgs-2300-vs-sophos-xgs-3100/",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy. Perf values from firewalls.com (reseller), likely newer-firmware figures."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 3100",
+  "sku": [
+   "XGS 3100"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "1U firewall, 8x GE + 2x SFP + 2x SFP+, 1 Flexi Port bay",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 405,
+   "h": 44
+  },
+  "weight_kg": 4.7,
+  "power": {
+   "typ_w": 50,
+   "max_w": 182,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Internal auto-ranging AC-DC 100-240VAC (optional external redundant PSU)"
+  },
+  "heat_btu_h": 621.97,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 3,
+   "notes": "+1x RJ45 MGMT; 1 Flexi Port bay"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 38.0,
+   "ngfw_gbps": 9.0,
+   "threat_gbps": 2.0,
+   "ipsec_gbps": 17.0
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "source2": "https://accessnetworks.com/wp-content/uploads/2022/08/XGS-3100.pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy."
+ },
+ {
+  "brand": "Sophos",
+  "model": "XGS 4300",
+  "sku": [
+   "XGS 4300"
+  ],
+  "kind": "firewall",
+  "series": "XGS Series",
+  "desc": "1U firewall, 4x GE + 4x 2.5GE + 4x SFP+, 2 Flexi Port bays",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 510,
+   "h": 44
+  },
+  "weight_kg": 8.7,
+  "power": {
+   "typ_w": 131,
+   "max_w": 268.35,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Internal auto-ranging AC-DC 100-240VAC 3.7-7.4A (optional external redundant PSU)"
+  },
+  "heat_btu_h": 916.56,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 4,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "+1x RJ45 MGMT; 2 Flexi Port bays (max 28 ports)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 75.0,
+   "ngfw_gbps": 23.0,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.avanet.com/en/shop/sophos-xgs-4300-security-appliance/",
+  "source2": "https://www.lingo.com/wp-content/uploads/Sales-Resources/Products/Insync/XGS-Firewall/Insync-sophos-xgs-series-tech-specs-all-models.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hardware from Sophos XGS tech-spec sheet (Feb 2023, hosted by partner). Sophos revises throughput figures between firmware releases; perf values are from the cited datasheet copy. Ports/perf from avanet.com (distributor); avanet shows conflicting IPsec/threat values so those left null."
+ },
+ {
+  "brand": "SonicWall",
+  "model": "TZ270",
+  "sku": [],
+  "kind": "firewall",
+  "series": "TZ Series (Gen 7)",
+  "desc": "Gen 7 desktop NGFW, 8x GE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "Console RJ45"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 2.0,
+   "ngfw_gbps": null,
+   "threat_gbps": 0.75,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sec-certs.org/fips/25616f4178f09f6e/target.txt",
+  "source2": "https://www.servermonkey.com/networking/sonicwall/firewall/tz-series/tz270-tz270w.html",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Port counts from SonicWall FIPS 140 security policy (vendor document, via sec-certs.org). Perf from servermonkey.com reseller."
+ },
+ {
+  "brand": "SonicWall",
+  "model": "TZ370",
+  "sku": [],
+  "kind": "firewall",
+  "series": "TZ Series (Gen 7)",
+  "desc": "Gen 7 desktop NGFW, 8x GE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 190,
+   "d": 135,
+   "h": 35
+  },
+  "weight_kg": 0.82,
+  "power": {
+   "typ_w": null,
+   "max_w": 36,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "External adapter 100-240V AC, 36W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "Console RJ45; 2 of the 8 ports are WAN"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 3.0,
+   "ngfw_gbps": null,
+   "threat_gbps": 1.0,
+   "ipsec_gbps": 1.3
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sec-certs.org/fips/25616f4178f09f6e/target.txt",
+  "source2": "https://www.shi.com/product/49354693/SonicWall-TZ-Series-(Gen-7)-TZ370",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Port counts from SonicWall FIPS 140 security policy (vendor document, via sec-certs.org). Perf/dims/power from SHI (large distributor)."
+ },
+ {
+  "brand": "SonicWall",
+  "model": "TZ470",
+  "sku": [],
+  "kind": "firewall",
+  "series": "TZ Series (Gen 7)",
+  "desc": "Gen 7 desktop NGFW, 8x GE + 2x SFP/SFP+ (2.5G)",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "X8/X9 SFP/SFP+ support 1G/2.5G; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sec-certs.org/fips/25616f4178f09f6e/target.txt",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Port counts from SonicWall FIPS 140 security policy (vendor document, via sec-certs.org). Throughput not confirmed."
+ },
+ {
+  "brand": "SonicWall",
+  "model": "TZ570",
+  "sku": [],
+  "kind": "firewall",
+  "series": "TZ Series (Gen 7)",
+  "desc": "Gen 7 desktop NGFW, 8x GE + 2x SFP/SFP+ (5G)",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "X8/X9 SFP/SFP+ support 2.5G/5G; console RJ45 + micro-USB; 2 power inputs"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 4.0,
+   "ngfw_gbps": null,
+   "threat_gbps": 2.0,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sec-certs.org/fips/25616f4178f09f6e/target.txt",
+  "source2": "https://www.servermonkey.com/networking/sonicwall/firewall/tz-series/tz570-tz570p-tz570w.html",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Port counts from SonicWall FIPS 140 security policy (vendor document, via sec-certs.org). Perf from servermonkey.com reseller. TZ570P variant adds PoE (5 PoE or 3 PoE+)."
+ },
+ {
+  "brand": "SonicWall",
+  "model": "TZ670",
+  "sku": [],
+  "kind": "firewall",
+  "series": "TZ Series (Gen 7)",
+  "desc": "Gen 7 desktop NGFW, 8x GE + 2x SFP+ (10G)",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "X8/X9 SFP/SFP+ support 2.5G/5G/10G; console RJ45 + micro-USB"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sec-certs.org/fips/25616f4178f09f6e/target.txt",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Port counts from SonicWall FIPS 140 security policy (vendor document, via sec-certs.org). Throughput not confirmed."
+ },
+ {
+  "brand": "SonicWall",
+  "model": "NSa 2700",
+  "sku": [],
+  "kind": "firewall",
+  "series": "NSa Series (Gen 7)",
+  "desc": "Gen 7 1U NGFW, 16x GE + 3x 10G SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 430,
+   "d": 325,
+   "h": 45
+  },
+  "weight_kg": 4.0,
+  "power": {
+   "typ_w": null,
+   "max_w": 60,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "Internal 100-240V AC, 60W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 16,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 3,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "+1x GE MGMT; 1 expansion slot; console RJ45"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 5.2,
+   "ngfw_gbps": null,
+   "threat_gbps": 3.0,
+   "ipsec_gbps": 2.1
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sec-certs.org/fips/25616f4178f09f6e/target.txt",
+  "source2": "https://www.shidirect.com/product/49354674/SonicWall-Gen-7-NSa-Series-2700",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Port counts from SonicWall FIPS 140 security policy (vendor document, via sec-certs.org). Perf/dims/power from SHI (large distributor)."
+ },
+ {
+  "brand": "SonicWall",
+  "model": "NSa 3700",
+  "sku": [],
+  "kind": "firewall",
+  "series": "NSa Series (Gen 7)",
+  "desc": "Gen 7 1U NGFW, 24x GE + 4x 5G SFP/SFP+ + 6x 10G SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 10,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "4x SFP/SFP+ 1/2.5/5G (X24-X27) + 6x SFP+ 1/2.5/10G (X28-X33); +1x GE MGMT; console RJ45"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sec-certs.org/fips/25616f4178f09f6e/target.txt",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Port counts from SonicWall FIPS 140 security policy (vendor document, via sec-certs.org). Throughput/dims not confirmed."
+ },
+ {
+  "brand": "Check Point",
+  "model": "Quantum Spark 1535",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Quantum Spark 1500",
+  "desc": "SMB gateway, 1x GE WAN + 5x GE LAN",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 210,
+   "d": 160,
+   "h": 37.5
+  },
+  "weight_kg": 0.43,
+  "power": {
+   "typ_w": null,
+   "max_w": 17.92,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External adapter 12V/3.3A 40W"
+  },
+  "heat_btu_h": 61.11,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 6,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x WAN + 5x LAN; console USB-C; Wi-Fi variants: max 21.95W"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 1.0,
+   "ngfw_gbps": 0.6,
+   "threat_gbps": 0.34,
+   "ipsec_gbps": 0.97
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.checkpoint.com:443/downloads/products/1500-pro-security-gateway-datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Datasheet Feb 2024. ipsec = VPN AES-128 figure."
+ },
+ {
+  "brand": "Check Point",
+  "model": "Quantum Spark 1555",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Quantum Spark 1500",
+  "desc": "SMB gateway, 1x GE WAN + 5x GE LAN",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 210,
+   "d": 160,
+   "h": 37.5
+  },
+  "weight_kg": 0.43,
+  "power": {
+   "typ_w": null,
+   "max_w": 17.92,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External adapter 12V/3.3A 40W"
+  },
+  "heat_btu_h": 61.11,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 6,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x WAN + 5x LAN; console USB-C; Wi-Fi variants: max 21.95W"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 1.0,
+   "ngfw_gbps": 0.8,
+   "threat_gbps": 0.45,
+   "ipsec_gbps": 1.3
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.checkpoint.com:443/downloads/products/1500-pro-security-gateway-datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Datasheet Feb 2024. ipsec = VPN AES-128 figure."
+ },
+ {
+  "brand": "Check Point",
+  "model": "Quantum Spark 1575",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Quantum Spark 1500",
+  "desc": "SMB gateway, GE WAN + GE/SFP DMZ + 8x GE LAN",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 210,
+   "d": 170,
+   "h": 42
+  },
+  "weight_kg": 0.87,
+  "power": {
+   "typ_w": null,
+   "max_w": 26.01,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External adapter 12V/3.3A 40W (Wi-Fi models 60W)"
+  },
+  "heat_btu_h": 88.75,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x WAN, 1x DMZ RJ45 / 1x DMZ SFP, 8x LAN; console USB-C"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 2.8,
+   "ngfw_gbps": 0.97,
+   "threat_gbps": 0.5,
+   "ipsec_gbps": 1.95
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.checkpoint.com:443/downloads/products/1500-pro-security-gateway-datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Datasheet Feb 2024. ipsec = VPN AES-128 figure. Power/BTU for non-Wi-Fi model."
+ },
+ {
+  "brand": "Check Point",
+  "model": "Quantum Spark 1595",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Quantum Spark 1500",
+  "desc": "SMB gateway, GE WAN + GE/SFP DMZ + 8x GE LAN",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 210,
+   "d": 170,
+   "h": 42
+  },
+  "weight_kg": 0.87,
+  "power": {
+   "typ_w": null,
+   "max_w": 26.01,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External adapter 12V/3.3A 40W (Wi-Fi models 60W)"
+  },
+  "heat_btu_h": 88.75,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x WAN, 1x DMZ RJ45 / 1x DMZ SFP, 8x LAN; console USB-C"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 2.8,
+   "ngfw_gbps": 1.3,
+   "threat_gbps": 0.66,
+   "ipsec_gbps": 2.6
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.checkpoint.com:443/downloads/products/1500-pro-security-gateway-datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Datasheet Feb 2024. ipsec = VPN AES-128 figure. Power/BTU for non-Wi-Fi model. 1595 also sold with Wi-Fi + LTE/5G."
+ },
+ {
+  "brand": "Check Point",
+  "model": "Quantum 3600",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Quantum Security Gateway",
+  "desc": "Branch NGFW desktop, 6x GE (incl. MGMT)",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 210,
+   "d": 210,
+   "h": 42
+  },
+  "weight_kg": 1.4,
+  "power": {
+   "typ_w": 21,
+   "max_w": 25,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "External 40W adapter 100-240V AC; optional 2nd adapter"
+  },
+  "heat_btu_h": 85,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 6,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "5x GE + 1x GE MGMT; console RJ45 + USB-C; rack kit optional"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 3.3,
+   "ngfw_gbps": 1.5,
+   "threat_gbps": 0.78,
+   "ipsec_gbps": 2.71
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.aquaorange.co.th/wp-content/uploads/2023/07/3600-security-gateway-datasheet.pdf",
+  "source2": "https://checkpoint.com/check-point-security-appliances-comparison",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Check Point datasheet (Jun 2023, partner-hosted copy). ipsec = VPN AES-128."
+ },
+ {
+  "brand": "Check Point",
+  "model": "Quantum 6200",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Quantum Security Gateway",
+  "desc": "1U NGFW, 10x GE base (Plus adds 4x SFP), 1 expansion slot",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 508,
+   "h": 44
+  },
+  "weight_kg": 6.75,
+  "power": {
+   "typ_w": null,
+   "max_w": 122,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "100-240V AC; Plus config has 2x AC (redundant)"
+  },
+  "heat_btu_h": 416.3,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "Base: 10x GE incl. Mgmt and Sync ports; Plus: +4x 1G SFP; 1 network expansion slot (max 4x 10G); console RJ45 + USB-C"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 9.0,
+   "ngfw_gbps": 3.72,
+   "threat_gbps": 1.8,
+   "ipsec_gbps": 2.57
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.blueally.com/checkfirewalls/datasheets/6200-security-gateway-datasheet.pdf",
+  "source2": "https://checkpoint.com/check-point-security-appliances-comparison",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Check Point datasheet (Jun 2020, partner-hosted copy). Weight 6.75 kg Base / 7.5 kg Plus. ipsec = VPN AES-128."
+ },
+ {
+  "brand": "WatchGuard",
+  "model": "Firebox T25",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Firebox T Series",
+  "desc": "Tabletop UTM, 5x GE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 215.9,
+   "d": 203.2,
+   "h": 43.2
+  },
+  "weight_kg": 0.88,
+  "power": {
+   "typ_w": null,
+   "max_w": 21,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External adapter 100-240V AC, 12V 2.5A 30W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 5,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "Port 0 = WAN, 1-4 LAN; console RJ45; 2x USB 3.0; optional rack kit WG9023"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 3.14,
+   "ngfw_gbps": null,
+   "threat_gbps": 0.403,
+   "ipsec_gbps": 1.02
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://watchguard.com/help/docs/help-center/en-us/Content/en-US/Hardware-Guides/firebox-t25-hardware-guide.html",
+  "source2": "https://www.watchguard.com/wgrd-products/appliances-compare/74741/74736/74731",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "fw = UDP 1518; threat = UTM full scan; ipsec = VPN UDP 1518."
+ },
+ {
+  "brand": "WatchGuard",
+  "model": "Firebox T45",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Firebox T Series",
+  "desc": "Tabletop UTM, 5x GE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 215.9,
+   "d": 203.2,
+   "h": 43.2
+  },
+  "weight_kg": 0.88,
+  "power": {
+   "typ_w": null,
+   "max_w": 24,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External adapter 100-240V AC, 12V 2.5A 30W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 5,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "Port 0 = WAN, 1-4 LAN; console RJ45; 2x USB 3.0; optional rack kit WG9023"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 3.94,
+   "ngfw_gbps": null,
+   "threat_gbps": 0.557,
+   "ipsec_gbps": 1.58
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.watchguard.com/help/docs/help-center/en-US/Content/en-US/Hardware-Guides/firebox-t45-hardware-guide.html",
+  "source2": "https://www.watchguard.com/wgrd-products/appliances-compare/74741/74736/74731",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "fw = UDP 1518; threat = UTM full scan; ipsec = VPN UDP 1518. T45-PoE variant has 1x PoE+ (802.3at) port."
+ },
+ {
+  "brand": "WatchGuard",
+  "model": "Firebox T85",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Firebox T Series",
+  "desc": "Tabletop UTM, 8x GE, optional SFP+ or 4G/LTE module",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": null
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": null,
+   "usb": null,
+   "notes": "Optional 1x SFP+ or 4G/LTE module"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 4.96,
+   "ngfw_gbps": null,
+   "threat_gbps": 0.943,
+   "ipsec_gbps": 2.04
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.watchguard.com/wgrd-products/appliances-compare/74741/74736/74731",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims/power not confirmed. fw = UDP 1518; threat = UTM full scan; ipsec = VPN UDP 1518."
+ },
+ {
+  "brand": "WatchGuard",
+  "model": "Firebox M290",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Firebox M Series",
+  "desc": "1U UTM, 8x GE, 1 module bay",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 307,
+   "h": 44
+  },
+  "weight_kg": 3.65,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Single 65W PSU, 90-264VAC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "1 interface module bay (1G copper/SFP, 10G SFP+, multigig); console RJ45; 2x USB 3.0"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.watchguard.com/help/docs/help-center/en-US/Content/en-us/Hardware-Guides/firebox-m290-390-590-690-hardware-guide.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Throughput not confirmed for M290. Hardware from WatchGuard M290/390/590/690 hardware guide."
+ },
+ {
+  "brand": "WatchGuard",
+  "model": "Firebox M390",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Firebox M Series",
+  "desc": "1U UTM, 8x GE, 1 module bay",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 307,
+   "h": 44
+  },
+  "weight_kg": 3.65,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Single 150W PSU, 90-264VAC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "1 interface module bay (1G copper/SFP, 10G SFP+, multigig); console RJ45; 2x USB 3.0"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 18.0,
+   "ngfw_gbps": null,
+   "threat_gbps": 2.4,
+   "ipsec_gbps": 5.2
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.watchguard.com/help/docs/help-center/en-US/Content/en-us/Hardware-Guides/firebox-m290-390-590-690-hardware-guide.html",
+  "source2": "https://www.watchguard.com/wgrd-products/appliances-compare/54686/54691/54696",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "fw = UDP 1518; threat = UTM full scan; ipsec = VPN UDP 1518. Hardware from WatchGuard M290/390/590/690 hardware guide."
+ },
+ {
+  "brand": "WatchGuard",
+  "model": "Firebox M590",
+  "sku": [],
+  "kind": "firewall",
+  "series": "Firebox M Series",
+  "desc": "1U UTM, 8x GE + 2x 10G SFP+, 1 module bay",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 438,
+   "d": 307,
+   "h": 44
+  },
+  "weight_kg": 4.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "Dual 150W PSU, 90-264VAC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "1 interface module bay (1G copper/SFP, 10G SFP+, multigig PoE); console RJ45; 2x USB 3.0"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 20.0,
+   "ngfw_gbps": null,
+   "threat_gbps": 3.3,
+   "ipsec_gbps": 6.84
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.watchguard.com/help/docs/help-center/en-US/Content/en-us/Hardware-Guides/firebox-m290-390-590-690-hardware-guide.html",
+  "source2": "https://www.watchguard.com/wgrd-products/appliances-compare/54686/54691/54696",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "fw = UDP 1518; threat = UTM full scan; ipsec = VPN UDP 1518. Hardware from WatchGuard M290/390/590/690 hardware guide."
+ }
+]

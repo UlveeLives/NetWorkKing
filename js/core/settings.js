@@ -20,7 +20,7 @@ function openSettings(tab){
     <p class="muted small">${ri ? esc(t("catLast",{d:new Date(ri.checked).toLocaleString(), v:ri.version || ri.date || "—"})) : esc(t("catNever"))}</p>
     <label class="fld"><span>${esc(t("catUrl"))}</span><input id="s-curl" value="${esc(s.catalogUrl)}"></label>
     <label class="chk"><input type="checkbox" id="s-cauto"${s.catalogAuto ? " checked" : ""}> ${esc(t("catAuto"))}</label>
-    <div class="btns"><button class="btn pri" data-m="catUpd">⟳ ${esc(t("catUpdNow"))}</button><button class="btn" data-m="catBrowse">📚 ${esc(t("catBrowse"))}</button><button class="btn" data-m="catExport">⤒ ${esc(t("catExportMine"))}</button></div>
+    <div class="btns"><button class="btn pri" data-m="catUpd">⟳ ${esc(t("catUpdNow"))}</button><button class="btn" data-m="devDb">🗂 ${esc(t("ddbBtn"))}</button><button class="btn" data-m="catBrowse">📚 ${esc(t("catBrowse"))}</button><button class="btn" data-m="catExport">⤒ ${esc(t("catExportMine"))}</button></div>
     <p class="muted small">${esc(t("catSrcHint"))}</p></div>
   <div class="tsec" data-t="ai"${cur === "ai" ? "" : " hidden"}><p class="small">${esc(t("aiIntro"))}</p>
     <label class="chk"><input type="checkbox" id="s-aion"${s.ai.enabled ? " checked" : ""}> ${esc(t("aiEnable"))}</label>
@@ -41,6 +41,7 @@ function openSettings(tab){
     helpAll: () => { s.help.off = {}; s.help.allOff = false; tourSeen.clear(); $$(".s-pg").forEach(x => x.checked = true); $("#s-alloff").checked = false; persist(); toast("✓ " + t("setHelpDone")); },
     catUpd: async bt => { readSettings(); bt.disabled = true; await CAT.update(true); bt.disabled = false; openSettings("cat"); },
     catBrowse: () => { closeModal(); openCatalogPicker("", () => {}); },
+    devDb: () => { readSettings(); closeModal(); openDevDb(); },
     catExport: () => saveText("networkking-catalog-mine.json", JSON.stringify({app:"networkking-catalog", version:today(), date:today(), models:CAT.user}, null, 1), "json", "application/json"),
     aiTest: () => { readSettings(); aiTest(); },
     places: () => { readSettings(); closeModal(); openPlaces(); },

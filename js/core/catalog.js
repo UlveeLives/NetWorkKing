@@ -58,6 +58,7 @@ function applySpec(d, r){
   if (!r) return;
   if (r.kind && KINDS[r.kind] && r.kind !== d.kind){ d.kind = r.kind; normDevice(d); }
   d.brand = r.brand; d.model = r.model; d.cat = CAT.key(r);
+  if (MOUNTS[d.kind]){ const mt = {pole:"out", ceiling:"ceiling", wall:"wall", desktop:"desktop", rack:"rack", tower:"tower"}[r.mount]; if (mt && MOUNTS[d.kind].includes(mt)) d.mount = mt; }
   const P2 = d.params, pw = r.power || {}, ports = r.ports || {}, dims = r.dims_mm || {};
   const has = v => v !== null && v !== undefined && v !== "";
   if (has(r.u) && r.u > 0) P2.h = r.u;
@@ -70,7 +71,7 @@ function applySpec(d, r){
   if (r.ups){ if (has(r.ups.va)) P2.va = r.ups.va; if (has(r.ups.w)) P2.upsW = r.ups.w; if (has(r.ups.battery_wh)) P2.wh = r.ups.battery_wh; }
   if (d.kind === "pdu" && pw.input){ const m = String(pw.input).match(/(\d+)\s*A/i); if (m) P2.amps = +m[1]; }
   if (d.kind === "camera" && r.camera){ const c = r.camera, C = d.camera;
-    if (has(c.style) && CAM_STYLES[c.style]) C.style = c.style; if (has(c.mp)) C.mp = c.mp; if (has(c.sensor)) C.sensor = c.sensor; if (has(c.ir_m)) C.ir = c.ir_m; if (has(c.ip_rating)) C.ipr = c.ip_rating + (c.ik ? " / " + c.ik : "");
+    if (camStyleOf(c.style)) C.style = camStyleOf(c.style); if (has(c.mp)) C.mp = c.mp; if (has(c.sensor)) C.sensor = c.sensor; if (has(c.ir_m)) C.ir = c.ir_m; if (has(c.ip_rating)) C.ipr = c.ip_rating + (c.ik ? " / " + c.ik : "");
     if (Array.isArray(c.lens_mm) && c.lens_mm.length){ C.lens = String(c.lens_mm[0]); C.lenses = c.lens_mm; C.hfovs = c.hfov_deg || []; if (Array.isArray(c.hfov_deg) && has(c.hfov_deg[0])) C.hfov = c.hfov_deg[0]; }
     else if (has(c.lens_mm)) C.lens = String(c.lens_mm);
     if (Array.isArray(c.codec) && c.codec.length) C.codecs = c.codec; if (has(c.max_fps)) C.maxFps = c.max_fps; if (has(c.power_w)) P2.poeIn = c.power_w; }
@@ -80,7 +81,7 @@ function applySpec(d, r){
 function specLine(r){
   const p = r.ports || {}, pw = r.power || {}, bits = [];
   if (r.u) bits.push(r.u + "U");
-  const pc = ["rj45_1g","rj45_mgig","rj45_10g","sfp","sfp_plus","sfp28","qsfp_plus","qsfp28"].map(k => num(p[k]) ? `${p[k]}×${({rj45_1g:"GE", rj45_mgig:"mGig", rj45_10g:"10GE", sfp:"SFP", sfp_plus:"SFP+", sfp28:"SFP28", qsfp_plus:"QSFP+", qsfp28:"QSFP28"})[k]}` : "").filter(Boolean); if (pc.length) bits.push(pc.join(" "));
+  const pc = ["rj45_100m","rj45_1g","rj45_mgig","rj45_10g","sfp","sfp_plus","sfp28","qsfp_plus","qsfp28"].map(k => num(p[k]) ? `${p[k]}×${({rj45_100m:"FE", rj45_1g:"GE", rj45_mgig:"mGig", rj45_10g:"10GE", sfp:"SFP", sfp_plus:"SFP+", sfp28:"SFP28", qsfp_plus:"QSFP+", qsfp28:"QSFP28"})[k]}` : "").filter(Boolean); if (pc.length) bits.push(pc.join(" "));
   if (r.poe && r.poe.budget_w) bits.push(`PoE ${r.poe.budget_w} W`);
   if (r.camera){ const c = r.camera; bits.push([c.mp && c.mp + " MP", Array.isArray(c.lens_mm) ? c.lens_mm.join("/") + " mm" : c.lens_mm, c.ir_m && "IR " + c.ir_m + " m"].filter(Boolean).join(" · ")); }
   if (r.nvr){ const n = r.nvr; bits.push([n.channels && n.channels + " ch", n.in_mbps && n.in_mbps + " Mbps", n.hdd_bays && n.hdd_bays + "×HDD"].filter(Boolean).join(" · ")); }
@@ -95,7 +96,7 @@ function openCatalogPicker(kind, onPick){
   let kinds = kind ? [kind] : [], q = "", brand = "";
   const draw = () => {
     const L = CAT.search(q, kinds).filter(r => !brand || r.brand === brand);
-    $("#cp-list").innerHTML = L.length ? L.slice(0, 200).map(r => `<button class="pk catit" data-m="sel" data-k="${esc(CAT.key(r))}"><svg viewBox="0 0 48 48" width="26" height="26">${ICO[(KINDS[r.kind] || KINDS.other).icon] || ICO.box}</svg><span><b>${esc(r.brand)} ${esc(r.model)}</b><small>${esc(kindName(r.kind))} · ${esc(specLine(r) || r.desc || "")}</small></span>${r._src === "user" ? `<span class="pill">${esc(t("catMine"))}</span>` : r.confidence === "medium" ? `<span class="pill warn" title="${esc(t("catMedium"))}">~</span>` : ""}</button>`).join("") + (L.length > 200 ? `<p class="muted small">… +${L.length - 200}</p>` : "") : `<p class="muted">${esc(t("catNone"))}</p>`;
+    $("#cp-list").innerHTML = L.length ? L.slice(0, 200).map(r => `<button class="pk catit" data-m="sel" data-k="${esc(CAT.key(r))}"><svg viewBox="0 0 48 48" width="26" height="26">${ICO[devIcon(recDevice(r))] || ICO.box}</svg><span><b>${esc(r.brand)} ${esc(r.model)}</b><small>${esc(kindName(r.kind))} · ${esc(specLine(r) || r.desc || "")}</small></span>${r._src === "user" ? `<span class="pill">${esc(t("catMine"))}</span>` : r.confidence === "medium" ? `<span class="pill warn" title="${esc(t("catMedium"))}">~</span>` : ""}</button>`).join("") + (L.length > 200 ? `<p class="muted small">… +${L.length - 200}</p>` : "") : `<p class="muted">${esc(t("catNone"))}</p>`;
   };
   modal(`<h3>📚 ${esc(t("catTitle"))}</h3><p class="muted small">${esc(t("catHint",{n:CAT.all().length}))}</p>
     <div class="row"><input id="cp-q" placeholder="${esc(t("catSearch"))}" autocomplete="off"><select id="cp-b"><option value="">${esc(t("catAllBrands"))}</option>${CAT.brands().map(x => opt(x, x, "")).join("")}</select></div>
@@ -103,7 +104,7 @@ function openCatalogPicker(kind, onPick){
     <div class="cpgrid"><div id="cp-list" class="scroll pick" style="max-height:52vh"></div><div id="cp-det" class="cpdet"><p class="muted">${esc(t("catPickHint"))}</p></div></div>
     <div class="mfoot"><button class="btn" data-m="newModel">＋ ${esc(t("catNew"))}</button><span class="grow"></span><button class="btn" data-m="close">${esc(t("cancel"))}</button><button class="btn pri" data-m="apply" id="cp-ok" disabled>${esc(t("catApply"))}</button></div>`, {
       k: (bt, e, k) => { kinds = k ? [k] : []; $$("#cp-k .chip").forEach(x => x.classList.toggle("on", x === bt)); draw(); },
-      sel: bt => { $$("#cp-list .on").forEach(x => x.classList.remove("on")); bt.classList.add("on"); const r = CAT.get(bt.dataset.k); $("#cp-det").innerHTML = specDetail(r); $("#cp-ok").disabled = false; $("#cp-ok").dataset.k = bt.dataset.k; },
+      sel: bt => { $$("#cp-list .on").forEach(x => x.classList.remove("on")); bt.classList.add("on"); const r = CAT.get(bt.dataset.k); $("#cp-det").innerHTML = `<div class="cppic">${recPic(r, 96)}</div>` + specDetail(r); $("#cp-ok").disabled = false; $("#cp-ok").dataset.k = bt.dataset.k; },
       apply: bt => { const r = CAT.get(bt.dataset.k); closeModal(); if (r) onPick(r); },
       delUser: async bt => { await CAT.delUser(bt.dataset.k); draw(); $("#cp-det").innerHTML = ""; },
       newModel: () => openNewModel(kind || (kinds[0] || ""), onPick)
@@ -123,7 +124,7 @@ function specDetail(r){
   if (r.poe_in) add(t("f_poeIn"), [r.poe_in.class, r.poe_in.max_w && r.poe_in.max_w + " W"].filter(Boolean).join(" · "));
   if (r.perf) add(t("catPerf"), Object.entries(r.perf).filter(([, v]) => v).map(([k, v]) => `${k.replace(/_gbps/, "")}: ${v} ${/mpps/.test(k) ? "Mpps" : "Gbps"}`).join(" · "));
   if (r.wifi){ add("Wi-Fi", [r.wifi.std, r.wifi.streams].filter(Boolean).join(" · ")); Object.entries(r.wifi.bands || {}).forEach(([bd, x]) => x && add(bd + " GHz", [x.tx_dbm && x.tx_dbm + " dBm", x.gain_dbi && x.gain_dbi + " dBi"].filter(Boolean).join(" · "))); add(t("catClients"), r.wifi.max_clients); }
-  if (r.camera){ const c = r.camera; add(t("camStyle"), c.style); add("MP", c.mp); add(t("camRes"), c.resolution); add(t("camSensor"), c.sensor); add(t("camLens"), Array.isArray(c.lens_mm) ? c.lens_mm.map((l, i) => l + " mm" + (c.hfov_deg && c.hfov_deg[i] ? " (" + c.hfov_deg[i] + "°)" : "")).join(", ") : c.lens_mm); add("IR", c.ir_m && c.ir_m + " m"); add(t("camCodec"), c.codec); add("FPS", c.max_fps); add("IP/IK", [c.ip_rating, c.ik].filter(Boolean).join(" / ")); add(t("f_poeIn"), c.power_w && c.power_w + " W"); }
+  if (r.camera){ const c = r.camera; add(t("camStyle"), camStyleOf(c.style) ? t("cs_" + camStyleOf(c.style)) : c.style); add("MP", c.mp); add(t("camRes"), c.resolution); add(t("camSensor"), c.sensor); add(t("camLens"), Array.isArray(c.lens_mm) ? c.lens_mm.map((l, i) => l + " mm" + (c.hfov_deg && c.hfov_deg[i] ? " (" + c.hfov_deg[i] + "°)" : "")).join(", ") : c.lens_mm); add("IR", c.ir_m && c.ir_m + " m"); add(t("camCodec"), c.codec); add("FPS", c.max_fps); add("IP/IK", [c.ip_rating, c.ik].filter(Boolean).join(" / ")); add(t("f_poeIn"), c.power_w && c.power_w + " W"); }
   if (r.nvr){ const n = r.nvr; add(t("nvrCh"), n.channels); add(t("nvrIn"), n.in_mbps && n.in_mbps + " Mbps"); add("HDD", [n.hdd_bays && n.hdd_bays + " ×", n.hdd_max_tb && n.hdd_max_tb + " TB"].filter(Boolean).join(" ")); add("RAID", n.raid); add("PoE", [n.poe_ports && n.poe_ports + " port", n.poe_budget_w && n.poe_budget_w + " W"].filter(Boolean).join(" · ")); add(t("nvrMaxMp"), n.max_mp); }
   if (r.ups){ add("VA / W", `${r.ups.va ?? "?"} / ${r.ups.w ?? "?"}`); add(t("upsTopo"), r.ups.topology); add(t("f_wh"), r.ups.battery_wh); add(t("upsOut"), r.ups.outlets); }
   add(t("catNotes"), r.notes);
@@ -198,4 +199,52 @@ async function aiTest(){
   try { const r = await fetch("https://api.anthropic.com/v1/messages", {method:"POST", headers:{"content-type":"application/json", "x-api-key":S.key, "anthropic-version":"2023-06-01", "anthropic-dangerous-direct-browser-access":"true"}, body:JSON.stringify({model:S.model || "claude-sonnet-5-5", max_tokens:16, messages:[{role:"user", content:"Reply OK"}]})});
     const j = await r.json().catch(() => null); if (!r.ok) throw new Error((j && j.error && j.error.message) || "HTTP " + r.status); toast("✓ " + t("aiOk")); }
   catch(e){ toast("⚠ " + (e.message || e)); }
+}
+
+/* ---------- device pictures ----------
+   Rack devices: the front view (same drawing as Rack U-Layout, with the model's own port count). Everything else: the
+   product picture that also goes on plans and diagrams (camera type, AP mounting, desktop / rack form …). */
+function recDevice(r){ const d = normDevice({id:"cat:" + CAT.key(r), kind:KINDS[r.kind] ? r.kind : "other"}); try { applySpec(d, r); } catch(e){} return d; }
+const frontView = (d, r) => { const K = KINDS[d.kind] || {}; if (!K.rack || !window.rackFaceHtml) return false; if (!r) return !(MOUNTS[d.kind] && d.mount && !["rack"].includes(d.mount)) && d.kind !== "ups";
+  return num(r.u) > 0 && !["desktop", "wall", "ceiling", "pole"].includes(r.mount) && !(d.kind === "nas" && r.mount === "desktop"); };
+function devPic(d, r, size){ size = size || 40; if (frontView(d, r)) return `<div class="dpic fv">${rackFaceHtml(d)}</div>`;
+  return `<div class="dpic"><svg viewBox="0 0 48 48" width="${size}" height="${size}">${ICO[devIcon(d)] || ICO.box}</svg></div>`; }
+const recPic = (r, size) => devPic(recDevice(r), r, size);
+/* ---------- every device the program knows: models of the catalog and the device types ---------- */
+function openDevDb(tab0){
+  const S = {tab:tab0 || "models", q:"", kind:"", brand:"", n:120, open:null};
+  const kindsUsed = () => KIND_ORDER.filter(k => CAT.all().some(r => r.kind === k));
+  const body = () => {
+    if (S.tab === "kinds"){ const L = expandKinds(KIND_ORDER.filter(k => k !== "internet")).filter(kv => { const q = S.q.toLowerCase(); return !q || variantName(kv).toLowerCase().includes(q) || kindName(kv.split(".")[0]).toLowerCase().includes(q); });
+      return `<table class="t ddb"><tr><th>${esc(t("ddbPic"))}</th><th>${esc(t("ddbType"))}</th><th>${esc(t("ddbGroup"))}</th><th class="c">${esc(t("f_ports"))}</th><th class="c">U</th><th class="c">${esc(t("ddbModels"))}</th></tr>${L.map(kv => { const [k, v] = kv.split("."), K = KINDS[k] || {}, d = newDevice(kv); const n = CAT.all().filter(r => r.kind === k).length;
+        return `<tr><td class="pc">${devPic(d, null, 60)}</td><td><b>${esc(variantName(kv))}</b>${v ? `<br><small class="muted">${esc(kindName(k))}</small>` : ""}</td><td>${esc(t("sm_cat_" + K.cat) === "sm_cat_" + K.cat ? K.cat || "" : t("sm_cat_" + K.cat))}</td><td class="c">${K.ports || "—"}${K.sfp ? ` <small class="muted">(+${K.sfp} SFP)</small>` : ""}</td><td class="c">${K.rack ? (K.h || 1) : "—"}</td><td class="c">${n ? `<button class="btn small ghost" data-m="showKind:${k}">${n} ›</button>` : "—"}</td></tr>`; }).join("")}</table>`; }
+    const words = S.q.toLowerCase().split(/\s+/).filter(Boolean);
+    const L = CAT.all().filter(r => (!S.kind || r.kind === S.kind) && (!S.brand || r.brand === S.brand) && words.every(w => [r.brand, r.model, (r.sku || []).join(" "), r.series, r.desc, kindName(r.kind)].join(" ").toLowerCase().includes(w)));
+    const dm = r => { const x = r.dims_mm || {}; return [x.w, x.d, x.h].some(Boolean) ? `${x.w ?? "?"}×${x.d ?? "?"}×${x.h ?? "?"}` : ""; };
+    return `<p class="small muted">${esc(t("ddbCount", {n:L.length}))}</p><table class="t ddb"><tr><th>${esc(t("ddbPic"))}</th><th>${esc(t("f_brand"))} / ${esc(t("f_model"))}</th><th>${esc(t("f_kind"))}</th><th>${esc(t("ddbSpec"))}</th><th class="c">U</th><th>${esc(t("catDims"))}</th><th class="c">W</th><th>${esc(t("catSource"))}</th></tr>
+      ${L.slice(0, S.n).map(r => { const k = CAT.key(r), on = S.open === k, pw = r.power || {};
+        return `<tr class="click${on ? " on" : ""}" data-m="row" data-k="${esc(k)}"><td class="pc">${recPic(r, 60)}</td><td><b>${esc(r.brand)}</b><br>${esc(r.model)}${r.sku && r.sku.length && r.sku[0] !== r.model ? `<br><small class="muted mono">${esc(r.sku.join(", "))}</small>` : ""}</td><td class="nw">${esc(kindName(r.kind))}${r.camera && camStyleOf(r.camera.style) ? `<br><small class="muted">${esc(t("cs_" + camStyleOf(r.camera.style)))}</small>` : ""}</td>
+          <td class="small">${esc(specLine(r))}</td><td class="c">${r.u || "—"}</td><td class="small nw">${esc(dm(r))}</td><td class="c small">${pw.max_w ?? pw.typ_w ?? "—"}</td>
+          <td class="small nw">${r.source ? `<a href="${esc(r.source)}" target="_blank" rel="noopener" data-m="noop">${esc(r.source.replace(/^https?:\/\/(www\.)?/, "").split("/")[0].replace(/:\d+$/, ""))}</a>` : ""}${r.verified ? `<br><span class="muted">${esc(r.verified)}</span>` : ""}${r.confidence === "medium" ? ` <span class="pill warn" title="${esc(t("catMedium"))}">≈</span>` : ""}${r._src === "user" ? ` <span class="pill">${esc(t("catMine"))}</span>` : ""}</td></tr>
+          ${on ? `<tr class="ddbx"><td></td><td colspan="7"><div class="ddbd"><div>${recPic(r, 120)}</div><div>${specDetail(r)}</div></div></td></tr>` : ""}`; }).join("")}</table>
+      ${L.length > S.n ? `<div class="btns" style="justify-content:center"><button class="btn" data-m="more">${esc(t("ddbMore", {n:L.length - S.n}))}</button></div>` : ""}`;
+  };
+  const draw = () => { const sc = $("#ddb-l") ? $("#ddb-l").scrollTop : 0; $("#ddb-l").innerHTML = body(); $("#ddb-l").scrollTop = sc; $$("#ddb-t .chip").forEach(x => x.classList.toggle("on", x.dataset.m === "tab:" + S.tab)); $("#ddb-f").hidden = S.tab !== "models"; };
+  modal(`<h3>🗂 ${esc(t("ddbT"))}</h3><p class="muted small">${esc(t("ddbH"))}</p>
+    <div class="row" style="gap:8px;flex-wrap:wrap"><div class="chips" id="ddb-t"><button class="chip" data-m="tab:models">📦 ${esc(t("ddbTabModels", {n:CAT.all().length}))}</button><button class="chip" data-m="tab:kinds">🧩 ${esc(t("ddbTabKinds", {n:expandKinds(KIND_ORDER).length - 1}))}</button></div>
+      <input id="ddb-q" placeholder="🔍 ${esc(t("catSearch"))}" autocomplete="off" style="flex:1;min-width:180px">
+      <span id="ddb-f" class="row" style="gap:6px"><select id="ddb-k"><option value="">${esc(t("ddbAllKinds"))}</option>${kindsUsed().map(k => opt(k, kindName(k) + " (" + CAT.all().filter(r => r.kind === k).length + ")", "")).join("")}</select>
+      <select id="ddb-b"><option value="">${esc(t("catAllBrands"))}</option>${CAT.brands().map(x => opt(x, x, "")).join("")}</select></span></div>
+    <div id="ddb-l" class="scroll" style="max-height:64vh;margin-top:8px"></div>
+    <div class="mfoot"><span class="muted small">${esc(t("ddbFoot"))}</span><span class="grow"></span><button class="btn" data-m="close">${esc(t("close"))}</button></div>`, {
+    tab:(bt, e, k) => { S.tab = k; S.n = 120; draw(); },
+    showKind:(bt, e, k) => { S.tab = "models"; S.kind = k; S.n = 120; $("#ddb-k").value = k; draw(); $("#ddb-l").scrollTop = 0; },
+    row:bt => { const k = bt.dataset.k; S.open = S.open === k ? null : k; draw(); },
+    more:() => { S.n += 200; draw(); },
+    noop:() => {}
+  }, {xwide:true, nofocus:true});
+  $("#ddb-q").addEventListener("input", debounce(e => { S.q = e.target.value; S.n = 120; draw(); }, 150));
+  $("#ddb-k").addEventListener("change", e => { S.kind = e.target.value; S.n = 120; draw(); });
+  $("#ddb-b").addEventListener("change", e => { S.brand = e.target.value; S.n = 120; draw(); });
+  draw();
 }

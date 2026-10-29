@@ -318,4 +318,6 @@ window.addEventListener("resize", debounce(() => { if (UI.app === "rack" && curT
 document.addEventListener("change", e => { if (e.target.dataset && e.target.dataset.rkcords){ P().cur.rkCords = e.target.checked; persist(); rackCords(); } });
 APPS.rack.init = () => { UI.rackFace = P().cur.rackFace || "front"; wire(); };
 window.rackPower = rackPower;
+// front view of one device on its own (device list, catalog): the same drawing as in the rack, between two rack ears
+window.rackFaceHtml = d => { const h = devH(d); return `<div class="rkthumb" style="height:${h * UH}px"><div class="rkd dv t-${ftOf(d)} k-${d.kind}" style="top:0;height:${h * UH - 1}px">${face(d)}</div></div>`; };
 })();

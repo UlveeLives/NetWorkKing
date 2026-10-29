@@ -715,3 +715,16 @@ select.ipm{width:44px;padding:2px;margin-right:4px}
 .rkd .led.abl{position:absolute;left:5px;top:50%;margin-top:-2px}
 .rkd .sfp.abr{position:absolute;right:15px;top:50%;transform:translateY(-50%)}
 .rkd .sfp.abr.two{display:grid;grid-template-columns:repeat(2,8px);gap:1px 2px}
+/* 3.7 — device pictures and the device list */
+.dpic{display:flex;align-items:center;justify-content:center;min-height:44px}
+.dpic.fv{zoom:.58;min-height:0;padding:4px 0}
+.rkthumb{position:relative;width:272px;background:#08090a;border-left:8px solid #2b2e35;border-right:8px solid #2b2e35;border-radius:2px;box-sizing:content-box}
+.rkthumb .rkd{cursor:default}
+table.ddb td.pc{width:170px;text-align:center;padding:4px 6px}
+table.ddb td.pc .dpic.fv{display:inline-flex}
+table.ddb tr.click:hover td{background:color-mix(in srgb,var(--pri) 6%,transparent)}
+table.ddb tr.on td{background:color-mix(in srgb,var(--pri) 10%,transparent)}
+.ddbd{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:6px 0}
+.ddbd .dpic.fv{zoom:.9}
+.cppic{display:flex;justify-content:center;margin-bottom:8px}.cppic .dpic.fv{zoom:.75}
+table.ddb .pill{display:inline-block;width:auto;padding:0 6px}

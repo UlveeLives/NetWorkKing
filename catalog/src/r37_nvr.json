@@ -1,0 +1,2325 @@
+[
+ {
+  "brand": "Hikvision",
+  "model": "DS-7608NXI-K1(E)",
+  "sku": [
+   "DS-7608NXI-K1(E)",
+   "DS-7608NXI-K1(E)/IO4+1&2Lan"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR",
+  "desc": "8-ch 1U AcuSense NVR, 1 SATA, no PoE",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 319,
+   "d": 240,
+   "h": 48
+  },
+  "weight_kg": 1.2,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12 VDC, 1.5 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x GbE (IO4+1&2Lan variant: 2x GbE + alarm 4/1); 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 80,
+   "out_mbps": 80,
+   "hdd_bays": 1,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000170616/DS-7608NXI-K1E_Datasheet_20250716.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Consumption <=10 W without HDD. Weight <=1.2 kg without HDD. HDMI 4K/30 Hz, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7608NXI-I2/8P/S(E)",
+  "sku": [
+   "DS-7608NXI-I2/8P/S(E)"
+  ],
+  "kind": "nvr",
+  "series": "Pro Series AcuSense 4K NVR",
+  "desc": "8-ch 1U AcuSense NVR, 2 SATA, 8x PoE (150 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 385,
+   "d": 317,
+   "h": 52
+  },
+  "weight_kg": 2.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 8,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 150,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 80,
+   "out_mbps": 256,
+   "hdd_bays": 2,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 8,
+   "poe_budget_w": 150,
+   "max_mp": 32,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000032110/DS-7608NXI-I2_8P_SE_Datasheet_20260707.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Consumption <=30 W without HDD and PoE off. Weight <=2.5 kg without HDD. PoE 802.3af/at. 32 MP on 1 channel. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7732NXI-K4/16P/VPro",
+  "sku": [
+   "DS-7732NXI-K4/16P/VPro(STD)",
+   "DS-7732NXI-K4/16P/VPro(NEU)"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR (VPro)",
+  "desc": "32-ch 1.5U NVR, 4 SATA, 16x PoE (200 W)",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 391,
+   "h": 72
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 256,
+   "out_mbps": 100,
+   "hdd_bays": 4,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000160268/DS-7732NXI-K4_16P_VPro_Datasheet_20251217.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Rack units not stated; 72 mm height matches the 1.5U K4 chassis. Consumption <=50 W without HDD. Weight <=5 kg without HDD. PoE 802.3af/at. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7616NXI-I2/S",
+  "sku": [
+   "DS-7616NXI-I2/S",
+   "DS-7616NXI-I2/S(E)"
+  ],
+  "kind": "nvr",
+  "series": "Pro Series AcuSense 4K NVR",
+  "desc": "16-ch 1U AcuSense NVR, 2 SATA, 2x GbE, no PoE",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 385,
+   "d": 317,
+   "h": 52
+  },
+  "weight_kg": 2.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "2x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 256,
+   "hdd_bays": 2,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/sm000060188/DS-7616NXI-I2_S_Datasheet_20260702.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Values for base/(E) variants; (C) variants: 8 TB/disk, 12 MP max, 385x315x52 mm. Consumption <=30 W without HDD. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7732NXI-I4/16P/S",
+  "sku": [
+   "DS-7732NXI-I4/16P/S"
+  ],
+  "kind": "nvr",
+  "series": "Pro Series AcuSense 4K NVR",
+  "desc": "32-ch 1.5U NVR, 4 SATA, 16x PoE (200 W), 2x HDMI",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 445,
+   "d": 400,
+   "h": 75
+  },
+  "weight_kg": 7.0,
+  "power": {
+   "typ_w": null,
+   "max_w": 360,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; (E) variant adds eSATA; alarm 16/4"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 256,
+   "out_mbps": 256,
+   "hdd_bays": 4,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": 12,
+   "hdmi": 2,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/sm000060194/DS-7732NXI-I4_16P_S_Datasheet_20260605.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Spec table: 19-inch 1.5U chassis (headline says 1U). Total power <=360 W, <=30 W without HDD. HDMI1 4K/60, HDMI2 1080p. (E) variant: 440x391x75 mm, 3.6 kg, alarm 16/9, 32 MP. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7732NXI-I4/VPro",
+  "sku": [
+   "DS-7732NXI-I4/VPro(STD)",
+   "DS-7732NXI-I4/VPro(NEU)"
+  ],
+  "kind": "nvr",
+  "series": "AcuSeek NVR (VPro)",
+  "desc": "32-ch 1.5U NVR, 4 SATA (20 TB each), 2x GbE, 2x HDMI",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 391,
+   "h": 72
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/9"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 384,
+   "out_mbps": 256,
+   "hdd_bays": 4,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000156573/DS-7732NXI-I4_VPro_Datasheet_20251201.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1.5U chassis. Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 1080p/60. Up to 4-ch 32 MP. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7616NXI-I2/16P/S(E)",
+  "sku": [
+   "DS-7616NXI-I2/16P/S(E)"
+  ],
+  "kind": "nvr",
+  "series": "AcuSense Series NVR",
+  "desc": "16-ch 1U AcuSense NVR, 2 SATA, 16x PoE (200 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 384,
+   "d": 317,
+   "h": 52
+  },
+  "weight_kg": 2.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 256,
+   "hdd_bays": 2,
+   "hdd_max_tb": 14,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": 32,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://files.irroba.com.br/acreaaoi/download/f2c9af620824b2cd760f4d914736c0ef.ds-7616nxi-i2_16p_se_datasheet_20250114.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hikvision datasheet (20250114) hosted by a reseller, Hikvision site copy not read, so medium. Consumption <=30 W without HDD and PoE off. Up to 4-ch 32 MP. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-9632NXI-I8/S",
+  "sku": [
+   "DS-9632NXI-I8/S"
+  ],
+  "kind": "nvr",
+  "series": "AcuSense 4K NVR",
+  "desc": "32-ch 2U NVR, 8 SATA, RAID 0/1/5/6/10, 2x GbE, 2x HDMI + 2x VGA",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 442,
+   "d": 459,
+   "h": 92
+  },
+  "weight_kg": 8.7,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; RS-485, RS-232; alarm 16/8"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 320,
+   "out_mbps": 256,
+   "hdd_bays": 8,
+   "hdd_max_tb": 16,
+   "raid": [
+    "0",
+    "1",
+    "5",
+    "6",
+    "10"
+   ],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 12,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/sm000060219/DS-9632NXI-I8_S_Datasheet_20260605.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Base-model values. (E) variant: 445x460x93 mm, 8.3 kg, 14 TB/disk, 2 rear USB 3.0, alarm 16/9. (C) variants: 10 TB/disk, 1 VGA. 32/24 MP on limited channels. RAID and AI functions mutually exclusive. Consumption <=30 W."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-9632NXI-I8/VPro",
+  "sku": [
+   "DS-9632NXI-I8/VPro(STD)",
+   "DS-9632NXI-I8/VPro(NEU)"
+  ],
+  "kind": "nvr",
+  "series": "AcuSeek NVR (VPro)",
+  "desc": "32-ch 2U NVR, 8 hot-swap SATA (20 TB), RAID 0/1/5/6/10, 2x HDMI + 2x VGA",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 442,
+   "d": 462,
+   "h": 88
+  },
+  "weight_kg": 7.1,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 4,
+   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/9"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 384,
+   "out_mbps": 256,
+   "hdd_bays": 8,
+   "hdd_max_tb": 20,
+   "raid": [
+    "0",
+    "1",
+    "5",
+    "6",
+    "10"
+   ],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000156571/DS-9632NXI-I8_VPro_Datasheet_20260211.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 and VGA 1080p/60. Up to 4-ch >12 MP. Weight without HDD."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7716NXI-K4/VPro",
+  "sku": [
+   "DS-7716NXI-K4/VPro",
+   "DS-7716NXI-K4/VPro/IO16+9"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense NVR (VPro)",
+  "desc": "16-ch 1.5U NVR, 4 SATA, 2x GbE, no PoE",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 391,
+   "h": 72
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 2x RS-485, 1x RS-232; alarm 16/4 (IO16+9 variant 16/9)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 160,
+   "hdd_bays": 4,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000160264/DS-7716NXI-K4_VPro_Datasheet_20241105.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1.5U chassis. Consumption <=50 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-9616NXI-I8/VPro",
+  "sku": [
+   "DS-9616NXI-I8/VPro(STD)",
+   "DS-9616NXI-I8/VPro(NEU)"
+  ],
+  "kind": "nvr",
+  "series": "AcuSeek NVR (VPro)",
+  "desc": "16-ch 2U NVR, 8 SATA (20 TB), RAID 0/1/5/6/10, 2x HDMI + 2x VGA",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 442,
+   "d": 462,
+   "h": 88
+  },
+  "weight_kg": 7.1,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 4,
+   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/9"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 256,
+   "hdd_bays": 8,
+   "hdd_max_tb": 20,
+   "raid": [
+    "0",
+    "1",
+    "5",
+    "6",
+    "10"
+   ],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000156570/DS-9616NXI-I8_VPro_Datasheet_20251022.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 and VGA 1080p/60. Up to 4-ch 32/24 MP. Weight without HDD."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7608NXI-K2/VPro",
+  "sku": [
+   "DS-7608NXI-K2/VPro"
+  ],
+  "kind": "nvr",
+  "series": "AcuSeek K VPro NVR",
+  "desc": "8-ch 1U NVR, 2 SATA, no PoE",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 384,
+   "d": 317,
+   "h": 52
+  },
+  "weight_kg": 3.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12 VDC, 3.33 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/1"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 80,
+   "out_mbps": 160,
+   "hdd_bays": 2,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.montersi.pl/instrukcje/DS_7608NXI_K2_VPro_Datasheet_20260701.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hikvision datasheet (20260701) hosted by Polish reseller montersi.pl, so medium. Consumption <=15 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-9616NXI-I8/S",
+  "sku": [
+   "DS-9616NXI-I8/S"
+  ],
+  "kind": "nvr",
+  "series": "AcuSense 4K NVR",
+  "desc": "16-ch 2U NVR, 8 SATA, RAID 0/1/5/6/10, 2x GbE, 2x HDMI + 2x VGA",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 442,
+   "d": 459,
+   "h": 92
+  },
+  "weight_kg": 8.7,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/8"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 320,
+   "out_mbps": 256,
+   "hdd_bays": 8,
+   "hdd_max_tb": 16,
+   "raid": [
+    "0",
+    "1",
+    "5",
+    "6",
+    "10"
+   ],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 12,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000049459/DS-9616NXI-I8_S_Datasheet_20260203.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Base-model values. 32/24 MP only on limited channels (ultra HD mode). RAID and AI mutually exclusive. HDMI1 4K/60, HDMI2 1080p. (E) variant: 160 Mbps in, 14 TB/disk, 445x460x93 mm, 8.3 kg. Consumption <=30 W."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7732NXI-I4/16P/VPro",
+  "sku": [
+   "DS-7732NXI-I4/16P/VPro"
+  ],
+  "kind": "nvr",
+  "series": "I VPro Series AcuSeek NVR",
+  "desc": "32-ch 1.5U NVR, 4 SATA (20 TB), 16x PoE (200 W), 2x HDMI",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 391,
+   "h": 72
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": 360,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/9"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 384,
+   "out_mbps": 256,
+   "hdd_bays": 4,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": null,
+   "hdmi": 2,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000156574/DS-7732NXI-I4_16P_VPro_Datasheet_20260810.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Power supply <=360 W; consumption <=50 W without HDD and PoE. HDMI1 4K/30, HDMI2 1080p/60. PoE 802.3af/at. Max camera resolution not clearly stated (8 MP for AcuSeek). RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "iDS-9632NXI-P8",
+  "sku": [
+   "iDS-9632NXI-P8(STD)",
+   "iDS-9632NXI-P8(NEU)"
+  ],
+  "kind": "nvr",
+  "series": "DeepinMind Pro NVR",
+  "desc": "32-ch DeepinMind NVR, 8 SATA (20 TB), RAID 0/1/5/6/10, 8K HDMI, 2x HDMI + 2x VGA",
+  "mount": null,
+  "u": null,
+  "dims_mm": {
+   "w": 442,
+   "d": 540,
+   "h": 88
+  },
+  "weight_kg": 8.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 4,
+   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; RS-232, RS-485; alarm 16/9"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 320,
+   "out_mbps": 400,
+   "hdd_bays": 8,
+   "hdd_max_tb": 20,
+   "raid": [
+    "0",
+    "1",
+    "5",
+    "6",
+    "10"
+   ],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000171551/iDS-9632NXI-P8_Datasheet_20251204.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Rack units not stated (88 mm high = 2U size). HDMI1 8K/30, HDMI2 4K/60. 32/24 MP on 8 channels only. Consumption <=50 W without HDD. PSU redundancy not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7616NXI-K2/VPro",
+  "sku": [
+   "DS-7616NXI-K2/VPro"
+  ],
+  "kind": "nvr",
+  "series": "AcuSeek K VPro NVR",
+  "desc": "16-ch 1U NVR, 2 SATA, no PoE",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 384,
+   "d": 317,
+   "h": 52
+  },
+  "weight_kg": 3.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12 VDC, 3.33 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/1"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 160,
+   "hdd_bays": 2,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.montersi.pl/instrukcje/DS_7616NXI_K2_VPro_Datasheet_20260701.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hikvision datasheet (20260701) hosted by Polish reseller montersi.pl, so medium. Consumption <=15 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7608NXI-K1/8P/VPro",
+  "sku": [
+   "DS-7608NXI-K1/8P/VPro"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR (VPro)",
+  "desc": "8-ch PoE 1U NVR, 1 SATA, 8x PoE (75 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 319,
+   "d": 240,
+   "h": 48
+  },
+  "weight_kg": 1.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "48 VDC, 1.875 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 8,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0; alarm 4/1"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 75,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 80,
+   "out_mbps": 80,
+   "hdd_bays": 1,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 8,
+   "poe_budget_w": 75,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://aacgroup.com.my/uploads/product_pdf/DS-7608NXI-K1_8P_VPro_Datasheet_20260622.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hikvision datasheet (20260622) hosted by distributor AAC Group, so medium. PoE 802.3af/at. Consumption <=10 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7732NXI-K4(E)",
+  "sku": [
+   "DS-7732NXI-K4(E)"
+  ],
+  "kind": "nvr",
+  "series": "K Series AcuSense 4K NVR",
+  "desc": "32-ch 1.5U NVR, 4 SATA, 2x GbE, no PoE",
+  "mount": "rack",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 391,
+   "h": 72
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 256,
+   "out_mbps": 160,
+   "hdd_bays": 4,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://aacgroup.com.my/uploads/product_pdf/DS-7732NXI-K4(E)_Datasheet_20250804.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hikvision datasheet (20250804) hosted by distributor AAC Group, so medium. Consumption <=50 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-7616NXI-I2/16P/VPro",
+  "sku": [
+   "DS-7616NXI-I2/16P/VPro"
+  ],
+  "kind": "nvr",
+  "series": "AcuSeek NVR (VPro)",
+  "desc": "16-ch 1U NVR, 2 SATA (20 TB), 16x PoE (200 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 384,
+   "d": 371,
+   "h": 52
+  },
+  "weight_kg": 4.0,
+  "power": {
+   "typ_w": null,
+   "max_w": 180,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Internal PSU (<=180 W)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 200,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 192,
+   "out_mbps": 256,
+   "hdd_bays": 2,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 200,
+   "max_mp": 32,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://netviewcctv.co.uk/HIKVISION/Datasheets/NVR/Datasheet-of-DS-7616NXI-I2_16P_VPro.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Hikvision datasheet hosted by UK reseller Netview CCTV, so medium. Power supply <=180 W (as stated; PoE budget <=200 W), consumption <=50 W. PoE 802.3af/at. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR4432-EI",
+  "sku": [
+   "NVR4432-EI",
+   "DHI-NVR4432-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR 4-EI Series",
+  "desc": "32-ch 1.5U 4 HDD WizSense NVR, 2x GbE, no PoE",
+  "mount": null,
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 415.6,
+   "h": 76
+  },
+  "weight_kg": 4.25,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "2x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 256,
+   "out_mbps": 256,
+   "hdd_bays": 4,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 16,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-4-ei-series/nvr4432-ei",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Bandwidth 256 Mbps with AI off, 180 Mbps with AI on. Consumption <10 W without HDD. HDMI up to 4K, VGA 1080p. RAID not stated (Disk Group only). Mounting not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR5232-EI",
+  "sku": [
+   "NVR5232-EI",
+   "DHI-NVR5232-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR 5-EI Series",
+  "desc": "32-ch 1U 2 HDD WizSense NVR, 8K HDMI, no PoE",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 375,
+   "d": 284.4,
+   "h": 56
+  },
+  "weight_kg": 1.57,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12 VDC, 4 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/2; RS-232, RS-485"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 384,
+   "out_mbps": 384,
+   "hdd_bays": 2,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/WizSense-Series/NVR-5-EI-Series/NVR5232-EI",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Bandwidth 384 Mbps with AI off, 200 Mbps with AI on. HDMI up to 7680x4320, VGA 1080p. Consumption <=10 W without HDD. RAID not stated (Disk Group only)."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR2104HS-P-I2",
+  "sku": [
+   "NVR2104HS-P-I2",
+   "DHI-NVR2104HS-P-I2"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR2-I2 Series",
+  "desc": "4-ch compact 1U WizSense NVR, 1 HDD, 4x PoE (38 W)",
+  "mount": "desktop",
+  "u": 1,
+  "dims_mm": {
+   "w": 260,
+   "d": 232.7,
+   "h": 47.6
+  },
+  "weight_kg": 0.86,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "53 VDC, 1.13 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 5,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": 38,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 4,
+   "in_mbps": 80,
+   "out_mbps": 60,
+   "hdd_bays": 1,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 4,
+   "poe_budget_w": 38,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr2-i2-series/nvr2104hs-p-i2",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PoE max 25.5 W per port; PoE standard not stated. HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. RAID not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR5432-EI",
+  "sku": [
+   "NVR5432-EI",
+   "DHI-NVR5432-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR 5-EI Series",
+  "desc": "32-ch 1.5U 4 HDD WizSense NVR, 2x GbE, 2x HDMI + 2x VGA",
+  "mount": "rack-optional",
+  "u": 1.5,
+  "dims_mm": {
+   "w": 440,
+   "d": 415.1,
+   "h": 70
+  },
+  "weight_kg": 4.74,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC, 50-60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x GbE; 1 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/6; RS-232, RS-485"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 384,
+   "out_mbps": 384,
+   "hdd_bays": 4,
+   "hdd_max_tb": 16,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 32,
+   "hdmi": 2,
+   "vga": 2
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/in/products/network-products/network-recorders/WizSense-Series/NVR-5-EI-Series/4HDD/DHI-NVR5432-EI",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Bandwidth 384 Mbps with AI off, 200 Mbps with AI on. HDMI up to 4K, VGA 1080p. Consumption <=13 W without HDD. Rack or desktop install. RAID not stated (Disk Group only)."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR4104HS-P-EI",
+  "sku": [
+   "NVR4104HS-P-EI",
+   "DHI-NVR4104HS-P-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR 4-EI Series",
+  "desc": "4-ch compact 1U WizSense NVR, 1 HDD (20 TB), 4x PoE (45 W)",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 260,
+   "d": 232.7,
+   "h": 47.6
+  },
+  "weight_kg": 0.86,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "53 VDC, 1.226 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 5,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": 45,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 4,
+   "in_mbps": 80,
+   "out_mbps": 80,
+   "hdd_bays": 1,
+   "hdd_max_tb": 20,
+   "raid": [],
+   "poe_ports": 4,
+   "poe_budget_w": 45,
+   "max_mp": 16,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/mena/products/All-Products/Network-Recorders/WizSense-Series/NVR-4-EI-Series/1-HDD/NVR4104HS-P-EI",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PoE 802.3af/at, 25.5 W/port max. HDMI up to 4K, VGA 1080p. Consumption <10 W without HDD. No alarm I/O listed. RAID not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR2104HS-I2",
+  "sku": [
+   "NVR2104HS-I2",
+   "DHI-NVR2104HS-I2"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR2-I2 Series",
+  "desc": "4-ch compact 1U WizSense NVR, 1 HDD, no PoE",
+  "mount": "desktop",
+  "u": 1,
+  "dims_mm": {
+   "w": 260,
+   "d": 232.7,
+   "h": 47.6
+  },
+  "weight_kg": 0.81,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12 VDC, 1.5 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x 10/100 LAN; 1 front + 1 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 4,
+   "in_mbps": 80,
+   "out_mbps": 60,
+   "hdd_bays": 1,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/mena/products/All-Products/Network-Recorders/WizSense-Series/NVR2-I2-Series/1HDD/NVR2104HS-I2",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. No alarm I/O listed. RAID not stated."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR4232-EI",
+  "sku": [
+   "NVR4232-EI",
+   "DHI-NVR4232-EI"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR 4-EI Series",
+  "desc": "32-ch 1U 2 HDD WizSense NVR, no PoE",
+  "mount": null,
+  "u": 1,
+  "dims_mm": {
+   "w": 375,
+   "d": 284.3,
+   "h": 53
+  },
+  "weight_kg": 1.51,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "12 VDC, 4 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/2"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 256,
+   "out_mbps": 256,
+   "hdd_bays": 2,
+   "hdd_max_tb": null,
+   "raid": [],
+   "poe_ports": 0,
+   "poe_budget_w": 0,
+   "max_mp": 16,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/la/products/All-Products/Network-Recorders/WizSense-Series/NVR-4-EI-Series/2-HDD/NVR4232-EI",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Bandwidth 256 Mbps with AI off, 180 Mbps with AI on. Page says 2 SATA 'up to 20 TB' without clearly stating per disk, so hdd_max_tb left null. HDMI up to 4K, VGA 1080p. Consumption <10 W without HDD."
+ },
+ {
+  "brand": "Dahua",
+  "model": "NVR2104-P-I2",
+  "sku": [
+   "NVR2104-P-I2",
+   "DHI-NVR2104-P-I2"
+  ],
+  "kind": "nvr",
+  "series": "WizSense NVR2-I2 Series",
+  "desc": "4-ch smart 1U WizSense NVR, 1 HDD, 4x PoE (38 W)",
+  "mount": "desktop",
+  "u": 1,
+  "dims_mm": {
+   "w": 204.6,
+   "d": 206.4,
+   "h": 45.6
+  },
+  "weight_kg": 0.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "53 VDC, 1.13 A (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 5,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": 38,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 4,
+   "in_mbps": 80,
+   "out_mbps": 60,
+   "hdd_bays": 1,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 4,
+   "poe_budget_w": 38,
+   "max_mp": 12,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.dahuasecurity.com/Japan/products/All-Products/Network-Recorders/WizSense-Series/NVR2-I2-Series/1HDD/NVR2104-P-I2",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PoE max 25.5 W/port; PoE standard not stated. HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. Source is Dahua Japan regional page."
+ },
+ {
+  "brand": "Uniview",
+  "model": "NVR302-08S2-P8",
+  "sku": [
+   "NVR302-08S2-P8"
+  ],
+  "kind": "nvr",
+  "series": "Easy Series NVR302-S2-P",
+  "desc": "8-ch NVR, 2 SATA, 8x PoE (130 W), 4K HDMI",
+  "mount": null,
+  "u": null,
+  "dims_mm": {
+   "w": 380,
+   "d": 315,
+   "h": 53
+  },
+  "weight_kg": 2.6,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 8,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 rear USB 3.0 + 1 front USB 2.0"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 130,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 80,
+   "out_mbps": 64,
+   "hdd_bays": 2,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 8,
+   "poe_budget_w": 130,
+   "max_mp": 8,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.uniview.com/res/202405/11/20240511_1902300_【Datasheet】UNV NVR302-S2-P Series Network Video Recorder20240205（Public）_990925_168459_0.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Rack units not stated in datasheet (marketed as 1U by resellers). Dims given without axis labels (assumed W x D x H order). PoE 802.3af/at, max 30 W/port. Consumption <=10 W without HDD. Weight <=2.6 kg without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Uniview",
+  "model": "NVR302-16S2-P16",
+  "sku": [
+   "NVR302-16S2-P16"
+  ],
+  "kind": "nvr",
+  "series": "Easy Series NVR302-S2-P",
+  "desc": "16-ch NVR, 2 SATA, 16x PoE (240 W), 4K HDMI",
+  "mount": null,
+  "u": null,
+  "dims_mm": {
+   "w": 380,
+   "d": 315,
+   "h": 53
+  },
+  "weight_kg": 2.6,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 rear USB 3.0 + 1 front USB 2.0"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 240,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 64,
+   "hdd_bays": 2,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 240,
+   "max_mp": 8,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.uniview.com/res/202405/11/20240511_1902300_【Datasheet】UNV NVR302-S2-P Series Network Video Recorder20240205（Public）_990925_168459_0.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Rack units not stated in datasheet (marketed as 1U by resellers). Dims given without axis labels (assumed W x D x H order). PoE 802.3af/at, max 30 W/port. Consumption <=10 W without HDD. Weight <=2.6 kg without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+ },
+ {
+  "brand": "Uniview",
+  "model": "NVR301-04S3-P4",
+  "sku": [
+   "NVR301-04S3-P4"
+  ],
+  "kind": "nvr",
+  "series": "Easy Series NVR301-S3-P",
+  "desc": "4-ch compact NVR, 1 SATA, 4x PoE (54 W)",
+  "mount": null,
+  "u": null,
+  "dims_mm": {
+   "w": 260,
+   "d": 240,
+   "h": 46
+  },
+  "weight_kg": 1.1,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "48 VDC (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 5,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": 54,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 4,
+   "in_mbps": 64,
+   "out_mbps": 48,
+   "hdd_bays": 1,
+   "hdd_max_tb": 6,
+   "raid": [],
+   "poe_ports": 4,
+   "poe_budget_w": 54,
+   "max_mp": 8,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.uniview.com/kr/res/202107/21/20210721_1816149_UNV NVR301-S3-P Series V1.02 EN_919364_168459_0.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Datasheet V1.02 (2021): 6 TB/disk max (newer revisions may raise it). Max recording 4K. PoE 802.3af/at, 30 W/port max. Consumption <=9 W without HDD. Rack units not stated."
+ },
+ {
+  "brand": "Uniview",
+  "model": "NVR301-08S3-P8",
+  "sku": [
+   "NVR301-08S3-P8"
+  ],
+  "kind": "nvr",
+  "series": "Easy Series NVR301-S3-P",
+  "desc": "8-ch compact NVR, 1 SATA, 8x PoE (75 W)",
+  "mount": null,
+  "u": null,
+  "dims_mm": {
+   "w": 260,
+   "d": 240,
+   "h": 46
+  },
+  "weight_kg": 1.1,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "52 VDC (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 9,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "8x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 75,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 8,
+   "in_mbps": 64,
+   "out_mbps": 48,
+   "hdd_bays": 1,
+   "hdd_max_tb": 6,
+   "raid": [],
+   "poe_ports": 8,
+   "poe_budget_w": 75,
+   "max_mp": 8,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.uniview.com/kr/res/202107/21/20210721_1816149_UNV NVR301-S3-P Series V1.02 EN_919364_168459_0.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Datasheet V1.02 (2021): 6 TB/disk max (newer revisions may raise it). Max recording 4K. PoE 802.3af/at, 30 W/port max. Consumption <=9 W without HDD. Rack units not stated."
+ },
+ {
+  "brand": "Uniview",
+  "model": "NVR304-16S-P16",
+  "sku": [
+   "NVR304-16S-P16"
+  ],
+  "kind": "nvr",
+  "series": "Easy Series NVR304-S-P16",
+  "desc": "16-ch NVR, 4 SATA, 16x PoE (150 W), alarm 16/4",
+  "mount": null,
+  "u": null,
+  "dims_mm": {
+   "w": 400,
+   "d": 362,
+   "h": 74
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 150,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 16,
+   "in_mbps": 160,
+   "out_mbps": 64,
+   "hdd_bays": 4,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 150,
+   "max_mp": 8,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.uniview.com/kr/res/202201/07/20220107_1817769_UNV NVR304-S-P16 Series V1.03 EN_892442_260635_0.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "HDMI and VGA output simultaneously (1 each per interface list; counts not explicitly stated). PoE 802.3af/at, 30 W/port max. Consumption <=15 W without HDD. Weight <=5 kg without HDD. Rack units not stated (74 mm high). RAID not stated."
+ },
+ {
+  "brand": "Uniview",
+  "model": "NVR304-32S-P16",
+  "sku": [
+   "NVR304-32S-P16"
+  ],
+  "kind": "nvr",
+  "series": "Easy Series NVR304-S-P16",
+  "desc": "32-ch NVR, 4 SATA, 16x PoE (150 W), alarm 16/4",
+  "mount": null,
+  "u": null,
+  "dims_mm": {
+   "w": 400,
+   "d": 362,
+   "h": 74
+  },
+  "weight_kg": 5.0,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240 VAC (internal)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 16,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 150,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": {
+   "channels": 32,
+   "in_mbps": 160,
+   "out_mbps": 64,
+   "hdd_bays": 4,
+   "hdd_max_tb": 10,
+   "raid": [],
+   "poe_ports": 16,
+   "poe_budget_w": 150,
+   "max_mp": 8,
+   "hdmi": 1,
+   "vga": 1
+  },
+  "ups": null,
+  "source": "https://www.uniview.com/kr/res/202201/07/20220107_1817769_UNV NVR304-S-P16 Series V1.03 EN_892442_260635_0.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "HDMI and VGA output simultaneously (1 each per interface list; counts not explicitly stated). PoE 802.3af/at, 30 W/port max. Consumption <=15 W without HDD. Weight <=5 kg without HDD. Rack units not stated (74 mm high). RAID not stated."
+ }
+]

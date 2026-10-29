@@ -1,0 +1,2415 @@
+[
+ {
+  "brand": "Ubiquiti",
+  "model": "UniFi U6 In-Wall",
+  "sku": [
+   "U6-IW"
+  ],
+  "kind": "ap",
+  "series": "UniFi WiFi 6",
+  "desc": "In-wall Wi-Fi 6 AP, 4x4 5 GHz, built-in 4-port GbE switch (1 PoE out)",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 139.7,
+   "d": 31.2,
+   "h": 96
+  },
+  "weight_kg": 0.46,
+  "power": {
+   "typ_w": null,
+   "max_w": 13,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE+ (required for PoE output)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 5,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x GbE uplink (data-in) + 4x GbE data-out, 1 of them PoE out"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 13
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 22,
+     "gain_dbi": 5
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 5.9
+    },
+    "6": null
+   },
+   "max_clients": 250,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://techspecs.ui.com/unifi/wifi/u6-iw",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims 139.7 x 96 x 31.2 mm (H x W x D as listed); 13 W excl. PoE output; max clients 250+; op temp -30..60 C; no IP rating (indoor)"
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9176I",
+  "sku": [
+   "CW9176I",
+   "CW9176I-RTG",
+   "CW9176I-MR"
+  ],
+  "kind": "ap",
+  "series": "Cisco Wireless 9170 Series",
+  "desc": "Wi-Fi 7 tri-band 4x4:4 indoor AP, 1x 10GbE mGig, USB, BLE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 241.3,
+   "d": 241.3,
+   "h": 50.8
+  },
+  "weight_kg": 1.56,
+  "power": {
+   "typ_w": null,
+   "max_w": 39,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3bt Class 5 (UPOE); reduced function on 802.3at"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 1,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x 100M/1G/2.5G/5G/10GBASE-T RJ45 uplink; RJ45 console; USB 2.0 Type A (9 W)"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 39
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, 6 GHz 4x4 (+IoT, scanning, BLE 5.3 radios)",
+   "bands": {
+    "2.4": {
+     "tx_dbm": null,
+     "gain_dbi": 5
+    },
+    "5": {
+     "tx_dbm": null,
+     "gain_dbi": 6
+    },
+    "6": {
+     "tx_dbm": null,
+     "gain_dbi": 6
+    }
+   },
+   "max_clients": null,
+   "uplink": "1x 10GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/CW9176I_%2F%2F_CW9176D1_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Cloud (Meraki) or controller managed. 30 W max without USB; 802.3at mode 25.5 W (2.4 GHz 2x2, no USB). Max TX power and max clients not stated. Op temp 0..50 C. Ceiling/wall/desk mount."
+ },
+ {
+  "brand": "TP-Link",
+  "model": "Omada EAP225-Outdoor",
+  "sku": [
+   "EAP225-Outdoor"
+  ],
+  "kind": "ap",
+  "series": "Omada Outdoor",
+  "desc": "Outdoor AC1200 Wi-Fi 5 AP, 2x2, external omni antennas, IP65",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": {
+   "w": 214.9,
+   "d": 46,
+   "h": 26.7
+  },
+  "weight_kg": 0.17,
+  "power": {
+   "typ_w": null,
+   "max_w": 10.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3af PoE or 24V passive PoE (injector included)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x GbE RJ45 (PoE in)"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 10.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 20,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": 27,
+     "gain_dbi": 5
+    },
+    "6": null
+   },
+   "max_clients": 228,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://static.tp-link.com/upload/product-overview/2026/202608/20260804/Datasheet_EAP225-Outdoor 3.20.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "IP65; pole or wall mount (kits included). TX power is CE EIRP (FCC conducted: 23/22 dBm). Dims exclude antennas/mount. Op temp -30..70 C."
+ },
+ {
+  "brand": "RUCKUS",
+  "model": "R350",
+  "sku": [
+   "901-R350-WW02",
+   "901-R350-US02",
+   "901-R350-EU02"
+  ],
+  "kind": "ap",
+  "series": "RUCKUS Wi-Fi 6 Indoor",
+  "desc": "Entry Wi-Fi 6 indoor AP, 2x2:2 dual-band, 1x GbE, USB",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 155.9,
+   "d": 146,
+   "h": 39.3
+  },
+  "weight_kg": 0.368,
+  "power": {
+   "typ_w": null,
+   "max_w": 12.62,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE (class not stated) or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x 1GbE RJ45; 1x USB 2.0 Type A"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": null,
+   "max_w": 12.62
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": 23,
+     "gain_dbi": 3
+    },
+    "6": null
+   },
+   "max_clients": 256,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://webresources.ruckuswireless.com/datasheets/r350/ds-ruckus-r350-jp.pdf",
+  "source2": "https://fr.ruckusnetworks.com/globalassets/digizuite/921333-p360-r350-external.pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Vendor datasheet (Japanese edition) lists 901-R350-XX02 (XX = region). Dims 14.60 L x 15.59 W x 3.93 H cm. Max power 12.62 W PoE / 11.4 W DC. TX = total across chains. Antenna gain 'up to 3 dBi'. Wall, drop-ceiling or desk mount. Op temp 0..40 C."
+ },
+ {
+  "brand": "RUCKUS",
+  "model": "R750",
+  "sku": [
+   "901-R750-WW00",
+   "901-R750-US00",
+   "901-R750-Z200"
+  ],
+  "kind": "ap",
+  "series": "RUCKUS Wi-Fi 6 Indoor",
+  "desc": "High-end Wi-Fi 6 indoor AP, 4x4:4 dual-band, 2.5GbE + 1GbE, USB",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 206,
+   "d": 235,
+   "h": 62
+  },
+  "weight_kg": 1.01,
+  "power": {
+   "typ_w": null,
+   "max_w": 22.34,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3at PoE+ (full), 802.3af reduced, or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x 2.5GbE (PoE in) + 1x 1GbE; 1x USB 2.0 Type A"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 22.34
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 26,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": 28,
+     "gain_dbi": 3
+    },
+    "6": null
+   },
+   "max_clients": 1024,
+   "uplink": "1x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.crz.gov.sk//data/att/3494041.pdf",
+  "source2": "https://ja.commscope.com/globalassets/digizuite/583082-p360-r750-external.pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Copy of the RUCKUS R750 vendor datasheet (hosted on Slovak public contract register). 901-R750-XX00 (XX = WW/US/Z2). Dims 23.5 L x 20.6 W x 6.2 H cm. 802.3af = 12.54 W reduced (2x4 radios, 2nd Ethernet/IoT/USB off); 802.3at = 22.34 W full; DC 22.69 W. Antenna gain up to 3 dBi. Wall/ceiling/desk. Op temp 0..50 C."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR28",
+  "sku": [
+   "MR28-HW"
+  ],
+  "kind": "ap",
+  "series": "Meraki MR Wi-Fi 6",
+  "desc": "Entry Wi-Fi 6 cloud-managed indoor AP, 2x2:2, 1x GbE",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 202,
+   "d": 124,
+   "h": 25.8
+  },
+  "weight_kg": 0.272,
+  "power": {
+   "typ_w": null,
+   "max_w": 15,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3af PoE or 12V DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 10/100/1000BASE-T"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 15
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 20,
+     "gain_dbi": 5.4
+    },
+    "5": {
+     "tx_dbm": 17.5,
+     "gain_dbi": 6
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/MR/Product_Information/Overviews_and_Datasheets/MR28_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "TX power is conducted. Dims exclude mount plate. Op temp 0..40 C. Indoor."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR78",
+  "sku": [
+   "MR78-HW"
+  ],
+  "kind": "ap",
+  "series": "Meraki MR Wi-Fi 6 Outdoor",
+  "desc": "Compact outdoor Wi-Fi 6 AP, 2x2:2, IP67, 1x GbE",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 245,
+   "d": 115,
+   "h": 30
+  },
+  "weight_kg": 0.45,
+  "power": {
+   "typ_w": null,
+   "max_w": 15,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3af PoE or 12V DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 10/100/1000BASE-T"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 15
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 20,
+     "gain_dbi": 5.4
+    },
+    "5": {
+     "tx_dbm": 17.5,
+     "gain_dbi": 6
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR78_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "IP67. Conducted TX power. Desk, ceiling and wall mounting per datasheet. Op temp -20..55 C."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR86",
+  "sku": [
+   "MR86-HW"
+  ],
+  "kind": "ap",
+  "series": "Meraki MR Wi-Fi 6 Outdoor",
+  "desc": "Outdoor Wi-Fi 6 AP, 4x4:4, external N-type antennas, 2.5GbE, IP67",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": {
+   "w": 300,
+   "d": 153,
+   "h": 55
+  },
+  "weight_kg": 1.5,
+  "power": {
+   "typ_w": null,
+   "max_w": 30,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3at PoE+"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 100/1000/2.5GBASE-T"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 30
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 25,
+     "gain_dbi": null
+    },
+    "5": {
+     "tx_dbm": 24,
+     "gain_dbi": null
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR86_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "IP67. External antennas sold separately (gain depends on antenna). Wall and pole mount kit included. Conducted TX power. Dims exclude gland/mounts/antennas. Op temp -40..55 C."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9172I",
+  "sku": [
+   "CW9172I-RTG",
+   "CW9172I-MR",
+   "CW9172I-CFG"
+  ],
+  "kind": "ap",
+  "series": "Cisco Wireless 9170 Series",
+  "desc": "Wi-Fi 7 tri-band 2x2:2 indoor AP, 1x 2.5GbE mGig, USB",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 200,
+   "d": 200,
+   "h": 53
+  },
+  "weight_kg": 0.874,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3bt Class 5 for full function; 802.3at/af reduced"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x 2.5G mGig uplink; console; USB 2.0 (802.3bt only)"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": null
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, 6 GHz 2x2 (dual-radio mode: 5 GHz 4x4)",
+   "bands": {
+    "2.4": {
+     "tx_dbm": null,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": null,
+     "gain_dbi": 5
+    },
+    "6": {
+     "tx_dbm": null,
+     "gain_dbi": 6
+    }
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/ja_jp/td/docs/wireless/access_point/technical-reference/cw9172-dg.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Cisco deployment guide; max power draw and TX power not given there. Max clients 256 per radio. Op temp 0..50 C (derated 40-50 C). Ceiling (AIR-AP-BRACKET-1/2, T-rail)."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst 9105AXW",
+  "sku": [
+   "C9105AXW-E",
+   "C9105AXW-A",
+   "C9105AXW-x"
+  ],
+  "kind": "ap",
+  "series": "Catalyst 9100 Wi-Fi 6",
+  "desc": "Wall-plate Wi-Fi 6 AP, 2x2:2, 2.5G uplink, 3x GbE LAN (1 PoE out), passthrough",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 90,
+   "d": 32.66,
+   "h": 160
+  },
+  "weight_kg": 0.3732,
+  "power": {
+   "typ_w": null,
+   "max_w": 25.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af (reduced) / 802.3at (full)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 3,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x 100/1000/2500 uplink; 3x 100/1000 LAN (LAN1 PoE-out 10.5 W, 802.3at only); RJ45 passthrough; USB 2.0 4.5 W"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 25.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 20,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": 20,
+     "gain_dbi": 5
+    },
+    "6": null
+   },
+   "max_clients": 200,
+   "uplink": "1x 2.5GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://bxin.cisco.com/c/zh_cn/products/collateral/wireless/catalyst-9100ax-access-points/datasheet-c78-744062.pdf",
+  "source2": "https://www.cisco.com/c/en/us/products/collateral/wireless/catalyst-9100ax-access-points/guide-c07-744444.html",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims 3.54 x 6.3 x 1.3 in (90 x 160 x 32.66 mm) excl. bracket. Power: 802.3af 13 W PD; 802.3at 18.5 W (USB) / 25.5 W PD (PoE-out on). Max clients 'up to 200' from Cisco 9105AX deployment guide. Op temp 0..50 C. Bracket AIR-AP-BRACKET-W4=."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9163E",
+  "sku": [
+   "CW9163E-x",
+   "CW9163E-MR"
+  ],
+  "kind": "ap",
+  "series": "Catalyst 9163E Wi-Fi 6E Outdoor",
+  "desc": "Outdoor Wi-Fi 6E tri-band 2x2:2 AP, 4x N-type external antennas, 2.5G mGig, IP67",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": {
+   "w": 245,
+   "d": 245,
+   "h": 63.5
+  },
+  "weight_kg": 1.5,
+  "power": {
+   "typ_w": null,
+   "max_w": 25.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at (full) / 802.3af (1x1 reduced)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "1x 100M/1G/2.5G mGig RJ45; RJ45 console; 4x N-type antenna connectors; RP-SMA GNSS connector"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 25.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, 6 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 23,
+     "gain_dbi": null
+    },
+    "5": {
+     "tx_dbm": 23,
+     "gain_dbi": null
+    },
+    "6": {
+     "tx_dbm": 23,
+     "gain_dbi": null
+    }
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/wireless/catalyst-9163e-access-point/nb-06-cat-9163e-series-access-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "IP67. Antennas not included (omni CW-ANT-O1-NS-00: 4/8/8 dBi). Mount type not stated in datasheet (outdoor wall/pole kits). Dims excl. brackets. Op temp -40..65 C. Meraki or Catalyst controller managed."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst 9800-L-C",
+  "sku": [
+   "C9800-L-C-K9"
+  ],
+  "kind": "wlc",
+  "series": "Catalyst 9800 Wireless Controllers",
+  "desc": "Compact WLC, 250 APs (500 w/ perf license), 2x 10G mGig RJ45 + 4x 2.5G RJ45",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 215.9,
+   "d": 230.1,
+   "h": 40.2
+  },
+  "weight_kg": 1.79,
+  "power": {
+   "typ_w": null,
+   "max_w": 86.9,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "External 110 W AC/DC adapter (12 V DC), 100-240 VAC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 4,
+   "rj45_10g": 2,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "2x 10G/mGig RJ45 uplinks; 4x 2.5G/1G RJ45; RJ45 service port; RJ45 redundancy (SSO) port; RJ45 + Micro-USB console; 1x USB 3.0"
+  },
+  "poe": null,
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 5,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/wireless/catalyst-9800-series-wireless-controllers/datasheet-c78-742434.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1RU half-width. Max 250 APs / 5,000 clients (500 / 10,000 with Performance license); 5 Gbps (10 Gbps perf). Heat 296.4 BTU/h. Op temp 0..40 C. Single external PSU."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst 9800-L-F",
+  "sku": [
+   "C9800-L-F-K9"
+  ],
+  "kind": "wlc",
+  "series": "Catalyst 9800 Wireless Controllers",
+  "desc": "Compact WLC, 250 APs (500 w/ perf license), 2x 10G SFP+ + 4x 2.5G RJ45",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 215.9,
+   "d": 230.1,
+   "h": 40.2
+  },
+  "weight_kg": 1.82,
+  "power": {
+   "typ_w": null,
+   "max_w": 84.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "External 110 W AC/DC adapter (12 V DC), 100-240 VAC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 4,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "2x 10G SFP+ uplinks; 4x 2.5G/1G RJ45; RJ45 service port; RJ45 redundancy (SSO) port; RJ45 + Micro-USB console; 1x USB 3.0"
+  },
+  "poe": null,
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 5,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/wireless/catalyst-9800-series-wireless-controllers/datasheet-c78-742434.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1RU half-width. Max 250 APs / 5,000 clients (500 / 10,000 with Performance license); 5 Gbps (10 Gbps perf). Heat 288.2 BTU/h. Op temp 0..40 C. 'perf.fw_gbps' holds WLC throughput."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9172H",
+  "sku": [
+   "CW9172H-MR",
+   "CW9172H-RTG"
+  ],
+  "kind": "ap",
+  "series": "Cisco Wireless 9170 Series",
+  "desc": "Wi-Fi 7 tri-band 2x2:2 wall-plate AP, 2.5G uplink, 3x GbE LAN (1 PoE out), passthrough",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 130,
+   "d": 26,
+   "h": 180
+  },
+  "weight_kg": 0.572,
+  "power": {
+   "typ_w": null,
+   "max_w": 32,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE only: 802.3af/at/bt (full = 802.3bt Class 5)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 3,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "1x 100/1000/2.5G uplink; 3x 100/1000 LAN (1 with 802.3af PoE out); 1x RJ45 passthrough; console"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 32
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2, 6 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": null,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": null,
+     "gain_dbi": 6
+    },
+    "6": {
+     "tx_dbm": null,
+     "gain_dbi": 5
+    }
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/CW9172H_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims 130 x 180 x 26 mm excl. mount plate. Min 12.95 W on 802.3af. TX power and max clients not stated. Op temp 0..50 C. Desk or wall (gang box) mount."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9178I",
+  "sku": [
+   "CW9178I-MR",
+   "CW9178I-RTG"
+  ],
+  "kind": "ap",
+  "series": "Cisco Wireless 9170 Series",
+  "desc": "Flagship Wi-Fi 7 4-radio tri-band 4x4 AP with UWB, 2x 10GbE mGig, USB",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 250,
+   "d": 250,
+   "h": 51
+  },
+  "weight_kg": 1.87,
+  "power": {
+   "typ_w": null,
+   "max_w": 47,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3bt Class 6 for full function; 802.3at reduced"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 2,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "2x 100M/1G/2.5G/5G/10GBASE-T RJ45; RJ45 console; USB 2.0 Type A (9 W)"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 47
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4 (split dual-5 capable), 6 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": null,
+     "gain_dbi": 4
+    },
+    "5": {
+     "tx_dbm": null,
+     "gain_dbi": 5
+    },
+    "6": {
+     "tx_dbm": null,
+     "gain_dbi": 6
+    }
+   },
+   "max_clients": null,
+   "uplink": "2x 10GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/CW9178I_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "47 W max with USB / 38 W without (60 W reservation); 802.3at 25.5 W reduced (2x2, 2.5G, no USB); 802.3af radios off. TX power/max clients not stated. Op temp 0..50 C. Ceiling/wall/desk."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR36H",
+  "sku": [
+   "MR36H-HW"
+  ],
+  "kind": "ap",
+  "series": "Meraki MR Wi-Fi 6",
+  "desc": "Wall-plate Wi-Fi 6 AP, 2x2:2, GbE uplink, 3x GbE LAN (1 PoE out), passthrough",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 110,
+   "d": 23,
+   "h": 155
+  },
+  "weight_kg": 0.492,
+  "power": {
+   "typ_w": null,
+   "max_w": 30,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at (802.3af low-power mode disables PoE out)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x GbE uplink (rear); 3x GbE LAN, 1 with 802.3af PoE out; 1x non-managed passthrough"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 30
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 20,
+     "gain_dbi": 5.4
+    },
+    "5": {
+     "tx_dbm": 17.5,
+     "gain_dbi": 6
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR36H_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims 155 x 110 x 23 mm excl. mount. Conducted TX power. No DC input. Op temp 0..40 C. Desk/wall (gang box)."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR76",
+  "sku": [
+   "MR76-HW"
+  ],
+  "kind": "ap",
+  "series": "Meraki MR Wi-Fi 6 Outdoor",
+  "desc": "Outdoor Wi-Fi 6 AP, 2x2:2, external N-type antennas, GbE, IP67",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": {
+   "w": 300,
+   "d": 153,
+   "h": 55
+  },
+  "weight_kg": 1.34,
+  "power": {
+   "typ_w": null,
+   "max_w": 15,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3af PoE"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 10/100/1000BASE-T"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 15
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 20,
+     "gain_dbi": null
+    },
+    "5": {
+     "tx_dbm": 20,
+     "gain_dbi": null
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR76_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "IP67. Wall and vertical pole mount. External antennas sold separately (MA-ANT-20/21/23/25/27). Conducted TX power. Dims excl. gland/mounts/antennas. Op temp -40..55 C."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9164I",
+  "sku": [
+   "CW9164I-MR",
+   "CW9164I-ROW"
+  ],
+  "kind": "ap",
+  "series": "Catalyst 9160 Wi-Fi 6E",
+  "desc": "Wi-Fi 6E tri-band AP (2.4 2x2, 5 4x4, 6 4x4), 2.5GbE mGig, USB",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 241.3,
+   "d": 241.3,
+   "h": 56.9
+  },
+  "weight_kg": 1.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 30.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at / 802.3bt (802.3af not supported) or 54V DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x 100/1000/2.5GBASE-T; USB 2.0 Type A (4.5 W)"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 30.5
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6E",
+   "streams": "2.4 GHz 2x2, 5 GHz 4x4, 6 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": null,
+     "gain_dbi": 3
+    },
+    "5": {
+     "tx_dbm": null,
+     "gain_dbi": 5
+    },
+    "6": {
+     "tx_dbm": null,
+     "gain_dbi": 4
+    }
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/CW9164_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "30.5 W with USB, 25 W without. TX power/max clients not stated. Op temp 0..50 C. Ceiling/wall/desk; AIR-AP-BRACKET-2 included."
+ },
+ {
+  "brand": "RUCKUS",
+  "model": "T350c",
+  "sku": [
+   "901-T350-WW20",
+   "901-T350-US20",
+   "901-T350-Z220"
+  ],
+  "kind": "ap",
+  "series": "RUCKUS Wi-Fi 6 Outdoor",
+  "desc": "Compact outdoor Wi-Fi 6 AP, 2x2:2, omni BeamFlex+, 1x GbE, IP67",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": {
+   "w": 162.3,
+   "d": 194.9,
+   "h": 80.9
+  },
+  "weight_kg": 1.01,
+  "power": {
+   "typ_w": null,
+   "max_w": 13.24,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at Class 4"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 1GbE RJ45 (PoE in)"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 13.24
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 26,
+     "gain_dbi": null
+    },
+    "5": {
+     "tx_dbm": 25,
+     "gain_dbi": null
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.crz.gov.sk//data/att/3445818.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Copy of RUCKUS T350 Series vendor datasheet (Slovak public contract register). XX = US/WW/Z2. IP67. Pole, wall or flat-surface mount, bracket included. TX power 26/25 dBm (2.4/5 GHz). Max clients up to 512. 802.3at Class 4 PoE in. No USB, no DC input. Op temp -20..65 C. Antenna gain not clearly assigned per model in source."
+ },
+ {
+  "brand": "RUCKUS",
+  "model": "T350d",
+  "sku": [
+   "901-T350-WW40",
+   "901-T350-US40",
+   "901-T350-Z240"
+  ],
+  "kind": "ap",
+  "series": "RUCKUS Wi-Fi 6 Outdoor",
+  "desc": "Outdoor Wi-Fi 6 AP, 2x2:2, omni BeamFlex+, BLE/Zigbee, USB, 1x GbE, IP67",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": {
+   "w": 162.3,
+   "d": 213.7,
+   "h": 80.9
+  },
+  "weight_kg": 1.07,
+  "power": {
+   "typ_w": null,
+   "max_w": 17.57,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at Class 4 or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x 1GbE RJ45 (PoE in); USB 2.0 Type A"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 17.57
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 26,
+     "gain_dbi": null
+    },
+    "5": {
+     "tx_dbm": 25,
+     "gain_dbi": null
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.crz.gov.sk//data/att/3445818.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Copy of RUCKUS T350 Series vendor datasheet (Slovak public contract register). XX = US/WW/Z2. IP67. Pole, wall or flat-surface mount, bracket included. TX power 26/25 dBm (2.4/5 GHz). Max clients up to 512. 802.3at Class 4 PoE in. DC max 16.32 W. Integrated BLE/Zigbee. Op temp -40..65 C. Antenna gain not clearly assigned per model in source."
+ },
+ {
+  "brand": "RUCKUS",
+  "model": "T350se",
+  "sku": [
+   "901-T350-WW51",
+   "901-T350-US51",
+   "901-T350-Z251"
+  ],
+  "kind": "ap",
+  "series": "RUCKUS Wi-Fi 6 Outdoor",
+  "desc": "Outdoor Wi-Fi 6 AP, 2x2:2, 120-degree sector antenna + N-type external ports, IP67",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": {
+   "w": 209.1,
+   "d": 261.7,
+   "h": 102.5
+  },
+  "weight_kg": 2.2,
+  "power": {
+   "typ_w": null,
+   "max_w": 21.3,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3at Class 4 or DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x 1GbE RJ45 (PoE in); USB 2.0 Type A; N-type external antenna connectors"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 21.3
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 26,
+     "gain_dbi": null
+    },
+    "5": {
+     "tx_dbm": 25,
+     "gain_dbi": null
+    },
+    "6": null
+   },
+   "max_clients": 512,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.crz.gov.sk//data/att/3445818.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Copy of RUCKUS T350 Series vendor datasheet (Slovak public contract register). XX = US/WW/Z2. IP67. Pole, wall or flat-surface mount, bracket included. TX power 26/25 dBm (2.4/5 GHz). Max clients up to 512. 802.3at Class 4 PoE in. DC max 19.34 W. Internal 120 deg sectorized antenna (source lists 6/8 dBi, likely this model). Adjustable bracket. Op temp -40..65 C."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9800L",
+  "sku": [
+   "CW9800L"
+  ],
+  "kind": "wlc",
+  "series": "Cisco Wireless 9800 Controllers",
+  "desc": "Compact WLC, 500 APs / 10,000 clients, 2x 10G SFP+, 10 Gbps",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 216,
+   "d": 235,
+   "h": 40
+  },
+  "weight_kg": 2.1,
+  "power": {
+   "typ_w": null,
+   "max_w": 90,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "External 110 W adapter (C9800-AC-110W), 12 V DC, 100-240 VAC; optional CW9800L-RPS="
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 1,
+   "notes": "2x 1/10G SFP+ uplinks; RJ45 service/mgmt port; RJ45 redundancy port; RJ45 + Micro-USB console; USB 3.0 Type-C"
+  },
+  "poe": null,
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 10,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/networking/wireless/wireless-lan-controllers/cw9800l-wireless-controller-ds.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1RU (rack kit CW9800L-RMNT=). Max 500 APs, 10,000 clients, up to 10 Gbps (in perf.fw_gbps). Heat 307.2 BTU/h. Op temp 0..40 C. Successor to Catalyst 9800-L."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "AP-303H",
+  "sku": [
+   "JY678A",
+   "JY680A",
+   "JY682A",
+   "JY684A",
+   "JY862A"
+  ],
+  "kind": "ap",
+  "series": "Aruba 303H Series Hospitality",
+  "desc": "Wall-plate Wi-Fi 5 (11ac Wave 2) AP, 2x2:2, GbE uplink, 3x GbE local (1 PoE out), passthrough",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 86,
+   "d": 40,
+   "h": 150
+  },
+  "weight_kg": 0.35,
+  "power": {
+   "typ_w": null,
+   "max_w": 9.7,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3af/at PoE or 48 V DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x GbE uplink (rear); 3x GbE local (bottom), 1 with 802.3af PSE; 2x passive passthrough RJ45 (rear/bottom); USB 2.0 Type A"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 9.7
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 5",
+   "streams": "2.4 GHz 2x2, 5 GHz 2x2",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 21,
+     "gain_dbi": 4.2
+    },
+    "5": {
+     "tx_dbm": 21,
+     "gain_dbi": 5.6
+    },
+    "6": null
+   },
+   "max_clients": 255,
+   "uplink": "1x GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://katalog.atcomp.cz/katalog/JZ087A/Aruba 303H Series Unified Hospitality Access Points.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Copy of the HPE Aruba 303H QuickSpecs. 9.7 W max excl. USB/PoE-out loads; PoE-out needs 802.3at (disabled on 802.3af). TX power is aggregate conducted. Max clients 255 per radio. SKUs: RW JY678A, US JY680A, JP JY682A, IL JY684A, EG JY862A (+FIPS variants). Op temp 0..40 C. Single-gang wall-box mount."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "AP-575",
+  "sku": [
+   "R4H17A"
+  ],
+  "kind": "ap",
+  "series": "HPE Aruba Networking 570 Series Outdoor",
+  "desc": "Outdoor Wi-Fi 6 AP, dual radio (2x2 + 4x4), internal omni, 1x GbE + 1x 2.5GbE",
+  "mount": "pole",
+  "u": 0,
+  "dims_mm": null,
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE+ 802.3at"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 10/100/1000 RJ45 + 1x 1000/2.5G RJ45"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": null
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2x2:2 + 4x4:4 dual radio (per distributor)",
+   "bands": {
+    "2.4": null,
+    "5": null,
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://bechtle.com/de-en/shop/hpe-aruba-ap-575-access-point--4543335--p",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Values from distributor Bechtle (vendor datasheet not readable here) - verify. Bechtle notes product no longer available there.Outdoor, internal omni antennas. Dims/weight/power/TX not available."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR56",
+  "sku": [
+   "MR56-HW"
+  ],
+  "kind": "ap",
+  "series": "Meraki MR Wi-Fi 6",
+  "desc": "High-density Wi-Fi 6 AP, 8x8:8 5 GHz + 4x4:4 2.4 GHz, 5GbE mGig",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 326,
+   "d": 140.8,
+   "h": 44.7
+  },
+  "weight_kg": 1.0,
+  "power": {
+   "typ_w": null,
+   "max_w": 30,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3at PoE+ (required) or 12V DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 100/1000/2.5G/5GBASE-T"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 30
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 8x8",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 26,
+     "gain_dbi": 5.4
+    },
+    "5": {
+     "tx_dbm": 26,
+     "gain_dbi": 6
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x 5GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR56_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims 32.6 x 14.08 x 4.47 cm excl. mount. Conducted TX power. Op temp 0..40 C. Ceiling/wall/desk; junction box support."
+ },
+ {
+  "brand": "Cisco Meraki",
+  "model": "MR46E",
+  "sku": [
+   "MR46E-HW"
+  ],
+  "kind": "ap",
+  "series": "Meraki MR Wi-Fi 6",
+  "desc": "Wi-Fi 6 4x4:4 AP with external antenna connectors, 2.5GbE mGig",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 306,
+   "d": 156.2,
+   "h": 35.4
+  },
+  "weight_kg": 0.85,
+  "power": {
+   "typ_w": null,
+   "max_w": 30,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "802.3at PoE+ or 12V DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 1,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 100/1000/2.5GBASE-T; external antenna connectors (MA-ANT-3-A6..F6)"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": 30
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 6",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": 25,
+     "gain_dbi": null
+    },
+    "5": {
+     "tx_dbm": 28,
+     "gain_dbi": null
+    },
+    "6": null
+   },
+   "max_clients": null,
+   "uplink": "1x 2.5GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/MR46E_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Indoor; external antennas sold separately (gain depends on antenna). Conducted total TX power. Op temp 0..50 C. Ceiling/wall/desk."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst 9800-40",
+  "sku": [
+   "C9800-40-K9"
+  ],
+  "kind": "wlc",
+  "series": "Catalyst 9800 Wireless Controllers",
+  "desc": "Enterprise WLC, 2,000 APs / 32,000 clients, 4x 10G SFP+, 40 Gbps",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 439.4,
+   "d": 495.3,
+   "h": 43.7
+  },
+  "weight_kg": 10.34,
+  "power": {
+   "typ_w": null,
+   "max_w": 381,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "90-264 VAC (1 PSU included, 2nd optional)"
+  },
+  "heat_btu_h": 1300,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "4x 1/10G SFP+ data (TE0-3); 1x 1G SFP + 1x RJ45 redundancy port; 1x RJ45 service port; RJ45 + mini-USB + USB console; 2x USB 3.0"
+  },
+  "poe": null,
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 40,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/ja_jp/products/collateral/wireless/catalyst-9800-series-wireless-controllers/nb-06-cat9800-wirel-cont-data-sheet-ctp-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1RU. 2,000 APs, 32,000 clients, 40 Gbps (perf.fw_gbps). Heat 1300 BTU/h. Op temp 0..40 C."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9800M",
+  "sku": [
+   "CW9800M"
+  ],
+  "kind": "wlc",
+  "series": "Cisco Wireless 9800 Controllers",
+  "desc": "Mid-size WLC, 3,000 APs / 32,000 clients, 4x 10G SFP+ + 2x 25G, 50 Gbps",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 439.4,
+   "d": 467.4,
+   "h": 43.9
+  },
+  "weight_kg": 9.3,
+  "power": {
+   "typ_w": null,
+   "max_w": 350,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC or DC PEM (1 included, 2nd optional)"
+  },
+  "heat_btu_h": 1194,
+  "airflow": "front-to-back",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 2,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "4x 1/10G SFP+ + 2x 25G uplinks; 1x 10G SFP redundancy port + 1x RJ45 redundancy; 1x RJ45 service port; RJ45 + USB console; 2x USB 3.0"
+  },
+  "poe": null,
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 50,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/ja_jp/products/collateral/networking/wireless/wireless-lan-controllers/catalyst-cw9800m-wireless-controller-ds.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1RU. 3,000 APs, 32,000 clients, up to 50 Gbps (perf.fw_gbps). Heat 1194 BTU/h. Front-to-back, 4 fans. Op temp 0..40 C. Datasheet writes '2 x 25 Gbps SFP+' (counted as sfp28)."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9800H1",
+  "sku": [
+   "CW9800H1"
+  ],
+  "kind": "wlc",
+  "series": "Cisco Wireless 9800 Controllers",
+  "desc": "Large WLC, 6,000 APs / 64,000 clients, 8x 10G SFP+ + 4x 25G SFP28, 100 Gbps",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444.5,
+   "d": 504.7,
+   "h": 43.9
+  },
+  "weight_kg": 9.3,
+  "power": {
+   "typ_w": null,
+   "max_w": 500,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC or DC PEM"
+  },
+  "heat_btu_h": 1706,
+  "airflow": "front-to-back",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 8,
+   "sfp28": 4,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "8x 1/10G SFP+ + 4x 25G SFP28 uplinks; 1x 10G SFP + 1x RJ45 redundancy; 1x RJ45 service port; RJ45 + USB console; 2x USB 3.0"
+  },
+  "poe": null,
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 100,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/ja_jp/products/collateral/networking/wireless/wireless-lan-controllers/cat-cw9800h1-cw9800h2-wireless-controllers-ds.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1RU. 6,000 APs, 64,000 clients, up to 100 Gbps (perf.fw_gbps). Heat 1706 BTU/h. Front-to-back, 4 fans. Op temp 0..40 C."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9800H2",
+  "sku": [
+   "CW9800H2"
+  ],
+  "kind": "wlc",
+  "series": "Cisco Wireless 9800 Controllers",
+  "desc": "Large WLC, 6,000 APs / 64,000 clients, 8x 10G SFP+ + 2x 40G QSFP, 100 Gbps",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444.5,
+   "d": 504.7,
+   "h": 43.9
+  },
+  "weight_kg": 9.3,
+  "power": {
+   "typ_w": null,
+   "max_w": 500,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC or DC PEM"
+  },
+  "heat_btu_h": 1706,
+  "airflow": "front-to-back",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 8,
+   "sfp28": 0,
+   "qsfp_plus": 2,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 2,
+   "notes": "8x 1/10G SFP+ + 2x 40G QSFP uplinks; 1x 10G SFP + 1x RJ45 redundancy; 1x RJ45 service port; RJ45 + USB console; 2x USB 3.0"
+  },
+  "poe": null,
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 100,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/ja_jp/products/collateral/networking/wireless/wireless-lan-controllers/cat-cw9800h1-cw9800h2-wireless-controllers-ds.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1RU. 6,000 APs, 64,000 clients, up to 100 Gbps (perf.fw_gbps). Heat 1706 BTU/h. Front-to-back, 4 fans. Op temp 0..40 C."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst 9800-80",
+  "sku": [
+   "C9800-80-K9"
+  ],
+  "kind": "wlc",
+  "series": "Catalyst 9800 Wireless Controllers",
+  "desc": "Large modular WLC, 6,000 APs / 64,000 clients, 8x 10G SFP+ + uplink module slot, 80 Gbps",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 439.4,
+   "d": 520.7,
+   "h": 88.1
+  },
+  "weight_kg": 14.29,
+  "power": {
+   "typ_w": null,
+   "max_w": 600,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "90-264 VAC or -40..-72 VDC"
+  },
+  "heat_btu_h": 2047,
+  "airflow": "front-to-back",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 1,
+   "sfp_plus": 8,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 2,
+   "notes": "8x 10G SFP+ (or 6x 10G + 2x 1G); 1 modular uplink slot (18x1G / 10x10G / 1-2x40G / 1x100G modules); 1x 1G SFP + 1x RJ45 redundancy; 1x RJ45 service port; RJ45 + mini-USB console; 2x USB 3.0"
+  },
+  "poe": null,
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": 80,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/ja_jp/products/collateral/wireless/catalyst-9800-series-wireless-controllers/nb-06-cat9800-80-wirel-mod-data-sheet-ctp-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "2RU. 6,000 APs, 64,000 clients, 80 Gbps (perf.fw_gbps). Heat 2047 BTU/h. Front-to-back, 4 fans. Op temp 0..40 C."
+ },
+ {
+  "brand": "Cisco",
+  "model": "CW9176D1",
+  "sku": [
+   "CW9176D1",
+   "CW9176D1-MR",
+   "CW9176D1-RTG"
+  ],
+  "kind": "ap",
+  "series": "Cisco Wireless 9170 Series",
+  "desc": "Wi-Fi 7 tri-band 4x4 AP with internal directional antennas (7-8 dBi), 10GbE mGig, USB",
+  "mount": "ceiling",
+  "u": 0,
+  "dims_mm": {
+   "w": 241.3,
+   "d": 241.3,
+   "h": 50.8
+  },
+  "weight_kg": 1.56,
+  "power": {
+   "typ_w": null,
+   "max_w": 39,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3bt Class 5 (UPOE); reduced function on 802.3at"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 1,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "1x 1G/2.5G/5G/10GBASE-T RJ45; RJ45 console; USB 2.0 Type A (9 W)"
+  },
+  "poe": null,
+  "poe_in": {
+   "class": "802.3bt",
+   "max_w": 39
+  },
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": {
+   "std": "Wi-Fi 7",
+   "streams": "2.4 GHz 4x4, 5 GHz 4x4, 6 GHz 4x4",
+   "bands": {
+    "2.4": {
+     "tx_dbm": null,
+     "gain_dbi": 7
+    },
+    "5": {
+     "tx_dbm": null,
+     "gain_dbi": 8
+    },
+    "6": {
+     "tx_dbm": null,
+     "gain_dbi": 8
+    }
+   },
+   "max_clients": null,
+   "uplink": "1x 10GbE mGig"
+  },
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://documentation.meraki.com/Wireless/Product_Information/Overviews_and_Datasheets/CW9176I_%2F%2F_CW9176D1_Datasheet",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Directional (beamwidth 80x80 at 2.4 GHz, 70x70 at 5/6 GHz). 30 W without USB; 802.3at 25.5 W (2.4 GHz 2x2). Datasheet also mentions Class 6 for CW9176 - verify. Op temp 0..50 C. Ceiling/wall/desk."
+ }
+]

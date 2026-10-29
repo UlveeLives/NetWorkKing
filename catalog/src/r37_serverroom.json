@@ -1,0 +1,1834 @@
+[
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R260",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 16G",
+  "desc": "1U single-socket entry rack server (Xeon 6300 / E-2400), 2x 1GbE LOM",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 482,
+   "d": 461.14,
+   "h": 42.8
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 700,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC (450W Platinum) / 200-240V AC or 240V DC (700W Titanium)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": 1,
+   "usb": 3,
+   "notes": "Rear: 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 1x USB 2.0, 1x USB 3.2 Gen1. Front: 1x USB 2.0, 1x iDRAC Direct (Micro-AB USB)."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/en-my/products/servers/technical-support/poweredge-r260-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PSU options 450W Platinum or 700W Titanium, both non-redundant; power.max_w = largest PSU rating. Depth without bezel (496.8 mm with bezel). Drives: up to 2x 3.5in cabled or 6x 2.5in hot-plug."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R360",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 16G",
+  "desc": "1U single-socket rack server (Xeon 6300 / E-2400), 2x 1GbE LOM, redundant PSU",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 482,
+   "d": 585.3,
+   "h": 42.8
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 700,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC (600W Platinum) / 200-240V AC (700W Titanium), or 240V DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": 1,
+   "usb": 3,
+   "notes": "Rear: 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 1x USB 2.0, 1x USB 3.2 Gen1. Front: 1x USB 2.0, 1x iDRAC Direct (Micro-AB USB)."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/fr-fr/products/servers/technical-support/poweredge-r360-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PSU options 600W Platinum or 700W Titanium, hot-swap redundant (psu=2 implied by redundancy; sheet gives no count). Depth without bezel (598.9 mm with bezel). Drives: up to 4x 3.5in or 8x 2.5in. French-language Dell spec sheet."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R470",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 17G",
+  "desc": "1U single-socket rack server (Xeon 6), networking via OCP 3.0, no LOM",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 482,
+   "d": 815.14,
+   "h": 42.8
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 1500,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC or 240V HVDC (also 277V AC and -48V DC options)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 0,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 3,
+   "notes": "Embedded NIC is only the 1Gb dedicated BMC (iDRAC) RJ45; data networking via up to 2x OCP NIC 3.0 (front or rear). Rear: iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/en-us/products/servers/technical-support/poweredge-r470-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Brief asked for R460, which does not exist; R470 is the current 1U single-socket model. PSU options 800/1100/1500W (AC), 1400W -48VDC, hot-swap redundant; max_w = largest AC PSU. Depth without bezel, rear-I/O config (816.92 with bezel, 829.44 front-I/O)."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R670",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 17G",
+  "desc": "1U dual-socket rack server (Xeon 6), networking via OCP 3.0",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 482,
+   "d": 815.14,
+   "h": 42.8
+  },
+  "weight_kg": 20.42,
+  "power": {
+   "typ_w": null,
+   "max_w": 1800,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "100-240V AC or 240V DC (1800W HLAC 200-240V; 277V AC and -48V DC options)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 3,
+   "notes": "Spec sheet lists no LOM; networking via up to 2x OCP NIC 3.0 (1-400GbE). Rear: 1x dedicated iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/en-us/products/servers/technical-support/poweredge-r670-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Hot-swap PSU options 800/1100/1500/1800W (AC), 1400W LVDC; max_w = largest option; count/redundancy not stated. Depth without bezel, rear-I/O (816.92 with bezel)."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge R770",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 17G",
+  "desc": "2U dual-socket rack server (Xeon 6), networking via OCP 3.0",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 482,
+   "d": 801.51,
+   "h": 86.8
+  },
+  "weight_kg": 28.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 3200,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "AC (800-3200W options), -48V DC 1400W option"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 3,
+   "notes": "Spec sheet lists no LOM; networking via 2x OCP NIC 3.0 (front or rear). Rear: 1x dedicated iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/en-nz/products/servers/technical-support/poweredge-r770-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Hot-swap PSU options 800/1100/1500/1800/2400/3200W; max_w = largest option (some marked not available at launch). Depth without bezel, rear-I/O (802.40 with bezel)."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge T160",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 16G",
+  "desc": "Compact single-socket tower server (Xeon 6300 / E-2400), 2x 1GbE LOM",
+  "mount": "desktop",
+  "u": null,
+  "dims_mm": {
+   "w": 132.52,
+   "d": 408.8,
+   "h": 332.5
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 500,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": 1,
+   "usb": 7,
+   "notes": "Rear: 2x 1GbE, 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 3x USB 2.0, 3x USB 3.2 Gen1. Front: 1x USB 3.2 Gen1, 1x iDRAC Direct (Micro-AB USB)."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/en-ie/products/servers/technical-support/poweredge-t160-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dell calls it a '3U tower server'. PSU 300W Bronze or 500W Platinum, cabled (single, non-redundant). Depth with bezel. Drives: up to 3x 3.5in (+2x 2.5in) cabled."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerEdge T360",
+  "sku": [],
+  "kind": "server",
+  "series": "PowerEdge 16G",
+  "desc": "Single-socket tower server (Xeon 6300 / E-2400), 2x 1GbE LOM, up to 8x 3.5in",
+  "mount": "desktop",
+  "u": null,
+  "dims_mm": {
+   "w": 175,
+   "d": 579.72,
+   "h": 382.5
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 700,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC (450/600W) / 200-240V AC (700W Titanium), or 240V DC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": 1,
+   "usb": 7,
+   "notes": "Rear: 2x 1GbE, 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 3x USB 2.0, 3x USB 3.2 Gen1. Front: 1x USB 3.2 Gen1, 1x iDRAC Direct (Micro-AB USB)."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/en-us/products/servers/technical-support/poweredge-t360-spec-sheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dell calls it a '4.5U tower server'. PSU: 450W Platinum cabled (single) or 600W Platinum / 700W Titanium hot-swap redundant; psu=2 refers to the redundant options. Depth with bezel."
+ },
+ {
+  "brand": "HPE",
+  "model": "ProLiant DL20 Gen11",
+  "sku": [],
+  "kind": "server",
+  "series": "ProLiant Gen11",
+  "desc": "1U single-socket short-depth rack server (Xeon E-2400), 4x 1GbE LOM",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.6,
+   "d": 378.4,
+   "h": 43.2
+  },
+  "weight_kg": 12,
+  "power": {
+   "typ_w": null,
+   "max_w": 1000,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC (Flex Slot); 290W non-redundant option"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 6,
+   "notes": "Embedded Broadcom BCM5719 4x 1GbE; iLO shares port 1 by default, optional 1Gb dedicated iLO RJ45 (enablement kit P65407-B21). Rear: 4x USB 3.2 Gen1, VGA, DisplayPort, optional serial. Front: 1x USB 3.2 Gen1, 1x USB 2.0 iLO service."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.hpe.com/us/en/collaterals/collateral.a50007009enw.html",
+  "source2": "https://edshop.edsystem.cz/fileshare/indexes/specification/hpe proliant dl20 gen11(696604).pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PSU: 1x 290W non-redundant (pre-configured models) or 2x Flex Slot 500/800/1000W (1+1 redundant); max_w = largest option. Dims SFF chassis (LFF depth 382.2 mm). Weight = max (min 9 kg). Dimensions/weight read from HPE QuickSpecs PDF copy hosted by EDSystem distributor."
+ },
+ {
+  "brand": "HPE",
+  "model": "ProLiant ML30 Gen11",
+  "sku": [],
+  "kind": "server",
+  "series": "ProLiant Gen11",
+  "desc": "Single-socket tower server (Xeon E-2400), 4x 1GbE LOM",
+  "mount": "rack-optional",
+  "u": 4,
+  "dims_mm": {
+   "w": 175.3,
+   "d": 475,
+   "h": 368.3
+  },
+  "weight_kg": 18.7,
+  "power": {
+   "typ_w": null,
+   "max_w": 1000,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC; 350W non-redundant entry option"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 6,
+   "notes": "Embedded Broadcom BCM5719 4x 1GbE; iLO shares port 1 by default, optional 1Gb dedicated iLO RJ45. Rear: 4x USB 3.2 Gen1, VGA, DisplayPort, optional serial. Front: 1x USB 3.2 Gen1, 1x USB 2.0 iLO service."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.hpe.com/us/en/collaterals/collateral.a50007008enw.html",
+  "source2": "https://edshop.edsystem.cz/fileshare/indexes/specification/hpe proliant ml30 gen11(771640).pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "HPE: '4U Tower', rack install via optional Sliding Shelf 874578-B21. PSU: 350W non-redundant or 2x Flex Slot 500/800/1000W (1+1); max_w = largest. Weight = max (min 10.2 kg). Dims/weight from HPE QuickSpecs PDF copy hosted by EDSystem."
+ },
+ {
+  "brand": "HPE",
+  "model": "ProLiant DL320 Gen11",
+  "sku": [],
+  "kind": "server",
+  "series": "ProLiant Gen11",
+  "desc": "1U single-socket rack server (Xeon Scalable 4th/5th gen), OCP 3.0 networking",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.6,
+   "d": 605.1,
+   "h": 42.8
+  },
+  "weight_kg": 16.71,
+  "power": {
+   "typ_w": null,
+   "max_w": 1600,
+   "psu": 2,
+   "psu_redundant": null,
+   "input": "100-240V AC (1600W: 200-240V only)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 3,
+   "notes": "QuickSpecs conflict: Standard Features say 'Network Ports None' (OCP 3.0 slot or stand-up card), Configuration lists 2x embedded 1GbE. 1x dedicated 1GbE iLO RJ45 rear. Rear: 2x USB 3.2 Gen1, VGA, optional serial. Front: 1x USB 3.2 Gen1, iLO service port."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.blueally.com/servercomputeworks/datasheets/gen11-servers/hpe_proliant_dl320_gen11-quickspecs.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Dims/weight = 8SFF chassis (4LFF depth 664.6 mm, 12LFF depth 995 mm, max 29.6 kg). 1-2 Flex Slot PSUs 500/800/1000/1600W; max_w = largest. QuickSpecs PDF hosted by reseller BlueAlly (HPE document)."
+ },
+ {
+  "brand": "HPE",
+  "model": "ProLiant Compute DL380 Gen12",
+  "sku": [],
+  "kind": "server",
+  "series": "ProLiant Gen12",
+  "desc": "2U dual-socket rack server (Xeon 6), OCP 3.0 networking",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 2200,
+   "psu": 2,
+   "psu_redundant": null,
+   "input": "100-240V AC (1600W: 200-240V only); -48V DC option"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 0,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 3,
+   "notes": "No embedded LAN as standard; stand-up or OCP 3.0 card required (OCP A default, OCP B optional). 1x dedicated 1GbE iLO RJ45 rear. Rear: 2x USB, VGA, optional serial. Front: 1x USB 3.2 Gen1, iLO service port."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.hpe.com/us/en/collaterals/collateral.a00073551enw.html",
+  "source2": "https://cdn.blueally.com/servercomputeworks/datasheets/gen12-servers/hpe_proliant_dl380_gen12-quickspecs.pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1-2 Flex Slot PSUs: 800/1000/1600/1800-2200W, 1600W -48VDC; max_w = largest. Dimensions/weight not found in the QuickSpecs text read."
+ },
+ {
+  "brand": "Lenovo",
+  "model": "ThinkSystem SR250 V3",
+  "sku": [],
+  "kind": "server",
+  "series": "ThinkSystem V3",
+  "desc": "1U single-socket rack server (Xeon E-2400 / 6300), 2x 1GbE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 434.4,
+   "d": 561,
+   "h": 43
+  },
+  "weight_kg": 12.3,
+  "power": {
+   "typ_w": null,
+   "max_w": 800,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": 1,
+   "usb": 4,
+   "notes": "2x 1GbE RJ45 (Broadcom BCM5720, one shareable with XCC) + 1x dedicated XCC management RJ45. Rear: 2x USB 3.2 G1, VGA, serial. Front: 1x USB 3.2 G1, 1x USB 2.0 (XClarity Mobile), optional VGA."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://lenovopress.lenovo.com/lp1802-thinksystem-sr250-v3-server",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PSU model-dependent: 1x fixed 300W Gold or 2x hot-swap 800W Platinum/Titanium (redundant); psu=2 refers to the redundant option. Weight = max (3.5in config)."
+ },
+ {
+  "brand": "Lenovo",
+  "model": "ThinkSystem SR630 V3",
+  "sku": [],
+  "kind": "server",
+  "series": "ThinkSystem V3",
+  "desc": "1U dual-socket rack server (Xeon Scalable 4th/5th gen), OCP 3.0 networking",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 773,
+   "h": 43
+  },
+  "weight_kg": 20.8,
+  "power": {
+   "typ_w": null,
+   "max_w": 1800,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC (220V AC supported)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 0,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 5,
+   "notes": "No onboard data ports; networking via OCP 3.0 SFF slot (PCIe 5.0 x16). 1x dedicated 1GbE XCC RJ45 rear. Rear: 3x USB 3.2 G1, VGA, optional DB-9 serial (PCIe slot). Front: 1x USB 3.2 G1, 1x USB 2.0 (XCC), ext. diagnostics, optional VGA."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://lenovopress.lenovo.com/lp1600-thinksystem-sr630-v3-server",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Up to 2 hot-swap redundant PSUs 750/1100/1800W; max_w = largest."
+ },
+ {
+  "brand": "Lenovo",
+  "model": "ThinkSystem SR650 V3",
+  "sku": [],
+  "kind": "server",
+  "series": "ThinkSystem V3",
+  "desc": "2U dual-socket rack server (Xeon Scalable 4th/5th gen), up to 40x 2.5in",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 445,
+   "d": 766,
+   "h": 87
+  },
+  "weight_kg": 38.8,
+  "power": {
+   "typ_w": null,
+   "max_w": 2600,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "AC (220V AC supported); -48V DC 1100W option"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 0,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 5,
+   "notes": "No onboard data ports; networking via OCP 3.0 SFF slot (PCIe 5.0 x16). 1x dedicated 1GbE XCC RJ45 rear. Rear: 3x USB 3.2 G1, VGA, optional DB-9 serial (PCIe slot). Front: 1x USB 3.2 G1, 1x USB 2.0 (XCC), ext. diagnostics, optional VGA."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://lenovopress.lenovo.com/lp1601-thinksystem-sr650-v3-server",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Up to 2 hot-swap redundant PSUs 750/1100/1800/2400/2600W; max_w = largest."
+ },
+ {
+  "brand": "Lenovo",
+  "model": "ThinkSystem ST50 V3",
+  "sku": [],
+  "kind": "server",
+  "series": "ThinkSystem V3",
+  "desc": "Entry tower server (Xeon E-2400 / 6300), 2x 1GbE",
+  "mount": "rack-optional",
+  "u": null,
+  "dims_mm": {
+   "w": 170,
+   "d": 315,
+   "h": 370
+  },
+  "weight_kg": 11.96,
+  "power": {
+   "typ_w": null,
+   "max_w": 500,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": 1,
+   "usb": 6,
+   "notes": "2x 1GbE RJ45 (Broadcom BCM5720) + 1x RJ45 XCC2 management. Rear: 4x USB 3.2 G1, VGA, serial. Front: 1x USB 3.2 G1, 1x USB 2.0 (XClarity Mobile)."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://lenovopress.lenovo.com/lp1907-thinksystem-st50-v3-server",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Tower; rack install with optional Rack Mount Kit (U not stated). Single fixed PSU 300W Gold or 500W Platinum. Height without stand (376 mm with stand)."
+ },
+ {
+  "brand": "Synology",
+  "model": "DS224+",
+  "sku": [
+   "DS224+"
+  ],
+  "kind": "nas",
+  "series": "DiskStation Plus",
+  "desc": "2-bay desktop NAS, 2x 1GbE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 108,
+   "d": 232.2,
+   "h": 165
+  },
+  "weight_kg": 1.3,
+  "power": {
+   "typ_w": 14.69,
+   "max_w": 60,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "2x USB 3.2 Gen 1"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://global.download.synology.com/download/Document/Hardware/ProductSpec/DiskStation/24-year/DS224+/enu/Product_Spec_DS224+_enu.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "typ_w = access; 4.41 W HDD hibernation. 60W power adapter."
+ },
+ {
+  "brand": "Synology",
+  "model": "DS423+",
+  "sku": [
+   "DS423+"
+  ],
+  "kind": "nas",
+  "series": "DiskStation Plus",
+  "desc": "4-bay desktop NAS, 2x 1GbE, 2x M.2 NVMe",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 199,
+   "d": 223,
+   "h": 166
+  },
+  "weight_kg": 2.18,
+  "power": {
+   "typ_w": 28.3,
+   "max_w": 90,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 96.5,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "2x USB 3.2 Gen 1; 2x M.2 2280 NVMe slots"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://global.download.synology.com/download/Document/Hardware/ProductSpec/DiskStation/23-year/DS423+/enu/Product_Spec_DS423+_enu.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "typ_w = access; 8.45 W HDD hibernation. 90W PSU/adapter."
+ },
+ {
+  "brand": "Synology",
+  "model": "DS423",
+  "sku": [
+   "DS423"
+  ],
+  "kind": "nas",
+  "series": "DiskStation Value",
+  "desc": "4-bay desktop NAS, 2x 1GbE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 168,
+   "d": 230,
+   "h": 184
+  },
+  "weight_kg": 2.21,
+  "power": {
+   "typ_w": 32.41,
+   "max_w": 90,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "2x USB 3.2 Gen 1"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://global.download.synology.com/download/Document/Hardware/ProductSpec/DiskStation/23-year/DS423/enu/Product_Spec_DS423_enu.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "typ_w = access; 4.97 W HDD hibernation. 90W adapter."
+ },
+ {
+  "brand": "Synology",
+  "model": "DS1522+",
+  "sku": [
+   "DS1522+"
+  ],
+  "kind": "nas",
+  "series": "DiskStation Plus",
+  "desc": "5-bay desktop NAS, 4x 1GbE, 2x M.2, optional 10GbE module",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 230,
+   "d": 223,
+   "h": 166
+  },
+  "weight_kg": 2.7,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "2x USB 3.2 Gen 1; 2x eSATA expansion (DX517); 2x M.2 2280 NVMe; network upgrade slot for E10G22-T1-Mini 10GbE"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://global.download.synology.com/download/Document/Hardware/DataSheet/DiskStation/22-year/DS1522+/enu/Synology_DS1522+_Data_Sheet_enu.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PSU rating / consumption not in datasheet text read."
+ },
+ {
+  "brand": "Synology",
+  "model": "DS1823xs+",
+  "sku": [
+   "DS1823xs+"
+  ],
+  "kind": "nas",
+  "series": "DiskStation xs",
+  "desc": "8-bay desktop NAS, 2x 1GbE + 1x 10GbE, OOB mgmt",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 343,
+   "d": 243,
+   "h": 166
+  },
+  "weight_kg": 6.2,
+  "power": {
+   "typ_w": 87.93,
+   "max_w": 250,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 2,
+   "rj45_mgig": null,
+   "rj45_10g": 1,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 3,
+   "notes": "Plus 1x out-of-band management RJ45. 3x USB 3.2 Gen 1; 2x eSATA (DX517); 2x M.2 NVMe; 1x PCIe Gen3 x8 slot (x4 link)"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://download.axilogi.com/synology/datasheet/DS1823xsplus.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "typ_w = access; 28.37 W HDD hibernation. 250W PSU. Source is a Synology datasheet copy hosted by distributor Axilogi."
+ },
+ {
+  "brand": "Synology",
+  "model": "RS1619xs+",
+  "sku": [
+   "RS1619xs+"
+  ],
+  "kind": "nas",
+  "series": "RackStation xs",
+  "desc": "4-bay 1U rackmount NAS, 4x 1GbE, 2x M.2",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 480,
+   "d": 518.6,
+   "h": 44
+  },
+  "weight_kg": 8.16,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "2x USB 3.2 Gen 1; 1x expansion port (RX1217); 2x M.2 2280 NVMe/SATA; 1x PCIe Gen3 x8 slot"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://global.download.synology.com/download/Document/Hardware/DataSheet/RackStation/19-year/RS1619xs+/krn/Synology_RS1619xs_Plus_Data_Sheet_krn.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Korean-language Synology datasheet. PSU rating/count not stated."
+ },
+ {
+  "brand": "Synology",
+  "model": "RS3621xs+",
+  "sku": [
+   "RS3621xs+"
+  ],
+  "kind": "nas",
+  "series": "RackStation xs",
+  "desc": "12-bay 2U rackmount NAS, 4x 1GbE + 2x 10GbE RJ45, dual PSU",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 482,
+   "d": 724,
+   "h": 88
+  },
+  "weight_kg": 14.5,
+  "power": {
+   "typ_w": 142.5,
+   "max_w": 550,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 485.93,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": 2,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "2x USB 3.2 Gen 1; 2x Infiniband expansion ports (RX1217); 2x PCIe Gen3 x8 slots"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.synology.com/en-us/products/RS3621xs+",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "typ_w = access (72.76 W hibernation). PSU 500W or 550W depending on hardware revision (serial SZR=500W; UUR/VR1=550W); max_w = 550."
+ },
+ {
+  "brand": "Synology",
+  "model": "SA3410",
+  "sku": [
+   "SA3410"
+  ],
+  "kind": "storage",
+  "series": "SA series",
+  "desc": "12-bay 2U SAS/SATA storage server, 4x 1GbE + 2x 10GbE RJ45, OOB mgmt",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 482,
+   "d": 724,
+   "h": 88
+  },
+  "weight_kg": 14.5,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": 4,
+   "rj45_mgig": null,
+   "rj45_10g": 2,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 2,
+   "notes": "Plus 1x out-of-band management RJ45. 2x USB 3.2 Gen 1; 1x expansion port (RX1222sas); 2x PCIe 3.0 x8 slots"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://global.download.synology.com/download/Document/Hardware/DataSheet/SA/23-year/SA3410/chs/Synology_SA3410_Data_Sheet_chs.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Chinese-language Synology datasheet. Redundant PSU stated; wattage not stated (psu=2 implied by redundancy). Rail kit RKS-02."
+ },
+ {
+  "brand": "QNAP",
+  "model": "TS-464",
+  "sku": [
+   "TS-464-8G",
+   "TS-464-4G"
+  ],
+  "kind": "nas",
+  "series": "TS-x64",
+  "desc": "4-bay desktop NAS, 2x 2.5GbE, 2x M.2, PCIe slot",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 169.9,
+   "d": 226.6,
+   "h": 165.1
+  },
+  "weight_kg": 2.26,
+  "power": {
+   "typ_w": 40.536,
+   "max_w": 90,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V (external adapter)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 4,
+   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2 Type-A; 1x HDMI 2.1; 2x M.2 2280 PCIe Gen3 x1; 1x PCIe Gen3 x2 slot"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims/weight converted from inches/lbs (6.5x6.69x8.92 in, 4.98 lb). typ_w = operating (21.6 W standby). 90W adapter."
+ },
+ {
+  "brand": "QNAP",
+  "model": "TS-464U-RP",
+  "sku": [
+   "TS-464U-RP-8G",
+   "TS-464U-RP-4G"
+  ],
+  "kind": "nas",
+  "series": "TS-x64U",
+  "desc": "4-bay 1U rackmount NAS, 2x 2.5GbE, redundant PSU",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 430,
+   "d": 479,
+   "h": 43.3
+  },
+  "weight_kg": 9.34,
+  "power": {
+   "typ_w": 51.404,
+   "max_w": 250,
+   "psu": 2,
+   "psu_redundant": true,
+   "input": "100-240V"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 4,
+   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.qnap.com/en/product/ts-464u-rp/specs/hardware",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PSU 250W x2 (redundant). typ_w = operating (37.5 W standby)."
+ },
+ {
+  "brand": "QNAP",
+  "model": "TS-864eU",
+  "sku": [
+   "TS-864eU-8G",
+   "TS-864eU-4G"
+  ],
+  "kind": "nas",
+  "series": "TS-x64eU",
+  "desc": "8-bay 2U short-depth rackmount NAS, 2x 2.5GbE",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 432,
+   "d": 297.4,
+   "h": 88.6
+  },
+  "weight_kg": 7.78,
+  "power": {
+   "typ_w": 51.022,
+   "max_w": 300,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 4,
+   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.qnap.com/en-us/product/ts-864eu/specs/hardware",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Single 300W PSU (redundant version is TS-864eU-RP). Dims in mm from the RP spec page (same chassis; this page gives 3.49x17.01x11.71 in). Weight converted from 17.15 lb. typ_w = operating."
+ },
+ {
+  "brand": "QNAP",
+  "model": "TS-864eU-RP",
+  "sku": [
+   "TS-864eU-RP-8G",
+   "TS-864eU-RP-4G"
+  ],
+  "kind": "nas",
+  "series": "TS-x64eU",
+  "desc": "8-bay 2U short-depth rackmount NAS, 2x 2.5GbE, dual PSU",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 432,
+   "d": 297.4,
+   "h": 88.6
+  },
+  "weight_kg": 9.21,
+  "power": {
+   "typ_w": 55.83,
+   "max_w": 300,
+   "psu": 2,
+   "psu_redundant": null,
+   "input": "100-240V"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 4,
+   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.qnap.com/en-uk/product/ts-864eu-rp/specs/hardware",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PSU 300W x2 (spec page does not word it as redundant). typ_w = operating (31.7 W standby)."
+ },
+ {
+  "brand": "QNAP",
+  "model": "TS-h1290FX",
+  "sku": [
+   "TS-h1290FX-7232P-64G",
+   "TS-h1290FX-7302P-128G",
+   "TS-h1290FX-7302P-256G"
+  ],
+  "kind": "nas",
+  "series": "TS-hx90FX",
+  "desc": "12-bay U.2 NVMe all-flash tower NAS (AMD EPYC), 2x 25GbE SFP28 + 2x 2.5GbE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 368,
+   "d": 362,
+   "h": 150
+  },
+  "weight_kg": 10.4,
+  "power": {
+   "typ_w": 134.41,
+   "max_w": 750,
+   "psu": 1,
+   "psu_redundant": null,
+   "input": "100-240V"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": 2,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": 2,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": 3,
+   "notes": "2x 2.5GbE + 2x 25GbE SFP28 (SmartNIC). 3x USB 3.2 Gen 1; 4x PCIe Gen4 slots (3x x16, 1x x8)"
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.qnap.com/en/product/ts-h1290fx/specs/hardware",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Height 150 mm excl. foot pad (157.2 mm for 7302P-256G model). 750W PSU. typ_w = operating."
+ },
+ {
+  "brand": "Dell",
+  "model": "PowerVault ME5012",
+  "sku": [
+   "ME5012"
+  ],
+  "kind": "storage",
+  "series": "PowerVault ME5",
+  "desc": "2U 12-bay dual-controller SAN array (FC / iSCSI / SAS host)",
+  "mount": "rack",
+  "u": 2,
+  "dims_mm": {
+   "w": 483,
+   "d": 618.7,
+   "h": 87.9
+  },
+  "weight_kg": 32,
+  "power": {
+   "typ_w": null,
+   "max_w": 580,
+   "psu": 2,
+   "psu_redundant": null,
+   "input": "100-240V AC 50/60 Hz"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": null,
+   "rj45_1g": null,
+   "rj45_mgig": null,
+   "rj45_10g": null,
+   "sfp": null,
+   "sfp_plus": null,
+   "sfp28": null,
+   "qsfp_plus": null,
+   "qsfp28": null,
+   "console": null,
+   "usb": null,
+   "notes": "2x 1GbE BASE-T management (one per controller). Host ports by controller type, up to 8 per array: 32Gb FC, 25GbE SFP28 iSCSI, 10GBASE-T iSCSI, or 12Gb SAS. 2x 12Gb SAS expansion ports (one per controller)."
+  },
+  "poe": {
+   "ports": null,
+   "budget_w": null,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": null,
+   "forwarding_mpps": null,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.delltechnologies.com/asset/fr-fr/products/storage/technical-support/dell-powervault-me5-ss.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "2x 580W PSUs; power.max_w = per-PSU rating. Depth from inch value 24.36 in (sheet's mm figure '61,87' is a typo). Weight max config (4.8 kg empty). French Dell spec sheet."
+ }
+]

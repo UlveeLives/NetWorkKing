@@ -1,9 +1,23 @@
-NETWORKKING 3.6.2 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.7.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.7-DƏ YENİ
+ - Bütün cihaz növləri üçün yeni şəkillər (proqramın öz rəsmləri, bir üslubda, fonsuz): rack cihazları öndən,
+   digərləri sxem və planlarda tanınan məhsul görünüşü ilə.
+ - Kameralar növünə görə fərqli simvolla: Bullet, Turret, Dome, PTZ, Fisheye, Box, Cube; xarici kameralarda mavi
+   «yağış» nişanı. Palitrada hər kamera növü ayrıca düymədir. Çöl/həyət otağına qoyulan kamera özü «xarici» olur.
+ - Access point: tavan, divar və çöl (xarici) görünüşü; switch: rack / masaüstü; UPS və server: rack / tower —
+   cihaz kartındakı «Quraşdırma yeri» ilə dəyişir.
+ - Ayarlar → Cihaz bazası → «Cihazları görüntülə»: bütün modellər və cihaz növləri şəkli ilə siyahıda;
+   növ, marka və axtarış ilə süzmək, sətrə klik — bütün məlumat və rəsmi mənbə linki.
+ - Model bazası 273-dən 530 modelə genişləndi (Cisco Business / Catalyst 1200/1300/9200, Aruba CX, Palo Alto,
+   Sophos, SonicWall, Check Point, WatchGuard, Hikvision və Dahua kamera və NVR, Uniview NVR, Cisco / Meraki /
+   Ruckus Wi-Fi, Yealink / Fanvil / Grandstream / Cisco / Poly telefonlar, Dell / HPE / Lenovo serverlər,
+   Synology / QNAP NAS və s.). Hər modeldə rəsmi mənbə linki var; «≈» — bəzi dəyərlər distribyutor səhifəsindən.
 
 3.6.2-DƏ YENİ
  - Rack U-Layout: çox portlu switch-lərdə (48 port) marka yazısı göstərilmir — portlar patch panelin portları ilə
@@ -142,7 +156,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.6.2.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.7.0.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 

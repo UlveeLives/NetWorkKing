@@ -4,7 +4,7 @@
 #   js/catalog-data.js    — built-in copy used offline
 import glob, json, os, sys, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-KINDS = set("firewall router coresw switch modem ont wlc ap server nas storage ups pdu camera nvr dvr monitor workstation pp fpp splice mediaconv phone printer other".split())
+KINDS = set("firewall router coresw switch modem ont wlc ap server nas storage ups pdu camera nvr dvr monitor workstation pp fpp splice mediaconv phone printer other decoder encoder intercom access kvm poeinj tv".split())
 recs, seen, errs = [], {}, []
 for f in sorted(glob.glob(os.path.join(ROOT, "catalog", "src", "*.json"))):
     for r in json.load(open(f, encoding="utf-8")):

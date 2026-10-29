@@ -250,3 +250,17 @@ for k,az,tr,en,ru in [
  ("vLinks","Kabellər","Kablolar","Cables","Кабели"),
 ]:
     K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("f_mount","Quraşdırma yeri","Montaj","Mounting","Монтаж"),("mt_auto","— avtomatik —","— otomatik —","— automatic —","— авто —"),
+ ("mt_ceiling","Tavan","Tavan","Ceiling","Потолочная"),("mt_wall","Divar","Duvar","Wall","Настенная"),("mt_out","Çöl (xarici)","Dış mekân","Outdoor","Уличная"),
+ ("mt_rack","Rack","Rack","Rack","В стойку"),("mt_desktop","Masaüstü","Masaüstü","Desktop","Настольная"),("mt_tower","Tower (dik)","Kule","Tower","Напольная (tower)"),
+ ("ddbBtn","Cihazları görüntülə","Cihazları görüntüle","View devices","Показать устройства"),
+ ("ddbT","Cihaz bazası","Cihaz veritabanı","Device database","База устройств"),
+ ("ddbH","Proqramda istifadə oluna bilən bütün cihazlar: bazadakı modellər və cihaz növləri. Rack cihazları öndən görünüşü ilə, digərləri sxem və planlarda göründüyü kimi göstərilir. Sətrə klik — bütün məlumatlar.","Programda kullanılabilen tüm cihazlar. Rack cihazları önden, diğerleri şema ve planlardaki gibi gösterilir. Satıra tıkla — tüm bilgiler.","Every device the program can use: catalog models and device types. Rack devices are shown from the front, the others as they appear on diagrams and plans. Click a row for all details.","Все устройства программы: модели базы и типы устройств. Стоечные — вид спереди, остальные — как на схемах и планах. Щелчок по строке — все данные."),
+ ("ddbTabModels","Modellər ({n})","Modeller ({n})","Models ({n})","Модели ({n})"),("ddbTabKinds","Cihaz növləri ({n})","Cihaz türleri ({n})","Device types ({n})","Типы устройств ({n})"),
+ ("ddbAllKinds","Bütün növlər","Tüm türler","All types","Все типы"),("ddbPic","Görünüş","Görünüm","Picture","Вид"),("ddbType","Növ","Tür","Type","Тип"),("ddbGroup","Qrup","Grup","Group","Группа"),
+ ("ddbModels","Modellər","Modeller","Models","Модели"),("ddbSpec","Əsas göstəricilər","Temel özellikler","Key specs","Основные параметры"),
+ ("ddbCount","{n} model","{n} model","{n} models","Моделей: {n}"),("ddbMore","Daha çox göstər ({n})","Daha fazla ({n})","Show more ({n})","Показать ещё ({n})"),
+ ("ddbFoot","Şəkillər proqramın öz rəsmləridir; port sayı modelin rəsmi məlumatından götürülür.","Görseller programın kendi çizimleridir; port sayısı resmi verilerden alınır.","Pictures are the program's own drawings; port counts come from the official data.","Изображения — собственные рисунки программы; число портов — из официальных данных."),
+]:
+    K(k,az,tr,en,ru)

@@ -33,5 +33,6 @@ Write a JSON array of these objects. Use `null` for anything the official source
 }
 ```
 
-KIND list (use exactly): firewall, router, coresw, switch, modem, ont, wlc, ap, server, nas, storage, ups, pdu, camera, nvr, dvr, monitor, workstation, pp, fpp, splice, mediaconv, phone, printer, other.
+KIND list (use exactly): firewall, router, coresw, switch, modem, ont, wlc, ap, server, nas, storage, ups, pdu, camera, nvr, dvr, monitor, workstation, pp, fpp, splice, mediaconv, phone, printer, other, decoder, encoder, intercom, access, kvm, poeinj, tv.
+camera.style: bullet | turret | dome | ptz | fisheye | box | cube. mount: rack | desktop | wall | ceiling | pole | din | rack-optional (the picture of APs, switches, UPS and servers follows it).
 (coresw = core / aggregation L3 switch; switch = access / PoE switch; pp = copper patch panel; fpp = fiber patch panel / ODF)

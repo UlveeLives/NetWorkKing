@@ -1,0 +1,1798 @@
+[
+ {
+  "brand": "Yealink",
+  "model": "SIP-T31P",
+  "sku": [
+   "SIP-T31P"
+  ],
+  "kind": "phone",
+  "series": "T3 Series",
+  "desc": "Entry 2-line IP phone, 2.3\" LCD, 2x 10/100 RJ45, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 188,
+   "d": 189,
+   "h": 162
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 4,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or ext. adapter AC 100-240V / DC 5V 600mA"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 2,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 4
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.provu.co.uk/products/yealink/T31P/T31P.pdf",
+  "source2": "https://support.marvel.ru/wp-content/uploads/2023/04/poe-class-psu-specification.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Yealink datasheet hosted by distributor ProVu. PoE Class 2. Power: PoE 3-4 W, PSU 2-3 W. Dims W*D*H*T 188x189x162x50 mm. Wall mountable. Unit weight not stated (carton only)."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T33G",
+  "sku": [
+   "SIP-T33G"
+  ],
+  "kind": "phone",
+  "series": "T3 Series",
+  "desc": "4-line IP phone, 2.4\" colour LCD, 2x GbE RJ45, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 212,
+   "d": 186,
+   "h": 146
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or ext. adapter AC 100-240V / DC 5V 600mA"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://popp.com/wp-content/uploads/2023/12/Yealink-T33G-Datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Yealink datasheet hosted by distributor Popp. Datasheet says PoE Class 1 (Yealink PoE class table lists T33P(G) as Class 2). Power: PoE 3.5-5 W, PSU 2-3 W. Dims W*D*H*T 212x186x146x42 mm. Wall mountable."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T43U",
+  "sku": [
+   "SIP-T43U"
+  ],
+  "kind": "phone",
+  "series": "T4U Series",
+  "desc": "12-account IP phone, 3.7\" LCD, 2x GbE RJ45, 2x USB, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 224.9,
+   "d": 206.2,
+   "h": 174.9
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 3.2,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or optional adapter AC 100-240V / DC 5V 1.2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 3.2
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sudpiphob.co.th/?p=2451",
+  "source2": "https://support.marvel.ru/wp-content/uploads/2023/04/poe-class-psu-specification.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Values from distributor page reproducing Yealink datasheet; PoE Class 2 confirmed by Yealink PoE class table. Power: PoE 1.5-3.2 W, PSU 0.9-2.2 W. Dims W*D*H*T 224.9x206.2x174.9x52 mm. Wall mountable (optional bracket)."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T44U",
+  "sku": [
+   "SIP-T44U"
+  ],
+  "kind": "phone",
+  "series": "T4U Series",
+  "desc": "12-account IP phone, 2.8\" colour LCD, 2x GbE RJ45, 2x USB, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 215,
+   "d": 206,
+   "h": 174.9
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 4.9,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or ext. adapter AC 100-240V / DC 5V 1.2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 4.9
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.allnet.de/media/1f/37/a6/1785762240/11ab61b70b931ae6faa3f0c749934a4a.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Yealink datasheet (German) hosted by distributor Allnet. PoE Class 3. Power: PoE 2.0-4.9 W, PSU 1.7-4.1 W. Dims W*D*H*T 215x206x174.9x52 mm. Wall mountable. Wi-Fi/BT via USB dongle."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T46U",
+  "sku": [
+   "SIP-T46U"
+  ],
+  "kind": "phone",
+  "series": "T4U Series",
+  "desc": "16-account IP phone, 4.3\" colour LCD, 2x GbE RJ45, 2x USB, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 244,
+   "d": 213,
+   "h": 185
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 3.8,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or optional adapter AC 100-240V / DC 5V 2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 3.8
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sudpiphob.co.th/?p=2343",
+  "source2": "https://www.simplicityvoip.net/hubfs/Yealink%20Collateral%202021/Yealink%20T46U%20Spec%20Sheet.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Values from distributor page reproducing Yealink datasheet. PoE Class 3. Power: PoE 1.6-3.8 W, PSU 1.2-3.0 W. Dims W*D*H*T 244x213x185x54 mm. Wall mountable."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T48U",
+  "sku": [
+   "SIP-T48U"
+  ],
+  "kind": "phone",
+  "series": "T4U Series",
+  "desc": "16-account IP phone, 7\" colour touch screen, 2x GbE RJ45, 2x USB, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 266,
+   "d": 226,
+   "h": 185
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 4.7,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or optional adapter AC 100-240V / DC 5V 2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 4.7
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://test.smartcitytelecom.com/wp-content/uploads/datasheet_t48u.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Yealink datasheet hosted by a reseller. PoE Class 3. Power: PoE 2.3-4.7 W, PSU 1.8-3.8 W. Dims W*D*H*T 266x226x185x54 mm. Wall mountable (optional bracket)."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T53",
+  "sku": [
+   "SIP-T53"
+  ],
+  "kind": "phone",
+  "series": "T5 Series",
+  "desc": "12-account prime business phone, 3.7\" LCD, 2x GbE RJ45, 1x USB, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 212,
+   "d": 210.6,
+   "h": 174.6
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 3.1,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or optional adapter AC 100-240V / DC 6V 1.2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 3.1
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sudpiphob.co.th/?p=2390",
+  "source2": "https://support.marvel.ru/wp-content/uploads/2023/04/poe-class-psu-specification.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Values from distributor page reproducing Yealink datasheet; PoE Class 2 (also in Yealink class table). Power: PoE 1.8-3.1 W, PSU 1.3-2.3 W. Dims W*D*H*T 212x210.6x174.6x41.7 mm. No built-in BT/Wi-Fi (USB dongle). Wall mountable (optional). Class table lists PSU 5V/1.2A, distributor page says DC 6V/1.2A."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T53W",
+  "sku": [
+   "SIP-T53W"
+  ],
+  "kind": "phone",
+  "series": "T5 Series",
+  "desc": "12-account IP phone, 3.7\" LCD, 2x GbE RJ45, built-in Wi-Fi + BT 4.2, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 212,
+   "d": 210.6,
+   "h": 174.5
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": 2.3,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or adapter AC 100-240V / 5V 1.2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": null
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_sip-t53w.pdf",
+  "source2": "https://support.marvel.ru/wp-content/uploads/2023/04/poe-class-psu-specification.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Distributor (Icecat-style) sheet; PoE Class 2 from Yealink class table. Only one power figure stated (2.3 W). Built-in Wi-Fi 802.11a/g/n and Bluetooth 4.2. Wall mountable."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T57W",
+  "sku": [
+   "SIP-T57W"
+  ],
+  "kind": "phone",
+  "series": "T5 Series",
+  "desc": "16-account IP phone, 7\" adjustable touch screen, 2x GbE RJ45, Wi-Fi + BT, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 259.4,
+   "d": 220,
+   "h": 211
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 5.5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or optional adapter AC 100-240V / DC 5V 2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x LAN + 1x PC pass-through"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 5.5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://foncloud.outbox.de/wp-content/uploads/Yealink-SIP-T57W.pdf",
+  "source2": "https://support.marvel.ru/wp-content/uploads/2023/04/poe-class-psu-specification.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Yealink datasheet (German) hosted by a reseller; PoE Class 3 from Yealink class table. Power: PoE 2.2-5.5 W, PSU 1.7-4.3 W. Dims 259.4x220x211x44.5 mm (W*D*H*T). Dual-band Wi-Fi 802.11a/b/g/n/ac, BT 4.2. Wall mount optional."
+ },
+ {
+  "brand": "Yealink",
+  "model": "SIP-T58W Pro",
+  "sku": [
+   "SIP-T58W Pro"
+  ],
+  "kind": "phone",
+  "series": "T5 Series",
+  "desc": "Android 9 smart desk phone, 7\" 1024x600 touch, 2x GbE RJ45, Wi-Fi + BT, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 259.4,
+   "d": 220,
+   "h": 215
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 9,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or optional adapter AC 100-240V / DC 5V 2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "1x LAN + 1x PC pass-through; USB: 1x top (CAM50 camera), 1x rear"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 7.6
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://sudpiphob.co.th/?p=2427",
+  "source2": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_sip-t58w.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Current successor of SIP-T58W. Values from distributor page reproducing Yealink datasheet. PoE Class 3. Power: PoE 3.3-7.6 W, PSU 2.5-9 W. Dims W*D*H*T 259.4x220x215x42.6 mm. Dual-band Wi-Fi, BT 4.2. Wall mount optional."
+ },
+ {
+  "brand": "Yealink",
+  "model": "W73P",
+  "sku": [
+   "W73P"
+  ],
+  "kind": "phone",
+  "series": "DECT",
+  "desc": "DECT IP phone system: W70B base + W73H handset; base 1x 10/100 RJ45, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 130,
+   "d": 100,
+   "h": 25.1
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or ext. adapter AC 100-240V / DC 5V 600mA"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Base station W70B: single LAN port"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": null
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://popp.com/wp-content/uploads/2023/10/Yealink-W70B-Datasheet.pdf",
+  "source2": "https://www.comx-computers.co.za/W73P-specifications-259491.htm",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Record describes the W70B DECT base supplied in the W73P bundle (Yealink W70B datasheet hosted by distributor Popp). PoE Class 1. Base dims stated as 130 x 100 x 25.1 mm. Desktop or wall mountable. Up to 10 handsets, 20 simultaneous calls, 10 SIP accounts; range 50 m indoor / 300 m outdoor."
+ },
+ {
+  "brand": "Fanvil",
+  "model": "X3U",
+  "sku": [
+   "X3U"
+  ],
+  "kind": "phone",
+  "series": "X Series",
+  "desc": "6-line IP phone, 2.8\" colour LCD, 2x GbE RJ45, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 169,
+   "d": 186.3,
+   "h": 174.5
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 2.95,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE or optional DC 5V/0.6A adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Network x1 + PC x1 (bridged)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": null,
+   "max_w": 2.95
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://Www.Provu.Co.Uk/products/fanvil/X3U/X3U.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Fanvil datasheet hosted by distributor ProVu. PoE class not stated. Power: idle 0.9-1.65 W, peak 1.8-2.95 W. Dims (desktop, angle 1) 169x186.3x174.5 mm; wall-mounted 169x115.6x212.5 mm. Wall mount needs extra parts."
+ },
+ {
+  "brand": "Fanvil",
+  "model": "X4U",
+  "sku": [
+   "X4U"
+  ],
+  "kind": "phone",
+  "series": "X Series",
+  "desc": "12-line IP phone, 2.8\" colour LCD + 2.4\" DSS LCD, 2x GbE RJ45, USB, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 214,
+   "d": 188.6,
+   "h": 181.1
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.8,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE or optional DC 5V/2A adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Network x1 + PC x1 (bridged)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": null,
+   "max_w": 6.8
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.ipphone-warehouse.com/content/pdf/fanvil/Fanvil-X4U-V2-Datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Fanvil X4U V2 datasheet hosted by a reseller. PoE class not stated. Power: idle 0.87-1.27 W, peak 4.72-6.8 W. Dims desktop 45 deg 214x188.6x181.1 mm; wall 214x119.4x219.1 mm. BT/Wi-Fi via dongle. Wall mount needs extra parts."
+ },
+ {
+  "brand": "Fanvil",
+  "model": "X5U",
+  "sku": [
+   "X5U"
+  ],
+  "kind": "phone",
+  "series": "X Series",
+  "desc": "16-line IP phone, 3.5\" colour LCD + 2.4\" DSS LCD, 2x GbE RJ45, BT 4.2, USB, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 214,
+   "d": 188.6,
+   "h": 181.1
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.81,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE or optional DC 5V/2A adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Network x1 + PC x1 (bridged)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": null,
+   "max_w": 6.81
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.ipphone-warehouse.com/content/pdf/fanvil/Fanvil-X5U-V2-Datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Fanvil X5U V2 datasheet hosted by a reseller. PoE class not stated. Power: PSU 0.91-4.74 W, PoE 1.3-6.81 W. Dims desktop 45 deg 214x188.6x181.1 mm; wall 214x119.4x219.1 mm. Built-in BT 4.2, Wi-Fi via dongle."
+ },
+ {
+  "brand": "Fanvil",
+  "model": "X6U",
+  "sku": [
+   "X6U"
+  ],
+  "kind": "phone",
+  "series": "X Series",
+  "desc": "20-line IP phone, 4.3\" colour LCD + 2x 2.4\" side LCDs, 2x GbE RJ45, BT, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE or optional power supply"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": null,
+   "notes": "Dual Gigabit ports"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": null,
+   "max_w": null
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.provu.co.uk/fanvil-x6u.html",
+  "source2": "https://aio.lv/en/product--fanvil-x6u--2148708.md",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Distributor pages only; power and dimensions not stated. Built-in Bluetooth, Wi-Fi via dongle. Wall mountable (extra fixings)."
+ },
+ {
+  "brand": "Grandstream",
+  "model": "GRP2601P",
+  "sku": [
+   "GRP2601P"
+  ],
+  "kind": "phone",
+  "series": "GRP Series",
+  "desc": "Entry 2-line carrier-grade IP phone, 2x 10/100 RJ45, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 180,
+   "d": 208,
+   "h": 63.4
+  },
+  "weight_kg": 0.65,
+  "power": {
+   "typ_w": null,
+   "max_w": 3.84,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af (PSU not included; GRP2601 non-P uses 5V 600mA)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 2,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Dual switched 10/100 ports"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 3.84
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.shopify.com/s/files/1/0338/6245/1337/files/Datasheet_GRP2601_English.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Grandstream datasheet hosted on a reseller CDN. PoE Class 1, 3.84 W. Dims 208 (L) x 180 (W) x 63.4 (H) mm with handset. Wall mount sold separately."
+ },
+ {
+  "brand": "Grandstream",
+  "model": "GRP2612P",
+  "sku": [
+   "GRP2612P"
+  ],
+  "kind": "phone",
+  "series": "GRP Series",
+  "desc": "4-line IP phone, 2.4\" colour LCD, 2x 10/100 RJ45, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 203,
+   "d": 193,
+   "h": 52.1
+  },
+  "weight_kg": 0.554,
+  "power": {
+   "typ_w": null,
+   "max_w": 3.8,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af; adapter 5V 0.6A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 2,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Dual switched 10/100 ports (GRP2612G is the Gigabit variant)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 3.8
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.grandstream.com/products/ip-voice-telephony/carrier-grade-ip-phones/grp-series-professional-ip-phones/product/grp2612-p-w",
+  "source2": "https://www.onedirect.co.uk/product/grandstream-grp2612p",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Port speed from Grandstream product page; power/dims/weight from distributor Onedirect (states 203x193x52.1 mm, order not given). PoE class not stated. 2 SIP accounts. Wall mount sold separately. Display size on Onedirect conflicts (4\") with Grandstream (2.4\"); Grandstream used."
+ },
+ {
+  "brand": "Grandstream",
+  "model": "GRP2615",
+  "sku": [
+   "GRP2615"
+  ],
+  "kind": "phone",
+  "series": "GRP Series",
+  "desc": "10-line IP phone, 4.3\" colour LCD, 2x GbE RJ45, Wi-Fi + BT, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 243,
+   "d": 210,
+   "h": 82.3
+  },
+  "weight_kg": 0.97,
+  "power": {
+   "typ_w": null,
+   "max_w": 7.4,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or included adapter 100-240V / 12VDC 1A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Dual switched GbE ports; USB listed as auxiliary port"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 7.4
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.shopify.com/s/files/1/0269/1088/3897/files/GRP-2615.pdf",
+  "source2": "https://www.grandstream.com/hubfs/Product_Documentation/Datasheet_GRP2615_Portuguese.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Grandstream datasheet (Spanish) hosted on reseller CDN. Max power 6.3 W (adapter) / 7.4 W (PoE). Dual-band Wi-Fi a/b/g/n/ac, Bluetooth. 5 SIP accounts. Wall mount sold separately."
+ },
+ {
+  "brand": "Grandstream",
+  "model": "GXP1630",
+  "sku": [
+   "GXP1630"
+  ],
+  "kind": "phone",
+  "series": "GXP16xx",
+  "desc": "3-line IP phone, 132x64 LCD, 2x GbE RJ45, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 208.5,
+   "d": 222.5,
+   "h": 76.2
+  },
+  "weight_kg": 0.8,
+  "power": {
+   "typ_w": null,
+   "max_w": 6.49,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or adapter 100-240VAC / 5VDC 600mA"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Dual switched GbE ports"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 6.49
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://gowifi.co.nz/specs/gxp1630_english_datasheet.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Grandstream datasheet hosted by reseller. PoE Class 2, 3.84-6.49 W. Dims 222.5 (L) x 208.5 (W) x 76.2 (H) mm with handset. Wall mountable."
+ },
+ {
+  "brand": "Cisco",
+  "model": "IP Phone 8841",
+  "sku": [
+   "CP-8841-K9=",
+   "CP-8841-W-K9="
+  ],
+  "kind": "phone",
+  "series": "IP Phone 8800 Series",
+  "desc": "5\" WVGA colour IP phone, 2-port GbE switch, PoE Class 2",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 257.34,
+   "d": 40,
+   "h": 229.1
+  },
+  "weight_kg": 1.17,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af/at or Cisco IP Phone Power Cube 4 (48V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Internal 2-port GbE switch (network + PC)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": null
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://bxin.cisco.com/c/en/us/products/collateral/collaboration-endpoints/unified-ip-phone-8800-series/datasheet-c78-731638.pdf",
+  "source2": "https://provu.co.uk/cisco-8800-series",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PoE Class 2. Dims 229.1 H x 257.34 W x 40 D mm excluding foot stand. Weight with handset. Optional wall-mount kit CP-8800-WMK=. No USB, no Bluetooth."
+ },
+ {
+  "brand": "Cisco",
+  "model": "IP Phone 8851",
+  "sku": [
+   "CP-8851-K9="
+  ],
+  "kind": "phone",
+  "series": "IP Phone 8800 Series",
+  "desc": "5\" WVGA colour IP phone, 2-port GbE switch, USB, Bluetooth, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 257.3,
+   "d": 40,
+   "h": 229.1
+  },
+  "weight_kg": 1.19,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af/at or Cisco power cube"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Internal 2-port GbE switch (network + PC)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": null
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://store.fluidone.com/cisco-ip-business-phone-8851-5-inch-wvga-colour-display-gigabit-ethernet-switch-class-4-poe-usb-port-10-sip-registrations-1-year-limited-hardware-warranty-cp-8851-k9-cp-8851-k9",
+  "source2": "https://provu.co.uk/cisco-8800-series",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Cisco site for this model not reachable; distributor data. PoE class conflict: Fluidone says Class 4, ProVu says Class 3 - verify on switch. Bluetooth 3.0+HS. Wall mountable."
+ },
+ {
+  "brand": "Cisco",
+  "model": "IP Phone 8865",
+  "sku": [
+   "CP-8865-K9=",
+   "CP-8865-W-K9="
+  ],
+  "kind": "phone",
+  "series": "IP Phone 8800 Series",
+  "desc": "5\" WVGA 720p video IP phone, 2-port GbE switch, 2x USB, BT, Wi-Fi, PoE Class 4",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 257.34,
+   "d": 98.39,
+   "h": 228.78
+  },
+  "weight_kg": 1.35,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af/at/UPOE (Class 4) or Power Cube 4 CP-PWR-CUBE-4 (48V)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 2,
+   "notes": "Internal 2-port GbE switch; USB side + back (back up to 2.1A)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3at",
+   "max_w": null
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/collaboration-endpoints/unified-ip-phone-8800-series/datasheet-c78-734731.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "PoE Class 4. Dims 228.78 H x 257.34 W x 98.39 D mm excluding foot stand. Bluetooth 4.1 LE, Wi-Fi 802.11a/b/g/n/ac. Wall-mount kit CP-8800-VIDEO-WMK=."
+ },
+ {
+  "brand": "Poly",
+  "model": "Edge E220",
+  "sku": [
+   "82M87AA"
+  ],
+  "kind": "phone",
+  "series": "Edge E Series",
+  "desc": "4-line-key IP phone (16 lines), 2.8\" colour LCD, 2x GbE RJ45, BT 5.0, USB-C, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 13,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or optional AC adapter 5VDC 3A 15W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "2x RJ45 10/100/1000; 1x USB-C 2.0"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 13
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.iceshop.nl/objects/mmo_114027569_1781278334_228_909990.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "HP/Poly product sheet via distributor CDN. PoE Class 3, 13 W max. Product dimensions not stated. Wall mountable (hardware included)."
+ },
+ {
+  "brand": "Poly",
+  "model": "Edge E350",
+  "sku": [
+   "82M89AA"
+  ],
+  "kind": "phone",
+  "series": "Edge E Series",
+  "desc": "8-line-key IP phone, 3.5\" colour IPS, 2x GbE RJ45, BT 5.0 + dual-band Wi-Fi, USB-C, PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 13,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or optional AC adapter 5VDC 3A 15W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "2x RJ45 10/100/1000; 1x USB-C 2.0"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 13
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://cdn.iceshop.nl/objects/mmo_114027539_1781278324_1232_2736091.pdf",
+  "source2": "https://myithub.com.au/wp-content/uploads/wooimporter/POLY-82M89AA-leaflet-0.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "HP/Poly product sheet via distributor CDN. PoE Class 3, 13 W max. Product dimensions not stated. Wall mountable (kit separate)."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-KV6113-WPE1(C)",
+  "sku": [
+   "DS-KV6113-WPE1(C)"
+  ],
+  "kind": "intercom",
+  "series": "Villa Door Station",
+  "desc": "2 MP 1-button villa door station, Wi-Fi, card reader, PoE, IP65",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 138,
+   "d": 27,
+   "h": 65
+  },
+  "weight_kg": 0.19,
+  "power": {
+   "typ_w": null,
+   "max_w": 10,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "Standard PoE or optional 12V adapter DS-KAW50-1"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x RJ45 10/100; RS-485; 1 lock relay (30VDC 2A); 4 alarm in; door contact; exit button"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 10
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000058902/fr-ca/DS-KV6113-WPE1C_Datasheet_20250321.pdf",
+  "source2": "https://cdn.panacompu.com/doc/pd/Data Sheet - Hikvision DS-KV6113-WPE1.pdf",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Outdoor door station. IP65. Surface mount. Dims W 138 x H 65 x D 27 mm. Power < 10 W. Built-in card reader (10,000 cards). Wi-Fi 802.11b/g/n. PoE stated as 'standard PoE' (802.3af not named explicitly)."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-KV8113-WME1(C)",
+  "sku": [
+   "DS-KV8113-WME1(C)"
+  ],
+  "kind": "intercom",
+  "series": "Pro Series Villa Door Station",
+  "desc": "2 MP 1-button villa door station, Wi-Fi, Mifare reader, PoE 802.3af, IP65 IK08",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 90.9,
+   "d": 29,
+   "h": 174
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 10,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC or PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x RJ45 10/100 PoE; RS-485; 4 alarm in"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 10
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.videor.com/de/generate/datasheet/render/product_sku/236574/",
+  "source2": "https://ipphone-warehouse.com/hikvision-ds-kv8113-wme1-1080p-poe-ip-video-intercom-door-station",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Distributor data (Videor, IP Phone Warehouse). IP65, IK08. Surface or flush mount. Dims converted from 3.58 W x 6.85 H x 1.14 D in. 13.56 MHz Mifare reader. 2.4 GHz Wi-Fi."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-KH6320-WTE1",
+  "sku": [
+   "DS-KH6320-WTE1"
+  ],
+  "kind": "intercom",
+  "series": "Indoor Station",
+  "desc": "7\" touch indoor station, Wi-Fi, PoE 802.3af",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 200,
+   "d": 15.1,
+   "h": 140
+  },
+  "weight_kg": 0.355,
+  "power": {
+   "typ_w": null,
+   "max_w": 5,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "PoE 802.3af or 12 VDC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x RJ45 10/100; RS-485; 8 alarm in; 2 relay out"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 5
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://netviewcctv.co.uk/ds-kh6320-wte1",
+  "source2": "https://www.videor.com/de/generate/datasheet/render/product_sku/225545/",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "indoor station. Distributor data (Netview CCTV, Videor). 1024x600 capacitive touch. Power <= 5 W. Dims W 200 x H 140 x D 15.1 mm. Surface mount (optional flush bracket DS-KABH6320-T). Wi-Fi 2.4 GHz."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-KH9510-WTE1(B)",
+  "sku": [
+   "DS-KH9510-WTE1(B)"
+  ],
+  "kind": "intercom",
+  "series": "9 Series Indoor Station",
+  "desc": "10.1\" Android indoor station, Wi-Fi, PoE 802.3af",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": 254,
+   "d": 26.65,
+   "h": 166
+  },
+  "weight_kg": 0.875,
+  "power": {
+   "typ_w": null,
+   "max_w": 12,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC 1A or PoE 802.3af"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x RJ45 10/100; RS-485 (half duplex); 8 alarm in"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": {
+   "class": "802.3af",
+   "max_w": 12
+  },
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://assets.hikvision.com/prd/normal/all/doc/m000055378/pl-pl/DS-KH9510-WTE1B_Datasheet_20250403.pdf",
+  "source2": "https://netviewcctv.co.uk/ds-kh9510-wte1-b",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "indoor station. Android 10, 1024x600. Power <= 12 W. Dims 254 x 166 x 26.65 mm. Surface (wall) mount. Wi-Fi 2.4 GHz b/g/n."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-K1T671M",
+  "sku": [
+   "DS-K1T671M"
+  ],
+  "kind": "access",
+  "series": "Face Recognition Terminal",
+  "desc": "7\" face recognition terminal, 2 MP dual lens, Mifare, GbE, IP65",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12 VDC 3A (PSU not included)"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1x RJ45 10/100/1000; RS-485; Wiegand; lock out; door contact; exit button; 2 alarm in; 1 alarm out"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://us-legacy.hikvision.com/sites/default/files/data_sheet/ac_ds-k1t671m_022420na_fr_0.pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "IP65. PoE not specified. 5,000 faces, 6,000 cards. Dimensions only in drawing. Optional pole DS-KAB671-B and rain shield DS-KAB671-S."
+ },
+ {
+  "brand": "Hikvision",
+  "model": "DS-K1T341CMF",
+  "sku": [
+   "DS-K1T341CMF"
+  ],
+  "kind": "access",
+  "series": "Value Series Face Terminal",
+  "desc": "4.3\" face + fingerprint + card terminal, 2 MP, IP65",
+  "mount": "wall",
+  "u": 0,
+  "dims_mm": {
+   "w": null,
+   "d": null,
+   "h": null
+  },
+  "weight_kg": null,
+  "power": {
+   "typ_w": null,
+   "max_w": 10,
+   "psu": null,
+   "psu_redundant": null,
+   "input": "12-24 VDC 2A"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x RJ45 10/100; RS-485; Wiegand 26/34; lock; exit button; door contact; tamper"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://biosyn.online/access-control-system-for-door/ds-k1t341cmf/",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Distributor data. IP65. Power <= 10 W. PoE not listed. 3,000 face / card / fingerprint, M1 card. Dimensions not stated."
+ }
+]

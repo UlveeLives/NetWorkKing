@@ -19,7 +19,7 @@ const KINDS = {
   cablemgr:{cat:"rackacc", icon:"cm", rack:true, h:1, passive:true, acc:true},
   brush:{cat:"rackacc", icon:"cm", rack:true, h:1, passive:true, acc:true},
   blank:{cat:"rackacc", icon:"blank", rack:true, h:1, passive:true, acc:true},
-  vent:{cat:"rackacc", icon:"blank", rack:true, h:1, passive:true, acc:true},
+  vent:{cat:"rackacc", icon:"vent", rack:true, h:1, passive:true, acc:true},
   shelf:{cat:"rackacc", icon:"shelf", rack:true, h:1, passive:true, acc:true},
   fan:{cat:"rackacc", icon:"fan", rack:true, h:1, acc:true},
   ups:{cat:"power", icon:"ups", rack:true, h:2},
@@ -27,7 +27,7 @@ const KINDS = {
   poeinj:{cat:"power", icon:"poeinj", ports:2},
   poeext:{cat:"power", icon:"poeinj", ports:2},
   ethext:{cat:"net", icon:"adapter", ports:2},
-  hdmiext:{cat:"cctv", icon:"adapter", ports:1, av:{hdmiIn:1, hdmiOut:1}},
+  hdmiext:{cat:"cctv", icon:"hdmiext", ports:1, av:{hdmiIn:1, hdmiOut:1}},
   usbext:{cat:"end", icon:"adapter", ports:1},
   server:{cat:"compute", icon:"server", rack:true, h:2, ports:4},
   nas:{cat:"compute", icon:"nas", rack:true, h:2, ports:4},
@@ -35,7 +35,7 @@ const KINDS = {
   kvm:{cat:"compute", icon:"kvm", rack:true, h:1, ports:8, av:{hdmiIn:4, hdmiOut:1}},
   camera:{cat:"cctv", icon:"turret", ports:1},
   nvr:{cat:"cctv", icon:"nvr", rack:true, h:2, ports:2, av:{hdmiOut:2, vgaOut:1}},
-  dvr:{cat:"cctv", icon:"nvr", rack:true, h:1, ports:1, av:{hdmiOut:1, vgaOut:1}},
+  dvr:{cat:"cctv", icon:"dvr", rack:true, h:1, ports:1, av:{hdmiOut:1, vgaOut:1}},
   decoder:{cat:"cctv", icon:"decoder", rack:true, h:1, ports:1, av:{hdmiOut:4}},
   encoder:{cat:"cctv", icon:"encoder", rack:true, h:1, ports:1, av:{hdmiIn:1}},
   monitor:{cat:"cctv", icon:"monitor", av:{hdmiIn:2}},
@@ -106,8 +106,26 @@ async function ukDialog(bases){
 }
 // the "＋ My device" button at the end of an add list (list: the kinds that list offers)
 const ukBtn = id => `<button type="button" class="pitem ukadd" data-ukadd="${id}" title="${esc(t("ukT"))}"><svg viewBox="0 0 48 48"><path d="M24 10v28M10 24h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg><span>${esc(t("ukBtn"))}</span></button>`;
-const CAM_STYLES = {turret:"turret", dome:"camDome", bullet:"camBullet", ptz:"ptz", fisheye:"fisheye", box:"camBullet", cube:"camDome"};
-function devIcon(d){ if (!d) return "box"; if (d.kind === "camera") return CAM_STYLES[d.camera && d.camera.style] || "turret"; return (KINDS[d.kind] || KINDS.other).icon; }
+const CAM_STYLES = {bullet:"camBullet", turret:"turret", dome:"camDome", ptz:"ptz", fisheye:"fisheye", box:"camBox", cube:"camCube"};
+// other names vendors use for the same camera types
+const CAM_ALIAS = {eyeball:"turret", "turret-dome":"turret", "speed dome":"ptz", "speed-dome":"ptz", speeddome:"ptz", pt:"ptz", panoramic:"fisheye", "360":"fisheye", "mini bullet":"bullet", "mini-bullet":"bullet", "mini dome":"dome", "wedge":"dome", "pinhole":"box", "covert":"box"};
+const camStyleOf = s => { s = String(s || "").toLowerCase().trim(); return CAM_STYLES[s] ? s : CAM_ALIAS[s] || ""; };
+// how a device is mounted changes its picture (ceiling / wall / outdoor AP, rack / desktop switch, rack / tower UPS and server)
+const MOUNTS = {ap:["ceiling", "wall", "out"], switch:["rack", "desktop"], ups:["rack", "tower"], server:["rack", "tower"], nas:["rack", "desktop"]};
+// palette entries: one per camera type and per AP mounting, so the right picture goes on the plan from the start
+const KIND_VARIANTS = {camera:Object.keys(CAM_STYLES).filter(k => k !== "cube"), ap:["ceiling", "wall", "out"]};
+const variantName = kv => { const [k, v] = String(kv).split("."); return !v ? kindName(k) : k === "camera" ? t("cs_" + v) : t("mt_" + v) + " " + kindName(k); };
+const variantIcon = kv => { const [k, v] = String(kv).split("."); return devIcon(k === "camera" ? {kind:k, camera:{style:v}} : {kind:k, mount:v, ports:KINDS[k] && KINDS[k].ports}); };
+const expandKinds = L => L.flatMap(k => KIND_VARIANTS[k] ? KIND_VARIANTS[k].map(v => k + "." + v) : [k]);
+function devIcon(d){ if (!d) return "box"; const k = d.kind, m = d.mount || "";
+  if (k === "camera"){ const c = d.camera || {}, n = CAM_STYLES[c.style] || "turret"; return c.loc === "out" && ICO[n + "_out"] ? n + "_out" : n; }
+  if (k === "ap") return m === "wall" ? "apWall" : m === "out" || m === "pole" ? "apOut" : "ap";
+  if (k === "switch" && (m === "desktop" || (!m && !d.rack && num(d.ports) > 0 && num(d.ports) <= 10))) return "swDesk";
+  if (k === "ups") return m === "rack" || (!m && d.rack) ? "upsRack" : "ups";
+  if (k === "server" && m === "tower") return "server_t";
+  if (k === "nas" && (m === "rack" || (!m && d.rack))) return "storage";
+  if ((k === "nvr" || k === "dvr") && num(d.params && d.params.h, 1) >= 2) return "nvr2";
+  return (KINDS[k] || KINDS.other).icon; }
 const STATUSES = ["planned","installed","active","maintenance","faulty","removed"];
 const AIRFLOW = ["f2b","b2f","side","passive"];
 // Cable / connection types with drawing style. fiber:true = optical.
@@ -123,7 +141,7 @@ const isFiber = m => !!(MEDIA[m] && MEDIA[m].fiber);
 /* ---------- normalisation ---------- */
 function normDevice(d){
   const K = KINDS[d.kind] || KINDS.other;
-  const def = {name:"", brand:"", model:"", status:"installed", floor:"", room:"", rack:"", u:0, side:"front", host:"", ip:"", mac:"", serial:"", asset:"", fw:"", owner:"", installed:"", warranty:"", vlan:"", notes:"", ports:K.ports || 0, nvr:"", ch:""};
+  const def = {name:"", brand:"", model:"", status:"installed", floor:"", room:"", rack:"", u:0, side:"front", host:"", ip:"", mac:"", serial:"", asset:"", fw:"", owner:"", installed:"", warranty:"", vlan:"", notes:"", ports:K.ports || 0, nvr:"", ch:"", mount:""};
   for (const k in def) if (d[k] === undefined) d[k] = def[k];
   d.params = Object.assign({h:K.h || (K.rack ? 1 : 0), depth:0, weight:0, powerW:0, maxW:0, psu:1, airflow:K.acc || K.passive ? "passive" : "f2b", sfp:K.sfp || 0, poePorts:0, poeBudget:0, poeStd:"", poeIn:0, va:0, upsW:0, wh:0, amps:0, feedA:"", feedB:"", feed:""}, d.params || {});
   d.pcfg = d.pcfg && typeof d.pcfg === "object" ? d.pcfg : {};
@@ -198,7 +216,9 @@ async function delDeviceAsk(b, d){ const n = b.links.filter(l => l.a.d === d.id 
   if (!await uiConfirm(t("delDevQ",{d:devLabel(d), k:kindName(d.kind), n}), t("delete"), true)) return false;
   edit(() => { removeDevices(b, [d.id]); if (UI.sel && UI.sel.id === d.id) UI.sel = null; }); toast("🗑 " + devLabel(d)); return true; }
 function newDevice(kind, o = {}){
+  let vr = ""; if (String(kind).includes(".")) [kind, vr] = String(kind).split(".");
   const d = normDevice(Object.assign({id:uid("d"), kind}, o));
+  if (vr){ if (kind === "camera"){ if (CAM_STYLES[vr]) d.camera.style = vr; } else d.mount = vr; }
   if (o.status === undefined && store && store.settings && store.settings.addPlanned) d.status = "planned";
   if (!d.name) d.name = autoName(B(), kind);
   return d;
@@ -206,6 +226,7 @@ function newDevice(kind, o = {}){
 // Next free name like "SW-01", "CAM-07".
 const NAMEPFX = {switch:"SW", coresw:"CORE", firewall:"FW", router:"RTR", modem:"MODEM", ont:"ONT", wlc:"WLC", ap:"AP", camera:"CAM", nvr:"NVR", dvr:"DVR", server:"SRV", nas:"NAS", storage:"STG", ups:"UPS", pdu:"PDU", pp:"PP", fpp:"FPP", splice:"SC", mediaconv:"MC", pc:"PC", laptop:"NB", printer:"PRN", phone:"TEL", tv:"TV", workstation:"WS", monitor:"MON", videowall:"VW", decoder:"DEC", encoder:"ENC", joystick:"KB", poeinj:"INJ", kvm:"KVM", alarm:"ALM", touch:"TP", intercom:"INT", access:"ACS", sensor:"SNS", iot:"IOT", outlet:"TO", internet:"ISP", other:"DEV"};
 function autoName(b, kind){
+  kind = String(kind).split(".")[0];
   if (KINDS[kind] && KINDS[kind].acc) return kindName(kind);
   const p = NAMEPFX[kind] || "DEV", used = new Set(b.devices.map(d => d.name)); let i = 1, n;
   do { n = `${p}-${String(i).padStart(2, "0")}`; i++; } while (used.has(n)); return n;
@@ -257,7 +278,8 @@ function deviceEditor(b, d, opts = {}){
   const cat = `<div class="catrow"><button class="btn small" data-dr="catalog">📚 ${esc(d.model ? t("catChange") : t("catPick"))}</button>${d.cat ? `<span class="pill ok" title="${esc(t("catLinked"))}">✓ ${esc(t("catFromDb"))}</span>` : ""}${d.model && !d.cat ? `<button class="btn small" data-dr="webFill" title="${esc(t("wfH"))}">🔎 ${esc(t("wfBtn"))}</button>` : ""}${opts.extraHead || ""}</div>`;
   let g = sel(t("f_kind"), "kind", d.kind, KIND_ORDER.map(k => opt(k, kindName(k), d.kind)).join("")) + fld(t("f_name"), "name", d.name)
     + `<div class="two">${fld(t("f_brand"), "brand", d.brand, "text", ' list="dl-brands"')}${fld(t("f_model"), "model", d.model, "text", ' list="dl-models"')}</div>${modelList(d.kind, d.brand)}`
-    + sel(t("f_status"), "status", d.status, STATUSES.map(s => opt(s, t("st_" + s), d.status)).join(""));
+    + sel(t("f_status"), "status", d.status, STATUSES.map(s => opt(s, t("st_" + s), d.status)).join(""))
+    + (MOUNTS[d.kind] ? sel(t("f_mount"), "mount", d.mount, opt("", t("mt_auto"), d.mount) + MOUNTS[d.kind].map(m => opt(m, t("mt_" + m), d.mount)).join("")) : "");
   let loc = `<div class="two">${sel(t("f_floor"), "floor", d.floor, floorOpts(b, d.floor))}${sel(t("f_room"), "room", d.room, roomOpts(b, d.floor, d.room))}</div>`;
   if (K.rack) loc += `<div class="two">${sel(t("f_rack"), "rack", d.rack, opt("", t("none"), d.rack) + b.racks.map(x => opt(x.id, x.name, d.rack)).join(""))}${d.rack ? fld(t("f_u"), "u", d.u || "", "number", ` min="1" max="${r ? r.u : 60}"`) : "<span></span>"}</div>`
     + `<div class="two">${fld(t("f_h"), "params.h", P2.h, "number", ' min="1" max="20"')}${d.rack ? sel(t("f_side"), "side", d.side, opt("front", t("sideFront"), d.side) + opt("rear", t("sideRear"), d.side)) : "<span></span>"}</div>`;

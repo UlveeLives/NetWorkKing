@@ -1,0 +1,3671 @@
+[
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-8P-E-2G",
+  "sku": [
+   "CBS350-8P-E-2G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "L3-lite managed 8x GE PoE+ 60W, 2x GE combo",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 185,
+   "h": 44
+  },
+  "weight_kg": 1.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 80.79,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter"
+  },
+  "heat_btu_h": 275.91,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "2x GE combo (RJ45/SFP) uplinks; RJ45 console"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 60,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power is worst case with PoE at 110V."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-8FP-E-2G",
+  "sku": [
+   "CBS350-8FP-E-2G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 8x GE PoE+ 120W, 2x GE combo",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 185,
+   "h": 44
+  },
+  "weight_kg": 1.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 147.48,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter"
+  },
+  "heat_btu_h": 503.22,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "2x GE combo (RJ45/SFP) uplinks"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 120,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-24T-4G",
+  "sku": [
+   "CBS350-24T-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 24x GE, 4x SFP, non-PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 240,
+   "h": 44
+  },
+  "weight_kg": 2.63,
+  "power": {
+   "typ_w": null,
+   "max_w": 25.91,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 89.13,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-24P-4G",
+  "sku": [
+   "CBS350-24P-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 24x GE PoE+ 195W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 299,
+   "h": 44
+  },
+  "weight_kg": 3.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 239.7,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 820.62,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 195,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-24FP-4G",
+  "sku": [
+   "CBS350-24FP-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 24x GE PoE+ 370W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 345,
+   "h": 44
+  },
+  "weight_kg": 4.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 449.7,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1537.17,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-48T-4G",
+  "sku": [
+   "CBS350-48T-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 48x GE, 4x SFP, non-PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 3.95,
+  "power": {
+   "typ_w": null,
+   "max_w": 48.27,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 165.96,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-48P-4G",
+  "sku": [
+   "CBS350-48P-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 48x GE PoE+ 370W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.43,
+  "power": {
+   "typ_w": null,
+   "max_w": 451.95,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1542.12,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-48FP-4G",
+  "sku": [
+   "CBS350-48FP-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 48x GE PoE+ 740W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.82,
+  "power": {
+   "typ_w": null,
+   "max_w": 886.42,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 3024.59,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-24FP-4X",
+  "sku": [
+   "CBS350-24FP-4X"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 24x GE PoE+ 370W, 4x 10G SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 345,
+   "h": 44
+  },
+  "weight_kg": 4.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 451.8,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1544.34,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-24NGP-4X",
+  "sku": [
+   "CBS350-24NGP-4X"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "Managed 16x GE + 8x 5G mGig PoE 375W, 2x 10G combo + 2x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.3,
+  "power": {
+   "typ_w": null,
+   "max_w": 488.9,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1668.2,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 16,
+   "rj45_mgig": 8,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "8x 5G mGig RJ45 (60W PoE capable); 2 of the 4 SFP+ are combo with 10G copper"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 375,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "8 ports support 60W PoE (Cisco UPOE-class); datasheet only names 802.3af/at. 3 fans."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS250-8T-D",
+  "sku": [
+   "CBS250-8T-D"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 250",
+  "desc": "Smart 8x GE desktop, non-PoE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 160,
+   "d": 128,
+   "h": 30
+  },
+  "weight_kg": 0.54,
+  "power": {
+   "typ_w": null,
+   "max_w": 7.6,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter"
+  },
+  "heat_btu_h": 25.93,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-250-series-smart-switches/nb-06-bus250-smart-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless, no console port."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS250-8P-E-2G",
+  "sku": [
+   "CBS250-8P-E-2G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 250",
+  "desc": "Smart 8x GE PoE+ 60W, 2x GE combo",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 185,
+   "h": 44
+  },
+  "weight_kg": 1.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 80.79,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter"
+  },
+  "heat_btu_h": 275.91,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "2x GE combo (RJ45/SFP)"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 60,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-250-series-smart-switches/nb-06-bus250-smart-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS250-16T-2G",
+  "sku": [
+   "CBS250-16T-2G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 250",
+  "desc": "Smart 16x GE, 2x SFP, non-PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 272,
+   "h": 44
+  },
+  "weight_kg": 1.78,
+  "power": {
+   "typ_w": null,
+   "max_w": 18.63,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 64.46,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 16,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-250-series-smart-switches/nb-06-bus250-smart-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS250-24T-4G",
+  "sku": [
+   "CBS250-24T-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 250",
+  "desc": "Smart 24x GE, 4x SFP, non-PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 240,
+   "h": 44
+  },
+  "weight_kg": 2.63,
+  "power": {
+   "typ_w": null,
+   "max_w": 25.91,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 89.13,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-250-series-smart-switches/nb-06-bus250-smart-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS250-24P-4G",
+  "sku": [
+   "CBS250-24P-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 250",
+  "desc": "Smart 24x GE PoE+ 195W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 299,
+   "h": 44
+  },
+  "weight_kg": 3.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 239.7,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 820.28,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 195,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-250-series-smart-switches/nb-06-bus250-smart-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS250-48P-4G",
+  "sku": [
+   "CBS250-48P-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 250",
+  "desc": "Smart 48x GE PoE+ 370W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.43,
+  "power": {
+   "typ_w": null,
+   "max_w": 451.95,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1542.12,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-250-series-smart-switches/nb-06-bus250-smart-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS250-24P-4X",
+  "sku": [
+   "CBS250-24P-4X"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 250",
+  "desc": "Smart 24x GE PoE+ 195W, 4x 10G SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 299,
+   "h": 44
+  },
+  "weight_kg": 3.68,
+  "power": {
+   "typ_w": null,
+   "max_w": 240.4,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 822.67,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 195,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-250-series-smart-switches/nb-06-bus250-smart-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200CX-12P-2X2G",
+  "sku": [
+   "C9200CX-12P-2X2G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200CX Compact",
+  "desc": "Compact fanless 12x GE PoE+ 240W, 2x 1G copper + 2x 10G SFP+ uplinks",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 269,
+   "d": 244,
+   "h": 44
+  },
+  "weight_kg": 2.99,
+  "power": {
+   "typ_w": null,
+   "max_w": 315,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Internal 315W AC"
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 14,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "12x GE PoE+ downlinks + 2x 1G copper uplinks; console is micro-USB"
+  },
+  "poe": {
+   "ports": 12,
+   "budget_w": 240,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9200/hardware/install/b-c9200cx-hig/technical_specifications_cx.html",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims/weight from hardware install guide (cm converted to mm). Mount: desktop, wall, rack with kit."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200CX-8P-2X2G",
+  "sku": [
+   "C9200CX-8P-2X2G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200CX Compact",
+  "desc": "Compact fanless 8x GE PoE+ 240W, 2x 1G copper + 2x 10G SFP+ uplinks",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 269,
+   "d": 244,
+   "h": 44
+  },
+  "weight_kg": 2.99,
+  "power": {
+   "typ_w": null,
+   "max_w": 315,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Internal 315W AC"
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 10,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "8x GE PoE+ downlinks + 2x 1G copper uplinks; micro-USB console"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 240,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9200/hardware/install/b-c9200cx-hig/technical_specifications_cx.html",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Dims/weight from hardware install guide (cm converted to mm)."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200CX-8UXG-2X",
+  "sku": [
+   "C9200CX-8UXG-2X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200CX Compact",
+  "desc": "Compact fanless 4x 10G mGig + 4x GE UPOE 240W, 2x 10G SFP+",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 269,
+   "d": 244,
+   "h": 44
+  },
+  "weight_kg": 3.18,
+  "power": {
+   "typ_w": null,
+   "max_w": 315,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Internal 315W AC"
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 4,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "4x mGig up to 10G + 4x 1G, all UPOE (60W); micro-USB console"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 240,
+   "std": "802.3bt"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9200/hardware/install/b-c9200cx-hig/technical_specifications_cx.html",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Cisco UPOE / 802.3bt Class 6 up to 60W per port."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200CX-12T-2X2G",
+  "sku": [
+   "C9200CX-12T-2X2G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200CX Compact",
+  "desc": "Compact fanless 12x GE non-PoE, PoE-powered (802.3bt), 2x 1G + 2x 10G SFP+ uplinks",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 269,
+   "d": 165,
+   "h": 44
+  },
+  "weight_kg": 1.86,
+  "power": {
+   "typ_w": null,
+   "max_w": 80,
+   "psu": null,
+   "psu_redundant": false,
+   "input": "802.3bt Class 6 PoE-in or optional 80W AC/DC adapter"
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 15,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "12x GE downlinks + 2x 1G copper uplinks + 1x 1G PD (PoE-in) uplink; micro-USB console"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9200/hardware/install/b-c9200cx-hig/technical_specifications_cx.html",
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Switch itself can be powered by 802.3bt Class 6/UPOE on its PD port."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-24T-4G",
+  "sku": [
+   "C9200L-24T-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "24x GE data (non-PoE), 4x 1G SFP uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.35,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC, FRU PSU PWR-C5-125WAC 125W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Console RJ45 + mini-USB; uplinks fixed"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Second (redundant) PSU optional; PoE budget is with one PSU (doubles roughly with two). Depth is chassis only; fans fixed redundant."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-48T-4G",
+  "sku": [
+   "C9200L-48T-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "48x GE data (non-PoE), 4x 1G SFP uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.53,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC, FRU PSU PWR-C5-125WAC 125W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Console RJ45 + mini-USB; uplinks fixed"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Second (redundant) PSU optional; PoE budget is with one PSU (doubles roughly with two). Depth is chassis only; fans fixed redundant."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-24T-4X",
+  "sku": [
+   "C9200L-24T-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "24x GE data (non-PoE), 4x 10G SFP+ uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.35,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC, FRU PSU PWR-C5-125WAC 125W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Console RJ45 + mini-USB; uplinks fixed"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Second (redundant) PSU optional; PoE budget is with one PSU (doubles roughly with two). Depth is chassis only; fans fixed redundant."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-48T-4X",
+  "sku": [
+   "C9200L-48T-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "48x GE data (non-PoE), 4x 10G SFP+ uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.53,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC, FRU PSU PWR-C5-125WAC 125W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Console RJ45 + mini-USB; uplinks fixed"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Second (redundant) PSU optional; PoE budget is with one PSU (doubles roughly with two). Depth is chassis only; fans fixed redundant."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-24PXG-4X",
+  "sku": [
+   "C9200L-24PXG-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "24x PoE+ (8x mGig up to 10G, 16x GE) 370W, 4x 10G SFP+ uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.44,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC, FRU PSU PWR-C5-600WAC 600W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 16,
+   "rj45_mgig": 8,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Console RJ45 + mini-USB; uplinks fixed"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Second (redundant) PSU optional; PoE budget is with one PSU (doubles roughly with two). Depth is chassis only; fans fixed redundant."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-48PXG-4X",
+  "sku": [
+   "C9200L-48PXG-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "48x PoE+ (12x mGig up to 10G, 36x GE) 740W, 4x 10G SFP+ uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.71,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC, FRU PSU PWR-C5-1KWAC 1000W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 36,
+   "rj45_mgig": 12,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Console RJ45 + mini-USB; uplinks fixed"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Second (redundant) PSU optional; PoE budget is with one PSU (doubles roughly with two). Depth is chassis only; fans fixed redundant."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C9200L-48PL-4G",
+  "sku": [
+   "C9200L-48PL-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 9200L",
+  "desc": "48x GE partial PoE+ 370W, 4x 1G SFP uplinks",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 4.8,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "AC, FRU PSU PWR-C5-600WAC 600W"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Console RJ45 + mini-USB; uplinks fixed"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Second (redundant) PSU optional; PoE budget is with one PSU (doubles roughly with two). Depth is chassis only; fans fixed redundant."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-8P-E-2G",
+  "sku": [
+   "C1300-8P-E-2G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "8x GE PoE+ 67W, 2x SFP",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 185,
+   "h": 44
+  },
+  "weight_kg": 1.72,
+  "power": {
+   "typ_w": null,
+   "max_w": 87.89,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter"
+  },
+  "heat_btu_h": 299.91,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 67,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-8FP-2G",
+  "sku": [
+   "C1300-8FP-2G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "8x GE PoE+ 120W, 2x SFP",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 297,
+   "h": 44
+  },
+  "weight_kg": 3.05,
+  "power": {
+   "typ_w": null,
+   "max_w": 145.44,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 496.26,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 120,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-16P-2G",
+  "sku": [
+   "C1300-16P-2G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "16x GE PoE+ 120W, 2x SFP",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 297,
+   "h": 44
+  },
+  "weight_kg": 2.38,
+  "power": {
+   "typ_w": null,
+   "max_w": 152.7,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 520.7,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 16,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 120,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-24T-4G",
+  "sku": [
+   "C1300-24T-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "24x GE (non-PoE), 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 240,
+   "h": 44
+  },
+  "weight_kg": 2.63,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 50.5,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-48T-4G",
+  "sku": [
+   "C1300-48T-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "48x GE (non-PoE), 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 288,
+   "h": 44
+  },
+  "weight_kg": 3.95,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 132.39,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-24FP-4X",
+  "sku": [
+   "C1300-24FP-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "24x GE PoE+ 375W, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 4.92,
+  "power": {
+   "typ_w": null,
+   "max_w": 454.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1548.8,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 375,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-48FP-4X",
+  "sku": [
+   "C1300-48FP-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "48x GE PoE+ 740W, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.16,
+  "power": {
+   "typ_w": null,
+   "max_w": 874.52,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 2983.99,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-24MGP-4X",
+  "sku": [
+   "C1300-24MGP-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "16x GE + 8x mGig PoE+ 375W, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 459,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1565.19,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 16,
+   "rj45_mgig": 8,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 375,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-12XT-2X",
+  "sku": [
+   "C1300-12XT-2X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "12x 10G RJ45 (non-PoE), 2x SFP+",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 300,
+   "h": 44
+  },
+  "weight_kg": 2.64,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 218.38,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 12,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port models"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-8T-D",
+  "sku": [
+   "C1200-8T-D"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "8x GE (non-PoE)",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 160,
+   "d": 128,
+   "h": 30
+  },
+  "weight_kg": 0.54,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter or PoE-in on port 1"
+  },
+  "heat_btu_h": 24.2,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port PoE model"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless, no console. Can be powered by PoE input on port 1 or external AC adapter."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-8P-E-2G",
+  "sku": [
+   "C1200-8P-E-2G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "8x GE PoE+ 67W, 2x SFP",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 185,
+   "h": 44
+  },
+  "weight_kg": 1.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 87.89,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter"
+  },
+  "heat_btu_h": 299.91,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port PoE model"
+  },
+  "poe": {
+   "ports": 8,
+   "budget_w": 67,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-16P-2G",
+  "sku": [
+   "C1200-16P-2G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "16x GE PoE+ 120W, 2x SFP",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 268,
+   "d": 297,
+   "h": 44
+  },
+  "weight_kg": 2.38,
+  "power": {
+   "typ_w": null,
+   "max_w": 143.9,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 490.7,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 16,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port PoE model"
+  },
+  "poe": {
+   "ports": 16,
+   "budget_w": 120,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-24T-4G",
+  "sku": [
+   "C1200-24T-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "24x GE (non-PoE), 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 240,
+   "h": 44
+  },
+  "weight_kg": 2.63,
+  "power": {
+   "typ_w": null,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 48.4,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port PoE model"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-24P-4G",
+  "sku": [
+   "C1200-24P-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "24x GE PoE+ 195W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 299,
+   "h": 44
+  },
+  "weight_kg": 3.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 235.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 802,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port PoE model"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 195,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-48P-4G",
+  "sku": [
+   "C1200-48P-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "48x GE PoE+ 375W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.43,
+  "power": {
+   "typ_w": null,
+   "max_w": 450.65,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1537.68,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C; 2-port combo on 8-port PoE model"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 375,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "CX 6000 48G 4SFP Switch",
+  "sku": [
+   "R8N86A"
+  ],
+  "kind": "switch",
+  "series": "CX 6000",
+  "desc": "L2+ managed 48x GE, 4x 1G SFP, non-PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 247.4,
+   "h": 43.9
+  },
+  "weight_kg": 3.42,
+  "power": {
+   "typ_w": null,
+   "max_w": 44.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB-C console, USB-A host"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://edshop.edsystem.cz/fileshare/indexes/specification/hpe aruba networking cx 6000 switch series(808894).pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Values from HPE QuickSpecs 'HPE Aruba Networking CX 6000 Switch Series' v13 (official HPE document, copy hosted by distributor EDSystem). Dims converted cm->mm. Fixed fans."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "CX 6000 24G Class4 PoE 4SFP 370W Switch",
+  "sku": [
+   "R8N87A"
+  ],
+  "kind": "switch",
+  "series": "CX 6000",
+  "desc": "L2+ managed 24x GE PoE+ 370W, 4x 1G SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 268.2,
+   "h": 43.9
+  },
+  "weight_kg": 4.19,
+  "power": {
+   "typ_w": null,
+   "max_w": 455,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB-C console, USB-A host"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://edshop.edsystem.cz/fileshare/indexes/specification/hpe aruba networking cx 6000 switch series(808894).pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Values from HPE QuickSpecs 'HPE Aruba Networking CX 6000 Switch Series' v13 (official HPE document, copy hosted by distributor EDSystem). Dims converted cm->mm. Fixed fans."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "CX 6000 24G 4SFP Switch",
+  "sku": [
+   "R8N88A"
+  ],
+  "kind": "switch",
+  "series": "CX 6000",
+  "desc": "L2+ managed 24x GE, 4x 1G SFP, non-PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 201.2,
+   "h": 43.9
+  },
+  "weight_kg": 2.62,
+  "power": {
+   "typ_w": null,
+   "max_w": 33,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB-C console, USB-A host"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://edshop.edsystem.cz/fileshare/indexes/specification/hpe aruba networking cx 6000 switch series(808894).pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Values from HPE QuickSpecs 'HPE Aruba Networking CX 6000 Switch Series' v13 (official HPE document, copy hosted by distributor EDSystem). Dims converted cm->mm. Fixed fans."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "CX 6000 12G Class4 PoE 2G/2SFP 139W Switch",
+  "sku": [
+   "R8N89A"
+  ],
+  "kind": "switch",
+  "series": "CX 6000",
+  "desc": "Fanless 12x GE PoE+ 139W + 2x GE + 2x 1G SFP uplinks",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 254,
+   "d": 255,
+   "h": 43.9
+  },
+  "weight_kg": 2.78,
+  "power": {
+   "typ_w": null,
+   "max_w": 170,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 14,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "12x PoE+ GE + 2x GE uplink RJ45 + 2x 1G SFP; USB-C console"
+  },
+  "poe": {
+   "ports": 12,
+   "budget_w": 139,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://edshop.edsystem.cz/fileshare/indexes/specification/hpe aruba networking cx 6000 switch series(808894).pdf",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Values from HPE QuickSpecs 'HPE Aruba Networking CX 6000 Switch Series' v13 (official HPE document, copy hosted by distributor EDSystem). Dims converted cm->mm. Fanless, rack kit included, Kensington slot."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "CX 6100 48G 4SFP+ Switch",
+  "sku": [
+   "JL676A"
+  ],
+  "kind": "switch",
+  "series": "CX 6100",
+  "desc": "L3-lite managed 48x GE, 4x 1/10G SFP+, non-PoE",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 247.4,
+   "h": 43.9
+  },
+  "weight_kg": 3.42,
+  "power": {
+   "typ_w": 20.6,
+   "max_w": 44.2,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Fixed 65W AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB-C console, USB-A host"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 176,
+   "forwarding_mpps": 98.6,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://securewirelessworks.com/JL676A.asp",
+  "source2": "https://h50146.www5.hpe.com/directplus_ent/library/pdfs_networking/systemconfig-cx-6100.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Physical/power values from HPE reseller SecureWirelessWorks spec table (not vendor page); ports/perf confirmed in HPE Japan system config PDF. Fixed fans."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "CX 6100 24G Class4 PoE 4SFP+ 370W Switch",
+  "sku": [
+   "JL677A"
+  ],
+  "kind": "switch",
+  "series": "CX 6100",
+  "desc": "L3-lite managed 24x GE PoE+ 370W, 4x 1/10G SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 442,
+   "d": 268.2,
+   "h": 43.9
+  },
+  "weight_kg": 4.19,
+  "power": {
+   "typ_w": 22.9,
+   "max_w": 455,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Fixed 500W AC"
+  },
+  "heat_btu_h": null,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB-C console, USB-A host"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 128,
+   "forwarding_mpps": 95.2,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://securewirelessworks.com/JL676A.asp",
+  "source2": "https://h50146.www5.hpe.com/directplus_ent/library/pdfs_networking/systemconfig-cx-6100.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Physical/power values from HPE reseller SecureWirelessWorks spec table; ports/perf from HPE Japan system config PDF. Fixed fans."
+ },
+ {
+  "brand": "HPE Aruba Networking",
+  "model": "CX 6100 12G Class4 PoE 2G/2SFP+ 139W Switch",
+  "sku": [
+   "JL679A"
+  ],
+  "kind": "switch",
+  "series": "CX 6100",
+  "desc": "Fanless 12x GE PoE+ 139W + 2x GE + 2x 1/10G SFP+",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 254,
+   "d": 255,
+   "h": 43.9
+  },
+  "weight_kg": 2.78,
+  "power": {
+   "typ_w": 16,
+   "max_w": null,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "Internal 165W AC"
+  },
+  "heat_btu_h": null,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 14,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 2,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "12x PoE+ GE + 2x GE uplinks + 2x SFP+; USB-C console, USB-A host"
+  },
+  "poe": {
+   "ports": 12,
+   "budget_w": 139,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": {
+   "switching_gbps": 68,
+   "forwarding_mpps": 45.1,
+   "fw_gbps": null,
+   "ngfw_gbps": null,
+   "threat_gbps": null,
+   "ipsec_gbps": null
+  },
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.office-partner.de/hpe-networking-cx6100-switch-12-port-1gbase-t-2-port-10g-sfp-2-port-1gbe-139w-klasse-4-poe-rackfaehig-15536317",
+  "source2": "https://h50146.www5.hpe.com/directplus_ent/library/pdfs_networking/systemconfig-cx-6100.pdf",
+  "verified": "2026-10-29",
+  "confidence": "medium",
+  "notes": "Physical/power values from distributor office-partner.de; ports/PoE/perf from HPE Japan system config PDF. Rack kit included."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-24FP-4G",
+  "sku": [
+   "C1300-24FP-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "24x GE PoE+ 375W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 4.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 452.3,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1542.3,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 375,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-48FP-4G",
+  "sku": [
+   "C1300-48FP-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "48x GE PoE+ 740W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 6.48,
+  "power": {
+   "typ_w": null,
+   "max_w": 854.45,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 2915.5,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-24P-4X",
+  "sku": [
+   "C1300-24P-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "24x GE PoE+ 195W, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 299,
+   "h": 44
+  },
+  "weight_kg": 3.95,
+  "power": {
+   "typ_w": null,
+   "max_w": 235.8,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 804.1,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 195,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1300-48P-4X",
+  "sku": [
+   "C1300-48P-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1300",
+  "desc": "48x GE PoE+ 375W, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 444,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 6.37,
+  "power": {
+   "typ_w": null,
+   "max_w": 462.84,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1579.28,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 375,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-24FP-4G",
+  "sku": [
+   "C1200-24FP-4G"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "24x GE PoE+ 375W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 345,
+   "h": 44
+  },
+  "weight_kg": 4.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 443.5,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1512.3,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 375,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-24P-4X",
+  "sku": [
+   "C1200-24P-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "24x GE PoE+ 195W, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 299,
+   "h": 44
+  },
+  "weight_kg": 3.68,
+  "power": {
+   "typ_w": null,
+   "max_w": 240.4,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 819.7,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 195,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Fanless. Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Catalyst C1200-48P-4X",
+  "sku": [
+   "C1200-48P-4X"
+  ],
+  "kind": "switch",
+  "series": "Catalyst 1200",
+  "desc": "48x GE PoE+ 375W, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.43,
+  "power": {
+   "typ_w": null,
+   "max_w": 462.84,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1579.28,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console + USB-C"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 375,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1200-series-switches/nb-06-cat1200-ser-data-sheet-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS350-48FP-4X",
+  "sku": [
+   "CBS350-48FP-4X"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 350",
+  "desc": "48x GE PoE+ 740W, 4x SFP+",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 350,
+   "h": 44
+  },
+  "weight_kg": 5.82,
+  "power": {
+   "typ_w": null,
+   "max_w": 889.35,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 3034.59,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 48,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 4,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console"
+  },
+  "poe": {
+   "ports": 48,
+   "budget_w": 740,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-350-series-managed-switches/datasheet-c78-744156.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS250-24FP-4G",
+  "sku": [
+   "CBS250-24FP-4G"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 250",
+  "desc": "24x GE PoE+ 370W, 4x SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 445,
+   "d": 345,
+   "h": 44
+  },
+  "weight_kg": 4.6,
+  "power": {
+   "typ_w": null,
+   "max_w": 449.7,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 1536.83,
+  "airflow": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 4,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "RJ45 console"
+  },
+  "poe": {
+   "ports": 24,
+   "budget_w": 370,
+   "std": "802.3at"
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-250-series-smart-switches/nb-06-bus250-smart-switch-ds-cte-en.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "1 fan Max power = worst case with PoE at 110V where PoE."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS110-8T-D",
+  "sku": [
+   "CBS110-8T-D"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 110",
+  "desc": "Unmanaged 8x GE",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 160,
+   "d": 104,
+   "h": 30
+  },
+  "weight_kg": 0.43,
+  "power": {
+   "typ_w": null,
+   "max_w": 4.25,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter"
+  },
+  "heat_btu_h": 14.5,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-110-series-unmanaged-switches/datasheet-c78-744158.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Unmanaged, fanless, no console. Datasheet gives desktop/wall/rack mounting options."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS110-8PP-D",
+  "sku": [
+   "CBS110-8PP-D"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 110",
+  "desc": "Unmanaged 8x GE, 4 PoE+ ports 32W",
+  "mount": "desktop",
+  "u": 0,
+  "dims_mm": {
+   "w": 160,
+   "d": 129,
+   "h": 30
+  },
+  "weight_kg": 0.53,
+  "power": {
+   "typ_w": null,
+   "max_w": 37.46,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "External power adapter"
+  },
+  "heat_btu_h": 127.82,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 8,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 4,
+   "budget_w": 32,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-110-series-unmanaged-switches/datasheet-c78-744158.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Unmanaged, fanless, no console. Datasheet gives desktop/wall/rack mounting options. PoE standard not stated per port (marketed as PoE+)."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS110-16T",
+  "sku": [
+   "CBS110-16T"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 110",
+  "desc": "Unmanaged 16x GE",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 279,
+   "d": 170,
+   "h": 44
+  },
+  "weight_kg": 1.33,
+  "power": {
+   "typ_w": null,
+   "max_w": 9.89,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 33.75,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 16,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": null
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-110-series-unmanaged-switches/datasheet-c78-744158.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Unmanaged, fanless, no console. Datasheet gives desktop/wall/rack mounting options."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS110-24T",
+  "sku": [
+   "CBS110-24T"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 110",
+  "desc": "Unmanaged 24x GE, 2x GE combo SFP",
+  "mount": "rack-optional",
+  "u": 1,
+  "dims_mm": {
+   "w": 279,
+   "d": 170,
+   "h": 44
+  },
+  "weight_kg": 1.45,
+  "power": {
+   "typ_w": null,
+   "max_w": 17.79,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 60.7,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "2 combo ports (RJ45/SFP, one active)"
+  },
+  "poe": {
+   "ports": 0,
+   "budget_w": 0,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-110-series-unmanaged-switches/datasheet-c78-744158.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Unmanaged, fanless, no console. Datasheet gives desktop/wall/rack mounting options."
+ },
+ {
+  "brand": "Cisco",
+  "model": "Cisco Business CBS110-24PP",
+  "sku": [
+   "CBS110-24PP"
+  ],
+  "kind": "switch",
+  "series": "Cisco Business 110",
+  "desc": "Unmanaged 24x GE, 12 PoE+ ports 100W, 2x GE combo SFP",
+  "mount": "rack",
+  "u": 1,
+  "dims_mm": {
+   "w": 440,
+   "d": 203,
+   "h": 44
+  },
+  "weight_kg": 2.85,
+  "power": {
+   "typ_w": null,
+   "max_w": 124.06,
+   "psu": 1,
+   "psu_redundant": false,
+   "input": "100-240V AC"
+  },
+  "heat_btu_h": 423.31,
+  "airflow": "passive",
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 24,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 2,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "2 combo ports (RJ45/SFP, one active)"
+  },
+  "poe": {
+   "ports": 12,
+   "budget_w": 100,
+   "std": null
+  },
+  "poe_in": null,
+  "perf": null,
+  "wifi": null,
+  "camera": null,
+  "nvr": null,
+  "ups": null,
+  "source": "https://www.cisco.com/c/en/us/products/collateral/switches/business-110-series-unmanaged-switches/datasheet-c78-744158.html",
+  "source2": null,
+  "verified": "2026-10-29",
+  "confidence": "high",
+  "notes": "Unmanaged, fanless, no console. Datasheet gives desktop/wall/rack mounting options. PoE standard not stated per port (marketed as PoE+)."
+ }
+]
