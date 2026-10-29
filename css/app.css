@@ -709,3 +709,9 @@ select.ipm{width:44px;padding:2px;margin-right:4px}
 .rkdt:hover{color:var(--pri);border-color:var(--pri)}
 .rkdesc.mini{width:auto;align-self:stretch;display:flex;align-items:flex-start}
 .rkdesc.mini .rkdt{margin:0;height:100%;min-height:60px;padding:4px 3px;font-size:12px;writing-mode:horizontal-tb}
+/* 3.6.2 — many-port switches: ports in the patch panel's columns (same pitch, centred), LED and SFP pinned to the sides */
+.rkd .ports.al .prow i{width:7px}
+.rkd .ports.al .prow{gap:1px}
+.rkd .led.abl{position:absolute;left:5px;top:50%;margin-top:-2px}
+.rkd .sfp.abr{position:absolute;right:15px;top:50%;transform:translateY(-50%)}
+.rkd .sfp.abr.two{display:grid;grid-template-columns:repeat(2,8px);gap:1px 2px}
