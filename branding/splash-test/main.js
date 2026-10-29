@@ -4,9 +4,9 @@ const { app, BrowserWindow } = require("electron");
 const path = require("path");
 app.whenReady().then(() => {
   const card = process.argv.includes("card");
-  const w = new BrowserWindow({ width: 460, height: 560, frame: false, transparent: true, resizable: false, alwaysOnTop: true,
+  const w = new BrowserWindow({ width: 700, height: 880, frame: false, transparent: true, resizable: false, alwaysOnTop: true,
     skipTaskbar: true, show: false, backgroundColor: "#00000000", hasShadow: false, center: true });
   w.loadFile(path.join(__dirname, "splash.html"), { search: "win=1" });
   w.once("ready-to-show", () => w.show());
-  setTimeout(() => app.quit(), 6200);
+  setTimeout(() => app.quit(), 11500);
 });

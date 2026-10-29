@@ -168,3 +168,30 @@ def logo_splash():
     s.append('</svg>'); return "".join(s)
 open(os.path.join(ROOT, "branding", "splash-test", "logo-splash.svg"), "w").write(logo_splash())
 print("splash logo ok")
+
+# ---------- splash v3: every symbol has moving parts (classes are animated by splash.html) ----------
+GA = {
+ # cloud: data going up and down
+ "cloud":   '<path d="M14 33h21a7.5 7.5 0 0 0 .7-15A10 10 0 0 0 16.5 15.6 8.5 8.5 0 0 0 14 33z"/><g class="a-up"><path d="M20.5 30v-7m-2.6 2.6 2.6-2.6 2.6 2.6" stroke-width="2.6"/></g><g class="a-dn"><path d="M27.5 22v7m-2.6-2.6 2.6 2.6 2.6-2.6" stroke-width="2.6"/></g>',
+ # router: the four arrows push outwards in turn
+ "router":  '<circle cx="24" cy="24" r="14"/><g class="r1"><path d="M24 12v8m-3-5 3-3 3 3"/></g><g class="r2"><path d="M36 24h-8m5-3 3 3-3 3"/></g><g class="r3"><path d="M24 36v-8m-3 5 3 3 3-3"/></g><g class="r4"><path d="M12 24h8m-5-3-3 3 3 3"/></g>',
+ # switch: traffic in both directions
+ "switch":  '<rect x="8" y="14" width="32" height="20" rx="3"/><g class="sw1"><path d="M14 21h18m-4-3 4 3-4 3"/></g><g class="sw2"><path d="M34 28H16m4-3-4 3 4 3"/></g>',
+ # firewall: bricks checked one after another
+ "firewall":'<rect x="8" y="12" width="32" height="24" rx="2"/>' + "".join(f'<rect class="bk" style="--b:{i}" x="{x}" y="{y}" width="{w}" height="8" fill="#fff" stroke="none" opacity="0"/>' for i, (x, y, w) in enumerate([(8,12,10),(18,12,12),(30,12,10),(13,20,11),(24,20,11),(8,28,10),(18,28,12),(30,28,10)])) + '<path d="M8 20h32M8 28h32M18 12v8M30 12v8M13 20v8M24 20v8M35 20v8M18 28v8M30 28v8"/>',
+ # server: disk lights blinking
+ "server":  '<rect x="11" y="9" width="26" height="9" rx="2"/><rect x="11" y="20" width="26" height="9" rx="2"/><rect x="11" y="31" width="26" height="9" rx="2"/>' + "".join(f'<circle class="led l{i}" cx="16.5" cy="{y}" r="1.7" fill="#fff" stroke="none"/><path d="M22 {y}h10" stroke-width="2" opacity=".55"/>' for i, y in enumerate([13.5, 24.5, 35.5])),
+ # Wi-Fi: trying to connect — the waves come one after another
+ "wifi":    '<circle cx="24" cy="36" r="2" fill="#fff"/><path class="w1" d="M19 31a6 6 0 0 1 10 0"/><path class="w2" d="M14 25a13 13 0 0 1 20 0"/><path class="w3" d="M9 19a21 21 0 0 1 30 0"/>',
+ # PC: code being typed on the screen
+ "pc":      '<rect x="9" y="11" width="30" height="20" rx="2"/><path d="M24 31v6M17 37h14"/>' + "".join(f'<path class="cl c{i}" d="M{13 + ind} {15.5 + i * 3.8}h{w}" stroke-width="2" pathLength="10"/>' for i, (ind, w) in enumerate([(0, 14), (3, 16), (3, 10), (0, 18)])),
+ # RJ45: link (green) and PoE (amber) lights blinking
+ "rj45":    '<path d="M13 12h22v17h-5v5h-4v3h-4v-3h-4v-5h-5z"/><path d="M18 17v5M22 17v5M26 17v5M30 17v5"/><rect class="lk" x="14.5" y="13.4" width="3.2" height="2.2" rx=".5" fill="#2bff6a" stroke="none"/><rect class="po" x="30.3" y="13.4" width="3.2" height="2.2" rx=".5" fill="#ffb703" stroke="none"/>',
+}
+def logo_splash3():
+    svg = logo_splash()
+    for gl, _c in SETS["net"]:
+        svg = svg.replace(G[gl], GA[gl], 1)
+    return svg.replace('<path class="n" ', '<path class="n neon" ')
+open(os.path.join(ROOT, "branding", "splash-test", "logo-splash.svg"), "w").write(logo_splash3())
+print("splash logo v3 ok")
