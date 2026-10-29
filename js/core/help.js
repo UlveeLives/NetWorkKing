@@ -77,4 +77,4 @@ function guideHtml(){
     return `<details class="dsec guide"><summary>${appIcon(a, 22)} ${esc(t(a.name))}</summary><div class="dsb">${g.map(([h, p]) => `<h4>${esc(h)}</h4><p>${p}</p>`).join("")}</div></details>`; }).join("")
     + `<details class="dsec guide"><summary>🧭 ${esc(t("gCommonT"))}</summary><div class="dsb">${commonGuide().map(([h, p]) => `<h4>${esc(h)}</h4><p>${p}</p>`).join("")}</div></details>`;
 }
-function commonGuide(){ return [[t("gc1h"), t("gc1")], [t("gc2h"), t("gc2")], [t("gc3h"), t("gc3")], [t("gc4h"), t("gc4")], [t("gc5h"), t("gc5")], [t("gc6h"), t("gc6")], [t("gc7h"), t("gc7")]]; }
+function commonGuide(){ return [[t("gc1h"), t("gc1")], [t("gc2h"), t("gc2")], [t("gc3h"), t("gc3")], [t("gc4h"), t("gc4")], [t("gc5h"), t("gc5")], [t("gc6h"), t("gc6")], [t("gc7h"), t("gc7")], [t("gc8h"), t("gc8")]]; }
