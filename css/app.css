@@ -772,3 +772,6 @@ html.winblur .tlights:not(:hover) .tl{background:#5d6377;box-shadow:inset 0 0 0 
 .aim.u{background:var(--pri)}
 .gapb.go{border-color:var(--pri);color:var(--pri)}
 input[type=checkbox],input[type=radio],input[type=range],progress{accent-color:var(--pri)}
+/* window buttons stay usable while a window (settings, wizard …) is open over the app, and the window can still be dragged */
+html.frameless .tlights{position:relative;z-index:200}
+html.frameless #modal::before{content:"";position:fixed;left:0;right:0;top:0;height:54px;-webkit-app-region:drag}
