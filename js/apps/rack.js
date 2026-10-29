@@ -94,31 +94,34 @@ function devFace(b, d, r, rearSide, other){
   return `<div class="rkd dv t-${ftOf(d)} k-${d.kind}${other ? " ghost" : ""}${sel ? " on" : ""}${d.status === "planned" ? " planned" : ""}${d.status === "faulty" ? " faulty" : ""}" data-rd="${d.id}" style="top:${(r.u - topU(d)) * UH}px;height:${h * UH - 1}px" title="${esc(devFull(b, d) + " · U" + d.u + (h > 1 ? "–" + topU(d) : "") + (d.ip ? " · " + d.ip : ""))}">${rearSide ? rearFace(d) : face(d)}</div>`;
 }
 // right-hand column: what sits in each U (names, model), empty ranges marked
-function descCol(b, r){
+const descHidden = () => P().cur.rkDescHide === true;
+const RKZ = 1.5;   // how much bigger the cabinet is drawn while the description column is folded away
+function descCol(b, r, print){
+  if (!print && descHidden()) return `<div class="rkdesc mini"><button class="rkdt" data-rkdesc="show" title="${esc(t("rkDescShow"))}">«</button></div>`;
   const occ = rackOcc(b, r); let h = "", u = r.u;
   while (u >= 1){ const d = occ[u];
     if (d){ const hh = devH(d), on = UI.sel && UI.sel.type === "dev" && UI.sel.id === d.id; h += `<div class="dc${on ? " on" : ""}" data-rdsel="${d.id}" style="height:${(topU(d) - Math.max(1, d.u) + 1) * UH}px" title="${esc(devFull(b, d))}"><span>${esc(devLabel(d))}${d.model || d.brand ? ` <span class="muted">– ${esc([d.brand, d.model].filter(Boolean).join(" "))}</span>` : ""}</span></div>`; u = d.u - 1; void hh; }
     else { let n = 0; while (u - n >= 1 && !occ[u - n]) n++; h += `<div class="dc e" style="height:${n * UH}px">${esc(t("rkEmptyU"))}</div>`; u -= n; } }
-  return `<div class="rkdesc"><div class="dch">${esc(t("rkDesc"))}</div>${h}</div>`;
+  return `<div class="rkdesc"><div class="dch">${esc(t("rkDesc"))}${print ? "" : `<button class="rkdt" data-rkdesc="hide" title="${esc(t("rkDescHide"))}">»</button>`}</div>${h}</div>`;
 }
 function rackHtml(b, r, faces, print){
   const devs = rackDevices(b, r), zero = b.devices.filter(d => d.rack === r.id && zeroU(d)), on = !print && curRack(b) === r;
   const p = rackPower(b, r), nums = side => `<div class="rkn${side ? " r" : ""}"><div class="dch">U</div>${Array.from({length:r.u}, (_, i) => `<i>${r.u - i}</i>`).join("")}</div>`;
   const zcol = (f, ab) => zero.filter((d, i) => (d.params.feed || (i % 2 ? "B" : "A")) === ab).map(d => `<div class="rk0${ab === "B" ? " b" : ""}${UI.sel && UI.sel.id === d.id ? " on" : ""}" data-rd0="${d.id}" title="${esc(devLabel(d))}"><span>${esc(devLabel(d))}</span></div>`).join("");
-  const face = f => `<div class="rkf"><div class="rkft">${esc(t(f === "front" ? "sideFront" : "sideRear"))}</div><div class="rkcab">
+  const face = f => `<div class="rkf"><div class="rkft">${esc(t(f === "front" ? "sideFront" : "sideRear"))}</div><div class="rkcab"${!print && descHidden() ? ` style="zoom:${RKZ}"` : ""}>
       ${f === "front" ? nums(false) : ""}
       <div class="rkcase"><div class="rkz">${zcol(f, "A")}</div>
         <div class="rkb ${f}" data-rkb="${r.id}" data-face="${f}" style="height:${r.u * UH}px">${print ? "" : Array.from({length:r.u}, (_, i) => rackFits(b, r, r.u - i, 1) ? `<div class="rku" data-ru="${r.u - i}" style="top:${i * UH}px"></div>` : "").join("")}
           ${devs.map(d => devFace(b, d, r, f === "rear", (d.side || "front") !== f)).join("")}</div>
         <div class="rkz">${zcol(f, "B")}</div></div>
-      ${f === "front" ? descCol(b, r) : nums(true)}</div></div>`;
+      ${f === "front" ? descCol(b, r, print) : nums(true)}</div></div>`;
   return `<div class="rk${on ? " on" : ""}" data-rk="${r.id}"><div class="rkh" data-rksel="${r.id}"><b>${esc(r.name)}</b><small>${r.u}U · ${esc([floorName(b, r.floor), roomName(b, r.room)].filter(Boolean).join(" · ") || "—")}</small>
-      <span class="rks">${p.used}/${r.u}U · ${Math.round(p.tot)} W · ${r1(p.weight)} kg</span></div><div class="rkfs">${faces.map(face).join("")}</div></div>`;
+      <span class="rks">${p.used}/${r.u}U · ${Math.round(p.tot)} W · ${r1(p.weight)} kg</span></div><div class="rkfs${faces.length > 1 ? " both" : ""}">${faces.map(face).join("")}</div></div>`;
 }
 function elevation(b){
   if (!b.racks.length) return `<div class="empty"><h3>${esc(t("rkEmptyT"))}</h3><p>${esc(t("rkEmpty"))}</p><div class="btns" style="justify-content:center"><button class="btn pri" data-rka="addRack">＋ ${esc(t("rkAdd"))}</button></div></div>`;
   const faces = UI.rackFace === "both" ? ["front","rear"] : [UI.rackFace || "front"];
-  return `${warnBox(warnings(b))}<div class="rkrow" id="rkrow">${b.racks.map(r => rackHtml(b, r, faces)).join("")}<button class="rkadd" data-rka="addRack">＋<span>${esc(t("rkAdd"))}</span></button></div><p class="dghint">${esc(t("rkHint"))}</p>`;
+  return `${warnBox(warnings(b))}<div class="rkrow${descHidden() ? " big" : ""}" id="rkrow">${b.racks.map(r => rackHtml(b, r, faces)).join("")}<button class="rkadd" data-rka="addRack">＋<span>${esc(t("rkAdd"))}</span></button></div><p class="dghint">${esc(t("rkHint"))}</p>`;
 }
 /* ---------- palette ---------- */
 function palette(b){
@@ -164,12 +167,13 @@ function wire(){
     if (!RD) return; const dx = e.clientX - RD.x0, dy = e.clientY - RD.y0; if (!RD.moved && Math.hypot(dx, dy) < 4) return;
     const b = B(), d = RD.d, h = devH(d);
     if (!RD.moved){ RD.moved = true; RD.el.classList.add("dragging"); }
-    RD.el.style.transform = `translate(${dx}px,${dy}px)`;
+    const kz = RD.el.offsetHeight ? RD.el.getBoundingClientRect().height / RD.el.offsetHeight : 1;
+    RD.el.style.transform = `translate(${dx / kz}px,${dy / kz}px)`;
     $$(".rkghost").forEach(x => x.remove()); RD.tgt = null;
     RD.el.style.pointerEvents = "none"; const under = document.elementFromPoint(e.clientX, e.clientY); RD.el.style.pointerEvents = "";
     const body = under && under.closest && under.closest("[data-rkb]"); if (!body) return;
-    const r = rackById(b, body.dataset.rkb), br = body.getBoundingClientRect();
-    const top = clamp(Math.round((e.clientY - RD.offY - br.top) / UH), 0, r.u - h), u = r.u - top - h + 1;
+    const r = rackById(b, body.dataset.rkb), br = body.getBoundingClientRect(), bk = body.offsetHeight ? br.height / body.offsetHeight : 1;
+    const top = clamp(Math.round((e.clientY - RD.offY - br.top) / (UH * bk)), 0, r.u - h), u = r.u - top - h + 1;
     let ok = rackFits(b, r, u, h, d.id), swap = null;
     if (!ok){ const occ = rackOcc(b, r, d.id), hit = new Set(); for (let x = u; x < u + h; x++) if (occ[x]) hit.add(occ[x]);
       if (hit.size === 1){ const o = [...hit][0]; if (o.rack === d.rack && devH(o) === h && o.u === u) swap = o; else if (o.rack !== d.rack && devH(o) === h && o.u === u && rackFits(b, rackById(b, d.rack), d.u, h, d.id)) swap = o; } }
@@ -188,6 +192,7 @@ function wire(){
   document.addEventListener("pointerup", end); document.addEventListener("pointercancel", end);
   host.addEventListener("click", async e => {
     if (UI.app !== "rack") return;
+    const dt = e.target.closest("[data-rkdesc]"); if (dt){ e.stopPropagation(); P().cur.rkDescHide = dt.dataset.rkdesc === "hide"; persist(); render(); return; }
     const a = e.target.closest("[data-rka]"); if (a){ if (a.dataset.rka === "addRack"){ const b = B(); edit(() => { const r = newRack(b); b.racks.push(r); UI.sel = {type:"rack", id:r.id}; UI.rackSel = r.id; }); } return; }
     const z = e.target.closest("[data-rd0]"); if (z){ UI.sel = {type:"dev", id:z.dataset.rd0}; render(); return; }
     const dsel = e.target.closest("[data-rdsel]"); if (dsel){ UI.sel = {type:"dev", id:dsel.dataset.rdsel}; UI.multi.clear(); render(); return; }
@@ -298,12 +303,12 @@ document.addEventListener("click", e => { const a = e.target.closest("[data-rk2]
 function rackCords(){
   $$("svg.rkcords").forEach(x => x.remove()); if (P().cur.rkCords === false) return;
   const b = B();
-  $$(".rkb.front").forEach(box => { const r = rackById(b, box.dataset.rkb); if (!r) return; const ids = new Set(rackDevices(b, r).map(d => d.id)), R0 = box.getBoundingClientRect(); let h = "";
-    const pt = (id, p) => { const d = box.querySelector(`.rkd[data-rd="${CSS.escape(id)}"]`); if (!d) return null; const i = d.querySelector(`[data-pn="${CSS.escape(String(p))}"]`) || null; const e = (i || d).getBoundingClientRect(); return {x:e.left + e.width / 2 - R0.left, y:e.top + e.height / 2 - R0.top, exact:!!i}; };
+  $$(".rkb.front").forEach(box => { const r = rackById(b, box.dataset.rkb); if (!r) return; const ids = new Set(rackDevices(b, r).map(d => d.id)), R0 = box.getBoundingClientRect(), k = box.offsetHeight ? R0.height / box.offsetHeight : 1; let h = "";
+    const pt = (id, p) => { const d = box.querySelector(`.rkd[data-rd="${CSS.escape(id)}"]`); if (!d) return null; const i = d.querySelector(`[data-pn="${CSS.escape(String(p))}"]`) || null; const e = (i || d).getBoundingClientRect(); return {x:(e.left + e.width / 2 - R0.left) / k, y:(e.top + e.height / 2 - R0.top) / k, exact:!!i}; };
     b.links.forEach(l => { if (!ids.has(l.a.d) || !ids.has(l.b.d) || l.a.d === l.b.d) return; const A = pt(l.a.d, l.a.p), B2 = pt(l.b.d, l.b.p); if (!A || !B2) return;
       const col = (MEDIA[l.media] || MEDIA.cat6).c, dy = Math.max(10, Math.abs(B2.y - A.y) * .5), sx = A.x < B2.x ? 1 : -1;
       h += `<path d="M${A.x.toFixed(1)} ${A.y.toFixed(1)} C${(A.x + sx * 8).toFixed(1)} ${(A.y + (B2.y > A.y ? dy : -dy)).toFixed(1)} ${(B2.x - sx * 8).toFixed(1)} ${(B2.y - (B2.y > A.y ? dy : -dy)).toFixed(1)} ${B2.x.toFixed(1)} ${B2.y.toFixed(1)}" stroke="${col}"${A.exact && B2.exact ? "" : ' stroke-dasharray="4 3"'}><title>${esc(devLabel(devById(b, l.a.d)) + ":" + (l.a.p || "") + " ⇄ " + devLabel(devById(b, l.b.d)) + ":" + (l.b.p || ""))}</title></path>`; });
-    if (!h) return; const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "rkcords"); svg.setAttribute("width", R0.width); svg.setAttribute("height", R0.height); svg.innerHTML = h; box.appendChild(svg); });
+    if (!h) return; const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "rkcords"); svg.setAttribute("width", R0.width / k); svg.setAttribute("height", R0.height / k); svg.innerHTML = h; box.appendChild(svg); });
 }
 window.addEventListener("resize", debounce(() => { if (UI.app === "rack" && curTab().id === "rack") rackCords(); }, 150));
 document.addEventListener("change", e => { if (e.target.dataset && e.target.dataset.rkcords){ P().cur.rkCords = e.target.checked; persist(); rackCords(); } });

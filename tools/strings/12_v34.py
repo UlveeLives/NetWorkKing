@@ -222,6 +222,8 @@ for k,az,tr,en,ru in [
 ]:
     K(k,az,tr,en,ru)
 for k,az,tr,en,ru in [
+ ("rkDescHide","Təsvir sütununu gizlət — rack böyük görünsün","Açıklama sütununu gizle — rack büyük görünsün","Hide the description column — draw the rack bigger","Скрыть столбец описания — шкаф крупнее"),
+ ("rkDescShow","Təsvir sütununu göstər","Açıklama sütununu göster","Show the description column","Показать столбец описания"),
  ("rkCords","Rack içindəki patch cord-ları göstər","Rack içindeki patch kabloları göster","Show patch cords inside the rack","Показывать патч-корды внутри стойки"),
  ("rkCordsH","Hər iki ucu bu rack-da olan kabellər portdan porta çəkilir; rack-dan çıxan kabellər göstərilmir.","İki ucu bu rack'te olan kablolar porttan porta çizilir.","Cables with both ends in this rack are drawn port to port; cables leaving the rack are not shown.","Кабели, оба конца которых в стойке, рисуются от порта к порту."),
 ]:

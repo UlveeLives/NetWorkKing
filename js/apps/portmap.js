@@ -133,7 +133,11 @@ function uplinksCard(b){
       const key = [d.id + ":" + p, e.d + ":" + e.p].sort().join("|"); if (seen.has(key)) return; seen.add(key);
       R.push({a:d, ap:p, b:ed, bp:e.p, via:w.slice(0, k).map(h => devLabel(devById(b, h.d)) + ":" + h.p), media:(w[0].link || l).media}); }); } });
   if (!R.length) return "";
-  return `<div class="card pmlinks"><h3>⇅ ${esc(t("pmUplinks"))} <span class="cnt">${R.length}</span></h3><div class="pmlk">${R.map(x => `<div class="lk"><button class="lnkb" data-goport="${x.a.id}:${x.ap}"><b>${esc(devLabel(x.a))}</b> :${esc(x.ap)}</button><i class="c" style="background:${(MEDIA[x.media] || MEDIA.cat6).c}"></i><small class="muted">${esc(x.via.length ? x.via.join(" → ") : mediaName(x.media))}</small><i class="c" style="background:${(MEDIA[x.media] || MEDIA.cat6).c}"></i><button class="lnkb" data-goport="${x.b.id}:${x.bp}"><b>${esc(devLabel(x.b))}</b> :${esc(x.bp)}</button></div>`).join("")}</div></div>`;
+  // like the old Port Map: [switch :port] panel :port ——— type ——— panel :port [switch :port]
+  const isSfp = (d, p) => { const n = Math.round(num(d.ports)), s = Math.round(num((d.params || {}).sfp)); return s > 0 && +p > n - s; };
+  return `<div class="pmlinks"><div class="lt">${esc(t("pmUplinks"))}</div>${R.map(x => { const v1 = x.via[0] || "", v2 = x.via.length > 1 ? x.via[x.via.length - 1] : "", mid = x.via.slice(1, -1);
+    const ty = isSfp(x.a, x.ap) || isSfp(x.b, x.bp) ? "SFP" : /fib|om|os/i.test(x.media || "") ? mediaName(x.media) : "Uplink";
+    return `<div class="lk" data-goport="${x.a.id}:${x.ap}" title="${esc([devLabel(x.a) + " :" + x.ap, ...x.via, devLabel(x.b) + " :" + x.bp].join(" → ") + " · " + mediaName(x.media))}"><span class="n">${esc(devLabel(x.a))} :${esc(x.ap)}</span>${v1 ? `<span class="v">${esc(v1.replace(/:(?=[^:]*$)/, " :"))}</span>` : ""}<i class="c"></i><span class="ct">${esc(mid.length ? ty + " · " + mid.join(" → ") : ty)}</span><i class="c"></i>${v2 ? `<span class="v">${esc(v2.replace(/:(?=[^:]*$)/, " :"))}</span>` : ""}<button class="n" data-goport="${x.b.id}:${x.bp}">${esc(devLabel(x.b))} :${esc(x.bp)}</button></div>`; }).join("")}</div>`;
 }
 /* ---------- prepared connection (made with «Connect») ---------- */
 const pendOf = (d, p) => UI.pmPend && UI.pmPend.key === d.id + ":" + p ? UI.pmPend : null;

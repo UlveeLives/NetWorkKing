@@ -1,9 +1,14 @@
-NETWORKKING 3.6.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.6.1 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.6.1-DƏ YENİ
+ - Rack U-Layout: «Təsvir» sütunu » düyməsi ilə yana yığılır, rack 1,5 dəfə böyük çəkilir; « ilə geri açılır.
+   Rack-lar ekrana sığmayanda alt sıraya keçir; «Hər ikisi» seçiləndə arxa görünüş hər rack-ın öz altında.
+ - Port Map: switch-lər arası bağlantılar köhnə Port Map kimi — sarı çərçivə, [switch :port] panel :port —— Uplink / SFP —— panel :port [switch :port].
 
 3.6-DA YENİ
  - Şəbəkə topologiyası, CCTV, Fiber: «🏢 Mərtəbələr üzrə düz» — solda mərtəbə kartları (yuxarıdan aşağı),
@@ -133,7 +138,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.6.0.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.6.1.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 
