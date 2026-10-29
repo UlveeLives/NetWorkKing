@@ -31,14 +31,14 @@ function frame(p){
   }
   ctx.globalAlpha = 1;
 }
-function play(ms){ return new Promise(res => { const t0 = performance.now();
-  const go = now => { const k = clamp((now - t0) / ms); frame(dir === "min" ? k : 1 - k); if (k < 1) requestAnimationFrame(go); else res(); };
-  requestAnimationFrame(go); }); }
+function play(ms){ return new Promise(res => { const t0 = performance.now(); let done = false;
+  const go = () => { if (done) return; const k = clamp((performance.now() - t0) / ms); frame(dir === "min" ? k : 1 - k); if (k >= 1){ done = true; clearInterval(iv); res(); } };
+  const iv = setInterval(go, 16); go(); }); }
 addEventListener("resize", size); size();
 window.fxBridge && fxBridge.on("fx-load", async d => {
   size(); R = d.rect; T = d.to; dir = d.dir; img = new Image(); img.src = d.img;
   try { await img.decode(); } catch(e){}
-  frame(dir === "min" ? 0 : 1); requestAnimationFrame(() => fxBridge.send("fx-ready"));
+  frame(dir === "min" ? 0 : 1); setTimeout(() => fxBridge.send("fx-ready"), 0);   // not requestAnimationFrame: it does not run while this window is hidden
 });
 window.fxBridge && fxBridge.on("fx-go", async () => { await play(dir === "min" ? 460 : 400); if (dir === "restore") frame(0); fxBridge.send("fx-done"); if (dir === "min") frame(1); });
 // for testing outside the app

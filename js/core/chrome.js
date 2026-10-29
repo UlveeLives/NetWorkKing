@@ -32,7 +32,7 @@ const TB_STYLES = {
   code:{name:"tbCode", css:() => { const L = ["const sw = rack.add('SW-01', {ports:48});", "for (const p of sw.ports) if (p.vlan === 20) link(p, pp[p.n]);", "interface GigabitEthernet1/0/24", " switchport access vlan 20", "function route(a, b){ return a.ip & mask; }",
       "if (!cam.nvr) warn('NVR yoxdur');", "ping 10.0.20.1 -n 4", "show vlan brief", "</> {...} => ;"]; const r = rnd(3); let b = "";
     for (let i = 0; i < 5; i++){ let x = -r() * 120; const y = 11 + i * 11; while (x < 900){ const s = L[Math.floor(r() * L.length)]; b += `<text x="${x.toFixed(0)}" y="${y}" fill-opacity="${(.07 + r() * .07).toFixed(2)}">${tbEsc(s)}</text>`; x += s.length * 6.1 + 26; } }
-    return tbSvg(900, 58, `<g fill="#cfe0ff" ${MONO} font-size="10">${b}</g>`); }},
+    return tbSvg(900, 58, `<g fill="#c8f5d8" ${MONO} font-size="10">${b}</g>`); }},
   hex:{name:"tbHex", css:() => { const r = rnd(11), H = "0123456789ABCDEF"; let b = "";
     for (let i = 0; i < 5; i++){ let line = (i * 16).toString(16).padStart(8, "0") + "  "; for (let j = 0; j < 48; j++) line += H[Math.floor(r() * 16)] + H[Math.floor(r() * 16)] + (j % 8 === 7 ? "  " : " ");
       b += `<text x="6" y="${11 + i * 11}" fill-opacity="${(.07 + (i % 2) * .04).toFixed(2)}">${line}</text>`; }
@@ -40,8 +40,8 @@ const TB_STYLES = {
   circuit:{name:"tbCircuit", css:() => { const r = rnd(5); let b = "";
     for (let i = 0; i < 26; i++){ let x = r() * 640, y = 4 + Math.floor(r() * 6) * 9; let d = `M${x.toFixed(0)} ${y}`; const n = 2 + Math.floor(r() * 3);
       for (let k = 0; k < n; k++){ if (k % 2 === 0){ x += 20 + r() * 60; d += `H${x.toFixed(0)}`; } else { const ny = Math.max(4, Math.min(52, y + (r() > .5 ? 9 : -9) * (1 + Math.floor(r() * 2)))); x += Math.abs(ny - y); d += `L${x.toFixed(0)} ${ny}`; y = ny; } }
-      b += `<path d="${d}"/><circle cx="${x.toFixed(0)}" cy="${y}" r="2.2" fill="#9fc3ff" fill-opacity=".2"/>`; }
-    return tbSvg(700, 58, `<g fill="none" stroke="#9fc3ff" stroke-opacity=".16" stroke-width="1.2">${b}</g>`); }},
+      b += `<path d="${d}"/><circle cx="${x.toFixed(0)}" cy="${y}" r="2.2" fill="#8fe0b0" fill-opacity=".2"/>`; }
+    return tbSvg(700, 58, `<g fill="none" stroke="#8fe0b0" stroke-opacity=".16" stroke-width="1.2">${b}</g>`); }},
   packets:{name:"tbPackets", css:() => { const r = rnd(9), ip = () => `10.0.${Math.floor(r() * 40)}.${1 + Math.floor(r() * 250)}`, P = ["TCP 443", "UDP 53", "TCP 554 RTSP", "ICMP echo", "TCP 22", "UDP 5060 SIP", "TCP 8000"]; let b = "";
     for (let i = 0; i < 5; i++){ let x = -r() * 200; const y = 11 + i * 11; while (x < 1000){ const s = `${ip()} → ${ip()}  ${P[Math.floor(r() * P.length)]}`; b += `<text x="${x.toFixed(0)}" y="${y}" fill-opacity="${(.06 + r() * .07).toFixed(2)}">${tbEsc(s)}</text>`; x += s.length * 6.1 + 34; } }
     return tbSvg(1000, 58, `<g fill="#bfffe0" ${MONO} font-size="10">${b}</g>`); }},

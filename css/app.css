@@ -757,3 +757,10 @@ html.winblur .tlights:not(:hover) .tl{background:#5d6377;box-shadow:inset 0 0 0 
 .thcard.th-dark{background:#0d1530;color:#e6ebff}.thcard.th-light{background:#f3f6fb;color:#14204f}
 .thcard.on{border-color:var(--pri);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 30%,transparent)}
 .thcard img{filter:drop-shadow(0 4px 10px rgba(0,0,0,.25))}
+/* beta: the title bar is always dark green — set on the bar itself, so no theme, app or state changes it */
+#hdr{--bar:#0d2a1a;--bar2:#15402a;--barInk:#e2f5e9;--barMuted:#8fc9a6;background-color:#0d2a1a!important}
+#hdr .brand:hover{border-color:#24603e}
+#hdr .hproj select{border-color:#24603e}
+#hdr .hb:hover{border-color:#24603e}
+.tbprev{background-color:#0d2a1a}
+#hdr .hsep{background:#24603e!important;border-color:#24603e!important}

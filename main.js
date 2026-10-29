@@ -22,7 +22,7 @@ app.on("second-instance", () => { if (win && !win.isDestroyed()){ if (win.isMini
 function createWindow() {
   win = new BrowserWindow({
     width: 1500, height: 950, minWidth: 1000, minHeight: 640, frame: false,
-    title: app.getName(), backgroundColor: "#14204f", autoHideMenuBar: true,
+    title: app.getName(), backgroundColor: "#0d2a1a", autoHideMenuBar: true,
     icon: path.join(__dirname, "build", "icon-dark.png"),
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true }
   });
@@ -37,7 +37,12 @@ function createWindow() {
   const st = () => { if (win && !win.isDestroyed()) win.webContents.send("win-state", { focused: win.isFocused(), full: win.isFullScreen(), max: win.isMaximized() }); };
   ["focus", "blur", "enter-full-screen", "leave-full-screen", "maximize", "unmaximize"].forEach(ev => win.on(ev, st));
   win.webContents.on("did-finish-load", st);
-  win.on("restore", () => { if (fxMin){ fxMin = false; restoreFx().catch(() => { try { win.setOpacity(1); } catch(e){} }); } });
+  win.on("restore", () => { if (fxMin){ fxMin = false;
+    // never leave the window invisible: whatever happens, it is shown again after 1.5 s
+    const guard = setTimeout(() => { try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }, 1500);
+    restoreFx().catch(() => {}).finally(() => { clearTimeout(guard); try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }); } });
+  // the effect window is made while the program starts, so the first minimise does not wait for it
+  win.once("ready-to-show", () => setTimeout(() => fxWindow().catch(() => {}), 1200));
 }
 /* ---------- minimise / restore effect (like the macOS "genie") ----------
    The window is photographed, a transparent window over the whole screen plays the picture flowing into the
@@ -48,11 +53,11 @@ let fx = null, fxBusy = false, fxMin = false, iconX = null;
 function fxWindow(){
   if (fx && !fx.isDestroyed()) return Promise.resolve(fx);
   fx = new BrowserWindow({ frame: false, transparent: true, resizable: false, movable: false, focusable: false, skipTaskbar: true, alwaysOnTop: true,
-    show: false, hasShadow: false, backgroundColor: "#00000000", webPreferences: { preload: path.join(__dirname, "fxpreload.js"), contextIsolation: true, sandbox: true } });
+    show: false, hasShadow: false, backgroundColor: "#00000000", webPreferences: { preload: path.join(__dirname, "fxpreload.js"), contextIsolation: true, sandbox: true, backgroundThrottling: false } });
   fx.setIgnoreMouseEvents(true);
   return new Promise(res => { fx.webContents.once("did-finish-load", () => res(fx)); fx.loadFile("fx.html"); });
 }
-const fxAsk = (ch, data, reply) => new Promise((res, rej) => { const t = setTimeout(() => rej(new Error("fx timeout")), 2500);
+const fxAsk = (ch, data, reply) => new Promise((res, rej) => { const t = setTimeout(() => rej(new Error("fx timeout")), 900);
   ipcMain.once(reply, (_e, v) => { clearTimeout(t); res(v); }); fx.webContents.send(ch, data); });
 function geom(){
   const b = win.getBounds(), d = screen.getDisplayMatching(b), wa = d.workArea, db = d.bounds;
@@ -61,7 +66,8 @@ function geom(){
   const tx = iconX !== null && iconX >= db.x && iconX <= db.x + db.width ? iconX : wa.x + wa.width / 2;
   return { d, rect: { x: b.x - db.x, y: b.y - db.y, w: b.width, h: b.height }, to: { x: tx - db.x, y: wa.y + wa.height - db.y + (db.y + db.height - wa.y - wa.height) / 2 } };
 }
-async function snap(){ const img = await win.webContents.capturePage(); return "data:image/jpeg;base64," + img.toJPEG(90).toString("base64"); }
+// a lighter picture is enough for a 0.4 s animation (big screens: at most 1600 px wide)
+async function snap(){ let img = await win.webContents.capturePage(); const z = img.getSize(); if (z.width > 1600) img = img.resize({ width: 1600, quality: "good" }); return "data:image/jpeg;base64," + img.toJPEG(80).toString("base64"); }
 async function minimizeFx(){
   if (fxBusy || !win || win.isDestroyed()) return; const g = win.isFullScreen() ? null : geom(); if (!g){ win.minimize(); return; }
   fxBusy = true;
