@@ -163,7 +163,10 @@ async function importAny(){
 }
 // A project file: as a new project, as new buildings of this project, or (when it has floor plans) laid over the current building.
 async function importProject(j, where){
-  const src = j.project || {}, bl = Array.isArray(src.buildings) ? src.buildings : [], drawn = bl.filter(x => (x.floors || []).some(f => f.plan && f.plan.img));
+  // a project file ({project:…}) or a bare project object; nothing usable → say so instead of making an empty project
+  const src = (j && (j.project || (Array.isArray(j.buildings) ? j : null))) || {}, bl = Array.isArray(src.buildings) ? src.buildings : [];
+  if (!bl.length){ toast("⚠ " + t("impBad")); return; }
+  const drawn = bl.filter(x => (x.floors || []).some(f => f.plan && f.plan.img));
   if (!where){ const C = [["new", t("impNewProj"), "pri"], ["bld", t("impNewBld")]]; if (drawn.length && typeof BLD !== "undefined") C.push(["over", t("ov_impOver",{b:B().name})]);
     where = await uiChoice(t("impProjQ",{p:src.name || "?", n:bl.length}), C); if (!where) return; }
   const map = {};
