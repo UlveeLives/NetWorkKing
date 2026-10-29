@@ -251,7 +251,7 @@ function colorFor(d, view, c, h){
     case "cnt": return c.cnt >= 3 ? [42,160,70,170] : c.cnt === 2 ? [150,205,90,170] : c.cnt === 1 ? [245,205,70,170] : [220,80,60,110];
     case "cci": return c.best < -82 ? null : c.cci === 0 ? [42,160,70,165] : c.cci === 1 ? [245,205,70,170] : c.cci === 2 ? [245,150,60,175] : [215,55,45,180];
     case "rate": { const r = rateOf(d, c.snr, h.A[c.bi].w); return r ? grad(RATESTOPS, r, 1) : null; }
-    case "best": { if (c.best < -80) return null; const q = d.aps.indexOf(h.A[c.bi].a); return [...hex(APCOL[q % APCOL.length]), c.best >= -67 ? 120 : 70]; }
+    case "best": { if (c.best < -80) return null; const q = Math.max(0, d.aps.indexOf(h.A[c.bi] && h.A[c.bi].a)); return [...hex(APCOL[q % APCOL.length]), c.best >= -67 ? 120 : 70]; }
     case "pass": return c.pass ? [42,160,70,130] : [215,55,45,130];
     default: return grad(RSTOPS, c.best, -88);
   }
@@ -317,6 +317,7 @@ function autoChan(d, bands){
 function paintHeat(d, f, step, cv, view, b){
   const ctx = cv.getContext("2d"); ctx.clearRect(0, 0, cv.width, cv.height);
   const h = heat(d, f, b, step); if (!h.nA) return h;
+  if (!(h.cols > 0 && h.rows > 0 && isFinite(h.cols) && isFinite(h.rows))) return h;   // floor size not a number (yet): nothing to paint
   const P = prof(d), off = document.createElement("canvas"); off.width = h.cols; off.height = h.rows;
   const oc = off.getContext("2d"), img = oc.createImageData(h.cols, h.rows), op = num(d.view.op, 70) / 70;
   for (let k = 0; k < h.cols * h.rows; k++){ const c = colorFor(d, view, cellInfo(d, h, k, b, P), h); if (c){ c[3] = Math.min(255, Math.round(c[3] * op)); img.data.set(c, k * 4); } }
