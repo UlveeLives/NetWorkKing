@@ -338,10 +338,12 @@ function csv(b){
     portRows(b).map(r => [devLabel(r.d), r.p, r.pn ? devLabel(r.pn) : "", r.pp, r.lab, r.cid, r.ed ? floorName(b, r.ed.floor) : "", r.ed ? roomName(b, r.ed.room) : "", r.ed ? devLabel(r.ed) + (r.ep ? " :" + r.ep : "") : "", r.ed ? kindName(r.ed.kind) : "", r.ed ? r.ed.ip : "", r.ed ? r.ed.mac : "", vlanLabel(b, r.c.vlan), r.c.mode, vlanLabel(b, r.c.native), r.c.allowed, r.c.speed, r.c.poe, r.c.admin === "down" ? t("pmDown") : "", r.c.desc, r.c.note])), "csv", "text/csv");
 }
 function docBody(b){
-  const sws = b.devices.filter(d => portDev(d) && !passive(d) && portRows(b).some(r => r.d === d));
+  // the port rows are worked out once (they used to be recomputed for every device — minutes on a big building)
+  const ROWS = portRows(b), byDev = new Map(); ROWS.forEach(r => { if (!byDev.has(r.d)) byDev.set(r.d, []); byDev.get(r.d).push(r); });
+  const sws = b.devices.filter(d => portDev(d) && !passive(d) && byDev.has(d));
   return `${b.racks.map(r => { const ds = b.devices.filter(d => d.rack === r.id && portDev(d)).sort((a, c) => topU(c) - topU(a)); return ds.length ? `<h3>🗄 ${esc(r.name)}</h3>${ds.map(d => devRow(b, d)).join("")}` : ""; }).join("")}
     ${sws.map(d => `<h3>${esc(devLabel(d))} <small>${esc([d.brand, d.model, d.ip].filter(Boolean).join(" · "))}</small></h3><table class="t"><tr><th>${esc(t("f_port"))}</th><th>${esc(t("pmPanel"))}</th><th>TIA-606</th><th>${esc(t("f_room"))}</th><th>${esc(t("pmEnd"))}</th><th>IP</th><th>VLAN</th><th>${esc(t("pmMode"))}</th><th>PoE</th></tr>
-      ${portRows(b).filter(r => r.d === d).map(r => `<tr><td class="c">${esc(r.p)}</td><td>${r.pn ? esc(devLabel(r.pn) + " :" + r.pp) : "—"}</td><td class="mono">${esc(r.lab)}</td><td>${r.ed ? esc(roomName(b, r.ed.room)) : ""}</td><td>${r.ed ? esc(devLabel(r.ed)) : ""}</td><td class="mono">${r.ed ? esc(r.ed.ip) : ""}</td><td>${esc(r.c.mode === "trunk" ? "trunk " + (r.c.allowed || "") : vlanLabel(b, r.c.vlan))}</td><td>${esc(r.c.mode)}</td><td>${esc(r.c.poe)}</td></tr>`).join("")}</table>`).join("")}`;
+      ${(byDev.get(d) || []).map(r => `<tr><td class="c">${esc(r.p)}</td><td>${r.pn ? esc(devLabel(r.pn) + " :" + r.pp) : "—"}</td><td class="mono">${esc(r.lab)}</td><td>${r.ed ? esc(roomName(b, r.ed.room)) : ""}</td><td>${r.ed ? esc(devLabel(r.ed)) : ""}</td><td class="mono">${r.ed ? esc(r.ed.ip) : ""}</td><td>${esc(r.c.mode === "trunk" ? "trunk " + (r.c.allowed || "") : vlanLabel(b, r.c.vlan))}</td><td>${esc(r.c.mode)}</td><td>${esc(r.c.poe)}</td></tr>`).join("")}</table>`).join("")}`;
 }
 /* ---------- events ---------- */
 function goPort(id, p){ UI.sel = {type:"port", id, p:String(p)}; UI.multi.clear(); if (curTab().id === "rooms") UI.tabs.portmap = "ports"; render(); const el = $(`[data-port="${id}:${p}"]`); if (el) el.scrollIntoView({block:"nearest", inline:"nearest"}); }
