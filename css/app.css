@@ -785,7 +785,7 @@ svg.rkcords .cord path.halo{stroke:rgba(10,14,22,.55);stroke-width:3.4;opacity:.
 .sysum{padding:10px 12px;border-radius:10px;font-weight:700;margin:6px 0 4px}.sysum.ok{background:rgba(30,150,80,.12);color:#1b7a43}.sysum.bad{background:rgba(226,72,58,.12);color:#b83226}
 .sylist{max-height:46vh;display:flex;flex-direction:column;gap:8px}
 .sycard{border:1px solid var(--line);border-left:4px solid #e0a020;border-radius:10px;padding:8px 10px;background:var(--surface)}
-.sycard.err{border-left-color:#e2483a}.sycard.info{border-left-color:#3a7be0}
+.sycard.sy-err{border-left-color:#e2483a}.sycard.sy-info{border-left-color:#3a7be0}
 .sycard .syh{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px}
 .sycard .btns{margin-top:6px;flex-wrap:wrap}
 .syapp{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:9px;color:#fff;background:var(--c)}
