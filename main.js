@@ -16,7 +16,8 @@ try {
     for (const d of ["IndexedDB", "Local Storage"]) if (fs.existsSync(path.join(old, d))) fs.cpSync(path.join(old, d), path.join(nu, d), { recursive: true });
   }
 } catch (e) { console.error("data copy", e); }
-app.on("second-instance", () => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } });
+// opened again while running: bring the window forward (or make a new one if it is gone)
+app.on("second-instance", () => { if (win && !win.isDestroyed()){ if (win.isMinimized()) win.restore(); win.show(); win.focus(); } else if (app.isReady()) createWindow(); });
 
 function createWindow() {
   win = new BrowserWindow({
@@ -27,6 +28,9 @@ function createWindow() {
   });
   win.maximize();
   win.loadFile("index.html");
+  // closing the app window ends the program — also the hidden window of the minimise effect, which would otherwise
+  // keep the program running in the background
+  win.on("closed", () => { win = null; if (fx && !fx.isDestroyed()) fx.destroy(); fx = null; app.quit(); });
   win.webContents.setWindowOpenHandler(({ url }) => { if (/^https?:/.test(url)) shell.openExternal(url); return { action: "deny" }; });
   win.webContents.on("will-navigate", e => e.preventDefault());
   // the page draws its own title bar (red / yellow / green buttons); it needs to know focus and full-screen state
@@ -59,7 +63,7 @@ function geom(){
 }
 async function snap(){ const img = await win.webContents.capturePage(); return "data:image/jpeg;base64," + img.toJPEG(90).toString("base64"); }
 async function minimizeFx(){
-  if (fxBusy) return; const g = win.isFullScreen() ? null : geom(); if (!g){ win.minimize(); return; }
+  if (fxBusy || !win || win.isDestroyed()) return; const g = win.isFullScreen() ? null : geom(); if (!g){ win.minimize(); return; }
   fxBusy = true;
   try {
     const [img, o] = await Promise.all([snap(), fxWindow()]);
@@ -85,7 +89,7 @@ async function restoreFx(){
 }
 // window / taskbar icon follows the theme: dark logo for the dark theme, light logo for the light one
 ipcMain.on("set-icon", (_e, th) => { if (win && !win.isDestroyed()) win.setIcon(path.join(__dirname, "build", th === "light" ? "icon-light.png" : "icon-dark.png")); });
-ipcMain.on("win", (_e, act, o) => { if (!win) return;
+ipcMain.on("win", (_e, act, o) => { if (!win || win.isDestroyed()) return;
   if (act === "close") win.close();
   else if (act === "min"){ if (o && o.fx === false) win.minimize(); else minimizeFx(); }
   else if (act === "full") win.setFullScreen(!win.isFullScreen());
