@@ -22,7 +22,7 @@ function gaps(b, d){
   const G = [], K = KINDS[d.kind] || KINDS.other;
   if (isAcc(d)) return G;
   if (!d.brand && !d.model && d.kind !== "outlet") G.push(["model", "sm_gModel", "here"]);
-  if (needsIp(d) && !d.ip) G.push(["ip", "sm_gIp", "here"]);
+  if (needsIp(d) && !d.ip && d.ipMode !== "dhcp") G.push(["ip", "sm_gIp", "here"]);
   if (needsIp(d) && !d.mac && ["end","wifi","cctv","compute"].includes(K.cat)) G.push(["mac", "sm_gMac", "here"]);
   if (!d.floor && !d.rack) G.push(["loc", "sm_gLoc", "here"]);
   else if (!d.room && !d.rack && !camOut(d) && ["end","wifi","cctv","passive"].includes(K.cat)) G.push(["room", "sm_gRoom", "here"]);
@@ -84,7 +84,7 @@ function listView(){
           <td><select data-sm="${d.id}:status">${STATUSES.map(s => opt(s, t("st_" + s), d.status)).join("")}</select></td>
           <td${mc("loc") || mc("room")}><select data-sm="${d.id}:floor">${opt("", "—", naOf(d).floor ? "x" : d.floor)}${NAO(d, "floor")}${b.floors.slice().reverse().map(f => opt(f.id, f.name, d.floor)).join("")}</select> <select data-sm="${d.id}:room">${opt("", "—", naOf(d).room ? "x" : d.room)}${NAO(d, "room")}${b.rooms.filter(r => !d.floor || r.floor === d.floor).map(r => opt(r.id, r.name, d.room)).join("")}</select></td>
           <td class="small nw${gk.has("rack") || gk.has("plan") ? " miss" : ""}">${esc(where) || "—"}</td>
-          <td${mc("ip")}>${needsIp(d) || d.ip || naOf(d).ip ? inp(d, "ip", d.ip, ' data-mask="ip" inputmode="decimal" style="width:118px"') : `<span class="muted">—</span>`}</td>
+          <td class="nw${gk.has("ip") ? " miss" : ""}">${needsIp(d) || d.ip || naOf(d).ip ? `<select data-sm="${d.id}:ipMode" class="ipm" title="${esc(t("f_ipMode"))}">${[["", "·"], ["static", "S"], ["dhcp", "D"]].map(([k, l]) => opt(k, l, d.ipMode || "")).join("")}</select>` + inp(d, "ip", d.ip, ` data-mask="ip" inputmode="decimal" style="width:118px" placeholder="${d.ipMode === "dhcp" ? "DHCP" : ""}"`) : `<span class="muted">—</span>`}</td>
           <td${mc("mac")}>${needsIp(d) || d.mac || naOf(d).mac ? inp(d, "mac", d.mac, ' data-mask="mac" style="width:128px" class="mono"') : `<span class="muted">—</span>`}</td>
           <td><select data-sm="${d.id}:vlan">${naOf(d).vlan ? vlanOpts(b, "", false).replace(/ selected/g, "") : vlanOpts(b, d.vlan, false)}${NAO(d, "vlan")}</select></td>
           <td>${inp(d, "serial", d.serial, ' placeholder="—" style="width:110px"')}</td>
@@ -107,7 +107,7 @@ function bomView(print){
     <div class="scroll"><table class="t"><tr><th>${esc(t("f_kind"))}</th><th>${esc(t("f_brand"))}</th><th>${esc(t("f_model"))}</th><th>${esc(t("sm_qty"))}</th><th>${esc(t("st_installed"))}</th><th>${esc(t("st_planned"))}</th><th>${esc(t("sm_other"))}</th><th>${esc(t("sm_where"))}</th></tr>
     ${L.map(o => `<tr${isAcc({kind:o.kind}) ? ' class="muted"' : ""}><td class="nw"><svg viewBox="0 0 48 48" width="16" height="16">${ICO[(KINDS[o.kind] || KINDS.other).icon] || ICO.box}</svg> ${esc(kindName(o.kind))}</td><td>${esc(o.brand) || `<span class="muted">—</span>`}</td><td>${esc(o.model) || `<span class="muted">${esc(t("sm_noModel"))}</span>`}</td><td class="c"><b>${o.n}</b></td><td class="c">${(o.st.installed || 0) + (o.st.active || 0) || ""}</td><td class="c">${o.st.planned || ""}</td><td class="c">${(o.st.faulty || 0) + (o.st.maintenance || 0) + (o.st.removed || 0) || ""}</td><td class="small">${esc([...o.fl].join(", "))}</td></tr>`).join("")}
     <tr class="tot"><td colspan="3">${esc(t("total"))}</td><td class="c">${b.devices.length}</td><td colspan="4"></td></tr></table></div></div>
-    ${fl.length && topK.length ? `<div class="card"><h3>🏬 ${esc(t("sm_perFloor"))}</h3><div class="scroll"><table class="t"><tr><th>${esc(t("f_floor"))}</th>${topK.map(k => `<th title="${esc(kindName(k))}"><svg viewBox="0 0 48 48" width="16" height="16">${ICO[(KINDS[k] || KINDS.other).icon] || ICO.box}</svg></th>`).join("")}<th>${esc(t("total"))}</th></tr>
+    ${fl.length && topK.length ? `<div class="card"><h3>🏬 ${esc(t("sm_perFloor"))}</h3><div class="scroll"><table class="t"><tr><th>${esc(t("f_floor"))}</th>${topK.map(k => `<th class="c" title="${esc(kindName(k))}"><svg viewBox="0 0 48 48" width="16" height="16">${ICO[(KINDS[k] || KINDS.other).icon] || ICO.box}</svg><br><small style="white-space:normal;text-transform:none;font-weight:600;display:inline-block;max-width:90px;line-height:1.1">${esc(kindName(k))}</small></th>`).join("")}<th class="c">${esc(t("total"))}</th></tr>
       ${[...fl.map(f => [f.name, b.devices.filter(d => d.floor === f.id)]), [t("sm_noFloor"), b.devices.filter(d => !d.floor)]].map(([n, D]) => `<tr><td>${esc(n)}</td>${topK.map(k => `<td class="c">${D.filter(d => d.kind === k).length || ""}</td>`).join("")}<td class="c"><b>${D.filter(d => !isAcc(d)).length}</b></td></tr>`).join("")}</table></div><p class="muted small">${topK.map(k => kindName(k)).join(" · ")}</p></div>` : ""}
     <div class="card"><h3>🗄 ${esc(t("sm_infra"))}</h3><div class="kpis">${[[b.floors.length, t("floors")], [b.rooms.length, t("rooms")], [b.racks.length, "Rack"], [b.racks.reduce((a, r) => a + r.u, 0) + " U", t("sm_rackU")], [b.links.length, t("sm_cables")], [r1(b.links.reduce((a, l) => a + num(l.len), 0)) + " m", t("sm_cableLen")], [b.vlans.length, "VLAN"]].map(([v, l]) => `<div class="kpi"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("")}</div></div>`;
 }

@@ -673,3 +673,24 @@ svg.bplan .bwl,svg.bplan .bsh,svg.bplan .bbd{cursor:move}svg.bplan .brot{cursor:
 :root[data-theme="dark"] #pal .bpi>svg,:root[data-theme="dark"] #pal .pdet .pitem>svg,:root[data-theme="dark"] .ukic svg{background:#eef1f4;border-radius:6px;padding:2px}
 :root[data-theme="dark"] .lblprev{background:#2a323c}
 :root[data-theme="dark"] #dgwrap{background:#e6eaef;border-color:#3a4552}
+/* v3.6: structure table — need (input) above, placed on plan (small) below, both centred in the column */
+.breqc{display:flex;flex-direction:column;align-items:center;gap:1px}
+input.breq{border:1px solid var(--line)!important;background:var(--surface)}
+input.breq::placeholder{color:var(--line)}
+.breqc small{font-size:10px;color:var(--muted);line-height:1}.breqc small.z{opacity:.4}
+/* dark theme: device icons in table headers sit on a light tile */
+:root[data-theme="dark"] table.t th svg{background:#eef1f4;border-radius:4px;padding:1px}
+.rack-title .rk-ed{background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px;padding:0 6px}.rack-title .rk-ed:hover{color:#fff}
+.rack-title .pill{margin-left:6px;font-size:11px}
+.pmrack .rack-title{justify-content:flex-start}.pmrack .rack-title .rt-r{margin-left:auto}
+/* v3.6: drag devices in Port Map racks */
+.unit .lbl{cursor:grab}body.udragging{user-select:none;cursor:grabbing}body.udragging *{cursor:grabbing!important}
+.unit.udrag{opacity:.45}.unit.udrop.up{box-shadow:inset 0 3px 0 #ffb703}.unit.udrop.dn{box-shadow:inset 0 -3px 0 #ffb703}.pmrack.udrop{outline:2px dashed #ffb703;outline-offset:2px}
+.pmlinks{margin-top:14px}.pmlk{display:flex;flex-direction:column;gap:6px}.pmlk .lk{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pmlk .lk i.c{flex:1;min-width:30px;height:3px;border-radius:2px;opacity:.85}
+.pendbar{border:1px dashed #ffb703;border-radius:8px;padding:8px;margin:6px 0;background:rgba(255,183,3,.06)}.pendbar .btns{margin-top:4px}
+.pgc.av{margin-left:10px;padding-left:8px;border-left:1px dashed #6d597a}.pgc.av .p{border-color:#8a5cd6;font-size:10px}
+/* v3.6: patch cords on the rack front */
+.rkb{position:relative}svg.rkcords{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:3}svg.rkcords path{fill:none;stroke-width:2;opacity:.85;stroke-linecap:round}
+/* v3.6: Save / Close at the bottom of side cards */
+.dfoot{position:sticky;bottom:0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0 4px;margin-top:12px;background:var(--surface);border-top:1px solid var(--line);z-index:2}.dfoot small{flex:1;min-width:120px}
+select.ipm{width:44px;padding:2px;margin-right:4px}

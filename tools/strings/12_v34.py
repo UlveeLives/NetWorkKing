@@ -194,3 +194,44 @@ for k,az,tr,en,ru in [
  ("hf_serial","seriya","seri no","serial","серийный №"),("hf_notes","qeyd","not","notes","примечание"),("hf_ports","port sayı","port sayısı","ports","портов"),("hf_rack","rack","rack","rack","стойка"),("hf_u","U yeri","U yeri","U position","позиция U"),("hf_floor","mərtəbə","kat","floor","этаж"),("hf_room","otaq","oda","room","помещение"),("hf_vlan","VLAN","VLAN","VLAN","VLAN"),
 ]:
     K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("pmPortsUsed","Bu rack-dakı switch və panellərin istifadədə olan portları / cəmi","Kullanılan portlar / toplam","Ports in use / all ports of this rack's switches and panels","Занято портов / всего"),
+]:
+    K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("pmUplinks","Switch-lər arası bağlantılar (uplink)","Switch'ler arası bağlantılar (uplink)","Links between switches (uplinks)","Связи между коммутаторами (аплинки)"),
+]:
+    K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("pmConnect","Bağla","Bağla","Connect","Подключить"),("pmConnectAnyway","Yenə də bağla (köhnə bağlantı silinəcək)","Yine de bağla","Connect anyway (the old link is removed)","Всё равно подключить"),
+ ("pmPendPanelBusy","{pp} artıq {x} portuna bağlıdır","{pp} zaten {x} portuna bağlı","{pp} is already connected to {x}","{pp} уже подключён к {x}"),
+ ("pmPendEndBusy","{e} artıq bağlıdır: {x}","{e} zaten bağlı: {x}","{e} is already connected: {x}","{e} уже подключено: {x}"),
+ ("pmPendEndPort","{e} üçün port nömrəsini yazın","{e} için port numarası yazın","Type the port number on {e}","Укажите порт на {e}"),
+ ("pmPortQ","port №","port no","port no.","№ порта"),("pmPickPanelPort","Panel portunu yazın","Panel portunu yazın","Type the panel port","Укажите порт панели"),
+]:
+    K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("f_rj45","RJ45 (mis) port","RJ45 (bakır) port","RJ45 (copper) ports","Порты RJ45"),
+ ("f_portsSum","Cəmi {n} port; SFP portları {a}–{b} nömrələridir.","Toplam {n} port; SFP portları {a}–{b}.","{n} ports in all; the SFP ports are numbers {a}–{b}.","Всего {n} портов; SFP — с {a} по {b}."),
+]:
+    K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("k_poeext","PoE extender","PoE uzatıcı","PoE extender","PoE-удлинитель"),("k_ethext","Ethernet extender","Ethernet uzatıcı","Ethernet extender","Ethernet-удлинитель"),
+ ("k_hdmiext","HDMI extender (Cat6 üzərindən)","HDMI uzatıcı (Cat6)","HDMI extender (over Cat6)","HDMI-удлинитель (по Cat6)"),("k_usbext","USB / KVM extender","USB / KVM uzatıcı","USB / KVM extender","USB / KVM-удлинитель"),
+ ("f_hdmiOut","HDMI çıxış","HDMI çıkış","HDMI out","HDMI выход"),("f_vgaOut","VGA çıxış","VGA çıkış","VGA out","VGA выход"),("f_hdmiIn","HDMI giriş","HDMI giriş","HDMI in","HDMI вход"),
+]:
+    K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("rkCords","Rack içindəki patch cord-ları göstər","Rack içindeki patch kabloları göster","Show patch cords inside the rack","Показывать патч-корды внутри стойки"),
+ ("rkCordsH","Hər iki ucu bu rack-da olan kabellər portdan porta çəkilir; rack-dan çıxan kabellər göstərilmir.","İki ucu bu rack'te olan kablolar porttan porta çizilir.","Cables with both ends in this rack are drawn port to port; cables leaving the rack are not shown.","Кабели, оба конца которых в стойке, рисуются от порта к порту."),
+]:
+    K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("dSaveH","Dəyişikliklər xanadan çıxanda saxlanır","Değişiklikler alandan çıkınca kaydedilir","Changes are kept as soon as you leave a field","Изменения сохраняются при выходе из поля"),
+]:
+    K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("f_ipMode","IP necə verilir","IP nasıl verilir","IP assignment","Назначение IP"),("ipStatic","Statik","Statik","Static","Статический"),("ipDhcp","Dinamik (DHCP)","Dinamik (DHCP)","Dynamic (DHCP)","Динамический (DHCP)"),
+ ("ipDhcpF","IP (DHCP — istəyə bağlı: rezerv və ya indiki)","IP (DHCP — isteğe bağlı)","IP (DHCP — optional: reservation or current)","IP (DHCP — необязательно)"),
+]:
+    K(k,az,tr,en,ru)

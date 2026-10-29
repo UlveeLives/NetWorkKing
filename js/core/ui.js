@@ -60,10 +60,14 @@ function modal(html, acts, opts = {}){ const m = $("#modal"); modalActs = acts |
 function uiAlert(msg){ return new Promise(res => { const o = layer(`<p style="white-space:pre-line">⚠ ${esc(msg)}</p><div class="mfoot"><span class="grow"></span><button class="btn pri" data-x="1">OK</button></div>`);
   const end = () => { o.remove(); document.removeEventListener("keydown", key, true); res(); }, key = e => { if (!o.isConnected){ document.removeEventListener("keydown", key, true); return; } if (e.key === "Escape" || e.key === "Enter"){ e.stopPropagation(); end(); } };
   o.addEventListener("click", e => { if (e.target.closest("[data-x]")) end(); }); document.addEventListener("keydown", key, true); setTimeout(() => { const x = o.querySelector("[data-x]"); x && x.focus(); }, 0); }); }
+let modalDownOut = false;
+document.addEventListener("pointerdown", e => { const m = $("#modal"); modalDownOut = !!(m && !m.hidden && e.target === m); }, true);
 function closeModal(){ const m = $("#modal"); m.hidden = true; m.innerHTML = ""; modalActs = {}; }
 document.addEventListener("click", e => {
   const m = $("#modal"); if (!m || m.hidden) return;
-  if (e.target === m && !m.querySelector(".mbox.lock")) { closeModal(); return; }
+  // only a click that both starts and ends outside the window closes it (selecting text with the mouse and letting go
+  // outside the window no longer closes it)
+  if (e.target === m && modalDownOut && !m.querySelector(".mbox.lock")) { closeModal(); return; }
   const b = e.target.closest("[data-m]"); if (!b || !m.contains(b)) return;
   const k = b.dataset.m; if (k === "close"){ closeModal(); return; }
   if (modalActs[k]) modalActs[k](b, e);
@@ -72,8 +76,11 @@ document.addEventListener("click", e => {
 /* ---------- popover menu ---------- */
 let menuEl = null;
 function closeMenu(){ if (menuEl){ menuEl.remove(); menuEl = null; } }
+// a second click on the button that opened a menu closes it (instead of opening it again)
+let menuAnchor = null, menuShut = {a:null, t:0};
 function popMenu(anchor, items, opts = {}){
-  closeMenu(); const el = document.createElement("div"); el.className = "pmenu" + (opts.cls ? " " + opts.cls : "");
+  if (menuShut.a && menuShut.a === anchor && Date.now() - menuShut.t < 600){ menuShut.a = null; return; }
+  closeMenu(); menuAnchor = anchor; const el = document.createElement("div"); el.className = "pmenu" + (opts.cls ? " " + opts.cls : "");
   el.innerHTML = items.map((it, i) => it === "-" ? `<hr>` : it.head ? `<div class="mh">${esc(it.head)}</div>` : `<button class="mi${it.danger ? " dan" : ""}${it.on ? " on" : ""}" data-i="${i}"${it.disabled ? " disabled" : ""}>${it.icon ? `<span class="mic">${it.icon}</span>` : ""}<span class="mtx"><b>${esc(it.label)}</b>${it.sub ? `<small>${esc(it.sub)}</small>` : ""}</span></button>`).join("");
   document.body.appendChild(el); menuEl = el;
   const r = anchor.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight;
@@ -82,7 +89,7 @@ function popMenu(anchor, items, opts = {}){
   el.style.left = clamp(x, 6, innerWidth - w - 6) + "px"; el.style.top = clamp(y, 6, innerHeight - h - 6) + "px";
   el.addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (!b) return; const it = items[+b.dataset.i]; closeMenu(); it.fn && it.fn(); });
 }
-document.addEventListener("pointerdown", e => { if (menuEl && !menuEl.contains(e.target)) closeMenu(); }, true);
+document.addEventListener("pointerdown", e => { if (menuEl && !menuEl.contains(e.target)){ menuShut = {a:menuAnchor && menuAnchor.contains(e.target) ? menuAnchor : null, t:Date.now()}; closeMenu(); } }, true);
 window.addEventListener("resize", closeMenu);
 /* ---------- header ---------- */
 function appIcon(a, s = 26){ return `<svg viewBox="0 0 48 48" width="${s}" height="${s}"><rect x="2" y="2" width="44" height="44" rx="10" fill="${a.color}"/>${a.glyph}</svg>`; }
@@ -192,18 +199,38 @@ function render(){
   renderHeader(); renderTabs(); renderBuildings();
   const pal0 = tab.palette ? tab.palette() : "", pal = pal0 ? `<label class="chk planck" title="${esc(t("addPlannedH"))}"><input type="checkbox" id="add-planned"${store.settings.addPlanned ? " checked" : ""}> 📝 ${esc(t("addPlanned"))}</label>` + pal0 : "";
   $("#pal").innerHTML = pal; $("#pal").hidden = !pal;
-  const view = $("#view"); view.className = "view v-" + a.id + " t-" + tab.id;
+  const view = $("#view"), keep = sameScreen(a, tab) ? scrollSave() : null; view.className = "view v-" + a.id + " t-" + tab.id;
   view.innerHTML = tab.render ? tab.render() : "";
   const dr = drawerHtml(a, tab);
-  $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);
+  $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}${drawerFoot()}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);
   if (UI.multi.size) $$("[data-sel]", view).forEach(el => { if (UI.multi.has(el.dataset.sel)){ const tr = el.closest("tr") || el; tr.classList.add("on"); } });
-  zpAll();
+  zpAll(); refreshBrands();
+  if (keep) scrollRestore(keep);
   if (tab.after) tab.after(view);
   restoreFocus();
   if (typeof AI !== "undefined" && UI.ai && UI.ai.open) AI.draw();
   if (a.afterRender) a.afterRender(tab);
   maybeTour();
 }
+/* ---------- Save / Close at the bottom of every side card ----------
+   Fields are kept as soon as they are left; Save finishes the field being typed, confirms and closes the card. */
+const drawerFoot = () => `<div class="dfoot"><button class="btn pri" data-dsave="1">💾 ${esc(t("save"))}</button><button class="btn" data-dclose="1">${esc(t("close"))}</button><small class="muted">${esc(t("dSaveH"))}</small></div>`;
+async function drawerSave(){ const a = document.activeElement; if (a && a.closest && a.closest("#drawer") && a.blur) a.blur();
+  if (UI.app === "portmap" && UI.sel && UI.sel.type === "port" && window.PM && PM.savePort) return PM.savePort();
+  setTimeout(() => { if (document.querySelector(".layer") || !$("#modal").hidden) return; UI.sel = null; UI.multi.clear(); render(); toast("✓ " + t("saved")); }, 120); }
+document.addEventListener("pointerdown", e => { const el = e.target.closest && e.target.closest("[data-dsave],[data-dclose]"); if (!el || e.button) return; e.preventDefault(); e.stopPropagation();
+  if (el.dataset.dsave) drawerSave(); else { const a = document.activeElement; if (a && a.blur) a.blur(); setTimeout(() => { if (document.querySelector(".layer")) return; UI.sel = null; UI.multi.clear(); render(); }, 80); } }, true);
+/* ---------- scroll positions survive a redraw ----------
+   After a change the screen is drawn again; every scrolled box (the page, tables, lists, the side panel) keeps its place
+   instead of jumping back to the top. Boxes are found again by their position in the page. */
+let lastScreen = "";
+function sameScreen(a, tab){ const k = a.id + "/" + tab.id + "/" + (P() && P().cur.b); const same = k === lastScreen; lastScreen = k; return same; }
+function pathOf(el, root){ const p = []; while (el && el !== root){ const par = el.parentElement; if (!par) break; p.unshift([...par.children].indexOf(el)); el = par; } return p; }
+function scrollSave(){ const out = [];
+  ["#view", "#drawer", "#pal"].forEach(sel => { const root = $(sel); if (!root) return; if (root.scrollTop || root.scrollLeft) out.push([sel, [], root.scrollTop, root.scrollLeft]);
+    root.querySelectorAll(".scroll, .smwrap, .racks, #dgwrap, .dsb, .ulist, [data-keepscroll]").forEach(el => { if (el.scrollTop || el.scrollLeft) out.push([sel, pathOf(el, root), el.scrollTop, el.scrollLeft]); }); });
+  out.push(["win", [], window.scrollY, window.scrollX]); out.sel = JSON.stringify(UI.sel || null); return out; }
+function scrollRestore(L){ const sameSel = L.sel === JSON.stringify(UI.sel || null); L.forEach(([sel, path, top, left]) => { if (sel === "#drawer" && !sameSel) return; if (sel === "win"){ if (top || left) window.scrollTo(left, top); return; } let el = $(sel); for (const i of path){ el = el && el.children[i]; } if (el){ el.scrollTop = top; el.scrollLeft = left; } }); }
 // Re-render only the drawer (used while typing in it).
 // Several devices selected: one editor for the fields they share (+ the app's own tools for a selection, e.g. align).
 function drawerHtml(a, tab){
@@ -211,7 +238,7 @@ function drawerHtml(a, tab){
     return `<div class="dhead"><div><h3>${esc(t("multiSel",{n:UI.multi.size}))}</h3></div><button class="x" data-dr="close">×</button></div>${L.length > 1 ? multiEditor(B(), L) : ""}${extra}`; }
   return a.drawer ? a.drawer(tab) : "";
 }
-function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);  restoreFocus(); }
+function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}${drawerFoot()}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);  restoreFocus(); }
 /* ---------- header / tab / building events ---------- */
 /* ---------- typing masks: IP fields take only an IPv4 address (digits, dots, "/mask"), MAC fields only hex with ":" added ---------- */
 const IP_FIELDS = '[data-f="ip"],[data-cf$=":ip"],#bk-ip,#ne-ip,#lk-ip,[data-c="gw"],[data-c="subnet"],[data-v="gw"],[data-v="subnet"],input[data-mask="ip"]';

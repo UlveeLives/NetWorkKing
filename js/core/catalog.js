@@ -48,7 +48,11 @@ const BRANDS_KNOWN = [
   // cabling / passive
   "Panduit","CommScope","Corning","Nexans","Legrand LCS","Belden","Brand-Rex","Excel","Schrack","Prysmian","Siemon","Molex"
 ];
-const allBrands = () => [...new Set([...CAT.brands(), ...BRANDS_KNOWN])].sort((a, b) => a.localeCompare(b));
+// brands of the catalog, well-known brands and every brand typed on a device in any project
+const usedBrands = () => { const S = new Set(); Object.values(store.projects || {}).forEach(p => (p.buildings || []).forEach(b => (b.devices || []).forEach(d => { const x = String(d.brand || "").trim(); if (x) S.add(x); }))); return S; };
+const allBrands = () => { const M = new Map(); [...CAT.brands(), ...BRANDS_KNOWN, ...usedBrands()].forEach(x => { const k = String(x).toLowerCase(); if (!M.has(k)) M.set(k, x); }); return [...M.values()].sort((a, b) => a.localeCompare(b)); };
+let brandSig = "";
+function refreshBrands(){ const L = allBrands(), sig = L.join("|"); if (sig === brandSig) return; brandSig = sig; ["#dl-brands", "#dl-brands2"].forEach(id => { const el = $(id); if (el) el.innerHTML = L.map(x => `<option value="${esc(x)}">`).join(""); }); }
 // Fill a device from a catalog record (only values the record actually has are copied).
 function applySpec(d, r){
   if (!r) return;

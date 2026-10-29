@@ -6,10 +6,10 @@ const KINDS = {
   internet:{cat:"net", icon:"internet", phys:false},
   modem:{cat:"net", icon:"modem", ports:4},
   ont:{cat:"net", icon:"ont", ports:4},
-  firewall:{cat:"net", icon:"fw", rack:true, h:1, ports:10},
+  firewall:{cat:"net", icon:"fw", rack:true, h:1, ports:10, sfp:2},
   router:{cat:"net", icon:"router", rack:true, h:1, ports:6},
-  coresw:{cat:"net", icon:"coresw", rack:true, h:1, ports:48, sw:true},
-  switch:{cat:"net", icon:"sw", rack:true, h:1, ports:24, sw:true},
+  coresw:{cat:"net", icon:"coresw", rack:true, h:1, ports:52, sfp:4, sw:true},
+  switch:{cat:"net", icon:"sw", rack:true, h:1, ports:28, sfp:4, sw:true},
   wlc:{cat:"net", icon:"wlc", rack:true, h:1, ports:4},
   ap:{cat:"wifi", icon:"ap", ports:1},
   mediaconv:{cat:"fiber", icon:"mediaconv", ports:2},
@@ -25,24 +25,28 @@ const KINDS = {
   ups:{cat:"power", icon:"ups", rack:true, h:2},
   pdu:{cat:"power", icon:"pdu", rack:true, h:1},
   poeinj:{cat:"power", icon:"poeinj", ports:2},
+  poeext:{cat:"power", icon:"poeinj", ports:2},
+  ethext:{cat:"net", icon:"adapter", ports:2},
+  hdmiext:{cat:"cctv", icon:"adapter", ports:1, av:{hdmiIn:1, hdmiOut:1}},
+  usbext:{cat:"end", icon:"adapter", ports:1},
   server:{cat:"compute", icon:"server", rack:true, h:2, ports:4},
   nas:{cat:"compute", icon:"nas", rack:true, h:2, ports:4},
   storage:{cat:"compute", icon:"storage", rack:true, h:2, ports:2},
-  kvm:{cat:"compute", icon:"kvm", rack:true, h:1, ports:8},
+  kvm:{cat:"compute", icon:"kvm", rack:true, h:1, ports:8, av:{hdmiIn:4, hdmiOut:1}},
   camera:{cat:"cctv", icon:"turret", ports:1},
-  nvr:{cat:"cctv", icon:"nvr", rack:true, h:2, ports:2},
-  dvr:{cat:"cctv", icon:"nvr", rack:true, h:1, ports:1},
-  decoder:{cat:"cctv", icon:"decoder", rack:true, h:1, ports:1},
-  encoder:{cat:"cctv", icon:"encoder", rack:true, h:1, ports:1},
-  monitor:{cat:"cctv", icon:"monitor"},
-  videowall:{cat:"cctv", icon:"wall"},
+  nvr:{cat:"cctv", icon:"nvr", rack:true, h:2, ports:2, av:{hdmiOut:2, vgaOut:1}},
+  dvr:{cat:"cctv", icon:"nvr", rack:true, h:1, ports:1, av:{hdmiOut:1, vgaOut:1}},
+  decoder:{cat:"cctv", icon:"decoder", rack:true, h:1, ports:1, av:{hdmiOut:4}},
+  encoder:{cat:"cctv", icon:"encoder", rack:true, h:1, ports:1, av:{hdmiIn:1}},
+  monitor:{cat:"cctv", icon:"monitor", av:{hdmiIn:2}},
+  videowall:{cat:"cctv", icon:"wall", av:{hdmiIn:4}},
   joystick:{cat:"cctv", icon:"joystick", ports:1},
-  workstation:{cat:"end", icon:"workstation", ports:1},
-  pc:{cat:"end", icon:"pc", ports:1},
+  workstation:{cat:"end", icon:"workstation", ports:1, av:{hdmiOut:2}},
+  pc:{cat:"end", icon:"pc", ports:1, av:{hdmiOut:1}},
   laptop:{cat:"end", icon:"laptop", ports:1},
   printer:{cat:"end", icon:"printer", ports:1},
   phone:{cat:"end", icon:"phone", ports:2},
-  tv:{cat:"end", icon:"tv", ports:1},
+  tv:{cat:"end", icon:"tv", ports:1, av:{hdmiIn:2}},
   touch:{cat:"end", icon:"touch", ports:1},
   intercom:{cat:"end", icon:"intercom", ports:1},
   access:{cat:"end", icon:"access", ports:1},
@@ -53,6 +57,9 @@ const KINDS = {
   other:{cat:"end", icon:"box", ports:1}
 };
 const KIND_ORDER = Object.keys(KINDS);
+// names of the picture ports of a device, in order: HDMI outputs, VGA outputs, HDMI inputs
+function avPorts(d){ const A = d && d.av || {}, L = []; for (let i = 1; i <= num(A.hdmiOut); i++) L.push("HDMI" + i); for (let i = 1; i <= num(A.vgaOut); i++) L.push("VGA" + i); for (let i = 1; i <= num(A.hdmiIn); i++) L.push("IN" + i); return L; }
+const isAvPort = p => /^(HDMI|VGA|IN)\d+$/i.test(String(p || ""));
 const kindName = k => KINDS[k] && KINDS[k].label ? KINDS[k].label : t("k_" + (KINDS[k] ? k : "other"));
 /* ---------- device kinds the user adds ("＋ My device" in an add list) ----------
    Kept in the settings (offered in every project) and in each project that uses them (so a project file opened on
@@ -64,7 +71,7 @@ document.addEventListener("click", async e => { const el = e.target.closest && e
 function ukAll(){ const M = new Map(); [...(store.settings.ukinds || []), ...Object.values(store.projects || {}).flatMap(p => p.ukinds || [])].forEach(u => { if (u && u.key && !M.has(u.key)) M.set(u.key, u); }); return [...M.values()]; }
 function regUKinds(scan){
   ukAll().forEach(u => { const B0 = KINDS[u.base] && !KINDS[u.base].custom ? KINDS[u.base] : KINDS.other, k = u.key;
-    KINDS[k] = {cat:B0.cat, icon:ICO[u.icon] ? u.icon : B0.icon, rack:!!B0.rack, h:Math.max(1, num(u.h, B0.h || 1)), ports:Math.max(0, num(u.ports, B0.ports || 0)), sw:!!B0.sw, passive:!!B0.passive, acc:!!B0.acc, phys:B0.phys, custom:true, base:u.base, label:u.name};
+    KINDS[k] = {cat:B0.cat, icon:ICO[u.icon] ? u.icon : B0.icon, rack:!!B0.rack, h:Math.max(1, num(u.h, B0.h || 1)), ports:Math.max(0, num(u.ports, B0.ports || 0)), sw:!!B0.sw, passive:!!B0.passive, acc:!!B0.acc, phys:B0.phys, custom:true, base:u.base, label:u.name, av:B0.av};
     if (!KIND_ORDER.includes(k)) KIND_ORDER.push(k);
     UK_LISTS.forEach(L => { if (L.includes(u.base) && !L.includes(k)) L.push(k); }); });
   // a device of a kind nobody described (a file from a newer version): shown as "other" under its own name
@@ -118,8 +125,10 @@ function normDevice(d){
   const K = KINDS[d.kind] || KINDS.other;
   const def = {name:"", brand:"", model:"", status:"installed", floor:"", room:"", rack:"", u:0, side:"front", host:"", ip:"", mac:"", serial:"", asset:"", fw:"", owner:"", installed:"", warranty:"", vlan:"", notes:"", ports:K.ports || 0, nvr:"", ch:""};
   for (const k in def) if (d[k] === undefined) d[k] = def[k];
-  d.params = Object.assign({h:K.h || (K.rack ? 1 : 0), depth:0, weight:0, powerW:0, maxW:0, psu:1, airflow:K.acc || K.passive ? "passive" : "f2b", sfp:0, poePorts:0, poeBudget:0, poeStd:"", poeIn:0, va:0, upsW:0, wh:0, amps:0, feedA:"", feedB:"", feed:""}, d.params || {});
+  d.params = Object.assign({h:K.h || (K.rack ? 1 : 0), depth:0, weight:0, powerW:0, maxW:0, psu:1, airflow:K.acc || K.passive ? "passive" : "f2b", sfp:K.sfp || 0, poePorts:0, poeBudget:0, poeStd:"", poeIn:0, va:0, upsW:0, wh:0, amps:0, feedA:"", feedB:"", feed:""}, d.params || {});
   d.pcfg = d.pcfg && typeof d.pcfg === "object" ? d.pcfg : {};
+  // picture ports (HDMI / VGA in and out) next to the network ports: named HDMI1…, VGA1…, IN1…
+  if (!d.av || typeof d.av !== "object") d.av = Object.assign({hdmiOut:0, vgaOut:0, hdmiIn:0}, K.av || {});
   // counts read from older or imported files are never negative (a negative SFP count stopped the rack drawing)
   d.ports = Math.max(0, Math.round(num(d.ports, 0))); ["sfp", "h", "psu", "poePorts"].forEach(k => { if (d.params[k] !== undefined && num(d.params[k], 0) < 0) d.params[k] = 0; });
   if (d.kind === "camera"){
@@ -236,7 +245,7 @@ function getPath(o, p){ return p.split(".").reduce((x, k) => x == null ? x : x[k
 function setPath(o, p, v){ const ks = p.split("."), last = ks.pop(); let x = o; for (const k of ks){ if (x[k] == null || typeof x[k] !== "object") x[k] = {}; x = x[k]; } x[last] = v; }
 // numbers that can't be below zero (plan coordinates and the camera direction can)
 const numOf = (path, v) => { const n = num(String(v).replace(",", "."), 0); return /^(ap\.x|ap\.y|camera\.dir)$/.test(path) ? n : Math.max(0, n); };
-const NUMF = new Set(["ports","params.sfp","u","params.h","params.depth","params.weight","params.powerW","params.maxW","params.psu","params.poePorts","params.poeBudget","params.poeIn","params.va","params.upsW","params.wh","params.amps","camera.mp","camera.ir","camera.fps","camera.bitrate","camera.act","camera.hours","camera.retain","camera.hfov","camera.dir","nvrp.channels","nvrp.inMbps","nvrp.bays","nvrp.hdd","nvrp.maxMp","ap.h","ap.x","ap.y","ap.cable","len"]);
+const NUMF = new Set(["av.hdmiOut","av.vgaOut","av.hdmiIn","ports","params.sfp","u","params.h","params.depth","params.weight","params.powerW","params.maxW","params.psu","params.poePorts","params.poeBudget","params.poeIn","params.va","params.upsW","params.wh","params.amps","camera.mp","camera.ir","camera.fps","camera.bitrate","camera.act","camera.hours","camera.retain","camera.hfov","camera.dir","nvrp.channels","nvrp.inMbps","nvrp.bays","nvrp.hdd","nvrp.maxMp","ap.h","ap.x","ap.y","ap.cable","len"]);
 /* ---------- shared device editor (drawer) ---------- */
 const fld = (label, path, val, type = "text", extra = "") => `<label class="fld"><span>${esc(label)}</span><input data-f="${path}" type="${type}" value="${esc(val ?? "")}"${extra}></label>`;
 const sel = (label, path, val, optsHtml, extra = "") => `<label class="fld"><span>${esc(label)}</span><select data-f="${path}"${extra}>${optsHtml}</select></label>`;
@@ -253,9 +262,14 @@ function deviceEditor(b, d, opts = {}){
   if (K.rack) loc += `<div class="two">${sel(t("f_rack"), "rack", d.rack, opt("", t("none"), d.rack) + b.racks.map(x => opt(x.id, x.name, d.rack)).join(""))}${d.rack ? fld(t("f_u"), "u", d.u || "", "number", ` min="1" max="${r ? r.u : 60}"`) : "<span></span>"}</div>`
     + `<div class="two">${fld(t("f_h"), "params.h", P2.h, "number", ' min="1" max="20"')}${d.rack ? sel(t("f_side"), "side", d.side, opt("front", t("sideFront"), d.side) + opt("rear", t("sideRear"), d.side)) : "<span></span>"}</div>`;
   let net = "";
-  if (d.kind !== "internet" && !K.acc && !K.passive) net = `<div class="two">${fld(t("f_host"), "host", d.host)}${fld("IP", "ip", d.ip, "text", ' placeholder="10.10.10.2/24" inputmode="decimal"')}</div>
+  // the IP is first chosen as static or given by DHCP (a DHCP address is optional: a reservation, or the one seen now)
+  if (d.kind !== "internet" && !K.acc && !K.passive) net = `<div class="two">${fld(t("f_host"), "host", d.host)}${sel(t("f_ipMode"), "ipMode", d.ipMode || "", [["", "—"], ["static", t("ipStatic")], ["dhcp", t("ipDhcp")]].map(([k, l]) => opt(k, l, d.ipMode || "")).join(""))}</div>
+    <div class="two">${fld(d.ipMode === "dhcp" ? t("ipDhcpF") : "IP", "ip", d.ip, "text", ` placeholder="${d.ipMode === "dhcp" ? "DHCP" : "10.10.10.2/24"}" inputmode="decimal"`)}<span></span></div>
     <div class="two">${fld("MAC", "mac", d.mac, "text", ' placeholder="00:11:22:33:44:55"')}${sel("VLAN", "vlan", d.vlan, vlanOpts(b, d.vlan))}</div>`;
-  if (K.ports !== undefined || K.sw || K.passive) net += `<div class="two">${fld(t("f_ports"), "ports", d.ports, "number", ' min="0" max="512"')}${K.sw || ["firewall","router","fpp"].includes(d.kind) ? fld(t("f_sfp"), "params.sfp", d.params.sfp || "", "number", ' min="0" max="64"') : "<span></span>"}</div>`;
+  const hasSfp = K.sw || ["firewall","router","modem","ont","server","nas","nvr","wlc"].includes(d.kind), sfpN = Math.max(0, Math.round(num(d.params.sfp)));
+  if (K.ports !== undefined || K.sw || K.passive) net += hasSfp ? `<div class="two">${fld(t("f_rj45"), "__rj45", Math.max(0, Math.round(num(d.ports)) - sfpN), "number", ' min="0" max="512"')}${fld(t("f_sfp"), "params.sfp", sfpN, "number", ' min="0" max="64"')}</div>${sfpN ? `<p class="muted small">${esc(t("f_portsSum", {n:d.ports, a:Math.max(0, num(d.ports) - sfpN) + 1, b:d.ports}))}</p>` : ""}`
+    : `<div class="two">${fld(t("f_ports"), "ports", d.ports, "number", ' min="0" max="512"')}<span></span></div>`;
+  if (K.av || num(d.av && (d.av.hdmiOut + d.av.vgaOut + d.av.hdmiIn))) net += `<div class="three">${fld(t("f_hdmiOut"), "av.hdmiOut", d.av.hdmiOut || 0, "number", ' min="0" max="32"')}${fld(t("f_vgaOut"), "av.vgaOut", d.av.vgaOut || 0, "number", ' min="0" max="8"')}${fld(t("f_hdmiIn"), "av.hdmiIn", d.av.hdmiIn || 0, "number", ' min="0" max="32"')}</div>`;
   const asset = `<div class="two">${fld(t("f_serial"), "serial", d.serial)}${fld(t("f_asset"), "asset", d.asset)}</div><div class="two">${fld(t("f_fw"), "fw", d.fw)}${fld(t("f_owner"), "owner", d.owner)}</div>
     <div class="two">${fld(t("f_installed"), "installed", d.installed, "date")}${fld(t("f_warranty"), "warranty", d.warranty, "date")}</div>`;
   let phys = "";
@@ -482,6 +496,10 @@ function wireEditors(){
       if (path === "name" && String(v).trim() && nameTaken(b, v, d.id)){ await nameOk(b, v, d.id); renderDrawer(); return; }
       if (path === "params.h" && d.rack){ if (!await setDevHeight(b, d, v)) renderDrawer(); return; }
       if (path === "rack" && v){ const rk = rackById(b, v); if (rk && !await putDevInRack(b, d, rk)) renderDrawer(); return; }
+      // RJ45 and SFP are entered apart; the device's port count is their sum (SFP ports are the last numbers)
+      if (path === "__rj45" || path === "params.sfp"){ const sfp = Math.max(0, Math.round(num(d.params.sfp))), rj = Math.max(0, Math.round(num(d.ports)) - sfp), nv = Math.max(0, Math.round(num(v)));
+        const total = path === "__rj45" ? nv + sfp : rj + nv; if (total < num(d.ports) && !await setPortCount(b, d, total)){ renderDrawer(); return; }
+        return edit(() => { d.ports = total; if (path === "params.sfp") d.params.sfp = nv; }); }
       if (path === "ports" && num(v) < num(d.ports)){ if (!await setPortCount(b, d, v)) renderDrawer(); return; }
       if (path === "nvrp.channels" && d.nvrp && num(v) < num(d.nvrp.channels)){ if (!await setNvrChannels(b, d, v)) renderDrawer(); return; }
       if (path === "u" || path === "params.h" || path === "rack"){

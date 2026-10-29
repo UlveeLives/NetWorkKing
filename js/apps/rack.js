@@ -54,16 +54,17 @@ const warnings = b => [...rackWarnings(b), ...commonWarnings(b).filter(w => !w[2
 const FT = {pp:"pp", fpp:"fiberpp", switch:"sw", coresw:"coresw", firewall:"fw", router:"router", modem:"router", ont:"router", wlc:"router", mediaconv:"router",
   nvr:"nvr", dvr:"nvr", server:"server", nas:"server", storage:"server", ups:"ups", pdu:"pdu", fan:"fan", cablemgr:"cablemgr", brush:"brush", vent:"vent", blank:"blank", shelf:"shelf"};
 const ftOf = d => FT[d.kind] || "other";
-function portRows(n, rows, grp){ n = Math.max(0, Math.min(96, n)); if (!n) return ""; const per = Math.ceil(n / rows); let h = "";
-  for (let r = 0; r < rows; r++){ let row = ""; for (let i = 0; i < per && r * per + i < n; i++) row += `<i${grp && i && i % grp === 0 ? ' class="g"' : ""}></i>`; h += `<div class="prow">${row}</div>`; }
+// ports drawn on the front: each carries its number (switches: odd numbers on the top row, even below, like the device)
+function portRows(n, rows, grp, oe){ n = Math.max(0, Math.min(96, n)); if (!n) return ""; const per = Math.ceil(n / rows); let h = "";
+  for (let r = 0; r < rows; r++){ let row = ""; for (let i = 0; i < per && r * per + i < n; i++){ const num0 = oe && rows === 2 ? i * 2 + r + 1 : r * per + i + 1; if (num0 > n) continue; row += `<i data-pn="${num0}"${grp && i && i % grp === 0 ? ' class="g"' : ""}></i>`; } h += `<div class="prow">${row}</div>`; }
   return `<div class="ports">${h}</div>`; }
 function face(d){
   const T = ftOf(d), h = devH(d), n = num(d.ports), brandTxt = (d.brand || d.model || "").toUpperCase(), m = brandTxt ? `<span class="brand${T === "fw" ? " red" : ""}">${esc(brandTxt)}</span>` : "";
   switch (T){
-    case "pp": { const rows = n > 24 ? 2 : 1; return `<span class="lab"></span><div class="flex1"></div>${portRows(n || 24, Math.min(rows, h * 2), 6)}<div class="flex1"></div><span class="lab"></span>`; }
+    case "pp": { const rows = n > 24 ? 2 : 1; return `<span class="lab"></span><div class="flex1"></div>${portRows(n || 24, Math.min(rows, h * 2), 6, false)}<div class="flex1"></div><span class="lab"></span>`; }
     case "fiberpp": { const pr = Math.ceil((n || 24) / 2); let x = ""; for (let i = 0; i < Math.min(pr, 24); i++) x += `<i></i><i style="margin-right:${i < pr - 1 ? 5 : 0}px"></i>`; return `<div class="flex1"></div><div class="prow">${x}</div><div class="flex1"></div>`; }
-    case "coresw": case "sw": { const rows = n > 12 ? 2 : 1, sfp = Math.max(0, Math.min(4, num(d.params.sfp) || 4)); return `<span class="led"></span>${m || `<span class="brand">${T === "coresw" ? "L3" : "SW"}</span>`}<div class="flex1"></div>${portRows(n || 24, Math.min(rows, h * 2), 6)}<div class="sfp">${"<i></i>".repeat(sfp)}</div>`; }
-    case "fw": return `<span class="led"></span>${m || '<span class="brand red">FIREWALL</span>'}<div class="flex1"></div>${portRows(n || 8, (n || 8) > 8 ? 2 : 1, 0)}`;
+    case "coresw": case "sw": { const rows = n > 12 ? 2 : 1, sfp = Math.max(0, Math.min(8, Math.round(num(d.params.sfp)))); return `<span class="led"></span>${m || `<span class="brand">${T === "coresw" ? "L3" : "SW"}</span>`}<div class="flex1"></div>${portRows(Math.max(1, (n || 24) - (num(d.params.sfp) || 0)), Math.min(rows, h * 2), 6, true)}<div class="sfp">${Array.from({length:sfp}, (_, i) => `<i data-pn="${(n || 24) - sfp + i + 1}"></i>`).join("")}</div>`; }
+    case "fw": return `<span class="led"></span>${m || '<span class="brand red">FIREWALL</span>'}<div class="flex1"></div>${portRows(n || 8, (n || 8) > 8 ? 2 : 1, 0, true)}`;
     case "router": return `<span class="led"></span>${m || `<span class="brand">${esc(kindName(d.kind).toUpperCase().slice(0, 12))}</span>`}<div class="flex1"></div>${portRows(n || 4, 1, 0)}`;
     case "nvr": { let x = ""; for (let i = 0; i < Math.min(8, Math.max(2, num(d.nvrp && d.nvrp.bays) || h * 4)); i++) x += `<i style="height:${Math.min(14, h * UH / 2 - 4)}px"></i>`; return `${m || '<span class="brand">NVR</span>'}<div class="flex1"></div><span class="led"></span><span class="led o"></span><div class="bays" style="grid-template-rows:repeat(${h > 1 ? 2 : 1},auto)">${x}</div>`; }
     case "server": { const rows = Math.max(1, Math.min(4, h * 2 - 1)); let x = ""; for (let i = 0; i < rows * 4; i++) x += `<i style="height:${Math.max(5, (h * UH - 8) / rows - 2)}px"></i>`; return `<div class="bays" style="grid-template-rows:repeat(${rows},auto)">${x}</div><div class="flex1"></div>${m}<span class="led"></span>`; }
@@ -126,7 +127,8 @@ function palette(b){
       <div class="btns"><button class="btn small" data-rka="addRack">＋ ${esc(t("rkAdd"))}</button></div></div>
     <div class="psec"><h4>${esc(t("palAdd"))}</h4><div class="pgrid">${rackKinds().map(k => `<button class="pitem" data-rkadd="${k}" title="${esc(kindName(k))}"><svg viewBox="0 0 48 48">${ICO[(KINDS[k] || KINDS.other).icon] || ICO.box}</svg><span>${esc(kindName(k))}</span></button>`).join("")}${ukBtn("rack")}</div></div>
     ${un.length ? `<div class="psec"><h4>${esc(t("rkUnracked"))} <span class="cnt">${un.length}</span></h4><p class="muted small">${esc(t("rkUnrackedHint"))}</p><div class="ulist">${un.slice(0, 80).map(d => `<button class="uitem" data-rkput="${d.id}"><svg viewBox="0 0 48 48">${ICO[devIcon(d)] || ICO.box}</svg><span>${esc(devLabel(d))}</span></button>`).join("")}</div></div>` : ""}
-    <div class="psec"><h4>${esc(t("palView"))}</h4><div class="seg">${["front","rear","both"].map(f => `<button class="${(UI.rackFace || "front") === f ? "on" : ""}" data-rkface="${f}">${esc(t(f === "front" ? "sideFront" : f === "rear" ? "sideRear" : "rkBoth"))}</button>`).join("")}</div></div>`;
+    <div class="psec"><h4>${esc(t("palView"))}</h4><div class="seg">${["front","rear","both"].map(f => `<button class="${(UI.rackFace || "front") === f ? "on" : ""}" data-rkface="${f}">${esc(t(f === "front" ? "sideFront" : f === "rear" ? "sideRear" : "rkBoth"))}</button>`).join("")}</div>
+      <label class="chk"><input type="checkbox" data-rkcords="1"${P().cur.rkCords === false ? "" : " checked"}> 🔌 ${esc(t("rkCords"))}</label><p class="muted small">${esc(t("rkCordsH"))}</p></div>`;
 }
 async function addToRack(kind, rackId, u0){
   const b = B(); let r = rackId ? rackById(b, rackId) : curRack(b);
@@ -256,7 +258,7 @@ registerApp({
   id:"rack", name:"app_rack", desc:"app_rack_d", docName:"doc_rack", color:"#59607a",
   glyph:`<rect x="14" y="7" width="20" height="34" rx="2" fill="#fff"/><rect x="17" y="11" width="14" height="4" fill="#ffb703"/><rect x="17" y="18" width="14" height="4" fill="#59607a"/><rect x="17" y="25" width="14" height="4" fill="#5ac8fa"/><rect x="17" y="32" width="14" height="4" fill="#59607a"/>`,
   tabs:[
-    {id:"rack", label:"tabRacks", icon:"🗄", palette:() => palette(B()), render(){ return elevation(B()); },
+    {id:"rack", label:"tabRacks", icon:"🗄", palette:() => palette(B()), render(){ return elevation(B()); }, after:() => rackCords(),
       tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:"#rk-target", title:t("tRkT1"), text:t("tRk1")}, {sel:"#pal .pgrid", title:t("tRkT2"), text:t("tRk2")}, {sel:".rkb", title:t("tRkT3"), text:t("tRk3")}, {sel:"[data-rkface]", title:t("tRkT4"), text:t("tRk4")}, {sel:'[data-tab="power"]', title:t("tRkT5"), text:t("tRk5")}]},
     {id:"power", label:"tabPower", icon:"⚡", render(){ return powerTab(B()); }, tour:() => [{sel:".pcards, .card", title:t("tRkT5"), text:t("tRk5b")}]},
     {id:"inv", label:"tabInv", icon:"📋", render(){ const b = B(); return `<div class="row" style="margin-bottom:10px">${searchBox("q-rinv")}<span class="grow"></span><button class="btn small" data-rk2="csv">⤓ CSV</button></div>${invTable(b, RKINDS, UI.q && UI.q["q-rinv"])}`; }},
@@ -290,6 +292,21 @@ registerApp({
 function rackLink(l, b){ const A = devById(b, l.a.d), C = devById(b, l.b.d); return !!(A && A.rack || C && C.rack); }
 document.addEventListener("click", e => { const a = e.target.closest("[data-rk2]"); if (!a || UI.app !== "rack") return; const b = B(), k = a.dataset.rk2;
   if (k === "csv") invCsv(b, RKINDS, t("app_rack")); else if (k === "ccsv") cableCsv(b, rackLink); else if (k === "cid") autoCableIds(b, rackLink, "C"); });
+/* ---------- patch cords inside a rack ----------
+   Cables whose both ends are devices of the same rack (switch ⇄ patch panel, switch ⇄ switch, firewall ⇄ switch) are drawn on
+   the front view from port to port. Cables that leave the rack are not drawn. They can be switched off in the palette. */
+function rackCords(){
+  $$("svg.rkcords").forEach(x => x.remove()); if (P().cur.rkCords === false) return;
+  const b = B();
+  $$(".rkb.front").forEach(box => { const r = rackById(b, box.dataset.rkb); if (!r) return; const ids = new Set(rackDevices(b, r).map(d => d.id)), R0 = box.getBoundingClientRect(); let h = "";
+    const pt = (id, p) => { const d = box.querySelector(`.rkd[data-rd="${CSS.escape(id)}"]`); if (!d) return null; const i = d.querySelector(`[data-pn="${CSS.escape(String(p))}"]`) || null; const e = (i || d).getBoundingClientRect(); return {x:e.left + e.width / 2 - R0.left, y:e.top + e.height / 2 - R0.top, exact:!!i}; };
+    b.links.forEach(l => { if (!ids.has(l.a.d) || !ids.has(l.b.d) || l.a.d === l.b.d) return; const A = pt(l.a.d, l.a.p), B2 = pt(l.b.d, l.b.p); if (!A || !B2) return;
+      const col = (MEDIA[l.media] || MEDIA.cat6).c, dy = Math.max(10, Math.abs(B2.y - A.y) * .5), sx = A.x < B2.x ? 1 : -1;
+      h += `<path d="M${A.x.toFixed(1)} ${A.y.toFixed(1)} C${(A.x + sx * 8).toFixed(1)} ${(A.y + (B2.y > A.y ? dy : -dy)).toFixed(1)} ${(B2.x - sx * 8).toFixed(1)} ${(B2.y - (B2.y > A.y ? dy : -dy)).toFixed(1)} ${B2.x.toFixed(1)} ${B2.y.toFixed(1)}" stroke="${col}"${A.exact && B2.exact ? "" : ' stroke-dasharray="4 3"'}><title>${esc(devLabel(devById(b, l.a.d)) + ":" + (l.a.p || "") + " ⇄ " + devLabel(devById(b, l.b.d)) + ":" + (l.b.p || ""))}</title></path>`; });
+    if (!h) return; const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "rkcords"); svg.setAttribute("width", R0.width); svg.setAttribute("height", R0.height); svg.innerHTML = h; box.appendChild(svg); });
+}
+window.addEventListener("resize", debounce(() => { if (UI.app === "rack" && curTab().id === "rack") rackCords(); }, 150));
+document.addEventListener("change", e => { if (e.target.dataset && e.target.dataset.rkcords){ P().cur.rkCords = e.target.checked; persist(); rackCords(); } });
 APPS.rack.init = () => { UI.rackFace = P().cur.rackFace || "front"; wire(); };
 window.rackPower = rackPower;
 })();
