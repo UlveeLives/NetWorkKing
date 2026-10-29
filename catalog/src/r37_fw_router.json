@@ -2115,9 +2115,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": "Optional 1x SFP+ or 4G/LTE module"
+   "console": 1,
+   "usb": 2,
+   "notes": "Optional 1x SFP+ or 4G/LTE module | 8x GE RJ45 (2 PoE+); 2x USB 3.0 Type-A; 1x RJ45 serial console; optional SFP+ or LTE module bay not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2138,10 +2140,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.watchguard.com/wgrd-products/appliances-compare/74741/74736/74731",
-  "source2": null,
+  "source2": "https://www.watchguard.com/help/docs/help-center/en-US/Content/en-US/Hardware-Guides/firebox-t85-PoE-hardware-guide.html",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Dims/power not confirmed. fw = UDP 1518; threat = UTM full scan; ipsec = VPN UDP 1518."
+  "notes": "Dims/power not confirmed. fw = UDP 1518; threat = UTM full scan; ipsec = VPN UDP 1518.",
+  "ports_checked": "high"
  },
  {
   "brand": "WatchGuard",

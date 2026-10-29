@@ -26,7 +26,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -IS variant adds 1 audio in/out + 1 alarm in/out; no RS-485"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -65,10 +80,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://assets.hikvision.com/prd/normal/all/doc/sm000058940/DS-2CD2143G2-I_Datasheet_20251021.pdf",
-  "source2": null,
+  "source2": "https://en.ivel.pl/p23359,vandal-proof-ip-camera-ds-2cd2143g2-is-2-8mm-4-mpx-hikvision.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims are diameter x height (Ø110.8 x 84.7 mm). max_fps 25 @50 Hz / 30 @60 Hz. -IS variant adds audio + alarm I/O."
+  "notes": "Dims are diameter x height (Ø110.8 x 84.7 mm). max_fps 25 @50 Hz / 30 @60 Hz. -IS variant adds audio + alarm I/O.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -97,7 +113,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -IU adds built-in mic; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -141,7 +172,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø70 x 161.7 mm. max_fps 25 @50 Hz / 30 @60 Hz. -U variant has built-in mic."
+  "notes": "Dims Ø70 x 161.7 mm. max_fps 25 @50 Hz / 30 @60 Hz. -U variant has built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -169,7 +201,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; ColorVu; microSD; no alarm/audio I/O; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -213,7 +260,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø105 x 289.5 mm. max_fps 25 @50 Hz / 30 @60 Hz. Max power value is the PoE figure."
+  "notes": "Dims Ø105 x 289.5 mm. max_fps 25 @50 Hz / 30 @60 Hz. Max power value is the PoE figure.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -241,7 +289,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE/12VDC; microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -285,7 +348,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø105 x 299.7 mm. max_fps 25 @50 Hz / 30 @60 Hz."
+  "notes": "Dims Ø105 x 299.7 mm. max_fps 25 @50 Hz / 30 @60 Hz.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -313,7 +377,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE/12VDC; microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -357,7 +436,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø105 x 299.7 mm. max_fps 25 @50 Hz / 30 @60 Hz."
+  "notes": "Dims Ø105 x 299.7 mm. max_fps 25 @50 Hz / 30 @60 Hz.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -386,7 +466,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -IU adds built-in mic; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -430,7 +525,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø70 x 161.7 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. -U variant has built-in mic."
+  "notes": "Dims Ø70 x 161.7 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. -U variant has built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -459,7 +555,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -ISU: 1 audio in/out, 1 alarm in/out, built-in mic; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -501,7 +612,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø121.4 x 92.2 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. Audio (built-in mic) on -SU variant only."
+  "notes": "Dims Ø121.4 x 92.2 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. Audio (built-in mic) on -SU variant only.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -530,7 +642,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -IU adds built-in mic; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -574,7 +701,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø138.3 x 126.3 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. -U variant has built-in mic."
+  "notes": "Dims Ø138.3 x 126.3 mm. 4K: 25 fps @50 Hz / 24 fps @60 Hz. -U variant has built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -603,7 +731,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -IU adds built-in mic; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -645,7 +788,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø127.3 x 95.9 mm. max_fps 25 @50 Hz / 30 @60 Hz. -U variant has built-in mic."
+  "notes": "Dims Ø127.3 x 95.9 mm. max_fps 25 @50 Hz / 30 @60 Hz. -U variant has built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -674,7 +818,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -IS: 1 audio in/out, 1 alarm in/out; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -716,7 +875,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø110 x 57.4 mm. max_fps 25 @50 Hz / 30 @60 Hz. Power values for -IS; -IWS (Wi-Fi) is max 7 W PoE."
+  "notes": "Dims Ø110 x 57.4 mm. max_fps 25 @50 Hz / 30 @60 Hz. Power values for -IS; -IWS (Wi-Fi) is max 7 W PoE.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -745,7 +905,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 Fast Ethernet (10/100) PoE+; 1 audio in/out; alarm I/O; microSD 256GB; RS-485 not confirmed"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3at",
@@ -784,10 +959,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://assets.hikvision.com/prd/public/all/doc/m000048590/Datasheet-of-DS-2DE4425IW-DET5_V5.7.0_20220704.pdf",
-  "source2": null,
+  "source2": "https://www.shopro.lt/369112-hikvision-ptz-ds-2de4425iw-de-t5-4mp-en",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "lens_mm/hfov_deg = wide and tele ends of 4.8-120 mm 25x zoom. Max 18 W is the 12 VDC figure (incl. 1.6 W heater, 9 W IR); PoE max W not stated. Dims Ø164.5 x 290 mm. Audio = line in/out. 25 fps @50 Hz / 30 @60 Hz."
+  "notes": "lens_mm/hfov_deg = wide and tele ends of 4.8-120 mm 25x zoom. Max 18 W is the 12 VDC figure (incl. 1.6 W heater, 9 W IR); PoE max W not stated. Dims Ø164.5 x 290 mm. Audio = line in/out. 25 fps @50 Hz / 30 @60 Hz.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -816,7 +992,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; 1 audio in/out + built-in mic; no alarm I/O listed; microSD 256GB (datasheet of non-S6 DE3, same body)"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -855,10 +1046,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://assets.hikvision.com/prd/public/all/doc/m000045324/DS-2DE2A404IW-DE3S6-C_Datasheet_20250226.pdf",
-  "source2": null,
+  "source2": "https://securitydesign.bcart.jp/uploads/HIKVISION/IP/DS-2DE2A404IW-DE3/DS-2DE2A404IW-DE3.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "lens_mm/hfov_deg = wide and tele ends of 2.8-12 mm 4x zoom (HFOV 96.796-31.68 deg). Max 9.2 W is the 12 VDC figure; PoE max W not stated. Dims Ø130.7 x 101.7 mm. 25 fps @50 Hz / 30 @60 Hz."
+  "notes": "lens_mm/hfov_deg = wide and tele ends of 2.8-12 mm 4x zoom (HFOV 96.796-31.68 deg). Max 9.2 W is the 12 VDC figure; PoE max W not stated. Dims Ø130.7 x 101.7 mm. 25 fps @50 Hz / 30 @60 Hz.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -887,7 +1079,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; value series; -IUF adds mic + microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -929,7 +1136,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Datasheet dims 170.8 x 66 x 69.1 mm (L x W x H). -UF variant has built-in mic."
+  "notes": "Datasheet dims 170.8 x 66 x 69.1 mm (L x W x H). -UF variant has built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -957,7 +1165,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; value series; no audio/alarm I/O; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -999,7 +1222,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims Ø110.8 x 84.7 mm."
+  "notes": "Dims Ø110.8 x 84.7 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -1029,7 +1253,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 4,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1040,7 +1264,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "4x 10/100 PoE; 1x 10/100/1000 LAN (features list says 10/100); 1 front + 1 rear USB 2.0"
+   "notes": "4x 10/100 PoE; 1x 10/100/1000 LAN (features list says 10/100); 1 front + 1 rear USB 2.0 | PoE 4x 10/100 (802.3af/at, 50W); 1x LAN listed 10/100/1000 in spec table (highlights say 10/100); 1 front+1 rear USB2.0; official PDF not reachable, values from series/reseller (videor: 1x HDMI 4K + VGA)",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 4,
@@ -1069,7 +1295,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Power consumption <=10 W without HDD and PoE off (max not stated). Weight <=1 kg without HDD. PoE IEEE 802.3af/at. HDMI 4K/30 Hz, VGA 1080p/60 Hz. RAID not stated."
+  "notes": "Power consumption <=10 W without HDD and PoE off (max not stated). Weight <=1 kg without HDD. PoE IEEE 802.3af/at. HDMI 4K/30 Hz, VGA 1080p/60 Hz. RAID not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -1099,7 +1326,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 8,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1110,7 +1337,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0"
+   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0 | PoE 8x 10/100; 1x GbE LAN; 1 front+1 rear USB2.0; official PDF not reachable, consistent with K2/8P family",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 8,
@@ -1139,7 +1368,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Power consumption <=15 W without HDD and PoE off (max not stated). Weight <=3 kg without HDD. PoE IEEE 802.3af/at. Mount type not stated; 1U case."
+  "notes": "Power consumption <=15 W without HDD and PoE off (max not stated). Weight <=3 kg without HDD. PoE IEEE 802.3af/at. Mount type not stated; 1U case.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -1168,7 +1398,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1177,9 +1407,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "16x PoE; 1x GbE LAN; 2x USB 2.0 front, 1x USB 3.0 rear"
+   "notes": "16x PoE; 1x GbE LAN; 2x USB 2.0 front, 1x USB 3.0 rear | PoE 16x 10/100; 1x GbE; 2 front USB2.0 + 1 rear USB3.0; 1 RS-232 + 2 RS-485; values from sibling DS-7732NXI-K4/16P(D) datasheet (same chassis)",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -1208,7 +1440,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "2023 datasheet (V4.74): 10 TB per HDD; newer (D) revision may allow 16 TB. Power <=20 W without HDD and PoE off (max not stated). Weight <=5 kg without HDD. RAID not stated."
+  "notes": "2023 datasheet (V4.74): 10 TB per HDD; newer (D) revision may allow 16 TB. Power <=20 W without HDD and PoE off (max not stated). Weight <=5 kg without HDD. RAID not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -1238,7 +1471,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1247,9 +1480,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "16x PoE; 1x GbE LAN; 2x USB 2.0 front, 1x USB 3.0 rear"
+   "notes": "16x PoE; 1x GbE LAN; 2x USB 2.0 front, 1x USB 3.0 rear | datasheet verified: PoE 16x (802.3af/at); 1x GbE; 2 front USB2.0 + 1 rear USB3.0; 1 RS-232, 2 RS-485 (half-duplex); 4 SATA, no eSATA",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -1278,7 +1513,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Power <=20 W without HDD and PoE off (max not stated). Weight <=5 kg without HDD. RAID not stated."
+  "notes": "Power <=20 W without HDD and PoE off (max not stated). Weight <=5 kg without HDD. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -1316,9 +1552,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 4,
-   "notes": "2x USB 2.0 front, 2x USB 3.0 rear; 1x eSATA"
+   "notes": "2x USB 2.0 front, 2x USB 3.0 rear; 1x eSATA | datasheet verified: 2x GbE; 2 front USB2.0 + 2 rear USB3.0; 1 RS-232, 1 RS-485 full-duplex; 1 eSATA",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -1353,7 +1591,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Picked DS-9632NI-M8 (DS-9632NXI-M8 has no standalone datasheet; AcuSense variant is iDS-9632NXI-M8/X). Power <=50 W without HDD. Weight <=10 kg without HDD. psu_redundant false = non-/R model; DS-9632NI-M8/R has redundant PSU."
+  "notes": "Picked DS-9632NI-M8 (DS-9632NXI-M8 has no standalone datasheet; AcuSense variant is iDS-9632NXI-M8/X). Power <=50 W without HDD. Weight <=10 kg without HDD. psu_redundant false = non-/R model; DS-9632NI-M8/R has redundant PSU.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -1391,9 +1630,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 4,
-   "notes": "2x USB 2.0 front, 2x USB 3.0 rear; 1x eSATA"
+   "notes": "2x USB 2.0 front, 2x USB 3.0 rear; 1x eSATA | reseller spec page (official PDF not reachable): 2x GbE, no SFP; 2 front USB2.0 + 2 rear USB3.0; 1 RS-232, 1 RS-485; 1 eSATA",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -1425,10 +1666,11 @@
   },
   "ups": null,
   "source": "https://assets.hikvision.com/prd/public/all/doc/m000067977/DS-96128NI-M16_Datasheet_20250121.pdf",
-  "source2": null,
+  "source2": "https://securitytec.connectec.uk/security/cctv/hikvision-ds-96128ni-m16-r-128-ch-32mp-nvr-16xsata-raid-8k-hdmi-400mbps",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Datasheet title says 4K NVR; recording resolution list up to 32 MP. Key features say 14 TB per HDD, spec table says 16 TB (spec table used). Power <=50 W without HDD. Redundant PSU only on DS-96128NI-M16/R."
+  "notes": "Datasheet title says 4K NVR; recording resolution list up to 32 MP. Key features say 14 TB per HDD, spec table says 16 TB (spec table used). Power <=50 W without HDD. Redundant PSU only on DS-96128NI-M16/R.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -1469,7 +1711,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "8x PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0"
+   "notes": "8x PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0 | not verified (official PDF not reachable); series value: PoE 8x 10/100, 1x GbE, 1 front+1 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 8,
@@ -1498,7 +1742,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Current listing of DS-7608NI-K2/8P is the /4K revision; datasheet title states 1U. Power <=15 W without HDD. Net weight <=1.74 kg without HDD."
+  "notes": "Current listing of DS-7608NI-K2/8P is the /4K revision; datasheet title states 1U. Power <=15 W without HDD. Net weight <=1.74 kg without HDD.",
+  "ports_checked": "low"
  },
  {
   "brand": "Hikvision",
@@ -1539,7 +1784,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0 | not verified (official PDF not reachable); series value: PoE 16x 10/100, 1x GbE, 1 front+1 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -1568,7 +1815,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Datasheet title states 1U. Power <=15 W without HDD. Weight <=2.36 kg without HDD."
+  "notes": "Datasheet title states 1U. Power <=15 W without HDD. Weight <=2.36 kg without HDD.",
+  "ports_checked": "low"
  },
  {
   "brand": "Hikvision",
@@ -1598,7 +1846,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1609,7 +1857,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0 | datasheet verified: PoE 16x 10/100; 1x GbE; 1 front+1 rear USB2.0; no serial",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -1638,7 +1888,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "(E) is the current revision of DS-7616NXI-K2/16P. Power <=15 W without HDD. Weight <=2.5 kg without HDD."
+  "notes": "(E) is the current revision of DS-7616NXI-K2/16P. Power <=15 W without HDD. Weight <=2.5 kg without HDD.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -1678,7 +1929,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "8x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0"
+   "notes": "8x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0 | not verified (Dahua page not reachable); PoE 8x 10/100; uplink speed unconfirmed (4ch sibling NVR2104HS-P-I2 has 10/100 LAN)",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 8,
@@ -1707,7 +1960,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Bandwidth with AI off (AI on: 72 in / 36 out). PoE max 25.5 W per port; PoE standard not stated. NVR <=10 W without HDD. 'Compact 1U' per title. Picked -I2 (current) over -S3."
+  "notes": "Bandwidth with AI off (AI on: 72 in / 36 out). PoE max 25.5 W per port; PoE standard not stated. NVR <=10 W without HDD. 'Compact 1U' per title. Picked -I2 (current) over -S3.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1747,7 +2001,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "8x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0"
+   "notes": "8x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0 | not verified; series value: PoE 8x 10/100, 1x GbE, 1 front+1 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 8,
@@ -1776,7 +2032,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Bandwidth with AI off (AI on: 180/180). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <10 W without HDD. 'Compact 1U' per title. Max HDD capacity varies with temperature."
+  "notes": "Bandwidth with AI off (AI on: 180/180). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <10 W without HDD. 'Compact 1U' per title. Max HDD capacity varies with temperature.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1805,7 +2062,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1816,7 +2073,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0"
+   "notes": "16x 10/100 PoE; 1x GbE; 1 front + 1 rear USB 2.0 | distributor spec sheet: PoE 16 (802.3af/at, 130W); 1x GbE; 2 USB (one listed as USB3.x); RS-232 mentioned without count -> console left 0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -1845,7 +2104,8 @@
   "source2": "https://materialfile.dahuasecurity.com/uploads/cpq/57607/datasheet/DHI-NVR4216-16P-EI_S0_datasheet_20251129.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Bandwidth with AI off (AI on: 180/180). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <10 W without HDD. 1U per title."
+  "notes": "Bandwidth with AI off (AI on: 180/180). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <10 W without HDD. 1U per title.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1885,7 +2145,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 1 rear USB 3.0"
+   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 1 rear USB 3.0 | not verified (Dahua page not reachable); PoE 16x 10/100 (ports 1-8 ePoE); 1x GbE; 1 front USB2.0 + 1 rear USB3.0; may have RS-232",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -1914,7 +2176,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Bandwidth with AI off (AI on: 200/200). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <=10 W without HDD. HDMI up to 8K. 1U per title."
+  "notes": "Bandwidth with AI off (AI on: 200/200). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <=10 W without HDD. HDMI up to 8K. 1U per title.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1954,7 +2217,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 3,
-   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 2 rear USB 3.0"
+   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 2 rear USB 3.0 | not verified; PoE 16x 10/100 (ePoE 1-8); 1x GbE; 1 front USB2.0 + 2 rear USB3.0; RS-232 assumed 1 as on NVR5432-EI",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 16,
@@ -1983,7 +2248,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Bandwidth with AI off (AI on: 200/200). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <=13 W without HDD. RAID not stated on page. 1.5U per title; mount type not stated."
+  "notes": "Bandwidth with AI off (AI on: 200/200). PoE IEEE 802.3af/at, max 25.5 W per port. NVR <=13 W without HDD. RAID not stated on page. 1.5U per title; mount type not stated.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -2023,7 +2289,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 3,
-   "notes": "2x GbE; 1 front USB 2.0, 2 rear USB 3.0; 1x eSATA"
+   "notes": "2x GbE; 1 front USB 2.0, 2 rear USB 3.0; 1x eSATA | not verified; 2x GbE; 1 front USB2.0 + 2 rear USB3.0; eSATA; RS-232 assumed 1 (NVR5-EI 1.5U/2U family)",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -2052,7 +2320,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Bandwidth with AI off (AI on: 200/200). Installation: rack or desktop. NVR <=13 W without HDD. RAID not stated on page. 1.5U per title."
+  "notes": "Bandwidth with AI off (AI on: 200/200). Installation: rack or desktop. NVR <=13 W without HDD. RAID not stated on page. 1.5U per title.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -2090,9 +2359,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 4,
-   "notes": "2x GbE; 2 front USB 2.0, 2 rear USB 3.0; 1x eSATA"
+   "notes": "2x GbE; 2 front USB 2.0, 2 rear USB 3.0; 1x eSATA | reseller page confirms 2 HDMI, 2 VGA, 2x GbE, eSATA; USB 2 front USB2.0 + 2 rear USB3.0 and RS-232 from series (unconfirmed)",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -2124,10 +2395,11 @@
   },
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-5-ei-series/nvr5864-ei",
-  "source2": null,
+  "source2": "https://cse.jo/dahua-nvr5864-ei-64-channels-2u-8hdds-wizsense-network-video-recorder",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Bandwidth with AI off (AI on: 200/200). NVR <=13 W without HDD. Redundant PSU not mentioned. 2U per title; mount type not stated."
+  "notes": "Bandwidth with AI off (AI on: 200/200). NVR <=13 W without HDD. Redundant PSU not mentioned. 2U per title; mount type not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -2155,7 +2427,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD 256GB; no alarm I/O"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -2194,10 +2481,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-2-Series/IR/IPC-HFW2441S-S",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Main stream 2688x1520 @1-20 fps. Smart H.265+/H.264+ supported. PoE class number not stated."
+  "notes": "Main stream 2688x1520 @1-20 fps. Smart H.265+/H.264+ supported. PoE class number not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -2225,7 +2513,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; same WizSense 2 4MP platform"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -2264,10 +2567,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://dahuasecurity.com/products/All-Products/Network-Cameras/WizSense-Series/2-Series/IR/IPC-HDW2441T-S",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims 100.9 x Ø109.9 mm. Main stream 2688x1520 @1-20 fps. PoE class number not stated."
+  "notes": "Dims 100.9 x Ø109.9 mm. Main stream 2688x1520 @1-20 fps. PoE class number not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -2295,7 +2599,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; same WizSense 2 4MP platform"
+  },
   "poe": null,
   "poe_in": {
    "class": null,
@@ -2334,10 +2653,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/wizsense-2-series/ir/ipc-hdbw2441e-s",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dims 81 x Ø109.9 mm. Main stream 2688x1520 @1-20 fps. Page states 12 VDC/PoE; PoE standard/class not stated (left null)."
+  "notes": "Dims 81 x Ø109.9 mm. Main stream 2688x1520 @1-20 fps. Page states 12 VDC/PoE; PoE standard/class not stated (left null).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -2365,7 +2685,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; 1 audio in/out (RCA); 1 alarm in/out; microSD 256GB"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -2406,10 +2741,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/3-Series/IR/IPC-HFW3441E-AS-S2=S2",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/products/discontinued-products/network-cameras/ipc-hfw3441e-as-s2=s2",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Requested IPC-HFW3441E-AS is shown by Dahua as the -S2 revision and tagged DISCONTINUED/EOL. Main stream @1-25/30 fps."
+  "notes": "Requested IPC-HFW3441E-AS is shown by Dahua as the -S2 revision and tagged DISCONTINUED/EOL. Main stream @1-25/30 fps.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -2437,7 +2773,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; smart dual light; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -2476,10 +2827,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/2-Series/Smart-Dual-Light/IPC-HFW2849S-S-IL",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "white_light_m = warm light distance. Main stream 3840x2160 @1-20 fps. MENA site lists it as discontinued, successor IPC-HFW2849S-S-IL-K."
+  "notes": "white_light_m = warm light distance. Main stream 3840x2160 @1-20 fps. MENA site lists it as discontinued, successor IPC-HFW2849S-S-IL-K.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -2507,7 +2859,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x 10/100Base-TX PoE; dual built-in mic; alarm input (likely 1 in/1 out + audio in/out per -S); microSD"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -2546,10 +2913,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://assets.hikvision.com/prd/public/all/doc/sm000064841/DS-2CD2H43G2-LIZS2U_Datasheet_20250208.pdf",
-  "source2": null,
+  "source2": "https://www.videor.com/de/generate/datasheet/render/product_sku/246945/",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Substitute for DS-2CD2H43G2-IZS (no readable official datasheet found). lens_mm/hfov_deg = wide and tele ends of motorized 2.8-12 mm. Supplement light (IR/white, smart hybrid) up to 40 m. Dims Ø138.6 x 123 mm. 25 fps @50 Hz / 30 @60 Hz. Dual mic."
+  "notes": "Substitute for DS-2CD2H43G2-IZS (no readable official datasheet found). lens_mm/hfov_deg = wide and tele ends of motorized 2.8-12 mm. Supplement light (IR/white, smart hybrid) up to 40 m. Dims Ø138.6 x 123 mm. 25 fps @50 Hz / 30 @60 Hz. Dual mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -2578,7 +2946,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; 1 audio in/out (terminal); 1 alarm in/out; RS-485 (half duplex, Pelco); microSD 512GB; -U built-in mic"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -2615,10 +2998,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://assets.hikvision.com/prd/public/all/doc/sm000041572/DS-2CD3956G2-ISU_Datasheet_20240801.pdf",
-  "source2": null,
+  "source2": "https://assets.hikvision.com/prd/normal/all/doc/sm000041573/DS-2CD3956G2-ISU_Datasheet_20260810.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Current fisheye used instead of DS-2CD2955G0-IS(U) (its datasheet could not be fetched). IP/IK not listed. 25 fps @50 Hz / 30 @60 Hz. Built-in mic on -U; audio line in/out."
+  "notes": "Current fisheye used instead of DS-2CD2955G0-IS(U) (its datasheet could not be fetched). IP/IK not listed. 25 fps @50 Hz / 30 @60 Hz. Built-in mic on -U; audio line in/out.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -2658,7 +3042,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 1 rear USB 3.0"
+   "notes": "16x 10/100 PoE (ports 1-8 ePoE); 1x GbE; 1 front USB 2.0, 1 rear USB 3.0 | not verified; PoE 16x 10/100 (ePoE 1-8); 1x GbE; 1 front USB2.0 + 1 rear USB3.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -2687,7 +3073,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Successor of NVR5216-16P-EI. Bandwidth with AI off (AI on: 200/200). PoE 802.3af/at, max 25.5 W per port. NVR <=10 W without HDD. 1U per title."
+  "notes": "Successor of NVR5216-16P-EI. Bandwidth with AI off (AI on: 200/200). PoE 802.3af/at, max 25.5 W per port. NVR <=10 W without HDD. 1U per title.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -2727,7 +3114,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "1x GbE; 1 front + 1 rear USB 2.0"
+   "notes": "1x GbE; 1 front + 1 rear USB 2.0 | distributor spec sheet: 1x GbE, no PoE, 1 HDMI + 1 VGA, 2 USB (one listed USB3.x); RS-232 mentioned without count -> console left 0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -2753,10 +3142,11 @@
   },
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-recorders/wizsense-series/nvr-4-ei-series/nvr4216-ei",
-  "source2": null,
+  "source2": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_nvr4216-ei.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Bandwidth with AI off (AI on: 180/180). NVR <10 W without HDD. 1U per title."
+  "notes": "Bandwidth with AI off (AI on: 180/180). NVR <10 W without HDD. 1U per title.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -2784,7 +3174,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; varifocal; microSD; WizSense 2 platform value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -2823,9 +3228,10 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-2-Series/IR/IPC-HFW2441T-ZS",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "lens_mm/hfov_deg = wide and tele ends of motorized 2.7-13.5 mm. IK10 optional. Main stream @1-20 fps."
+  "notes": "lens_mm/hfov_deg = wide and tele ends of motorized 2.7-13.5 mm. IK10 optional. Main stream @1-20 fps.",
+  "ports_checked": "medium"
  }
 ]

@@ -876,8 +876,10 @@
    "qsfp_plus": 0,
    "qsfp28": 0,
    "console": 0,
-   "usb": null,
-   "notes": "Dual Gigabit ports"
+   "usb": 1,
+   "notes": "Dual Gigabit ports | 2x GE; 1x USB port (series-typical, not confirmed); no console.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -897,7 +899,8 @@
   "source2": "https://aio.lv/en/product--fanvil-x6u--2148708.md",
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Distributor pages only; power and dimensions not stated. Built-in Bluetooth, Wi-Fi via dongle. Wall mountable (extra fixings)."
+  "notes": "Distributor pages only; power and dimensions not stated. Built-in Bluetooth, Wi-Fi via dongle. Wall mountable (extra fixings).",
+  "ports_checked": "low"
  },
  {
   "brand": "Grandstream",

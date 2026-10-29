@@ -38,7 +38,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "1x GbE (IO4+1&2Lan variant: 2x GbE + alarm 4/1); 1 front + 1 rear USB 2.0"
+   "notes": "1x GbE (IO4+1&2Lan variant: 2x GbE + alarm 4/1); 1 front + 1 rear USB 2.0 | datasheet verified: 1x GbE (/IO4+1&2Lan variant has 2x GbE); 1 front+1 rear USB2.0; no serial",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -67,7 +69,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Consumption <=10 W without HDD. Weight <=1.2 kg without HDD. HDMI 4K/30 Hz, VGA 1080p/60. RAID not stated."
+  "notes": "Consumption <=10 W without HDD. Weight <=1.2 kg without HDD. HDMI 4K/30 Hz, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -96,7 +99,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 8,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -107,7 +110,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1"
+   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1 | datasheet verified: PoE 8x 10/100 (802.3af/at); 1x GbE; 1 front USB2.0 + 1 rear USB3.0; no serial",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 8,
@@ -136,7 +141,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Consumption <=30 W without HDD and PoE off. Weight <=2.5 kg without HDD. PoE 802.3af/at. 32 MP on 1 channel. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Consumption <=30 W without HDD and PoE off. Weight <=2.5 kg without HDD. PoE 802.3af/at. 32 MP on 1 channel. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -166,7 +172,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -175,9 +181,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; alarm 16/4 | datasheet verified: PoE 16x 10/100; 1x GbE; 2 front USB2.0 + 1 rear USB3.0; 1 RS-232, 2 RS-485",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -206,7 +214,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Rack units not stated; 72 mm height matches the 1.5U K4 chassis. Consumption <=50 W without HDD. Weight <=5 kg without HDD. PoE 802.3af/at. RAID not stated."
+  "notes": "Rack units not stated; 72 mm height matches the 1.5U K4 chassis. Consumption <=50 W without HDD. Weight <=5 kg without HDD. PoE 802.3af/at. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -247,7 +256,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "2x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1"
+   "notes": "2x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1 | datasheet verified: 2x GbE; 1 front USB2.0 + 1 rear USB3.0; serial N/A on base model (some variants list RS-232/RS-485); HDMI/VGA counts from physical interface list",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -276,7 +287,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Values for base/(E) variants; (C) variants: 8 TB/disk, 12 MP max, 385x315x52 mm. Consumption <=30 W without HDD. RAID not stated."
+  "notes": "Values for base/(E) variants; (C) variants: 8 TB/disk, 12 MP max, 385x315x52 mm. Consumption <=30 W without HDD. RAID not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -305,7 +317,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -314,9 +326,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; (E) variant adds eSATA; alarm 16/4"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; (E) variant adds eSATA; alarm 16/4 | datasheet verified: PoE 16x 10/100 (200W); 1x GbE; 2 front USB2.0 + 1 rear USB3.0; 1 RS-232, 1 RS-485; HDMI1 4K + HDMI2 1080p; (E) variant adds eSATA, 2 RS-485",
+   "hdmi": 2,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -345,7 +359,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Spec table: 19-inch 1.5U chassis (headline says 1U). Total power <=360 W, <=30 W without HDD. HDMI1 4K/60, HDMI2 1080p. (E) variant: 440x391x75 mm, 3.6 kg, alarm 16/9, 32 MP. RAID not stated."
+  "notes": "Spec table: 19-inch 1.5U chassis (headline says 1U). Total power <=360 W, <=30 W without HDD. HDMI1 4K/60, HDMI2 1080p. (E) variant: 440x391x75 mm, 3.6 kg, alarm 16/9, 32 MP. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -384,9 +399,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/9"
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/9 | datasheet verified: 2x GbE; 2 front USB2.0 + 1 rear USB3.0; RS-232 + RS-485; 1 eSATA",
+   "hdmi": 2,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -415,7 +432,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "1.5U chassis. Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 1080p/60. Up to 4-ch 32 MP. RAID not stated."
+  "notes": "1.5U chassis. Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 1080p/60. Up to 4-ch 32 MP. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -444,7 +462,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -455,7 +473,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1 | datasheet verified: PoE 16x 10/100 (802.3af/at); 1x GbE; 1 front USB2.0 + 1 rear USB3.0; no serial",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -484,7 +504,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet (20250114) hosted by a reseller, Hikvision site copy not read, so medium. Consumption <=30 W without HDD and PoE off. Up to 4-ch 32 MP. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Hikvision datasheet (20250114) hosted by a reseller, Hikvision site copy not read, so medium. Consumption <=30 W without HDD and PoE off. Up to 4-ch 32 MP. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -522,9 +543,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; RS-485, RS-232; alarm 16/8"
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; RS-485, RS-232; alarm 16/8 | datasheet verified: 2x GbE; 2 front USB2.0 + 1 rear USB3.0 ((E) variants 2 rear); RS-232 + RS-485; 1 eSATA",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -559,7 +582,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Base-model values. (E) variant: 445x460x93 mm, 8.3 kg, 14 TB/disk, 2 rear USB 3.0, alarm 16/9. (C) variants: 10 TB/disk, 1 VGA. 32/24 MP on limited channels. RAID and AI functions mutually exclusive. Consumption <=30 W."
+  "notes": "Base-model values. (E) variant: 445x460x93 mm, 8.3 kg, 14 TB/disk, 2 rear USB 3.0, alarm 16/9. (C) variants: 10 TB/disk, 1 VGA. 32/24 MP on limited channels. RAID and AI functions mutually exclusive. Consumption <=30 W.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -598,9 +622,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 4,
-   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/9"
+   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/9 | datasheet verified: 2x GbE; 2 front USB2.0 + 2 rear USB3.0; 1 RS-232, 1 RS-485; 1 eSATA",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -635,7 +661,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 and VGA 1080p/60. Up to 4-ch >12 MP. Weight without HDD."
+  "notes": "Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 and VGA 1080p/60. Up to 4-ch >12 MP. Weight without HDD.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -674,9 +701,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 2x RS-485, 1x RS-232; alarm 16/4 (IO16+9 variant 16/9)"
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 2x RS-485, 1x RS-232; alarm 16/4 (IO16+9 variant 16/9) | datasheet verified: 2x GbE; 2 front USB2.0 + 1 rear USB3.0; 1 RS-232, 2 RS-485; no eSATA",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -705,7 +734,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "1.5U chassis. Consumption <=50 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "1.5U chassis. Consumption <=50 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -744,9 +774,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 4,
-   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/9"
+   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/9 | datasheet verified: 2x GbE; 2 front USB2.0 + 2 rear USB3.0; 1 RS-232, 1 RS-485; 1 eSATA",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -781,7 +813,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 and VGA 1080p/60. Up to 4-ch 32/24 MP. Weight without HDD."
+  "notes": "Consumption <=50 W without HDD. HDMI1 4K/30, HDMI2 and VGA 1080p/60. Up to 4-ch 32/24 MP. Weight without HDD.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -821,7 +854,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/1"
+   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/1 | datasheet verified: 1x GbE; 1 front+1 rear USB2.0; no serial",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -850,7 +885,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet (20260701) hosted by Polish reseller montersi.pl, so medium. Consumption <=15 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Hikvision datasheet (20260701) hosted by Polish reseller montersi.pl, so medium. Consumption <=15 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -888,9 +924,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/8"
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/8 | datasheet verified: 2x GbE; 2 front USB2.0 + 1 rear USB3.0 ((E) 2 rear); 1 RS-232, 1 RS-485; 1 eSATA",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -925,7 +963,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Base-model values. 32/24 MP only on limited channels (ultra HD mode). RAID and AI mutually exclusive. HDMI1 4K/60, HDMI2 1080p. (E) variant: 160 Mbps in, 14 TB/disk, 445x460x93 mm, 8.3 kg. Consumption <=30 W."
+  "notes": "Base-model values. 32/24 MP only on limited channels (ultra HD mode). RAID and AI mutually exclusive. HDMI1 4K/60, HDMI2 1080p. (E) variant: 160 Mbps in, 14 TB/disk, 445x460x93 mm, 8.3 kg. Consumption <=30 W.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -954,7 +993,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -963,9 +1002,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/9"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 2 front USB 2.0 + 1 rear USB 3.0; 1 eSATA; alarm 16/9 | datasheet verified: PoE 16x 10/100 (802.3af/at); 1x GbE; 2 front USB2.0 + 1 rear USB3.0; 1 RS-232, 2 RS-485",
+   "hdmi": 2,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -994,7 +1035,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Power supply <=360 W; consumption <=50 W without HDD and PoE. HDMI1 4K/30, HDMI2 1080p/60. PoE 802.3af/at. Max camera resolution not clearly stated (8 MP for AcuSeek). RAID not stated."
+  "notes": "Power supply <=360 W; consumption <=50 W without HDD and PoE. HDMI1 4K/30, HDMI2 1080p/60. PoE 802.3af/at. Max camera resolution not clearly stated (8 MP for AcuSeek). RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -1033,9 +1075,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 4,
-   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; RS-232, RS-485; alarm 16/9"
+   "notes": "2x GbE; 2 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; RS-232, RS-485; alarm 16/9 | datasheet verified: 2x GbE; 2 front USB2.0 + 2 rear USB3.0; 1 RS-232, 1 RS-485; 1 eSATA",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -1070,7 +1114,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Rack units not stated (88 mm high = 2U size). HDMI1 8K/30, HDMI2 4K/60. 32/24 MP on 8 channels only. Consumption <=50 W without HDD. PSU redundancy not stated."
+  "notes": "Rack units not stated (88 mm high = 2U size). HDMI1 8K/30, HDMI2 4K/60. 32/24 MP on 8 channels only. Consumption <=50 W without HDD. PSU redundancy not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -1110,7 +1155,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/1"
+   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/1 | datasheet verified: 1x GbE; 1 front+1 rear USB2.0; no serial",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -1139,7 +1186,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet (20260701) hosted by Polish reseller montersi.pl, so medium. Consumption <=15 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Hikvision datasheet (20260701) hosted by Polish reseller montersi.pl, so medium. Consumption <=15 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -1168,7 +1216,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 8,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1179,7 +1227,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0; alarm 4/1"
+   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 front + 1 rear USB 2.0; alarm 4/1 | datasheet verified: PoE 8x 10/100 (802.3af/at); 1x LAN 10/100/1000 per spec table (highlights say 10/100); 1 front+1 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 8,
@@ -1208,7 +1258,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet (20260622) hosted by distributor AAC Group, so medium. PoE 802.3af/at. Consumption <=10 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Hikvision datasheet (20260622) hosted by distributor AAC Group, so medium. PoE 802.3af/at. Consumption <=10 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -1246,9 +1297,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 0,
+   "console": 1,
    "usb": 3,
-   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+   "notes": "2x GbE; 2 front USB 2.0 + 1 rear USB 3.0; alarm 16/4 | datasheet verified: 2x GbE; 2 front USB2.0 + 1 rear USB3.0; 1 RS-232, 2 RS-485; eSATA only on /IO16+9 variant",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -1277,7 +1330,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet (20250804) hosted by distributor AAC Group, so medium. Consumption <=50 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Hikvision datasheet (20250804) hosted by distributor AAC Group, so medium. Consumption <=50 W without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -1306,7 +1360,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1317,7 +1371,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/1 | datasheet verified: PoE 16x 10/100; 1x GbE; 1 front USB2.0 + 1 rear USB3.0; serial NA",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -1346,7 +1402,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet hosted by UK reseller Netview CCTV, so medium. Power supply <=180 W (as stated; PoE budget <=200 W), consumption <=50 W. PoE 802.3af/at. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Hikvision datasheet hosted by UK reseller Netview CCTV, so medium. Power supply <=180 W (as stated; PoE budget <=200 W), consumption <=50 W. PoE 802.3af/at. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -1387,7 +1444,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "2x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+   "notes": "2x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4 | not verified (Dahua page not reachable); 2x GbE; 1 front USB2.0 + 1 rear USB3.0; RS-232 possible but unconfirmed",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -1416,7 +1475,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Bandwidth 256 Mbps with AI off, 180 Mbps with AI on. Consumption <10 W without HDD. HDMI up to 4K, VGA 1080p. RAID not stated (Disk Group only). Mounting not stated."
+  "notes": "Bandwidth 256 Mbps with AI off, 180 Mbps with AI on. Consumption <10 W without HDD. HDMI up to 4K, VGA 1080p. RAID not stated (Disk Group only). Mounting not stated.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1457,7 +1517,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "1x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/2; RS-232, RS-485"
+   "notes": "1x GbE; 1 front USB 2.0 + 1 rear USB 3.0; alarm 4/2; RS-232, RS-485 | not verified; 1x GbE; 1 front USB2.0 + 1 rear USB3.0; RS-232 + RS-485 per prior notes",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -1486,7 +1548,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Bandwidth 384 Mbps with AI off, 200 Mbps with AI on. HDMI up to 7680x4320, VGA 1080p. Consumption <=10 W without HDD. RAID not stated (Disk Group only)."
+  "notes": "Bandwidth 384 Mbps with AI off, 200 Mbps with AI on. HDMI up to 7680x4320, VGA 1080p. Consumption <=10 W without HDD. RAID not stated (Disk Group only).",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1516,7 +1579,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 5,
+   "rj45_100m": 1,
    "rj45_1g": 0,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1527,7 +1590,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 1 front + 1 rear USB 2.0"
+   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 1 front + 1 rear USB 2.0 | datasheet verified: official page: 1x RJ45 10/100 LAN; PoE 4x 10/100 (38W total); 1 front + 1 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 4,
@@ -1556,7 +1621,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PoE max 25.5 W per port; PoE standard not stated. HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. RAID not stated."
+  "notes": "PoE max 25.5 W per port; PoE standard not stated. HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -1597,7 +1663,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 3,
-   "notes": "2x GbE; 1 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/6; RS-232, RS-485"
+   "notes": "2x GbE; 1 front USB 2.0 + 2 rear USB 3.0; 1 eSATA; alarm 16/6; RS-232, RS-485 | not verified (official page not reachable); 2x GbE; 1 front USB2.0 + 2 rear USB3.0; eSATA; RS-232 + RS-485",
+   "hdmi": 2,
+   "vga": 2
   },
   "poe": {
    "ports": 0,
@@ -1626,7 +1694,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Bandwidth 384 Mbps with AI off, 200 Mbps with AI on. HDMI up to 4K, VGA 1080p. Consumption <=13 W without HDD. Rack or desktop install. RAID not stated (Disk Group only)."
+  "notes": "Bandwidth 384 Mbps with AI off, 200 Mbps with AI on. HDMI up to 4K, VGA 1080p. Consumption <=13 W without HDD. Rack or desktop install. RAID not stated (Disk Group only).",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1667,7 +1736,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 1 front + 1 rear USB 2.0"
+   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 1 front + 1 rear USB 2.0 | not verified; PoE 4x 10/100 + 1x 10/100 LAN; 1 front+1 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 4,
@@ -1696,7 +1767,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PoE 802.3af/at, 25.5 W/port max. HDMI up to 4K, VGA 1080p. Consumption <10 W without HDD. No alarm I/O listed. RAID not stated."
+  "notes": "PoE 802.3af/at, 25.5 W/port max. HDMI up to 4K, VGA 1080p. Consumption <10 W without HDD. No alarm I/O listed. RAID not stated.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1737,7 +1809,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "1x 10/100 LAN; 1 front + 1 rear USB 2.0"
+   "notes": "1x 10/100 LAN; 1 front + 1 rear USB 2.0 | not verified; 1x 10/100 LAN; 1 front+1 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -1766,7 +1840,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. No alarm I/O listed. RAID not stated."
+  "notes": "HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. No alarm I/O listed. RAID not stated.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1807,7 +1882,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/2"
+   "notes": "1x GbE; 1 front + 1 rear USB 2.0; alarm 4/2 | not verified; 1x GbE; 1 front+1 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 0,
@@ -1836,7 +1913,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Bandwidth 256 Mbps with AI off, 180 Mbps with AI on. Page says 2 SATA 'up to 20 TB' without clearly stating per disk, so hdd_max_tb left null. HDMI up to 4K, VGA 1080p. Consumption <10 W without HDD."
+  "notes": "Bandwidth 256 Mbps with AI off, 180 Mbps with AI on. Page says 2 SATA 'up to 20 TB' without clearly stating per disk, so hdd_max_tb left null. HDMI up to 4K, VGA 1080p. Consumption <10 W without HDD.",
+  "ports_checked": "low"
  },
  {
   "brand": "Dahua",
@@ -1877,7 +1955,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0"
+   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0 | not verified; PoE 4x 10/100 + 1x 10/100 LAN; 2 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 4,
@@ -1906,7 +1986,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PoE max 25.5 W/port; PoE standard not stated. HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. Source is Dahua Japan regional page."
+  "notes": "PoE max 25.5 W/port; PoE standard not stated. HDMI up to 4K. Consumption <=10 W without HDD. Desktop install. Source is Dahua Japan regional page.",
+  "ports_checked": "low"
  },
  {
   "brand": "Uniview",
@@ -1935,7 +2016,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 8,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -1946,7 +2027,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 rear USB 3.0 + 1 front USB 2.0"
+   "notes": "8x 10/100 PoE; 1x GbE LAN; 1 rear USB 3.0 + 1 front USB 2.0 | datasheet verified: PoE 8x 10/100; 1x GbE; 1 rear USB3.0 + 1 front USB2.0; serial N/A",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 8,
@@ -1975,7 +2058,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Rack units not stated in datasheet (marketed as 1U by resellers). Dims given without axis labels (assumed W x D x H order). PoE 802.3af/at, max 30 W/port. Consumption <=10 W without HDD. Weight <=2.6 kg without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Rack units not stated in datasheet (marketed as 1U by resellers). Dims given without axis labels (assumed W x D x H order). PoE 802.3af/at, max 30 W/port. Consumption <=10 W without HDD. Weight <=2.6 kg without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Uniview",
@@ -2004,7 +2088,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -2015,7 +2099,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 rear USB 3.0 + 1 front USB 2.0"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 rear USB 3.0 + 1 front USB 2.0 | datasheet verified: PoE 16x 10/100; 1x GbE; 1 rear USB3.0 + 1 front USB2.0; serial N/A",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -2044,7 +2130,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Rack units not stated in datasheet (marketed as 1U by resellers). Dims given without axis labels (assumed W x D x H order). PoE 802.3af/at, max 30 W/port. Consumption <=10 W without HDD. Weight <=2.6 kg without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated."
+  "notes": "Rack units not stated in datasheet (marketed as 1U by resellers). Dims given without axis labels (assumed W x D x H order). PoE 802.3af/at, max 30 W/port. Consumption <=10 W without HDD. Weight <=2.6 kg without HDD. HDMI 4K/30, VGA 1080p/60. RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Uniview",
@@ -2073,7 +2160,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 5,
+   "rj45_100m": 1,
    "rj45_1g": 0,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -2084,7 +2171,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0"
+   "notes": "4x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0 | datasheet verified: PoE 4x 10/100 (54W); 1x 10/100 LAN; 2 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 4,
@@ -2113,7 +2202,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Datasheet V1.02 (2021): 6 TB/disk max (newer revisions may raise it). Max recording 4K. PoE 802.3af/at, 30 W/port max. Consumption <=9 W without HDD. Rack units not stated."
+  "notes": "Datasheet V1.02 (2021): 6 TB/disk max (newer revisions may raise it). Max recording 4K. PoE 802.3af/at, 30 W/port max. Consumption <=9 W without HDD. Rack units not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Uniview",
@@ -2142,7 +2232,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 9,
+   "rj45_100m": 1,
    "rj45_1g": 0,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -2153,7 +2243,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "8x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0"
+   "notes": "8x 10/100 PoE + 1x 10/100 LAN; 2 rear USB 2.0 | datasheet verified: PoE 8x 10/100 (75W); 1x 10/100 LAN; 2 rear USB2.0",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 8,
@@ -2182,7 +2274,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Datasheet V1.02 (2021): 6 TB/disk max (newer revisions may raise it). Max recording 4K. PoE 802.3af/at, 30 W/port max. Consumption <=9 W without HDD. Rack units not stated."
+  "notes": "Datasheet V1.02 (2021): 6 TB/disk max (newer revisions may raise it). Max recording 4K. PoE 802.3af/at, 30 W/port max. Consumption <=9 W without HDD. Rack units not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Uniview",
@@ -2211,7 +2304,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -2222,7 +2315,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4 | datasheet verified: PoE 16x 10/100 (802.3af/at); 1x GbE; 1 front USB2.0 + 1 rear USB3.0; 1 RS-485, no RS-232; HDMI/VGA from panel labels",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -2251,7 +2346,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "HDMI and VGA output simultaneously (1 each per interface list; counts not explicitly stated). PoE 802.3af/at, 30 W/port max. Consumption <=15 W without HDD. Weight <=5 kg without HDD. Rack units not stated (74 mm high). RAID not stated."
+  "notes": "HDMI and VGA output simultaneously (1 each per interface list; counts not explicitly stated). PoE 802.3af/at, 30 W/port max. Consumption <=15 W without HDD. Weight <=5 kg without HDD. Rack units not stated (74 mm high). RAID not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Uniview",
@@ -2280,7 +2376,7 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": 16,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 0,
    "rj45_10g": 0,
@@ -2291,7 +2387,9 @@
    "qsfp28": 0,
    "console": 0,
    "usb": 2,
-   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4"
+   "notes": "16x 10/100 PoE; 1x GbE LAN; 1 front USB 2.0 + 1 rear USB 3.0; alarm 16/4 | datasheet verified: PoE 16x 10/100 (802.3af/at); 1x GbE; 1 front USB2.0 + 1 rear USB3.0; 1 RS-485, no RS-232; HDMI/VGA from panel labels",
+   "hdmi": 1,
+   "vga": 1
   },
   "poe": {
    "ports": 16,
@@ -2320,6 +2418,7 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "HDMI and VGA output simultaneously (1 each per interface list; counts not explicitly stated). PoE 802.3af/at, 30 W/port max. Consumption <=15 W without HDD. Weight <=5 kg without HDD. Rack units not stated (74 mm high). RAID not stated."
+  "notes": "HDMI and VGA output simultaneously (1 each per interface list; counts not explicitly stated). PoE 802.3af/at, 30 W/port max. Consumption <=15 W without HDD. Weight <=5 kg without HDD. Rack units not stated (74 mm high). RAID not stated.",
+  "ports_checked": "high"
  }
 ]

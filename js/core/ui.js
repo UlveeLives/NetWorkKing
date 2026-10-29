@@ -62,20 +62,29 @@ function uiChoice(msg, choices){
 }
 /* ---------- modal with named actions ---------- */
 let modalActs = {};
-function modal(html, acts, opts = {}){ const m = $("#modal"); modalActs = acts || {}; m.innerHTML = `<div class="mbox${opts.wide ? " wide" : ""}${opts.xwide ? " xwide" : ""}">${html}</div>`; m.hidden = false; const f = m.querySelector("input:not([type=checkbox]):not([type=radio]),select,textarea"); if (f && !opts.nofocus) setTimeout(() => f.focus(), 0); }
+/* A window opened from inside another window (Settings → Device database → …) remembers the one it came from:
+   «‹ Back» returns to it exactly as it was (same tab, same filled-in fields). A window that only redraws itself
+   (same title) does not count as a new step. Closing (× / Close / outside) closes the whole chain. */
+let modalHist = [];
+const modalTitleOf = s => String(s || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+function modalBack(){ const prev = modalHist.pop(); if (!prev) return closeModal(); const m = $("#modal"); m.innerHTML = ""; m.appendChild(prev.el); modalActs = prev.acts; m.hidden = false; if (prev.onBack) prev.onBack(); }
+function modal(html, acts, opts = {}){ const m = $("#modal");
+  const cur = !m.hidden && m.firstElementChild, curT = cur ? modalTitleOf((cur.querySelector("h3,h2") || {}).innerHTML) : "", nuT = modalTitleOf((String(html).match(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/) || [])[1]);
+  if (!cur) modalHist = []; else if (!opts.replace && curT !== nuT){ cur.querySelector(".mback") && cur.querySelector(".mback").remove(); modalHist.push({el:cur, acts:modalActs, onBack:opts.onBack}); }
+  modalActs = acts || {}; m.innerHTML = `<div class="mbox${opts.wide ? " wide" : ""}${opts.xwide ? " xwide" : ""}">${modalHist.length ? `<button class="mback" data-m="__back" title="${esc(t("back"))}">‹ ${esc(t("back"))}</button>` : ""}${html}</div>`; m.hidden = false; const f = m.querySelector("input:not([type=checkbox]):not([type=radio]),select,textarea"); if (f && !opts.nofocus) setTimeout(() => f.focus(), 0); }
 function uiAlert(msg){ return new Promise(res => { const o = layer(`<p style="white-space:pre-line">⚠ ${esc(msg)}</p><div class="mfoot"><span class="grow"></span><button class="btn pri" data-x="1">OK</button></div>`);
   const end = () => { o.remove(); document.removeEventListener("keydown", key, true); res(); }, key = e => { if (!o.isConnected){ document.removeEventListener("keydown", key, true); return; } if (e.key === "Escape" || e.key === "Enter"){ e.stopPropagation(); end(); } };
   o.addEventListener("click", e => { if (e.target.closest("[data-x]")) end(); }); document.addEventListener("keydown", key, true); setTimeout(() => { const x = o.querySelector("[data-x]"); x && x.focus(); }, 0); }); }
 let modalDownOut = false;
 document.addEventListener("pointerdown", e => { const m = $("#modal"); modalDownOut = !!(m && !m.hidden && e.target === m); }, true);
-function closeModal(){ const m = $("#modal"); m.hidden = true; m.innerHTML = ""; modalActs = {}; }
+function closeModal(){ const m = $("#modal"); m.hidden = true; m.innerHTML = ""; modalActs = {}; modalHist = []; }
 document.addEventListener("click", e => {
   const m = $("#modal"); if (!m || m.hidden) return;
   // only a click that both starts and ends outside the window closes it (selecting text with the mouse and letting go
   // outside the window no longer closes it)
   if (e.target === m && modalDownOut && !m.querySelector(".mbox.lock")) { closeModal(); return; }
   const b = e.target.closest("[data-m]"); if (!b || !m.contains(b)) return;
-  const k = b.dataset.m; if (k === "close"){ closeModal(); return; }
+  const k = b.dataset.m; if (k === "close"){ closeModal(); return; } if (k === "__back"){ modalBack(); return; }
   if (modalActs[k]) modalActs[k](b, e);
   else if (k.includes(":") && modalActs[k.split(":")[0]]) modalActs[k.split(":")[0]](b, e, k.split(":").slice(1).join(":"));
 });
@@ -106,7 +115,7 @@ function renderHeader(){
     <div class="hproj"><select id="projsel" title="${esc(t("project"))}">${Object.values(store.projects).sort((x, y) => x.name.localeCompare(y.name)).map(x => opt(x.id, x.name, p.id)).join("")}<option value="__new">＋ ${esc(t("newProject"))}…</option></select></div>
     <span class="grow"></span>
     <div class="hacts">${B2("undo","↶","undo", undoStack.length ? "" : " disabled")}${B2("redo","↷","redo", redoStack.length ? "" : " disabled")}<span class="hsep"></span>
-    ${B2("search","🔍","search")}${B2("versions","🕘","versions")}${B2("import","⤓","import")}${B2("export","⤒","export")}<span class="hsep"></span>
+    ${B2("sync","⇄","sy_btn")}${B2("search","🔍","search")}${B2("versions","🕘","versions")}${B2("import","⤓","import")}${B2("export","⤒","export")}<span class="hsep"></span>
     ${B2("help","?","helpTour")}${B2("settings","⚙","settings")}</div>
     <span id="savest">✓ ${esc(t("savedShort"))}</span>
     <button class="hb hmenu" data-h="menu" title="${esc(t("menu"))}"><span class="hi">☰</span></button>`;
@@ -216,7 +225,7 @@ function render(){
   restoreFocus();
   if (typeof AI !== "undefined" && UI.ai && UI.ai.open) AI.draw();
   if (a.afterRender) a.afterRender(tab);
-  maybeTour(); maybePanelTour();
+  maybeTour(); maybePanelTour(); if (typeof SYNC !== "undefined") SYNC.dot();
 }
 /* ---------- Save / Close at the bottom of every side card ----------
    Fields are kept as soon as they are left; Save finishes the field being typed, confirms and closes the card. */
@@ -282,10 +291,10 @@ function wireShell(){
     const sw = e.target.closest("#appsw"); if (sw){ openAppSwitcher(sw); return; }
     const h = e.target.closest("[data-h]");
     if (h && !h.disabled){ const k = h.dataset.h;
-      if (k === "undo") undo(); else if (k === "redo") redo(); else if (k === "search") openSearch(); else if (k === "versions") openVersions();
+      if (k === "undo") undo(); else if (k === "redo") redo(); else if (k === "search") openSearch(); else if (k === "sync") SYNC.open(); else if (k === "versions") openVersions();
       else if (k === "import") importAny(); else if (k === "export") exportMenu(h); else if (k === "settings") openSettings(); else if (k === "help") startTour(true);
       else if (k === "menu") popMenu(h, [{icon:"↶", label:t("undo"), fn:undo, disabled:!undoStack.length}, {icon:"↷", label:t("redo"), fn:redo, disabled:!redoStack.length}, "-",
-        {icon:"🔍", label:t("search"), fn:openSearch}, {icon:"🕘", label:t("versions"), fn:openVersions}, {icon:"⤓", label:t("import"), fn:importAny}, {icon:"⤒", label:t("export"), fn:() => exportMenu(h)}, "-",
+        {icon:"⇄", label:t("sy_btn"), fn:() => SYNC.open()}, {icon:"🔍", label:t("search"), fn:openSearch}, {icon:"🕘", label:t("versions"), fn:openVersions}, {icon:"⤓", label:t("import"), fn:importAny}, {icon:"⤒", label:t("export"), fn:() => exportMenu(h)}, "-",
         {icon:"?", label:t("helpTour"), fn:() => startTour(true)}, {icon:"⚙", label:t("settings"), fn:openSettings}], {right:true});
       return; }
     const tb = e.target.closest("[data-tab]"); if (tb){ UI.tabs[UI.app] = tb.dataset.tab; UI.sel = null; UI.multi.clear(); P().cur.tabs = Object.assign(P().cur.tabs || {}, {[UI.app]:tb.dataset.tab}); persist(); render(); return; }
@@ -303,7 +312,7 @@ function wireShell(){
   document.addEventListener("keydown", e => {
     const typing = /INPUT|TEXTAREA|SELECT/.test(e.target.tagName) || e.target.isContentEditable, mod = e.ctrlKey || e.metaKey;
     if (document.querySelector(".layer")) return;
-    if (e.key === "Escape"){ if (document.querySelector(".tour")) { endTour(); return; } if (!$("#modal").hidden){ closeModal(); return; } if (menuEl){ closeMenu(); return; } const a = curApp(); if (a.onEsc && a.onEsc()) return; if (UI.sel || UI.multi.size){ UI.sel = null; UI.multi.clear(); render(); } return; }
+    if (e.key === "Escape"){ if (document.querySelector(".tour")) { endTour(); return; } if (!$("#modal").hidden){ if (modalHist.length) modalBack(); else closeModal(); return; } if (menuEl){ closeMenu(); return; } const a = curApp(); if (a.onEsc && a.onEsc()) return; if (UI.sel || UI.multi.size){ UI.sel = null; UI.multi.clear(); render(); } return; }
     if (!$("#modal").hidden) return;
     if (mod && e.key.toLowerCase() === "s"){ e.preventDefault(); saveVersion(t("verManual")); return; }
     if (mod && e.key.toLowerCase() === "p"){ e.preventDefault(); printNow(); return; }

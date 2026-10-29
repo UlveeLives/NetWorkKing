@@ -775,3 +775,30 @@ input[type=checkbox],input[type=radio],input[type=range],progress{accent-color:v
 /* window buttons stay usable while a window (settings, wizard …) is open over the app, and the window can still be dragged */
 html.frameless .tlights{position:relative;z-index:200}
 html.frameless #modal::before{content:"";position:fixed;left:0;right:0;top:0;height:54px;-webkit-app-region:drag}
+/* 3.8: «‹ Back» in a window opened from another window */
+.mback{position:sticky;top:-18px;z-index:3;display:inline-flex;align-items:center;gap:4px;margin:-6px 0 8px -6px;padding:4px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--pri);font:inherit;font-weight:700;cursor:pointer}
+.mback:hover{background:var(--accSoft)}
+svg.rkcords .cord path{fill:none;stroke-width:1.6;opacity:.95;stroke-linecap:round;stroke-linejoin:round}
+svg.rkcords .cord path.halo{stroke:rgba(10,14,22,.55);stroke-width:3.4;opacity:.6}
+/* 3.8: sync window */
+.hb.sydot{position:relative}.hb.sydot::after{content:"";position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:#e2483a;box-shadow:0 0 0 2px var(--bar,#0d2a1a)}
+.sysum{padding:10px 12px;border-radius:10px;font-weight:700;margin:6px 0 4px}.sysum.ok{background:rgba(30,150,80,.12);color:#1b7a43}.sysum.bad{background:rgba(226,72,58,.12);color:#b83226}
+.sylist{max-height:46vh;display:flex;flex-direction:column;gap:8px}
+.sycard{border:1px solid var(--line);border-left:4px solid #e0a020;border-radius:10px;padding:8px 10px;background:var(--surface)}
+.sycard.err{border-left-color:#e2483a}.sycard.info{border-left-color:#3a7be0}
+.sycard .syh{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px}
+.sycard .btns{margin-top:6px;flex-wrap:wrap}
+.syapp{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:9px;color:#fff;background:var(--c)}
+.sychg details{border:1px solid var(--line);border-radius:8px;padding:4px 8px;margin:4px 0}.sychg summary{cursor:pointer;display:flex;align-items:center;gap:6px}
+.sychg ul{margin:6px 0 2px;padding-left:4px;list-style:none;font-size:13px;max-height:200px;overflow:auto}.sychg li .op{display:inline-block;width:16px;font-weight:800}
+.sychg li.add .op{color:#1b8a4a}.sychg li.del .op{color:#c0392b}.sychg li.chg .op{color:#c78a10}
+/* 3.8: small connectors (management, console, USB, HDMI, VGA) */
+.rkd .io{display:inline-flex;align-items:center;gap:2px;margin:0 4px;flex:none}
+.rkd .io i{display:block;flex:none;border-radius:1px}
+.rkd .io .mg{width:6px;height:5px;background:#f0a020;box-shadow:inset 0 0 0 1px #6a4a10}
+.rkd .io .co{width:6px;height:5px;background:#7fb2ff;box-shadow:inset 0 0 0 1px #2a4a80}
+.rkd .io .us{width:7px;height:3px;background:#1b1f27;box-shadow:inset 0 0 0 1px #9aa4b4}
+.rkd .io .hd{width:8px;height:4px;background:#1b1f27;box-shadow:inset 0 0 0 1px #c9d1dc;clip-path:polygon(0 0,100% 0,85% 100%,15% 100%)}
+.rkd .io .vg{width:9px;height:5px;background:#2f56b8;clip-path:polygon(0 0,100% 0,88% 100%,12% 100%)}
+.nmpv{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;margin:4px 0 8px;border:1px dashed var(--line);border-radius:10px;background:var(--bg2,rgba(0,0,0,.03))}
+.nmpv .dpic{zoom:1.9}

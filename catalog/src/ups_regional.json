@@ -26,18 +26,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online series typical: USB + RS232 + SNMP slot (card optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -67,7 +70,8 @@
   "source2": "https://www.reylenferna.com/?p=747",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 2x7Ah (24V DC) standard model; 3x7Ah long-run and external-battery variants exist. Weight = catalog net weight for 2x7Ah column. SKU from Turkish retail listings. Outlet count not stated. Retail listings also show 2x9Ah variant."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 2x7Ah (24V DC) standard model; 3x7Ah long-run and external-battery variants exist. Weight = catalog net weight for 2x7Ah column. SKU from Turkish retail listings. Outlet count not stated. Retail listings also show 2x9Ah variant.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -96,18 +100,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online series typical: USB + RS232 + SNMP slot (card optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -137,7 +144,8 @@
   "source2": "https://reylenferna.com/solutions/commercial/power-solutions-commercial/ups-power-solutions-commercial/makelsan-online-ups-powerpack-se-2kva-11-phase",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 4x7Ah (48V DC) standard; 6x7Ah long-run and external-battery variants. Weight = catalog net for 4x7Ah column. SKU from retailer incehesap.com (4x9Ah variant). Outlets not stated."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 4x7Ah (48V DC) standard; 6x7Ah long-run and external-battery variants. Weight = catalog net for 4x7Ah column. SKU from retailer incehesap.com (4x9Ah variant). Outlets not stated.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -164,18 +172,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online series typical: USB + RS232 + SNMP slot (card optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -205,7 +216,8 @@
   "source2": "https://www.reylenferna.com/?p=750",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 6x7Ah (72V DC) standard; 8x7Ah long-run (96V) and external variants. Dimensions per reylenferna (catalog also lists 191x464x335 for one column - possibly long-run). Weight = catalog net for 6x7Ah column. Outlets not stated."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 6x7Ah (72V DC) standard; 8x7Ah long-run (96V) and external variants. Dimensions per reylenferna (catalog also lists 191x464x335 for one column - possibly long-run). Weight = catalog net for 6x7Ah column. Outlets not stated.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -232,18 +244,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online series typical: USB + RS232 + SNMP slot (card optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -273,7 +288,8 @@
   "source2": "https://www.reylenferna.com/?p=751",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 16-20x 7-9Ah (192-240V DC) internal. Catalog lists net weights 64.1/70.8 kg without clear model mapping - left null. Output is terminal/rear outlets, count not stated."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Battery 16-20x 7-9Ah (192-240V DC) internal. Catalog lists net weights 64.1/70.8 kg without clear model mapping - left null. Output is terminal/rear outlets, count not stated.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -300,18 +316,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online series typical: USB + RS232 + SNMP slot (card optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -341,7 +360,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Catalog: 10kVA/9000W, dimensions shared with 6kVA. Some Turkish retail listings advertise a PF=1 version (10kW, 16x9Ah) - not verified. Weight unmapped (64.1/70.8 kg listed) - null."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Catalog: 10kVA/9000W, dimensions shared with 6kVA. Some Turkish retail listings advertise a PF=1 version (10kW, 16x9Ah) - not verified. Weight unmapped (64.1/70.8 kg listed) - null.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -368,18 +388,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Line-interactive: USB HID only (+RJ11/RJ45 surge protection on some); official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -409,7 +432,8 @@
   "source2": "https://www.reylenferna.com/?p=759",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Values from Lion Plus 650-2000VA brochure (2019) hosted by Russian distributor all-generators.ru and reylenferna.com. Modified sine wave output."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Values from Lion Plus 650-2000VA brochure (2019) hosted by Russian distributor all-generators.ru and reylenferna.com. Modified sine wave output.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -436,18 +460,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Line-interactive: USB HID only (+RJ11/RJ45 surge protection on some); official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -477,7 +504,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru; dimension assignment (small chassis shared with 650VA) inferred from brochure layout."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru; dimension assignment (small chassis shared with 650VA) inferred from brochure layout.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -504,18 +532,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Line-interactive: USB HID only (+RJ11/RJ45 surge protection on some); official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -545,7 +576,8 @@
   "source2": "https://www.reylenferna.com/?p=760",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru and reylenferna.com."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru and reylenferna.com.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -572,18 +604,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Line-interactive: USB HID only (+RJ11/RJ45 surge protection on some); official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -613,7 +648,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru; dimension assignment (large chassis) inferred from brochure layout."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru; dimension assignment (large chassis) inferred from brochure layout.",
+  "ports_checked": "low"
  },
  {
   "brand": "Makelsan",
@@ -640,18 +676,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "Line-interactive: USB HID only (+RJ11/RJ45 surge protection on some); official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -681,7 +720,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru. Weight not clearly mapped for 2000VA - null; dimension assignment inferred."
+  "notes": "makelsan.com.tr (official) not reachable from this session (site now SPA; old catalog PDFs redirect). Values from Makelsan Powerpack SE catalog PDF hosted by dealer makelsanjenerator.com.tr and distributor page reylenferna.com. Brochure copy via distributor all-generators.ru. Weight not clearly mapped for 2000VA - null; dimension assignment inferred.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -708,18 +748,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online 1-3kVA typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -749,7 +792,8 @@
   "source2": "https://www.inform.com.tr/kesintisiz-guc-kaynagi-inform-1-faz-sinusevo.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "W derived from vendor-stated output PF 0.9. Battery 2x12V 7Ah."
+  "notes": "W derived from vendor-stated output PF 0.9. Battery 2x12V 7Ah.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -776,18 +820,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online 1-3kVA typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -817,7 +864,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "W derived from vendor-stated output PF 0.9. Battery 4x12V 9Ah."
+  "notes": "W derived from vendor-stated output PF 0.9. Battery 4x12V 9Ah.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -844,18 +892,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online 1-3kVA typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -885,7 +936,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "W derived from vendor-stated output PF 0.9. Battery 6x12V 9Ah. Outlet configuration for 3kVA not clearly stated in brochure."
+  "notes": "W derived from vendor-stated output PF 0.9. Battery 6x12V 9Ah. Outlet configuration for 3kVA not clearly stated in brochure.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -912,18 +964,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online 1-3kVA typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -953,7 +1008,8 @@
   "source2": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR_1315.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product."
+  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -980,18 +1036,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online 1-3kVA typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1021,7 +1080,8 @@
   "source2": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR_1315.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product."
+  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -1048,18 +1108,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online 1-3kVA typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1089,7 +1152,8 @@
   "source2": "https://www.inform.com.tr/dosya/pdf/Inform_Sinus_EVO_RM_Brosur_TR_1315.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product."
+  "notes": "W derived from vendor-stated output PF 0.9. Brochure notes outputs may vary by product.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -1116,18 +1180,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1157,7 +1224,8 @@
   "source2": "https://www.inform.com.tr/sinus-pro-1-10kva.html",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official brochure, but table layout ambiguous: weight listed as 'Net - Brut' without distinction; outlet mapping inferred; u derived from 86.5 mm height. Dimensions/weights identical to Sinus EVO RM 1kVA."
+  "notes": "Official brochure, but table layout ambiguous: weight listed as 'Net - Brut' without distinction; outlet mapping inferred; u derived from 86.5 mm height. Dimensions/weights identical to Sinus EVO RM 1kVA.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -1184,18 +1252,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1225,7 +1296,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official brochure, table layout ambiguous: outlet mapping inferred; weight net/gross unclear; u derived from 86.5 mm height."
+  "notes": "Official brochure, table layout ambiguous: outlet mapping inferred; weight net/gross unclear; u derived from 86.5 mm height.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -1252,18 +1324,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1293,7 +1368,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official brochure, table layout ambiguous: weight net/gross unclear; outlets not stated; u derived from 86.5 mm height. 6/10 kVA RT variants exist but their dims/weights could not be mapped reliably - skipped."
+  "notes": "Official brochure, table layout ambiguous: weight net/gross unclear; outlets not stated; u derived from 86.5 mm height. 6/10 kVA RT variants exist but their dims/weights could not be mapped reliably - skipped.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -1320,18 +1396,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online 6-10kVA typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1361,7 +1440,8 @@
   "source2": "https://www.inform.com.tr/kesintisiz-guc-kaynagi-inform-1-faz-dspevo.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Battery count adjustable 16/18/20. Weight '60 61' listed without labels; 60 kg assigned to 6K by column order."
+  "notes": "Battery count adjustable 16/18/20. Weight '60 61' listed without labels; 60 kg assigned to 6K by column order.",
+  "ports_checked": "low"
  },
  {
   "brand": "Inform",
@@ -1388,18 +1468,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online 6-10kVA typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official PDF not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1429,7 +1512,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Battery count adjustable 16/18/20. Weight assigned by column order (61 kg); dimensions given once for series."
+  "notes": "Battery count adjustable 16/18/20. Weight assigned by column order (61 kg); dimensions given once for series.",
+  "ports_checked": "low"
  },
  {
   "brand": "Tescom",
@@ -1456,18 +1540,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official catalog not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1497,7 +1584,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog."
+  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog.",
+  "ports_checked": "low"
  },
  {
   "brand": "Tescom",
@@ -1524,18 +1612,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official catalog not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1565,7 +1656,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog."
+  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog.",
+  "ports_checked": "low"
  },
  {
   "brand": "Tescom",
@@ -1592,18 +1684,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official catalog not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1633,7 +1728,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog."
+  "notes": "u derived from 86.5 mm height (catalog does not state U). Outlets not stated in catalog.",
+  "ports_checked": "low"
  },
  {
   "brand": "Tescom",
@@ -1660,18 +1756,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official catalog not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1701,7 +1800,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "u derived from 86.5 mm height (catalog does not state U). 1000RT (1kVA/1kW, 11.3 kg) and 2000RT (2kVA/2kW, 19.5 kg) share NEOLINE RT chassis dimensions."
+  "notes": "u derived from 86.5 mm height (catalog does not state U). 1000RT (1kVA/1kW, 11.3 kg) and 2000RT (2kVA/2kW, 19.5 kg) share NEOLINE RT chassis dimensions.",
+  "ports_checked": "low"
  },
  {
   "brand": "Tescom",
@@ -1728,18 +1828,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official catalog not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1769,7 +1872,8 @@
   "source2": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Katalog_tr_2026.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Weight printed as '57/65' (ambiguous) - null. XL variant (external battery) is 2U, 86.5 mm, 15 kg. Battery 192V DC default (216/240V options); lithium option."
+  "notes": "Weight printed as '57/65' (ambiguous) - null. XL variant (external battery) is 2U, 86.5 mm, 15 kg. Battery 192V DC default (216/240V options); lithium option.",
+  "ports_checked": "low"
  },
  {
   "brand": "Tescom",
@@ -1796,18 +1900,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Online RT typical: USB + RS232 + intelligent slot (SNMP optional) + EPO; official catalog not reachable.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1837,7 +1944,8 @@
   "source2": "https://www.tescom-ups.com/ftp_files/pdf_files/Tescom_Katalog_tr_2026.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "XL variant (external battery) is 2U, 86.5 mm, 17 kg. Battery 192V DC default (216/240V options)."
+  "notes": "XL variant (external battery) is 2U, 86.5 mm, 17 kg. Battery 192V DC default (216/240V options).",
+  "ports_checked": "low"
  },
  {
   "brand": "Legrand",
@@ -1866,18 +1974,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Keor SPE line-interactive: USB + RS232 typical; SNMP slot presence on R/T models unconfirmed (set 0). Not verified.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -1907,7 +2018,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "VRLA lead-acid battery, 4 cells listed."
+  "notes": "VRLA lead-acid battery, 4 cells listed.",
+  "ports_checked": "low"
  },
  {
   "brand": "Legrand",
@@ -1936,18 +2048,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Keor SPE line-interactive: USB + RS232 typical; SNMP slot presence on R/T models unconfirmed (set 0). Not verified.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -1977,7 +2092,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official Legrand Spain catalog page. Outlet count conflict on page: 8x C13 in table vs 4x C13 in description."
+  "notes": "Official Legrand Spain catalog page. Outlet count conflict on page: 8x C13 in table vs 4x C13 in description.",
+  "ports_checked": "low"
  },
  {
   "brand": "Legrand",
@@ -2006,18 +2122,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Keor SPE line-interactive: USB + RS232 typical; SNMP slot presence on R/T models unconfirmed (set 0). Not verified.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -2047,7 +2166,8 @@
   "source2": "https://legrand.pl/pl/e-katalog/produkty/ups-keor-spe-rack-3u-3kva-311073",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "VRLA battery, 6 cells listed."
+  "notes": "VRLA battery, 6 cells listed.",
+  "ports_checked": "low"
  },
  {
   "brand": "Legrand",
@@ -2076,18 +2196,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Keor LP online: USB + RS232 + SNMP slot (card optional) + EPO typical; not verified.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2117,7 +2240,8 @@
   "source2": "https://ups.legrand.com/media/document/Keor_LP_GB_low.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Input range as listed on e-catalogue (210-240V)."
+  "notes": "Input range as listed on e-catalogue (210-240V).",
+  "ports_checked": "low"
  },
  {
   "brand": "CyberPower",
@@ -2146,18 +2270,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "CyberPower OL ERTXL2U: USB + RS232 + SNMP expansion slot (RMCARD optional) + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2187,7 +2314,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP with 3 batteries, 36V per pack."
+  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP with 3 batteries, 36V per pack.",
+  "ports_checked": "medium"
  },
  {
   "brand": "CyberPower",
@@ -2216,18 +2344,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "CyberPower OL ERTXL2U: USB + RS232 + SNMP expansion slot (RMCARD optional) + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2257,7 +2388,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP (RBP0076) with 6 batteries, 72V per pack."
+  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP (RBP0076) with 6 batteries, 72V per pack.",
+  "ports_checked": "medium"
  },
  {
   "brand": "CyberPower",
@@ -2286,18 +2418,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "CyberPower PR ERT2U: USB + RS232 + SNMP expansion slot (RMCARD optional) + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2327,7 +2462,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP (RBP0129) with 4 batteries."
+  "notes": "Official product page did not expose physical dimensions/weight in fetched content - null. u=2 per vendor model name suffix '2U'. 1 RBP (RBP0129) with 4 batteries.",
+  "ports_checked": "medium"
  },
  {
   "brand": "CyberPower",
@@ -2356,18 +2492,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "CyberPower PR ERT2U: USB + RS232 + SNMP expansion slot (RMCARD optional) + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2397,7 +2536,8 @@
   "source2": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_PR3000ERT2U.pdf",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Electrical/outlet data from official CyberPower EU page; dimensions (433x500x86.5 mm) and weight 32.3 kg from third-party (Icecat-style) reseller datasheet. 1 RBP (RBP0129) with 4 batteries."
+  "notes": "Electrical/outlet data from official CyberPower EU page; dimensions (433x500x86.5 mm) and weight 32.3 kg from third-party (Icecat-style) reseller datasheet. 1 RBP (RBP0129) with 4 batteries.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Schneider Electric",
@@ -2426,18 +2566,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SRV: USB + RS232 + 1 intelligent slot (NMC optional) + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2467,7 +2610,8 @@
   "source2": "https://eshop.se.com/sa/apc-easy-ups-on-line-1000va-800w-rackmount-2u-230v-3x-iec-c13-outlets-intelligent-card-slot-lcd-w-o-rail-kit-srv1kri.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Outlets from official Schneider e-shop title. Dimensions/weight not exposed in fetched page. Newer -E version (SRV1KRI-E) is 1000VA/900W. Rail kit version SRV1KRIRK."
+  "notes": "Outlets from official Schneider e-shop title. Dimensions/weight not exposed in fetched page. Newer -E version (SRV1KRI-E) is 1000VA/900W. Rail kit version SRV1KRIRK.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Schneider Electric",
@@ -2497,18 +2641,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SRV: USB + RS232 + 1 intelligent slot (NMC optional) + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2538,7 +2685,8 @@
   "source2": "https://ik.imagekit.io/pimberly/65707b38e31f5a94719d7ba0/77541c0e/65f8326067f84a0018fc2576/mmo_65457904_1559212701_8843_28100.pdf",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "VA/W/outlets/2U from official se.com page; dimensions, 27.6 kg net weight and input range from APC spec sheet for SRV3KRIRK (rail-kit variant) hosted by a reseller PIM. Newer SRV3KRI-E is 3000VA/2700W."
+  "notes": "VA/W/outlets/2U from official se.com page; dimensions, 27.6 kg net weight and input range from APC spec sheet for SRV3KRIRK (rail-kit variant) hosted by a reseller PIM. Newer SRV3KRI-E is 3000VA/2700W.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Schneider Electric",
@@ -2567,18 +2715,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SRV: USB + RS232 + 1 intelligent slot (NMC optional) + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2608,7 +2759,8 @@
   "source2": "https://se.com/th/en/product/SRV6KI/apc-easy-ups-on-line-srv-6000va-230v",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Output connection from official se.com (TH) product title. Dimensions/weight/input range not exposed in fetched pages."
+  "notes": "Output connection from official se.com (TH) product title. Dimensions/weight/input range not exposed in fetched pages.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Riello UPS",
@@ -2637,18 +2789,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SEP: USB + RS232 + 1 comm slot (NetMan card optional).",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2678,7 +2833,8 @@
   "source2": "https://www.riello-ups.com/uploads/file/784/1784/DATSEPA1Y23NREN.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Topology from series datasheet (ON LINE double conversion, VFI-SS-111). Outlet mapping per model not clearly stated (series lists 4x C13 / 8x C13 / 8x C13 + 1x C19 configurations). ER version (no internal battery) 15 kg."
+  "notes": "Topology from series datasheet (ON LINE double conversion, VFI-SS-111). Outlet mapping per model not clearly stated (series lists 4x C13 / 8x C13 / 8x C13 + 1x C19 configurations). ER version (no internal battery) 15 kg.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Riello UPS",
@@ -2707,18 +2863,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SDH: USB + RS232 + 1 comm slot (NetMan card optional) + EPO/ROO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2748,7 +2907,8 @@
   "source2": "https://www.riello-ups.com/uploads/file/842/842/DATSDHA1Y23BREN.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Model sheet: tower 450x87x425 (h w d), rack 2U x 19in x 425 mm; recorded in rack orientation. Outlets: series lists 8x C13 or 8x C13 + 1x C19 without per-model mapping."
+  "notes": "Model sheet: tower 450x87x425 (h w d), rack 2U x 19in x 425 mm; recorded in rack orientation. Outlets: series lists 8x C13 or 8x C13 + 1x C19 without per-model mapping.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Riello UPS",
@@ -2777,18 +2937,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SDH: USB + RS232 + 1 comm slot (NetMan card optional) + EPO/ROO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2818,7 +2981,8 @@
   "source2": "https://www.riello-ups.com/uploads/file/842/842/DATSDHA1Y23BREN.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Model sheet dims '450x87x625 / 87(2U)x450x625 (h w d)'; recorded in rack orientation. ER version 3000VA/2400W, 15 kg. Outlets not mapped per model."
+  "notes": "Model sheet dims '450x87x625 / 87(2U)x450x625 (h w d)'; recorded in rack orientation. ER version 3000VA/2400W, 15 kg. Outlets not mapped per model.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Socomec",
@@ -2847,18 +3011,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "NETYS RT: USB + RS232/485 port + slot for optional SNMP/dry-contact card + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2885,10 +3052,11 @@
    "outlets": "8x IEC C13, 1x IEC C19"
   },
   "source": "https://emea.socomec.com/en/reference/nrt4-li-u030b",
-  "source2": null,
+  "source2": "https://www.4cabling.com.au/socomec-nrt4-u030b-netys-rt4-3kva-rack-2u-tower-ups-online-double-conversion.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "u derived from 85.5 mm height (page does not state U). Rails included."
+  "notes": "u derived from 85.5 mm height (page does not state U). Rails included.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Socomec",
@@ -2917,18 +3085,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "NETYS RT: USB + RS232/485 port + slot for optional SNMP/dry-contact card + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -2955,10 +3126,11 @@
    "outlets": "8x IEC C13, 1x IEC C19"
   },
   "source": "https://emea.socomec.com/en/reference/nrt4-u030lb",
-  "source2": null,
+  "source2": "https://www.4cabling.com.au/socomec-nrt4-u030b-netys-rt4-3kva-rack-2u-tower-ups-online-double-conversion.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "No internal battery (external battery cabinet required). u derived from 85.5 mm height. Standard-battery version NRT4-U030B page not reachable."
+  "notes": "No internal battery (external battery cabinet required). u derived from 85.5 mm height. Standard-battery version NRT4-U030B page not reachable.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Huawei",
@@ -2987,18 +3159,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "UPS2000-A: RS232 + USB + intelligent slot (SNMP card optional) + dry contacts; not verified.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -3028,7 +3203,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Source is Huawei's Chinese-language datasheet (China-market variant with GB sockets); outlet type differs on international SKUs, so outlets left null. Standard (internal battery) unit; long-run unit 96V DC external battery, 8.2 kg. Dims given as DxWxH 421x190x318."
+  "notes": "Source is Huawei's Chinese-language datasheet (China-market variant with GB sockets); outlet type differs on international SKUs, so outlets left null. Standard (internal battery) unit; long-run unit 96V DC external battery, 8.2 kg. Dims given as DxWxH 421x190x318.",
+  "ports_checked": "low"
  },
  {
   "brand": "Huawei",
@@ -3057,18 +3233,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "UPS2000-G 1-3kVA: official page lists RS232 + dry contacts; RTS variant also has USB + SNMP slot (card optional) - USB/slot not confirmed.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -3095,10 +3274,11 @@
    "outlets": null
   },
   "source": "https://digitalpower.huawei.com/attachments/data-center-facility/cf1941c9cead4e999f73a101a7d772be.pdf",
-  "source2": null,
+  "source2": "https://enterprise.huawei.com/ve/products/network/network-energy/ups/hw-356827.htm",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Source is Huawei's Chinese-language datasheet (China-market variant with GB sockets); outlet type differs on international SKUs, so outlets left null. u derived from 88 mm height. Standard unit; long-run unit 96V DC external battery, 438x410x88 mm, 9.3 kg."
+  "notes": "Source is Huawei's Chinese-language datasheet (China-market variant with GB sockets); outlet type differs on international SKUs, so outlets left null. u derived from 88 mm height. Standard unit; long-run unit 96V DC external battery, 438x410x88 mm, 9.3 kg.",
+  "ports_checked": "low"
  },
  {
   "brand": "Delta",
@@ -3125,18 +3305,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB + RS-232 + Mini slot (mini SNMP/MODBUS/relay I/O card optional). REPO not stated.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -3166,7 +3349,8 @@
   "source2": "https://www.delta-emea.com/en-GB/products/Amplon/1kva-3kva-single-phase-ups-rt-gen3-series",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Standard-battery (SB) leaflet; batteries 2 pcs, 24V DC. Part number not stated in leaflet. 2U stated for series."
+  "notes": "Standard-battery (SB) leaflet; batteries 2 pcs, 24V DC. Part number not stated in leaflet. 2U stated for series.",
+  "ports_checked": "high"
  },
  {
   "brand": "Delta",
@@ -3193,18 +3377,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "USB + RS-232 + Mini slot (mini SNMP/MODBUS/relay I/O card optional). REPO not stated.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -3234,6 +3421,7 @@
   "source2": "https://www.delta-emea.com/en-GB/products/Amplon/1kva-3kva-single-phase-ups-rt-gen3-series",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Standard-battery (SB) leaflet; batteries 6 pcs, 72V DC. 2kVA model: 438x410x86 mm, 17.9 kg, 1.8 kW. Part number not stated in leaflet."
+  "notes": "Standard-battery (SB) leaflet; batteries 6 pcs, 72V DC. 2kVA model: 438x410x86 mm, 17.9 kg, 1.8 kW. Part number not stated in leaflet.",
+  "ports_checked": "high"
  }
 ]

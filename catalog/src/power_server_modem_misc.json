@@ -26,18 +26,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SMT 2U: RJ45 serial + USB + 1 SmartSlot (NMC optional). 1500VA 2U typically no EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -67,7 +70,8 @@
   "source2": "https://directdeal.imgbolt.de/media/22/04/e2/1786697260/85_6208377000_datasheet.pdf",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. A second distributor sheet (directdeal) lists 432x477x86 mm / 26.1 kg - conflicting; quickserv values used."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. A second distributor sheet (directdeal) lists 432x477x86 mm / 26.1 kg - conflicting; quickserv values used.",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -96,18 +100,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SMT 2U: RJ45 serial + USB + 1 SmartSlot (NMC optional) + EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -137,7 +144,8 @@
   "source2": "https://www.regard.ru/api/site/files/goodspdf/download/29698",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. SmartConnect variant SMT2200RMI2UC datasheet (regard.ru) shows same dims/weight and 215 BTU/h."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. SmartConnect variant SMT2200RMI2UC datasheet (regard.ru) shows same dims/weight and 215 BTU/h.",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -166,18 +174,21 @@
   "heat_btu_h": 348,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SMT 2U: RJ45 serial + USB + 1 SmartSlot (NMC optional) + EPO. Same I/O as SMT3000RMI2UC minus SmartConnect.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -207,7 +218,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Battery stated as 547 VAh (no Wh figure)."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Battery stated as 547 VAh (no Wh figure).",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -236,18 +248,21 @@
   "heat_btu_h": 348,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "RJ45 serial (console) + USB + 1 SmartSlot (NMC optional). Has SmartConnect cloud Ethernet port (cloud monitoring only, not counted as LAN mgmt). EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -274,10 +289,11 @@
    "outlets": "8x IEC C13, 1x IEC C19 (+3 IEC jumpers)"
   },
   "source": "https://cdn.blueally.com/apcguard/datasheets/SMT3000RMI2UC_datasheet.pdf",
-  "source2": null,
+  "source2": "https://portal.shi.com/product/35948846/APC-Smart-UPS-SMT3000RMI2UC",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Width given as 432 mm here vs 480 mm on SMT3000RMI2U sheet."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Width given as 432 mm here vs 480 mm on SMT3000RMI2U sheet.",
+  "ports_checked": "high"
  },
  {
   "brand": "APC",
@@ -306,18 +322,21 @@
   "heat_btu_h": 90,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SMC non-C: USB + RJ45 serial only, no SmartSlot, no EPO.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -347,7 +366,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Battery stated as 260 VAh (no Wh figure)."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Battery stated as 260 VAh (no Wh figure).",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -376,18 +396,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SRT: RJ45 serial + USB + 1 SmartSlot (NMC optional; -NC variants ship with NMC) + EPO terminal.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -417,7 +440,8 @@
   "source2": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_srt1000rmxli.pdf",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Dims/weight from aodatacloud copy of APC datasheet."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Dims/weight from aodatacloud copy of APC datasheet.",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -446,18 +470,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SRT: RJ45 serial + USB + 1 SmartSlot (NMC optional; -NC variants ship with NMC) + EPO terminal.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -487,7 +514,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet.",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -516,18 +544,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SRT: RJ45 serial + USB + 1 SmartSlot (NMC optional; -NC variants ship with NMC) + EPO terminal.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -557,7 +588,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet.",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -586,18 +618,21 @@
   "heat_btu_h": 931,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SRT: RJ45 serial + USB + 1 SmartSlot (NMC optional; -NC variants ship with NMC) + EPO terminal.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -627,7 +662,8 @@
   "source2": "https://www.lambda-tek.com/APC-SRT5KRMXLI-shUS/B1887841?viewSpec=y",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Datasheet copy lists outlet rows twice; 6x C13 + 4x C19 confirmed by lambda-tek listing title. Battery nominal 192V, no Wh stated."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Datasheet copy lists outlet rows twice; 6x C13 + 4x C19 confirmed by lambda-tek listing title. Battery nominal 192V, no Wh stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -656,18 +692,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "SRT: RJ45 serial + USB + 1 SmartSlot (NMC optional; -NC variants ship with NMC) + EPO terminal.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -697,7 +736,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Replacement battery APCRBC140."
+  "notes": "Official apc.com/se.com not reachable from this session; values from distributor copy of APC datasheet. Replacement battery APCRBC140.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Eaton",
@@ -726,18 +766,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "5PX G2: USB + RS232 DB9 + 1 Mini-slot (Network-M2 optional; Netpack variants include it) + RPO/ROO + relay output.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -767,7 +810,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "eaton.com not reachable; distributor spec page. Net weight also given as 22.5 kg on same page. Supports up to 4 EBMs."
+  "notes": "eaton.com not reachable; distributor spec page. Net weight also given as 22.5 kg on same page. Supports up to 4 EBMs.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Eaton",
@@ -796,18 +840,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "5PX G2: USB + RS232 DB9 + 1 Mini-slot (Network-M2 optional; Netpack variants include it) + RPO/ROO + relay output.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -837,7 +884,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "eaton.com not reachable; Bechtle distributor datasheet. Battery 6x 12V 9Ah (Wh not stated)."
+  "notes": "eaton.com not reachable; Bechtle distributor datasheet. Battery 6x 12V 9Ah (Wh not stated).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Eaton",
@@ -866,18 +914,21 @@
   "heat_btu_h": 614,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "9PX: USB + RS232 DB9 + 1 Mini-slot (Network-M2 optional) + RPO/ROO + relay contacts.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -907,7 +958,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Battery 6x 12V 9Ah VRLA, hot-swappable; up to 4 EBMs. Heat 614 BTU/h in online mode."
+  "notes": "Battery 6x 12V 9Ah VRLA, hot-swappable; up to 4 EBMs. Heat 614 BTU/h in online mode.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Eaton",
@@ -936,18 +988,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "9PX: USB + RS232 DB9 + 1 Mini-slot (Network-M2 optional) + RPO/ROO + relay contacts.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -977,7 +1032,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "eaton.com not reachable; SHI reseller listing. Listing gives height 440 / width 130 / depth 685 mm - height and width evidently swapped for a 3U unit, recorded as w440 x h130. Newer G2 variants (9PX6KIRTNG2) differ."
+  "notes": "eaton.com not reachable; SHI reseller listing. Listing gives height 440 / width 130 / depth 685 mm - height and width evidently swapped for a 3U unit, recorded as w440 x h130. Newer G2 variants (9PX6KIRTNG2) differ.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Vertiv",
@@ -1006,18 +1062,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "GXT5: USB + RS-232 (CLI) + 1 IntelliSlot (RDU101 optional; 'N' SKU includes it) + dry contacts + REPO + CAN (EBC).",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 1
   },
   "poe": {
    "ports": null,
@@ -1044,10 +1103,11 @@
    "outlets": "7 outlets total, C13 and C19 (split not stated)"
   },
   "source": "https://shop.aodatacloud.es/wp-content/uploads/datasheet_gxt5-3000irt2uxln.pdf",
-  "source2": null,
+  "source2": "https://www.manualslib.mx/manual/747599/Vertiv-Liebert-Gxt5.html",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "vertiv.com not reachable; distributor copy of datasheet for GXT5-3000IRT2UXLN (network-card variant of same unit). Battery 6x 12V 9Ah VRLA."
+  "notes": "vertiv.com not reachable; distributor copy of datasheet for GXT5-3000IRT2UXLN (network-card variant of same unit). Battery 6x 12V 9Ah VRLA.",
+  "ports_checked": "high"
  },
  {
   "brand": "APC",
@@ -1076,18 +1136,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Switched Rack PDU (B model): 1x RJ45 10/100 network mgmt + 1x RJ12 serial (console). No USB.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -1111,7 +1174,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Outlets: 8x IEC C13. Max load 2300 VA. Bechtle distributor copy of APC datasheet (apc.com unreachable)."
+  "notes": "Outlets: 8x IEC C13. Max load 2300 VA. Bechtle distributor copy of APC datasheet (apc.com unreachable).",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -1140,18 +1204,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "Switched Rack PDU (B model): 1x RJ45 10/100 network mgmt + 1x RJ12 serial (console). No USB.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -1175,7 +1242,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Outlets: 8x IEC C13. Load capacity 3680 VA. Cord 2.5 m. Bechtle distributor copy of APC datasheet."
+  "notes": "Outlets: 8x IEC C13. Load capacity 3680 VA. Cord 2.5 m. Bechtle distributor copy of APC datasheet.",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -1204,18 +1272,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "Switched Rack PDU 2G: 1x RJ45 10/100 network + 1x serial (RJ12) + USB-A (firmware) + temp/humidity sensor port + In/Out link ports (daisy-chain, not counted).",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -1239,7 +1310,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Outlets: 21x IEC C13, 3x IEC C19. AP7953 (older 1st-gen equivalent) not found; AP8953 used. Reseller lists 2040x165x124 mm / 7.59 kg without labels - appears to be shipping size, so dims/weight left null."
+  "notes": "Outlets: 21x IEC C13, 3x IEC C19. AP7953 (older 1st-gen equivalent) not found; AP8953 used. Reseller lists 2040x165x124 mm / 7.59 kg without labels - appears to be shipping size, so dims/weight left null.",
+  "ports_checked": "medium"
  },
  {
   "brand": "APC",
@@ -1268,18 +1340,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Basic (unmanaged) PDU: no communication ports.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -1303,7 +1378,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Outlets: 15x IEC C13. Max load 2.3 kVA. Reseller page (apc.com unreachable). Vertical 610 mm long (stored as h)."
+  "notes": "Outlets: 15x IEC C13. Max load 2.3 kVA. Reseller page (apc.com unreachable). Vertical 610 mm long (stored as h).",
+  "ports_checked": "high"
  },
  {
   "brand": "APC",
@@ -1332,18 +1408,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Basic (unmanaged) PDU: no communication ports.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -1367,7 +1446,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Outlets: 8x IEC C13. Load capacity 3680 VA (3.7 kW). Schneider eshop page lists only depth/height 44.4 mm, no width."
+  "notes": "Outlets: 8x IEC C13. Load capacity 3680 VA (3.7 kW). Schneider eshop page lists only depth/height 44.4 mm, no width.",
+  "ports_checked": "high"
  },
  {
   "brand": "Eaton",
@@ -1396,18 +1476,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Basic (unmanaged) PDU: no communication ports.",
+   "hdmi": 0,
+   "vga": 0,
+   "nmc_slot": 0
   },
   "poe": {
    "ports": null,
@@ -1431,7 +1514,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Outlets: 16x C13, 4x C19 (20 total). Max load 4.99 kW. Eaton page states 431.8 mm length, 129.5 mm width, 43.2 mm height (as written); weight value on page is invalid (0.0001 lb), left null. North-American plug; an EU 16A C20 variant was not found on eaton.com."
+  "notes": "Outlets: 16x C13, 4x C19 (20 total). Max load 4.99 kW. Eaton page states 431.8 mm length, 129.5 mm width, 43.2 mm height (as written); weight value on page is invalid (0.0001 lb), left null. North-American plug; an EU 16A C20 variant was not found on eaton.com.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dell",
@@ -1458,18 +1542,21 @@
   "heat_btu_h": 1871,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 3,
+   "notes": "Dell spec (via reseller copy): 2x1GbE LOM; rear iDRAC RJ45, VGA, serial, USB2.0+USB3.0; front USB2.0 + iDRAC Direct micro-AB (not counted). Copy lists '2x serial' - treated as 1 (likely typo).",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1490,10 +1577,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://dl.dell.com/topicspdf/poweredge-r250_owners-manual4_en-us.pdf",
-  "source2": null,
+  "source2": "https://www.xbyte.com/hw/dell/servers/rack/dell-poweredge-r250.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Width 482 mm with rack ears (434 mm chassis). Depth 563 mm = Zc (ear to PSU surface 534.59 mm). PSU: 1x 450W cabled (Bronze or Platinum), non-redundant; power.max_w = PSU rating, not measured draw. Max heat 1871 BTU/h (Bronze) / 1725 (Platinum). u=1 from 42.8 mm chassis height (manual does not print 'U')."
+  "notes": "Width 482 mm with rack ears (434 mm chassis). Depth 563 mm = Zc (ear to PSU surface 534.59 mm). PSU: 1x 450W cabled (Bronze or Platinum), non-redundant; power.max_w = PSU rating, not measured draw. Max heat 1871 BTU/h (Bronze) / 1725 (Platinum). u=1 from 42.8 mm chassis height (manual does not print 'U').",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -1520,18 +1608,21 @@
   "heat_btu_h": 2250,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 3,
+   "notes": "Dell spec (reseller copy): 2x1GbE LOM; rear iDRAC RJ45, VGA, serial, USB2.0+USB3.0; front USB2.0 + iDRAC Direct micro-AB (not counted); internal USB3.0 optional (not counted).",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1552,10 +1643,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://edshop.edsystem.cz/fileshare/products/datasheet/del/r350-ts-ism-pub-en-us(577379).pdf",
-  "source2": null,
+  "source2": "https://www.stikc.com/pages/refurbished-dell-servers/poweredge-r350",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dell Technical Specifications document (hosted by distributor). Depth: 4x3.5in config ear to PSU handle 563.3 mm (8x2.5in: 512.53 mm). Weight 13.14 kg max (4x3.5in), 11.74 kg (8x2.5in). PSU: up to 2x 600W Platinum; power.max_w = PSU rating. Max heat 2250 BTU/h per PSU."
+  "notes": "Dell Technical Specifications document (hosted by distributor). Depth: 4x3.5in config ear to PSU handle 563.3 mm (8x2.5in: 512.53 mm). Weight 13.14 kg max (4x3.5in), 11.74 kg (8x2.5in). PSU: up to 2x 600W Platinum; power.max_w = PSU rating. Max heat 2250 BTU/h per PSU.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -1582,18 +1674,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x1GbE LOM + optional OCP 3.0; rear iDRAC RJ45, VGA, USB2.0+USB3.0, serial optional (0); front USB2.0, VGA, iDRAC Direct micro-USB (not counted).",
+   "hdmi": 0,
+   "vga": 2,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1614,10 +1709,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://dl.dell.com/topicspdf/poweredge-r650_Owners-Manual2_en-us.pdf",
-  "source2": null,
+  "source2": "https://www.stikc.com/pages/refurbished-dell-servers/poweredge-r650",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Depth ear to PSU handle 787.05 mm (4/10-drive), 736.27 mm (8-drive). Weight 21.2 kg max (4x3.5in). PSU options 800W Pt, 1100W Ti, 1100W -48VDC, 1400W Pt, 1800W Ti; up to 2 (redundant); power.max_w = largest PSU option rating. Fans front-to-rear not explicitly stated, airflow left null."
+  "notes": "Depth ear to PSU handle 787.05 mm (4/10-drive), 736.27 mm (8-drive). Weight 21.2 kg max (4x3.5in). PSU options 800W Pt, 1100W Ti, 1100W -48VDC, 1400W Pt, 1800W Ti; up to 2 (redundant); power.max_w = largest PSU option rating. Fans front-to-rear not explicitly stated, airflow left null.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -1644,18 +1740,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "LOM 2x1GbE is optional (assumed default) and/or OCP 3.0; rear iDRAC RJ45, VGA, USB2.0+USB3.0, serial optional (0); front USB2.0, VGA, iDRAC Direct micro-AB (not counted).",
+   "hdmi": 0,
+   "vga": 2,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1676,10 +1775,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.delltechnologies.com/asset/fr-fr/products/servers/technical-support/poweredge-r660-spec-sheet.pdf",
-  "source2": null,
+  "source2": "https://www.stikc.com/pages/refurbished-dell-servers/poweredge-r660",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Depth 822.88 mm with bezel (809.04 without). Weight not in spec sheet. PSU options 700W Ti, 800W Pt, 1100W Ti, 1100W -48VDC, 1400W Pt, 1800W Ti; hot-swap fully redundant (PSU count 2 per Dell R660 platform, spec sheet does not print the count); power.max_w = largest PSU option rating."
+  "notes": "Depth 822.88 mm with bezel (809.04 without). Weight not in spec sheet. PSU options 700W Ti, 800W Pt, 1100W Ti, 1100W -48VDC, 1400W Pt, 1800W Ti; hot-swap fully redundant (PSU count 2 per Dell R660 platform, spec sheet does not print the count); power.max_w = largest PSU option rating.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -1706,18 +1806,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "2x1GbE LOM + optional OCP 3.0; rear iDRAC RJ45, VGA, USB2.0+USB3.0, serial optional (0); front USB2.0, VGA, iDRAC Direct micro-USB (not counted).",
+   "hdmi": 0,
+   "vga": 2,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1741,7 +1844,8 @@
   "source2": "https://dl.dell.com/topicspdf/poweredge-r750_Owners-Manual_en-us.pdf",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Reseller page (Dell spec sheet not reachable); PSU count/redundancy from Dell R750 owner's manual ('two redundant AC or mixed mode PSUs'). Depth 772.14 mm with bezel (758.3 without). PSU options 800W Pt, 1100W Ti, 1400W Pt, 2400W Pt; power.max_w = largest PSU option rating. Up to 6 hot-plug fans."
+  "notes": "Reseller page (Dell spec sheet not reachable); PSU count/redundancy from Dell R750 owner's manual ('two redundant AC or mixed mode PSUs'). Depth 772.14 mm with bezel (758.3 without). PSU options 800W Pt, 1100W Ti, 1400W Pt, 2400W Pt; power.max_w = largest PSU option rating. Up to 6 hot-plug fans.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -1768,18 +1872,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "LOM 2x1GbE optional (assumed default) and/or OCP 3.0; rear iDRAC RJ45, VGA, USB2.0+USB3.0, serial optional (0); front USB2.0, VGA, iDRAC Direct micro-AB (not counted).",
+   "hdmi": 0,
+   "vga": 2,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1800,10 +1907,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.delltechnologies.com/asset/fr-ca/products/servers/technical-support/poweredge-r760-spec-sheet.pdf",
-  "source2": null,
+  "source2": "https://www.stikc.com/pages/refurbished-dell-servers/poweredge-r760",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Depth 772.13 mm with bezel (758.29 without). Weight not in spec sheet. PSU options 700W Ti to 3200W Ti (277VAC), incl. 800/1100/1400/1800/2400/2800W; hot-swap redundant (spec sheet does not print count; 2 bays); power.max_w = largest PSU option rating. Up to 6 hot-swap fans."
+  "notes": "Depth 772.13 mm with bezel (758.29 without). Weight not in spec sheet. PSU options 700W Ti to 3200W Ti (277VAC), incl. 800/1100/1400/1800/2400/2800W; hot-swap redundant (spec sheet does not print count; 2 bays); power.max_w = largest PSU option rating. Up to 6 hot-swap fans.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -1830,18 +1938,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 7,
+   "notes": "2x1GbE LOM; rear iDRAC RJ45, VGA, serial, 5x USB2.0 + 1x USB3.0; front USB3.0 + iDRAC Direct micro-AB (not counted).",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1862,10 +1973,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://i.dell.com/sites/csdocuments/Product_Docs/fr/cd/dell-emc-poweredge-t350-technical-guide-fr.pdf",
-  "source2": null,
+  "source2": "https://www.stikc.com/pages/refurbished-dell-servers/poweredge-t350",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dell technical guide (French). Height 369.5 mm (382.5 with feet); depth 562.12 mm with bezel. Weight 25.34 kg max (8x3.5in), 19.54 kg (4x3.5in). PSU: 1x 450W Bronze cabled (entry) or 2x 600W Platinum hot-plug redundant; power.max_w = PSU rating. Single fan (no fan redundancy). Tower, not rack-mounted (u=0)."
+  "notes": "Dell technical guide (French). Height 369.5 mm (382.5 with feet); depth 562.12 mm with bezel. Weight 25.34 kg max (8x3.5in), 19.54 kg (4x3.5in). PSU: 1x 450W Bronze cabled (entry) or 2x 600W Platinum hot-plug redundant; power.max_w = PSU rating. Single fan (no fan redundancy). Tower, not rack-mounted (u=0).",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE",
@@ -1892,18 +2004,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "Embedded BCM5720 2x1GbE; dedicated 1Gb iLO RJ45 (QuickSpecs inconsistent std/optional). Rear 2x USB3.2 + VGA; front USB3.2 + iLO service USB2.0 (not counted); serial optional (0).",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1927,7 +2042,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "HPE QuickSpecs (retired). Weight 10 kg fully loaded hot-plug 2LFF/4SFF (6.0 kg non-hot-plug 2LFF). PSU options: 290W non-hot-plug non-redundant (2LFF std), 500W Flex Slot Platinum, 800W Flex Slot Titanium, 800W -48VDC; redundancy needs 2 Flex Slot PSUs + RPS enablement kit P45948-B21. power.max_w = largest PSU rating. 3 non-hot-plug fans."
+  "notes": "HPE QuickSpecs (retired). Weight 10 kg fully loaded hot-plug 2LFF/4SFF (6.0 kg non-hot-plug 2LFF). PSU options: 290W non-hot-plug non-redundant (2LFF std), 500W Flex Slot Platinum, 800W Flex Slot Titanium, 800W -48VDC; redundancy needs 2 Flex Slot PSUs + RPS enablement kit P45948-B21. power.max_w = largest PSU rating. 3 non-hot-plug fans.",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE",
@@ -1954,18 +2070,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "No embedded LOM; default config OCP 'BCM5719 1Gb 4p BASE-T' assumed. Rear dedicated iLO RJ45, VGA, 2x USB3.2; front 1x USB3.2 + iLO service port (not counted); serial/DisplayPort optional.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1989,7 +2108,8 @@
   "source2": "https://support.hpe.com/hpesc/public/api/document/a50004306enw",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Dims/weight from SHI reseller listing for one 8SFF config (HPE QuickSpecs text available to this session lacked the system-unit section). PSU options per HPE QuickSpecs a50004306enw: 500W Pt, 800W Pt/Ti, 1000W Ti, 1600W -48VDC, 1600W Pt, 1800-2200W Ti; 2 bays, redundant. power.max_w = largest PSU option rating. Up to 7 fans with redundancy."
+  "notes": "Dims/weight from SHI reseller listing for one 8SFF config (HPE QuickSpecs text available to this session lacked the system-unit section). PSU options per HPE QuickSpecs a50004306enw: 500W Pt, 800W Pt/Ti, 1000W Ti, 1600W -48VDC, 1600W Pt, 1800-2200W Ti; 2 bays, redundant. power.max_w = largest PSU option rating. Up to 7 fans with redundancy.",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE",
@@ -2016,18 +2136,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_100m": 0,
+   "rj45_1g": 4,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 3,
+   "notes": "No embedded LOM ('No embedded networking'); OCP/stand-up required - assumed BCM5719 4x1GbE OCP like DL360 Gen11 default. Rear dedicated iLO RJ45, VGA, 2x USB3.2; front 1x USB3.2; serial/DisplayPort optional.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -2051,7 +2174,8 @@
   "source2": "https://cdn.iceshop.nl/objects/mmo_122358792_1780593134_3707_3685987.pdf",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Dims/weight from SHI reseller listing (P81784-425 config). PSU: min 1, max 2 Flex Slot, options 800W to 2200W per HPE QuickSpecs; 1+1 redundant. power.max_w = largest PSU option rating."
+  "notes": "Dims/weight from SHI reseller listing (P81784-425 config). PSU: min 1, max 2 Flex Slot, options 800W to 2200W per HPE QuickSpecs; 1+1 redundant. power.max_w = largest PSU option rating.",
+  "ports_checked": "low"
  },
  {
   "brand": "ZTE",
@@ -2081,18 +2205,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 1,
-   "notes": "1x WAN/LAN + 3x LAN GE; 2x RJ11 FXS (VoLTE/CSFB/VoIP); 1x SIM 2FF; 2x SMA external antenna; USB for factory test only. LTE Cat6 300/50 Mbps, FDD B1/3/7/8/20/28, TDD B38"
+   "notes": "1x WAN/LAN + 3x LAN GE; 2x RJ11 FXS (VoLTE/CSFB/VoIP); 1x SIM 2FF; 2x SMA external antenna; USB for factory test only. LTE Cat6 300/50 Mbps, FDD B1/3/7/8/20/28, TDD B38 | USB per existing source; no console.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -2126,7 +2252,8 @@
   "source2": "https://forum.donanimhaber.com/zte-superbox-mf286r-4-port-300-mbps-4-5g-tasinabilir-modem--161327449",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Datasheet (Conrad copy of ZTE sheet, MF286R1) gives 180x170x30 mm as HxWxD: stored w=170, d=30, h=180 (upright desktop unit). Power adapter/consumption/weight not stated. SuperBox is Turkcell's (Türkiye; also KKTCell N. Cyprus) SIM-based 4.5G home-internet product, not an Azerbaijani operator; MF286R is one hardware model sold under that name (Turkish forum listings). Newer 5G/Wi-Fi 7 Superbox (Dec 2025-2026) is made by ZTE/Netaş, model number not published."
+  "notes": "Datasheet (Conrad copy of ZTE sheet, MF286R1) gives 180x170x30 mm as HxWxD: stored w=170, d=30, h=180 (upright desktop unit). Power adapter/consumption/weight not stated. SuperBox is Turkcell's (Türkiye; also KKTCell N. Cyprus) SIM-based 4.5G home-internet product, not an Azerbaijani operator; MF286R is one hardware model sold under that name (Turkish forum listings). Newer 5G/Wi-Fi 7 Superbox (Dec 2025-2026) is made by ZTE/Netaş, model number not published.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Synology",
@@ -2155,18 +2282,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "1x eSATA (RX418 expansion), 1x PCIe Gen3 x8 slot (x4 link)"
+   "notes": "1x eSATA (RX418 expansion), 1x PCIe Gen3 x8 slot (x4 link) | Kept existing: 4x1GbE, 2x USB; no HDMI/mgmt.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -2190,7 +2320,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "4-bay 1U. Typical = 47.69 W access (16.7 W HDD hibernation). PSU 150W single (RP+ variant is redundant); power.max_w = PSU rating. Source: NASCompares reproduction of Synology spec table (synology.com page not reached)."
+  "notes": "4-bay 1U. Typical = 47.69 W access (16.7 W HDD hibernation). PSU 150W single (RP+ variant is redundant); power.max_w = PSU rating. Source: NASCompares reproduction of Synology spec table (synology.com page not reached).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Synology",
@@ -2219,18 +2350,21 @@
   "heat_btu_h": 170,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "1x eSATA (RX418), 1x PCIe Gen3 x8 slot (x4 link); 10GbE via optional card"
+   "notes": "1x eSATA (RX418), 1x PCIe Gen3 x8 slot (x4 link); 10GbE via optional card | Kept existing: 4x1GbE, 2x USB; 10GbE via optional PCIe card.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -2254,7 +2388,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "8-bay 2U. Typical = 49.89 W access (22.64 W HDD hibernation); heat 170.23 BTU/h access. PSU 250W; power.max_w = PSU rating. Supports 2-post direct mount."
+  "notes": "8-bay 2U. Typical = 49.89 W access (22.64 W HDD hibernation); heat 170.23 BTU/h access. PSU 250W; power.max_w = PSU rating. Supports 2-post direct mount.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Synology",
@@ -2283,18 +2418,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
+   "rj45_mgig": 0,
    "rj45_10g": 1,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "1x PCIe 3.0 x8 slot (x4 link). CDW also lists a management port"
+   "notes": "1x PCIe 3.0 x8 slot (x4 link). CDW also lists a management port | 2x1GbE + 1x10GbE RJ45, 2x USB3.2 Gen1; no management port listed (CDW mention not confirmed).",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -2315,10 +2453,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://cdw.ca/product/synology-rackstation-rs2423-nas-server/7393771",
-  "source2": null,
+  "source2": "https://www.pbtech.co.nz/product/NASSYN24231/Synology-RackStation-RS2423-2U-Rack-12-Bay-NAS-Ser",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "12-bay 2U, AMD Ryzen V1780B. Typical = 119.95 W operational (CDW). Single fixed 500W PSU (RP+ variant redundant); power.max_w = PSU rating. Reseller page."
+  "notes": "12-bay 2U, AMD Ryzen V1780B. Typical = 119.95 W operational (CDW). Single fixed 500W PSU (RP+ variant redundant); power.max_w = PSU rating. Reseller page.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Synology",
@@ -2347,18 +2486,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "1x eSATA (DX517), 1x PCIe Gen3 x2 network upgrade slot (E10G22-T1-Mini 10GbE), 2x M.2 2280 NVMe"
+   "notes": "1x eSATA (DX517), 1x PCIe Gen3 x2 network upgrade slot (E10G22-T1-Mini 10GbE), 2x M.2 2280 NVMe | Kept existing: 2x1GbE, 2x USB; 10GbE via E10G22-T1-Mini slot.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -2382,7 +2524,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "4-bay desktop (up to 9 with DX517). Typical = 35.51 W access (11.52 W hibernation). 100W adapter; power.max_w = adapter rating. Retailer page."
+  "notes": "4-bay desktop (up to 9 with DX517). Typical = 35.51 W access (11.52 W hibernation). 100W adapter; power.max_w = adapter rating. Retailer page.",
+  "ports_checked": "medium"
  },
  {
   "brand": "QNAP",
@@ -2411,18 +2554,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 4,
-   "notes": "2x 2.5GbE; USB: 1x 3.2 Gen1 A, 1x 3.2 Gen2 A, 2x 3.2 Gen2 C; 2x PCIe Gen3 x4 (pre-2021 units 1x Gen3 x8)"
+   "notes": "2x 2.5GbE; USB: 1x 3.2 Gen1 A, 1x 3.2 Gen2 A, 2x 3.2 Gen2 C; 2x PCIe Gen3 x4 (pre-2021 units 1x Gen3 x8) | 2x 2.5GbE; 4x USB (1x3.2G1 A, 1x3.2G2 A, 2x3.2G2 C); HDMI only via optional PCIe GPU.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -2443,10 +2589,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.qnap.com/da-dk/product/ts-873au-rp/specs",
-  "source2": null,
+  "source2": "https://www.qnap.com/en/product/ts-873au-rp/specs/hardware",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "8-bay 2U. Dims exclude ears and PSU protrusion. Typical = 61.25 W operating (36.08 W disk standby). 2x 300W redundant PSU; power.max_w = single PSU rating."
+  "notes": "8-bay 2U. Dims exclude ears and PSU protrusion. Typical = 61.25 W operating (36.08 W disk standby). 2x 300W redundant PSU; power.max_w = single PSU rating.",
+  "ports_checked": "high"
  },
  {
   "brand": "HUAWEI",
@@ -2478,18 +2625,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "1x WAN/LAN + 3x LAN GE; 2x external 4G antenna ports"
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x WAN/LAN + 3x LAN GE; 2x external 4G antenna ports | No USB or console (consumer LTE CPE); 4x GE incl. 1 WAN/LAN.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -2523,7 +2672,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official page gives 219x138x25.6 mm (stored w219 h138 d25.6 as upright unit - orientation not labelled). Power consumption <12 W (stored as max_w). LTE category not stated on spec page (300 Mbps per retailers). Weight not stated. Turkish forums refer to it as 'Huawei Superbox B535'."
+  "notes": "Official page gives 219x138x25.6 mm (stored w219 h138 d25.6 as upright unit - orientation not labelled). Power consumption <12 W (stored as max_w). LTE category not stated on spec page (300 Mbps per retailers). Weight not stated. Turkish forums refer to it as 'Huawei Superbox B535'.",
+  "ports_checked": "medium"
  },
  {
   "brand": "HUAWEI",
@@ -2552,18 +2702,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "1x LAN/WAN + 1x LAN GE; 1x RJ11 phone. 5G SA DL up to 3.6 Gbps (2CC), NSA 1.8 Gbps; LTE 1.6 Gbps"
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x LAN/WAN + 1x LAN GE; 1x RJ11 phone. 5G SA DL up to 3.6 Gbps (2CC), NSA 1.8 Gbps; LTE 1.6 Gbps | No USB or console; 2x GE + 1x RJ11.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -2597,7 +2749,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Huawei Product Description Issue 04 (2020-03-30), hosted by retailer inet.se. Tapered body: 90 mm top / 96.6 mm bottom x 178 mm height. Weight 540 g without adapter. Power <24 W (stored as max_w)."
+  "notes": "Huawei Product Description Issue 04 (2020-03-30), hosted by retailer inet.se. Tapered body: 90 mm top / 96.6 mm bottom x 178 mm height. Weight 540 g without adapter. Power <24 W (stored as max_w).",
+  "ports_checked": "medium"
  },
  {
   "brand": "ZTE",
@@ -2626,18 +2779,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "2x GE RJ45 (one can be WAN per dateks I/O list). LTE DL up to 2 Gbps / UL 150 Mbps (Cat20). External antenna connectors TS-9 (shopro.lt)"
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "2x GE RJ45 (one can be WAN per dateks I/O list). LTE DL up to 2 Gbps / UL 150 Mbps (Cat20). External antenna connectors TS-9 (shopro.lt) | No USB or console; 2x GE.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -2671,7 +2826,8 @@
   "source2": "https://www.shopro.lt/98079-zte-mf289f-cellular-network-device-cellular-network-router-en",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "No ZTE official datasheet found; retailer listings only and they conflict (alternate box size 220x200x100 mm; weight 198 g vs 0.92 kg) - weight left null. Dims 191.2 H x 132 W x 78 D mm per shopro.lt."
+  "notes": "No ZTE official datasheet found; retailer listings only and they conflict (alternate box size 220x200x100 mm; weight 198 g vs 0.92 kg) - weight left null. Dims 191.2 H x 132 W x 78 D mm per shopro.lt.",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2700,18 +2856,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "1x WAN/LAN + 3x LAN GE; 2x detachable external LTE antennas. LTE Cat6 300/50 Mbps"
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1x WAN/LAN + 3x LAN GE; 2x detachable external LTE antennas. LTE Cat6 300/50 Mbps | No USB or console; 4x GE incl. 1 WAN/LAN.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -2745,7 +2903,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "TP-Link datasheet for hardware v2.0 (EU). Dimensions given as 202x141x33.6 mm (W x D x H). Weight not stated."
+  "notes": "TP-Link datasheet for hardware v2.0 (EU). Dimensions given as 202x141x33.6 mm (W x D x H). Weight not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "HUAWEI",
@@ -2774,18 +2933,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 1,
-   "notes": "1x GPON (Class B+, 1310/1490 nm, -27 dBm sens.); 2x POTS RJ11; USB 2.0"
+   "notes": "1x GPON (Class B+, 1310/1490 nm, -27 dBm sens.); 2x POTS RJ11; USB 2.0 | 1x USB 2.0; no console; GPON port not counted; 2x POTS.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -2819,7 +2980,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Huawei carrier datasheet (Chinese). Dimensions 176x138.5x28 mm (axis order not labelled). Weight stated only as <1 kg - left null. Typical 5.5 W static."
+  "notes": "Huawei carrier datasheet (Chinese). Dimensions 176x138.5x28 mm (axis order not labelled). Weight stated only as <1 kg - left null. Typical 5.5 W static.",
+  "ports_checked": "medium"
  },
  {
   "brand": "HUAWEI",
@@ -2849,18 +3011,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 1,
-   "notes": "1x GPON Class B+; 1x POTS; USB 2.0"
+   "notes": "1x GPON Class B+; 1x POTS; USB 2.0 | 1x USB 2.0; no console; GPON port not counted; 1x POTS.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -2894,7 +3058,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Datasheet (ALSO distributor copy) is for enterprise EG8145V5; HG8145V5 is the operator-branded same-platform model and is not documented separately - treat specs as applying by equivalence. Mount: desktop or wall. Dims exclude antennas/pads; 5.3 W static (stored as typ_w)."
+  "notes": "Datasheet (ALSO distributor copy) is for enterprise EG8145V5; HG8145V5 is the operator-branded same-platform model and is not documented separately - treat specs as applying by equivalence. Mount: desktop or wall. Dims exclude antennas/pads; 5.3 W static (stored as typ_w).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -2925,17 +3090,19 @@
   "airflow": null,
   "ports": {
    "rj45_100m": 8,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "8x 10/100 PoE + 2x RJ45 uplink (uplink speed not stated on source)"
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "8x 10/100 PoE + 2x RJ45 uplink (uplink speed not stated on source) | 8x 10/100 PoE + 2x Gigabit RJ45 uplink; unmanaged, no console/USB.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 8,
@@ -2956,10 +3123,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.shopro.lt/584410-switch-hikvision-ds-3e0310p-e-m-b-en",
-  "source2": null,
+  "source2": "https://en.ivel.pl/p27800,10-port-switch-ds-3e0310p-em-hikvision-for-8-ip-cameras.html",
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Retailer page for (B) hardware revision; hikvision.com datasheet not reached. typ_w = 5 W idle. Page also lists forwarding 41.66 Mpps (implausible for 2 Gbps fabric, left null) and an alternate box size 260x90x140 mm. PoE standard not stated. Tabletop or wall mount."
+  "notes": "Retailer page for (B) hardware revision; hikvision.com datasheet not reached. typ_w = 5 W idle. Page also lists forwarding 41.66 Mpps (implausible for 2 Gbps fabric, left null) and an alternate box size 260x90x140 mm. PoE standard not stated. Tabletop or wall mount.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -2989,17 +3157,19 @@
   "airflow": null,
   "ports": {
    "rj45_100m": 24,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "2x gigabit combo uplinks (RJ45/SFP)"
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "2x gigabit combo uplinks (RJ45/SFP) | 24x 100M PoE + 2x gigabit combo (RJ45/SFP) counted as RJ45. Console not stated in datasheet (assumed none).",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -3023,7 +3193,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Hikvision datasheet. PoE 802.3af/at, max 30 W per port. Rack U not printed; u=1 from 44 mm height and 440 mm width (rack-mountable 19in)."
+  "notes": "Hikvision datasheet. PoE 802.3af/at, max 30 W per port. Rack U not printed; u=1 from 44 mm height and 440 mm width (rack-mountable 19in).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -3053,17 +3224,19 @@
   "airflow": null,
   "ports": {
    "rj45_100m": 1,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "10/100 Ethernet"
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "10/100 Ethernet | Door-station main unit: 1x 10/100 RJ45; no USB/console.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -3090,7 +3263,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Reseller page (hikvision.com datasheet not reached). Dims 98 x 99.8 x 43.9 mm (stored w98 h99.8 d43.9). Weight 0.83 lb = 0.38 kg. IP65. 2MP fisheye camera, FOV not stated. Max power 4 W."
+  "notes": "Reseller page (hikvision.com datasheet not reached). Dims 98 x 99.8 x 43.9 mm (stored w98 h99.8 d43.9). Weight 0.83 lb = 0.38 kg. IP65. 2MP fisheye camera, FOV not stated. Max power 4 W.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Grandstream",
@@ -3119,18 +3293,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 1,
-   "notes": "2x 10/100/1000 switched; RJ9 headset with EHS; 6 SIP accounts"
+   "notes": "2x 10/100/1000 switched; RJ9 headset with EHS; 6 SIP accounts | 2x GE switched; 1x USB; no console.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -3157,7 +3333,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Grandstream datasheet (reseller-hosted copy). PoE max 5.4 W without expansion modules, 9.2 W with 4x GXP2200EXT (stored as power.max_w)."
+  "notes": "Grandstream datasheet (reseller-hosted copy). PoE max 5.4 W without expansion modules, 9.2 W with 4x GXP2200EXT (stored as power.max_w).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Yealink",
@@ -3186,18 +3363,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 1,
-   "notes": "USB 2.0 (headset / flash / up to 3 EXP50)"
+   "notes": "USB 2.0 (headset / flash / up to 3 EXP50) | 2x GE; 1x USB 2.0; no console.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": null,
@@ -3234,6 +3413,7 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Retailer page reproducing Yealink spec. Dimensions printed as 233 x 222.6 x 186.1 x 41.7 mm (W x D x H at two stand angles x thickness); stored w233, d186.1, h222.6 - verify. Weight not stated. Bluetooth 4.2."
+  "notes": "Retailer page reproducing Yealink spec. Dimensions printed as 233 x 222.6 x 186.1 x 41.7 mm (W x D x H at two stand angles x thickness); stored w233, d186.1, h222.6 - verify. Weight not stated. Bluetooth 4.2.",
+  "ports_checked": "medium"
  }
 ]

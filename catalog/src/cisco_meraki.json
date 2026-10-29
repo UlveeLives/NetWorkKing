@@ -36,9 +36,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. "
+   "console": 2,
+   "usb": 1,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port.  | RJ45 console + USB mini-B console; 1x USB Type-A storage port (front); RJ45 Ethernet mgmt port not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -59,10 +61,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
-  "source2": null,
+  "source2": "https://www.xsnet.com.au/cdn/shop/files/b-c9200-hig.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 370W with default primary PSU PWR-C5-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 370W with default primary PSU PWR-C5-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -101,9 +104,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. "
+   "console": 2,
+   "usb": 1,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port.  | RJ45 console + USB mini-B console; 1x USB Type-A storage port (front); RJ45 Ethernet mgmt port not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -124,10 +129,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
-  "source2": null,
+  "source2": "https://www.xsnet.com.au/cdn/shop/files/b-c9200-hig.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 740W with default primary PSU PWR-C5-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 740W with default primary PSU PWR-C5-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -166,9 +172,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. "
+   "console": 2,
+   "usb": 1,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port.  | RJ45 console + USB mini-B console; 1x USB Type-A storage port (front); RJ45 Ethernet mgmt port not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -189,10 +197,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
-  "source2": null,
+  "source2": "https://www.xsnet.com.au/cdn/shop/files/b-c9200-hig.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 370W with default primary PSU PWR-C5-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 370W with default primary PSU PWR-C5-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -231,9 +240,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. "
+   "console": 2,
+   "usb": 1,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port.  | RJ45 console + USB mini-B console; 1x USB Type-A storage port (front); RJ45 Ethernet mgmt port not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -254,10 +265,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
-  "source2": null,
+  "source2": "https://www.xsnet.com.au/cdn/shop/files/b-c9200-hig.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 740W with default primary PSU PWR-C5-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 740W with default primary PSU PWR-C5-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: fixed redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -296,9 +308,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. Uplinks via network module C9200-NM-4G (4x1G) or C9200-NM-4X (4x1/10G), not included in port counts."
+   "console": 2,
+   "usb": 1,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. Uplinks via network module C9200-NM-4G (4x1G) or C9200-NM-4X (4x1/10G), not included in port counts. | RJ45 console + USB mini-B console; 1x USB Type-A storage port (front); RJ45 Ethernet mgmt port not counted. Uplinks via optional network module, not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -319,10 +333,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
-  "source2": null,
+  "source2": "https://www.xsnet.com.au/cdn/shop/files/b-c9200-hig.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 370W with default primary PSU PWR-C6-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: FRU redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 370W with default primary PSU PWR-C6-600WAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: FRU redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -361,9 +376,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. Uplinks via network module C9200-NM-4G (4x1G) or C9200-NM-4X (4x1/10G), not included in port counts."
+   "console": 2,
+   "usb": 1,
+   "notes": "Console RJ-45 or mini-USB; RJ-45 Ethernet mgmt port. Uplinks via network module C9200-NM-4G (4x1G) or C9200-NM-4X (4x1/10G), not included in port counts. | RJ45 console + USB mini-B console; 1x USB Type-A storage port (front); RJ45 Ethernet mgmt port not counted. Uplinks via optional network module, not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -384,10 +401,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.html",
-  "source2": null,
+  "source2": "https://www.xsnet.com.au/cdn/shop/files/b-c9200-hig.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 740W with default primary PSU PWR-C6-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: FRU redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 740W with default primary PSU PWR-C6-1KWAC (doubles with a second PSU per Table 4). Depth is chassis only. Fans: FRU redundant. Airflow/power draw not stated. Two PSU bays (secondary optional). u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -426,9 +444,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts. "
+   "console": 2,
+   "usb": 1,
+   "notes": "Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts.  | RJ45 console + USB mini-B console; 1x front USB Type-A; rear USB 3.0 SSD module slot not counted; RJ45 mgmt port not counted. Uplinks via C9300 network module, not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -452,7 +472,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 445W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 445W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -491,9 +512,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts. "
+   "console": 2,
+   "usb": 1,
+   "notes": "Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts.  | RJ45 console + USB mini-B console; 1x front USB Type-A; rear USB 3.0 SSD module slot not counted; RJ45 mgmt port not counted. Uplinks via C9300 network module, not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -517,7 +540,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 437W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 437W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -556,9 +580,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "24x 10G/5G/2.5G/1G/100M. Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts. "
+   "console": 2,
+   "usb": 1,
+   "notes": "24x 10G/5G/2.5G/1G/100M. Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts.  | RJ45 console + USB mini-B console; 1x front USB Type-A; rear USB 3.0 SSD module slot not counted; RJ45 mgmt port not counted. Uplinks via C9300 network module, not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -582,7 +608,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 560W with default primary PSU PWR-C1-1100WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 560W with default primary PSU PWR-C1-1100WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -621,9 +648,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "36x 100M/1G/2.5G + 12x 100M-10G mGig. Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts. "
+   "console": 2,
+   "usb": 1,
+   "notes": "36x 100M/1G/2.5G + 12x 100M-10G mGig. Uplinks via C9300 network module (NM-4G/4M/8X/2Q/2Y), not included in port counts.  | RJ45 console + USB mini-B console; 1x front USB Type-A; rear USB 3.0 SSD module slot not counted; RJ45 mgmt port not counted. Uplinks via C9300 network module, not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -647,7 +676,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 490W with default primary PSU PWR-C1-1100WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 490W with default primary PSU PWR-C1-1100WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -686,9 +716,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": null
+   "console": 2,
+   "usb": 1,
+   "notes": "RJ45 console + USB mini-B console; 1x front USB Type-A; RJ45 mgmt port not counted. Fixed 4x 10G SFP+ uplinks.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -712,7 +744,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 505W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 505W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -751,9 +784,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": null
+   "console": 2,
+   "usb": 1,
+   "notes": "RJ45 console + USB mini-B console; 1x front USB Type-A; RJ45 mgmt port not counted. Fixed 4x 10G SFP+ uplinks.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -777,7 +812,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE budget 505W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "PoE budget 505W with default primary PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -816,9 +852,11 @@
    "sfp28": 24,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": 1,
-   "usb": null,
-   "notes": "Uplinks via C9300X network module (e.g. C9300X-NM-4C 4x 100G), not counted."
+   "console": 2,
+   "usb": 1,
+   "notes": "Uplinks via C9300X network module (e.g. C9300X-NM-4C 4x 100G), not counted. | Assumed same mgmt panel as C9300 family: RJ45 + USB mini-B console, 1x front USB Type-A (+ rear USB 3.0 SSD slot, not counted). Uplinks via C9300X network module, not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -842,7 +880,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/hardware/install/b_c9300_hig/technical-specs.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Default PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height."
+  "notes": "Default PSU PWR-C1-715WAC-P. Dims/weight from HIG (with fans/PSUs). Airflow/power draw not stated. u=1 inferred from stated 1.73 in (4.4 cm) chassis height.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco",
@@ -1201,9 +1240,11 @@
    "sfp28": 24,
    "qsfp_plus": 0,
    "qsfp28": 4,
-   "console": 1,
-   "usb": null,
-   "notes": "Console/mgmt port details not stated in fetched sources."
+   "console": 2,
+   "usb": 1,
+   "notes": "Console/mgmt port details not stated in fetched sources. | Series-typical: RJ45 console + USB mini-B console, 1x USB Type-A, RJ45 mgmt port (not counted). Not confirmed from fetched source.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1227,7 +1268,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9500/hardware/install/b_catalyst_9500_hig/9500_technical-specifications.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Forwarding 'up to 1 Bpps'. Weight with 2 PSUs + fans. Dual PSUs (650W/950W/1500W/1600W AC per datasheet; default per model not stated). Fan tray C9K-T1-FANTRAY. Airflow and power draw not stated."
+  "notes": "Forwarding 'up to 1 Bpps'. Weight with 2 PSUs + fans. Dual PSUs (650W/950W/1500W/1600W AC per datasheet; default per model not stated). Fan tray C9K-T1-FANTRAY. Airflow and power draw not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco",
@@ -1266,9 +1308,11 @@
    "sfp28": 48,
    "qsfp_plus": 0,
    "qsfp28": 4,
-   "console": 1,
-   "usb": null,
-   "notes": "Console/mgmt port details not stated in fetched sources."
+   "console": 2,
+   "usb": 1,
+   "notes": "Console/mgmt port details not stated in fetched sources. | Series-typical: RJ45 console + USB mini-B console, 1x USB Type-A, RJ45 mgmt port (not counted). Not confirmed from fetched source.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1292,7 +1336,8 @@
   "source2": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9500/hardware/install/b_catalyst_9500_hig/9500_technical-specifications.html",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Forwarding 'up to 1 Bpps'. Weight with 2 PSUs + fans. Dual PSUs (650W/950W/1500W/1600W AC per datasheet; default per model not stated). Fan tray C9K-T1-FANTRAY. Airflow and power draw not stated."
+  "notes": "Forwarding 'up to 1 Bpps'. Weight with 2 PSUs + fans. Dual PSUs (650W/950W/1500W/1600W AC per datasheet; default per model not stated). Fan tray C9K-T1-FANTRAY. Airflow and power draw not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco",
@@ -1522,9 +1567,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": "4x built-in GE (2 SFP + 2 RJ45). 1 NIM + 1 PIM slot. Console/USB not stated."
+   "console": 1,
+   "usb": 1,
+   "notes": "4x built-in GE (2 SFP + 2 RJ45). 1 NIM + 1 PIM slot. Console/USB not stated. | 2x 1G RJ45 (Gi0/0/0-1) + 2x 1G SFP (Gi0/0/2-3); 1x RJ45 console; 1x USB 3.0 Type-A; no OOB mgmt port. 1 NIM + 1 PIM slot.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1545,10 +1592,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8200-series-edge-platforms/nb-06-cat8200-series-edge-plat-ds-cte-en.html",
-  "source2": null,
+  "source2": "https://www.layer23-switch.com/wp-content/uploads/product-pdfs/c8200-1n-4t-datasheet.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "IPsec up to 1 Gbps (1400B), 900 Mbps IMIX; SD-WAN IPsec 1 Gbps; IPv4 forwarding 3.8 Gbps (1400B). Default PSU 100W (max_w = PSU rating); optional PWR-CC1-150WAC for PoE. typ_w 35W listed under 'C8200-1N-4S' label in Table 10. Airflow not stated."
+  "notes": "IPsec up to 1 Gbps (1400B), 900 Mbps IMIX; SD-WAN IPsec 1 Gbps; IPv4 forwarding 3.8 Gbps (1400B). Default PSU 100W (max_w = PSU rating); optional PWR-CC1-150WAC for PoE. typ_w 35W listed under 'C8200-1N-4S' label in Table 10. Airflow not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco",
@@ -1578,17 +1626,19 @@
   "airflow": null,
   "ports": {
    "rj45_100m": 0,
-   "rj45_1g": null,
+   "rj45_1g": 4,
    "rj45_mgig": 0,
    "rj45_10g": 0,
-   "sfp": null,
+   "sfp": 2,
    "sfp_plus": 0,
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": "6x embedded L3 GE ports (RJ45/SFP split not stated in fetched datasheet). 1 SM, 1 NIM, 1 PIM. Console/USB not stated."
+   "console": 2,
+   "usb": 1,
+   "notes": "6x embedded L3 GE ports (RJ45/SFP split not stated in fetched datasheet). 1 SM, 1 NIM, 1 PIM. Console/USB not stated. | 4x 1G RJ45 (Gi0/0/0-3) + 2x 1G SFP (Gi0/0/4-5); RJ45 + micro-USB console; 1x USB 3.0 Type-A (+1 USB-C, not counted). 1 SM + 1 NIM slot.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1609,10 +1659,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8300-series-edge-platforms/datasheet-c78-744088.html",
-  "source2": null,
+  "source2": "https://www.layer23-switch.com/wp-content/uploads/product-pdfs/c8300-1n1s-6t-datasheet.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "IPsec up to 1.9 Gbps (1400B and IMIX); SD-WAN 2 Gbps (1400B); IPv4 forwarding 19.7 Gbps. Weight 20 lb with 2 AC PSUs + fan tray (converted). PSU options 250W/400W/500W AC (PWR-CC1-500WAC gives 250W PoE); default not stated. Typ 82W no modules, single PSU. Airflow not stated."
+  "notes": "IPsec up to 1.9 Gbps (1400B and IMIX); SD-WAN 2 Gbps (1400B); IPv4 forwarding 19.7 Gbps. Weight 20 lb with 2 AC PSUs + fan tray (converted). PSU options 250W/400W/500W AC (PWR-CC1-500WAC gives 250W PoE); default not stated. Typ 82W no modules, single PSU. Airflow not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco Meraki",
@@ -1648,9 +1699,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": "2x GE WAN + 8x GE LAN + 2x GE LAN PoE+. USB not stated."
+   "console": 0,
+   "usb": 1,
+   "notes": "2x GE WAN + 8x GE LAN + 2x GE LAN PoE+. USB not stated. | 2x GE WAN + 10x GE LAN (2 PoE+); 1x USB 2.0 (side, 3G/4G); no console.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 2,
@@ -1671,10 +1724,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://documentation.meraki.com/SASE_and_SD-WAN/MX/Product_Information/Overviews_and_Datasheets/MX67_and_MX68_Datasheet",
-  "source2": null,
+  "source2": "https://documentation.meraki.com/SASE_and_SD-WAN/MX/Install_and_Get_Started/Installation_Guides/MX67%2F%2FMX68_Installation_Guide",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "FW 700 Mbps, VPN 400 Mbps, advanced security 400 Mbps. typ_w = idle power load. Desktop or wall mount. PoE budget not stated. Wired-only model (not MX68W/MX68CW)."
+  "notes": "FW 700 Mbps, VPN 400 Mbps, advanced security 400 Mbps. typ_w = idle power load. Desktop or wall mount. PoE budget not stated. Wired-only model (not MX68W/MX68CW).",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco Meraki",
@@ -1710,9 +1764,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
+   "console": 0,
    "usb": 1,
-   "notes": "WAN: 2x GE RJ45 + 1x GE SFP; LAN: 10x GE RJ45 (2 with PoE+). USB 3.0."
+   "notes": "WAN: 2x GE RJ45 + 1x GE SFP; LAN: 10x GE RJ45 (2 with PoE+). USB 3.0. | Cloud-managed MX: no console port listed; USB 3.0 per existing data.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 2,
@@ -1736,7 +1792,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "FW 1 Gbps, VPN 1 Gbps, advanced security 1 Gbps. typ_w = idle power load. Dims order as listed (27 x 148 x 283 mm). PoE budget not stated."
+  "notes": "FW 1 Gbps, VPN 1 Gbps, advanced security 1 Gbps. typ_w = idle power load. Dims order as listed (27 x 148 x 283 mm). PoE budget not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco Meraki",
@@ -1772,9 +1829,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
+   "console": 0,
    "usb": 1,
-   "notes": "WAN: 2x GE RJ45 (1 PoE+) + 2x GE SFP; LAN: 8x GE RJ45 + 2x GE SFP. USB 3.0."
+   "notes": "WAN: 2x GE RJ45 (1 PoE+) + 2x GE SFP; LAN: 8x GE RJ45 + 2x GE SFP. USB 3.0. | Cloud-managed MX: no console port listed; USB 3.0 per existing data.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 1,
@@ -1798,7 +1857,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "FW 1 Gbps, VPN 1 Gbps, NGFW 1 Gbps. typ_w = idle. Fanless per datasheet. u=1 inferred from 43.8 mm height; width 484.6 mm as listed. PoE+ on one WAN RJ45, budget not stated."
+  "notes": "FW 1 Gbps, VPN 1 Gbps, NGFW 1 Gbps. typ_w = idle. Fanless per datasheet. u=1 inferred from 43.8 mm height; width 484.6 mm as listed. PoE+ on one WAN RJ45, budget not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco Meraki",
@@ -1834,9 +1894,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
+   "console": 0,
    "usb": 1,
-   "notes": "WAN: 2x 2.5GbE RJ45 (1 PoE+) + 2x 10G SFP+; LAN: 4x GE RJ45 + 2x 10G SFP+. USB 3.0."
+   "notes": "WAN: 2x 2.5GbE RJ45 (1 PoE+) + 2x 10G SFP+; LAN: 4x GE RJ45 + 2x 10G SFP+. USB 3.0. | Cloud-managed MX: no console port listed; USB 3.0 per existing data.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 1,
@@ -1860,7 +1922,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "FW 3 Gbps, VPN 2.5 Gbps, NGFW 2 Gbps. typ_w = idle. Recommended client count not stated. PSU details/fans not stated for MX95. u=1 inferred from 44 mm height."
+  "notes": "FW 3 Gbps, VPN 2.5 Gbps, NGFW 2 Gbps. typ_w = idle. Recommended client count not stated. PSU details/fans not stated for MX95. u=1 inferred from 44 mm height.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco Meraki",
@@ -1896,9 +1959,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 0,
+   "usb": 0,
+   "notes": "Cloud-managed Meraki switch: no console or USB port in datasheet.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -1922,7 +1987,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU. typ_w = idle power load. Fans not stated. MS120 family has an end-of-sale announcement on Meraki docs (EOS PDF)."
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU. typ_w = idle power load. Fans not stated. MS120 family has an end-of-sale announcement on Meraki docs (EOS PDF).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco Meraki",
@@ -1958,9 +2024,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 0,
+   "usb": 0,
+   "notes": "Cloud-managed Meraki switch: no console or USB port in datasheet.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -1984,7 +2052,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU. typ_w = idle. Fans not stated. MS120 family has an end-of-sale announcement on Meraki docs (EOS PDF)."
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU. typ_w = idle. Fans not stated. MS120 family has an end-of-sale announcement on Meraki docs (EOS PDF).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco Meraki",
@@ -2020,9 +2089,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 0,
+   "usb": 0,
+   "notes": "Cloud-managed Meraki switch: no console or USB port in datasheet.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -2046,7 +2117,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Built-in PSU. typ_w = idle. 1U front/mid rack mount. Fans not stated."
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Built-in PSU. typ_w = idle. 1U front/mid rack mount. Fans not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco Meraki",
@@ -2082,9 +2154,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": "2x dedicated hardware stack ports (80G stacking)."
+   "console": 0,
+   "usb": 0,
+   "notes": "2x dedicated hardware stack ports (80G stacking). | No console or USB; dedicated mgmt port + 2 stack ports not counted.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -2108,7 +2182,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU; optional external RPS (RPS2300 now end-of-sale). Fixed internal fans, airflow not stated. typ_w = idle. MS225 family has an EOS PDF on Meraki docs."
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Fixed internal PSU; optional external RPS (RPS2300 now end-of-sale). Fixed internal fans, airflow not stated. typ_w = idle. MS225 family has an EOS PDF on Meraki docs.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco Meraki",
@@ -2144,9 +2219,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": "2x dedicated hardware stack ports (80G stacking)."
+   "console": 0,
+   "usb": 0,
+   "notes": "2x dedicated hardware stack ports (80G stacking). | 48x GE + 4x 10G SFP+; dedicated mgmt port (local status page) and 2 QSFP stack ports not counted; no console/USB listed.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -2170,7 +2247,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Dual hot-swap PSUs (2x 1025W option); default PSU model not named. Fixed internal fans, airflow not stated. typ_w = idle."
+  "notes": "PoE port count not stated on datasheet; set to all access ports per Meraki P/LP/FP model suffix. Dual hot-swap PSUs (2x 1025W option); default PSU model not named. Fixed internal fans, airflow not stated. typ_w = idle.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco Meraki",
@@ -2206,9 +2284,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 10/100/1000 RJ45; no USB/console listed.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2251,7 +2331,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). Plus dedicated WIDS/WIPS scanning radio and BLE radio. Dims exclude mount plate. Desktop/ceiling/wall mount."
+  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). Plus dedicated WIDS/WIPS scanning radio and BLE radio. Dims exclude mount plate. Desktop/ceiling/wall mount.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco Meraki",
@@ -2287,9 +2368,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 100M/1G/2.5G RJ45; no USB/console listed.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2332,7 +2415,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). 15W max low-power mode on 802.3af. Dims exclude mount plate. Desktop/ceiling/wall mount."
+  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). 15W max low-power mode on 802.3af. Dims exclude mount plate. Desktop/ceiling/wall mount.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco Meraki",
@@ -2368,9 +2452,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 0,
+   "usb": 0,
+   "notes": "1x 100M/1G/2.5G RJ45; no USB/console listed.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2413,7 +2499,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). 802.3at required. Plus WIDS/WIPS scanning radio and BLE radio. Dims exclude mount plate."
+  "notes": "tx_dbm = highest conducted TX value in datasheet RF table (unit not printed on page, dBm implied). 802.3at required. Plus WIDS/WIPS scanning radio and BLE radio. Dims exclude mount plate.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco Meraki",
@@ -2449,9 +2536,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 0,
+   "usb": 1,
+   "notes": "2x 100M-5G mGig RJ45; 1x USB 2.0 Type-A host (9.5W); no console listed.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2497,7 +2586,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "40W max with USB, 30W without (PoE+ works without USB). Dims include mount plate. AIR-AP-BRACKET-2 included. Tri-band scanning radio."
+  "notes": "40W max with USB, 30W without (PoE+ works without USB). Dims include mount plate. AIR-AP-BRACKET-2 included. Tri-band scanning radio.",
+  "ports_checked": "high"
  },
  {
   "brand": "Cisco",
@@ -2535,9 +2625,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 1,
+   "usb": 1,
+   "notes": "1x 100M/1G/2.5G RJ45; USB slot (4.5W); console port referenced in install guide.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2580,10 +2672,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.cisco.com/c/en/us/products/collateral/wireless/catalyst-9100ax-access-points/cat-9162-series-access-points-ds.html",
-  "source2": null,
+  "source2": "https://documentation.meraki.com/Wireless/Install_and_Get_Started/Installation_Guides/CW9162_Installation_Guide",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Full function on 802.3at PoE+ or 802.3bt/UPOE (25.5W); 802.3af gives 13.3W with 1x1 on 5/6 GHz. Dims without bracket. Mounting not stated in fetched datasheet."
+  "notes": "Full function on 802.3at PoE+ or 802.3bt/UPOE (25.5W); 802.3af gives 13.3W with 1x1 on 5/6 GHz. Dims without bracket. Mounting not stated in fetched datasheet.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Cisco",
@@ -2621,9 +2714,11 @@
    "sfp28": 0,
    "qsfp_plus": 0,
    "qsfp28": 0,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "console": 1,
+   "usb": 1,
+   "notes": "1x 100M-5G mGig RJ45; 1x USB 2.0 Type-A (4.5W); RJ45 console (DNA mode only).",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2669,6 +2764,7 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "30.5W max on 802.3bt/UPOE with USB; 25W on 802.3at with USB disabled; 802.3af not supported. Dims exclude mount plate. Desktop/ceiling/wall/pole mount; AIR-AP-BRACKET-2 included."
+  "notes": "30.5W max on 802.3bt/UPOE with USB; 25W on 802.3at with USB disabled; 802.3af not supported. Dims exclude mount plate. Desktop/ceiling/wall/pole mount; AIR-AP-BRACKET-2 included.",
+  "ports_checked": "high"
  }
 ]

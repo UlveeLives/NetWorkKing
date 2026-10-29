@@ -24,18 +24,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 1,
    "usb": 3,
-   "notes": "Rear: 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 1x USB 2.0, 1x USB 3.2 Gen1. Front: 1x USB 2.0, 1x iDRAC Direct (Micro-AB USB)."
+   "notes": "Rear: 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 1x USB 2.0, 1x USB 3.2 Gen1. Front: 1x USB 2.0, 1x iDRAC Direct (Micro-AB USB). | Kept existing; dedicated iDRAC RJ45; 1 rear VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -59,7 +62,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PSU options 450W Platinum or 700W Titanium, both non-redundant; power.max_w = largest PSU rating. Depth without bezel (496.8 mm with bezel). Drives: up to 2x 3.5in cabled or 6x 2.5in hot-plug."
+  "notes": "PSU options 450W Platinum or 700W Titanium, both non-redundant; power.max_w = largest PSU rating. Depth without bezel (496.8 mm with bezel). Drives: up to 2x 3.5in cabled or 6x 2.5in hot-plug.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -86,18 +90,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 1,
    "usb": 3,
-   "notes": "Rear: 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 1x USB 2.0, 1x USB 3.2 Gen1. Front: 1x USB 2.0, 1x iDRAC Direct (Micro-AB USB)."
+   "notes": "Rear: 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 1x USB 2.0, 1x USB 3.2 Gen1. Front: 1x USB 2.0, 1x iDRAC Direct (Micro-AB USB). | Kept existing; dedicated iDRAC RJ45; 1 rear VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -121,7 +128,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PSU options 600W Platinum or 700W Titanium, hot-swap redundant (psu=2 implied by redundancy; sheet gives no count). Depth without bezel (598.9 mm with bezel). Drives: up to 4x 3.5in or 8x 2.5in. French-language Dell spec sheet."
+  "notes": "PSU options 600W Platinum or 700W Titanium, hot-swap redundant (psu=2 implied by redundancy; sheet gives no count). Depth without bezel (598.9 mm with bezel). Drives: up to 4x 3.5in or 8x 2.5in. French-language Dell spec sheet.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -148,18 +156,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 0,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 3,
-   "notes": "Embedded NIC is only the 1Gb dedicated BMC (iDRAC) RJ45; data networking via up to 2x OCP NIC 3.0 (front or rear). Rear: iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port."
+   "notes": "Embedded NIC is only the 1Gb dedicated BMC (iDRAC) RJ45; data networking via up to 2x OCP NIC 3.0 (front or rear). Rear: iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port. | No LOM; data via OCP 3.0 - assumed common Broadcom 5720 2x1GbE OCP. Dedicated iDRAC RJ45; rear VGA (front mini-DP optional).",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -183,7 +194,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Brief asked for R460, which does not exist; R470 is the current 1U single-socket model. PSU options 800/1100/1500W (AC), 1400W -48VDC, hot-swap redundant; max_w = largest AC PSU. Depth without bezel, rear-I/O config (816.92 with bezel, 829.44 front-I/O)."
+  "notes": "Brief asked for R460, which does not exist; R470 is the current 1U single-socket model. PSU options 800/1100/1500W (AC), 1400W -48VDC, hot-swap redundant; max_w = largest AC PSU. Depth without bezel, rear-I/O config (816.92 with bezel, 829.44 front-I/O).",
+  "ports_checked": "low"
  },
  {
   "brand": "Dell",
@@ -210,18 +222,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 3,
-   "notes": "Spec sheet lists no LOM; networking via up to 2x OCP NIC 3.0 (1-400GbE). Rear: 1x dedicated iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port."
+   "notes": "Spec sheet lists no LOM; networking via up to 2x OCP NIC 3.0 (1-400GbE). Rear: 1x dedicated iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port. | No LOM; data via OCP 3.0 - assumed common Broadcom 5720 2x1GbE OCP. Dedicated iDRAC RJ45; rear VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -245,7 +260,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Hot-swap PSU options 800/1100/1500/1800W (AC), 1400W LVDC; max_w = largest option; count/redundancy not stated. Depth without bezel, rear-I/O (816.92 with bezel)."
+  "notes": "Hot-swap PSU options 800/1100/1500/1800W (AC), 1400W LVDC; max_w = largest option; count/redundancy not stated. Depth without bezel, rear-I/O (816.92 with bezel).",
+  "ports_checked": "low"
  },
  {
   "brand": "Dell",
@@ -272,18 +288,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 3,
-   "notes": "Spec sheet lists no LOM; networking via 2x OCP NIC 3.0 (front or rear). Rear: 1x dedicated iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port."
+   "notes": "Spec sheet lists no LOM; networking via 2x OCP NIC 3.0 (front or rear). Rear: 1x dedicated iDRAC RJ45, 1x VGA, 2x USB 3.1. Front: 1x USB 2.0 Type-C, optional USB-A/Mini-DP; front-I/O config adds DB9 serial + iDRAC port. | No LOM; data via OCP 3.0 - assumed common Broadcom 5720 2x1GbE OCP. Dedicated iDRAC RJ45; rear VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -307,7 +326,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Hot-swap PSU options 800/1100/1500/1800/2400/3200W; max_w = largest option (some marked not available at launch). Depth without bezel, rear-I/O (802.40 with bezel)."
+  "notes": "Hot-swap PSU options 800/1100/1500/1800/2400/3200W; max_w = largest option (some marked not available at launch). Depth without bezel, rear-I/O (802.40 with bezel).",
+  "ports_checked": "low"
  },
  {
   "brand": "Dell",
@@ -334,18 +354,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 1,
    "usb": 7,
-   "notes": "Rear: 2x 1GbE, 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 3x USB 2.0, 3x USB 3.2 Gen1. Front: 1x USB 3.2 Gen1, 1x iDRAC Direct (Micro-AB USB)."
+   "notes": "Rear: 2x 1GbE, 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 3x USB 2.0, 3x USB 3.2 Gen1. Front: 1x USB 3.2 Gen1, 1x iDRAC Direct (Micro-AB USB). | Kept existing; dedicated iDRAC RJ45; VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -369,7 +392,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Dell calls it a '3U tower server'. PSU 300W Bronze or 500W Platinum, cabled (single, non-redundant). Depth with bezel. Drives: up to 3x 3.5in (+2x 2.5in) cabled."
+  "notes": "Dell calls it a '3U tower server'. PSU 300W Bronze or 500W Platinum, cabled (single, non-redundant). Depth with bezel. Drives: up to 3x 3.5in (+2x 2.5in) cabled.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dell",
@@ -396,18 +420,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 1,
    "usb": 7,
-   "notes": "Rear: 2x 1GbE, 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 3x USB 2.0, 3x USB 3.2 Gen1. Front: 1x USB 3.2 Gen1, 1x iDRAC Direct (Micro-AB USB)."
+   "notes": "Rear: 2x 1GbE, 1x dedicated iDRAC RJ45, 1x VGA, 1x serial, 3x USB 2.0, 3x USB 3.2 Gen1. Front: 1x USB 3.2 Gen1, 1x iDRAC Direct (Micro-AB USB). | Kept existing; dedicated iDRAC RJ45; VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -431,7 +458,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Dell calls it a '4.5U tower server'. PSU: 450W Platinum cabled (single) or 600W Platinum / 700W Titanium hot-swap redundant; psu=2 refers to the redundant options. Depth with bezel."
+  "notes": "Dell calls it a '4.5U tower server'. PSU: 450W Platinum cabled (single) or 600W Platinum / 700W Titanium hot-swap redundant; psu=2 refers to the redundant options. Depth with bezel.",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE",
@@ -458,18 +486,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": 6,
-   "notes": "Embedded Broadcom BCM5719 4x 1GbE; iLO shares port 1 by default, optional 1Gb dedicated iLO RJ45 (enablement kit P65407-B21). Rear: 4x USB 3.2 Gen1, VGA, DisplayPort, optional serial. Front: 1x USB 3.2 Gen1, 1x USB 2.0 iLO service."
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 5,
+   "notes": "Embedded Broadcom BCM5719 4x 1GbE; iLO shares port 1 by default, optional 1Gb dedicated iLO RJ45 (enablement kit P65407-B21). Rear: 4x USB 3.2 Gen1, VGA, DisplayPort, optional serial. Front: 1x USB 3.2 Gen1, 1x USB 2.0 iLO service. | 4x1GbE BCM5719; iLO shared on port 1 (dedicated iLO optional -> 0). USB excludes iLO service port (5). Also 1x DisplayPort (no field).",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -493,7 +524,8 @@
   "source2": "https://edshop.edsystem.cz/fileshare/indexes/specification/hpe proliant dl20 gen11(696604).pdf",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PSU: 1x 290W non-redundant (pre-configured models) or 2x Flex Slot 500/800/1000W (1+1 redundant); max_w = largest option. Dims SFF chassis (LFF depth 382.2 mm). Weight = max (min 9 kg). Dimensions/weight read from HPE QuickSpecs PDF copy hosted by EDSystem distributor."
+  "notes": "PSU: 1x 290W non-redundant (pre-configured models) or 2x Flex Slot 500/800/1000W (1+1 redundant); max_w = largest option. Dims SFF chassis (LFF depth 382.2 mm). Weight = max (min 9 kg). Dimensions/weight read from HPE QuickSpecs PDF copy hosted by EDSystem distributor.",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE",
@@ -520,18 +552,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": 6,
-   "notes": "Embedded Broadcom BCM5719 4x 1GbE; iLO shares port 1 by default, optional 1Gb dedicated iLO RJ45. Rear: 4x USB 3.2 Gen1, VGA, DisplayPort, optional serial. Front: 1x USB 3.2 Gen1, 1x USB 2.0 iLO service."
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 5,
+   "notes": "Embedded Broadcom BCM5719 4x 1GbE; iLO shares port 1 by default, optional 1Gb dedicated iLO RJ45. Rear: 4x USB 3.2 Gen1, VGA, DisplayPort, optional serial. Front: 1x USB 3.2 Gen1, 1x USB 2.0 iLO service. | 4x1GbE BCM5719; iLO shared (dedicated optional -> 0). USB excludes iLO service port (5). Also 1x DisplayPort (no field).",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -555,7 +590,8 @@
   "source2": "https://edshop.edsystem.cz/fileshare/indexes/specification/hpe proliant ml30 gen11(771640).pdf",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "HPE: '4U Tower', rack install via optional Sliding Shelf 874578-B21. PSU: 350W non-redundant or 2x Flex Slot 500/800/1000W (1+1); max_w = largest. Weight = max (min 10.2 kg). Dims/weight from HPE QuickSpecs PDF copy hosted by EDSystem."
+  "notes": "HPE: '4U Tower', rack install via optional Sliding Shelf 874578-B21. PSU: 350W non-redundant or 2x Flex Slot 500/800/1000W (1+1); max_w = largest. Weight = max (min 10.2 kg). Dims/weight from HPE QuickSpecs PDF copy hosted by EDSystem.",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE",
@@ -582,18 +618,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_100m": 0,
+   "rj45_1g": 2,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 3,
-   "notes": "QuickSpecs conflict: Standard Features say 'Network Ports None' (OCP 3.0 slot or stand-up card), Configuration lists 2x embedded 1GbE. 1x dedicated 1GbE iLO RJ45 rear. Rear: 2x USB 3.2 Gen1, VGA, optional serial. Front: 1x USB 3.2 Gen1, iLO service port."
+   "notes": "QuickSpecs conflict: Standard Features say 'Network Ports None' (OCP 3.0 slot or stand-up card), Configuration lists 2x embedded 1GbE. 1x dedicated 1GbE iLO RJ45 rear. Rear: 2x USB 3.2 Gen1, VGA, optional serial. Front: 1x USB 3.2 Gen1, iLO service port. | QuickSpecs config table/rear view: 2x embedded 1GbE (conflicts with 'Network ports: none'); OCP 3.0/stand-up primary. Dedicated iLO RJ45; rear VGA, 2x USB3.2; front USB3.2; serial optional.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -617,7 +656,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Dims/weight = 8SFF chassis (4LFF depth 664.6 mm, 12LFF depth 995 mm, max 29.6 kg). 1-2 Flex Slot PSUs 500/800/1000/1600W; max_w = largest. QuickSpecs PDF hosted by reseller BlueAlly (HPE document)."
+  "notes": "Dims/weight = 8SFF chassis (4LFF depth 664.6 mm, 12LFF depth 995 mm, max 29.6 kg). 1-2 Flex Slot PSUs 500/800/1000/1600W; max_w = largest. QuickSpecs PDF hosted by reseller BlueAlly (HPE document).",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE",
@@ -644,18 +684,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 0,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 3,
-   "notes": "No embedded LAN as standard; stand-up or OCP 3.0 card required (OCP A default, OCP B optional). 1x dedicated 1GbE iLO RJ45 rear. Rear: 2x USB, VGA, optional serial. Front: 1x USB 3.2 Gen1, iLO service port."
+   "notes": "No embedded LAN as standard; stand-up or OCP 3.0 card required (OCP A default, OCP B optional). 1x dedicated 1GbE iLO RJ45 rear. Rear: 2x USB, VGA, optional serial. Front: 1x USB 3.2 Gen1, iLO service port. | No embedded LAN; OCP 3.0 required - assumed BCM5719 4x1GbE OCP (Gen11 default). Dedicated iLO RJ45, rear VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -679,7 +722,8 @@
   "source2": "https://cdn.blueally.com/servercomputeworks/datasheets/gen12-servers/hpe_proliant_dl380_gen12-quickspecs.pdf",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "1-2 Flex Slot PSUs: 800/1000/1600/1800-2200W, 1600W -48VDC; max_w = largest. Dimensions/weight not found in the QuickSpecs text read."
+  "notes": "1-2 Flex Slot PSUs: 800/1000/1600/1800-2200W, 1600W -48VDC; max_w = largest. Dimensions/weight not found in the QuickSpecs text read.",
+  "ports_checked": "low"
  },
  {
   "brand": "Lenovo",
@@ -706,18 +750,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 1,
    "usb": 4,
-   "notes": "2x 1GbE RJ45 (Broadcom BCM5720, one shareable with XCC) + 1x dedicated XCC management RJ45. Rear: 2x USB 3.2 G1, VGA, serial. Front: 1x USB 3.2 G1, 1x USB 2.0 (XClarity Mobile), optional VGA."
+   "notes": "2x 1GbE RJ45 (Broadcom BCM5720, one shareable with XCC) + 1x dedicated XCC management RJ45. Rear: 2x USB 3.2 G1, VGA, serial. Front: 1x USB 3.2 G1, 1x USB 2.0 (XClarity Mobile), optional VGA. | Kept existing; dedicated XCC RJ45; VGA (front VGA optional).",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -741,7 +788,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PSU model-dependent: 1x fixed 300W Gold or 2x hot-swap 800W Platinum/Titanium (redundant); psu=2 refers to the redundant option. Weight = max (3.5in config)."
+  "notes": "PSU model-dependent: 1x fixed 300W Gold or 2x hot-swap 800W Platinum/Titanium (redundant); psu=2 refers to the redundant option. Weight = max (3.5in config).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Lenovo",
@@ -768,18 +816,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 0,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 5,
-   "notes": "No onboard data ports; networking via OCP 3.0 SFF slot (PCIe 5.0 x16). 1x dedicated 1GbE XCC RJ45 rear. Rear: 3x USB 3.2 G1, VGA, optional DB-9 serial (PCIe slot). Front: 1x USB 3.2 G1, 1x USB 2.0 (XCC), ext. diagnostics, optional VGA."
+   "notes": "No onboard data ports; networking via OCP 3.0 SFF slot (PCIe 5.0 x16). 1x dedicated 1GbE XCC RJ45 rear. Rear: 3x USB 3.2 G1, VGA, optional DB-9 serial (PCIe slot). Front: 1x USB 3.2 G1, 1x USB 2.0 (XCC), ext. diagnostics, optional VGA. | No onboard LAN; OCP 3.0 - assumed Broadcom 5719 4x1GbE OCP as common base. Dedicated XCC RJ45; rear VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -803,7 +854,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Up to 2 hot-swap redundant PSUs 750/1100/1800W; max_w = largest."
+  "notes": "Up to 2 hot-swap redundant PSUs 750/1100/1800W; max_w = largest.",
+  "ports_checked": "low"
  },
  {
   "brand": "Lenovo",
@@ -830,18 +882,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 0,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 5,
-   "notes": "No onboard data ports; networking via OCP 3.0 SFF slot (PCIe 5.0 x16). 1x dedicated 1GbE XCC RJ45 rear. Rear: 3x USB 3.2 G1, VGA, optional DB-9 serial (PCIe slot). Front: 1x USB 3.2 G1, 1x USB 2.0 (XCC), ext. diagnostics, optional VGA."
+   "notes": "No onboard data ports; networking via OCP 3.0 SFF slot (PCIe 5.0 x16). 1x dedicated 1GbE XCC RJ45 rear. Rear: 3x USB 3.2 G1, VGA, optional DB-9 serial (PCIe slot). Front: 1x USB 3.2 G1, 1x USB 2.0 (XCC), ext. diagnostics, optional VGA. | No onboard LAN; OCP 3.0 - assumed Broadcom 5719 4x1GbE OCP as common base. Dedicated XCC RJ45; rear VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -865,7 +920,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Up to 2 hot-swap redundant PSUs 750/1100/1800/2400/2600W; max_w = largest."
+  "notes": "Up to 2 hot-swap redundant PSUs 750/1100/1800/2400/2600W; max_w = largest.",
+  "ports_checked": "low"
  },
  {
   "brand": "Lenovo",
@@ -892,18 +948,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 1,
    "usb": 6,
-   "notes": "2x 1GbE RJ45 (Broadcom BCM5720) + 1x RJ45 XCC2 management. Rear: 4x USB 3.2 G1, VGA, serial. Front: 1x USB 3.2 G1, 1x USB 2.0 (XClarity Mobile)."
+   "notes": "2x 1GbE RJ45 (Broadcom BCM5720) + 1x RJ45 XCC2 management. Rear: 4x USB 3.2 G1, VGA, serial. Front: 1x USB 3.2 G1, 1x USB 2.0 (XClarity Mobile). | Kept existing; dedicated XCC2 RJ45; VGA.",
+   "hdmi": 0,
+   "vga": 1,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -927,7 +986,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Tower; rack install with optional Rack Mount Kit (U not stated). Single fixed PSU 300W Gold or 500W Platinum. Height without stand (376 mm with stand)."
+  "notes": "Tower; rack install with optional Rack Mount Kit (U not stated). Single fixed PSU 300W Gold or 500W Platinum. Height without stand (376 mm with stand).",
+  "ports_checked": "medium"
  },
  {
   "brand": "Synology",
@@ -956,18 +1016,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "2x USB 3.2 Gen 1"
+   "notes": "2x USB 3.2 Gen 1 | Kept existing (Synology spec).",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -991,7 +1054,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "typ_w = access; 4.41 W HDD hibernation. 60W power adapter."
+  "notes": "typ_w = access; 4.41 W HDD hibernation. 60W power adapter.",
+  "ports_checked": "high"
  },
  {
   "brand": "Synology",
@@ -1020,18 +1084,21 @@
   "heat_btu_h": 96.5,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "2x USB 3.2 Gen 1; 2x M.2 2280 NVMe slots"
+   "notes": "2x USB 3.2 Gen 1; 2x M.2 2280 NVMe slots | Kept existing (Synology spec).",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1055,7 +1122,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "typ_w = access; 8.45 W HDD hibernation. 90W PSU/adapter."
+  "notes": "typ_w = access; 8.45 W HDD hibernation. 90W PSU/adapter.",
+  "ports_checked": "high"
  },
  {
   "brand": "Synology",
@@ -1084,18 +1152,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "2x USB 3.2 Gen 1"
+   "notes": "2x USB 3.2 Gen 1 | Kept existing (Synology spec).",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1119,7 +1190,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "typ_w = access; 4.97 W HDD hibernation. 90W adapter."
+  "notes": "typ_w = access; 4.97 W HDD hibernation. 90W adapter.",
+  "ports_checked": "high"
  },
  {
   "brand": "Synology",
@@ -1148,18 +1220,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "2x USB 3.2 Gen 1; 2x eSATA expansion (DX517); 2x M.2 2280 NVMe; network upgrade slot for E10G22-T1-Mini 10GbE"
+   "notes": "2x USB 3.2 Gen 1; 2x eSATA expansion (DX517); 2x M.2 2280 NVMe; network upgrade slot for E10G22-T1-Mini 10GbE | Kept existing (Synology datasheet).",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1183,7 +1258,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PSU rating / consumption not in datasheet text read."
+  "notes": "PSU rating / consumption not in datasheet text read.",
+  "ports_checked": "high"
  },
  {
   "brand": "Synology",
@@ -1212,18 +1288,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
+   "rj45_mgig": 0,
    "rj45_10g": 1,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 3,
-   "notes": "Plus 1x out-of-band management RJ45. 3x USB 3.2 Gen 1; 2x eSATA (DX517); 2x M.2 NVMe; 1x PCIe Gen3 x8 slot (x4 link)"
+   "notes": "Plus 1x out-of-band management RJ45. 3x USB 3.2 Gen 1; 2x eSATA (DX517); 2x M.2 NVMe; 1x PCIe Gen3 x8 slot (x4 link) | 2x1GbE + 1x10GbE + 1x out-of-band mgmt RJ45; 3x USB3.2 Gen1.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1244,10 +1323,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://download.axilogi.com/synology/datasheet/DS1823xsplus.pdf",
-  "source2": null,
+  "source2": "https://global.download.synology.com/download/Document/Hardware/DataSheet/DiskStation/23-year/DS1823xs%2B/krn/Synology_DS1823xs%2B_Data_Sheet_krn.pdf",
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "typ_w = access; 28.37 W HDD hibernation. 250W PSU. Source is a Synology datasheet copy hosted by distributor Axilogi."
+  "notes": "typ_w = access; 28.37 W HDD hibernation. 250W PSU. Source is a Synology datasheet copy hosted by distributor Axilogi.",
+  "ports_checked": "high"
  },
  {
   "brand": "Synology",
@@ -1276,18 +1356,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "2x USB 3.2 Gen 1; 1x expansion port (RX1217); 2x M.2 2280 NVMe/SATA; 1x PCIe Gen3 x8 slot"
+   "notes": "2x USB 3.2 Gen 1; 1x expansion port (RX1217); 2x M.2 2280 NVMe/SATA; 1x PCIe Gen3 x8 slot | Kept existing (Synology datasheet).",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1311,7 +1394,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Korean-language Synology datasheet. PSU rating/count not stated."
+  "notes": "Korean-language Synology datasheet. PSU rating/count not stated.",
+  "ports_checked": "high"
  },
  {
   "brand": "Synology",
@@ -1340,18 +1424,21 @@
   "heat_btu_h": 485.93,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
+   "rj45_mgig": 0,
    "rj45_10g": 2,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "2x USB 3.2 Gen 1; 2x Infiniband expansion ports (RX1217); 2x PCIe Gen3 x8 slots"
+   "notes": "2x USB 3.2 Gen 1; 2x Infiniband expansion ports (RX1217); 2x PCIe Gen3 x8 slots | Kept existing: 4x1GbE + 2x10GbE RJ45.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1375,7 +1462,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "typ_w = access (72.76 W hibernation). PSU 500W or 550W depending on hardware revision (serial SZR=500W; UUR/VR1=550W); max_w = 550."
+  "notes": "typ_w = access (72.76 W hibernation). PSU 500W or 550W depending on hardware revision (serial SZR=500W; UUR/VR1=550W); max_w = 550.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Synology",
@@ -1404,18 +1492,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
-   "rj45_mgig": null,
+   "rj45_mgig": 0,
    "rj45_10g": 2,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 2,
-   "notes": "Plus 1x out-of-band management RJ45. 2x USB 3.2 Gen 1; 1x expansion port (RX1222sas); 2x PCIe 3.0 x8 slots"
+   "notes": "Plus 1x out-of-band management RJ45. 2x USB 3.2 Gen 1; 1x expansion port (RX1222sas); 2x PCIe 3.0 x8 slots | Kept existing; 1x out-of-band mgmt RJ45.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 1
   },
   "poe": {
    "ports": null,
@@ -1439,7 +1530,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Chinese-language Synology datasheet. Redundant PSU stated; wattage not stated (psu=2 implied by redundancy). Rail kit RKS-02."
+  "notes": "Chinese-language Synology datasheet. Redundant PSU stated; wattage not stated (psu=2 implied by redundancy). Rail kit RKS-02.",
+  "ports_checked": "medium"
  },
  {
   "brand": "QNAP",
@@ -1469,18 +1561,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 4,
-   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2 Type-A; 1x HDMI 2.1; 2x M.2 2280 PCIe Gen3 x1; 1x PCIe Gen3 x2 slot"
+   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2 Type-A; 1x HDMI 2.1; 2x M.2 2280 PCIe Gen3 x1; 1x PCIe Gen3 x2 slot | Kept existing; 1x HDMI 2.1.",
+   "hdmi": 1,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1504,7 +1599,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Dims/weight converted from inches/lbs (6.5x6.69x8.92 in, 4.98 lb). typ_w = operating (21.6 W standby). 90W adapter."
+  "notes": "Dims/weight converted from inches/lbs (6.5x6.69x8.92 in, 4.98 lb). typ_w = operating (21.6 W standby). 90W adapter.",
+  "ports_checked": "high"
  },
  {
   "brand": "QNAP",
@@ -1534,18 +1630,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 4,
-   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot"
+   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot | 2x2.5GbE, 2xUSB2.0+2xUSB3.2G2, 1x HDMI 1.4b.",
+   "hdmi": 1,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1569,7 +1668,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PSU 250W x2 (redundant). typ_w = operating (37.5 W standby)."
+  "notes": "PSU 250W x2 (redundant). typ_w = operating (37.5 W standby).",
+  "ports_checked": "high"
  },
  {
   "brand": "QNAP",
@@ -1599,18 +1699,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 4,
-   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot"
+   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot | Kept existing; 1x HDMI 1.4b (series of TS-464U-RP).",
+   "hdmi": 1,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1634,7 +1737,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Single 300W PSU (redundant version is TS-864eU-RP). Dims in mm from the RP spec page (same chassis; this page gives 3.49x17.01x11.71 in). Weight converted from 17.15 lb. typ_w = operating."
+  "notes": "Single 300W PSU (redundant version is TS-864eU-RP). Dims in mm from the RP spec page (same chassis; this page gives 3.49x17.01x11.71 in). Weight converted from 17.15 lb. typ_w = operating.",
+  "ports_checked": "high"
  },
  {
   "brand": "QNAP",
@@ -1664,18 +1768,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 4,
-   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot"
+   "notes": "2x 2.5GbE. 2x USB 2.0 + 2x USB 3.2 Gen 2; 1x HDMI 1.4b; 1x PCIe Gen3 x2 slot | Kept existing; 1x HDMI 1.4b.",
+   "hdmi": 1,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1699,7 +1806,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "PSU 300W x2 (spec page does not word it as redundant). typ_w = operating (31.7 W standby)."
+  "notes": "PSU 300W x2 (spec page does not word it as redundant). typ_w = operating (31.7 W standby).",
+  "ports_checked": "high"
  },
  {
   "brand": "QNAP",
@@ -1730,18 +1838,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
    "sfp28": 2,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 3,
-   "notes": "2x 2.5GbE + 2x 25GbE SFP28 (SmartNIC). 3x USB 3.2 Gen 1; 4x PCIe Gen4 slots (3x x16, 1x x8)"
+   "notes": "2x 2.5GbE + 2x 25GbE SFP28 (SmartNIC). 3x USB 3.2 Gen 1; 4x PCIe Gen4 slots (3x x16, 1x x8) | 2x2.5GbE + 2x25GbE SFP28; 3x USB3.2 G1; no HDMI/IPMI listed.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 0
   },
   "poe": {
    "ports": null,
@@ -1765,7 +1876,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Height 150 mm excl. foot pad (157.2 mm for 7302P-256G model). 750W PSU. typ_w = operating."
+  "notes": "Height 150 mm excl. foot pad (157.2 mm for 7302P-256G model). 750W PSU. typ_w = operating.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dell",
@@ -1794,18 +1906,21 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "2x 1GbE BASE-T management (one per controller). Host ports by controller type, up to 8 per array: 32Gb FC, 25GbE SFP28 iSCSI, 10GBASE-T iSCSI, or 12Gb SAS. 2x 12Gb SAS expansion ports (one per controller)."
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 8,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 2,
+   "usb": 0,
+   "notes": "2x 1GbE BASE-T management (one per controller). Host ports by controller type, up to 8 per array: 32Gb FC, 25GbE SFP28 iSCSI, 10GBASE-T iSCSI, or 12Gb SAS. 2x 12Gb SAS expansion ports (one per controller). | Dual controller: 2x 1GbE mgmt RJ45 (1 per controller); host ports assumed 25GbE iSCSI SFP28 option, 4 per controller (alternatives 32Gb FC, 10GBASE-T, 12Gb SAS). Console = 1 USB CLI serial port per controller (connector type not verified). 2x 12Gb SAS expansion ports not counted.",
+   "hdmi": 0,
+   "vga": 0,
+   "mgmt": 2
   },
   "poe": {
    "ports": null,
@@ -1829,6 +1944,7 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "2x 580W PSUs; power.max_w = per-PSU rating. Depth from inch value 24.36 in (sheet's mm figure '61,87' is a typo). Weight max config (4.8 kg empty). French Dell spec sheet."
+  "notes": "2x 580W PSUs; power.max_w = per-PSU rating. Depth from inch value 24.36 in (sheet's mm figure '61,87' is a typo). Weight max config (4.8 kg empty). French Dell spec sheet.",
+  "ports_checked": "low"
  }
 ]

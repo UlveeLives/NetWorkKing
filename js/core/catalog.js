@@ -66,6 +66,10 @@ function applySpec(d, r){
   if (has(pw.typ_w)) P2.powerW = pw.typ_w; if (has(pw.max_w)) P2.maxW = pw.max_w; if (has(pw.psu)) P2.psu = pw.psu;
   const af = {"front-to-back":"f2b", "back-to-front":"b2f", "side-to-side":"side", passive:"passive"}[r.airflow]; if (af) P2.airflow = af;
   const pc = ["rj45_100m","rj45_1g","rj45_mgig","rj45_10g","sfp","sfp_plus","sfp28","qsfp_plus","qsfp28"].reduce((s, k) => s + (num(ports[k]) || 0), 0); if (pc) d.ports = pc; const sf = ["sfp","sfp_plus","sfp28","qsfp_plus","qsfp28"].reduce((s, k) => s + (num(ports[k]) || 0), 0); P2.sfp = sf;
+  // 3.8: the other physical ports too — USB, console, management and video outputs (so nothing has to be typed by hand)
+  if (has(ports.usb)) P2.usb = num(ports.usb); if (has(ports.console)) P2.console = num(ports.console); if (has(ports.mgmt)) P2.mgmt = num(ports.mgmt);
+  if (has(ports.hdmi) || has(ports.vga)){ d.av = d.av || {}; if (has(ports.hdmi)) d.av.hdmiOut = num(ports.hdmi); if (has(ports.vga)) d.av.vgaOut = num(ports.vga); }
+  if ((d.kind === "nvr" || d.kind === "dvr") && r.nvr && num(r.nvr.poe_ports)){ d.ports = (pc || 0) + num(r.nvr.poe_ports); P2.poePorts = num(r.nvr.poe_ports); }
   if (r.poe){ if (has(r.poe.ports)) P2.poePorts = r.poe.ports; if (has(r.poe.budget_w)) P2.poeBudget = r.poe.budget_w; if (has(r.poe.std)) P2.poeStd = r.poe.std; }
   if (r.poe_in && has(r.poe_in.max_w)) P2.poeIn = r.poe_in.max_w;
   if (r.ups){ if (has(r.ups.va)) P2.va = r.ups.va; if (has(r.ups.w)) P2.upsW = r.ups.w; if (has(r.ups.battery_wh)) P2.wh = r.ups.battery_wh; }
@@ -120,6 +124,8 @@ function specDetail(r){
   add(t("catDims"), [dm.w, dm.d, dm.h].some(x => x) ? `${dm.w ?? "?"} × ${dm.d ?? "?"} × ${dm.h ?? "?"} mm` : null); add(t("f_weight"), r.weight_kg);
   add(t("f_powerW"), pw.typ_w); add(t("f_maxW"), pw.max_w); add("PSU", pw.psu ? pw.psu + (pw.psu_redundant ? " (redundant)" : "") : null); add(t("catInput"), pw.input); add("BTU/h", r.heat_btu_h); add(t("f_airflow"), r.airflow);
   add(t("catPorts"), specLine({ports:p}) + (p.notes ? " — " + p.notes : ""));
+  // 3.8: the other connectors
+  add(t("catIo"), [["USB", p.usb], [t("f_console"), p.console], [t("f_mgmt"), p.mgmt], ["HDMI", p.hdmi], ["VGA", p.vga]].filter(([, v]) => num(v) > 0).map(([k, v]) => v + "× " + k).join(" · ") || null);
   if (r.poe) add("PoE", [r.poe.ports && r.poe.ports + " port", r.poe.budget_w && r.poe.budget_w + " W", r.poe.std].filter(Boolean).join(" · "));
   if (r.poe_in) add(t("f_poeIn"), [r.poe_in.class, r.poe_in.max_w && r.poe_in.max_w + " W"].filter(Boolean).join(" · "));
   if (r.perf) add(t("catPerf"), Object.entries(r.perf).filter(([, v]) => v).map(([k, v]) => `${k.replace(/_gbps/, "")}: ${v} ${/mpps/.test(k) ? "Mpps" : "Gbps"}`).join(" · "));
@@ -139,6 +145,9 @@ function modelProblem(brand, model){
   if (!/[0-9]/.test(model) && model.split(/\s+/).length < 2) return t("nmVague");
   return "";
 }
+// the ports typed in the «enter by hand» part of the new-model window
+function manPorts(){ const n = id => { const e = $("#" + id); const v = e ? e.value : ""; return v === "" ? null : num(v); };
+  return {rj45_100m:n("nm-pf"), rj45_1g:n("nm-p"), rj45_mgig:n("nm-pm"), rj45_10g:null, sfp:n("nm-sf"), sfp_plus:n("nm-sp"), sfp28:null, qsfp_plus:null, qsfp28:null, usb:n("nm-us"), console:n("nm-co"), mgmt:n("nm-mg"), hdmi:n("nm-hd"), vga:n("nm-vg")}; }
 function openNewModel(kind, onPick){
   const near = () => { const b = $("#nm-b").value.trim(), m = $("#nm-m").value.trim().toLowerCase().replace(/[\s-]/g, ""); if (m.length < 3) return [];
     return CAT.all().filter(r => (!b || same(r.brand, b)) && (r.model.toLowerCase().replace(/[\s-]/g, "").includes(m) || m.includes(r.model.toLowerCase().replace(/[\s-]/g, "")))).slice(0, 6); };
@@ -150,7 +159,11 @@ function openNewModel(kind, onPick){
     <div id="nm-near"></div><div class="msg err" id="nm-err"></div>
     <div class="btns">${ai ? `<button class="btn pri" data-m="ai">🤖 ${esc(t("nmAi"))}</button>` : `<span class="muted small">${esc(t("nmAiOff"))}</span>`}<button class="btn" data-m="web">🔎 ${esc(t("nmWeb"))}</button></div>
     <details class="dsec" id="nm-man"><summary>${esc(t("nmManual"))}</summary><div class="dsb">
-      <div class="two"><label class="fld"><span>U</span><input id="nm-u" type="number" min="0"></label><label class="fld"><span>${esc(t("f_ports"))}</span><input id="nm-p" type="number" min="0"></label></div>
+      <div class="nmpv"><div id="nm-pic"></div><small class="muted">${esc(t("nmPicH"))}</small></div>
+      <div class="three"><label class="fld"><span>U</span><input id="nm-u" type="number" min="0"></label><label class="fld"><span>RJ45 1G</span><input id="nm-p" type="number" min="0"></label><label class="fld"><span>RJ45 100M</span><input id="nm-pf" type="number" min="0"></label></div>
+      <div class="three"><label class="fld"><span>RJ45 2.5/5/10G</span><input id="nm-pm" type="number" min="0"></label><label class="fld"><span>SFP (1G)</span><input id="nm-sf" type="number" min="0"></label><label class="fld"><span>SFP+ / SFP28</span><input id="nm-sp" type="number" min="0"></label></div>
+      <div class="three"><label class="fld"><span>USB</span><input id="nm-us" type="number" min="0"></label><label class="fld"><span>${esc(t("f_console"))}</span><input id="nm-co" type="number" min="0"></label><label class="fld"><span>${esc(t("f_mgmt"))}</span><input id="nm-mg" type="number" min="0"></label></div>
+      <div class="three"><label class="fld"><span>HDMI</span><input id="nm-hd" type="number" min="0"></label><label class="fld"><span>VGA</span><input id="nm-vg" type="number" min="0"></label><span></span></div>
       <div class="two"><label class="fld"><span>${esc(t("f_powerW"))}</span><input id="nm-pw" type="number" min="0"></label><label class="fld"><span>${esc(t("f_maxW"))}</span><input id="nm-mx" type="number" min="0"></label></div>
       <div class="two"><label class="fld"><span>${esc(t("f_weight"))}</span><input id="nm-w" type="number" min="0" step="0.1"></label><label class="fld"><span>${esc(t("f_depth"))}</span><input id="nm-d" type="number" min="0"></label></div>
       <div class="two"><label class="fld"><span>${esc(t("f_poePorts"))}</span><input id="nm-pp" type="number" min="0"></label><label class="fld"><span>${esc(t("f_poeBudget"))}</span><input id="nm-pb" type="number" min="0"></label></div>
@@ -162,13 +175,13 @@ function openNewModel(kind, onPick){
       web: () => { const b = $("#nm-b").value.trim(), m = $("#nm-m").value.trim(), pr = modelProblem(b, m); if (pr){ $("#nm-err").textContent = pr; return; } window.open("https://www.google.com/search?q=" + encodeURIComponent(`${b} ${m} datasheet specifications`), "_blank"); $("#nm-man").open = true; },
       ai: async bt => { const b = $("#nm-b").value.trim(), m = $("#nm-m").value.trim(), k = $("#nm-k").value, pr = modelProblem(b, m); if (pr){ $("#nm-err").textContent = pr; return; }
         $("#nm-err").textContent = ""; bt.disabled = true; $("#nm-res").innerHTML = `<p class="muted">⏳ ${esc(t("aiWorking"))}</p>`;
-        try { const rec = await aiLookup(b, m, k); $("#nm-res").innerHTML = `<div class="aibox">${specDetail(Object.assign({_src:"ai"}, rec))}<p class="muted small">${esc(t("aiCheck"))}</p><div class="btns"><button class="btn pri" data-m="saveAi">✓ ${esc(t("aiAccept"))}</button></div></div>`; modalActs._ai = rec; }
+        try { const rec = await aiLookup(b, m, k); $("#nm-res").innerHTML = `<div class="aibox"><div class="nmpv">${recPic(rec, 110)}</div>${specDetail(Object.assign({_src:"ai"}, rec))}<p class="muted small">${esc(t("aiCheck"))}</p><div class="btns"><button class="btn pri" data-m="saveAi">✓ ${esc(t("aiAccept"))}</button></div></div>`; modalActs._ai = rec; }
         catch(e){ $("#nm-res").innerHTML = `<p class="msg err">⚠ ${esc(e.message || String(e))}</p>`; }
         bt.disabled = false; },
       saveAi: async () => { const rec = modalActs._ai; if (!rec) return; rec.verified = today(); await CAT.saveUser(rec); closeModal(); toast("✓ " + t("nmSaved")); onPick && onPick(CAT.get(CAT.key(rec))); },
       saveMan: async () => { const b = $("#nm-b").value.trim(), m = $("#nm-m").value.trim(), pr = modelProblem(b, m); if (pr){ $("#nm-err").textContent = pr; return; }
         const n = id => { const v = $("#" + id).value; return v === "" ? null : num(v); };
-        const rec = {brand:b, model:m, kind:$("#nm-k").value, u:n("nm-u"), weight_kg:n("nm-w"), dims_mm:{w:null, d:n("nm-d"), h:null}, power:{typ_w:n("nm-pw"), max_w:n("nm-mx"), psu:n("nm-psu")}, ports:{rj45_1g:n("nm-p")}, poe:n("nm-pb") ? {ports:n("nm-pp"), budget_w:n("nm-pb"), std:null} : null, poe_in:n("nm-pi") ? {class:null, max_w:n("nm-pi")} : null, source:$("#nm-src").value.trim() || null, confidence:"medium", notes:t("nmManualNote")};
+        const rec = {brand:b, model:m, kind:$("#nm-k").value, u:n("nm-u"), weight_kg:n("nm-w"), dims_mm:{w:null, d:n("nm-d"), h:null}, power:{typ_w:n("nm-pw"), max_w:n("nm-mx"), psu:n("nm-psu")}, ports:manPorts(), poe:n("nm-pb") ? {ports:n("nm-pp"), budget_w:n("nm-pb"), std:null} : null, poe_in:n("nm-pi") ? {class:null, max_w:n("nm-pi")} : null, source:$("#nm-src").value.trim() || null, confidence:"medium", notes:t("nmManualNote")};
         await CAT.saveUser(rec); closeModal(); toast("✓ " + t("nmSaved")); onPick && onPick(CAT.get(CAT.key(rec))); }
     }, {wide:true});
   const upd = () => { const L = near(), pr = modelProblem($("#nm-b").value, $("#nm-m").value);
@@ -176,9 +189,15 @@ function openNewModel(kind, onPick){
     $("#nm-err").textContent = $("#nm-m").value.length > 2 ? pr : ""; };
   modalActs.useNear = bt => { const r = CAT.get(bt.dataset.k); closeModal(); onPick && onPick(r); };
   $("#nm-b").addEventListener("input", upd); $("#nm-m").addEventListener("input", upd);
+  // the picture is drawn from what is typed: kind, U and the ports (as it will look in racks and on plans)
+  const pic = () => { const el = $("#nm-pic"); if (!el) return; const n = id => { const v = $("#" + id).value; return v === "" ? null : num(v); };
+    const rec = {brand:$("#nm-b").value.trim() || "—", model:$("#nm-m").value.trim() || "—", kind:$("#nm-k").value, u:n("nm-u"), ports:manPorts(), power:{}, dims_mm:{}};
+    try { el.innerHTML = recPic(rec, 110); } catch(e){ el.innerHTML = ""; } };
+  $("#modal").addEventListener("input", e => { if (e.target.closest("#nm-man") || e.target.id === "nm-b" || e.target.id === "nm-m") pic(); });
+  $("#nm-k").addEventListener("change", pic); pic();
 }
 /* ---------- AI lookup (optional, user's own Claude API key) ---------- */
-const AI_SCHEMA = `{"brand":"","model":"","sku":[],"kind":"","series":"","desc":"","mount":"rack|desktop|wall|ceiling|pole|din","u":0,"dims_mm":{"w":0,"d":0,"h":0},"weight_kg":0,"power":{"typ_w":0,"max_w":0,"psu":1,"psu_redundant":false,"input":""},"heat_btu_h":0,"airflow":"front-to-back|back-to-front|side-to-side|passive","ports":{"rj45_100m":0,"rj45_1g":0,"rj45_mgig":0,"rj45_10g":0,"sfp":0,"sfp_plus":0,"sfp28":0,"qsfp_plus":0,"qsfp28":0,"console":0,"usb":0,"notes":""},"poe":{"ports":0,"budget_w":0,"std":"802.3af|802.3at|802.3bt"},"poe_in":{"class":"","max_w":0},"perf":{"switching_gbps":0,"fw_gbps":0,"ngfw_gbps":0,"threat_gbps":0,"ipsec_gbps":0},"wifi":{"std":"","streams":"","bands":{"2.4":{"tx_dbm":0,"gain_dbi":0},"5":{"tx_dbm":0,"gain_dbi":0},"6":null},"max_clients":0,"uplink":""},"camera":{"style":"turret|dome|bullet|ptz|fisheye|box|cube","mp":0,"resolution":"","sensor":"","lens_mm":[],"hfov_deg":[],"ir_m":0,"codec":[],"max_fps":0,"ip_rating":"","ik":"","power_w":0,"poe_class":""},"nvr":{"channels":0,"in_mbps":0,"out_mbps":0,"hdd_bays":0,"hdd_max_tb":0,"raid":[],"poe_ports":0,"poe_budget_w":0,"max_mp":0},"ups":{"va":0,"w":0,"topology":"","battery_wh":0,"outlets":""},"source":"https://...","source2":"","confidence":"high|medium","notes":""}`;
+const AI_SCHEMA = `{"brand":"","model":"","sku":[],"kind":"","series":"","desc":"","mount":"rack|desktop|wall|ceiling|pole|din","u":0,"dims_mm":{"w":0,"d":0,"h":0},"weight_kg":0,"power":{"typ_w":0,"max_w":0,"psu":1,"psu_redundant":false,"input":""},"heat_btu_h":0,"airflow":"front-to-back|back-to-front|side-to-side|passive","ports":{"rj45_100m":0,"rj45_1g":0,"rj45_mgig":0,"rj45_10g":0,"sfp":0,"sfp_plus":0,"sfp28":0,"qsfp_plus":0,"qsfp28":0,"console":0,"usb":0,"mgmt":0,"hdmi":0,"vga":0,"notes":""},"poe":{"ports":0,"budget_w":0,"std":"802.3af|802.3at|802.3bt"},"poe_in":{"class":"","max_w":0},"perf":{"switching_gbps":0,"fw_gbps":0,"ngfw_gbps":0,"threat_gbps":0,"ipsec_gbps":0},"wifi":{"std":"","streams":"","bands":{"2.4":{"tx_dbm":0,"gain_dbi":0},"5":{"tx_dbm":0,"gain_dbi":0},"6":null},"max_clients":0,"uplink":""},"camera":{"style":"turret|dome|bullet|ptz|fisheye|box|cube","mp":0,"resolution":"","sensor":"","lens_mm":[],"hfov_deg":[],"ir_m":0,"codec":[],"max_fps":0,"ip_rating":"","ik":"","power_w":0,"poe_class":""},"nvr":{"channels":0,"in_mbps":0,"out_mbps":0,"hdd_bays":0,"hdd_max_tb":0,"raid":[],"poe_ports":0,"poe_budget_w":0,"max_mp":0},"ups":{"va":0,"w":0,"topology":"","battery_wh":0,"outlets":""},"source":"https://...","source2":"","confidence":"high|medium","notes":""}`;
 async function aiLookup(brand, model, kind){
   const S = store.settings.ai; if (!S.key) throw new Error(t("aiNoKey"));
   const prompt = `Find the official specifications of the network/security device "${brand} ${model}" (device kind: ${kind}). Search the web, prefer the vendor's official datasheet or product page. Then reply with ONLY one JSON object (no prose) shaped like this template; drop sections that do not apply to this kind by setting them to null; use null for any value the source does not state — never guess. kind must be one of: ${KIND_ORDER.join(", ")}. "source" must be the URL that contains the values; "confidence" is "high" only if all values come from the official vendor source.\nTemplate: ${AI_SCHEMA}`;
@@ -235,12 +254,14 @@ function openDevDb(tab0){
       <input id="ddb-q" placeholder="🔍 ${esc(t("catSearch"))}" autocomplete="off" style="flex:1;min-width:180px">
       <span id="ddb-f" class="row" style="gap:6px"><select id="ddb-k"><option value="">${esc(t("ddbAllKinds"))}</option>${kindsUsed().map(k => opt(k, kindName(k) + " (" + CAT.all().filter(r => r.kind === k).length + ")", "")).join("")}</select>
       <select id="ddb-b"><option value="">${esc(t("catAllBrands"))}</option>${CAT.brands().map(x => opt(x, x, "")).join("")}</select></span></div>
-    <div id="ddb-l" class="scroll" style="max-height:64vh;margin-top:8px"></div>
+    <div class="row" style="margin-top:8px;gap:8px"><button class="btn pri small" data-m="addNew">＋ ${esc(t("ddbAdd"))}</button><span class="muted small">${esc(t("ddbAddH"))}</span></div>
+    <div id="ddb-l" class="scroll" style="max-height:60vh;margin-top:8px"></div>
     <div class="mfoot"><span class="muted small">${esc(t("ddbFoot"))}</span><span class="grow"></span><button class="btn" data-m="close">${esc(t("close"))}</button></div>`, {
     tab:(bt, e, k) => { S.tab = k; S.n = 120; draw(); },
     showKind:(bt, e, k) => { S.tab = "models"; S.kind = k; S.n = 120; $("#ddb-k").value = k; draw(); $("#ddb-l").scrollTop = 0; },
     row:bt => { const k = bt.dataset.k; S.open = S.open === k ? null : k; draw(); },
     more:() => { S.n += 200; draw(); },
+    addNew:() => openNewModel(S.kind || "", r => { if (!r) return; openDevDb("models"); setTimeout(() => { const q = $("#ddb-q"); if (q){ q.value = r.model; q.dispatchEvent(new Event("input")); } }, 0); }),
     noop:() => {}
   }, {xwide:true, nofocus:true});
   $("#ddb-q").addEventListener("input", debounce(e => { S.q = e.target.value; S.n = 120; draw(); }, 150));

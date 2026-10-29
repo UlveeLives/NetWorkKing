@@ -66,10 +66,10 @@ function face(d){
     case "coresw": case "sw": { const rows = n > 12 ? 2 : 1, sfp = Math.max(0, Math.min(8, Math.round(num(d.params.sfp)))), rj = Math.max(1, (n || 24) - (num(d.params.sfp) || 0)), rr = Math.min(rows, h * 2), sfpH = `${Array.from({length:sfp}, (_, i) => `<i data-pn="${(n || 24) - sfp + i + 1}"></i>`).join("")}`;
       // many ports (48-port switch): no brand text — the ports sit centred in the same columns as a patch panel's, so cords run straight
       if (Math.ceil(rj / rr) >= 18) return `<span class="led abl"></span><div class="flex1"></div>${portRows(rj, rr, 6, true).replace('class="ports"', 'class="ports al"')}<div class="flex1"></div>${sfp ? `<div class="sfp abr${rr > 1 && sfp > 1 ? " two" : ""}">${sfpH}</div>` : ""}`;
-      return `<span class="led"></span>${m || `<span class="brand">${T === "coresw" ? "L3" : "SW"}</span>`}<div class="flex1"></div>${portRows(rj, rr, 6, true)}<div class="sfp">${sfpH}</div>`; }
+      return `<span class="led"></span>${m || `<span class="brand">${T === "coresw" ? "L3" : "SW"}</span>`}${ioHtml(d)}<div class="flex1"></div>${portRows(rj, rr, 6, true)}<div class="sfp">${sfpH}</div>`; }
     case "fw": { const fr = (n || 8) > 8 ? 2 : 1; if (Math.ceil((n || 8) / Math.min(fr, h * 2)) >= 18) return `<span class="led abl"></span><div class="flex1"></div>${portRows(n, Math.min(fr, h * 2), 6, true).replace('class="ports"', 'class="ports al"')}<div class="flex1"></div>`;
-      return `<span class="led"></span>${m || '<span class="brand red">FIREWALL</span>'}<div class="flex1"></div>${portRows(n || 8, fr, 0, true)}`; }
-    case "router": return `<span class="led"></span>${m || `<span class="brand">${esc(kindName(d.kind).toUpperCase().slice(0, 12))}</span>`}<div class="flex1"></div>${portRows(n || 4, 1, 0)}`;
+      return `<span class="led"></span>${m || '<span class="brand red">FIREWALL</span>'}${ioHtml(d)}<div class="flex1"></div>${portRows(n || 8, fr, 0, true)}`; }
+    case "router": return `<span class="led"></span>${m || `<span class="brand">${esc(kindName(d.kind).toUpperCase().slice(0, 12))}</span>`}${ioHtml(d)}<div class="flex1"></div>${portRows(n || 4, 1, 0)}`;
     case "nvr": { let x = ""; for (let i = 0; i < Math.min(8, Math.max(2, num(d.nvrp && d.nvrp.bays) || h * 4)); i++) x += `<i style="height:${Math.min(14, h * UH / 2 - 4)}px"></i>`; return `${m || '<span class="brand">NVR</span>'}<div class="flex1"></div><span class="led"></span><span class="led o"></span><div class="bays" style="grid-template-rows:repeat(${h > 1 ? 2 : 1},auto)">${x}</div>`; }
     case "server": { const rows = Math.max(1, Math.min(4, h * 2 - 1)); let x = ""; for (let i = 0; i < rows * 4; i++) x += `<i style="height:${Math.max(5, (h * UH - 8) / rows - 2)}px"></i>`; return `<div class="bays" style="grid-template-rows:repeat(${rows},auto)">${x}</div><div class="flex1"></div>${m}<span class="led"></span>`; }
     case "ups": { const va = num(d.params.va); return `${m || '<span class="brand">UPS</span>'}<div class="lcd">${va ? Math.round(va / 100) / 10 + "kVA" : ""}</div><span class="led"></span><div class="grill"></div>`; }
@@ -82,6 +82,10 @@ function face(d){
     default: return `${m}<span class="nm">${esc(devLabel(d))}</span>`;
   }
 }
+// 3.8: the small connectors of a device drawn from its real counts (catalog): management, console, USB, HDMI, VGA
+function ioHtml(d){ const p = d.params || {}, av = d.av || {}, n = (v, m) => Math.max(0, Math.min(m, Math.round(num(v))));
+  const x = "<i class='mg'></i>".repeat(n(p.mgmt, 2)) + "<i class='co'></i>".repeat(n(p.console, 2)) + "<i class='us'></i>".repeat(n(p.usb, 4)) + "<i class='hd'></i>".repeat(n(av.hdmiOut, 4)) + "<i class='vg'></i>".repeat(n(av.vgaOut, 2));
+  return x ? `<span class="io">${x}</span>` : ""; }
 function rearFace(d){
   const T = ftOf(d), cab = d.kind === "camera" || d.kind === "nvr" ? "#e0661b" : "#1f6fd6";
   switch (T){
@@ -90,7 +94,7 @@ function rearFace(d){
     case "pdu": return `<span class="inlet"></span><span class="cord" style="background:#d32424"></span><div class="flex1"></div>`;
     case "ups": return `<div class="outlets">${"<i></i>".repeat(6)}</div><div class="flex1"></div><span class="inlet"></span><span class="cord" style="background:#d32424"></span>`;
     case "fan": return `<div class="fans">${"<i></i>".repeat(4)}</div>`;
-    default: return `<div class="fans" style="gap:6px;margin:0">${"<i style='width:12px;height:12px'></i>".repeat(Math.min(3, devH(d) + 1))}</div><div class="flex1"></div><span class="cord" style="background:${cab}"></span><span class="inlet"></span>`;
+    default: return `<div class="fans" style="gap:6px;margin:0">${"<i style='width:12px;height:12px'></i>".repeat(Math.min(3, devH(d) + 1))}</div>${["server","nvr"].includes(T) ? ioHtml(d) : ""}<div class="flex1"></div><span class="cord" style="background:${cab}"></span><span class="inlet"></span>`;
   }
 }
 function devFace(b, d, r, rearSide, other){
@@ -309,9 +313,27 @@ function rackCords(){
   const b = B();
   $$(".rkb.front").forEach(box => { const r = rackById(b, box.dataset.rkb); if (!r) return; const ids = new Set(rackDevices(b, r).map(d => d.id)), R0 = box.getBoundingClientRect(), k = box.offsetHeight ? R0.height / box.offsetHeight : 1; let h = "";
     const pt = (id, p) => { const d = box.querySelector(`.rkd[data-rd="${CSS.escape(id)}"]`); if (!d) return null; const i = d.querySelector(`[data-pn="${CSS.escape(String(p))}"]`) || null; const e = (i || d).getBoundingClientRect(); return {x:(e.left + e.width / 2 - R0.left) / k, y:(e.top + e.height / 2 - R0.top) / k, exact:!!i}; };
-    b.links.forEach(l => { if (!ids.has(l.a.d) || !ids.has(l.b.d) || l.a.d === l.b.d) return; const A = pt(l.a.d, l.a.p), B2 = pt(l.b.d, l.b.p); if (!A || !B2) return;
-      const col = (MEDIA[l.media] || MEDIA.cat6).c, dy = Math.max(10, Math.abs(B2.y - A.y) * .5), sx = A.x < B2.x ? 1 : -1;
-      h += `<path d="M${A.x.toFixed(1)} ${A.y.toFixed(1)} C${(A.x + sx * 8).toFixed(1)} ${(A.y + (B2.y > A.y ? dy : -dy)).toFixed(1)} ${(B2.x - sx * 8).toFixed(1)} ${(B2.y - (B2.y > A.y ? dy : -dy)).toFixed(1)} ${B2.x.toFixed(1)} ${B2.y.toFixed(1)}" stroke="${col}"${A.exact && B2.exact ? "" : ' stroke-dasharray="4 3"'}><title>${esc(devLabel(devById(b, l.a.d)) + ":" + (l.a.p || "") + " ⇄ " + devLabel(devById(b, l.b.d)) + ":" + (l.b.p || ""))}</title></path>`; });
+    // 3.8: every cord gets its own route so cords from different ports never lie on top of each other —
+    // ports in the same column: a straight vertical line; otherwise down / across / down with the across part on its own
+    // lane (two cords whose across parts overlap are put on different heights) and a side-step of its own at each port.
+    const C = [];
+    b.links.forEach(l => { if (!ids.has(l.a.d) || !ids.has(l.b.d) || l.a.d === l.b.d) return; let A = pt(l.a.d, l.a.p), B2 = pt(l.b.d, l.b.p); if (!A || !B2) return;
+      if (A.y > B2.y){ const x = A; A = B2; B2 = x; } C.push({l, A, B:B2, x0:Math.min(A.x, B2.x), x1:Math.max(A.x, B2.x), mid:(A.y + B2.y) / 2}); });
+    // lanes: greedy interval colouring of the across parts that sit at about the same height
+    C.sort((p, q) => p.mid - q.mid || p.x0 - q.x0);
+    const lanes = [];
+    C.forEach(c => { if (Math.abs(c.A.x - c.B.x) < 3) { c.lane = -1; return; }
+      let i = 0; while (lanes[i] && lanes[i].some(o => Math.abs(o.mid - c.mid) < 14 && o.x0 - 4 < c.x1 && c.x0 < o.x1 + 4)) i++;
+      (lanes[i] = lanes[i] || []).push(c); c.lane = i; });
+    const tone = (hex, i) => { const n = parseInt(String(hex).replace("#", ""), 16); if (isNaN(n)) return hex; const k = [0, .22, -.18, .38, -.3][i % 5], f = v => Math.max(0, Math.min(255, Math.round(k > 0 ? v + (255 - v) * k : v * (1 + k))));
+      return "#" + [n >> 16 & 255, n >> 8 & 255, n & 255].map(f).map(v => v.toString(16).padStart(2, "0")).join(""); };
+    C.forEach((c, i) => { const {l, A, B:B2} = c, col = tone((MEDIA[l.media] || MEDIA.cat6).c, i), dash = A.exact && B2.exact ? "" : ' stroke-dasharray="4 3"';
+      let d;
+      if (c.lane < 0) d = `M${A.x.toFixed(1)} ${A.y.toFixed(1)}V${B2.y.toFixed(1)}`;
+      else { const y = Math.min(B2.y - 4, Math.max(A.y + 4, c.mid + (c.lane % 2 ? 1 : -1) * Math.ceil(c.lane / 2) * 3.2)), r = Math.min(4, Math.abs(B2.x - A.x) / 2, Math.abs(y - A.y), Math.abs(B2.y - y)), sx = B2.x > A.x ? 1 : -1;
+        d = `M${A.x.toFixed(1)} ${A.y.toFixed(1)}V${(y - r).toFixed(1)}Q${A.x.toFixed(1)} ${y.toFixed(1)} ${(A.x + sx * r).toFixed(1)} ${y.toFixed(1)}H${(B2.x - sx * r).toFixed(1)}Q${B2.x.toFixed(1)} ${y.toFixed(1)} ${B2.x.toFixed(1)} ${(y + r).toFixed(1)}V${B2.y.toFixed(1)}`; }
+      const tip = `<title>${esc(devLabel(devById(b, l.a.d)) + ":" + (l.a.p || "") + " ⇄ " + devLabel(devById(b, l.b.d)) + ":" + (l.b.p || ""))}</title>`;
+      h += `<g class="cord">${tip}<path class="halo" d="${d}"/><path d="${d}" stroke="${col}"${dash}/><circle cx="${A.x.toFixed(1)}" cy="${A.y.toFixed(1)}" r="1.9" fill="${col}"/><circle cx="${B2.x.toFixed(1)}" cy="${B2.y.toFixed(1)}" r="1.9" fill="${col}"/></g>`; });
     if (!h) return; const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "rkcords"); svg.setAttribute("width", R0.width / k); svg.setAttribute("height", R0.height / k); svg.innerHTML = h; box.appendChild(svg); });
 }
 window.addEventListener("resize", debounce(() => { if (UI.app === "rack" && curTab().id === "rack") rackCords(); }, 150));

@@ -26,7 +26,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; ColorVu; built-in mic + speaker (strobe/audio alarm); microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -70,7 +85,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Built-in mic + 1.2 W speaker (strobe light & audible warning). Dims Ø74.4 x 179.2 mm. 25 fps @50 Hz."
+  "notes": "Built-in mic + 1.2 W speaker (strobe light & audible warning). Dims Ø74.4 x 179.2 mm. 25 fps @50 Hz.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -99,7 +115,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; ColorVu; -S: 1 audio in/out, 1 alarm in/out; mic + speaker; microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -141,7 +172,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Built-in mic, 1.2 W speaker, 1 line in / 1 line out. Dims Ø138.3 x 115.4 mm."
+  "notes": "Built-in mic, 1.2 W speaker, 1 line in / 1 line out. Dims Ø138.3 x 115.4 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -170,7 +202,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; ColorVu; built-in mic; microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -214,7 +261,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Values from Hikvision datasheet text re-hosted by distributor Novatron (vendor site not readable). Mic on -LU only (-L has none). Dims Ø138.3 x 125.2 mm."
+  "notes": "Values from Hikvision datasheet text re-hosted by distributor Novatron (vendor site not readable). Mic on -LU only (-L has none). Dims Ø138.3 x 125.2 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -244,7 +292,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -288,7 +351,8 @@
   "source2": "https://assets.hikvision.com/prd/normal/all/doc/sm000058954/DS-2CD2083G2-IU-D-Black_Datasheet_20260105.pdf",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Read from the (Black) variant datasheet. 20 fps at 3840x2160, 25 fps at lower res (50 Hz). Built-in mic. Dims Ø70 x 161.7 mm."
+  "notes": "Read from the (Black) variant datasheet. 20 fps at 3840x2160, 25 fps at lower res (50 Hz). Built-in mic. Dims Ø70 x 161.7 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -317,7 +381,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -359,7 +438,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Read from the (Black) variant datasheet. 20 fps at 4K, 25 fps lower res. Built-in mic. Dims Ø121.4 x 92.2 mm."
+  "notes": "Read from the (Black) variant datasheet. 20 fps at 4K, 25 fps lower res. Built-in mic. Dims Ø121.4 x 92.2 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -388,7 +468,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -430,7 +525,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet PDF mirrored by distributor Axilogi (vendor PDF not reachable). Built-in mic. Dims Ø121.4 x 92.2 mm."
+  "notes": "Hikvision datasheet PDF mirrored by distributor Axilogi (vendor PDF not reachable). Built-in mic. Dims Ø121.4 x 92.2 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -459,7 +555,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE/12VDC; ColorVu; microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -503,7 +614,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Audio not listed in datasheet. Dims Ø105 x 289.5 mm."
+  "notes": "Audio not listed in datasheet. Dims Ø105 x 289.5 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -531,7 +643,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; audio + alarm I/O (1/1); possibly RS-485; microSD"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3at",
@@ -570,10 +697,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://download.discomp.cz/hikvision/datasheets/DS-2CD2643G2-IZS.pdf",
-  "source2": null,
+  "source2": "https://videor.com/de/generate/datasheet/render/product_sku/229417",
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet mirrored by distributor Discomp (vendor PDF not reachable). Motorized varifocal 2.8-12 mm. Audio = 1 line in / 1 line out (no built-in mic). Alarm I/O on -S."
+  "notes": "Hikvision datasheet mirrored by distributor Discomp (vendor PDF not reachable). Motorized varifocal 2.8-12 mm. Audio = 1 line in / 1 line out (no built-in mic). Alarm I/O on -S.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -601,7 +729,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; audio + alarm I/O (1/1); possibly RS-485; microSD; same as 2643G2-IZS"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -643,7 +786,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet mirrored by reseller A1 Security Cameras. Audio = 1 line in / 1 line out, alarm 1/1. Dims Ø153.3 x 111.6 mm."
+  "notes": "Hikvision datasheet mirrored by reseller A1 Security Cameras. Audio = 1 line in / 1 line out, alarm 1/1. Dims Ø153.3 x 111.6 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -672,7 +816,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; smart hybrid light; built-in mic; -LIUF adds microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -714,7 +873,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet mirrored by a distributor site. Smart hybrid light: one 30 m supplement range for IR and white light. -F adds microSD."
+  "notes": "Hikvision datasheet mirrored by a distributor site. Smart hybrid light: one 30 m supplement range for IR and white light. -F adds microSD.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -744,7 +904,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; smart hybrid light; built-in mic; -LIUF adds microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -786,7 +961,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Read from (BLACK) variant datasheet. 20 fps at 2560x1440, 25 fps at 1080p. Supplement light range 30 m (IR/white shared). -F adds microSD."
+  "notes": "Read from (BLACK) variant datasheet. 20 fps at 2560x1440, 25 fps at 1080p. Supplement light range 30 m (IR/white shared). -F adds microSD.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -814,7 +990,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100/1000 PoE; 1 audio in/out (3.5mm) + 2 mic + speaker; 1 alarm in/out; RS-485; microSD 256GB"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -854,7 +1045,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "HFOV 360° ceiling/table, 173° wall mount. 2 built-in mics + speaker, line in/out. 1x RJ45 10/100/1000M."
+  "notes": "HFOV 360° ceiling/table, 173° wall mount. 2 built-in mics + speaker, line in/out. 1x RJ45 10/100/1000M.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -883,7 +1075,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100/1000 PoE; 1 audio in/out (3.5mm) + 2 mic + speaker; 1 alarm in/out; microSD 256GB; -IS same interfaces"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -920,10 +1127,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.ipphone-warehouse.com/content/pdf/hikvision/hikvision-ds-2cd6365g0e-ivs-data-sheet.pdf",
-  "source2": null,
+  "source2": "https://us-legacy.hikvision.com/sites/default/files/data_sheet/ps_fe_ds-2cd6365g0e-ivs_110719na_fr.pdf",
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision USA datasheet re-hosted by reseller. 30 fps figure is 60 Hz. HFOV 360° ceiling/table, 180° wall. IP67/IK10 for -IVS only; -IS is indoor (H 50.1 mm). Weight 1.40 kg as stated. GbE port."
+  "notes": "Hikvision USA datasheet re-hosted by reseller. 30 fps figure is 60 Hz. HFOV 360° ceiling/table, 180° wall. IP67/IK10 for -IVS only; -IS is indoor (H 50.1 mm). Weight 1.40 kg as stated. GbE port.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -952,7 +1160,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic (-U); -S: 1 audio in/out + 1 alarm in/out; microSD 256GB"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -989,10 +1212,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dipolnet.com/fisheye_ip_camera_hikvision_hikvision_ds-2cd2955g0-isu_5_mp_1_05_mm_0_017_lx_ir_up_to_8m_mic_wdr_K17906.htm",
-  "source2": null,
+  "source2": "https://www.panacompu.com/peru/en/product-information/hikvision-ds-2cd2955g0-isu-105mm-ip-camera-for-indoors-and-outdoors-5mp-ethernet-poe-manual-angle-adjustment",
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "From distributor DIPOL product page (Hikvision PDF not reachable). Indoor; IP/IK not stated. Built-in mic, audio in/out, alarm 1/1. Dims Ø120 x 41 mm."
+  "notes": "From distributor DIPOL product page (Hikvision PDF not reachable). Indoor; IP/IK not stated. Built-in mic, audio in/out, alarm 1/1. Dims Ø120 x 41 mm.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -1020,7 +1244,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE+; alarm 2 in/2 out; audio supported; microSD (data from DS-2DE4A425IWG-E sibling)"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3at",
@@ -1059,10 +1298,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://assets.hikvision.com/prd/normal/all/doc/m000173407/DS-2DE4A425IWG1-E_Datasheet_20250924.pdf",
-  "source2": null,
+  "source2": "https://www.videor.com/de/generate/datasheet/render/product_sku/236338",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "25x optical zoom. Single max 24 W rating. 1 line in/out, alarm 2 in/2 out. Dims Ø169 x 161 mm. Mount accessory sold separately."
+  "notes": "25x optical zoom. Single max 24 W rating. 1 line in/out, alarm 2 in/2 out. Dims Ø169 x 161 mm. Mount accessory sold separately.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Hikvision",
@@ -1091,7 +1331,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100; alarm 2 in/1 out; 1 audio in/out + built-in speaker; microSD 256GB; no RS-485/CVBS listed"
+  },
   "poe": null,
   "poe_in": {
    "class": "Hi-PoE",
@@ -1133,7 +1388,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Values read from Hikvision's official datasheet of the regional -UHK(T5) variant; global (T5) PDF was not readable. 32x optical. Audio 1/1, alarm 2/1. IK10 excl. glass window."
+  "notes": "Values read from Hikvision's official datasheet of the regional -UHK(T5) variant; global (T5) PDF was not readable. 32x optical. Audio 1/1, alarm 2/1. IK10 excl. glass window.",
+  "ports_checked": "high"
  },
  {
   "brand": "Hikvision",
@@ -1161,7 +1417,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; 1 audio in/out + speaker; 1 alarm in/out; RS-485 (half duplex); microSD 512GB"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3at",
@@ -1197,10 +1468,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.getic.com/files/catalogue/3160/datasheetofds2de3a400bwdef1s5_v5526_20201109-60223ae2be64f.pdf",
-  "source2": null,
+  "source2": "https://www.alltrade.co.uk/public/product/ds-2de3a400bw-def1s5-pdf.pdf",
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Hikvision datasheet (V5.5.26) mirrored by distributor Getic. Pan/tilt only (350° / 0-90°), no optical zoom. Built-in mic + speaker. Dims 179.3 x 120 x 182 mm as stated; axis mapping uncertain."
+  "notes": "Hikvision datasheet (V5.5.26) mirrored by distributor Getic. Pan/tilt only (350° / 0-90°), no optical zoom. Built-in mic + speaker. Dims 179.3 x 120 x 182 mm as stated; axis mapping uncertain.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -1229,7 +1501,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; WizSense 2 platform value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1271,10 +1558,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/2-Series/IR/IPC-HFW2841S-S",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "20 fps at 4K. Built-in mic."
+  "notes": "20 fps at 4K. Built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1303,7 +1591,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -ZAS variant adds 1 audio in/out + 1 alarm in/out"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1345,10 +1648,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/2-Series/IR/IPC-HFW2841T-ZS",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Built-in mic; RCA audio in/out only on -ZAS. Power/weight are -ZS values."
+  "notes": "Built-in mic; RCA audio in/out only on -ZAS. Power/weight are -ZS values.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1376,7 +1680,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; -AS: 1 audio in/out, 1 alarm in/out; microSD"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1418,10 +1737,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/2-Series/IR/IPC-HFW2841T-AS",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Built-in mic, 1 RCA audio in/out, alarm 1/1."
+  "notes": "Built-in mic, 1 RCA audio in/out, alarm 1/1.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1450,7 +1770,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; WizSense 2 platform value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1492,10 +1827,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://dahuasecurity.com/products/All-Products/Network-Cameras/WizSense-Series/2-Series/IR/IPC-HDBW2841E-S",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Dims 81.0 x Φ109.9 mm. Built-in mic."
+  "notes": "Dims 81.0 x Φ109.9 mm. Built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1524,7 +1860,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; microSD; -ZAS variant adds audio/alarm I/O"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1566,10 +1917,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/2-Series/IR/IPC-HDBW2441R-ZS",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "20 fps at 2688x1520, 25/30 fps at 2560x1440. Built-in mic; RCA audio I/O only on -ZAS."
+  "notes": "20 fps at 2688x1520, 25/30 fps at 2560x1440. Built-in mic; RCA audio I/O only on -ZAS.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1597,7 +1949,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; 1 audio in/out (RCA) + dual mic + speaker; 1 alarm in/out; microSD 512GB"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3at",
@@ -1637,10 +2004,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/WizSense-Series/3-Series/TiOC-PRO-WizColor/IPC-HFW3849T1-AS-PV-PRO",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/products/All-Products/Network-Cameras/WizSense-Series/TiOC/IPC-HFW3849T1-AS-PV-PRO",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "IR/warm light: 2.8 mm 40 m/40 m, 3.6 mm 60 m/50 m (max shown). Dual mic, 2 W speaker, RCA audio in/out, alarm 1/1."
+  "notes": "IR/warm light: 2.8 mm 40 m/40 m, 3.6 mm 60 m/50 m (max shown). Dual mic, 2 W speaker, RCA audio in/out, alarm 1/1.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -1668,7 +2036,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; 1 audio in/out (RCA); 1 alarm in/out; microSD 512GB"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1708,10 +2091,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/wizsense-3-series/tioc-pro-wizcolor/ipc-hdw3849h-as-pv-pro",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/ceen/products/All-Products/Network-Cameras/WizSense-Series/TiOC/IPC-HDW3849H-AS-PV-PRO",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Eyeball (turret). IR/warm: 2.8 mm 30 m, 3.6 mm 40 m. Dual mic, 2 W speaker, RCA audio in/out, alarm 1/1."
+  "notes": "Eyeball (turret). IR/warm: 2.8 mm 30 m, 3.6 mm 40 m. Dual mic, 2 W speaker, RCA audio in/out, alarm 1/1.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -1739,7 +2123,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; smart dual light; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1781,10 +2180,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/mena/products/All-Products/Network-Cameras/WizSense-2-Series/Smart-Dual-Light/IPC-HDW2449T-S-IL",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Active on Dahua MENA site; global site lists it under discontinued. 20 fps at 2688x1520, 25/30 at 2560x1440. Built-in mic."
+  "notes": "Active on Dahua MENA site; global site lists it under discontinued. 20 fps at 2688x1520, 25/30 at 2560x1440. Built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1812,7 +2212,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; built-in mic; microSD; smart dual light; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1853,10 +2268,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/mena/products/All-Products/Network-Cameras/WizSense-2-Series/Smart-Dual-Light/IPC-HFW2449S-S-IL",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/la/products/All-Products/Network-Cameras/WizSense-Series/2-Series/4MP/IPC-HFW2441S-S",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Active on Dahua MENA site; global site lists it under discontinued. Built-in mic."
+  "notes": "Active on Dahua MENA site; global site lists it under discontinued. Built-in mic.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1886,7 +2302,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; entry Lite series, no audio/alarm I/O, no microSD; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1928,7 +2359,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Dahua datasheet (© 2020) re-hosted by distributor GVS Colombia. Audio not stated."
+  "notes": "Dahua datasheet (© 2020) re-hosted by distributor GVS Colombia. Audio not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -1957,7 +2389,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; entry Lite series, no audio/alarm I/O; series value"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -1999,7 +2446,8 @@
   "source2": null,
   "verified": "2026-10-29",
   "confidence": "medium",
-  "notes": "Dahua datasheet (Rev 001.001) re-hosted by distributor kamery-ip.com. Eyeball (turret). Audio not stated."
+  "notes": "Dahua datasheet (Rev 001.001) re-hosted by distributor kamery-ip.com. Eyeball (turret). Audio not stated.",
+  "ports_checked": "medium"
  },
  {
   "brand": "Dahua",
@@ -2028,7 +2476,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE+; 1 audio in/out; alarm 2 in/1 out; microSD 256GB (from -G=S2 page)"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3at",
@@ -2068,10 +2531,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://france.dahuatech.com/upload/datasheets/SD49425XB-HNR.pdf",
-  "source2": null,
+  "source2": "https://www.dahuasecurity.com/products/discontinued-products/ptz-cameras/sd49425xb-hnr-g=s2",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Dahua France datasheet (French). 25x optical. Audio 1/1, alarm 2/1. Dims Φ160 x 295 mm."
+  "notes": "Dahua France datasheet (French). 25x optical. Audio 1/1, alarm 2/1. Dims Φ160 x 295 mm.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -2100,7 +2564,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100; 1 audio in/out (bare wire); alarm 2 in/1 out; microSD 256GB"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3at",
@@ -2140,10 +2619,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://france.dahuatech.com/upload/datasheets/SD5A445XA-HNR.pdf",
-  "source2": null,
+  "source2": "https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/SD5A445XA-HNR-1T_datasheet_20210913.pdf",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Dahua France datasheet (French). 45x optical. Audio 1/1, alarm 2/1."
+  "notes": "Dahua France datasheet (French). 45x optical. Audio 1/1, alarm 2/1.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -2171,7 +2651,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 1,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100 PoE; no audio/alarm I/O listed; microSD 512GB"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3af",
@@ -2213,10 +2708,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://dahuasecurity.com/products/All-Products/PTZ-Cameras/WizSense-Series/SD2/SD22404DB-GNY",
-  "source2": null,
+  "source2": "https://recursos.qloudea.com/ficha/pdf/8652.pdf",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "4x optical, no IR listed. Audio not listed."
+  "notes": "4x optical, no IR listed. Audio not listed.",
+  "ports_checked": "high"
  },
  {
   "brand": "Dahua",
@@ -2244,7 +2740,22 @@
   },
   "heat_btu_h": null,
   "airflow": null,
-  "ports": null,
+  "ports": {
+   "rj45_100m": 0,
+   "rj45_1g": 1,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "hdmi": 0,
+   "vga": 0,
+   "notes": "1x RJ45 10/100/1000; audio I/O; alarm 2 in/2 out; microSD 256GB; 12MP fisheye"
+  },
   "poe": null,
   "poe_in": {
    "class": "802.3at",
@@ -2281,9 +2792,10 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.dahuasecurity.com/products/network-products/network-cameras/wizmind-panoramic-series/fisheye-series/ipc-ebw81242-as-s2=s2",
-  "source2": null,
+  "source2": "https://en.ivel.pl/p21850,vandal-proof-ip-camera-ipc-ebw81242-as-s2-fish-eye-dahua.html",
   "verified": "2026-10-29",
   "confidence": "high",
-  "notes": "Mic + speaker, RCA audio in/out, alarm 2/2. RJ45 10/100/1000."
+  "notes": "Mic + speaker, RCA audio in/out, alarm 2/2. RJ45 10/100/1000.",
+  "ports_checked": "medium"
  }
 ]

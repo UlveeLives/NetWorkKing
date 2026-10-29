@@ -26,18 +26,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -76,7 +78,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Diameter 160 mm; ceiling or wall mount (mounts included); max clients stated as 300+; 315 g with mount"
+  "notes": "Diameter 160 mm; ceiling or wall mount (mounts included); max clients stated as 300+; 315 g with mount",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -105,18 +108,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -155,7 +160,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Diameter 160 mm; ceiling or wall; max clients 300+; 413 g with mount"
+  "notes": "Diameter 160 mm; ceiling or wall; max clients 300+; 413 g with mount",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -184,18 +190,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -234,7 +242,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Diameter 220 mm; ceiling or wall (Pro Mount included); max clients 350+; 930 g with mount"
+  "notes": "Diameter 220 mm; ceiling or wall (Pro Mount included); max clients 350+; 930 g with mount",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -263,18 +272,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -313,7 +324,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Diameter 197 mm; ceiling or wall (Pro Mount included); max clients 250+; 720 g with mount"
+  "notes": "Diameter 197 mm; ceiling or wall (Pro Mount included); max clients 250+; 720 g with mount",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -342,18 +354,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -395,7 +409,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Diameter 220 mm; max clients 600+; 1.1 kg with mount"
+  "notes": "Diameter 220 mm; max clients 600+; 1.1 kg with mount",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -424,18 +439,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -474,7 +491,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Cylindrical Ø48.5 x 159.5 mm; wall or pole mount; IPX5; max clients 250+; power figure includes PoE adapter"
+  "notes": "Cylindrical Ø48.5 x 159.5 mm; wall or pole mount; IPX5; max clients 250+; power figure includes PoE adapter",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -503,18 +521,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -553,7 +573,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dual-band (no 6 GHz); max clients 200+; ceiling or wall (Lite Mount included)"
+  "notes": "Dual-band (no 6 GHz); max clients 200+; ceiling or wall (Lite Mount included)",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -582,18 +603,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -635,7 +658,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Max clients 300+; ceiling or wall (Pro Mount included)"
+  "notes": "Max clients 300+; ceiling or wall (Pro Mount included)",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -664,18 +688,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -717,7 +743,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Max clients 500+; TX power may differ by region (EU page read)"
+  "notes": "Max clients 500+; TX power may differ by region (EU page read)",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -746,18 +773,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -796,7 +825,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Wall or pole mount; IPX6. Gain shown = internal directional (5 GHz 12.5 dBi 45x45, 2.4 GHz 8 dBi 90x90); external omni 4 dBi (5 GHz) / 3 dBi (2.4 GHz). Vendor dims 170 x 208 x 54.5 mm mapped as w x h x d"
+  "notes": "Wall or pole mount; IPX6. Gain shown = internal directional (5 GHz 12.5 dBi 45x45, 2.4 GHz 8 dBi 90x90); external omni 4 dBi (5 GHz) / 3 dBi (2.4 GHz). Vendor dims 170 x 208 x 54.5 mm mapped as w x h x d",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -825,18 +855,20 @@
   "heat_btu_h": 27.3,
   "airflow": "passive",
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 8,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 0,
    "sfp_plus": 0,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 4,
@@ -860,7 +892,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Desktop or wall; max consumption 8W excluding PoE; 30W max per port; heat figure excludes PoE"
+  "notes": "Desktop or wall; max consumption 8W excluding PoE; 30W max per port; heat figure excludes PoE",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -889,18 +922,20 @@
   "heat_btu_h": 51.2,
   "airflow": "passive",
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 16,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 0,
    "sfp_plus": 0,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 8,
@@ -924,7 +959,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Desktop or wall; 15W excl. PoE; heat dissipation 51.2 (unit not shown on page, assumed BTU/hr) excluding PoE; non-blocking throughput 16 Gbps"
+  "notes": "Desktop or wall; 15W excl. PoE; heat dissipation 51.2 (unit not shown on page, assumed BTU/hr) excluding PoE; non-blocking throughput 16 Gbps",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -953,18 +989,20 @@
   "heat_btu_h": null,
   "airflow": "passive",
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 24,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 2,
    "sfp_plus": 0,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 16,
@@ -988,7 +1026,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "25W excl. PoE; 3.1 kg with brackets; fanless per product description"
+  "notes": "25W excl. PoE; 3.1 kg with brackets; fanless per product description",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1017,18 +1056,20 @@
   "heat_btu_h": 170.6,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 24,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 0,
    "sfp_plus": 2,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -1052,7 +1093,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE: 16x PoE+ (30W) + 8x PoE++ (60W); DC backup via USP RPS; 50W excl. PoE; heat excludes PoE; Layer 3"
+  "notes": "PoE: 16x PoE+ (30W) + 8x PoE++ (60W); DC backup via USP RPS; 50W excl. PoE; heat excludes PoE; Layer 3",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1081,18 +1123,20 @@
   "heat_btu_h": 204.7,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 48,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 0,
    "sfp_plus": 4,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -1116,7 +1160,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE: 40x PoE+ (32W) + 8x PoE++ (60W); 60W excl. PoE; heat excludes PoE; Layer 3"
+  "notes": "PoE: 40x PoE+ (32W) + 8x PoE++ (60W); 60W excl. PoE; heat excludes PoE; Layer 3",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1145,18 +1190,20 @@
   "heat_btu_h": 170.6,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 16,
    "rj45_mgig": 8,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 2,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "8x 2.5GbE RJ45"
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "8x 2.5GbE RJ45 | No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -1180,7 +1227,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE: 8x PoE+ (32W) + 16x PoE++ (64W); 50W excl. PoE; heat excludes PoE; non-blocking 56 Gbps; Layer 3. Vendor names PoE/PoE+/PoE++ without IEEE numbers"
+  "notes": "PoE: 8x PoE+ (32W) + 16x PoE++ (64W); 50W excl. PoE; heat excludes PoE; non-blocking 56 Gbps; Layer 3. Vendor names PoE/PoE+/PoE++ without IEEE numbers",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1209,18 +1257,20 @@
   "heat_btu_h": 341.2,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 32,
    "rj45_mgig": 16,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 4,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "16x 2.5GbE RJ45"
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "16x 2.5GbE RJ45 | No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -1244,7 +1294,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE: 32x PoE+ (32W) + 16x PoE++ (64W); 100W excl. PoE; heat excludes PoE; non-blocking 112 Gbps; Layer 3"
+  "notes": "PoE: 32x PoE+ (32W) + 16x PoE++ (64W); 100W excl. PoE; heat excludes PoE; non-blocking 112 Gbps; Layer 3",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1273,18 +1324,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 28,
    "sfp28": 4,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "1.3in touchscreen LCD; in-band Ethernet management"
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "1.3in touchscreen LCD; in-band Ethernet management | No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1308,7 +1361,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official Ubiquiti datasheet (Chinese edition). u=1 implied by 19in/44 mm chassis, not stated explicitly. Non-blocking throughput 380 Gbps; 4.7 kg with brackets"
+  "notes": "Official Ubiquiti datasheet (Chinese edition). u=1 implied by 19in/44 mm chassis, not stated explicitly. Non-blocking throughput 380 Gbps; 4.7 kg with brackets",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1337,18 +1391,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 9,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 2,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "WAN: 1x GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 16 GB eMMC"
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "WAN: 1x GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 16 GB eMMC | No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1372,7 +1428,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Ubiquiti datasheet (c2023) hosted by distributor montersi.pl; techspecs.ui.com page not reachable. threat_gbps = IDS/IPS throughput (iPerf3). u=1 implied by 43.7 mm height. HDD bay not captured"
+  "notes": "Ubiquiti datasheet (c2023) hosted by distributor montersi.pl; techspecs.ui.com page not reachable. threat_gbps = IDS/IPS throughput (iPerf3). u=1 implied by 43.7 mm height. HDD bay not captured",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1401,18 +1458,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 8,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 2,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "WAN: 1x 2.5GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 128 GB SSD + 16 GB eMMC"
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "WAN: 1x 2.5GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 128 GB SSD + 16 GB eMMC | No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 8,
@@ -1436,7 +1495,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Max power 50W excluding PoE; PoE: 6x PoE (15.4W) + 2x PoE+ (30W), total budget not stated; IDS/IPS throughput measured with iPerf3; u=1 implied by 43.7 mm height"
+  "notes": "Max power 50W excluding PoE; PoE: 6x PoE (15.4W) + 2x PoE+ (30W), total budget not stated; IDS/IPS throughput measured with iPerf3; u=1 implied by 43.7 mm height",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1465,18 +1525,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 8,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 2,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "WAN: 1x 2.5GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 128 GB SSD + 32 GB eMMC"
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "WAN: 1x 2.5GbE RJ45 + 1x 10G SFP+; LAN: 8x GbE RJ45 + 1x 10G SFP+; 128 GB SSD + 32 GB eMMC | No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1500,7 +1562,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Ubiquiti store spec printout hosted by distributor netxl.com; techspecs.ui.com blocked (robots). IDS/IPS 5 Gbps (iPerf3). u=1 implied by 43.7 mm height"
+  "notes": "Ubiquiti store spec printout hosted by distributor netxl.com; techspecs.ui.com blocked (robots). IDS/IPS 5 Gbps (iPerf3). u=1 implied by 43.7 mm height",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1529,18 +1592,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "Default WAN = 2.5GbE; up to 4 WAN ports"
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Default WAN = 2.5GbE; up to 4 WAN ports | No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1564,7 +1629,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "IDS/IPS throughput 1 Gbps; 16 GB storage, 3 GB RAM"
+  "notes": "IDS/IPS throughput 1 Gbps; 16 GB storage, 3 GB RAM",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1593,18 +1659,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 2,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "WAN: 1x GbE RJ45 + 1x 10G SFP+; LAN: 1x GbE RJ45 + 1x 10G SFP+"
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "WAN: 1x GbE RJ45 + 1x 10G SFP+; LAN: 1x GbE RJ45 + 1x 10G SFP+ | No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1628,7 +1696,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Datasheet states no throughput figures; u=1 implied by 43.7 mm height"
+  "notes": "Datasheet states no throughput figures; u=1 implied by 43.7 mm height",
+  "ports_checked": "medium"
  },
  {
   "brand": "Ubiquiti",
@@ -1657,18 +1726,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 8,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -1692,7 +1763,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Ubiquiti datasheet hosted by distributor ALLNET; techspecs.ui.com page not reachable. u=1 implied by 43.7 mm height. 2.74 kg with mount"
+  "notes": "Ubiquiti datasheet hosted by distributor ALLNET; techspecs.ui.com page not reachable. u=1 implied by 43.7 mm height. 2.74 kg with mount",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE Aruba Networking",
@@ -1725,18 +1797,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
    "usb": 1,
-   "notes": null
+   "notes": "1x GE; console via proprietary micro-B (AP-CBL-SERU); USB 2.0 host per existing data.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -1775,7 +1849,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "SKUs: R2H28A RW, R2H29A US, R2H38A RW TAA, R2H39A US TAA, S3J27A RW 10-pack. PoE class 3 or 4; max 11.0W without USB, 16.5W (802.3at) / 13.5W (802.3af) with USB. TX = aggregate conducted (18 dBm/chain). 256 clients per radio. Weight excludes bracket; mount kits sold separately"
+  "notes": "SKUs: R2H28A RW, R2H29A US, R2H38A RW TAA, R2H39A US TAA, S3J27A RW 10-pack. PoE class 3 or 4; max 11.0W without USB, 16.5W (802.3at) / 13.5W (802.3af) with USB. TX = aggregate conducted (18 dBm/chain). 256 clients per radio. Weight excludes bracket; mount kits sold separately",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE Aruba Networking",
@@ -1813,18 +1888,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "E0 2.5G + E1 1G; USB 2.0 Type-A host; micro-B console (proprietary).",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -1863,7 +1940,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "SKUs: Q9H62A RW, Q9H63A US (Q9H59A EG, Q9H60A IL, Q9H61A JP, S5D86A ID; TAA Q9H72A RW / Q9H73A US; 10-packs S3J29A RW / S3J30A US). Full function on 802.3at class 4 or 802.3bt class 5; 802.3af only with IPM (restricted, 13.5W). typ_w = idle PoE. 512 clients per radio. TX = aggregate conducted"
+  "notes": "SKUs: Q9H62A RW, Q9H63A US (Q9H59A EG, Q9H60A IL, Q9H61A JP, S5D86A ID; TAA Q9H72A RW / Q9H73A US; 10-packs S3J29A RW / S3J30A US). Full function on 802.3at class 4 or 802.3bt class 5; 802.3af only with IPM (restricted, 13.5W). typ_w = idle PoE. 512 clients per radio. TX = aggregate conducted",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE Aruba Networking",
@@ -1895,18 +1973,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "2x 5G mGig; USB 2.0 Type-A host; micro-B console (proprietary).",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -1945,7 +2025,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "SKUs: JZ336A RW, JZ337A US, JZ346A RW TAA, JZ347A US TAA. Class 4 or higher; 26.4W on 802.3bt/dual 802.3at, 23.3W on 802.3at IPM disabled (excl. USB; USB load adds up to 5.7W). 1024 clients per radio. Weight/dims exclude bracket"
+  "notes": "SKUs: JZ336A RW, JZ337A US, JZ346A RW TAA, JZ347A US TAA. Class 4 or higher; 26.4W on 802.3bt/dual 802.3at, 23.3W on 802.3at IPM disabled (excl. USB; USB load adds up to 5.7W). 1024 clients per radio. Weight/dims exclude bracket",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE Aruba Networking",
@@ -1979,18 +2060,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
    "usb": 1,
-   "notes": null
+   "notes": "2x 100M/1G/2.5G RJ45; USB 2.0 (5W); micro-B console (AP-CBL-SERU).",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -2029,10 +2112,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.hpe.com/us/en/collaterals/collateral.a50002582enw.html",
-  "source2": null,
+  "source2": "https://download.axilogi.com/HPE/Manual/HPE_NW_630_AP_IG.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "SKUs: R7J27A RW, R7J28A US, TAA R7J32A RW / R7J33A US, 5-pack S3J35A RW / S3J36A US. Class 5 unrestricted; class 4 works (USB disabled). PoE max 23.8W without USB / 29.4W with USB (series figure). 512 clients per radio. Weight/dims exclude bracket"
+  "notes": "SKUs: R7J27A RW, R7J28A US, TAA R7J32A RW / R7J33A US, 5-pack S3J35A RW / S3J36A US. Class 5 unrestricted; class 4 works (USB disabled). PoE max 23.8W without USB / 29.4W with USB (series figure). 512 clients per radio. Weight/dims exclude bracket",
+  "ports_checked": "high"
  },
  {
   "brand": "HPE Aruba Networking",
@@ -2064,18 +2148,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 2,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
    "usb": 1,
-   "notes": null
+   "notes": "2x mGig RJ45; USB 2.0; micro-B console (same as 630/650 family).",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -2117,7 +2203,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "SKUs: R7J38A RW, R7J39A US, TAA R7J43A RW / R7J44A US. 802.3bt class 5 unrestricted; single 802.3at restricted; 802.3af not supported. PoE max 40.3W without USB / 46.5W with USB. 1024 clients per radio. Weight excludes bracket"
+  "notes": "SKUs: R7J38A RW, R7J39A US, TAA R7J43A RW / R7J44A US. 802.3bt class 5 unrestricted; single 802.3at restricted; 802.3af not supported. PoE max 40.3W without USB / 46.5W with USB. 1024 clients per radio. Weight excludes bracket",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2146,18 +2233,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -2196,7 +2285,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Hardware V4 page. TX = FCC max (CE: 20 dBm 2.4 GHz EIRP, 23-27 dBm 5 GHz EIRP). 2 antennas per band; marketed as 4-stream dual-band (streams not in spec table). Max clients 250+. Ceiling/wall/junction box mount"
+  "notes": "Hardware V4 page. TX = FCC max (CE: 20 dBm 2.4 GHz EIRP, 23-27 dBm 5 GHz EIRP). 2 antennas per band; marketed as 4-stream dual-band (streams not in spec table). Max clients 250+. Ceiling/wall/junction box mount",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2225,18 +2315,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -2275,7 +2367,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official TP-Link Omada site (omadanetworks.com, SG region). TX = FCC '<25 dBm' (CE: <20 dBm 2.4 GHz, <23/<25 dBm 5 GHz). Dims for V2 and above. Max clients 250+"
+  "notes": "Official TP-Link Omada site (omadanetworks.com, SG region). TX = FCC '<25 dBm' (CE: <20 dBm 2.4 GHz, <23/<25 dBm 5 GHz). Dims for V2 and above. Max clients 250+",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2304,18 +2397,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -2354,7 +2449,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Datasheet hardware V3.0. TX = FCC conducted (5 GHz 24-25 dBm by sub-band; CE EIRP 20 dBm 2.4 GHz, 22-27 dBm 5 GHz). Power 15.5W is US PoE figure. Ceiling/wall/junction box/T-bar mounts included. Max STAs 250+"
+  "notes": "Datasheet hardware V3.0. TX = FCC conducted (5 GHz 24-25 dBm by sub-band; CE EIRP 20 dBm 2.4 GHz, 22-27 dBm 5 GHz). Power 15.5W is US PoE figure. Ceiling/wall/junction box/T-bar mounts included. Max STAs 250+",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2383,18 +2479,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -2433,7 +2531,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "TX = FCC conducted (CE 20 dBm 2.4 GHz, 22-27 dBm 5 GHz). Max 13.7W EU / 15.5W US on PoE; typ_w = idle on PoE. BLE 5.2. Max STAs 250+, 16 BSSIDs"
+  "notes": "TX = FCC conducted (CE 20 dBm 2.4 GHz, 22-27 dBm 5 GHz). Max 13.7W EU / 15.5W US on PoE; typ_w = idle on PoE. BLE 5.2. Max STAs 250+, 16 BSSIDs",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2462,18 +2561,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -2512,7 +2613,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Marked End of Life on vendor page. 4 antennas per band (4x 4 dBi / 4x 5 dBi); stream count not in spec table. TX = FCC '<26 dBm' (CE <20 / <23 / <28 dBm EIRP). Max power 20.43W EU / 23.69W US"
+  "notes": "Marked End of Life on vendor page. 4 antennas per band (4x 4 dBi / 4x 5 dBi); stream count not in spec table. TX = FCC '<26 dBm' (CE <20 / <23 / <28 dBm EIRP). Max power 20.43W EU / 23.69W US",
+  "ports_checked": "medium"
  },
  {
   "brand": "MikroTik",
@@ -2541,18 +2643,20 @@
   "heat_btu_h": null,
   "airflow": "passive",
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 7,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 1,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 1,
-   "notes": "USB 3.0 Type-A"
+   "notes": "USB 3.0 Type-A | 7x GE + 1x 2.5G + 1x SFP+; USB 3.0 Type-A; no serial console port.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2579,7 +2683,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Three power inputs (redundant). typ_w = 14W without attachments. Four units fit 1U with K-55 kit. fw_gbps = routing with 25 IP filter rules at 1518 B (fast path no rules 9.85 Gbps); ipsec_gbps = 256 tunnels AES-128-CBC+SHA1 at 1400 B. RouterOS v7 L5"
+  "notes": "Three power inputs (redundant). typ_w = 14W without attachments. Four units fit 1U with K-55 kit. fw_gbps = routing with 25 IP filter rules at 1518 B (fast path no rules 9.85 Gbps); ipsec_gbps = 256 tunnels AES-128-CBC+SHA1 at 1400 B. RouterOS v7 L5",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2608,18 +2713,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -2658,7 +2765,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official TP-Link datasheet, HW 2.20, Korea-region edition. TX = FCC conducted (CE EIRP 20 dBm 2.4 GHz; 23/23/30 dBm 5 GHz). typ_w = standby on PoE. Max STAs 250+. Ceiling/wall/junction box/T-bar kits included"
+  "notes": "Official TP-Link datasheet, HW 2.20, Korea-region edition. TX = FCC conducted (CE EIRP 20 dBm 2.4 GHz; 23/23/30 dBm 5 GHz). typ_w = standby on PoE. Max STAs 250+. Ceiling/wall/junction box/T-bar kits included",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2687,18 +2795,20 @@
   "heat_btu_h": 1557.47,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 24,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 4,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 2,
-   "usb": null,
-   "notes": "1x RJ45 console + 1x Micro-USB console"
+   "usb": 0,
+   "notes": "1x RJ45 console + 1x Micro-USB console | RJ45 + micro-USB console; no USB host port.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -2722,7 +2832,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official TP-Link Omada site. Power/heat are V5 figures with 384W PD load (V1 463.8W, V4 460.8W; no-PD V2 34.4W). 2 fans. u=1 implied by 44 mm rack-mountable chassis"
+  "notes": "Official TP-Link Omada site. Power/heat are V5 figures with 384W PD load (V1 463.8W, V4 460.8W; no-PD V2 34.4W). 2 fans. u=1 implied by 44 mm rack-mountable chassis",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2751,18 +2862,20 @@
   "heat_btu_h": 1656.19,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 48,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 4,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 2,
-   "usb": null,
-   "notes": "1x RJ45 console + 1x Micro-USB console"
+   "usb": 0,
+   "notes": "1x RJ45 console + 1x Micro-USB console | RJ45 + micro-USB console; no USB host port.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -2786,7 +2899,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official TP-Link Omada site. typ_w = no PD connected; max/heat with 384W PD. 3 fans. u=1 implied by 44 mm rack chassis"
+  "notes": "Official TP-Link Omada site. typ_w = no PD connected; max/heat with 384W PD. 3 fans. u=1 implied by 44 mm rack chassis",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2816,18 +2930,20 @@
   "heat_btu_h": 52.75,
   "airflow": "passive",
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 8,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 2,
-   "usb": null,
-   "notes": "1x RJ45 console + 1x Micro-USB console"
+   "usb": 0,
+   "notes": "1x RJ45 console + 1x Micro-USB console | RJ45 + micro-USB console; no USB host port.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2851,7 +2967,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official TP-Link Omada site. Fanless. u=1 implied by 44 mm rack chassis"
+  "notes": "Official TP-Link Omada site. Fanless. u=1 implied by 44 mm rack chassis",
+  "ports_checked": "medium"
  },
  {
   "brand": "TP-Link",
@@ -2880,18 +2997,20 @@
   "heat_btu_h": 1047.3,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 24,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 4,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "24x GE PoE+ + 4x SFP; no console or USB listed in datasheet.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -2912,10 +3031,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.omadanetworks.com/en/business-networking/omada-switch-access/tl-sg2428p/",
-  "source2": null,
+  "source2": "https://static.tp-link.com/upload/product-overview/2026/202602/20260211/SG2428P(UN)5.40_datasheet.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Marked End of Sale (successor SG2428P). max_w/heat = V4 with 250W PD; typ_w = V1 no PD. 2 fans. u=1 implied by 44 mm rack chassis"
+  "notes": "Marked End of Sale (successor SG2428P). max_w/heat = V4 with 250W PD; typ_w = V1 no PD. 2 fans. u=1 implied by 44 mm rack chassis",
+  "ports_checked": "high"
  },
  {
   "brand": "TP-Link",
@@ -2945,18 +3065,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 5,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "1 WAN + 1 LAN fixed + 3 WAN/LAN"
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1 WAN + 1 LAN fixed + 3 WAN/LAN | v2.20: 1 WAN + 2 LAN/WAN + 2 LAN GE; 1x USB 2.0 (LTE dongle); no console. (v1 has no USB.)",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -2977,10 +3099,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.omadanetworks.com/sg/business-networking/omada-router-wired-router/er605/",
-  "source2": null,
+  "source2": "https://static.tp-link.com/upload/product-overview/2024/202407/20240724/ER605(UN)2.20_Datasheet.pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "No NAT throughput stated; packet forwarding 81,067 pps @1518 B, 1,308,139 pps @66 B. IPsec 41.5 Mbps. Hardware version not stated"
+  "notes": "No NAT throughput stated; packet forwarding 81,067 pps @1518 B, 1,308,139 pps @66 B. IPsec 41.5 Mbps. Hardware version not stated",
+  "ports_checked": "high"
  },
  {
   "brand": "TP-Link",
@@ -3009,18 +3132,20 @@
   "heat_btu_h": null,
   "airflow": "passive",
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 5,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 1,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "1 SFP WAN, 1 WAN, 2 LAN/WAN, 2 LAN"
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 1,
+   "notes": "1 SFP WAN, 1 WAN, 2 LAN/WAN, 2 LAN | v2.30: 1 GE WAN + 4 GE LAN/WAN + 1 SFP WAN/LAN; 1x USB 3.0 (LTE/storage); no console. (v1 has no USB.)",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -3041,10 +3166,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.omadanetworks.com/nordic/business-networking/omada-router-wired-router/er7206/",
-  "source2": null,
+  "source2": "https://static.tp-link.com/upload/product-overview/2026/202606/20260615/ER7206(UN)2.30_Datasheet (Revised_02) (1).pdf",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "fw_gbps = NAT throughput static IP (~930-937 Mbps); threat_gbps = IPS TCP 200 Mbps; IPsec AES128 217 Mbps; WireGuard 177.2 Mbps; 150,000 sessions"
+  "notes": "fw_gbps = NAT throughput static IP (~930-937 Mbps); threat_gbps = IPS TCP 200 Mbps; IPsec AES128 217 Mbps; WireGuard 177.2 Mbps; 150,000 sessions",
+  "ports_checked": "high"
  },
  {
   "brand": "TP-Link",
@@ -3137,18 +3263,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 16,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 2,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "16x GE + 2x 10G SFP+; RJ45 serial console; 1x USB.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -3169,10 +3297,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://help.mikrotik.com/docs/spaces/UM/pages/78086248/CCR2004-16G-2S",
-  "source2": null,
+  "source2": "https://mikrotik.com/product/ccr2004_16g_2splus",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official MikroTik user-manual page (product page not reached, so no test-result throughput). AL32400 4-core 1.7 GHz, 4 GB RAM, RouterOS L6. Redundancy not stated"
+  "notes": "Official MikroTik user-manual page (product page not reached, so no test-result throughput). AL32400 4-core 1.7 GHz, 4 GB RAM, RouterOS L6. Redundancy not stated",
+  "ports_checked": "high"
  },
  {
   "brand": "MikroTik",
@@ -3201,18 +3330,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 24,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 4,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 0,
+   "notes": "24x GE PoE + 4x SFP+; RJ45 serial console; no USB.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 24,
@@ -3236,7 +3367,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE-out 802.3af/at plus passive/low-voltage; 450W guaranteed (3x150W per 8 ports), 30W/port. typ_w = no attachments. switching_gbps = non-blocking L2 capacity (1518 B); routing w/ 25 filter rules 0.79 Gbps. 2 fans. Switch chip 98DX3236"
+  "notes": "PoE-out 802.3af/at plus passive/low-voltage; 450W guaranteed (3x150W per 8 ports), 30W/port. typ_w = no attachments. switching_gbps = non-blocking L2 capacity (1518 B); routing w/ 25 filter rules 0.79 Gbps. 2 fans. Switch chip 98DX3236",
+  "ports_checked": "high"
  },
  {
   "brand": "MikroTik",
@@ -3267,16 +3399,18 @@
   "ports": {
    "rj45_100m": 1,
    "rj45_1g": 48,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 4,
-   "sfp28": null,
+   "sfp28": 0,
    "qsfp_plus": 2,
-   "qsfp28": null,
+   "qsfp28": 0,
    "console": 1,
-   "usb": null,
-   "notes": "10/100 port role not labelled (likely mgmt)"
+   "usb": 0,
+   "notes": "10/100 port role not labelled (likely mgmt) | 48x GE PoE + 4x SFP+ + 2x QSFP+ + 1x 10/100 mgmt; RJ45 console; no USB.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -3300,7 +3434,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "PoE-out 802.3af/at plus passive; 700W total. typ_w = no attachments; description mentions 750W PSU vs 800W max spec. switching_gbps = non-blocking L2 capacity (1518 B). 4 fans. Switch chip 98DX3257. u=1 implied by 44 mm"
+  "notes": "PoE-out 802.3af/at plus passive; 700W total. typ_w = no attachments; description mentions 750W PSU vs 800W max spec. switching_gbps = non-blocking L2 capacity (1518 B). 4 fans. Switch chip 98DX3257. u=1 implied by 44 mm",
+  "ports_checked": "medium"
  },
  {
   "brand": "MikroTik",
@@ -3330,17 +3465,19 @@
   "airflow": null,
   "ports": {
    "rj45_100m": 1,
-   "rj45_1g": null,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
+   "rj45_1g": 0,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
    "sfp28": 16,
-   "qsfp_plus": null,
+   "qsfp_plus": 0,
    "qsfp28": 2,
-   "console": null,
+   "console": 1,
    "usb": 1,
-   "notes": null
+   "notes": "1x 10/100 mgmt + 16x SFP28 + 2x QSFP28; RJ45 serial console; 1x USB Type-A.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -3361,10 +3498,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://help.mikrotik.com/docs/x/aACLC",
-  "source2": null,
+  "source2": "https://mikrotik.com/product/crs518_16xs_2xq",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Official MikroTik user-manual page; no throughput figures. Redundancy not stated. Switch chip 98DX8525. u=1 implied by 44.5 mm"
+  "notes": "Official MikroTik user-manual page; no throughput figures. Redundancy not stated. Switch chip 98DX8525. u=1 implied by 44.5 mm",
+  "ports_checked": "high"
  },
  {
   "brand": "MikroTik",
@@ -3393,18 +3531,20 @@
   "heat_btu_h": null,
   "airflow": "passive",
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 24,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
    "sfp_plus": 2,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
    "console": 1,
-   "usb": null,
-   "notes": null
+   "usb": 0,
+   "notes": "24x GE + 2x SFP+; RJ45 console; no USB.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 0,
@@ -3431,7 +3571,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "switching_gbps = non-blocking L2 capacity at 1518 B (test results). Switch chip 98DX3236. Two DC inputs; redundancy not stated"
+  "notes": "switching_gbps = non-blocking L2 capacity at 1518 B (test results). Switch chip 98DX3236. Two DC inputs; redundancy not stated",
+  "ports_checked": "medium"
  },
  {
   "brand": "MikroTik",
@@ -3524,18 +3665,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 4,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
    "usb": 1,
-   "notes": "2.5GbE port has PoE-in; Ether1 passive PoE-out 15W"
+   "notes": "2.5GbE port has PoE-in; Ether1 passive PoE-out 15W | 4x GE + 1x 2.5G; 1x USB 3.0; no console.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 1,
@@ -3578,7 +3721,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "TX from CE regulatory table (5 GHz 14-27 dBm by sub-band). IPQ-6010 4-core 1.8 GHz, 1 GB RAM. typ_w = no attachments"
+  "notes": "TX from CE regulatory table (5 GHz 14-27 dBm by sub-band). IPQ-6010 4-core 1.8 GHz, 1 GB RAM. typ_w = no attachments",
+  "ports_checked": "medium"
  },
  {
   "brand": "MikroTik",
@@ -3607,18 +3751,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 2,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": "Ether2 passive PoE-out"
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "Ether2 passive PoE-out | 2x GE; no USB/console.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -3657,7 +3803,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "Dimensions stated 228 x 48 mm (round, diameter x height). TX from CE regulatory table (5 GHz 14-30 dBm by sub-band). Antenna gain 5.5 dBi single figure. 36W max includes PoE-out; 11W without attachments"
+  "notes": "Dimensions stated 228 x 48 mm (round, diameter x height). TX from CE regulatory table (5 GHz 14-30 dBm by sub-band). Antenna gain 5.5 dBi single figure. 36W max includes PoE-out; 11W without attachments",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE Networking Instant On",
@@ -3687,18 +3834,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 1,
-   "rj45_mgig": null,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -3731,7 +3880,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Distributor (netxl.com) spec page; HPE PDF datasheet not retrievable (psnow redirect). R4W02A RW; R6M51A = bundle with PSU. 75 clients per radio. TX power / antenna gain not stated. Mount type not stated (kit included)"
+  "notes": "Distributor (netxl.com) spec page; HPE PDF datasheet not retrievable (psnow redirect). R4W02A RW; R6M51A = bundle with PSU. 75 clients per radio. TX power / antenna gain not stated. Mount type not stated (kit included)",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE Networking Instant On",
@@ -3760,18 +3910,20 @@
   "heat_btu_h": null,
   "airflow": null,
   "ports": {
-   "rj45_100m": null,
-   "rj45_1g": null,
+   "rj45_100m": 0,
+   "rj45_1g": 0,
    "rj45_mgig": 1,
-   "rj45_10g": null,
-   "sfp": null,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "rj45_10g": 0,
+   "sfp": 0,
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 0,
+   "usb": 0,
+   "notes": "No console or USB host port (series-typical for this product line); data ports from existing record.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": null,
   "poe_in": {
@@ -3810,7 +3962,8 @@
   "source2": null,
   "verified": "2026-10-28",
   "confidence": "medium",
-  "notes": "Official HPE data sheet (PSN1014652419, c2025 HPE) hosted by distributor EDSystem. TX = 18 dBm/chain + MIMO gain. Dims stated 5.1 x 20.3 cm. DC 15.9W max. Ceiling/wall mount clip"
+  "notes": "Official HPE data sheet (PSN1014652419, c2025 HPE) hosted by distributor EDSystem. TX = 18 dBm/chain + MIMO gain. Dims stated 5.1 x 20.3 cm. DC 15.9W max. Ceiling/wall mount clip",
+  "ports_checked": "medium"
  },
  {
   "brand": "HPE Aruba Networking",
@@ -3840,18 +3993,20 @@
   "heat_btu_h": null,
   "airflow": "side-to-side",
   "ports": {
-   "rj45_100m": null,
+   "rj45_100m": 0,
    "rj45_1g": 48,
-   "rj45_mgig": null,
-   "rj45_10g": null,
+   "rj45_mgig": 0,
+   "rj45_10g": 0,
    "sfp": 4,
-   "sfp_plus": null,
-   "sfp28": null,
-   "qsfp_plus": null,
-   "qsfp28": null,
-   "console": null,
-   "usb": null,
-   "notes": null
+   "sfp_plus": 0,
+   "sfp28": 0,
+   "qsfp_plus": 0,
+   "qsfp28": 0,
+   "console": 1,
+   "usb": 1,
+   "notes": "48x GE PoE + 4x 1G SFP; 1x USB-C console; 1x USB Type-A host; no OOB mgmt port.",
+   "hdmi": 0,
+   "vga": 0
   },
   "poe": {
    "ports": 48,
@@ -3872,10 +4027,11 @@
   "nvr": null,
   "ups": null,
   "source": "https://www.hpe.com/us/en/collaterals/collateral.a50002592enw.html",
-  "source2": null,
+  "source2": "https://securewirelessworks.com/R8N86A.asp",
   "verified": "2026-10-28",
   "confidence": "high",
-  "notes": "QuickSpecs list R8N85B (current SKU); R8N85A requested name not shown on page, kept as legacy alias. typ_w = idle; 41W without PoE. 740W variant is R9Y03A/B"
+  "notes": "QuickSpecs list R8N85B (current SKU); R8N85A requested name not shown on page, kept as legacy alias. typ_w = idle; 41W without PoE. 740W variant is R9Y03A/B",
+  "ports_checked": "high"
  },
  {
   "brand": "HPE Aruba Networking",
