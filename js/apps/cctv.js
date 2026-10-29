@@ -176,7 +176,7 @@ document.addEventListener("change", e => { if (UI.app !== "cctv") return; const 
   if (el.dataset.cch){ edit(() => { d.chs[el.dataset.cch] = String(Math.max(1, Math.round(num(el.value, 1)))); }); }
   else if (el.dataset.cnvr && el.value){ const id = el.value; edit(() => { if (!d.nvrs.includes(id)){ const used = new Set(cams(b).filter(c => c.nvrs.includes(id)).map(c => +c.chs[id]).filter(Boolean)); let ch = 1; while (used.has(ch)) ch++; d.nvrs.push(id); d.chs[id] = String(ch); } }); } });
 document.addEventListener("change", e => { if (UI.app !== "cctv") return; const el = e.target;
-  if (el.dataset.cf){ const [id, k] = el.dataset.cf.split(/:(.+)/), d = devById(B(), id); if (!d) return; if (k === "ip" && el.value && !IP.valid(el.value)) toast("⚠ " + t("ipBad")); edit(() => { setPath(d, k, NUMF.has(k) ? num(el.value, 0) : el.value.trim()); }); return; }
+  if (el.dataset.cf){ const [id, k] = el.dataset.cf.split(/:(.+)/), d = devById(B(), id); if (!d) return; if (k === "ip" && el.value && !IP.valid(el.value)) toast("⚠ " + t("ipBad")); edit(() => { setPath(d, k, NUMF.has(k) ? numOf(k, el.value) : el.value.trim()); }); return; }
   if (el.dataset.cs){ const S = cset(B()); edit(() => { S[el.dataset.cs] = el.dataset.cs === "fmt" ? clamp(num(el.value, .9), .5, 1) : Math.max(1, Math.round(num(el.value, 30))); }); } });
 APPS.cctv.init = () => dgWire(cfg);
 window.CCTV = {camCalc, nvrCalc};

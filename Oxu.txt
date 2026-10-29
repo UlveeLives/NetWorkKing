@@ -1,9 +1,27 @@
-NETWORKKING 3.4.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.5.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.5-DƏ YENİ
+ - DÜZƏLİŞ: Port Map → port kartı → «Cihaz (son nöqtə)» → «＋ Yeni cihaz» ilə cihaz əlavə olunmurdu
+   (bütün növlərdə). İndi əlavə olunur və porta bağlanır. Axtarışa yazılan ad və rozetkanın otağı
+   yeni cihaza avtomatik keçir.
+ - «⏳ Sonra əlavə ediləcək» seçimi geri qayıtdı: son nöqtə, patch panel, panelin arxa tərəfi.
+ - Port kartında «💾 Yadda saxla» düyməsi; Enter də saxlayır, kart bağlanır.
+ - Xanaya yazıb dərhal düymə basanda birinci klikin «itməsi» düzəldildi (bütün tətbiqlər).
+ - Yeni VLAN bir pəncərədə (ID, ad, şəbəkə); mövcud ID yazılsa o seçilir.
+ - Port Map → switch: «Toplu port ayarı» (aralıq, VLAN, rejim, PoE, sürət, təsvir {n}, panelə ardıcıl),
+   «Konfiqurasiyadan» (Cisco IOS / FortiSwitch / FortiGate mətni → VLAN və port ayarları),
+   «MAC / ARP cədvəlindən» (portdakı cihazların MAC və IP-si).
+ - Xülasə → «Cədvəldən idxal»: Excel-dən kopyalanan xanalar və ya CSV → cihazlar.
+ - Etiket çapı (QR kodlu): portlar, kabellər, cihazlar, rozetkalar — A4 etiket vərəqləri.
+ - Dəyişiklik tarixçəsi: Versiyalar → «Dəyişiklik tarixçəsi» (kim nəyi nə vaxt dəyişib, CSV).
+ - Cihaz kartında «🔎 İnternetdən doldur» (öz Anthropic API açarınızla datasheet axtarır).
+ - Çertyoj: «Hissəni parçala»; otaq köçəndə Wi-Fi divarları da köçür (seçim).
+ - Qaranlıq rejimdə çertyoj simvolları aydın görünür.
 
 3.4-DƏ YENİ
  - Bütün tətbiqlərdə xəbərdarlıqların yanında «Görməzdən gəl»: təsdiqdən sonra həmin xəbərdarlıq
@@ -96,7 +114,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.4.0.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.5.0.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 

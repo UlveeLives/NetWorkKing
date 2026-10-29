@@ -120,6 +120,8 @@ function normDevice(d){
   for (const k in def) if (d[k] === undefined) d[k] = def[k];
   d.params = Object.assign({h:K.h || (K.rack ? 1 : 0), depth:0, weight:0, powerW:0, maxW:0, psu:1, airflow:K.acc || K.passive ? "passive" : "f2b", sfp:0, poePorts:0, poeBudget:0, poeStd:"", poeIn:0, va:0, upsW:0, wh:0, amps:0, feedA:"", feedB:"", feed:""}, d.params || {});
   d.pcfg = d.pcfg && typeof d.pcfg === "object" ? d.pcfg : {};
+  // counts read from older or imported files are never negative (a negative SFP count stopped the rack drawing)
+  d.ports = Math.max(0, Math.round(num(d.ports, 0))); ["sfp", "h", "psu", "poePorts"].forEach(k => { if (d.params[k] !== undefined && num(d.params[k], 0) < 0) d.params[k] = 0; });
   if (d.kind === "camera"){
     // one camera can record on several NVRs: nvrs = [nvr ids], chs = {nvr id: channel}; nvr / ch mirror the first one
     if (!Array.isArray(d.nvrs)) d.nvrs = d.nvr ? [d.nvr] : [];
@@ -232,6 +234,8 @@ const VCOLORS = ["#2f7de1","#14a37f","#d9822b","#8a5cd6","#c9475d","#4d5bd1","#0
 /* ---------- path helpers for form fields: "name", "params.depth", "camera.mp" ---------- */
 function getPath(o, p){ return p.split(".").reduce((x, k) => x == null ? x : x[k], o); }
 function setPath(o, p, v){ const ks = p.split("."), last = ks.pop(); let x = o; for (const k of ks){ if (x[k] == null || typeof x[k] !== "object") x[k] = {}; x = x[k]; } x[last] = v; }
+// numbers that can't be below zero (plan coordinates and the camera direction can)
+const numOf = (path, v) => { const n = num(String(v).replace(",", "."), 0); return /^(ap\.x|ap\.y|camera\.dir)$/.test(path) ? n : Math.max(0, n); };
 const NUMF = new Set(["ports","params.sfp","u","params.h","params.depth","params.weight","params.powerW","params.maxW","params.psu","params.poePorts","params.poeBudget","params.poeIn","params.va","params.upsW","params.wh","params.amps","camera.mp","camera.ir","camera.fps","camera.bitrate","camera.act","camera.hours","camera.retain","camera.hfov","camera.dir","nvrp.channels","nvrp.inMbps","nvrp.bays","nvrp.hdd","nvrp.maxMp","ap.h","ap.x","ap.y","ap.cable","len"]);
 /* ---------- shared device editor (drawer) ---------- */
 const fld = (label, path, val, type = "text", extra = "") => `<label class="fld"><span>${esc(label)}</span><input data-f="${path}" type="${type}" value="${esc(val ?? "")}"${extra}></label>`;
@@ -341,7 +345,7 @@ async function multiChange(el){
   if (v === "__mix") return;
   if (path === "ip") return;
   edit(() => L.forEach(d => { if (path.startsWith("camera.") && d.kind !== "camera") return;
-    setPath(d, path, NUMF.has(path) ? num(v, 0) : (typeof v === "string" ? v.trim() : v));
+    setPath(d, path, NUMF.has(path) ? numOf(path, v) : (typeof v === "string" ? v.trim() : v));
     if (path === "floor"){ if (d.room && (roomById(b, d.room) || {}).floor !== v) d.room = ""; }
     if (path === "room" && v){ const r = roomById(b, v); if (r && r.floor) d.floor = r.floor; }
     if ((path === "model" || path === "brand") && d.model){ const r = catMatch(d); if (r) applySpec(d, r); } }));
@@ -490,11 +494,11 @@ function wireEditors(){
       if (path === "mac" && v && !macValid(v)) toast("⚠ " + t("macBad"));
       if (path === "ip" && v) v = v.replace(/,/g, ".");
       let applied = null;
-      edit(() => { setPath(d, path, NUMF.has(path) ? num(v, 0) : (typeof v === "string" ? v.trim() : v)); if (path === "kind") normDevice(d); if (path === "floor") d.room = "";
+      edit(() => { setPath(d, path, NUMF.has(path) ? numOf(path, v) : (typeof v === "string" ? v.trim() : v)); if (path === "kind") normDevice(d); if (path === "floor") d.room = "";
         if ((path === "model" || path === "brand") && d.model && d.cat !== CAT.key(d)){ const r = catMatch(d); if (r){ applySpec(d, r); applied = r; } else if (copyTwin(d)) applied = {brand:d.brand || "", model:d.model}; }
         if (curApp().onDevChange) curApp().onDevChange(b, d, path); });
       if (applied) toast("📚 " + t("catApplied",{m:applied.brand + " " + applied.model}));
-    } else if (s.type === "link"){ const l = linkById(b, s.id); if (!l) return; edit(() => { setPath(l, path, NUMF.has(path) ? num(v, 0) : v); }); }
+    } else if (s.type === "link"){ const l = linkById(b, s.id); if (!l) return; edit(() => { setPath(l, path, NUMF.has(path) ? numOf(path, v) : v); }); }
     else if (curApp().onField) curApp().onField(path, v, el);
   });
   dr.addEventListener("click", async e => {
