@@ -10,7 +10,7 @@ function view(b, id){
   const v = b.views[id] = b.views[id] || {};
   v.nodes = v.nodes || {}; v.boxes = v.boxes || []; v.anno = v.anno || []; v.routes = v.routes || {};
   v.page = Object.assign({w:1200, h:700}, v.page || {}); v.grid = Object.assign({show:false, snap:true, size:10}, v.grid || {});
-  v.show = Object.assign({ports:true, ip:true, cid:false, speed:false, model:true}, v.show || {});
+  v.show = Object.assign({links:true, ports:true, ip:true, cid:false, speed:false, model:true}, v.show || {});
   for (const k of Object.keys(v.nodes)) if (!devById(b, k) && !rackById(b, k)) delete v.nodes[k];
   return v;
 }
@@ -69,7 +69,8 @@ function dgContent(b, v, cfg){
 function dgSvg(b, cfg, opts = {}){
   const v = view(b, cfg.id), vb = dgContent(b, v, cfg), print = !!opts.print, S = v.show;
   const sel = !print && UI.sel, isSel = (type, id) => sel && sel.type === type && sel.id === id || UI.multi.has(type + ":" + id);
-  const hl = cfg.highlight ? cfg.highlight(b, v) : null, dim = id => hl && !hl.has(id);
+  const hl0 = cfg.highlight ? cfg.highlight(b, v) : null, fv = dgVisible(b, v), hideF = fv && v.filter.hide;
+  const hl = hl0 && fv ? new Set([...hl0].filter(x => fv.has(x))) : hl0 || (fv && !hideF ? fv : null), dim = id => hl && !hl.has(id), gone = id => hideF && !fv.has(id);
   let h = `<svg xmlns="http://www.w3.org/2000/svg" class="dgsvg" id="dg" viewBox="${vb.x} ${vb.y} ${vb.w} ${vb.h}" width="${vb.w}" height="${vb.h}" font-family="Segoe UI,Arial,sans-serif" data-app="${cfg.id}">
     <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" fill="context-stroke"/></marker>
     <pattern id="grid" width="${v.grid.size}" height="${v.grid.size}" patternUnits="userSpaceOnUse"><path d="M${v.grid.size} 0H0V${v.grid.size}" fill="none" stroke="#e6e9f0" stroke-width=".6"/></pattern></defs>
@@ -92,7 +93,7 @@ function dgSvg(b, cfg, opts = {}){
     if (on && !print){ const w = a.w || 120, hh = a.h || (lines(a.text).length * (a.size || 13) * 1.3 + 6); h += `<rect class="selbox" x="${a.x - 4}" y="${a.y - 4}" width="${w + 8}" height="${hh + 8}"/>${a.type !== "text" ? `<rect class="rh" data-rh="anno:${a.id}" x="${a.x + w - 6}" y="${a.y + hh - 6}" width="12" height="12" rx="2"/>` : ""}`; }
     h += `</g>`; });
   // cables
-  const links = b.links.filter(l => !cfg.linkFilter || cfg.linkFilter(l, b));
+  const links = S.links === false ? [] : b.links.filter(l => (!cfg.linkFilter || cfg.linkFilter(l, b)) && !gone(l.a.d) && !gone(l.b.d));
   const G = layoutLinks(b, v, links);
   links.forEach(l => { const g = G[l.id]; if (!g) return; const M = MEDIA[l.media] || MEDIA.cat6, p = linkPath(g), on = isSel("link", l.id), dd = dim(l.a.d) || dim(l.b.d);
     const stc = l.status === "faulty" ? "#d63a3a" : M.c, dash = l.status === "planned" ? "6 4" : M.dash || "";
@@ -104,7 +105,7 @@ function dgSvg(b, cfg, opts = {}){
     h += `</g>`; });
   // racks and devices
   for (const [id, n] of Object.entries(v.nodes)){
-    const g = nodeGeo(b, v, id); if (!g) continue;
+    if (gone(id)) continue; const g = nodeGeo(b, v, id); if (!g) continue;
     if (g.rack){ const r = g.rack, on = isSel("rack", id);
       h += `<g class="dn drk${dim(id) ? " dim" : ""}" data-node="${id}"><rect x="${g.x}" y="${g.y}" width="${g.w}" height="${g.h}" rx="6" fill="#1d2433" stroke="${on ? "#ffb703" : "#0d1220"}" stroke-width="${on ? 3 : 1.5}"/>`
         + svgt(g.x + 10, g.y + 18, r.name, {size:12, weight:800, fill:"#fff"}) + svgt(g.x + g.w - 10, g.y + 18, `${r.u}U`, {size:10, fill:"#9fb0d6", anchor:"end"});
@@ -148,6 +149,7 @@ function dgPalette(b, cfg){
     ${unplaced.length || racks.length ? `<div class="psec"><h4>${esc(t("palUnplaced"))} <span class="cnt">${unplaced.length + racks.length}</span></h4><p class="muted small">${esc(t("palUnplacedHint"))}</p>
       <div class="ulist">${racks.map(r => `<button class="uitem" data-place="${r.id}"><svg viewBox="0 0 48 48">${ICO.rack}</svg><span>${esc(r.name)}</span></button>`).join("")}${unplaced.slice(0, 60).map(d => `<button class="uitem" data-place="${d.id}"><svg viewBox="0 0 48 48">${ICO[devIcon(d)] || ICO.box}</svg><span>${esc(devLabel(d))}</span></button>`).join("")}</div>
       <button class="btn small" data-pal="placeAll">⤵ ${esc(t("placeAll"))}</button></div>` : ""}
+    <div class="psec"><button class="btn small wfull" data-pal="floors" title="${esc(t("dgFloorsH"))}">🏢 ${esc(t("dgFloors"))}</button></div>
     <div class="psec"><h4>${esc(t("palAdd"))}</h4><div class="seg"><button class="${boxed ? "on" : ""}" data-pal="boxed:1" title="${esc(t("addBoxedT"))}">▭ ${esc(t("addBoxed"))}</button><button class="${boxed ? "" : "on"}" data-pal="boxed:0" title="${esc(t("addFreeT"))}">◇ ${esc(t("addFree"))}</button></div>
     <div class="pgrid">${cfg.kinds.map(k => `<button class="pitem" data-add="${k}" draggable="false" title="${esc(kindName(k))}"><svg viewBox="0 0 48 48">${ICO[k === "camera" ? "turret" : (KINDS[k] || KINDS.other).icon] || ICO.box}</svg><span>${esc(kindName(k))}</span></button>`).join("")}
       ${ukBtn(cfg.id)}<button class="pitem" data-add="__rack"><svg viewBox="0 0 48 48">${ICO.rack}</svg><span>${esc(t("rack"))}</span></button></div></div>
@@ -158,7 +160,8 @@ function dgPalette(b, cfg){
       <button class="pitem" data-add="__shape"><svg viewBox="0 0 48 48">${ICO.shape}</svg><span>${esc(t("shape"))}</span></button>
       <button class="pitem" data-add="__image"><svg viewBox="0 0 48 48">${ICO.image}</svg><span>${esc(t("image"))}</span></button></div></div>
     <div class="psec"><h4>${esc(t("palLinks"))}</h4><p class="muted small">${esc(t("palLinksHint"))}</p>${cfg.media.map(m => `<button class="plink${DG.mode === "link" && DG.media === m ? " on" : ""}" data-pal="link:${m}"><i style="border-color:${MEDIA[m].c};${MEDIA[m].dash ? "border-top-style:dashed" : ""}"></i>${esc(mediaName(m))}</button>`).join("")}</div>
-    <div class="psec"><h4>${esc(t("palView"))}</h4>${[["grid.show", t("vGrid")], ["grid.snap", t("vSnap")], ["show.ports", t("vPorts")], ["show.ip", "IP"], ["show.model", t("vModel")], ["show.cid", t("vCid")], ["show.speed", t("vSpeed")]].map(([k, l]) => `<label class="chk small"><input type="checkbox" data-vopt="${k}"${getPath(v, k) ? " checked" : ""}> ${esc(l)}</label>`).join("")}</div>
+    <div class="psec"><h4>${esc(t("palView"))}</h4>${[["show.links", t("vLinks")], ["grid.show", t("vGrid")], ["grid.snap", t("vSnap")], ["show.ports", t("vPorts")], ["show.ip", "IP"], ["show.model", t("vModel")], ["show.cid", t("vCid")], ["show.speed", t("vSpeed")]].map(([k, l]) => `<label class="chk small"><input type="checkbox" data-vopt="${k}"${getPath(v, k) ? " checked" : ""}> ${esc(l)}</label>`).join("")}</div>
+    ${dgFilterHtml(b, v)}
   </div>`;
 }
 /* ---------- adding things ---------- */
@@ -182,6 +185,66 @@ function dgPlaceAll(cfg){ const b = B(), v = view(b, cfg.id), boxed = store.sett
   const L = [...b.racks.filter(r => !v.nodes[r.id]).map(r => ({id:r.id, rack:true})), ...b.devices.filter(d => !v.nodes[d.id] && !(d.rack && (v.nodes[d.rack] || b.racks.some(r => r.id === d.rack))) && (!cfg.kinds || cfg.kinds.includes(d.kind))).map(d => ({id:d.id}))];
   if (!L.length) return;
   edit(() => { L.forEach(it => { const w = it.rack ? 230 : boxed ? 160 : 52, p = freeSpot(b, v, w, it.rack ? 160 : 64); v.nodes[it.id] = it.rack ? {x:p.x, y:p.y, w:230} : boxed ? {x:p.x, y:p.y, boxed:true, w:160, h:64} : {x:p.x, y:p.y, size:52}; }); }); }
+/* ---------- floors as bands (like the first Topology / CCTV / Fiber programs) ----------
+   On the left, one coloured card per floor, top floor first; to its right the floor's band, with a box for each room and
+   the floor's devices (and racks) inside. Places outside the building (yard, guard house, outdoor cameras) get a box of
+   their own on the right. "Put all on the diagram" uses this, and it can be run again at any time. */
+const FCOL = ["blue", "green", "orange", "purple", "teal", "red", "gray"];
+const OUT_RX = /həyət|heyet|bahçe|bahce|yard|garden|çöl|cöl|outdoor|outside|exterior|dış|dis mekan|mühafizə|muhafize|guard|security|post|kpp|darvaza|gate|parking|otopark/i;
+function dgFloorLayout(cfg, all){
+  const b = B(), v = view(b, cfg.id), boxed = store.settings.addBoxed, inKinds = d => !cfg.kinds || cfg.kinds.includes(d.kind);
+  // what goes on: racks holding devices of this app, devices of this app that are not shown inside such a rack
+  const racks = b.racks.filter(r => v.nodes[r.id] || (all && rackDevices(b, r).some(inKinds)));
+  const rackIds = new Set(racks.map(r => r.id));
+  const devs = b.devices.filter(d => inKinds(d) && !(d.rack && rackIds.has(d.rack)) && (v.nodes[d.id] || all) && !(KINDS[d.kind] || {}).acc);
+  const outside = (d, rm) => (d && d.kind === "camera" && d.camera && d.camera.loc === "out") || (rm && OUT_RX.test(rm.name)) || (rm && rm.type === "outdoor");
+  const floorOf = it => it.r ? it.r.floor : devFloor0(b, it.d);
+  const items = [...racks.map(r => ({id:r.id, r, room:r.room})), ...devs.map(d => ({id:d.id, d, room:d.room}))];
+  items.forEach(it => { const rm = it.room && roomById(b, it.room); it.out = !it.r && outside(it.d, rm); it.f = it.out ? "__out" : floorOf(it) && floorById(b, floorOf(it)) ? floorOf(it) : "__none";
+    it.w = it.r ? 240 : boxed ? 170 : 60; it.h = it.r ? RHEAD + Math.max(1, rackRows(b, it.r).length) * RROW + 8 : boxed ? 64 : 52; it.pad = it.r ? 20 : boxed ? 18 : 46; });
+  if (!items.length) return toast(t("dgNothing"));
+  // remove the bands made last time (boxes the user drew stay)
+  v.boxes = v.boxes.filter(z => !z.auto);
+  const LABW = 160, X0 = 0, CX = X0 + LABW + 24, MAXW = 1500, GAP = 24;
+  const F = [...b.floors.slice().reverse().map(f => ({id:f.id, name:f.name})), {id:"__none", name:t("sm_noFloor")}];
+  let y = 0, maxRight = CX + 600, ci = 0;
+  const place = (list, x0, y0, maxW) => { // rooms as boxes flowing left to right, devices in rows inside each room
+    const byRoom = new Map(); list.forEach(it => { const k = it.room || ""; (byRoom.get(k) || byRoom.set(k, []).get(k)).push(it); });
+    let x = x0, yy = y0, rowH = 0, right = x0;
+    [...byRoom.entries()].sort((a, c) => (a[0] ? 1 : 0) - (c[0] ? 1 : 0) || (roomName(b, a[0]) || "").localeCompare(roomName(b, c[0]) || "")).forEach(([rid, L]) => {
+      const cols = Math.min(4, L.length), cw = Math.max(...L.map(it => it.w + it.pad)), rows = [];
+      for (let i = 0; i < L.length; i += cols) rows.push(L.slice(i, i + cols));
+      const bw = cols * cw + 24, bh = 34 + rows.reduce((a, R0) => a + Math.max(...R0.map(it => it.h + (it.r || boxed ? 18 : 40))), 0) + 8;
+      if (x > x0 && x + bw > x0 + maxW){ x = x0; yy += rowH + 16; rowH = 0; }
+      if (rid) v.boxes.push({id:uid("z"), auto:"room", x, y:yy, w:bw, h:bh, label:roomName(b, rid), sub:"", color:"gray", dash:true, fill:false, tpos:"left", tsize:12});
+      let ry = yy + 34; rows.forEach(R0 => { R0.forEach((it, i) => { const nx = x + 12 + i * cw, ny = ry;
+          v.nodes[it.id] = it.r ? {x:nx, y:ny, w:240} : boxed ? {x:nx, y:ny, boxed:true, w:170, h:64} : {x:nx + 30, y:ny, size:52}; });
+        ry += Math.max(...R0.map(it => it.h + (it.r || boxed ? 18 : 40))); });
+      x += bw + 16; rowH = Math.max(rowH, bh); right = Math.max(right, x); });
+    return {h:yy - y0 + rowH, right}; };
+  F.forEach(f => { const L = items.filter(it => it.f === f.id); if (!L.length && (f.id === "__none" || LINK_FLOOR.test(String(f.name).trim()))) return;
+    const col = FCOL[ci++ % FCOL.length], r = L.length ? place(L, CX + 16, y + 16, MAXW) : {h:40, right:CX + 400}, H = Math.max(L.length ? 110 : 70, r.h + 32);
+    v.boxes.push({id:uid("z"), auto:"floorlab", floor:f.id, x:X0, y, w:LABW, h:H, label:f.name, sub:t("dgFloorN", {n:L.length}), color:col, dash:false, fill:true, tpos:"left", tsize:15});
+    v.boxes.push({id:uid("z"), auto:"floor", floor:f.id, x:CX, y, w:Math.max(r.right - CX, 400) + 8, h:H, label:"", sub:"", color:col, dash:false, fill:false, tpos:"left", tsize:13});
+    maxRight = Math.max(maxRight, Math.max(r.right, CX + 400) + 8); y += H + GAP; });
+  const O = items.filter(it => it.f === "__out");
+  if (O.length){ const ox = maxRight + 40, r = place(O, ox + 16, 46, 600);
+    v.boxes.push({id:uid("z"), auto:"out", x:ox, y:0, w:Math.max(r.right - ox, 300) + 8, h:Math.max(140, r.h + 62), label:t("dgOutside"), sub:t("dgOutsideH"), color:"green", dash:true, fill:false, tpos:"left", tsize:15}); }
+  // racks / devices of this app that were drawn before but now belong nowhere stay where they are
+}
+const devFloor0 = (b, d) => d.floor || (d.room && (roomById(b, d.room) || {}).floor) || (d.rack && (rackById(b, d.rack) || {}).floor) || "";
+/* ---------- filters: which devices are shown (kind groups, floors, status) ---------- */
+const DCATS = ["net", "wifi", "cctv", "end", "compute", "power", "passive", "fiber"];
+function dgVisible(b, v){ const F = v.filter || {}; if (!F.on) return null;
+  const cats = F.cats && F.cats.length ? new Set(F.cats) : null, fl = F.floors && F.floors.length ? new Set(F.floors) : null, st = F.status || "";
+  const ok = d => d && (!cats || cats.has((KINDS[d.kind] || KINDS.other).cat)) && (!fl || fl.has(devFloor0(b, d) || "__none")) && (!st || d.status === st);
+  const S = new Set(); b.devices.forEach(d => { if (ok(d)) S.add(d.id); }); b.racks.forEach(r => { if (rackDevices(b, r).some(d => S.has(d.id))) S.add(r.id); }); return S; }
+function dgFilterHtml(b, v){ const F = v.filter || {}, cats = DCATS.filter(c => b.devices.some(d => (KINDS[d.kind] || {}).cat === c));
+  return `<div class="psec"><h4>${esc(t("dgFilter"))}</h4><label class="chk small"><input type="checkbox" data-dgf="on"${F.on ? " checked" : ""}> ${esc(t("dgFilterOn"))}</label>
+    ${F.on ? `<div class="dgfgrp"><small class="muted">${esc(t("dgFCats"))}</small>${cats.map(c => `<label class="chk small"><input type="checkbox" data-dgf="cat:${c}"${(F.cats || []).includes(c) ? " checked" : ""}> ${esc(t("sm_cat_" + c) === "sm_cat_" + c ? c : t("sm_cat_" + c))}</label>`).join("")}</div>
+      <div class="dgfgrp"><small class="muted">${esc(t("floors"))}</small>${[...b.floors.slice().reverse().map(f => [f.id, f.name]), ["__none", t("sm_noFloor")]].map(([id, n]) => `<label class="chk small"><input type="checkbox" data-dgf="floor:${id}"${(F.floors || []).includes(id) ? " checked" : ""}> ${esc(n)}</label>`).join("")}</div>
+      <label class="fld"><span>${esc(t("f_status"))}</span><select data-dgf="status">${opt("", t("all"), F.status || "")}${STATUSES.map(x => opt(x, t("st_" + x), F.status || "")).join("")}</select></label>
+      <label class="chk small"><input type="checkbox" data-dgf="hide"${F.hide ? " checked" : ""}> ${esc(t("dgFHide"))}</label>` : ""}</div>`; }
 /* ---------- drawer for non-device selections ---------- */
 function dgDrawer(b, cfg){
   const s = UI.sel, v = view(b, cfg.id);
@@ -320,7 +383,10 @@ function dgWire(cfg){
   document.addEventListener("pointermove", e => { if (DG.drag && curApp().dg === cfg) onMove(e); });
   document.addEventListener("pointerup", e => { if (DG.drag && curApp().dg === cfg) onUp(e); });
   document.addEventListener("pointercancel", () => { if (DG.drag && curApp().dg === cfg){ const D = DG.drag; DG.drag = null; if (D.moved && D.mode !== "band" && D.mode !== "row"){ pushUndo(D.snap); persist(); } render(); } });
-  host.addEventListener("click", e => { if (curApp().dg === cfg && e.target.closest('[data-pal="placeAll"]')) dgPlaceAll(cfg); });
+  host.addEventListener("click", async e => { if (curApp().dg !== cfg) return;
+    if (e.target.closest('[data-pal="placeAll"]')) return edit(() => dgFloorLayout(cfg, true));
+    if (e.target.closest('[data-pal="floors"]')){ const v = view(B(), cfg.id); if (Object.keys(v.nodes).length && !await uiConfirm(t("dgFloorsQ"), t("dgFloors"))) return; return edit(() => dgFloorLayout(cfg, true)); } });
+
   host.addEventListener("dblclick", async e => {
     if (curApp().dg !== cfg) return; const b = B(), v = view(b, cfg.id);
     const nd = e.target.closest("[data-node]"), zt = e.target.closest(".ztitle"), an = e.target.closest("[data-anno]"), row = e.target.closest("[data-row]");
@@ -335,8 +401,12 @@ function dgWire(cfg){
     const pp = e.target.closest("[data-pal]"); if (!pp) return; const [k, val] = pp.dataset.pal.split(":");
     if (k === "boxed"){ store.settings.addBoxed = val === "1"; persist(); render(); }
     else if (k === "link"){ if (DG.mode === "link" && DG.media === val){ DG.mode = "select"; DG.linkFrom = null; } else { DG.mode = "link"; DG.media = val; DG.linkFrom = null; toast("🔗 " + t("linkModeOn")); } render(); }
-    else if (k === "placeAll") dgPlaceAll(cfg);
+    else if (k === "placeAll") edit(() => dgFloorLayout(cfg, true));
+    else if (k === "floors"){ const v = view(B(), cfg.id); (Object.keys(v.nodes).length ? uiConfirm(t("dgFloorsQ"), t("dgFloors")) : Promise.resolve(true)).then(ok => { if (ok) edit(() => dgFloorLayout(cfg, true)); }); }
   });
+  $("#pal").addEventListener("change", e => { if (curApp().dg !== cfg) return; const el = e.target.closest("[data-dgf]"); if (!el) return; const v = view(B(), cfg.id), F = v.filter = v.filter || {}, k = el.dataset.dgf;
+    edit(() => { if (k === "on") F.on = el.checked; else if (k === "hide") F.hide = el.checked; else if (k === "status") F.status = el.value;
+      else { const [g, id] = k.split(":"), key = g === "cat" ? "cats" : "floors"; F[key] = (F[key] || []).filter(x => x !== id); if (el.checked) F[key].push(id); } }); });
   $("#pal").addEventListener("change", e => { if (curApp().dg !== cfg) return; const el = e.target.closest("[data-vopt]"); if (!el) return; const v = view(B(), cfg.id); edit(() => { setPath(v, el.dataset.vopt, el.checked); }); });
 }
 // Fast redraw while dragging (only the SVG).

@@ -1,9 +1,28 @@
-NETWORKKING 3.5.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.6.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.6-DA YENİ
+ - Şəbəkə topologiyası, CCTV, Fiber: «🏢 Mərtəbələr üzrə düz» — solda mərtəbə kartları (yuxarıdan aşağı),
+   sağında o mərtəbənin otaq qutuları və cihazları; bina xarici yerlər sağda ayrıca qutuda.
+   «Hamısını sxemə qoy» da bu qaydada düzür. Kabelləri gizlətmək; süzgəc (cihaz qrupu, mərtəbə, status).
+ - Rack U-Layout: rack içindəki patch cord-lar portdan porta göstərilir (palitrada söndürmək olar).
+ - Port Map: cihazı adından tutub rack-da yerini dəyişmək (sürüşdürmə); switch-lər arası bağlantılar
+   (uplink) ayrıca siyahıda; rack adının yanında ✎ və «dolu / cəmi port».
+ - Port Map → «Hara gedir»: panel / son cihaz seçəndə dərhal bağlanmır — əvvəl təklif olunan port və
+   mövcud bağlantılar göstərilir, «Birləşdir» ilə qurulur.
+ - RJ45 və SFP port sayı ayrıca yazılır; SFP portları Port Map-da ayrıca qrupda görünür.
+ - NVR, dekoder, monitor, TV, KVM və s. üçün HDMI / VGA çıxış və HDMI giriş portları (H1, V1, I1 …).
+ - Yeni cihaz növləri: HDMI extender, Ethernet extender, PoE extender, USB / KVM extender.
+ - Bütün kartların altında «Yadda saxla» və «Bağla» düymələri.
+ - IP üçün əvvəlcə seçim: Statik və ya Dinamik (DHCP); DHCP cihazlarında IP çatışmayan sayılmır.
+ - Düzəlişlər: dəyişiklikdən sonra ekran yuxarı sürüşmür; yazılan markalar siyahıya düşür;
+   «Say və modellər → Mərtəbələr üzrə» cədvəlində rəqəmlər öz sütunundadır; tətbiq menyusu ikinci
+   klikdə bağlanır; sehirbazda yazı seçəndə pəncərə bağlanmır; Struktur cədvəlində ehtiyac xanaları
+   düzgün düzülür.
 
 3.5-DƏ YENİ
  - DÜZƏLİŞ: Port Map → port kartı → «Cihaz (son nöqtə)» → «＋ Yeni cihaz» ilə cihaz əlavə olunmurdu
@@ -114,7 +133,7 @@ A) Quraşdırmadan sınamaq
 B) Windows proqramı (.exe) yığmaq
    1. Bu qovluğu məs. C:\NetWorkKing-source-a köçür (Node.js quraşdırılmış olmalıdır).
    2. build.bat faylına iki dəfə klik et.
-   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.5.0.exe
+   3. Bitəndə dist qovluğu açılır: dist\NetWorkKing-Setup-3.6.0.exe
       Başqa kompüterə yalnız bu faylı köçürmək kifayətdir.
    start.bat — proqramı qurmadan Electron ilə açır (yoxlama üçün).
 

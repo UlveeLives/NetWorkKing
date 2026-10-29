@@ -140,7 +140,8 @@ const pendOf = (d, p) => UI.pmPend && UI.pmPend.key === d.id + ":" + p ? UI.pmPe
 function setPend(d, p, o){ const k = d.id + ":" + p; UI.pmPend = Object.assign(UI.pmPend && UI.pmPend.key === k ? UI.pmPend : {key:k}, o); renderDrawer(); }
 // what the prepared ports are connected to now: shown before anything is changed
 function pendBar(b, d, p, pr, PE, pD, pP, eD, eP){
-  const W = [];
+  const W = [], cur = pr.panel ? devLabel(devById(b, pr.panel.d)) + " :" + pr.panel.p : t("pmDirect");
+  if ((PE.panel !== undefined || PE.pport !== undefined) && pr.panel && (!pD || pD.id !== pr.panel.d || String(pP) !== String(pr.panel.p))) W.push(t("pmPendChange", {a:cur, b:pD ? devLabel(pD) + " :" + pP : PE.panel === "__later" ? t("later") : t("pmDirect")}));
   if (pD && pP){ const busy = linksAt(b, pD.id, pP).map(l => endOf(l, pD.id, pP)).filter(o => o.d !== d.id && isNet(devById(b, o.d)));
     busy.forEach(o => W.push(t("pmPendPanelBusy", {pp:devLabel(pD) + " :" + pP, x:devLabel(devById(b, o.d)) + (o.p ? " :" + o.p : "")}))); if (+pP > num(pD.ports)) W.push(t("pw_range", {n:devLabel(pD), p:pP, m:pD.ports})); }
   if (eD && (!pr.end || pr.end.d !== eD.id)){ const L = b.links.filter(l => l.a.d === eD.id || l.b.d === eD.id).filter(l => !eP || P0((l.a.d === eD.id ? l.a.p : l.b.p) || "") === P0(eP));

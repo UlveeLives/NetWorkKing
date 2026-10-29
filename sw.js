@@ -1,6 +1,6 @@
 /*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // NetWorkKing service worker: keeps the app usable offline (phone / tablet install). Data itself lives in IndexedDB.
-const V = "networkking-3.5.0";
+const V = "networkking-3.6.0";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "css/app.css", "js/i18n.js", "js/catalog-data.js",
   ...["legal","util","icons","store","ui","entities","catalog","tables","doc","help","settings","dg","importers","dxf","draw","tableimp","qr","labels","history","ai"].map(f => `js/core/${f}.js`),
   ...["building","topology","portmap","pmtools","rack","fiber","cctv","wifi","summary"].map(f => `js/apps/${f}.js`), "js/main.js",

@@ -203,7 +203,7 @@ for k,az,tr,en,ru in [
 ]:
     K(k,az,tr,en,ru)
 for k,az,tr,en,ru in [
- ("pmConnect","Bağla","Bağla","Connect","Подключить"),("pmConnectAnyway","Yenə də bağla (köhnə bağlantı silinəcək)","Yine de bağla","Connect anyway (the old link is removed)","Всё равно подключить"),
+ ("pmConnect","Birləşdir","Bağlantıyı kur","Connect","Подключить"),("pmConnectAnyway","Yenə də birləşdir (köhnə bağlantı silinəcək)","Yine de bağlantıyı kur","Connect anyway (the old link is removed)","Всё равно подключить"),
  ("pmPendPanelBusy","{pp} artıq {x} portuna bağlıdır","{pp} zaten {x} portuna bağlı","{pp} is already connected to {x}","{pp} уже подключён к {x}"),
  ("pmPendEndBusy","{e} artıq bağlıdır: {x}","{e} zaten bağlı: {x}","{e} is already connected: {x}","{e} уже подключено: {x}"),
  ("pmPendEndPort","{e} üçün port nömrəsini yazın","{e} için port numarası yazın","Type the port number on {e}","Укажите порт на {e}"),
@@ -227,11 +227,24 @@ for k,az,tr,en,ru in [
 ]:
     K(k,az,tr,en,ru)
 for k,az,tr,en,ru in [
+ ("pmPendChange","Hazırkı bağlantı dəyişəcək: {a} → {b}","Mevcut bağlantı değişecek: {a} → {b}","The current connection changes: {a} → {b}","Текущее подключение изменится: {a} → {b}"),
  ("dSaveH","Dəyişikliklər xanadan çıxanda saxlanır","Değişiklikler alandan çıkınca kaydedilir","Changes are kept as soon as you leave a field","Изменения сохраняются при выходе из поля"),
 ]:
     K(k,az,tr,en,ru)
 for k,az,tr,en,ru in [
  ("f_ipMode","IP necə verilir","IP nasıl verilir","IP assignment","Назначение IP"),("ipStatic","Statik","Statik","Static","Статический"),("ipDhcp","Dinamik (DHCP)","Dinamik (DHCP)","Dynamic (DHCP)","Динамический (DHCP)"),
  ("ipDhcpF","IP (DHCP — istəyə bağlı: rezerv və ya indiki)","IP (DHCP — isteğe bağlı)","IP (DHCP — optional: reservation or current)","IP (DHCP — необязательно)"),
+]:
+    K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("dgFloors","Mərtəbələr üzrə düz","Katlara göre diz","Arrange by floors","Расставить по этажам"),
+ ("dgFloorsH","Solda hər mərtəbənin kartı, sağında o mərtəbənin otaqları və cihazları; bina xarici yerlər sağda ayrıca qutuda","Solda kat kartları, sağında odalar ve cihazlar","Floor cards on the left, each floor's rooms and devices to their right; places outside the building in a box on the right","Слева этажи, справа их помещения и устройства; внешние места — отдельно справа"),
+ ("dgFloorsQ","Sxemdəki cihazlar mərtəbə və otaqlarına görə yenidən düzüləcək (öz çəkdiyiniz qutular, yazılar qalır). Davam edilsin?","Cihazlar kat ve odalarına göre yeniden dizilecek. Devam?","Devices are re-arranged by floor and room (boxes and notes you drew stay). Go on?","Устройства будут переставлены по этажам и помещениям. Продолжить?"),
+ ("dgFloorN","{n} cihaz","{n} cihaz","{n} devices","устройств: {n}"),
+ ("dgOutside","Bina xarici","Bina dışı","Outside the building","Снаружи здания"),("dgOutsideH","həyət, mühafizə, bayır kameraları","bahçe, güvenlik, dış kameralar","yard, guard house, outdoor cameras","двор, охрана, наружные камеры"),
+ ("dgNothing","Sxemə qoyulacaq cihaz yoxdur","Şemaya konacak cihaz yok","Nothing to put on the diagram","Нечего размещать"),
+ ("dgFilter","Süzgəc","Filtre","Filter","Фильтр"),("dgFilterOn","Yalnız seçilən cihazlar","Yalnızca seçilen cihazlar","Only the chosen devices","Только выбранные"),
+ ("dgFCats","Cihaz qrupları","Cihaz grupları","Device groups","Группы устройств"),("dgFHide","Qalanlarını tam gizlət (solğun yox)","Diğerlerini tamamen gizle","Hide the rest completely (not faded)","Остальные скрыть полностью"),
+ ("vLinks","Kabellər","Kablolar","Cables","Кабели"),
 ]:
     K(k,az,tr,en,ru)

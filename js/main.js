@@ -1,7 +1,7 @@
 /*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Start-up: load data and catalog, wire the shell, open the last app, run the first-time setup if needed.
 "use strict";
-const APP_VERSION = "3.5.0";
+const APP_VERSION = "3.6.0";
 (async function start(){
   try {
     await loadStore(); await CAT.load(); applyTheme(); regUKinds(true);
