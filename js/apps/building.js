@@ -799,9 +799,9 @@ registerApp({
   glyph:`<path d="M12 38V14l12-6 12 6v24z" fill="#fff"/><path d="M17 18h4v4h-4zM27 18h4v4h-4zM17 26h4v4h-4zM27 26h4v4h-4z" fill="#6a3aa0"/><path d="M21 38v-6h6v6" fill="#ffb703"/>`,
   tabs:[
     {id:"plan", label:"bd_tabPlan", icon:"🗺", palette, render:planView,
-      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".bfloors", title:t("bd_tT1"), text:t("bd_t1")}, {sel:"#pal .psec", title:t("bd_tT2"), text:t("bd_t2")}, {sel:"svg.bplan", title:t("bd_tT3"), text:t("bd_t3")}, {sel:'[data-tab="struct"]', title:t("bd_tT4"), text:t("bd_t4")}, {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
-    {id:"struct", label:"bd_tabStruct", icon:"🏢", render:structView},
-    {id:"req", label:"bd_tabReq", icon:"📋", render:reqView},
+      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".bfloors", title:t("bd_tT1"), text:t("bd_t1")}, {sel:"#pal .psec", title:t("bd_tT2"), text:t("bd_t2")}, {sel:"svg.bplan", title:t("bd_tT3"), text:t("bd_t3")}, {sel:'[data-tab="struct"]', title:t("bd_tT4"), text:t("bd_t4")}, tip('#pal [data-ba="wizard"]', "tp_bdWiz"), tip('#pal [data-ba="dxf"]', "tp_bdDxf"), tip('[data-ba="mergeDup"]', "tp_bdMerge"), TIPS.warn(), TIPS.places(), {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
+    {id:"struct", label:"bd_tabStruct", icon:"🏢", render:structView, tour:() => [tip(".btree", "tp_bdTree")]},
+    {id:"req", label:"bd_tabReq", icon:"📋", render:reqView, tour:() => [tip('[data-ba="createAll"]', "tp_bdCreate")]},
     docTab("building", docBody)
   ],
   actions(tab){ return [{id:"wiz", icon:"🧭", label:"bd_wizard", fn:wizard}, {id:"addFloor", icon:"＋", label:"floorNew", fn:() => act("addFloor")}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },

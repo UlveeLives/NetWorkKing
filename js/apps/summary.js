@@ -202,10 +202,10 @@ registerApp({
   id:"summary", name:"app_summary", desc:"app_summary_d", docName:"doc_summary", color:"#0e7c86",
   glyph:`<rect x="11" y="9" width="26" height="31" rx="3" fill="#fff"/><path d="M16 17h16M16 23h16M16 29h10" stroke="#0e7c86" stroke-width="3" stroke-linecap="round"/><circle cx="33" cy="33" r="6" fill="#ffb703"/><path d="M30.5 33l2 2 3.5-4" stroke="#fff" stroke-width="2" fill="none"/>`,
   tabs:[
-    {id:"list", label:"sm_tabList", icon:"📋", render:listView, tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".smbar", title:t("sm_tT1"), text:t("sm_t1")}, {sel:".smt", title:t("sm_tT2"), text:t("sm_t2")}]},
-    {id:"floors", label:"sm_tabFloors", icon:"🏬", render:floorsView},
-    {id:"bom", label:"sm_tabBom", icon:"📦", render:() => bomView(false)},
-    {id:"gaps", label:"sm_tabGaps", icon:"⚠", render:gapsView},
+    {id:"list", label:"sm_tabList", icon:"📋", render:listView, tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".smbar", title:t("sm_tT1"), text:t("sm_t1")}, {sel:".smt", title:t("sm_tT2"), text:t("sm_t2")}, tip('[data-smf="miss"]', "tp_smMiss"), tip('[data-act="timp"]', "tp_smImp"), TIPS.labels()]},
+    {id:"floors", label:"sm_tabFloors", icon:"🏬", render:floorsView, tour:() => [tip("#view .card, #view table.t", "tp_smFloors")]},
+    {id:"bom", label:"sm_tabBom", icon:"📦", render:() => bomView(false), tour:() => [tip('[data-smx="bom"]', "tp_smBom")]},
+    {id:"gaps", label:"sm_tabGaps", icon:"⚠", render:gapsView, tour:() => [tip(".gapb", "tp_smGo")]},
     docTab("summary", docBody)
   ],
   actions(){ return [{id:"timp", icon:"⤓", label:"tiBtn", fn:() => TIMP.open()}, {id:"labels", icon:"🏷", label:"lbBtn", fn:() => LABELS.open("devices")}, {id:"csv", icon:"⤒", label:"sm_csv", fn:listCsv}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },

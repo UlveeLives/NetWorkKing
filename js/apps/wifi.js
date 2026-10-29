@@ -853,9 +853,9 @@ registerApp({
   tabs:[
     {id:"plan", label:"tabPlan", icon:"🗺", palette:() => B().floors.length ? wifiPalette() : "",
       render(){ const d = syncIn(); return `${warnBox(wifiWarnings(d))}${plansHtml(d)}${d.floors.length ? `<p class="dghint">ⓘ ${esc(t("dblHint"))}</p>` + resultsPanel(d) : ""}`; },
-      tour:() => [{sel:"#appsw", title:gt("tShellT1"), text:gt("tShell1")}, {sel:'[data-act="addFloor"]', title:t("tWfT1"), text:t("tWf1")}, {sel:"#pal .wtools", title:t("tWfT2"), text:t("tWf2")}, {sel:'#pal [data-wv="mode"]', title:t("tWfT3"), text:t("tWf3")}, {sel:'[data-tab="aps"]', title:t("tWfT4"), text:t("tWf4")}, {sel:'[data-tab="set"]', title:t("tWfT5"), text:t("tWf5")}]},
-    {id:"aps", label:"tabAps", icon:"📶", render(){ syncIn(); return `${warnBox(wifiWarnings(D()))}${apsView()}`; }},
-    {id:"set", label:"tabWset", icon:"🎯", render(){ syncIn(); return settingsView(); }},
+      tour:() => [{sel:"#appsw", title:gt("tShellT1"), text:gt("tShell1")}, {sel:'[data-act="addFloor"]', title:t("tWfT1"), text:t("tWf1")}, {sel:"#pal .wtools", title:t("tWfT2"), text:t("tWf2")}, {sel:'#pal [data-wv="mode"]', title:t("tWfT3"), text:t("tWf3")}, {sel:'[data-tab="aps"]', title:t("tWfT4"), text:t("tWf4")}, {sel:'[data-tab="set"]', title:t("tWfT5"), text:t("tWf5")}, tip('#pal [data-tool="calib"]', "tp_wfCalib"), tip('[data-act="autoChan"]', "tp_wfChan"), tip('#pal [data-tool="survey"]', "tp_wfSurvey"), TIPS.warn(), TIPS.help()]},
+    {id:"aps", label:"tabAps", icon:"📶", tour:() => [tip('[data-wa="ssidAdd"]', "tp_wfSsid"), TIPS.warn()], render(){ syncIn(); return `${warnBox(wifiWarnings(D()))}${apsView()}`; }},
+    {id:"set", label:"tabWset", icon:"🎯", tour:() => [tip('[data-wv="prof"]', "tp_wfProf")], render(){ syncIn(); return settingsView(); }},
     docTab("wifi", docBody)
   ],
   actions(tab){ return [{id:"addFloor", icon:"＋", label:"wfAddFloor", fn:ACT.addFloor}, B().floors.length ? {id:"autoChan", icon:"📡", label:"wfAutoChan", fn:ACT.autoChan} : null, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },

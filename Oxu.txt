@@ -1,9 +1,19 @@
-NETWORKKING 3.8.0-beta.2 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.0-beta.3 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.8.0-beta.3 (BETA)
+ - Köməkçi balonlar çoxaldı. Fiber magistral: sxem, itki büdcəsi (cədvəli necə oxumaq, itki əmsalları,
+   tələb olunan ehtiyat, «Keçmir»in səbəbləri), liflər (TIA-598-C rəng kodu, istifadə statusları),
+   binalar arası xətlər. Digər tətbiqlərdə yeni və çətin mövzular: təsvir sütunu, patch cord-lar, uplink
+   kartları, təkrar adlar, kamera növləri, miqyas, kanal planı, real ölçmə, DXF, natamamlar və s.
+ - Yan panellərin öz balonları: panel ilk dəfə açılanda (fiber kabel, ODF / mufta, binalar arası xətt,
+   port kartı, kamera, istənilən cihaz) sahələrin mənası izah olunur. «Kömək» düyməsi panel açıqdırsa
+   panelin balonlarını göstərir.
+ - «Bir daha göstərmə» ilə bağlanmış səhifələr yeni balonlara görə bir dəfə yenidən göstərilir.
 
 3.8.0-beta.2 (BETA)
  - Açılış ekranı: proqram açılanda loqo animasiyası (elektron plata xətləri, mərkəzdən dairələrə paketlər,

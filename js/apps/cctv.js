@@ -153,10 +153,10 @@ registerApp({
   tabs:[
     {id:"map", label:"tabMap", icon:"🗺", palette:() => `<div class="psec"><button class="btn pri" style="width:100%" data-ca="bulk">📷 ${esc(t("bulkT"))}</button></div>` + dgPalette(B(), cfg),
       render(){ const b = B(), v = view(b, cfg.id); document.body.classList.toggle("linkmode", DG.mode === "link"); return `${warnBox(cWarnings(b))}${!Object.keys(v.nodes).length && !v.boxes.length ? `<div class="empty"><h3>${esc(t("camEmptyT"))}</h3><p>${esc(t("camEmpty"))}</p></div>` : ""}<div id="dgwrap">${dgSvg(b, cfg)}</div><p class="dghint">${esc(DG.mode === "link" ? t("hintLink") : t("hintMap"))}</p>`; },
-      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:'[data-ca="bulk"]', title:t("tCcT1"), text:t("tCc1")}, {sel:"#pal .pgrid", title:t("tCcT2"), text:t("tCc2")}, {sel:'[data-tab="cams"]', title:t("tCcT3"), text:t("tCc3")}, {sel:'[data-tab="nvr"]', title:t("tCcT4"), text:t("tCc4")}]},
-    {id:"plan", label:"camPlanTab", icon:"📐", palette:() => BLD.palette(), render:() => BLD.planView()},
-    {id:"cams", label:"tabCams", icon:"📷", render(){ const b = B(); return `${warnBox(cWarnings(b))}<div class="row" style="margin-bottom:10px">${searchBox("q-cam")}<span class="grow"></span><button class="btn small" data-ca="bulk">＋ ${esc(t("bulkT"))}</button><button class="btn small" data-ca="csv">⤓ CSV</button></div>${camTable(b)}`; }},
-    {id:"nvr", label:"tabNvr", icon:"🗄", render(){ return nvrView(B()); }},
+      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:'[data-ca="bulk"]', title:t("tCcT1"), text:t("tCc1")}, {sel:"#pal .pgrid", title:t("tCcT2"), text:t("tCc2")}, tip("#pal .pgrid", "tp_ccTypes"), TIPS.link(), TIPS.warn(), tip('[data-tab="plan"]', "tp_ccPlan"), {sel:'[data-tab="cams"]', title:t("tCcT3"), text:t("tCc3")}, {sel:'[data-tab="nvr"]', title:t("tCcT4"), text:t("tCc4")}]},
+    {id:"plan", label:"camPlanTab", icon:"📐", palette:() => BLD.palette(), render:() => BLD.planView(), tour:() => [tip("svg.bplan", "tp_ccPlan")]},
+    {id:"cams", label:"tabCams", icon:"📷", tour:() => [{sel:"#view table.t", title:t("tCcT3"), text:t("tCc3")}, TIPS.warn()], render(){ const b = B(); return `${warnBox(cWarnings(b))}<div class="row" style="margin-bottom:10px">${searchBox("q-cam")}<span class="grow"></span><button class="btn small" data-ca="bulk">＋ ${esc(t("bulkT"))}</button><button class="btn small" data-ca="csv">⤓ CSV</button></div>${camTable(b)}`; }},
+    {id:"nvr", label:"tabNvr", icon:"🗄", render(){ return nvrView(B()); }, tour:() => [tip('[data-cs="retain"]', "tp_ccRetain"), {sel:"#view .card + .card, #view .card", title:t("tCcT4"), text:t("tCc4")}]},
     docTab("cctv", docBody)
   ],
   actions(tab){ const a = [{id:"bulk", icon:"📷", label:"bulkT", fn:bulkAdd}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; if (tab.id === "map") a.unshift({id:"link", icon:"🔗", label:"linkMode", on:DG.mode === "link", fn:() => { DG.mode = DG.mode === "link" ? "select" : "link"; DG.media = DG.media || "poe"; DG.linkFrom = null; render(); }}); return a; },
@@ -166,6 +166,8 @@ registerApp({
   onKey(e, tab){ if (tab.id === "map") dgKey(cfg, e); if (tab.id === "plan") BLD.onKey(e); }, onEsc(){ return dgEsc(); },
   exports(){ const b = B(); return [{icon:"🖼", label:t("exPng"), fn:() => exportDiagram(cfg, "png")}, {icon:"◇", label:t("exSvg"), fn:() => exportDiagram(cfg, "svg")}, {icon:"▦", label:t("camCsv"), fn:() => camCsv(b)}]; },
   reveal(s){ if (s && s.type === "dev"){ UI.tabs.cctv = "map"; render(); } },
+  panelTours:() => [{id:"cctv.camera", when:'#drawer [data-f="camera.style"]', steps:() => [tip('#drawer [data-f="camera.style"]', "tp_cStyle"), tip('#drawer [data-f="camera.loc"]', "tp_cLoc"),
+    tip('#drawer [data-f="camera.lens"], #drawer [data-f="camera.mp"]', "tp_cLens"), tip('#drawer [data-f="camera.rec"]', "tp_cRec")]}],
   guide:() => [[t("gCc1h"), t("gCc1")], [t("gCc2h"), t("gCc2")], [t("gCc3h"), t("gCc3")], [t("gCc4h"), t("gCc4")]]
 });
 document.addEventListener("click", e => { if (UI.app !== "cctv") return; const a = e.target.closest("[data-ca]"); if (!a) return; const k = a.dataset.ca;

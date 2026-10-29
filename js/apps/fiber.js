@@ -197,12 +197,15 @@ registerApp({
   tabs:[
     {id:"map", label:"tabMap", icon:"🗺", palette:() => dgPalette(B(), cfg),
       render(){ const b = B(), v = view(b, cfg.id); document.body.classList.toggle("linkmode", DG.mode === "link"); return `${warnBox(fWarnings(b))}${!Object.keys(v.nodes).length && !v.boxes.length ? `<div class="empty"><h3>${esc(t("fbEmptyT"))}</h3><p>${esc(t("fbEmpty"))}</p></div>` : ""}<div id="dgwrap">${dgSvg(b, cfg)}</div><p class="dghint">${esc(DG.mode === "link" ? t("hintLink") : t("hintMap"))}</p>`; },
-      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:"#pal .pgrid", title:t("tFbT1"), text:t("tFb1")}, {sel:"#pal .plink", title:t("tFbT2"), text:t("tFb2")}, {sel:'[data-tab="budget"]', title:t("tFbT3"), text:t("tFb3")}, {sel:'[data-tab="campus"]', title:t("tFbT4"), text:t("tFb4")}]},
-    {id:"budget", label:"tabBudget", icon:"📉", render(){ return `${warnBox(fWarnings(B()))}${budgetTable(B())}`; }},
-    {id:"strands", label:"tabStrands", icon:"🎨", render(){ return strandsView(B()); }},
+      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:"#pal .pgrid", title:t("tFbT1"), text:t("tFb1")}, {sel:"#pal .plink", title:t("tFbT2"), text:t("tFb2")}, TIPS.link(), tip("#dgwrap", "tp_fbMap"), TIPS.warn(),
+        {sel:'[data-tab="budget"]', title:t("tFbT3"), text:t("tFb3")}, tip('[data-tab="strands"]', "tp_fbStrTab"), {sel:'[data-tab="campus"]', title:t("tFbT4"), text:t("tFb4")}, TIPS.places(), TIPS.help()]},
+    {id:"budget", label:"tabBudget", icon:"📉", render(){ return `${warnBox(fWarnings(B()))}${budgetTable(B())}`; },
+      tour:() => [tip("#view table.t", "tp_fbBudTbl"), tip("#view .pill.bad", "tp_fbFail"), tip(".lossgrid", "tp_fbLoss"), tip('[data-loss="margin"]', "tp_fbMargin"), TIPS.warn(), tip('[data-h="export"]', "tp_fbCsv")]},
+    {id:"strands", label:"tabStrands", icon:"🎨", render(){ return strandsView(B()); },
+      tour:() => [tip("#view .empty", "tp_fbStrEmpty"), tip("[data-fstr]", "tp_fbStrEdit"), tip("#view .card .sw", "tp_fbColor"), tip("#view .card .pill", "tp_fbUse"), tip('[data-h="export"]', "tp_fbCsv")]},
     {id:"campus", label:"tabCampus", icon:"🏙", render(){ const p = P(); return `<div class="row" style="margin-bottom:10px"><button class="btn pri small" data-fa2="newCampus">＋ ${esc(t("fbNewCampus"))}</button><span class="muted small">${esc(t("fbCampusHint"))}</span></div><div id="cwrap" class="dgbox">${campusSvg()}</div>
       ${p.links.length ? `<div class="card" style="margin-top:12px"><h3>${esc(t("fbCampusList"))}</h3><div class="scroll"><table class="t"><tr><th>${esc(t("fbNo"))}</th><th>${esc(t("linkA"))}</th><th>${esc(t("linkB"))}</th><th>${esc(t("f_media"))}</th><th>${esc(t("f_len"))}</th><th></th></tr>${p.links.map(l => { const B2 = budget(l); return `<tr class="click" data-fsel="plink:${l.id}"><td>${esc(l.fb ? l.fb.fno : l.cid)}</td><td>${esc(endName(l, l.a, true))}</td><td>${esc(endName(l, l.b, true))}</td><td>${esc(mediaName(l.media))}</td><td class="r">${esc(l.len)}</td><td>${B2 && l.fb.app ? `<span class="pill ${B2.ok ? "ok" : "bad"}">${esc(B2.ok ? t("fbPass") : t("fbFail"))}</span>` : ""}</td></tr>`; }).join("")}</table></div></div>` : ""}`; },
-      tour:() => [{sel:'[data-fa2="newCampus"]', title:t("tFbT4"), text:t("tFb4b")}]},
+      tour:() => [{sel:'[data-fa2="newCampus"]', title:t("tFbT4"), text:t("tFb4b")}, tip("#cwrap", "tp_fbCampusMap"), tip("#view .card table.t", "tp_fbCampusList"), {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
     docTab("fiber", docBody)
   ],
   actions(tab){ const a = [{id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; if (tab.id === "map") a.unshift({id:"link", icon:"🔗", label:"linkMode", on:DG.mode === "link", fn:() => { DG.mode = DG.mode === "link" ? "select" : "link"; DG.media = DG.media || "fiber_sm"; DG.linkFrom = null; render(); }}); return a; },
@@ -221,6 +224,12 @@ registerApp({
   onKey(e, tab){ if (tab.id === "map") dgKey(cfg, e); }, onEsc(){ return dgEsc(); },
   exports(){ const b = B(); return [{icon:"🖼", label:t("exPng"), fn:() => exportDiagram(cfg, "png")}, {icon:"◇", label:t("exSvg"), fn:() => exportDiagram(cfg, "svg")}, {icon:"▦", label:t("fbCsv"), fn:() => fiberCsv()}, {icon:"▦", label:t("fbStrCsv"), fn:() => strandCsv()}]; },
   reveal(s){ if (s && (s.type === "dev" || s.type === "rack")){ UI.tabs.fiber = "map"; render(); } },
+  // side-panel balloons: a building-to-building link, a fibre cable, an ODF / splice box
+  panelTours:() => [
+    {id:"fiber.campus", when:'#drawer [data-cf="media"]', steps:() => [tip('#drawer [data-cf="media"]', "tp_fcMedia"), tip('#drawer [data-cf="a.d"]', "tp_fcEnds"), tip('#drawer [data-fl="ftype"]', "tp_fpType"), tip('#drawer [data-fl="app"]', "tp_fpApp"), tip('#drawer [data-cf="len"]', "tp_fpLen")]},
+    {id:"fiber.cable", when:'#drawer [data-fl="ftype"]', steps:() => [tip('#drawer [data-fl="ftype"]', "tp_fpType"), tip('#drawer [data-fl="cons"]', "tp_fpCons"), tip('#drawer [data-fl="conn"]', "tp_fpConn"),
+      tip('#drawer [data-fl="app"]', "tp_fpApp"), tip('#drawer [data-fl="meas"]', "tp_fpMeas"), tip("#drawer .lbox", "tp_fpLen"), tip('#drawer [data-fa="strands"]', "tp_fpStr")]},
+    {id:"fiber.box", when:'#drawer [data-fb="adapters"]', steps:() => [tip('#drawer [data-fb="adapters"]', "tp_fxBox"), tip('#drawer [data-fb="trays"]', "tp_fxTray")]}],
   guide:() => [[t("gFb1h"), t("gFb1")], [t("gFb2h"), t("gFb2")], [t("gFb3h"), t("gFb3")], [t("gFb4h"), t("gFb4")]]
 });
 // fiber fields in the drawer (data-fl = cable, data-fb = splice box, data-cf = campus link)

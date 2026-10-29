@@ -216,7 +216,7 @@ function render(){
   restoreFocus();
   if (typeof AI !== "undefined" && UI.ai && UI.ai.open) AI.draw();
   if (a.afterRender) a.afterRender(tab);
-  maybeTour();
+  maybeTour(); maybePanelTour();
 }
 /* ---------- Save / Close at the bottom of every side card ----------
    Fields are kept as soon as they are left; Save finishes the field being typed, confirms and closes the card. */
@@ -244,7 +244,7 @@ function drawerHtml(a, tab){
     return `<div class="dhead"><div><h3>${esc(t("multiSel",{n:UI.multi.size}))}</h3></div><button class="x" data-dr="close">×</button></div>${L.length > 1 ? multiEditor(B(), L) : ""}${extra}`; }
   return a.drawer ? a.drawer(tab) : "";
 }
-function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}${drawerFoot()}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);  restoreFocus(); }
+function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}${drawerFoot()}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);  restoreFocus(); maybePanelTour(); }
 /* ---------- header / tab / building events ---------- */
 /* ---------- typing masks: IP fields take only an IPv4 address (digits, dots, "/mask"), MAC fields only hex with ":" added ---------- */
 const IP_FIELDS = '[data-f="ip"],[data-cf$=":ip"],#bk-ip,#ne-ip,#lk-ip,[data-c="gw"],[data-c="subnet"],[data-v="gw"],[data-v="subnet"],input[data-mask="ip"]';

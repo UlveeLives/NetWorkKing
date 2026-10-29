@@ -443,10 +443,10 @@ registerApp({
   glyph:`<rect x="7" y="15" width="34" height="18" rx="3" fill="#fff"/>${[0,1,2,3,4].map(i => `<rect x="${10 + i * 6}" y="18" width="4" height="5" fill="${i === 1 ? "#ffb703" : "#14a37f"}"/><rect x="${10 + i * 6}" y="25" width="4" height="5" fill="${i === 3 ? "#5ac8fa" : "#14a37f"}"/>`).join("")}`,
   tabs:[
     {id:"ports", label:"tabPorts", icon:"🔌", render(){ return portsView(B()); }, after:drawCords,
-      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".pmlegend", title:t("tPmT1"), text:t("tPm1")}, {sel:".p", title:t("tPmT2"), text:t("tPm2")}, {sel:'[data-pma^="add:"]', title:t("tPmT3"), text:t("tPm3")}, {sel:'[data-tab="list"]', title:t("tPmT4"), text:t("tPm4")}, {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
+      tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".pmlegend", title:t("tPmT1"), text:t("tPm1")}, {sel:".p", title:t("tPmT2"), text:t("tPm2")}, {sel:'[data-pma^="add:"]', title:t("tPmT3"), text:t("tPm3")}, tip(".pmlinks", "tp_pmLinks"), tip('[data-act="dups"]', "tp_pmDups"), TIPS.labels(), TIPS.warn(), {sel:'[data-tab="list"]', title:t("tPmT4"), text:t("tPm4")}, {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
     {id:"list", label:"tabPortList", icon:"📋", render(){ return listView(B()); }, tour:() => [{sel:"#q-pm", title:t("tPmT4"), text:t("tPm4b")}]},
     {id:"rooms", label:"tabRooms", icon:"🚪", render(){ return roomsView(B()); }, tour:() => [{sel:"#view .card, #view .empty", title:t("tPmT5"), text:t("tPm5")}]},
-    {id:"cables", label:"tabCables", icon:"🧵", render(){ const b = B(); return `<div class="row" style="margin-bottom:10px"><button class="btn small" data-pm2="cid"># ${esc(t("autoCid"))}</button><button class="btn small" data-pm2="ccsv">⤓ CSV</button></div>${cableTable(b)}`; }},
+    {id:"cables", label:"tabCables", icon:"🧵", tour:() => [tip('[data-pm2="cid"]', "tp_cid"), TIPS.labels()], render(){ const b = B(); return `<div class="row" style="margin-bottom:10px"><button class="btn small" data-pm2="cid"># ${esc(t("autoCid"))}</button><button class="btn small" data-pm2="ccsv">⤓ CSV</button></div>${cableTable(b)}`; }},
     docTab("portmap", docBody)
   ],
   actions(tab){ const n = dupGroups(B()).length; return [...(n ? [{id:"dups", icon:"⚠", label:"dupBtn", fn:dupTool}] : []), {id:"addRack", icon:"🗄", label:"rkAdd", fn:() => { const b = B(); edit(() => { const r = normRack({id:uid("k"), name:nextRackName(b)}); b.racks.push(r); }); }},
@@ -462,6 +462,9 @@ registerApp({
     if (e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); goPort(d.id, clamp(+s.p + (e.key === "ArrowDown" ? 1 : -1) * (+s.p % 2 ? 1 : 1), 1, n)); } },
   exports(){ const b = B(); return [{icon:"▦", label:t("pmCsv"), fn:() => csv(b)}, {icon:"▦", label:t("exInv"), fn:() => invCsv(b)}, {icon:"▦", label:t("exCab"), fn:() => cableCsv(b)}]; },
   reveal(s){ if (s && s.type === "dev"){ const d = devById(B(), s.id); if (d && portDev(d)){ UI.tabs.portmap = "ports"; render(); } } },
+  // the port card: the hardest panel of the program
+  panelTours:() => [{id:"portmap.port", when:'#drawer [data-pc="mode"]', steps:() => [tip("#drawer .chain", "tp_ppChain"), tip('#drawer [data-pc="__panel"]', "tp_ppPanel"), tip("#drawer [data-endpick]", "tp_ppEnd"),
+    tip('#drawer [data-pc="mode"]', "tp_ppMode"), tip('#drawer [data-pc="poe"]', "tp_ppPoe"), tip("#drawer [data-pmnav]", "tp_ppNav"), tip("#drawer .pmtools", "tp_ppTools"), tip('#drawer [data-pma="cliPort"]', "tp_ppCli")]}],
   guide:() => [[t("gPm1h"), t("gPm1")], [t("gPm2h"), t("gPm2")], [t("gPm3h"), t("gPm3")], [t("gPm4h"), t("gPm4")], [t("gPm5h"), t("gPm5")]]
 });
 document.addEventListener("click", e => { const a = e.target.closest("[data-pm2]"); if (!a || UI.app !== "portmap") return; const b = B(); if (a.dataset.pm2 === "cid") autoCableIds(b, null, "C"); else cableCsv(b); });
