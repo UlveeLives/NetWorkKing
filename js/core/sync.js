@@ -34,7 +34,7 @@ const SYNC = (function(){
     // port number bigger than the device has
     b.links.forEach(l => [l.a, l.b].forEach(e => { const d = devById(b, e.d), p = String(e.p || "").trim(); if (!d || !/^\d+$/.test(p)) return; const n = portsOf(d); if (!n || +p <= n) return;
       add({sev:"err", apps:["portmap","rack"], dev:d.id, title:t("sy_portRange"), text:t("sy_portRangeT", {d:devLabel(d), p, n}),
-        fixes:[fix(t("sy_growPorts", {n:p}), () => { d.ports = +p; }, true), fix(t("sy_clearPort"), () => { e.p = ""; })]}); }));
+        fixes:[fix(t("sy_growPorts", {n:p}), () => { d.ports = Math.max(portsOf(d), +p); }, true), fix(t("sy_clearPort"), () => { e.p = ""; })]}); }));
     // devices and their rack
     b.devices.forEach(d => {
       if (d.rack && !rackById(b, d.rack)) add({sev:"err", apps:["rack","portmap"], dev:d.id, title:t("sy_rackGone"), text:t("sy_rackGoneT", {d:devLabel(d)}),
@@ -73,7 +73,7 @@ const SYNC = (function(){
       else [[l.a, ba], [l.b, bb]].forEach(([e, bx]) => { if (e.d && !devById(bx, e.d)) add({sev:"", apps:["fiber"], title:t("sy_campusDev"), text:t("sy_campusDevT", {b:bx.name}), fixes:[fix(t("sy_clearEnd"), () => { e.d = ""; e.p = ""; }, true)]}); }); });
     // the same name twice (usually one device made twice in two apps)
     dupGroups(b).forEach(g => add({sev:"", apps:[...new Set(g.flatMap(appsOfDev))], dev:g[0].id, title:t("sy_dupName"), text:t("sy_dupNameT", {n:g[0].name, k:g.length, a:g.map(d => kindName(d.kind)).join(", ")}),
-      fixes:[fix(t("sy_openDup"), () => "dup", true)]}));
+      fixes:[Object.assign(fix(t("sy_openDup"), () => "dup", true), {nav:true})]}));
     // devices made in other apps that are not on the network diagram yet (information only)
     const tv = view(b, "topology"), off = b.devices.filter(d => !tv.nodes[d.id] && !(KINDS[d.kind] || {}).acc && !(d.rack && tv.nodes[d.rack]));
     if (off.length) add({sev:"info", apps:["topology"], title:t("sy_offMap"), text:t("sy_offMapT", {n:off.length, d:off.slice(0, 6).map(devLabel).join(", ") + (off.length > 6 ? " …" : "")}),
@@ -104,8 +104,10 @@ const SYNC = (function(){
     c.kind === "rack" ? ["rack","portmap","topology"] : c.kind === "vlan" ? ["topology","portmap","wifi"] : ["building","wifi","cctv","summary"];
   /* ---------- 3. the window ---------- */
   const store0 = () => { const b = B(); b.sync = b.sync && typeof b.sync === "object" ? b.sync : {}; return b.sync; };
+  // conflicts put off with «Later» stay hidden until the program is opened again
+  const dismissed = new Set(); const keyOf = c => c.title + "|" + c.text;
   function open(){
-    const b = B(), S = store0(), C = conflicts(b), cur = snapshot(b), D = diff(S.snap, cur);
+    const b = B(), S = store0(), C = conflicts(b).filter(c => !dismissed.has(keyOf(c))), cur = snapshot(b), D = diff(S.snap, cur);
     const sevIc = s => s === "err" ? "⛔" : s === "info" ? "ⓘ" : "⚠";
     const nErr = C.filter(c => c.sev !== "info").length;
     const kindIc = {dev:"🖥", link:"🔌", rack:"🗄", vlan:"🌐", room:"🚪", floor:"🏢"}, opIc = {add:"＋", chg:"✎", del:"−"};
@@ -119,12 +121,13 @@ const SYNC = (function(){
       <div class="sysum ${nErr ? "bad" : "ok"}">${nErr ? `⚠ ${esc(t("sy_nIssues", {n:nErr}))}` : `✓ ${esc(t("sy_allOk"))}`}<small class="muted"> · ${esc(t("sy_checked", {d:b.devices.length, l:b.links.length, r:b.racks.length}))}</small></div>
       <h4>📝 ${esc(t("sy_changesT"))}</h4>${changes}
       <h4>⚡ ${esc(t("sy_conflictsT"))} <span class="cnt">${C.length}</span></h4>${C.length ? `<p class="muted small">${esc(t("sy_conflictsH"))}</p><div class="sylist scroll">${cards}</div>` : `<p class="small">✓ ${esc(t("sy_noConflicts"))}</p>`}
-      <div class="mfoot">${C.some(c => c.fixes.some(f => f.rec && f.fn)) ? `<button class="btn" data-m="fixAll">★ ${esc(t("sy_fixAll"))}</button>` : ""}<span class="grow"></span><button class="btn" data-m="close">${esc(t("close"))}</button><button class="btn pri" data-m="ack">✓ ${esc(t("sy_ack"))}</button></div>`, {
-      fix:(bt, e, k) => { const [i, j] = k.split(":").map(Number), f = C[i] && C[i].fixes[j]; if (!f) return; if (!f.fn){ C.splice(i, 1); refresh(); return; }
-        let r; edit(() => { r = f.fn(); }); if (r === "dup"){ closeModal(); dupTool(); return; } refresh(); },
+      <div class="mfoot">${C.some(c => c.fixes.some(f => f.rec && f.fn && !f.nav)) ? `<button class="btn" data-m="fixAll">★ ${esc(t("sy_fixAll"))}</button>` : ""}<span class="grow"></span><button class="btn" data-m="close">${esc(t("close"))}</button><button class="btn pri" data-m="ack">✓ ${esc(t("sy_ack"))}</button></div>`, {
+      fix:(bt, e, k) => { const [i, j] = k.split(":").map(Number), f = C[i] && C[i].fixes[j]; if (!f) return; if (!f.fn){ dismissed.add(keyOf(C[i])); refresh(); return; }
+        if (f.nav){ const r = f.fn(); if (r === "dup"){ closeModal(); dupTool(); } return; }
+        edit(() => { f.fn(); }); refresh(); },
       show:(bt, e, k) => { const c = C[+k]; if (!c || !c.dev) return; closeModal(); const d = devById(B(), c.dev); if (!d) return; const ap = c.apps.find(a => a !== "summary" && a !== "topology") || "topology";
         if (APPS[ap] && UI.app !== ap) switchApp(ap); UI.sel = {type:"dev", id:d.id}; render(); const a = curApp(); if (a.reveal) a.reveal(UI.sel); },
-      fixAll:() => { edit(() => { C.forEach(c => { const f = c.fixes.find(x => x.rec && x.fn); if (f){ const r = f.fn(); } }); }); refresh(); toast("✓ " + t("sy_fixedAll")); },
+      fixAll:() => { edit(() => { C.forEach(c => { const f = c.fixes.find(x => x.rec && x.fn && !x.nav); if (f) f.fn(); }); }); refresh(); toast("✓ " + t("sy_fixedAll")); },
       ack:() => { store0().snap = snapshot(B()); persist(); closeModal(); toast("✓ " + t("sy_acked")); }
     }, {wide:true, replace:true});
   }

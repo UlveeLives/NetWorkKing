@@ -67,9 +67,11 @@ function applySpec(d, r){
   const af = {"front-to-back":"f2b", "back-to-front":"b2f", "side-to-side":"side", passive:"passive"}[r.airflow]; if (af) P2.airflow = af;
   const pc = ["rj45_100m","rj45_1g","rj45_mgig","rj45_10g","sfp","sfp_plus","sfp28","qsfp_plus","qsfp28"].reduce((s, k) => s + (num(ports[k]) || 0), 0); if (pc) d.ports = pc; const sf = ["sfp","sfp_plus","sfp28","qsfp_plus","qsfp28"].reduce((s, k) => s + (num(ports[k]) || 0), 0); P2.sfp = sf;
   // 3.8: the other physical ports too — USB, console, management and video outputs (so nothing has to be typed by hand)
-  if (has(ports.usb)) P2.usb = num(ports.usb); if (has(ports.console)) P2.console = num(ports.console); if (has(ports.mgmt)) P2.mgmt = num(ports.mgmt);
-  if (has(ports.hdmi) || has(ports.vga)){ d.av = d.av || {}; if (has(ports.hdmi)) d.av.hdmiOut = num(ports.hdmi); if (has(ports.vga)) d.av.vgaOut = num(ports.vga); }
-  if ((d.kind === "nvr" || d.kind === "dvr") && r.nvr && num(r.nvr.poe_ports)){ d.ports = (pc || 0) + num(r.nvr.poe_ports); P2.poePorts = num(r.nvr.poe_ports); }
+  // a new model replaces the old model's counts (unknown → empty, not the previous model's value)
+  P2.usb = has(ports.usb) ? num(ports.usb) : ""; P2.console = has(ports.console) ? num(ports.console) : ""; P2.mgmt = has(ports.mgmt) ? num(ports.mgmt) : "";
+  if (has(ports.hdmi) || has(ports.vga)){ d.av = Object.assign({hdmiOut:0, vgaOut:0, hdmiIn:0}, d.av || {}); d.av.hdmiOut = num(ports.hdmi) || 0; d.av.vgaOut = num(ports.vga) || 0; }
+  // NVR with built-in PoE: some datasheets count the PoE sockets in the RJ45 total already, some do not
+  if ((d.kind === "nvr" || d.kind === "dvr") && r.nvr && num(r.nvr.poe_ports)){ const poe = num(r.nvr.poe_ports); if ((pc || 0) <= poe) d.ports = (pc || 0) + poe; P2.poePorts = poe; }
   if (r.poe){ if (has(r.poe.ports)) P2.poePorts = r.poe.ports; if (has(r.poe.budget_w)) P2.poeBudget = r.poe.budget_w; if (has(r.poe.std)) P2.poeStd = r.poe.std; }
   if (r.poe_in && has(r.poe_in.max_w)) P2.poeIn = r.poe_in.max_w;
   if (r.ups){ if (has(r.ups.va)) P2.va = r.ups.va; if (has(r.ups.w)) P2.upsW = r.ups.w; if (has(r.ups.battery_wh)) P2.wh = r.ups.battery_wh; }
@@ -193,7 +195,7 @@ function openNewModel(kind, onPick){
   const pic = () => { const el = $("#nm-pic"); if (!el) return; const n = id => { const v = $("#" + id).value; return v === "" ? null : num(v); };
     const rec = {brand:$("#nm-b").value.trim() || "—", model:$("#nm-m").value.trim() || "—", kind:$("#nm-k").value, u:n("nm-u"), ports:manPorts(), power:{}, dims_mm:{}};
     try { el.innerHTML = recPic(rec, 110); } catch(e){ el.innerHTML = ""; } };
-  $("#modal").addEventListener("input", e => { if (e.target.closest("#nm-man") || e.target.id === "nm-b" || e.target.id === "nm-m") pic(); });
+  $("#modal .mbox").addEventListener("input", e => { if (e.target.closest("#nm-man") || e.target.id === "nm-b" || e.target.id === "nm-m") pic(); });   // on the window itself: gone with it
   $("#nm-k").addEventListener("change", pic); pic();
 }
 /* ---------- AI lookup (optional, user's own Claude API key) ---------- */

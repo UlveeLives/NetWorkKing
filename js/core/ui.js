@@ -67,7 +67,10 @@ let modalActs = {};
    (same title) does not count as a new step. Closing (× / Close / outside) closes the whole chain. */
 let modalHist = [];
 const modalTitleOf = s => String(s || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-function modalBack(){ const prev = modalHist.pop(); if (!prev) return closeModal(); const m = $("#modal"); m.innerHTML = ""; m.appendChild(prev.el); modalActs = prev.acts; m.hidden = false; if (prev.onBack) prev.onBack(); }
+function modalBack(){ const prev = modalHist.pop(); if (!prev) return closeModal(); const m = $("#modal"); m.innerHTML = ""; m.appendChild(prev.el); modalActs = prev.acts; m.hidden = false;
+  // still more windows behind this one: it gets its Back button again
+  if (modalHist.length && !prev.el.querySelector(".mback")) prev.el.insertAdjacentHTML("afterbegin", `<button class="mback" data-m="__back" title="${esc(t("back"))}">‹ ${esc(t("back"))}</button>`);
+  if (prev.onBack) prev.onBack(); }
 function modal(html, acts, opts = {}){ const m = $("#modal");
   const cur = !m.hidden && m.firstElementChild, curT = cur ? modalTitleOf((cur.querySelector("h3,h2") || {}).innerHTML) : "", nuT = modalTitleOf((String(html).match(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/) || [])[1]);
   const ownBack = /data-m="(back|prev)"/.test(html);   // multi-step windows (wizards) have their own «Back»
