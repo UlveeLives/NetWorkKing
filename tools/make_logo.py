@@ -1,0 +1,65 @@
+# NetWorkKing — © 2026 Ulvi Badalov. All rights reserved.
+# Logo v2 generator: neon-green "N" on black in the centre (like cmd "color a"), 8 devices on a web globe around it.
+#   python3 tools/make_logo.py  → branding/v2/*.svg
+import math, os
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(ROOT, "branding", "v2"); os.makedirs(OUT, exist_ok=True)
+NEON = "#16ff5a"          # cmd "color a" bright green, a little more neon
+# white symbols, drawn in a 48×48 box (stroke 3.6, round)
+G = {
+ # network basics
+ "cloud":   '<path d="M14 33h21a7.5 7.5 0 0 0 .7-15A10 10 0 0 0 16.5 15.6 8.5 8.5 0 0 0 14 33z"/>',
+ "router":  '<circle cx="24" cy="24" r="14"/><path d="M24 12v8m-3-5 3-3 3 3M24 36v-8m-3 5 3 3 3-3M12 24h8m-5-3-3 3 3 3M36 24h-8m5-3 3 3-3 3"/>',
+ "switch":  '<rect x="8" y="14" width="32" height="20" rx="3"/><path d="M14 21h18m-4-3 4 3-4 3M34 28H16m4-3-4 3 4 3"/>',
+ "firewall":'<rect x="8" y="12" width="32" height="24" rx="2"/><path d="M8 20h32M8 28h32M18 12v8M30 12v8M13 20v8M24 20v8M35 20v8M18 28v8M30 28v8"/>',
+ "server":  '<rect x="11" y="9" width="26" height="9" rx="2"/><rect x="11" y="20" width="26" height="9" rx="2"/><rect x="11" y="31" width="26" height="9" rx="2"/><path d="M16 13.5h1M16 24.5h1M16 35.5h1"/>',
+ "wifi":    '<path d="M9 19a21 21 0 0 1 30 0M14 25a13 13 0 0 1 20 0M19 31a6 6 0 0 1 10 0"/><circle cx="24" cy="36" r="1.8" fill="#fff"/>',
+ "pc":      '<rect x="9" y="11" width="30" height="20" rx="2"/><path d="M24 31v6M17 37h14"/>',
+ "rj45":    '<path d="M13 12h22v17h-5v5h-4v3h-4v-3h-4v-5h-5z"/><path d="M18 17v5M22 17v5M26 17v5M30 17v5"/>',
+ # the 8 apps of NetWorkKing
+ "building":'<path d="M13 38V12l11-5 11 5v26M13 38h22"/><path d="M18 16h3M27 16h3M18 22h3M27 22h3M18 28h3M27 28h3M22 38v-5h4v5"/>',
+ "topology":'<circle cx="24" cy="12" r="4.5"/><circle cx="12" cy="34" r="4.5"/><circle cx="36" cy="34" r="4.5"/><path d="M22 16l-8 14M26 16l8 14M17 34h14"/>',
+ "portmap": '<rect x="8" y="14" width="32" height="20" rx="2"/><path d="M13 19h4v4h-4zM22 19h4v4h-4zM31 19h4v4h-4zM13 26h4v4h-4zM22 26h4v4h-4zM31 26h4v4h-4z"/>',
+ "rack":    '<rect x="13" y="7" width="22" height="34" rx="2"/><path d="M17 13h14M17 19h14M17 25h14M17 31h14M17 37h6"/>',
+ "fiber":   '<circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="3" fill="#fff"/><circle cx="24" cy="15" r="2" fill="#fff"/><circle cx="24" cy="33" r="2" fill="#fff"/><circle cx="15" cy="24" r="2" fill="#fff"/><circle cx="33" cy="24" r="2" fill="#fff"/>',
+ "cctv":    '<path d="M9 16l22-5 3 9-22 5z"/><path d="M31 20l7 3M18 24l2 8h-8M12 32v6"/>',
+ "wifiplan":'<rect x="8" y="9" width="32" height="30" rx="2"/><path d="M8 25h12v14M28 9v10"/><path d="M27 31a6 6 0 0 1 8 0M29.5 34a2.5 2.5 0 0 1 3 0"/>',
+ "summary": '<rect x="11" y="8" width="26" height="33" rx="3"/><path d="M17 8v-1h14v1M17 18h14M17 25h14M17 32h9"/>',
+}
+SETS = {
+ "net":  [("cloud", "#3aa8f0"), ("router", "#2f6fe0"), ("switch", "#14a37f"), ("firewall", "#e24b3b"), ("server", "#6b5bd6"), ("wifi", "#0fb5c9"), ("pc", "#f28c1c"), ("rj45", "#d6409f")],
+ "apps": [("building", "#8b5cf6"), ("topology", "#2563eb"), ("portmap", "#10b981"), ("rack", "#64748b"), ("fiber", "#d946ef"), ("cctv", "#ef4444"), ("wifiplan", "#06b6d4"), ("summary", "#f59e0b")],
+}
+BG = {"dark": {"bg": "#0d1530", "rim": "#2448a8", "globe": "#3b6fe0", "gop": .55, "ring": "#ffffff"},
+      "light": {"bg": "#f3f6fb", "rim": "#c3cde3", "globe": "#2448a8", "gop": .45, "ring": "#ffffff"}}
+def logo(setname, theme, frame=True, small=False):
+    T = BG[theme]; C, R, NR = 256, 168, 46
+    if small: R, NR = 172, 50
+    s = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">',
+         '<defs><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>']
+    if frame: s.append(f'<rect x="16" y="16" width="480" height="480" rx="104" fill="{T["bg"]}" stroke="{T["rim"]}" stroke-width="8"/>')
+    # web globe: outline, meridians, parallels — the devices sit on it and are linked by it
+    g = T["globe"]
+    s.append(f'<g fill="none" stroke="{g}" stroke-opacity="{T["gop"]}" stroke-width="6" stroke-linecap="round">'
+             f'<circle cx="{C}" cy="{C}" r="{R}"/>'
+             f'<ellipse cx="{C}" cy="{C}" rx="{R*.42:.0f}" ry="{R}"/><ellipse cx="{C}" cy="{C}" rx="{R*.78:.0f}" ry="{R}"/>'
+             f'<path d="M{C-R} {C}H{C+R}M{C} {C-R}V{C+R}"/>'
+             f'<ellipse cx="{C}" cy="{C}" rx="{R}" ry="{R*.42:.0f}"/></g>')
+    # centre: black disc, neon green N
+    cr, k = (96, 1.45) if small else (70, 1)
+    s.append(f'<circle cx="{C}" cy="{C}" r="{cr}" fill="#050806" stroke="{NEON}" stroke-width="{5*k:.0f}" stroke-opacity=".9"/>')
+    s.append(f'<g transform="translate({C} {C}) scale({k})"><path d="M-29 31v-62l58 62v-62" fill="none" stroke="{NEON}" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/></g>')
+    # 8 devices around the globe
+    for i, (gl, col) in enumerate(SETS[setname]):
+        a = math.radians(-90 + i * 45); x, y = C + R * math.cos(a), C + R * math.sin(a)
+        s.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{NR}" fill="{col}" stroke="{T["ring"]}" stroke-width="7"/>')
+        if small: continue
+        s.append(f'<g transform="translate({x - NR*.82:.1f} {y - NR*.82:.1f}) scale({NR*1.64/48:.3f})" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">{G[gl]}</g>')
+    s.append('</svg>')
+    return "\n".join(s)
+for st in SETS:
+    for th in BG:
+        open(os.path.join(OUT, f"logo-{st}-{th}.svg"), "w").write(logo(st, th))
+        open(os.path.join(OUT, f"mark-{st}-{th}.svg"), "w").write(logo(st, th, frame=False))
+        open(os.path.join(OUT, f"small-{st}-{th}.svg"), "w").write(logo(st, th, small=True))
+print("ok", sorted(os.listdir(OUT)))
