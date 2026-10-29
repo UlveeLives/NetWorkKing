@@ -1,6 +1,6 @@
 /*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // NetWorkKing — Electron main process (Windows desktop app).
-const { app, BrowserWindow, ipcMain, dialog, Menu, shell, screen } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, Menu, shell, screen, nativeTheme } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -20,20 +20,19 @@ try {
   }
 } catch (e) { console.error("data copy", e); }
 // opened again while running: bring the window forward (or make a new one if it is gone)
-app.on("second-instance", () => { if (win && !win.isDestroyed()){ if (win.isMinimized()) win.restore(); win.show(); win.focus(); } else if (app.isReady()) createWindow(); });
+app.on("second-instance", () => { if (splash && !splash.isDestroyed()){ splash.focus(); return; } if (win && !win.isDestroyed()){ if (win.isMinimized()) win.restore(); win.show(); win.focus(); } else if (app.isReady()) createWindow(); });
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 1500, height: 950, minWidth: 1000, minHeight: 640, frame: false,
+    width: 1500, height: 950, minWidth: 1000, minHeight: 640, frame: false, show: false,
     title: app.getName(), backgroundColor: "#0d2a1a", autoHideMenuBar: true,
     icon: path.join(__dirname, "build", "icon-dark.png"),
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true }
   });
-  win.maximize();
   win.loadFile("index.html");
   // closing the app window ends the program — also the hidden window of the minimise effect, which would otherwise
   // keep the program running in the background
-  win.on("closed", () => { win = null; if (fx && !fx.isDestroyed()) fx.destroy(); fx = null; app.quit(); });
+  win.on("closed", () => { win = null; if (fx && !fx.isDestroyed()) fx.destroy(); fx = null; if (splash && !splash.isDestroyed()) splash.destroy(); app.quit(); });
   win.webContents.setWindowOpenHandler(({ url }) => { if (/^https?:/.test(url)) shell.openExternal(url); return { action: "deny" }; });
   win.webContents.on("will-navigate", e => e.preventDefault());
   // the page draws its own title bar (red / yellow / green buttons); it needs to know focus and full-screen state
@@ -46,8 +45,45 @@ function createWindow() {
     const guard = setTimeout(() => { try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }, 1500);
     restoreFx().catch(() => {}).finally(() => { clearTimeout(guard); try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }); } });
   // the effect window is made while the program starts, so the first minimise does not wait for it
-  win.once("ready-to-show", () => setTimeout(() => fxWindow().catch(() => {}), 1200));
+  win.once("ready-to-show", () => { mainReady(); if (!splash) showMain(); setTimeout(() => fxWindow().catch(() => {}), 1200); });
 }
+/* ---------- splash screen ----------
+   Shown while the program loads behind it (hidden). Language and theme come from splash.json, which the program writes
+   every time it starts or its settings change, so the splash speaks the language chosen last time. The program window
+   appears when the splash has played its ending (the logo fading away). */
+let splash = null, shown = false, readyRes, readyP = new Promise(r => readyRes = r);
+const mainReady = () => readyRes();
+const spFile = () => path.join(app.getPath("userData"), "splash.json");
+function splashPrefs(){
+  let p = {}; try { p = JSON.parse(fs.readFileSync(spFile(), "utf8")) || {}; } catch(e){}
+  const loc = (app.getLocale() || "").slice(0, 2).toLowerCase(), L = ["az", "tr", "en", "ru"];
+  return { on: p.on !== false, lang: L.includes(p.lang) ? p.lang : (L.includes(loc) ? loc : "az"),
+    theme: p.theme === "light" || p.theme === "dark" ? p.theme : (nativeTheme.shouldUseDarkColors ? "dark" : "light") };
+}
+function showMain(){
+  if (shown || !win || win.isDestroyed()) return; shown = true;
+  win.maximize(); win.show(); win.focus();
+  if (splash && !splash.isDestroyed()){ const s = splash; setTimeout(() => { try { if (!s.isDestroyed()) s.destroy(); } catch(e){} }, 60); }
+}
+function createSplash(p){
+  // 760 × 920 at full size; smaller screens get the same picture zoomed down
+  const wa = screen.getPrimaryDisplay().workAreaSize, k = Math.min(1, (wa.height - 24) / 920, (wa.width - 24) / 760);
+  splash = new BrowserWindow({ width: Math.round(760 * k), height: Math.round(920 * k), frame: false, transparent: true, resizable: false,
+    maximizable: false, fullscreenable: false, skipTaskbar: true, show: false, hasShadow: false, backgroundColor: "#00000000", center: true,
+    title: app.getName(), icon: path.join(__dirname, "build", p.theme === "light" ? "icon-light.png" : "icon-dark.png"),
+    webPreferences: { preload: path.join(__dirname, "splashpreload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true, zoomFactor: k } });
+  splash.loadFile("splash.html", { search: `app=1&lang=${p.lang}&theme=${p.theme}&v=${encodeURIComponent(app.getVersion())}` });
+  splash.once("ready-to-show", () => splash && !splash.isDestroyed() && splash.show());
+  splash.webContents.on("did-fail-load", () => { splash.destroy(); });
+  splash.on("closed", () => { splash = null; readyP.then(showMain); });
+  // never stay on the splash: whatever happens, the program appears after 45 s
+  setTimeout(() => readyP.then(showMain), 45000);
+}
+ipcMain.handle("splash-wait", () => readyP.then(() => true));
+ipcMain.on("splash-done", () => readyP.then(showMain));
+ipcMain.on("splash-prefs", (_e, p) => { try {
+  const cur = JSON.stringify(splashPrefs()), nu = JSON.stringify({ on: p.on !== false, lang: p.lang, theme: p.theme === "light" ? "light" : "dark" });
+  if (cur !== nu) fs.writeFileSync(spFile(), nu); } catch(e){} });
 /* ---------- minimise / restore effect (like the macOS "genie") ----------
    The window is photographed, a transparent window over the whole screen plays the picture flowing into the
    taskbar, then the real window is minimised. On restore the same is played backwards. The app window itself stays a
@@ -122,7 +158,7 @@ ipcMain.on("win", (_e, act, o) => { if (!win || win.isDestroyed()) return;
   else if (act === "full") win.setFullScreen(!win.isFullScreen());
   else if (act === "max") win.isMaximized() ? win.unmaximize() : win.maximize();
 });
-app.whenReady().then(() => { Menu.setApplicationMenu(null); createWindow(); });
+app.whenReady().then(() => { Menu.setApplicationMenu(null); const p = splashPrefs(); if (p.on) createSplash(p); createWindow(); });
 app.on("window-all-closed", () => app.quit());
 
 ipcMain.handle("save-file", async (_e, { name, data, filters }) => {

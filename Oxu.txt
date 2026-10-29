@@ -1,9 +1,17 @@
-NETWORKKING 3.8.0-beta.1 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.0-beta.2 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.8.0-beta.2 (BETA)
+ - Açılış ekranı: proqram açılanda loqo animasiyası (elektron plata xətləri, mərkəzdən dairələrə paketlər,
+   dairələr arasında məlumat axını, çarpaz xətlərdə neyron siqnalları), yüklənmə addımları kod kimi;
+   sonda loqo ekranın ortasına böyüyür, N-in neonu sönür, loqo sönüb proqram açılır.
+ - Açılış ekranı proqramın dilində (AZ / TR / EN / RU) və mövzusunda (tünd / açıq) göstərilir — son
+   açılışda seçilmiş ayarlarla. Açılış ekranına klik — sürətləndirir.
+ - Söndürmək olar: Ayarlar → Ümumi → Görünüş → Başlıq sətri → «Açılış ekranını göstər».
 
 3.8.0-beta.1 (BETA)
  - Beta ayrıca proqram kimi quraşdırılır: «NetWorkKing Beta» (öz qısayolu və öz məlumat qovluğu ilə).

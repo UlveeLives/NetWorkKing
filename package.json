@@ -1,7 +1,7 @@
 {
   "name": "networkking",
   "productName": "NetWorkKing Beta",
-  "version": "3.8.0-beta.1",
+  "version": "3.8.0-beta.2",
   "description": "NetWorkKing — network documentation: building structure, topology, Port Map, racks, fiber, CCTV and Wi-Fi in one app",
   "author": "Ulvi Badalov",
   "license": "SEE LICENSE IN LICENSE",
@@ -21,6 +21,8 @@
       "index.html",
       "main.js",
       "fx.html",
+      "splash.html",
+      "splashpreload.js",
       "fxpreload.js",
       "preload.js",
       "css/**",

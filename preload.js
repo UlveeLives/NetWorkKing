@@ -7,6 +7,8 @@ contextBridge.exposeInMainWorld("appBridge", {
   openImage: () => ipcRenderer.invoke("open-image"),
   saveBinary: o => ipcRenderer.invoke("save-binary", o),
   savePdf: o => ipcRenderer.invoke("save-pdf", o),
+  // language / theme / on-off of the splash screen for the next start
+  splashPrefs: p => ipcRenderer.send("splash-prefs", p),
   // own title bar: close / minimise (with or without the effect) / full screen / maximise; window state for the buttons
   win: { act: (a, o) => ipcRenderer.send("win", a, o), setIcon: th => ipcRenderer.send("set-icon", th), onState: cb => ipcRenderer.on("win-state", (_e, s) => cb(s)) }
 });

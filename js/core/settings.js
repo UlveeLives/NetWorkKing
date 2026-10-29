@@ -15,7 +15,7 @@ function openSettings(tab){
     <div class="seg" style="margin-bottom:10px"><button class="on" data-m="lsub:theme">${esc(t("setTheme"))}</button><button data-m="lsub:tbar">${esc(t("setTitleBar"))}</button></div>
     <div class="lsub" data-l="theme"><label class="fld"><span>${esc(t("theme"))}</span><select id="s-theme">${[["system", t("thSystem")], ["light", t("thLight")], ["dark", t("thDark")]].map(([k, l]) => opt(k, l, s.theme)).join("")}</select></label></div>
     <div class="lsub" data-l="tbar" hidden><p class="muted small">${esc(t("tbHint"))}</p>${tbPicker(s.tbStyle || "code")}
-      ${WINB ? `<label class="chk"><input type="checkbox" id="s-winfx"${s.winFx === false ? "" : " checked"}> ${esc(t("winFxOpt"))}</label>` : `<p class="muted small">${esc(t("winWebOnly"))}</p>`}</div></div></div>
+      ${WINB ? `<label class="chk"><input type="checkbox" id="s-winfx"${s.winFx === false ? "" : " checked"}> ${esc(t("winFxOpt"))}</label><label class="chk"><input type="checkbox" id="s-splash"${s.splash === false ? "" : " checked"}> ${esc(t("splashOpt"))}</label>` : `<p class="muted small">${esc(t("winWebOnly"))}</p>`}</div></div></div>
   <div class="tsec" data-t="help"${cur === "help" ? "" : " hidden"}><p class="muted small">${esc(t("setHelpHint"))}</p>
     <label class="chk"><input type="checkbox" id="s-alloff"${s.help.allOff ? " checked" : ""}> ${esc(t("setHelpAllOff"))}</label>
     <div class="scroll" style="max-height:40vh">${pages.map(([k, l]) => `<label class="chk"><input type="checkbox" class="s-pg" data-k="${esc(k)}"${s.help.off[k] ? "" : " checked"}> ${esc(l)}</label>`).join("")}</div>
@@ -61,7 +61,7 @@ function openSettings(tab){
 }
 function readSettings(){
   const s = store.settings, v = id => $("#" + id);
-  if (v("s-winfx")) s.winFx = v("s-winfx").checked;
+  if (v("s-winfx")) s.winFx = v("s-winfx").checked; if (v("s-splash")) s.splash = v("s-splash").checked;
   if (v("s-lang")) s.lang = v("s-lang").value; if (v("s-theme")) s.theme = v("s-theme").value; if (v("s-boxed")) s.addBoxed = v("s-boxed").checked;
   if (v("s-alloff")) s.help.allOff = v("s-alloff").checked;
   $$(".s-pg").forEach(x => { if (x.checked) delete s.help.off[x.dataset.k]; else s.help.off[x.dataset.k] = true; });

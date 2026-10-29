@@ -1,8 +1,10 @@
 <!doctype html>
 <!-- NetWorkKing — © 2026 Ulvi Badalov. All rights reserved. -->
-<!-- Splash screen TEST (v4). Open in a browser, or as a real frameless window: splash-test.bat -->
+<!-- Splash screen. In the desktop app main.js opens it as a frameless transparent window (splash.html?app=1&lang=…&theme=…&v=…)
+     and shows the program when it says it is done. Opened in a browser it is a test page with buttons (theme, language, replay);
+     splash-test.bat shows it as a real window without starting the program. -->
 <html lang="az"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NetWorkKing — açılış ekranı (test)</title>
+<title>NetWorkKing</title>
 <style>
   :root{--bar:#0d2a1a;--neon:#16ff5a;--hi:#16ff5a;--code:#c8f5d8;--term:#7dffa8;--pk:#bfffe0;--ink:#e2f5e9;--pcb:143,224,176;--bgcode:var(--bgcode-d)}
   /* light theme: pale green card, dark green text, the light logo (the black N disc stays — it is the logo's heart) */
@@ -114,7 +116,7 @@
   <div class="foot">
     <div class="by" id="by"></div>
     <div class="cr" id="cr"></div>
-    <div class="ver">v3.8.0-beta.1</div>
+    <div class="ver" id="ver"></div>
   </div>
 </div></div>
 <div class="ctl">
@@ -252,6 +254,8 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.0-beta.2", BRIDGE = window.splashBridge || null;
+let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {
   az:{by:"<b>UlveeLives</b> tərəfindən <b>Anthropic</b>-in <b>Claude</b> modeli ilə birlikdə yaradılıb", cr:"© 2026 Ulvi Badalov · Bütün hüquqlar qorunur",
@@ -263,7 +267,7 @@ const TX = {
   ru:{by:"Создано <b>UlveeLives</b> вместе с <b>Claude</b> от <b>Anthropic</b>", cr:"© 2026 Ulvi Badalov · Все права защищены",
       prj:"проекты", cat:"530 моделей · 41 бренд", art:"58 изображений устройств", fx:"эффект genie готов", apps:"8 приложений", ok:"✓ готово", hi:"· добро пожаловать"}};
 const STEPS = () => { const T = TX[LANG], c = x => `<span class="c">// ${x}</span>`; return [
-  [`<span class="p">$</span> networkking <span class="s">--beta</span> 3.8.0-beta.1 <span class="s">--lang ${LANG}</span>`, 4],
+  [`<span class="p">$</span> networkking ${/beta/.test(VER) ? '<span class="s">--beta</span> ' : ""}${VER} <span class="s">--lang ${LANG}</span>`, 4],
   [`app.setAppUserModelId(<span class="s">"…networkking.beta"</span>)`, 9],
   [`win = new BrowserWindow({ frame: <span class="p">false</span>, background: <span class="s">"#0d2a1a"</span> })`, 16],
   [`win.loadFile(<span class="s">"index.html"</span>)`, 22],
@@ -276,6 +280,7 @@ const STEPS = () => { const T = TX[LANG], c = x => `<span class="c">// ${x}</spa
   [`render(APPS.building)`, 94],
   [`<span class="ok">${T.ok}</span> <span class="c">${T.hi}</span>`, 100]]; };
 function applyLook(){ document.documentElement.classList.toggle("th-light", THEME === "light"); document.documentElement.lang = LANG;
+  document.getElementById("ver").textContent = "v" + VER;
   document.getElementById("by").innerHTML = TX[LANG].by; document.getElementById("cr").textContent = TX[LANG].cr;
   document.querySelectorAll("[data-th]").forEach(x => x.classList.toggle("on", x.dataset.th === THEME));
   document.querySelectorAll("[data-lang]").forEach(x => x.classList.toggle("on", x.dataset.lang === LANG)); }
@@ -288,17 +293,22 @@ async function play(){
     const line = document.createElement("div"); line.className = "l"; box.appendChild(line);
     while (box.children.length > 7) box.firstChild.remove();
     const plain = html.replace(/<[^>]+>/g, "").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-    for (let i = 1; i <= plain.length; i += 2){ if (me !== run) return; line.textContent = plain.slice(0, i); line.insertAdjacentHTML("beforeend", '<span class="cur"></span>'); await sleep(18); }
-    line.innerHTML = html; bar.style.width = pct + "%"; await sleep(260 + Math.random() * 260);
+    for (let i = 1; i <= plain.length && !SKIP; i += 2){ if (me !== run) return; line.textContent = plain.slice(0, i); line.insertAdjacentHTML("beforeend", '<span class="cur"></span>'); await sleep(18); }
+    line.innerHTML = html; bar.style.width = pct + "%"; await sleep(SKIP ? 30 : 260 + Math.random() * 260);
   }
   box.lastChild && box.lastChild.insertAdjacentHTML("beforeend", ' <span class="cur"></span>');
   return true;
 }
 const PRISTINE = document.getElementById("sp").outerHTML;
-const inWin = Q.get("win") === "1"; if (inWin) document.body.className = "win";
+const inWin = APP || Q.get("win") === "1"; if (inWin) document.body.className = "win";
+// in the app a click on the splash hurries it: the remaining lines appear at once and the ending plays
+if (APP) addEventListener("mousedown", () => { SKIP = true; });
 async function start(){ const sp = document.getElementById("sp"); applyLook(); pcb(); spokes(sp.querySelector(".lg")); neurons(sp.querySelector(".lg"));
-  const done = await play(); if (!done) return; const me = run; await sleep(900); if (me !== run) return;
-  const end = await outro(me); if (end && inWin) window.close(); }
+  const done = await play(); if (!done) return; const me = run; await sleep(SKIP ? 200 : 900); if (me !== run) return;
+  // the program must be loaded (behind) before the logo flies off
+  if (BRIDGE) { try { await BRIDGE.waitReady(); } catch(e){} }
+  const end = await outro(me); if (!end) return;
+  if (BRIDGE) BRIDGE.done(); else if (inWin) window.close(); }
 start();
 document.querySelector(".ctl").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return;
   if (b.dataset.bg){ document.body.dataset.bg = b.dataset.bg; document.querySelectorAll("[data-bg]").forEach(x => x.classList.toggle("on", x === b)); }

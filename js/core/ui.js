@@ -13,7 +13,9 @@ function applyTheme(){ const th = store.settings.theme, eff = th === "system" ? 
   document.documentElement.dataset.theme = eff; if (typeof applyTitleBg === "function") applyTitleBg();
   // the logo follows the theme: dark logo with the dark theme, light logo with the light one (page icon, window / taskbar icon)
   const fav = document.getElementById("favicon"); if (fav) fav.href = `icons/fav-${eff}.png`;
-  if (window.appBridge && appBridge.win && appBridge.win.setIcon) appBridge.win.setIcon(eff); }
+  if (window.appBridge && appBridge.win && appBridge.win.setIcon) appBridge.win.setIcon(eff);
+  // the splash screen of the next start: same language and theme
+  if (window.appBridge && appBridge.splashPrefs) appBridge.splashPrefs({lang:store.settings.lang, theme:eff, on:store.settings.splash !== false}); }
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => store && applyTheme());
 /* ---------- toast, prompt, confirm ---------- */
 let toastT; function toast(m, ms){ const el = $("#toast"); if (!el) return; el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), ms || 2800); }
