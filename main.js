@@ -5,6 +5,9 @@ const path = require("path");
 const fs = require("fs");
 
 let win;
+// its own identity for Windows: its own taskbar button (otherwise Windows may group it under another program's button, and a
+// click on that button never reaches this window). Same id as the installer uses (package.json build.appId).
+if (process.platform === "win32") app.setAppUserModelId(/beta/i.test(app.getName()) ? "local.ulveelives.networkking.beta" : "local.ulveelives.networkking");
 if (!app.requestSingleInstanceLock()) app.quit();
 // NetWorkKing keeps its data in its own folder. On the first start it copies the data of the version installed before it
 // (the beta copies NetWorkKing; NetWorkKing copies NetWorker 1.x / 2.x). The old folder is never changed, so the other
@@ -37,7 +40,8 @@ function createWindow() {
   const st = () => { if (win && !win.isDestroyed()) win.webContents.send("win-state", { focused: win.isFocused(), full: win.isFullScreen(), max: win.isMaximized() }); };
   ["focus", "blur", "enter-full-screen", "leave-full-screen", "maximize", "unmaximize"].forEach(ev => win.on(ev, st));
   win.webContents.on("did-finish-load", st);
-  win.on("restore", () => { if (fxMin){ fxMin = false;
+  ["minimize", "restore", "show", "hide", "focus", "blur"].forEach(ev => win.on(ev, () => flog("win", ev, "fxMin=" + fxMin, "busy=" + fxBusy, "min=" + win.isMinimized(), "vis=" + win.isVisible())));
+  win.on("restore", () => { if (fxMin){ fxMin = false; try { win.setOpacity(0); } catch(e){}
     // never leave the window invisible: whatever happens, it is shown again after 1.5 s
     const guard = setTimeout(() => { try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }, 1500);
     restoreFx().catch(() => {}).finally(() => { clearTimeout(guard); try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }); } });
@@ -50,6 +54,9 @@ function createWindow() {
    normal window (resizing, snapping and the taskbar keep working). If anything goes wrong it falls back to a plain
    minimise. Only when the taskbar is at the bottom of the screen; otherwise a plain minimise. */
 let fx = null, fxBusy = false, fxMin = false, iconX = null;
+// beta: step log of the minimise effect (NWK_FXLOG file next to the app files), to find timing problems on real PCs
+const fxLogFile = path.join(__dirname, "fx.log"), T0 = Date.now();
+function flog(...a){ try { fs.appendFileSync(fxLogFile, `${((Date.now() - T0) / 1000).toFixed(3)} ${a.map(x => typeof x === "string" ? x : JSON.stringify(x)).join(" ")}\n`); } catch(e){} }
 function fxWindow(){
   if (fx && !fx.isDestroyed()) return Promise.resolve(fx);
   fx = new BrowserWindow({ frame: false, transparent: true, resizable: false, movable: false, focusable: false, skipTaskbar: true, alwaysOnTop: true,
@@ -57,6 +64,8 @@ function fxWindow(){
   fx.setIgnoreMouseEvents(true);
   return new Promise(res => { fx.webContents.once("did-finish-load", () => res(fx)); fx.loadFile("fx.html"); });
 }
+// throw the effect window away and make a fresh, hidden one a moment later (ready for the next time)
+function fxDrop(){ try { if (fx && !fx.isDestroyed()) fx.destroy(); } catch(e){} fx = null; setTimeout(() => { if (win && !win.isDestroyed() && !fx) fxWindow().catch(() => {}); }, 1500); }
 const fxAsk = (ch, data, reply) => new Promise((res, rej) => { const t = setTimeout(() => rej(new Error("fx timeout")), 900);
   ipcMain.once(reply, (_e, v) => { clearTimeout(t); res(v); }); fx.webContents.send(ch, data); });
 function geom(){
@@ -69,18 +78,23 @@ function geom(){
 // a lighter picture is enough for a 0.4 s animation (big screens: at most 1600 px wide)
 async function snap(){ let img = await win.webContents.capturePage(); const z = img.getSize(); if (z.width > 1600) img = img.resize({ width: 1600, quality: "good" }); return "data:image/jpeg;base64," + img.toJPEG(80).toString("base64"); }
 async function minimizeFx(){
-  if (fxBusy || !win || win.isDestroyed()) return; const g = win.isFullScreen() ? null : geom(); if (!g){ win.minimize(); return; }
+  flog("minimizeFx called busy=" + fxBusy);
+  if (fxBusy || !win || win.isDestroyed()) return; const g = win.isFullScreen() ? null : geom(); flog("geom", g && {rect:g.rect, to:g.to}); if (!g){ win.minimize(); return; }
   fxBusy = true;
   try {
-    const [img, o] = await Promise.all([snap(), fxWindow()]);
-    o.setBounds(g.d.bounds); await fxAsk("fx-load", { img, rect: g.rect, to: g.to, dir: "min" }, "fx-ready");
+    const [img, o] = await Promise.all([snap(), fxWindow()]); flog("min snap+fx ready, img kB", Math.round(img.length / 1024));
+    o.setBounds(g.d.bounds); await fxAsk("fx-load", { img, rect: g.rect, to: g.to, dir: "min" }, "fx-ready"); flog("min fx-ready");
     o.showInactive(); await new Promise(r => setTimeout(r, 34)); win.setOpacity(0);
     await fxAsk("fx-go", null, "fx-done");
-    fxMin = true; win.minimize(); setTimeout(() => o.hide(), 60);
-  } catch(e){ try { win.setOpacity(1); if (fx) fx.hide(); } catch(x){} win.minimize(); }
+    flog("min anim done"); fxMin = true;
+    // the effect window goes away completely BEFORE minimising — while it existed on top, Windows could treat the
+    // program as the active one and a taskbar click then did nothing
+    fxDrop(); win.minimize(); setTimeout(() => { try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }, 120);
+  } catch(e){ flog("min error", String(e && e.message)); try { win.setOpacity(1); if (fx) fx.hide(); } catch(x){} win.minimize(); }
   finally { fxBusy = false; }
 }
 async function restoreFx(){
+  flog("restoreFx start");
   // the taskbar button was just clicked: the mouse is over it — remember where it is for the next minimise
   const c = screen.getCursorScreenPoint(), g0 = geom(); if (g0 && c.y >= g0.d.workArea.y + g0.d.workArea.height - 2) iconX = c.x;
   const g = geom(); if (!g){ win.setOpacity(1); return; }
@@ -89,8 +103,8 @@ async function restoreFx(){
     const [img, o] = await Promise.all([snap(), fxWindow()]);
     o.setBounds(g.d.bounds); await fxAsk("fx-load", { img, rect: g.rect, to: g.to, dir: "restore" }, "fx-ready");
     o.showInactive(); await fxAsk("fx-go", null, "fx-done");
-    win.setOpacity(1); setTimeout(() => o.hide(), 50);
-  } catch(e){ win.setOpacity(1); try { if (fx) fx.hide(); } catch(x){} }
+    flog("restore anim done"); win.setOpacity(1); setTimeout(fxDrop, 40);
+  } catch(e){ flog("restore error", String(e && e.message)); win.setOpacity(1); try { if (fx) fx.hide(); } catch(x){} }
   finally { fxBusy = false; }
 }
 // window / taskbar icon follows the theme: dark logo for the dark theme, light logo for the light one
