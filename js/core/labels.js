@@ -22,7 +22,7 @@ function sheet(L, size, qr){ const S = SIZES[size] || SIZES.m, per = S.cols * S.
   for (let i = 0; i < L.length; i += per) pages.push(L.slice(i, i + per));
   const qmm = Math.min(S.h - 4, 30);
   return pages.map(P => `<div class="lblpage" style="grid-template-columns:repeat(${S.cols},${S.w}mm);grid-auto-rows:${S.h}mm">${P.map(x => { let q = ""; if (qr) try { q = QR.svg(x.q, 100).replace(/width="100" height="100"/, `width="${qmm}mm" height="${qmm}mm"`); } catch(e){ q = ""; }
-    return `<div class="lbl">${q ? `<div class="lq">${q}</div>` : ""}<div class="lt"><b>${esc(x.t)}</b>${x.s ? `<span>${esc(x.s)}</span>` : ""}${x.s2 ? `<span>${esc(x.s2)}</span>` : ""}</div></div>`; }).join("")}</div>`).join("");
+    return `<div class="qlbl">${q ? `<div class="lq">${q}</div>` : ""}<div class="lt"><b>${esc(x.t)}</b>${x.s ? `<span>${esc(x.s)}</span>` : ""}${x.s2 ? `<span>${esc(x.s2)}</span>` : ""}</div></div>`; }).join("")}</div>`).join("");
 }
 function open(def){
   const b = B(), st = {what:def || "ports", size:"m", qr:true};
