@@ -100,3 +100,7 @@ for k,az,tr,en,ru in [
  ("gc8","Başlıq sətrindəki ⇄ düyməsi bütün tətbiqlərin bir-biri ilə uyğun olub-olmadığını yoxlayır: silinmiş cihaza bağlı kabel, bir porta iki kabel, eyni U-da iki cihaz, silinmiş rack / otaq / VLAN / NVR, lif cədvəli və s. Hər uyğunsuzluq üçün həll variantları təklif olunur (★ — tövsiyə olunan). «Təsdiqlə» indiki vəziyyəti yadda saxlayır — növbəti dəfə ondan sonra nəyin dəyişdiyi tətbiqlərə görə göstərilir. Düymədəki qırmızı nöqtə səhv olduğunu bildirir.","Başlık çubuğundaki ⇄ düğmesi uygulamaların uyumunu kontrol eder ve çözüm önerir.","The ⇄ button in the title bar checks that all apps agree: a cable on a deleted device, two cables on one port, two devices on one U, a deleted rack / room / VLAN / NVR, strand tables and more, with ways to fix each (★ = recommended). «Confirm» saves the current state — next time you see what changed since, by app. A red dot on the button means there are errors.","Кнопка ⇄ проверяет согласованность приложений и предлагает исправления; «Подтвердить» сохраняет состояние для сравнения."),
 ]:
     K(k,az,tr,en,ru)
+for k,az,tr,en,ru in [
+ ("pmCliNoCopy","Panoya kopyalamaq olmadı — mətni seçib Ctrl+C basın","Panoya kopyalanamadı — metni seçip Ctrl+C","Could not copy — select the text and press Ctrl+C","Не удалось скопировать — выделите текст и нажмите Ctrl+C"),
+]:
+    K(k,az,tr,en,ru)

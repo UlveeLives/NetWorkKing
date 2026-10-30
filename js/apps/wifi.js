@@ -212,6 +212,8 @@ function heat(d, f, b, step){
   const s = PW / f.wm, H = Math.min(PW * 10, Math.round(f.hm * s)), A = apsFor(d, f, b);   // a very long, thin floor: the grid stays a sane size
   const key = JSON.stringify([b, step, f.wm, f.hm, f.rooms.map(r => [r.x, r.y, r.w, r.h, r.wall]), f.walls.map(w => [w.x1, w.y1, w.x2, w.y2, w.mat, w.kind, w.bend]), A.map(q => [q.a.id, q.a.x, q.a.y, q.k, q.dz, q.eirp, q.sp]), d.cfg.n, d.cfg.cg, d.cfg.fl[b]]);
   if (HCACHE.has(key)) return HCACHE.get(key);
+  // memory: at most ~4 million signal values per map (many APs on a huge floor get a coarser grid instead of a crash)
+  while (Math.ceil(PW / step) * Math.ceil(H / step) * Math.max(1, A.length) > 4e6) step *= 1.4;
   const cols = Math.ceil(PW / step), rows = Math.ceil(H / step), nA = A.length, R = new Float32Array(cols * rows * Math.max(1, nA)).fill(-200);
   const walls = wallsOf(f, b);
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++){
@@ -219,7 +221,7 @@ function heat(d, f, b, step){
     for (let q = 0; q < nA; q++) R[o + q] = sigAt(d, b, A[q], mx, my, walls);
   }
   const res = {cols, rows, step, s, A, nA, R};
-  if (HCACHE.size > 40) HCACHE.clear();
+  if (HCACHE.size > 12) HCACHE.clear();
   HCACHE.set(key, res); return res;
 }
 function cellInfo(d, h, k, b, P){

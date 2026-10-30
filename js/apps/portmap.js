@@ -364,7 +364,7 @@ document.addEventListener("click", async e => {
   if (k === "cliPort"){ const gen = cliText(b, d, s.p), own = (d.pcfg[s.p] || {}).cli, fn = `${devLabel(d)}_port${s.p}`.replace(/[\\/:*?"<>|\s]+/g, "_");
     const cur = () => ($("#clitx") || {}).value || "";
     modal(`<h3>⌨ ${esc(devLabel(d))} :${esc(s.p)}</h3><p class="muted small">${esc(t("pmCliNote"))}${own ? ` <b>· ${esc(t("pmCliOwn"))}</b>` : ""}</p><textarea id="clitx" class="mono" rows="12" style="width:100%" spellcheck="false">${esc(own || gen)}</textarea><div class="mfoot">${own ? `<button class="btn" data-m="reset">↺ ${esc(t("pmCliReset"))}</button>` : ""}<button class="btn" data-m="copy">⧉ ${esc(t("copy"))}</button><button class="btn" data-m="file">💾 ${esc(t("pmCliFile"))}</button><button class="btn pri" data-m="keep">✓ ${esc(t("save"))}</button><button class="btn" data-m="close">${esc(t("close"))}</button></div>`,
-      {copy:() => { navigator.clipboard && navigator.clipboard.writeText(cur()).then(() => toast("✓ " + t("copied"))); },
+      {copy:() => { navigator.clipboard && navigator.clipboard.writeText(cur()).then(() => toast("✓ " + t("copied"))).catch(() => toast("⚠ " + t("pmCliNoCopy"))); },
        file:() => saveText(fn + ".txt", cur().replace(/\r?\n/g, "\r\n"), "txt"),
        keep:() => { const v = cur(); edit(() => { const c = cfgOf(d, s.p); if (v.trim() && v.trim() !== gen.trim()) c.cli = v; else delete c.cli; if (!hasCfg(d, s.p)) delete d.pcfg[s.p]; }); closeModal(); toast("✓ " + t("saved")); },
        reset:() => { edit(() => { const c = cfgOf(d, s.p); delete c.cli; if (!hasCfg(d, s.p)) delete d.pcfg[s.p]; }); closeModal(); }}); }

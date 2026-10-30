@@ -64,7 +64,8 @@ function normProject(p){
   p.company = p.company || ""; return p;
 }
 function normBuilding(b){
-  ["floors","rooms","vlans","racks","devices","links","revs"].forEach(k => b[k] = Array.isArray(b[k]) ? b[k] : []);
+  // empty slots (null / undefined) are dropped — one of them would break every app that lists the building
+  ["floors","rooms","vlans","racks","devices","links","revs"].forEach(k => b[k] = Array.isArray(b[k]) ? b[k].filter(x => x && typeof x === "object") : []);
   ["views","wifi","cctv","fiber","notes"].forEach(k => b[k] = b[k] && typeof b[k] === "object" ? b[k] : {});
   b.tb = Object.assign({company:"", project:"", client:"", drawingNo:"", rev:"A", author:"", checked:"", approved:"", date:today(), scale:"NTS", sheet:"1 / 1", status:""}, b.tb || {});
   b.pagefmt = Object.assign({size:"A3", orient:"landscape"}, b.pagefmt || {});

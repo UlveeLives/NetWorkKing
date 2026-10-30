@@ -34,7 +34,7 @@ const SYNC = (function(){
     // port number bigger than the device has
     b.links.forEach(l => [l.a, l.b].forEach(e => { const d = devById(b, e.d), p = String(e.p || "").trim(); if (!d || !/^\d+$/.test(p)) return; const n = portsOf(d); if (!n || +p <= n) return;
       add({sev:"err", apps:["portmap","rack"], dev:d.id, title:t("sy_portRange"), text:t("sy_portRangeT", {d:devLabel(d), p, n}),
-        fixes:[fix(t("sy_growPorts", {n:p}), () => { d.ports = Math.max(portsOf(d), +p); }, true), fix(t("sy_clearPort"), () => { e.p = ""; })]}); }));
+        fixes:+p <= 512 ? [fix(t("sy_growPorts", {n:p}), () => { d.ports = Math.max(portsOf(d), +p); }, true), fix(t("sy_clearPort"), () => { e.p = ""; })] : [fix(t("sy_clearPort"), () => { e.p = ""; }, true)]}); }));
     // devices and their rack
     b.devices.forEach(d => {
       if (d.rack && !rackById(b, d.rack)) add({sev:"err", apps:["rack","portmap"], dev:d.id, title:t("sy_rackGone"), text:t("sy_rackGoneT", {d:devLabel(d)}),

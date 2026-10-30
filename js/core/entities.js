@@ -148,7 +148,8 @@ function normDevice(d){
   // picture ports (HDMI / VGA in and out) next to the network ports: named HDMI1…, VGA1…, IN1…
   if (!d.av || typeof d.av !== "object") d.av = Object.assign({hdmiOut:0, vgaOut:0, hdmiIn:0}, K.av || {});
   // counts read from older or imported files are never negative (a negative SFP count stopped the rack drawing)
-  d.ports = Math.max(0, Math.round(num(d.ports, 0))); ["sfp", "h", "psu", "poePorts"].forEach(k => { if (d.params[k] !== undefined && num(d.params[k], 0) < 0) d.params[k] = 0; });
+  // sane limits whatever path a number came in by (field, table import, AI, sync fix): a 99999-port switch froze the program
+  d.ports = clamp(Math.round(num(d.ports, 0)), 0, 512); if (d.params.sfp !== undefined) d.params.sfp = clamp(Math.round(num(d.params.sfp, 0)), 0, 64); if (d.params.h !== undefined && d.params.h !== "") d.params.h = clamp(Math.round(num(d.params.h, 1)), 1, 60); ["sfp", "h", "psu", "poePorts"].forEach(k => { if (d.params[k] !== undefined && num(d.params[k], 0) < 0) d.params[k] = 0; });
   if (d.kind === "camera"){
     // one camera can record on several NVRs: nvrs = [nvr ids], chs = {nvr id: channel}; nvr / ch mirror the first one
     if (!Array.isArray(d.nvrs)) d.nvrs = d.nvr ? [d.nvr] : [];
@@ -163,7 +164,7 @@ function normDevice(d){
 function normRack(r){
   const def = {name:"Rack", code:"", u:42, floor:"", room:"", row:"", dims:{h:2000, w:600, d:1000}, udepth:800, load:800, coolKw:0, volts:230, pf:0.9, airflow:"f2b", pdus:[], specs:{}, notes:[], view:{power:true, cables:true, assets:true}};
   for (const k in def) if (r[k] === undefined) r[k] = clone(def[k]);
-  r.dims = Object.assign({h:2000, w:600, d:1000}, r.dims || {}); return r;
+  r.dims = Object.assign({h:2000, w:600, d:1000}, r.dims || {}); r.u = clamp(Math.round(num(r.u, 42)), 1, 60); return r;
 }
 /* ---------- lookups ---------- */
 const devById = (b, id) => b.devices.find(d => d.id === id);
@@ -576,13 +577,13 @@ function openPlaces(tab){
       tab: (bt, e, k) => { $$(".mbox .tabb").forEach(x => x.classList.toggle("on", x === bt)); $$(".mbox .tsec").forEach(x => x.hidden = x.dataset.t !== k); },
       save: () => { readPlaces(b); closeModal(); edit(() => {}); },
       fAdd: () => { readPlaces(b); b.floors.push({id:uid("f"), name:t("floorN",{n:b.floors.length + 1}), lvl:b.floors.length}); normBuilding(b); openPlaces("floors"); },
-      fDel: async bt => { readPlaces(b); const f = b.floors[+bt.dataset.i]; if (!await uiConfirm(t("floorDelConf",{n:f.name}), t("delete"), true)) return openPlaces("floors"); b.floors.splice(+bt.dataset.i, 1); b.rooms.forEach(r => { if (r.floor === f.id) r.floor = ""; }); b.devices.forEach(d => { if (d.floor === f.id) d.floor = ""; }); openPlaces("floors"); },
-      fUp: bt => { readPlaces(b); const i = +bt.dataset.i; if (i > 0){ const x = b.floors.splice(i, 1)[0]; b.floors.splice(i - 1, 0, x); } openPlaces("floors"); },
-      fDown: bt => { readPlaces(b); const i = +bt.dataset.i; if (i < b.floors.length - 1){ const x = b.floors.splice(i, 1)[0]; b.floors.splice(i + 1, 0, x); } openPlaces("floors"); },
+      fDel: async bt => { readPlaces(b); const f = b.floors[+bt.dataset.i]; if (!f) return openPlaces("floors"); if (!await uiConfirm(t("floorDelConf",{n:f.name}), t("delete"), true)) return openPlaces("floors"); b.floors.splice(+bt.dataset.i, 1); b.rooms.forEach(r => { if (r.floor === f.id) r.floor = ""; }); b.devices.forEach(d => { if (d.floor === f.id) d.floor = ""; }); openPlaces("floors"); },
+      fUp: bt => { readPlaces(b); const i = +bt.dataset.i; if (i > 0 && i < b.floors.length){ const x = b.floors.splice(i, 1)[0]; b.floors.splice(i - 1, 0, x); } openPlaces("floors"); },
+      fDown: bt => { readPlaces(b); const i = +bt.dataset.i; if (i >= 0 && i < b.floors.length - 1){ const x = b.floors.splice(i, 1)[0]; b.floors.splice(i + 1, 0, x); } openPlaces("floors"); },
       rAdd: () => { readPlaces(b); b.rooms.push({id:uid("r"), name:t("roomN",{n:b.rooms.length + 1}), floor:b.floors[0] ? b.floors[0].id : "", users:0, wall:"drywall"}); openPlaces("rooms"); },
-      rDel: async bt => { readPlaces(b); const r = b.rooms[+bt.dataset.i]; const n = b.devices.filter(d => d.room === r.id).length; if (n && !await uiConfirm(t("roomDelConf",{n:r.name, c:n}), t("delete"), true)) return openPlaces("rooms"); b.rooms.splice(+bt.dataset.i, 1); b.devices.forEach(d => { if (d.room === r.id) d.room = ""; }); openPlaces("rooms"); },
+      rDel: async bt => { readPlaces(b); const r = b.rooms[+bt.dataset.i]; if (!r) return openPlaces("rooms"); const n = b.devices.filter(d => d.room === r.id).length; if (n && !await uiConfirm(t("roomDelConf",{n:r.name, c:n}), t("delete"), true)) return openPlaces("rooms"); b.rooms.splice(+bt.dataset.i, 1); b.devices.forEach(d => { if (d.room === r.id) d.room = ""; }); openPlaces("rooms"); },
       vAdd: () => { readPlaces(b); const used = new Set(b.vlans.map(v => +v.vid)); let id = 10; while (used.has(id)) id += 10; b.vlans.push({id:uid("v"), vid:String(id), name:"VLAN " + id, subnet:"", gw:"", dhcp:"", color:VCOLORS[b.vlans.length % VCOLORS.length]}); openPlaces("vlans"); },
-      vDel: bt => { readPlaces(b); const v = b.vlans[+bt.dataset.i]; b.vlans.splice(+bt.dataset.i, 1); b.devices.forEach(d => { if (d.vlan === v.id) d.vlan = ""; Object.values(d.pcfg).forEach(c => { if (c.vlan === v.id) c.vlan = ""; if (c.native === v.id) c.native = ""; }); }); openPlaces("vlans"); }
+      vDel: bt => { readPlaces(b); const v = b.vlans[+bt.dataset.i]; if (!v) return openPlaces("vlans"); b.vlans.splice(+bt.dataset.i, 1); b.devices.forEach(d => { if (d.vlan === v.id) d.vlan = ""; Object.values(d.pcfg).forEach(c => { if (c.vlan === v.id) c.vlan = ""; if (c.native === v.id) c.native = ""; }); }); openPlaces("vlans"); }
     }, {wide:true});
 }
 function readPlaces(b){
