@@ -1,14 +1,14 @@
-NETWORKKING 3.8.15 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.16 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
 
-3.8.15
+3.8.15 – 3.8.16
  - Ayarlar → Ümumi → Görünüş → 🔊 Açılış səsləri: yükləmə zamanı çalınan dial-up səsi (D1–D4 və ya səssiz), N və ad
    titrəyəndə çalınan elektrik səsi (E1–E4 və ya səssiz), səs səviyyəsi; hər birini və ikisini birlikdə dinləmək olar.
-   Standart seçim: D1 + E4, 60%.
+   Standart seçim: D1 + E4, 60%. Bölmə nümunə səhifəsi kimidir: kartlar, «Səssiz» düyməsi və kiçik açılış ekranı ilə birlikdə dinləmə.
 
 3.8.14
  - Açılış animasiyası kompüter brauzerində də (https://ulveelives.github.io/NetWorkKing): tam versiya, səssiz

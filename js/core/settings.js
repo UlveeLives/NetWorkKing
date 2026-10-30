@@ -44,7 +44,6 @@ function openSettings(tab){
   <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><button class="btn pri" data-m="save">${esc(t("save"))}</button></div>`, {
     eula: () => showEula(),
     gsub: (bt, e, k) => { $$(".subtabs button").forEach(x => x.classList.toggle("on", x === bt)); $$(".gsub").forEach(x => x.hidden = x.dataset.g !== k); },
-    sndPlay: (bt, e, k) => sndPlay(k), sndStop: () => { clearTimeout(sndT); NKSND.stopAll(); },
     lsub: (bt, e, k) => { bt.parentElement.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === bt)); $$(".lsub").forEach(x => x.hidden = x.dataset.l !== k); },
     tab: (bt, e, k) => { $$(".mbox .tabb").forEach(x => x.classList.toggle("on", x === bt)); $$(".mbox .tsec").forEach(x => x.hidden = x.dataset.t !== k); },
     save: () => { readSettings(); closeModal(); applyTheme(); render(); toast("✓ " + t("saved")); },
@@ -61,25 +60,56 @@ function openSettings(tab){
   }, {wide:true});
   if (navigator.storage && navigator.storage.estimate) navigator.storage.estimate().then(e => { const el = $("#s-storage"); if (el) el.textContent = t("storageUse",{u:(e.usage / 1048576).toFixed(1), q:(e.quota / 1073741824).toFixed(1)}); });
 }
-// Settings → Look → Splash sounds: choose the dial-up and the electric sound (or silent), the volume, and listen
+// Settings → Look → Splash sounds — the same layout as the sound samples page: a card per sound (listen / choose), a
+// «silent» chip per group, the volume and a small splash that plays the chosen pair in order (dial-up while the bar
+// fills, a pause while the circles spin away, the crackle while the N goes out and the name comes on)
 function sndPane(s){ const S = Object.assign({d:"D1", e:"E4", vol:60}, s.splashSnd || {});
-  const sel = (id, kind, cur) => `<select id="${id}">${opt("0", t("snd_off"), cur)}${NKSND[kind].map(k => opt(k, t("snd_" + k), cur)).join("")}</select>`;
-  return `<p class="muted small">${esc(t("snd_hint"))}</p>
-    <div class="sndrow"><label class="fld"><span>${esc(t("snd_load"))}</span>${sel("s-sd", "D", S.d)}</label><button class="btn small" data-m="sndPlay:d">▶ ${esc(t("snd_play"))}</button></div>
-    <p class="muted small" id="s-sdd">${S.d === "0" ? "" : esc(t("snd_" + S.d + "d"))}</p>
-    <div class="sndrow"><label class="fld"><span>${esc(t("snd_flick"))}</span>${sel("s-se", "E", S.e)}</label><button class="btn small" data-m="sndPlay:e">▶ ${esc(t("snd_play"))}</button></div>
-    <p class="muted small" id="s-sed">${S.e === "0" ? "" : esc(t("snd_" + S.e + "d"))}</p>
-    <label class="fld"><span>${esc(t("snd_vol"))} <b id="s-svn">${S.vol}%</b></span><input type="range" id="s-sv" min="0" max="100" step="5" value="${S.vol}"></label>
-    <div class="btns"><button class="btn" data-m="sndPlay:both">▶ ${esc(t("snd_both"))}</button><button class="btn" data-m="sndStop">■ ${esc(t("snd_stop"))}</button></div>
-    ${WINB ? "" : `<p class="muted small">${esc(t("snd_web"))}</p>`}`; }
-let sndT = null;
-function sndPlay(k){ clearTimeout(sndT); NKSND.stopAll(); const d = $("#s-sd").value, e = $("#s-se").value; NKSND.setVol(+$("#s-sv").value / 100);
-  if (k === "d" && d !== "0") NKSND.dialStart(d);
-  if (k === "e" && e !== "0") NKSND.crackle(e);
-  if (k === "both"){ const L = d !== "0" ? NKSND.dialStart(d) : 0; if (e !== "0") sndT = setTimeout(() => NKSND.crackle(e), (L + 1.2) * 1000); } }
-document.addEventListener("change", ev => { const x = ev.target; if (!x.id) return;
-  if (x.id === "s-sd" || x.id === "s-se"){ const p = $("#" + x.id + "d"); if (p) p.textContent = x.value === "0" ? "" : t("snd_" + x.value + "d"); } });
+  const nm = k => t("snd_" + k).replace(/^[DE]\d\s*·\s*/, "");
+  const card = (k, kind) => `<div class="sncard${S[kind] === k ? " sel" : ""}" data-snk="${k}"><div class="sncode">${k}</div><h4>${esc(nm(k))}</h4><p>${esc(t("snd_" + k + "d"))}</p>
+    <div class="snacts"><button type="button" class="snplay" data-snplay="${k}">▶ ${esc(t("snd_play"))}</button><button type="button" class="snpick" data-snpick="${kind}:${k}">${S[kind] === k ? "✓ " + esc(t("snd_picked")) : esc(t("snd_pick"))}</button><span class="sndur">${NKSND.len(k).toFixed(1)} s</span></div></div>`;
+  const group = (kind, title, sub) => `<div class="sngrp" data-kind="${kind}"><div class="snh"><h3>${esc(title)}</h3><small>${esc(sub)}</small><span class="grow"></span>
+    <button type="button" class="snoff${S[kind] === "0" ? " on" : ""}" data-snpick="${kind}:0">🔇 ${esc(t("snd_off"))}</button></div>
+    <div class="sngrid">${NKSND[kind.toUpperCase()].map(k => card(k, kind)).join("")}</div></div>`;
+  return `<div class="sndp"><input type="hidden" id="s-sd" value="${S.d}"><input type="hidden" id="s-se" value="${S.e}">
+    <p class="snlead">${esc(t("snd_hint"))}</p>
+    <div class="snbar"><label>${esc(t("snd_vol"))} <input type="range" id="s-sv" min="0" max="100" step="5" value="${S.vol}"> <b id="s-svn">${S.vol}%</b></label><span class="grow"></span><span class="snsel">${esc(t("snd_sel"))}: <b id="s-snsel"></b></span></div>
+    ${group("d", t("snd_load"), t("snd_loadSub"))}${group("e", t("snd_flick"), t("snd_flickSub"))}
+    <div class="snh"><h3>${esc(t("snd_both"))}</h3><small>${esc(t("snd_mini"))}</small></div>
+    <div class="snstage"><div class="snmini"><svg viewBox="200 196 112 120" aria-hidden="true"><path d="M227 287v-62l58 62v-62" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#16ff5a" stroke-width="23" stroke-opacity=".55" class="nout"/><path d="M227 287v-62l58 62v-62" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#16ff5a" stroke-width="17" class="ntube"/><path d="M227 287v-62l58 62v-62" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#050806" stroke-width="13" opacity="0" class="nhole"/></svg>
+      <div class="snname"><span class="o">Net</span><span class="g">Work</span><span class="o">King</span></div>
+      <div class="snload"><div class="sntrack"><i></i></div><div class="snpct"><span class="snln">${esc(t("snd_ready"))}</span><span class="snpc">0%</span></div></div></div>
+      <div class="snside"><p>${esc(t("snd_order"))}</p><div class="btns"><button type="button" class="snplay big" data-snplay="both">▶ ${esc(t("snd_both"))}</button><button type="button" class="snstop" data-snstop="1">■ ${esc(t("snd_stop"))}</button></div>
+      ${WINB ? "" : `<p class="snnote">${esc(t("snd_web"))}</p>`}</div></div></div>`; }
+const SNP = {on:null, timers:[], raf:0};
+function sndStop(){ NKSND.stopAll(); SNP.timers.forEach(clearTimeout); SNP.timers = []; cancelAnimationFrame(SNP.raf); SNP.on = null;
+  $$(".sndp [data-snplay]").forEach(b => { b.classList.remove("playing"); b.textContent = "▶ " + t(b.dataset.snplay === "both" ? "snd_both" : "snd_play"); }); sndMini(1, 0, 0); }
+function sndMini(tube, name, pct, line){ const p = $(".sndp"); if (!p) return; const q = c => p.querySelector(c);
+  q(".ntube").style.opacity = tube; q(".nhole").style.opacity = tube < .5 ? 1 - tube : 0; q(".snname").style.opacity = name; q(".nout").setAttribute("stroke-opacity", name >= 1 && tube === 0 ? "1" : ".55");
+  q(".sntrack i").style.width = pct + "%"; q(".snpc").textContent = Math.round(pct) + "%"; q(".snln").textContent = line || t("snd_ready"); }
+// the N / name flicker in step with the crackle (the same table and stretch as the splash)
+function sndFlick(){ const F = NKSND.FL.map(f => [f[0] * 1.3, f[1], f[2]]), t0 = performance.now(); let i = 0;
+  const step = () => { const e = performance.now() - t0; while (i < F.length && F[i][0] <= e){ sndMini(F[i][1], F[i][2], 100, "✓"); i++; } if (i < F.length) SNP.raf = requestAnimationFrame(step); };
+  SNP.raf = requestAnimationFrame(step); }
+function sndLoadBar(sec){ const t0 = performance.now(), L = [t("snd_l1"), t("snd_l2"), t("snd_l3"), "✓"];
+  const step = () => { const k = Math.min(1, (performance.now() - t0) / (sec * 1000)); sndMini(1, 0, k * 100, L[Math.min(L.length - 1, Math.floor(k * L.length))]); if (k < 1) SNP.raf = requestAnimationFrame(step); };
+  SNP.raf = requestAnimationFrame(step); }
+function sndPlay(k, btn){ const was = SNP.on === k; sndStop(); if (was) return; NKSND.setVol(+$("#s-sv").value / 100); SNP.on = k;
+  if (btn){ btn.classList.add("playing"); btn.textContent = "■ " + t("snd_stop"); }
+  let len = 0;
+  if (/^D/.test(k)) len = NKSND.dialStart(k);
+  else if (/^E/.test(k)){ len = NKSND.crackle(k); sndFlick(); }
+  else { const d = $("#s-sd").value, e = $("#s-se").value, L = d !== "0" ? NKSND.dialStart(d) : 3; sndLoadBar(L);
+    SNP.timers.push(setTimeout(() => { cancelAnimationFrame(SNP.raf); sndMini(0, 0, 100, "↻"); }, L * 1000));
+    SNP.timers.push(setTimeout(() => { if (e !== "0") NKSND.crackle(e); sndFlick(); }, (L + 1.2) * 1000)); len = L + 1.2 + 2.2; }
+  SNP.timers.push(setTimeout(() => { if (SNP.on === k){ const keep = k === "both"; sndStop(); if (keep) sndMini(0, 1, 100, "✓"); } }, (len + .4) * 1000)); }
+function sndShowSel(){ const d = $("#s-sd"), e = $("#s-se"), o = $("#s-snsel"); if (o && d) o.textContent = `${d.value === "0" ? t("snd_off") : d.value} + ${e.value === "0" ? t("snd_off") : e.value}`; }
+function sndPick(kind, k){ $("#s-s" + kind).value = k;
+  $$(`.sndp .sngrp[data-kind="${kind}"] .sncard`).forEach(c => { const on = c.dataset.snk === k; c.classList.toggle("sel", on); const b = c.querySelector(".snpick"); b.textContent = on ? "✓ " + t("snd_picked") : t("snd_pick"); });
+  const off = $(`.sndp .sngrp[data-kind="${kind}"] .snoff`); off.classList.toggle("on", k === "0"); sndShowSel(); }
+document.addEventListener("click", ev => { const x = ev.target.closest(".sndp [data-snplay], .sndp [data-snpick], .sndp [data-snstop]"); if (!x) return; ev.preventDefault();
+  if (x.dataset.snplay) sndPlay(x.dataset.snplay, x); else if (x.dataset.snpick){ const [kind, k] = x.dataset.snpick.split(":"); sndPick(kind, k); } else sndStop(); });
 document.addEventListener("input", ev => { if (ev.target.id === "s-sv"){ const n = $("#s-svn"); if (n) n.textContent = ev.target.value + "%"; NKSND.setVol(+ev.target.value / 100); } });
+new MutationObserver(() => { if ($(".sndp") && !$(".sndp").dataset.init){ $(".sndp").dataset.init = 1; sndShowSel(); } if (SNP.on && !$(".sndp")) sndStop(); }).observe(document.getElementById("modal") || document.body, {childList:true, subtree:true, attributes:true, attributeFilter:["hidden"]});
 function readSettings(){
   const s = store.settings, v = id => $("#" + id);
   if (v("s-winfx")) s.winFx = v("s-winfx").checked; if (v("s-splash")) s.splash = v("s-splash").checked;
