@@ -118,7 +118,10 @@ async function loadStore(){
 /* ---------- undo / redo (per project) ---------- */
 let undoStack = [], redoStack = [], dirtyVer = false;
 function snapshot(){ return JSON.stringify(P()); }
-function pushUndo(snap){ undoStack.push(snap || snapshot()); if (undoStack.length > 120) undoStack.shift(); redoStack = []; dirtyVer = true; }
+// at most 120 steps and ~150 MB of snapshots: a very large project keeps fewer steps instead of running out of memory
+function pushUndo(snap){ undoStack.push(snap || snapshot()); let bytes = undoStack.reduce((n, x) => n + x.length, 0);
+  while (undoStack.length > 120 || (bytes > 75e6 && undoStack.length > 10)) bytes -= undoStack.shift().length;
+  redoStack = []; dirtyVer = true; }
 // Every change goes through edit(): undo point, change, save, redraw.
 function edit(fn, opts = {}){ pushUndo(); fn(); if (opts.norm !== false) normBuilding(B()); persist(); if (opts.render !== false) render(); }
 function restore(json){ const p = JSON.parse(json); store.projects[p.id] = normProject(p); store.cur = p.id; UI.sel = null; UI.multi.clear(); persist(); render(); }
