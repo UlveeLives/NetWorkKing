@@ -1,9 +1,16 @@
-NETWORKKING 3.8.11 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.12 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.8.12
+ - Yeni proqram ikonu (taskbar, masaüstü qısayolu, quraşdırıcı, brauzer / telefon): açılış ekranındakı loqo — dördbucaqlı
+   çərçivə və yaşıl fon olmadan, narıncı neon dairələr. Çox kiçik ölçülərdə (16–32 px) dairələrin içindəki simvollar
+   və parıltı göstərilmir ki, ikon bulanıq olmasın.
+ - Başlıq zolağının ortasında loqo və «NetWorkKing» adı (açılış ekranındakı kimi: Net, King narıncı, Work yaşıl).
+   Düymələr yaxınlaşanda əvvəl düymə yazıları gizlənir (yalnız ikon qalır), lazım olsa ad, sonra loqo.
 
 3.8.4 – 3.8.11
  - Açılış ekranı: kənarlara doğru itən yaşıl fon köhnə Windows açılışında olduğu kimi öz rəngində kənarlara doğru

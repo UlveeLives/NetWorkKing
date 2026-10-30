@@ -115,15 +115,27 @@ function appIcon(a, s = 26){ return `<svg viewBox="0 0 48 48" width="${s}" heigh
 function renderHeader(){
   const a = curApp(), p = P();
   const B2 = (act, ic, k, extra = "") => `<button class="hb" data-h="${act}" title="${esc(t(k))}"${extra}><span class="hi">${ic}</span><span class="ht">${esc(t(k))}</span></button>`;
-  $("#hdr").innerHTML = `${typeof winLights === "function" ? winLights() : ""}<button class="brand" id="appsw" title="${esc(t("switchApp"))}">${appIcon(a)}<span class="bn"><b>${esc(t(a.name))}</b><small>NetWorkKing${IS_BETA ? ` <span class="betap">beta</span>` : ""}</small></span><span class="car">▾</span></button>
+  $("#hdr").innerHTML = `${typeof winLights === "function" ? winLights() : ""}<button class="brand" id="appsw" title="${esc(t("switchApp"))}">${appIcon(a)}<span class="bn"><b>${esc(t(a.name))}</b></span><span class="car">▾</span></button>
     <div class="hproj"><select id="projsel" title="${esc(t("project"))}">${Object.values(store.projects).sort((x, y) => String(x.name || "").localeCompare(String(y.name || ""))).map(x => opt(x.id, x.name, p.id)).join("")}<option value="__new">＋ ${esc(t("newProject"))}…</option></select></div>
     <span class="grow"></span>
     <div class="hacts">${B2("undo","↶","undo", undoStack.length ? "" : " disabled")}${B2("redo","↷","redo", redoStack.length ? "" : " disabled")}<span class="hsep"></span>
     ${B2("sync","⇄","sy_btn")}${B2("search","🔍","search")}${B2("versions","🕘","versions")}${B2("import","⤓","import")}${B2("export","⤒","export")}<span class="hsep"></span>
     ${B2("help","?","helpTour")}${B2("settings","⚙","settings")}</div>
     <span id="savest">✓ ${esc(t("savedShort"))}</span>
-    <button class="hb hmenu" data-h="menu" title="${esc(t("menu"))}"><span class="hi">☰</span></button>`;
+    <button class="hb hmenu" data-h="menu" title="${esc(t("menu"))}"><span class="hi">☰</span></button>
+    <div class="hlogo" aria-label="NetWorkKing"><img src="icons/logo-hdr.png" alt="" width="34" height="34"><span class="hname"><span class="o">Net</span><span class="g">Work</span><span class="o">King</span></span>${IS_BETA ? `<span class="betap">beta</span>` : ""}</div>`;
+  fitHeader();
 }
+// the logo and the name sit in the middle of the title bar; when the buttons would run into them the button labels go
+// first (icons only), then the name, and on a very narrow window the logo too
+function fitHeader(){
+  const h = $("#hdr"), c = h && h.querySelector(".hlogo"); if (!c) return;
+  h.classList.remove("hc-icons", "hc-noname", "hc-nologo");
+  const hit = () => { const r = c.getBoundingClientRect(); if (!r.width) return false;
+    return [...h.children].filter(x => x !== c && x.offsetParent && !x.classList.contains("grow")).some(x => { const q = x.getBoundingClientRect(); return q.width && q.right > r.left - 12 && q.left < r.right + 12; }); };
+  if (hit()){ h.classList.add("hc-icons"); if (hit()){ h.classList.add("hc-noname"); if (hit()) h.classList.add("hc-nologo"); } }
+}
+window.addEventListener("resize", () => { clearTimeout(fitHeader.t); fitHeader.t = setTimeout(fitHeader, 60); });
 function openAppSwitcher(anchor){
   popMenu(anchor, APP_ORDER.map(id => { const a = APPS[id]; return {icon:appIcon(a, 30), label:t(a.name), sub:t(a.desc), on:id === UI.app, fn:() => switchApp(id)}; }), {cls:"appmenu"});
 }

@@ -42,6 +42,16 @@ a{color:var(--pri)}
 #savest.bad{color:#ff8a8a}
 .hmenu{display:none}
 @media (max-width:1380px){ .hb .ht{display:none} }
+/* program logo + name in the middle of the title bar (the name looks like the one on the splash) */
+#hdr{position:relative}
+.hlogo{position:absolute;left:50%;top:calc(50% + env(safe-area-inset-top) / 2);transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;pointer-events:none;white-space:nowrap}
+.hlogo img{display:block;width:34px;height:34px}
+.hname{font-family:"Segoe UI Variable","Segoe UI",system-ui,sans-serif;font-size:19px;font-weight:800;letter-spacing:.3px}
+.hname .o{color:#ffa23a}.hname .g{color:#16ff5a}
+.hlogo .betap{margin-left:2px}
+#hdr.hc-icons .hb .ht{display:none}
+#hdr.hc-noname .hname,#hdr.hc-noname .hlogo .betap{display:none}
+#hdr.hc-nologo .hlogo{display:none}
 /* ---------- page tabs ---------- */
 #ptabs{flex:none;display:flex;align-items:center;gap:10px;background:var(--surface);border-bottom:1px solid var(--line);padding:0 10px;min-height:44px;overflow-x:auto}
 .ptl{display:flex;gap:2px;align-self:stretch}
@@ -259,6 +269,7 @@ details.guide h4{margin:10px 0 4px}details.guide p{margin:0 0 6px;font-size:13px
   .hacts{display:none}.hmenu{display:flex}
   .hproj{order:3;width:100%}.hproj select{max-width:none;width:100%}
   .brand .bn small{display:none}
+  .hlogo{display:none}
   #savest{display:none}
   #pal{position:fixed;left:0;right:0;bottom:calc(40px + env(safe-area-inset-bottom));top:auto;width:auto;max-height:42vh;z-index:30;border-right:none;border-top:1px solid var(--line);box-shadow:0 -8px 20px rgba(0,0,0,.15)}
   body.pal-closed #pal{display:none}
