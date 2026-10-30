@@ -201,7 +201,7 @@ function dgPlaceAll(cfg){ const b = B(), v = view(b, cfg.id), boxed = store.sett
    their own on the right. "Put all on the diagram" uses this, and it can be run again at any time. */
 const FCOL = ["blue", "green", "orange", "purple", "teal", "red", "gray"];
 // outside: a room of type «outdoor» (Bina xarici), a device on «Çevrə», an outdoor camera with no room — and, for rooms whose
-// type was left as the default, a name that says so (a winter garden is inside)
+// type was left as the default and that is drawn on no floor, a name that says so (a winter garden is inside)
 const OUT_RX = /həyət|heyet|(?<!k[ıi]ş |k[ıi]s |q[ıi]ş |winter )(bahçe|bahce|garden)|yard|çöl|cöl|outdoor|outside|exterior|dış mekan|dis mekan|mühafizə|muhafize|guard|kpp|darvaza|gate|parking|otopark/i;
 function dgFloorLayout(cfg, all){
   const b = B(), v = view(b, cfg.id), boxed = store.settings.addBoxed, inKinds = d => !cfg.kinds || cfg.kinds.includes(d.kind);
@@ -209,7 +209,9 @@ function dgFloorLayout(cfg, all){
   const racks = b.racks.filter(r => v.nodes[r.id] || (all && rackDevices(b, r).some(inKinds)));
   const rackIds = new Set(racks.map(r => r.id));
   const devs = b.devices.filter(d => inKinds(d) && !(d.rack && rackIds.has(d.rack)) && (v.nodes[d.id] || all) && !(KINDS[d.kind] || {}).acc);
-  const outside = (d, rm) => devOutside(b, d) || (d && d.kind === "camera" && d.camera && d.camera.loc === "out") || roomOutside(rm) || (rm && (!rm.type || rm.type === "office" || rm.type === "other") && OUT_RX.test(rm.name));
+  // a room drawn on a floor plan is inside the building, whatever its name says (an «OTOPARK» garage, a «GARDEN» room)
+  const drawnIn = rm => !!(rm && rm.geo && floorById(b, rm.floor));
+  const outside = (d, rm) => devOutside(b, d) || (d && d.kind === "camera" && d.camera && d.camera.loc === "out" && !drawnIn(rm)) || roomOutside(rm) || (rm && !drawnIn(rm) && (!rm.type || rm.type === "office" || rm.type === "other") && OUT_RX.test(rm.name));
   const floorOf = it => it.r ? it.r.floor : devFloor0(b, it.d);
   const items = [...racks.map(r => ({id:r.id, r, room:r.room})), ...devs.map(d => ({id:d.id, d, room:d.room}))];
   items.forEach(it => { const rm = it.room && roomById(b, it.room); it.out = !it.r && outside(it.d, rm); it.f = it.out ? "__out" : floorOf(it) && floorById(b, floorOf(it)) ? floorOf(it) : "__none";

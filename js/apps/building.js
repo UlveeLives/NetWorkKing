@@ -33,7 +33,7 @@ const isSite = f => !!f && f.id === OUT_FLOOR;
 const curFloor = b => { const S = st(); if (S.floor === OUT_FLOOR) return siteOf(b); let f = b.floors.find(x => x.id === S.floor); if (!f){ f = b.floors[0] || null; S.floor = f ? f.id : null; } return f; };
 const roomsOf = (b, f) => b.rooms.filter(r => r.floor === f.id);
 const geoRooms = (b, f) => roomsOf(b, f).filter(r => r.geo);
-function normRoom(r){ r.type = RT[r.type] ? r.type : (/server|serv/i.test(r.name) ? "server" : /dəhliz|koridor|corridor|holl/i.test(r.name) ? "corridor" : OUTDOOR_RX.test(r.name) ? "outdoor" : "office"); r.req = r.req && typeof r.req === "object" ? r.req : {}; for (const k in r.req) r.req[k] = clamp(Math.round(num(r.req[k], 0)), 0, 200); return r; }
+function normRoom(r){ r.type = RT[r.type] ? r.type : (/server|serv/i.test(r.name) ? "server" : /dəhliz|koridor|corridor|holl/i.test(r.name) ? "corridor" : OUTDOOR_RX.test(r.name) && !(r.geo && r.floor && r.floor !== OUT_FLOOR) ? "outdoor" : "office"); r.req = r.req && typeof r.req === "object" ? r.req : {}; for (const k in r.req) r.req[k] = clamp(Math.round(num(r.req[k], 0)), 0, 200); return r; }
 function posOf(d){ if (d.kind === "ap") return d.ap && d.ap.x !== null && d.ap.x !== undefined && d.ap.x !== "" ? {x:num(d.ap.x), y:num(d.ap.y)} : null; return d.pos && d.pos.x !== undefined ? {x:num(d.pos.x), y:num(d.pos.y)} : null; }
 function setPos(d, x, y){ if (d.kind === "ap"){ d.ap.x = r1(x); d.ap.y = r1(y); } else d.pos = {x:r1(x), y:r1(y)}; }
 function clearPos(d){ if (d.kind === "ap"){ d.ap.x = null; d.ap.y = null; } else delete d.pos; }

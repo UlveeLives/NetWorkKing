@@ -1,9 +1,13 @@
-NETWORKKING 3.9.5 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.9.6 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.9.6
+ - Topologiya / CCTV sxemləri: mərtəbə planında çəkilmiş otaq adına görə («OTOPARK», «GARDEN» …) bina xaricinə düşmür;
+   belə otaqdakı «Xarici» kamera da binanın içində qalır. Ad üzrə təxmin yalnız planda yeri olmayan otaqlar üçündür.
 
 3.9.5
  - 🌳 Ərazi planı: «Çevrə (bina xarici)»-nin öz çertyoju — bütün ərazi (həyət, giriş, parkinq, mühafizə, hovuz).

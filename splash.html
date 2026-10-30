@@ -299,7 +299,7 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.9.5";
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.9.6";
 // m=1: the web app (browser / PWA) shows this page in a frame over itself, without sound (browsers do not allow it
 // before a click); it talks to the app through postMessage instead of the desktop bridge
 // s=1: the short run for phones / tablets (fewer code lines, quicker steps, same order); a PC browser gets the full run
