@@ -15,7 +15,7 @@ function applyTheme(){ const th = store.settings.theme, eff = th === "system" ? 
   const fav = document.getElementById("favicon"); if (fav) fav.href = `icons/fav-${eff}.png`;
   if (window.appBridge && appBridge.win && appBridge.win.setIcon) appBridge.win.setIcon(eff);
   // the splash screen of the next start: same language and theme
-  if (window.appBridge && appBridge.splashPrefs) appBridge.splashPrefs({lang:store.settings.lang, theme:eff, on:store.settings.splash !== false}); }
+  if (window.appBridge && appBridge.splashPrefs) appBridge.splashPrefs({lang:store.settings.lang, theme:eff, on:store.settings.splash !== false, fx:store.settings.winFx !== false}); }
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => store && applyTheme());
 /* ---------- toast, prompt, confirm ---------- */
 let toastT; function toast(m, ms){ const el = $("#toast"); if (!el) return; el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), ms || 2800); }
@@ -230,6 +230,7 @@ function render(){
   if (typeof AI !== "undefined" && UI.ai && UI.ai.open) AI.draw();
   if (a.afterRender) a.afterRender(tab);
   maybeTour(); maybePanelTour(); if (typeof SYNC !== "undefined") SYNC.dot();
+  if (window.appBridge && appBridge.fxDirty) appBridge.fxDirty();
 }
 /* ---------- Save / Close at the bottom of every side card ----------
    Fields are kept as soon as they are left; Save finishes the field being typed, confirms and closes the card. */

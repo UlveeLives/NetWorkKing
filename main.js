@@ -40,6 +40,13 @@ function createWindow() {
   ["focus", "blur", "enter-full-screen", "leave-full-screen", "maximize", "unmaximize"].forEach(ev => win.on(ev, st));
   win.webContents.on("did-finish-load", st);
   ["minimize", "restore", "show", "hide", "focus", "blur"].forEach(ev => win.on(ev, () => flog("win", ev, "fxMin=" + fxMin, "busy=" + fxBusy, "min=" + win.isMinimized(), "vis=" + win.isVisible())));
+  // minimised some other way (taskbar button, Win+↓): the restore from the taskbar still plays the effect
+  win.on("minimize", () => { if (osMin){ osMinimizeFx(); return; } if (fxOn && !fxMin) fxMin = true; });
+  // taskbar button / Win+↓ minimise: Windows sends WM_SYSCOMMAND / SC_MINIMIZE before minimising — the window is made
+  // invisible at once (so Windows' own animation shows nothing) and the effect plays from the latest picture of it
+  if (process.platform === "win32") try { win.hookWindowMessage(0x0112, wp => { try { if ((wp.readUInt32LE(0) & 0xFFF0) === 0xF020) osMinimize(); } catch(e){} }); } catch(e){}
+  ["focus", "resize", "maximize", "unmaximize", "enter-full-screen", "leave-full-screen"].forEach(ev => win.on(ev, () => snapSoon(500)));
+  setInterval(() => { if (win && !win.isDestroyed() && win.isFocused() && Date.now() - lastSnapT > 3500) cacheSnap(); }, 4000);
   win.on("restore", () => { if (fxMin){ fxMin = false; try { win.setOpacity(0); } catch(e){}
     // never leave the window invisible: whatever happens, it is shown again after 1.5 s
     const guard = setTimeout(() => { try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }, 1500);
@@ -81,7 +88,7 @@ function createSplash(p){
 }
 ipcMain.handle("splash-wait", () => readyP.then(() => true));
 ipcMain.on("splash-done", () => readyP.then(showMain));
-ipcMain.on("splash-prefs", (_e, p) => { try {
+ipcMain.on("splash-prefs", (_e, p) => { fxOn = !p || p.fx !== false; try {
   const cur = JSON.stringify(splashPrefs()), nu = JSON.stringify({ on: p.on !== false, lang: p.lang, theme: p.theme === "light" ? "light" : "dark" });
   if (cur !== nu) fs.writeFileSync(spFile(), nu); } catch(e){} });
 /* ---------- minimise / restore effect (like the macOS "genie") ----------
@@ -118,6 +125,31 @@ function geom(){
   const tx = iconX !== null && iconX >= db.x && iconX <= db.x + db.width ? iconX : wa.x + wa.width / 2;
   return { d, rect: { x: b.x - db.x, y: b.y - db.y, w: b.width, h: b.height }, to: { x: tx - db.x, y: wa.y + wa.height - db.y + (db.y + db.height - wa.y - wa.height) / 2 } };
 }
+/* ---------- minimising from the taskbar ----------
+   The picture for the effect must exist before Windows minimises the window, so a recent one is kept: taken shortly
+   after the page changes, after resizing / focusing, and every few seconds while the program is in front. */
+let fxOn = true, lastSnap = null, lastSnapT = 0, snapT = null, osMin = null;
+function snapSoon(ms){ clearTimeout(snapT); snapT = setTimeout(cacheSnap, ms); }
+async function cacheSnap(){
+  if (!win || win.isDestroyed() || !win.isVisible() || win.isMinimized() || fxBusy || osMin || win.getOpacity() < 1) return;
+  try { const s = await snap(); if (win && !win.isMinimized()){ lastSnap = s; lastSnapT = Date.now(); } } catch(e){}
+}
+function osMinimize(){
+  if (!fxOn || fxBusy || osMin || !lastSnap || !win || win.isMinimized() || win.isFullScreen()) return;
+  const g = geom(); if (!g) return;
+  osMin = { g, img:lastSnap };
+  try { win.setOpacity(0); } catch(e){}
+  // the minimise did not happen after all: show the window again
+  setTimeout(() => { if (osMin && win && !win.isDestroyed() && !win.isMinimized()){ osMin = null; try { win.setOpacity(1); } catch(e){} } }, 700);
+}
+async function osMinimizeFx(){
+  const m = osMin; if (!m) return; fxBusy = true; flog("os minimise fx");
+  try { const o = await fxWindow(); o.setBounds(m.g.d.bounds); await fxAsk("fx-load", { img:m.img, rect:m.g.rect, to:m.g.to, dir:"min" }, "fx-ready");
+    o.showInactive(); await fxAsk("fx-go", null, "fx-done"); fxMin = true; }
+  catch(e){ flog("os min error", String(e && e.message)); }
+  finally { fxDrop(); osMin = null; fxBusy = false; setTimeout(() => { try { if (win && !win.isDestroyed()) win.setOpacity(1); } catch(e){} }, 120); }
+}
+ipcMain.on("fx-dirty", () => snapSoon(700));
 // a lighter picture is enough for a 0.4 s animation (big screens: at most 1600 px wide)
 async function snap(){ let img = await win.webContents.capturePage(); const z = img.getSize(); if (z.width > 1600) img = img.resize({ width: 1600, quality: "good" }); return "data:image/jpeg;base64," + img.toJPEG(80).toString("base64"); }
 async function minimizeFx(){

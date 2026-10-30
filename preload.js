@@ -9,6 +9,8 @@ contextBridge.exposeInMainWorld("appBridge", {
   savePdf: o => ipcRenderer.invoke("save-pdf", o),
   // language / theme / on-off of the splash screen for the next start
   splashPrefs: p => ipcRenderer.send("splash-prefs", p),
+  // the page changed: the main process takes a fresh picture for the minimise effect (taskbar minimise)
+  fxDirty: () => ipcRenderer.send("fx-dirty"),
   // own title bar: close / minimise (with or without the effect) / full screen / maximise; window state for the buttons
   win: { act: (a, o) => ipcRenderer.send("win", a, o), setIcon: th => ipcRenderer.send("set-icon", th), onState: cb => ipcRenderer.on("win-state", (_e, s) => cb(s)) }
 });

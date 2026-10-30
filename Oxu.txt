@@ -1,9 +1,13 @@
-NETWORKKING 3.8.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.1 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.8.1
+ - Kiçiltmə effekti tapşırıq panelindən də işləyir: proqramın ikonuna basıb kiçildəndə (və ya Win+↓) pəncərə
+   «axaraq» panelə girir; paneldən açanda isə — necə kiçildilməsindən asılı olmayaraq — tərsinə çıxır.
 
 3.8-DƏ YENİ
  - «⇄ Tətbiqləri sinxronlaşdır» (başlıq sətri): son yoxlamadan bəri nəyin dəyişdiyini tətbiqlərə görə
