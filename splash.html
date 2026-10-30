@@ -22,18 +22,21 @@
   body.page[data-bg="wall"]{background:linear-gradient(135deg,#0f3d6e 0%,#3b7bbf 45%,#f0a35e 100%)}
   .stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
   /* the splash: title-bar green whose edges fade away (no hard border) */
-  .splash{position:relative;width:520px;padding:58px 80px 52px;display:flex;flex-direction:column;align-items:center;gap:12px;animation:in .6s cubic-bezier(.2,.9,.3,1.2) both}
+  .splash{position:relative;width:560px;padding:70px 110px 66px;display:flex;flex-direction:column;align-items:center;gap:12px;animation:in .6s cubic-bezier(.2,.9,.3,1.2) both}
   .splash::before{content:"";position:absolute;inset:0;background-color:var(--bar);background-image:var(--bgcode);
-    -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 76%,rgba(0,0,0,.55) 88%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 76%,rgba(0,0,0,.55) 88%,transparent 100%)}
+    /* a soft-edged rounded rectangle (two crossed fades): solid all round the text and the code lines, fading only outside them */
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 88%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 11%,#000 89%,transparent 100%);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 88%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 11%,#000 89%,transparent 100%);mask-composite:intersect}
   /* heartbeat: like the old Windows start-up glow, but in the splash's own green — the faded edge slowly swells outwards
      and fades again, over and over, until the background has gone and the logo starts to fly (outro). It sits behind the
      panel, so only the edges glow. --hb is the beat, --hk fades the whole glow out with the background. */
   @property --hb{syntax:"<number>";inherits:false;initial-value:0}
   @property --hk{syntax:"<number>";inherits:false;initial-value:1}
   .splash{isolation:isolate}
-  .splash::after{content:"";position:absolute;inset:-105px -110px;z-index:-1;pointer-events:none;
-    background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(var(--pulse),.0) 40%,rgba(var(--pulse),.62) 54%,rgba(var(--pulse),.22) 70%,rgba(var(--pulse),0) 88%);
-    filter:blur(6px);opacity:calc(var(--hb) * var(--hk));transform:scale(calc(.95 + var(--hb) * .09));
+  /* the glow starts a little outside the text / code lines (where the panel begins to fade) and spreads outwards */
+  .splash::after{content:"";position:absolute;inset:30px 40px;z-index:-1;pointer-events:none;border-radius:70px;
+    background:rgba(var(--pulse),.7);filter:blur(38px);
+    opacity:calc(var(--hb) * var(--hk));transform:scale(calc(.99 + var(--hb) * .05));
     transition:--hk .9s ease;animation:hb 2.8s ease-in-out .5s infinite both}
   @keyframes hb{0%,100%{--hb:0}50%{--hb:1}}
   .splash.outro::after{--hk:0}
@@ -267,7 +270,7 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.5", BRIDGE = window.splashBridge || null;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.6", BRIDGE = window.splashBridge || null;
 let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {
