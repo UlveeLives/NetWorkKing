@@ -858,3 +858,4 @@ svg.rkcords .cord path.halo{stroke:rgba(10,14,22,.55);stroke-width:3.4;opacity:.
 .selback{padding:8px 12px 0}
 .dgsvg .nb{opacity:.6}
 .fld input.need{outline:2px solid #f59e0b;outline-offset:1px;background:color-mix(in srgb,#f59e0b 12%,transparent)}
+.smf tr.smout>td{background:color-mix(in srgb,#22c55e 7%,transparent)}

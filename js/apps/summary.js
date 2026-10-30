@@ -133,6 +133,11 @@ const RTYPES = ["office","meeting","server","corridor","lobby","kitchen","wc","s
 function floorsView(){
   const b = B(), F = b.floors.slice().reverse(), devOn = f => b.devices.filter(d => !isAcc(d) && (d.floor === f.id || (d.room && (roomById(b, d.room) || {}).floor === f.id)));
   const cnt = (L, ks) => L.filter(d => ks.includes(d.kind)).length, open = UI.smOpen = UI.smOpen || {};
+  // outside devices not already counted on a floor (a camera on a floor's outer wall stays with that floor)
+  const outDevs = () => b.devices.filter(d => !isAcc(d) && devOutside(b, d) && !(d.floor && floorById(b, d.floor)) && !devOn({id:(roomById(b, d.room) || {}).floor || "§"}).includes(d));
+  const roomsSub = (fid, R) => `<tr class="smrooms"><td></td><td colspan="11"><table class="t"><tr><th>${esc(t("f_room"))}</th><th>${esc(t("bd_type"))}</th><th>👤</th><th>${esc(t("sm_devs"))}</th><th></th></tr>
+            ${R.map(r => `<tr><td><input data-smrm="${r.id}:name" value="${esc(r.name)}" style="width:180px"></td><td><select data-smrm="${r.id}:type">${RTYPES.map(k => opt(k, t("rt_" + k), r.type || (fid === OUT_FLOOR ? "outdoor" : "office"))).join("")}</select></td><td><input data-smrm="${r.id}:users" value="${esc(num(r.users) || "")}" inputmode="numeric" style="width:50px"></td><td class="c">${b.devices.filter(d => d.room === r.id).length || ""}</td><td><button type="button" class="epdel" data-smfa="delRoom:${r.id}" title="${esc(t("delete"))}">−</button></td></tr>`).join("")}
+            <tr><td colspan="5"><button class="btn small" data-smfa="addRoom:${fid}">＋ ${esc(t("roomNew"))}</button></td></tr></table></td></tr>`;
   return `<div class="card"><h3>🏬 ${esc(t("sm_floorsT"))} <span class="cnt">${b.floors.length}</span><span class="grow"></span><button class="btn small pri" data-smfa="addFloor">＋ ${esc(t("floorNew"))}</button></h3><p class="muted small">${esc(t("sm_floorsH"))}</p>
     ${F.length ? `<div class="scroll"><table class="t smf"><tr><th></th><th>${esc(t("f_floor"))}</th><th>${esc(t("bd_fh"))} (m)</th><th>${esc(t("sm_size"))} (m)</th><th>${esc(t("rooms"))}</th><th>${esc(t("sm_devs"))}</th><th>Rack</th><th title="${esc(kindName("outlet"))}">${ICO.outlet ? `<svg viewBox="0 0 48 48" width="16" height="16">${ICO.outlet}</svg>` : "D"}</th><th title="${esc(kindName("ap"))}"><svg viewBox="0 0 48 48" width="16" height="16">${ICO.ap}</svg></th><th title="${esc(kindName("camera"))}"><svg viewBox="0 0 48 48" width="16" height="16">${ICO.turret}</svg></th><th>${esc(t("sm_plan"))}</th><th></th></tr>
       ${F.map(f => { const i = b.floors.indexOf(f), L = devOn(f), R = b.rooms.filter(r => r.floor === f.id), p = f.plan || {};
@@ -143,9 +148,12 @@ function floorsView(){
           <td class="c">${cnt(L, ["outlet"]) || ""}</td><td class="c">${cnt(L, ["ap"]) || ""}</td><td class="c">${cnt(L, ["camera"]) || ""}</td>
           <td class="c">${p.img ? "🖼" : "—"}</td>
           <td class="nw"><button class="btn small ghost" data-smfa="plan:${f.id}" title="${esc(t("bd_openPlan"))}">🏢</button><button type="button" class="epdel" data-smfa="del:${f.id}" title="${esc(t("delete"))}">−</button></td></tr>
-          ${open[f.id] ? `<tr class="smrooms"><td></td><td colspan="11"><table class="t"><tr><th>${esc(t("f_room"))}</th><th>${esc(t("bd_type"))}</th><th>👤</th><th>${esc(t("sm_devs"))}</th><th></th></tr>
-            ${R.map(r => `<tr><td><input data-smrm="${r.id}:name" value="${esc(r.name)}" style="width:180px"></td><td><select data-smrm="${r.id}:type">${RTYPES.map(k => opt(k, t("rt_" + k), r.type || "office")).join("")}</select></td><td><input data-smrm="${r.id}:users" value="${esc(num(r.users) || "")}" inputmode="numeric" style="width:50px"></td><td class="c">${b.devices.filter(d => d.room === r.id).length || ""}</td><td><button type="button" class="epdel" data-smfa="delRoom:${r.id}" title="${esc(t("delete"))}">−</button></td></tr>`).join("")}
-            <tr><td colspan="5"><button class="btn small" data-smfa="addRoom:${f.id}">＋ ${esc(t("roomNew"))}</button></td></tr></table></td></tr>` : ""}`; }).join("")}
+          ${open[f.id] ? roomsSub(f.id, R) : ""}`; }).join("")}
+      ${(() => { const L = outDevs(), R = b.rooms.filter(r => r.floor === OUT_FLOOR);   // the surroundings: rooms and devices outside the building
+        return `<tr class="smout"><td></td><td><b>🌳 ${esc(t("flOut"))}</b></td><td class="muted">—</td><td class="muted">—</td>
+          <td class="c"><button class="lnkb" data-smfa="rooms:${OUT_FLOOR}">${R.length} ${open[OUT_FLOOR] ? "▴" : "▾"}</button></td><td class="c"><b>${L.length}</b></td><td class="c">${b.racks.filter(r => r.floor === OUT_FLOOR).length || ""}</td>
+          <td class="c">${cnt(L, ["outlet"]) || ""}</td><td class="c">${cnt(L, ["ap"]) || ""}</td><td class="c">${cnt(L, ["camera"]) || ""}</td><td class="c muted">—</td><td></td></tr>
+          ${open[OUT_FLOOR] ? roomsSub(OUT_FLOOR, R) : ""}`; })()}
       <tr class="tot"><td></td><td>${esc(t("total"))}</td><td></td><td></td><td class="c">${b.rooms.length}</td><td class="c">${b.devices.filter(d => !isAcc(d)).length}</td><td class="c">${b.racks.length}</td><td colspan="5"></td></tr></table></div>` : `<div class="empty"><p>${esc(t("bd_emptyT"))}</p></div>`}</div>`;
 }
 async function floorAct(k){
@@ -159,6 +167,7 @@ async function floorAct(k){
     return edit(() => { const rids = new Set(R.map(r => r.id)); b.rooms = b.rooms.filter(r => !rids.has(r.id));
       b.devices.forEach(d => { if (d.floor === f.id || rids.has(d.room)){ d.floor = ""; if (rids.has(d.room)) d.room = ""; if (d.kind === "ap" && d.ap){ d.ap.x = null; d.ap.y = null; } delete d.pos; } });
       b.racks.forEach(r => { if (r.floor === f.id){ r.floor = ""; r.room = ""; delete r.pos; } }); b.floors = b.floors.filter(x => x !== f); b.floors.forEach((x, n) => x.lvl = n); }); }
+  if (a === "addRoom" && id === OUT_FLOOR){ UI.smOpen = UI.smOpen || {}; UI.smOpen[id] = true; const n = await uiPrompt(t("roomNew"), t("roomN",{n:b.rooms.filter(r => r.floor === id).length + 1})); if (n === null) return render(); return edit(() => { b.rooms.push({id:uid("r"), name:n.trim() || t("roomN",{n:b.rooms.length + 1}), floor:OUT_FLOOR, users:0, wall:"drywall", type:"outdoor", req:{}}); }); }
   if (a === "addRoom" && f){ UI.smOpen = UI.smOpen || {}; UI.smOpen[f.id] = true; const n = await uiPrompt(t("roomNew"), t("roomN",{n:b.rooms.filter(r => r.floor === f.id).length + 1})); if (n === null) return render(); return edit(() => { b.rooms.push({id:uid("r"), name:n.trim() || t("roomN",{n:b.rooms.length + 1}), floor:f.id, users:0, wall:"drywall", type:"office", req:{}}); }); }
   if (a === "delRoom"){ const r = roomById(b, id); if (!r) return; const n = b.devices.filter(d => d.room === r.id).length;
     if (!await uiConfirm(t("sm_delRoomQ",{r:r.name, n}), t("delete"), true)) return;
