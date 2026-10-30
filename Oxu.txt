@@ -9,6 +9,8 @@ bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
  - Port Map: patch panel portunun «Ön tərəf»-inə istənilən cihaz qoşula bilər (switch, digər panel, extender, dekoder…);
    sahənin adı «Qoşulan cihaz». Data rozetkanın ön tərəfi də istənilən cihaza (switch-ə birbaşa, panelə, başqa rozetkaya)
    qoşula bilər. Cihaz seçiləndə bağlantı onun port nömrəsi yazılandan sonra yaranır — proqram bunu xatırladır.
+ - «Mərtəbə / otaq / VLAN» → Otaqlar: otağın mərtəbəsi «🌳 Çevrə (bina xarici)» seçilə bilir (mühafizə otağı, giriş);
+   Xülasədə cihaza «Çevrə» seçiləndə həmin otaqlar siyahıda görünür.
  - Bina strukturu → Tələblər səhifəsində yardım balonu həmişə görünür.
  - Xəbərdarlıq: eyni hostname yalnız zavod adıdırsa (model adı, məs. «FortiAP-231K») xəta yox, tövsiyə kimi göstərilir.
 
