@@ -249,27 +249,54 @@ function neurons(lg){
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 /* ---------- the way out: the logo (still moving) flies to the middle and grows, then everything stops, the N's neon
    stutters off leaving only the glow of its outline, and the logo fades away → the app opens ---------- */
-// «Short circuit» sound for the N tube: crackles at every flicker step, an electric buzz while the tube is lit and a few
-// dial-up modem chirps. Made with Web Audio (no sound file); quiet, and silent if audio is not allowed.
-function zapSound(){
-  let A; try { A = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){ return null; }
-  if (A.state === "suspended") A.resume().catch(() => {});
-  const master = A.createGain(); master.gain.value = .22; master.connect(A.destination);
-  const nb = A.createBuffer(1, A.sampleRate * .5, A.sampleRate), d = nb.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-  // mains buzz: 100 Hz saw + its harmonics, its loudness follows the tube
-  const hum = A.createOscillator(), hf = A.createBiquadFilter(), hg = A.createGain(); hum.type = "sawtooth"; hum.frequency.value = 100; hf.type = "lowpass"; hf.frequency.value = 900;
-  hg.gain.value = 0; hum.connect(hf).connect(hg).connect(master); hum.start();
-  const crack = (len, f) => { const n = A.createBufferSource(), bp = A.createBiquadFilter(), g = A.createGain(), t = A.currentTime; n.buffer = nb;
-    bp.type = "bandpass"; bp.frequency.value = f; bp.Q.value = .8; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(1, t + .004); g.gain.exponentialRampToValueAtTime(.001, t + len);
-    n.connect(bp).connect(g).connect(master); n.start(t, Math.random() * .3); n.stop(t + len + .02); };
-  const chirp = (f1, f2, len) => { const o = A.createOscillator(), g = A.createGain(), t = A.currentTime; o.type = "square"; o.frequency.setValueAtTime(f1, t); o.frequency.linearRampToValueAtTime(f2, t + len);
-    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.12, t + .01); g.gain.setValueAtTime(.12, t + len - .02); g.gain.linearRampToValueAtTime(0, t + len); o.connect(g).connect(master); o.start(t); o.stop(t + len + .02); };
-  return {
-    step(v){ crack(.03 + Math.random() * .09, 1500 + Math.random() * 4000); if (Math.random() < .5) crack(.02 + Math.random() * .04, 400 + Math.random() * 900);
-      if (Math.random() < .35) chirp([1200, 2100, 2400, 980][Math.floor(Math.random() * 4)], 900 + Math.random() * 2200, .05 + Math.random() * .08);
-      hg.gain.setTargetAtTime(v * .35, A.currentTime, .01); },
-    end(){ hg.gain.setTargetAtTime(0, A.currentTime, .05); setTimeout(() => { try { hum.stop(); A.close(); } catch(e){} }, 600); } };
-}
+// Sounds, made with Web Audio (no sound files). Chosen by the user from the sound samples page:
+//  D1 «classic 56k modem» while the loading lines run — dial tone, number, ringback, then the handshake (answer tone,
+//     warble, the long «kshhh» that goes on until the loading ends and fades out when the ending starts);
+//  E4 «static crackle» while the N goes out and the name comes on — frying crackle, denser at each flicker, faint hum.
+const SND = (function(){
+  let A = null, master = null, NB = null, dialBus = null, live = [];
+  function ctx(){ if (A) return A; try { A = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){ return null; }
+    if (A.state === "suspended") A.resume().catch(() => {});
+    master = A.createGain(); master.gain.value = .42; master.connect(A.destination);
+    NB = A.createBuffer(1, A.sampleRate * 2, A.sampleRate); const d = NB.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; return A; }
+  const keep = n => { live.push(n); return n; };
+  function rng(seed){ return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function tone(t, d, freqs, gain, dest, type = "sine", att = .008){
+    const g = A.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(gain, t + att); g.gain.setValueAtTime(gain, t + Math.max(att, d - att)); g.gain.linearRampToValueAtTime(0, t + d); g.connect(dest);
+    freqs.forEach(f => { const o = keep(A.createOscillator()); o.type = type; o.frequency.value = f; o.connect(g); o.start(t); o.stop(t + d + .02); }); }
+  function noise(t, d, {type = "bandpass", f = 2000, Q = 1, gain = .5, att = .003, rel = null} = {}, dest){
+    const n = keep(A.createBufferSource()), fl = A.createBiquadFilter(), g = A.createGain(); n.buffer = NB; fl.type = type; fl.frequency.value = f; fl.Q.value = Q;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(gain, t + att);
+    if (rel === null) g.gain.exponentialRampToValueAtTime(.0008, t + d); else { g.gain.setValueAtTime(gain, t + d - rel); g.gain.linearRampToValueAtTime(0, t + d); }
+    n.connect(fl).connect(g).connect(dest); n.start(t, Math.random() * 1.5); n.stop(t + d + .03); return {g, fl, n}; }
+  const DT = {"1":[697,1209],"2":[697,1336],"4":[770,1209],"5":[770,1336],"8":[852,1336],"9":[852,1477]};
+  function warble(t, d, dest, r){ const pairs = [[1070, 1270], [2025, 2225], [980, 1180], [1650, 1850]], o = keep(A.createOscillator()), gg = A.createGain(); o.type = "square";
+    gg.gain.setValueAtTime(0, t); gg.gain.linearRampToValueAtTime(.16, t + .02); gg.gain.setValueAtTime(.16, t + d - .03); gg.gain.linearRampToValueAtTime(0, t + d);
+    let x = t, pr = pairs[0]; while (x < t + d){ if (r() < .12) pr = pairs[Math.floor(r() * pairs.length)]; o.frequency.setValueAtTime(pr[r() < .5 ? 0 : 1], x); x += .007 + r() * .011; }
+    o.connect(gg).connect(dest); o.start(t); o.stop(t + d + .02); }
+  // D1: starts when the loading lines start; the «kshhh» runs (up to 30 s) until dialStop()
+  function dialStart(){ if (!ctx()) return; const t = A.currentTime + .08, r = rng(11);
+    dialBus = A.createGain(); dialBus.connect(master); const h = A.createBiquadFilter(), l = A.createBiquadFilter(); h.type = "highpass"; h.frequency.value = 300; l.type = "lowpass"; l.frequency.value = 3400; h.connect(l).connect(dialBus);
+    let x = t; tone(x, .55, [350, 440], .16, h); x += .6; [..."4951812"].forEach((c, i) => tone(x + i * .15, .09, DT[c], .22, h)); x += 7 * .15 + .1;
+    tone(x, .5, [440, 480], .12, h); x += .65;
+    for (let k = 0; k < .55; k += .45) tone(x + k, Math.min(.43, .55 - k), [2100], .22, h); x += .58;
+    warble(x, 1.2, h, r); x += 1.2;
+    const len = 30, {g, fl} = noise(x, len, {type:"bandpass", f:1200, Q:.7, gain:.34, att:.04, rel:.2}, h); fl.frequency.setValueAtTime(1200, x); fl.frequency.linearRampToValueAtTime(2600, x + 2.4);
+    for (let y = x + .05; y < x + len - .3; y += .015 + r() * .025) g.gain.setValueAtTime(.34 * (.55 + r() * .45), y); }
+  function dialStop(fade = .45){ if (!A || !dialBus) return; const g = dialBus.gain, t = A.currentTime; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(0, t + fade);
+    const b = dialBus; dialBus = null; setTimeout(() => { try { b.disconnect(); } catch(e){} }, (fade + .1) * 1000); }
+  // E4: the whole crackle is scheduled at once on the same flicker table as the picture (FL: [ms, tube, name])
+  function crackle(FL, k = 1.3){ if (!ctx()) return; const t = A.currentTime + .03, r = rng(79), F = FL.map(f => [f[0] * k / 1000, f[1]]), LEN = F[F.length - 1][0] + .5;
+    const o = A.createGain(); o.connect(master);
+    const hum = keep(A.createOscillator()), hf = A.createBiquadFilter(), hg = A.createGain(); hum.type = "triangle"; hum.frequency.value = 100; hf.type = "lowpass"; hf.frequency.value = 600; hg.gain.value = 0;
+    hum.connect(hf).connect(hg).connect(o); hum.start(t); hum.stop(t + LEN + .3);
+    let x = 0, i = 0; while (x < LEN - .1){ while (i < F.length - 1 && F[i + 1][0] <= x) i++; const v = F[i][1], chg = F.some(f => Math.abs(f[0] - x) < .04) ? 1 : 0;
+      if (r() < .35 + v * .4 + chg * .4) noise(t + x, .002 + r() * .006, {type:"highpass", f:1800 + r() * 2500, Q:.7, gain:(.12 + r() * .35) * (.6 + chg * .6)}, o);
+      x += .003 + r() * .009; }
+    F.forEach(([m, v]) => hg.gain.setValueAtTime(v * .12, t + m)); hg.gain.setValueAtTime(0, t + LEN); }
+  function stopAll(){ live.forEach(n => { try { n.stop(); } catch(e){} }); live = []; dialBus = null; }
+  return {dialStart, dialStop, crackle, stopAll};
+})();
 async function outro(me){
   const sp = document.getElementById("sp"), lg = sp.querySelector(".lg"), q = c => lg.querySelector(c);
   sp.style.animation = "none";                                           // a running/filled transform animation would make "fixed" relative to the card
@@ -279,7 +306,7 @@ async function outro(me){
   lg.getBoundingClientRect();                                            // commit the start position before moving
   const S = Math.min(innerWidth, innerHeight) * .66;
   Object.assign(lg.style, {left:(innerWidth - S) / 2 + "px", top:(innerHeight - S) / 2 + "px", width:S + "px", height:S + "px"});
-  sp.classList.add("outro"); pcbRun++;
+  sp.classList.add("outro"); pcbRun++; SND.dialStop();
   // the square frame and its green background fade with everything else; the symbol circles with their lines spin
   // clockwise round the centre, faster and faster, and vanish; the dark circle behind the N goes too
   spk.stopAt = performance.now(); if (neu) neu.on = false; lg.classList.add("still");
@@ -296,11 +323,11 @@ async function outro(me){
   const nm = document.getElementById("nm").cloneNode(true); nm.removeAttribute("id"); nm.classList.add("again"); nm.querySelectorAll("[hidden]").forEach(x => x.remove());
   Object.assign(nm.style, {fontSize:Math.round(S * .085) + "px", top:(innerHeight / 2 + S * .13) + "px", transition:"none"}); document.body.appendChild(nm);
   // the neon tube stutters (a bad contact) and goes out — with a crackle — while the name stutters on; the outline stays lit
-  const tube = q(".n.neon"), hole = q(".n-hole"), out = q(".n-out"), snd = zapSound();
+  const tube = q(".n.neon"), hole = q(".n-hole"), out = q(".n-out");
   const set = (v, w) => { tube.style.opacity = v; hole.style.opacity = v < .5 ? 1 - v : 0; nm.style.opacity = w; };
   const FL = [[0, 1, 0], [70, .15, .7], [130, 1, 0], [430, .2, .8], [480, .9, .1], [540, .05, .95], [620, .7, .25], [680, 0, 1], [860, .55, .4], [900, 0, 1], [1120, .3, .6], [1150, .08, .9], [1210, 0, 1]];
-  for (let i = 0; i < FL.length; i++){ if (me !== run){ snd && snd.end(); return; } await sleep((FL[i][0] - (i ? FL[i - 1][0] : 0)) * 1.3); set(FL[i][1], FL[i][2]); if (snd && i) snd.step(FL[i][1]); }
-  snd && snd.end();
+  SND.crackle(FL);
+  for (let i = 0; i < FL.length; i++){ if (me !== run){ SND.stopAll(); return; } await sleep((FL[i][0] - (i ? FL[i - 1][0] : 0)) * 1.3); set(FL[i][1], FL[i][2]); }
   out.style.transition = "stroke-opacity .5s"; out.setAttribute("stroke-opacity", "1");
   // N outline and the name stay until the program is ready behind, then fade softly (a touch bigger)
   const t0 = performance.now();
@@ -314,7 +341,7 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.9", BRIDGE = window.splashBridge || null;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.10", BRIDGE = window.splashBridge || null;
 let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {
@@ -364,6 +391,7 @@ const inWin = APP || Q.get("win") === "1"; if (inWin) document.body.className = 
 // in the app a click on the splash hurries it: the remaining lines appear at once and the ending plays
 if (APP) addEventListener("mousedown", () => { SKIP = true; });
 async function start(){ const sp = document.getElementById("sp"); applyLook(); pcb(); spokes(sp.querySelector(".lg")); neurons(sp.querySelector(".lg"));
+  SND.dialStart();                                                       // dial-up while the loading lines run
   const done = await play(); if (!done) return; const me = run; await sleep(SKIP ? 200 : 900); if (me !== run) return;
   // the outro waits for the program (loaded behind) before its final fade
   const end = await outro(me); if (!end) return;
@@ -373,6 +401,6 @@ document.querySelector(".ctl").addEventListener("click", e => { const b = e.targ
   if (b.dataset.bg){ document.body.dataset.bg = b.dataset.bg; document.querySelectorAll("[data-bg]").forEach(x => x.classList.toggle("on", x === b)); }
   if (b.dataset.th){ THEME = b.dataset.th; }
   if (b.dataset.lang){ LANG = b.dataset.lang; }
-  if (b.dataset.a === "replay" || b.dataset.th || b.dataset.lang){ run++; pcbRun++; document.querySelectorAll(".name.again").forEach(x => x.remove()); const t = document.createElement("div"); t.innerHTML = PRISTINE; document.getElementById("sp").replaceWith(t.firstElementChild); start(); } });
+  if (b.dataset.a === "replay" || b.dataset.th || b.dataset.lang){ run++; pcbRun++; SND.stopAll(); document.querySelectorAll(".name.again").forEach(x => x.remove()); const t = document.createElement("div"); t.innerHTML = PRISTINE; document.getElementById("sp").replaceWith(t.firstElementChild); start(); } });
 </script>
 </body></html>
