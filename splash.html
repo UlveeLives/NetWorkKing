@@ -81,6 +81,11 @@
   .lg .lk{animation:led .18s steps(1) infinite}.lg .po{animation:led 1.1s steps(1) infinite}
   .name{font-size:30px;font-weight:800;letter-spacing:.3px;color:var(--ink);display:flex;align-items:center;gap:8px;margin-top:2px}
   .name b{color:var(--neon)}
+  /* «Net» and «King» (and the frames of the eight symbol circles) glow orange neon; «Work» stays green */
+  .name > span:first-child{color:#ffa23a;text-shadow:0 0 6px rgba(255,140,30,.75),0 0 16px rgba(255,110,0,.45)}
+  .name > span:first-child b{text-shadow:none}
+  html.th-light .name > span:first-child{color:#ec7a12;text-shadow:0 0 6px rgba(255,140,30,.45)}
+  .lg .nd > circle{stroke:#ffa23a;filter:drop-shadow(0 0 5px rgba(255,130,20,.95)) drop-shadow(0 0 12px rgba(255,100,0,.55))}
   .beta{font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#fff;background:#e2572b;border-radius:6px;padding:2px 7px}
   .bar{width:100%;height:3px;border-radius:3px;background:rgba(22,255,90,.15);overflow:hidden}
   .bar i{display:block;height:100%;width:0;background:var(--neon);box-shadow:0 0 8px var(--neon);transition:width .35s ease}
@@ -158,11 +163,13 @@ function pcb(){
   const W = box.width, H = bar.top - box.top - 6; cv.width = W * dpr; cv.height = H * dpr; cv.style.width = W + "px"; cv.style.height = H + "px"; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   const rel = r => ({x:r.left - box.left - 8, y:r.top - box.top - 8, w:r.width + 16, h:r.height + 16});
   const keep = [rel(sp.querySelector(".lg").getBoundingClientRect()), rel(document.getElementById("nm").getBoundingClientRect())];
-  const BH = box.height, inside = (x, y) => ((x - W / 2) / (W * .5 * .8)) ** 2 + ((y - BH / 2) / (BH * .5 * .8)) ** 2 < 1;
+  const BH = box.height, inside = (x, y) => ((x - W / 2) / (W * .5 * .76)) ** 2 + ((y - BH / 2) / (BH * .5 * .76)) ** 2 < 1;
   const free = (x, y) => inside(x, y) && y < H - 4 && !keep.some(k => x > k.x && x < k.x + k.w && y > k.y && y < k.y + k.h);
   const G = 10, traces = [];
-  function make(){ for (let t = 0; t < 80; t++){
-      let x = Math.round((20 + Math.random() * (W - 40)) / G) * G, y = Math.round((20 + Math.random() * (H - 30)) / G) * G; if (!free(x, y)) continue;
+  // traces alternate between the left and the right half, so both sides are equally busy
+  let side = 0;
+  function make(){ const sd = side++ % 2; for (let t = 0; t < 120; t++){
+      let x = Math.round((sd ? W / 2 + 10 + Math.random() * (W / 2 - 30) : 20 + Math.random() * (W / 2 - 30)) / G) * G, y = Math.round((20 + Math.random() * (H - 30)) / G) * G; if (!free(x, y)) continue;
       const pts = [[x, y]]; let dir = Math.floor(Math.random() * 4) * 2;   // 0 → right, 2 ↓, 4 ←, 6 ↑ (odd = 45°)
       const n = 2 + Math.floor(Math.random() * 3);
       for (let i = 0; i < n; i++){ const len = (2 + Math.floor(Math.random() * 5)) * G, d = dir, dx = [1, 1, 0, -1, -1, -1, 0, 1][d], dy = [0, 1, 1, 1, 0, -1, -1, -1][d];
@@ -174,7 +181,7 @@ function pcb(){
     return null; }
   const along = (tr, d) => { const out = [tr.pts[0]]; let left = d; for (let i = 1; i < tr.pts.length; i++){ const a = tr.pts[i - 1], b = tr.pts[i], s = Math.hypot(b[0] - a[0], b[1] - a[1]);
       if (left >= s){ out.push(b); left -= s; } else { const k = left / s; out.push([a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k]); break; } } return out; };
-  for (let i = 0; i < 28; i++){ const t = make(); if (t) traces.push(t); }
+  for (let i = 0; i < 56; i++){ const t = make(); if (t) traces.push(t); }
   const tick = now => { if (me !== pcbRun) return; ctx.clearRect(0, 0, W, H);
     traces.forEach((tr, i) => { const e = now - tr.t0; if (e < 0) return; let a = 0, b = 0;
       if (e < tr.draw){ b = tr.L * (e / tr.draw); } else if (e < tr.draw + tr.hold){ b = tr.L; } else if (e < tr.draw + tr.hold + tr.wipe){ a = tr.L * ((e - tr.draw - tr.hold) / tr.wipe); b = tr.L; }
@@ -269,7 +276,7 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.7", BRIDGE = window.splashBridge || null;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.8", BRIDGE = window.splashBridge || null;
 let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {
