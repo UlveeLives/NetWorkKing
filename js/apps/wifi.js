@@ -209,7 +209,7 @@ function sigAt(d, b, A, x, y, walls){
 }
 const HCACHE = new Map();
 function heat(d, f, b, step){
-  const s = PW / f.wm, H = Math.min(PW * 10, Math.round(f.hm * s)), A = apsFor(d, f, b);   // a very long, thin floor: the grid stays a sane size
+  const s = PW / f.wm, H = Math.round(f.hm * s), A = apsFor(d, f, b);
   const key = JSON.stringify([b, step, f.wm, f.hm, f.rooms.map(r => [r.x, r.y, r.w, r.h, r.wall]), f.walls.map(w => [w.x1, w.y1, w.x2, w.y2, w.mat, w.kind, w.bend]), A.map(q => [q.a.id, q.a.x, q.a.y, q.k, q.dz, q.eirp, q.sp]), d.cfg.n, d.cfg.cg, d.cfg.fl[b]]);
   if (HCACHE.has(key)) return HCACHE.get(key);
   // memory: at most ~4 million signal values per map (many APs on a huge floor get a coarser grid instead of a crash)

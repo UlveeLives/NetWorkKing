@@ -243,7 +243,7 @@ document.addEventListener("change", e => { const el = e.target.closest("[data-pw
 function rackEditor(b, r){
   const p = rackPower(b, r);
   return `<div class="dhead"><svg viewBox="0 0 48 48" width="42" height="42">${ICO.rack}</svg><div><h3>${esc(r.name)}</h3><div class="muted small">${r.u}U · ${p.used}U ${esc(t("rkUsed"))} · ${p.free}U ${esc(t("rkFree"))}</div></div><button class="x" data-dr="close">×</button></div>
-    ${sec("gen", t("sec_general"), `${fld(t("f_name"), "r.name", r.name)}<div class="two">${fld(t("f_rackU"), "r.u", r.u, "number", ' min="4" max="60"')}${fld(t("f_code"), "r.code", r.code)}</div>
+    ${sec("gen", t("sec_general"), `${fld(t("f_name"), "r.name", r.name)}<div class="two">${fld(t("f_rackU"), "r.u", r.u, "number", ' min="1" max="60"')}${fld(t("f_code"), "r.code", r.code)}</div>
       <div class="two"><label class="fld"><span>${esc(t("f_floor"))}</span><select data-f="r.floor">${floorOpts(b, r.floor)}</select></label><label class="fld"><span>${esc(t("f_room"))}</span><select data-f="r.room">${roomOpts(b, r.floor, r.room)}</select></label></div>
       <div class="two">${fld(t("rkRow"), "r.row", r.row)}<label class="fld"><span>${esc(t("f_airflow"))}</span><select data-f="r.airflow">${["f2b","b2f","side"].map(x => opt(x, t("af_" + x), r.airflow)).join("")}</select></label></div>`, true)}
     ${sec("rdim", t("rkDims"), `<div class="two">${fld(t("rkH"), "r.dims.h", r.dims.h, "number")}${fld(t("rkW"), "r.dims.w", r.dims.w, "number")}</div><div class="two">${fld(t("rkD"), "r.dims.d", r.dims.d, "number")}${fld(t("rkUD"), "r.udepth", r.udepth, "number")}</div>

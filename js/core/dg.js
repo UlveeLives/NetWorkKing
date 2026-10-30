@@ -261,7 +261,7 @@ function dgDrawer(b, cfg){
   if (s.type === "link"){ const l = linkById(b, s.id); return l ? linkEditor(b, l) + `<div class="btns"><button class="btn small" data-dr="route:straight">${esc(t("rStraight"))}</button><button class="btn small" data-dr="route:auto">${esc(t("rAuto"))}</button></div>` : ""; }
   if (s.type === "rack"){ const r = rackById(b, s.id); if (!r) return ""; const rows = rackRows(b, r);
     return `<div class="dhead"><svg viewBox="0 0 48 48" width="42" height="42">${ICO.rack}</svg><div><h3>${esc(r.name)}</h3><div class="muted small">${r.u}U · ${esc(t("rackDevN",{n:rows.length}))}</div></div><button class="x" data-dr="close">×</button></div>
-      ${sec("gen", t("sec_general"), `${fld(t("f_name"), "r.name", r.name)}<div class="two">${fld(t("f_rackU"), "r.u", r.u, "number", ' min="4" max="60"')}${fld(t("f_code"), "r.code", r.code)}</div>
+      ${sec("gen", t("sec_general"), `${fld(t("f_name"), "r.name", r.name)}<div class="two">${fld(t("f_rackU"), "r.u", r.u, "number", ' min="1" max="60"')}${fld(t("f_code"), "r.code", r.code)}</div>
         <div class="two"><label class="fld"><span>${esc(t("f_floor"))}</span><select data-f="r.floor">${floorOpts(b, r.floor)}</select></label><label class="fld"><span>${esc(t("f_room"))}</span><select data-f="r.room">${roomOpts(b, r.floor, r.room)}</select></label></div>`, true)}
       <p class="muted small">${esc(t("rackRowsHint"))}</p>
       <div class="btns"><button class="btn pri" data-dr="openRack">🗄 ${esc(t("openInRack"))}</button><button class="btn" data-dr="rackAddDev">＋ ${esc(t("rackAddDev"))}</button></div>
