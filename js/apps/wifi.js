@@ -69,7 +69,7 @@ function apIn(b, d){
 function syncIn(){
   const b = B(), W = wset(b), n = b.floors.length;
   const floors = b.floors.slice().reverse().map((sf, i) => { const p = sf.plan;
-    return {id:sf.id, name:sf.name, desc:p.desc || "", color:p.color || Object.keys(FC)[(n - 1 - i) % 6], wm:clamp(num(p.wm, 40), 2, 2000), hm:clamp(num(p.hm, 14), 2, 2000), img:p.img || null, op:p.op ?? 60, idf:p.idf || null,
+    return {id:sf.id, name:sf.name, desc:p.desc || "", color:p.color || Object.keys(FC)[(n - 1 - i) % 6], wm:clamp(num(p.wm, 40), 2, 2000), hm:clamp(num(p.hm, 14), 2, Math.min(2000, clamp(num(p.wm, 40), 2, 2000) * 20)),   /* depth ≤ 20 × width: the plan canvas stays drawable */ img:p.img || null, op:p.op ?? 60, idf:p.idf || null,
       walls:p.walls, survey:p.survey, calibrated:!!p.cal,
       rooms:b.rooms.filter(r => r.floor === sf.id && r.geo).map(r => { const o = {id:r.id, label:r.name, wall:r.wall || "drywall", users:num(r.users), x:num(r.geo.x), y:num(r.geo.y), w:num(r.geo.w, 1), h:num(r.geo.h, 1)};
         // outline and name position drawn from a DXF drawing (kept as they are; only x / y / w / h are edited here)
