@@ -103,6 +103,7 @@
   .ctl button{border:1px solid #c6cfe0;background:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font:inherit}
   .ctl button.on{background:#1d7a47;color:#fff;border-color:#1d7a47}
   body.win .ctl{display:none}
+  body.mob{background:#08130d} html.th-light body.mob{background:#e6eee8}
   /* Anthropic + Claude marks under the progress line, on the right (official artwork, shown in light single colour on the green) */
   .brands{align-self:flex-end;display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin:-4px 2px -2px 0;color:var(--ink);opacity:.82}
   .brands .ant{display:flex;align-items:center;gap:6px}
@@ -304,6 +305,7 @@ async function outro(me){
   const gap = document.createElement("div"); gap.className = "lg-gap"; lg.after(gap);
   Object.assign(lg.style, {left:r.left + "px", top:r.top + "px", width:r.width + "px", height:r.height + "px"}); lg.classList.add("fly");
   lg.getBoundingClientRect();                                            // commit the start position before moving
+  if (MOB) lg.style.transition = ["left", "top", "width", "height"].map(k => k + " .9s cubic-bezier(.45,0,.2,1)").join(",") + ",opacity .9s ease";
   const S = Math.min(innerWidth, innerHeight) * .66;
   Object.assign(lg.style, {left:(innerWidth - S) / 2 + "px", top:(innerHeight - S) / 2 + "px", width:S + "px", height:S + "px"});
   sp.classList.add("outro"); pcbRun++; SND.dialStop();
@@ -315,13 +317,13 @@ async function outro(me){
   const orbit = document.createElementNS(SV, "g"); orbit.setAttribute("class", "orbit"); core.before(orbit);
   [".cross", ".ring", ".flow", "#neur", ".spokes", "#pkg"].forEach(c => { const e = q(c); if (e) orbit.appendChild(e); }); lg.querySelectorAll(".nd").forEach(e => orbit.appendChild(e));
   const spin = orbit.animate([{transform:"rotate(0deg) scale(1)", opacity:1}, {transform:"rotate(150deg) scale(1)", opacity:1, offset:.4}, {transform:"rotate(1080deg) scale(.86)", opacity:0}],
-    {duration:2700, easing:"cubic-bezier(.5,0,.9,.6)", fill:"forwards"});
+    {duration:2700 * TM, easing:"cubic-bezier(.5,0,.9,.6)", fill:"forwards"});
   // each circle turns back by the same angle round its own centre, so its symbol stays upright (top at 12 o'clock)
   lg.querySelectorAll(".nd").forEach(n => n.animate([{transform:"rotate(0deg)"}, {transform:"rotate(-150deg)", offset:.4}, {transform:"rotate(-1080deg)"}],
-    {duration:2700, easing:"cubic-bezier(.5,0,.9,.6)", fill:"forwards"}));
-  core.animate([{opacity:1}, {opacity:1, offset:.35}, {opacity:0}], {duration:2400, easing:"ease-in", fill:"forwards"});
+    {duration:2700 * TM, easing:"cubic-bezier(.5,0,.9,.6)", fill:"forwards"}));
+  core.animate([{opacity:1}, {opacity:1, offset:.35}, {opacity:0}], {duration:2400 * TM, easing:"ease-in", fill:"forwards"});
   try { await spin.finished; } catch(e){} if (me !== run) return;
-  await sleep(200); if (me !== run) return;
+  await sleep(200 * TM); if (me !== run) return;
   // the name comes back under the N
   const nm = document.getElementById("nm").cloneNode(true); nm.removeAttribute("id"); nm.classList.add("again"); nm.querySelectorAll("[hidden]").forEach(x => x.remove());
   Object.assign(nm.style, {fontSize:Math.round(S * .085) + "px", top:(innerHeight / 2 + S * .13) + "px", transition:"none"}); document.body.appendChild(nm);
@@ -329,13 +331,13 @@ async function outro(me){
   const tube = q(".n.neon"), hole = q(".n-hole"), out = q(".n-out");
   const set = (v, w) => { tube.style.opacity = v; hole.style.opacity = v < .5 ? 1 - v : 0; nm.style.opacity = w; };
   const FL = [[0, 1, 0], [70, .15, .7], [130, 1, 0], [430, .2, .8], [480, .9, .1], [540, .05, .95], [620, .7, .25], [680, 0, 1], [860, .55, .4], [900, 0, 1], [1120, .3, .6], [1150, .08, .9], [1210, 0, 1]];
-  SND.crackle(FL);
-  for (let i = 0; i < FL.length; i++){ if (me !== run){ SND.stopAll(); return; } await sleep((FL[i][0] - (i ? FL[i - 1][0] : 0)) * 1.3); set(FL[i][1], FL[i][2]); }
+  if (!MOB) SND.crackle(FL);
+  for (let i = 0; i < FL.length; i++){ if (me !== run){ SND.stopAll(); return; } await sleep((FL[i][0] - (i ? FL[i - 1][0] : 0)) * 1.3 * TM); set(FL[i][1], FL[i][2]); }
   out.style.transition = "stroke-opacity .5s"; out.setAttribute("stroke-opacity", "1");
   // N outline and the name stay until the program is ready behind, then fade softly (a touch bigger)
   const t0 = performance.now();
   if (BRIDGE) { try { await BRIDGE.waitReady(); } catch(e){} }
-  await sleep(Math.max(0, 1200 - (performance.now() - t0))); if (me !== run) return;
+  await sleep(Math.max(0, 1200 * TM - (performance.now() - t0))); if (me !== run) return;
   const S2 = S * 1.05; Object.assign(lg.style, {transition:"opacity 1s ease, left 1s ease, top 1s ease, width 1s ease, height 1s ease",
     opacity:0, left:(innerWidth - S2) / 2 + "px", top:(innerHeight - S2) / 2 + "px", width:S2 + "px", height:S2 + "px"});
   nm.style.transition = "opacity 1s ease"; nm.style.opacity = 0;
@@ -344,7 +346,13 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.12", BRIDGE = window.splashBridge || null;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.13";
+// m=1: the phone / tablet app (PWA) shows this page in a frame over itself — a shorter run (fewer code lines, quicker
+// steps, same order), no sound; it talks to the app through postMessage instead of the desktop bridge
+const MOB = Q.get("m") === "1", TM = MOB ? .6 : 1;
+const BRIDGE = window.splashBridge || (MOB && parent !== window ? {
+  waitReady:() => new Promise(r => { const on = e => { if (e.data === "nwk-ready"){ removeEventListener("message", on); r(); } }; addEventListener("message", on); parent.postMessage("nwk-splash-wait", "*"); }),
+  done:() => parent.postMessage("nwk-splash-done", "*")} : null);
 let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {
@@ -368,7 +376,7 @@ const STEPS = () => { const T = TX[LANG], c = x => `<span class="c">// ${x}</spa
   [`fxWindow().warmUp()          ${c(T.fx)}`, 74],
   [`APP_ORDER.forEach(id =&gt; APPS[id].init())  ${c(T.apps)}`, 86],
   [`render(APPS.building)`, 94],
-  [`<span class="ok">${T.ok}</span> <span class="c">${T.hi}</span>`, 100]]; };
+  [`<span class="ok">${T.ok}</span> <span class="c">${T.hi}</span>`, 100]].filter((_, i) => !MOB || [0, 4, 5, 9, 11].includes(i)); };
 function applyLook(){ document.documentElement.classList.toggle("th-light", THEME === "light"); document.documentElement.lang = LANG;
   document.getElementById("ver").textContent = "v" + VER; document.getElementById("betap").hidden = !/beta/.test(VER);
   document.getElementById("by").innerHTML = TX[LANG].by; document.getElementById("cr").textContent = TX[LANG].cr;
@@ -377,25 +385,25 @@ function applyLook(){ document.documentElement.classList.toggle("th-light", THEM
 let run = 0;
 async function play(){
   const me = ++run, box = document.getElementById("code"), bar = document.getElementById("bar"); box.innerHTML = ""; bar.style.width = "0";
-  await sleep(500);
+  await sleep(500 * TM);
   for (const [html, pct] of STEPS()){
     if (me !== run) return;
     const line = document.createElement("div"); line.className = "l"; box.appendChild(line);
     while (box.children.length > 7) box.firstChild.remove();
     const plain = html.replace(/<[^>]+>/g, "").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-    for (let i = 1; i <= plain.length && !SKIP; i += 2){ if (me !== run) return; line.textContent = plain.slice(0, i); line.insertAdjacentHTML("beforeend", '<span class="cur"></span>'); await sleep(18); }
-    line.innerHTML = html; bar.style.width = pct + "%"; await sleep(SKIP ? 30 : 260 + Math.random() * 260);
+    for (let i = 1; i <= plain.length && !SKIP; i += 2){ if (me !== run) return; line.textContent = plain.slice(0, i); line.insertAdjacentHTML("beforeend", '<span class="cur"></span>'); await sleep(MOB ? 9 : 18); }
+    line.innerHTML = html; bar.style.width = pct + "%"; await sleep(SKIP ? 30 : (260 + Math.random() * 260) * TM);
   }
   box.lastChild && box.lastChild.insertAdjacentHTML("beforeend", ' <span class="cur"></span>');
   return true;
 }
 const PRISTINE = document.getElementById("sp").outerHTML;
-const inWin = APP || Q.get("win") === "1"; if (inWin) document.body.className = "win";
+const inWin = APP || Q.get("win") === "1"; if (inWin) document.body.className = "win" + (MOB ? " mob" : "");
 // in the app a click on the splash hurries it: the remaining lines appear at once and the ending plays
 if (APP) addEventListener("mousedown", () => { SKIP = true; });
 async function start(){ const sp = document.getElementById("sp"); applyLook(); pcb(); spokes(sp.querySelector(".lg")); neurons(sp.querySelector(".lg"));
-  SND.dialStart();                                                       // dial-up while the loading lines run
-  const done = await play(); if (!done) return; const me = run; await sleep(SKIP ? 200 : 900); if (me !== run) return;
+  if (!MOB) SND.dialStart();                                             // dial-up while the loading lines run (not on the phone)
+  const done = await play(); if (!done) return; const me = run; await sleep(SKIP ? 200 : 900 * TM); if (me !== run) return;
   // the outro waits for the program (loaded behind) before its final fade
   const end = await outro(me); if (!end) return;
   if (BRIDGE) BRIDGE.done(); else if (inWin) window.close(); }

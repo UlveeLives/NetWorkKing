@@ -15,7 +15,8 @@ function applyTheme(){ const th = store.settings.theme, eff = th === "system" ? 
   const fav = document.getElementById("favicon"); if (fav) fav.href = `icons/fav-${eff}.png`;
   if (window.appBridge && appBridge.win && appBridge.win.setIcon) appBridge.win.setIcon(eff);
   // the splash screen of the next start: same language and theme
-  if (window.appBridge && appBridge.splashPrefs) appBridge.splashPrefs({lang:store.settings.lang, theme:eff, on:store.settings.splash !== false, fx:store.settings.winFx !== false}); }
+  if (window.appBridge && appBridge.splashPrefs) appBridge.splashPrefs({lang:store.settings.lang, theme:eff, on:store.settings.splash !== false, fx:store.settings.winFx !== false});
+  try { localStorage.setItem("nwk-splash", JSON.stringify({lang:store.settings.lang, theme:eff, on:store.settings.splash !== false})); } catch(e){} }   // read by the phone splash before the store loads
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => store && applyTheme());
 /* ---------- toast, prompt, confirm ---------- */
 let toastT; function toast(m, ms){ const el = $("#toast"); if (!el) return; el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), ms || 2800); }

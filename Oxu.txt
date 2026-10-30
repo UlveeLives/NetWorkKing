@@ -1,9 +1,13 @@
-NETWORKKING 3.8.12 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.13 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.8.13
+ - Telefon / planşet proqramında (PWA) da açılış animasiyası: eyni ardıcıllıq, amma qısa (daha az kod sətri, sürətli
+   addımlar, təxminən 8–9 saniyə), səssiz. Ekrana toxunanda sürətlənir. Ayarlarda açılış ekranı söndürülübsə göstərilmir.
 
 3.8.12
  - Yeni proqram ikonu (taskbar, masaüstü qısayolu, quraşdırıcı, brauzer / telefon): açılış ekranındakı loqo — dördbucaqlı

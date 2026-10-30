@@ -1,7 +1,7 @@
 /*! NetWorkKing — © 2026 Ulvi Badalov. Bütün hüquqlar qorunur / All rights reserved. Proprietary — see LICENSE. */
 // Start-up: load data and catalog, wire the shell, open the last app, run the first-time setup if needed.
 "use strict";
-const APP_VERSION = "3.8.12";
+const APP_VERSION = "3.8.13";
 const IS_BETA = /beta/.test(APP_VERSION);
 (async function start(){
   try {
@@ -12,6 +12,7 @@ const IS_BETA = /beta/.test(APP_VERSION);
     render(); HIST.reset();
     if (!store.settings.setupDone) openWizard();
     try { QRL.handle(); } catch(e){ console.error(e); }   // opened from a scanned label QR
+    if (window.NWK_SPLASH) NWK_SPLASH.ready();                // phone / tablet splash may finish now
     CAT.autoUpdate();
     if (/^https?:$/.test(location.protocol) && "serviceWorker" in navigator && !window.appBridge) navigator.serviceWorker.register("sw.js").catch(() => {});
     if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});

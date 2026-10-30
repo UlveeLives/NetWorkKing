@@ -17,6 +17,33 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 </head>
 <body>
+<script>
+// Phone / tablet app (PWA): the splash plays in a frame over the app while it loads — a shorter run, no sound.
+// The desktop program has its own splash window, so nothing happens there. ?msplash=1 forces it, ?nosplash=1 skips it.
+(function(){ try {
+  var q = location.search, force = /[?&]msplash=1/.test(q);
+  if (window.appBridge || /[?&]nosplash=1/.test(q)) return;
+  if (!force && !(matchMedia("(pointer:coarse)").matches || innerWidth < 820)) return;
+  var pr = {}; try { pr = JSON.parse(localStorage.getItem("nwk-splash") || "{}") || {}; } catch(e){}
+  if (pr.on === false) return;
+  var th = pr.theme === "light" ? "light" : "dark", lang = /^(az|tr|en|ru)$/.test(pr.lang) ? pr.lang : "az";
+  var ov = document.createElement("div"), fr = document.createElement("iframe");
+  ov.id = "msplash"; ov.style.cssText = "position:fixed;inset:0;z-index:99999;overflow:hidden;transition:opacity .5s ease;background:" + (th === "light" ? "#e6eee8" : "#08130d");
+  fr.src = "splash.html?app=1&m=1&lang=" + lang + "&theme=" + th; fr.title = "NetWorkKing";
+  fr.style.cssText = "position:absolute;left:0;top:0;border:0;transform-origin:0 0;background:transparent";
+  // the splash is drawn for a big window: give the frame a large inner size and scale it down to the screen
+  function fit(){ var w = innerWidth, h = innerHeight, W, H; if (w / h > 1.08){ H = 1000; W = H * w / h; } else { W = Math.max(620, 1000 * w / h); H = W * h / w; }
+    fr.style.width = W + "px"; fr.style.height = H + "px"; fr.style.transform = "scale(" + (w / W) + ")"; }
+  fit(); addEventListener("resize", fit); ov.appendChild(fr); document.body.appendChild(ov);
+  var ready = false, waiting = false, gone = false;
+  function bye(){ if (gone) return; gone = true; ov.style.opacity = 0; setTimeout(function(){ ov.remove(); removeEventListener("resize", fit); }, 550); }
+  addEventListener("message", function(e){ if (e.source !== fr.contentWindow) return;
+    if (e.data === "nwk-splash-wait"){ waiting = true; if (ready) fr.contentWindow.postMessage("nwk-ready", "*"); }
+    if (e.data === "nwk-splash-done") bye(); });
+  window.NWK_SPLASH = {ready: function(){ ready = true; if (waiting) fr.contentWindow.postMessage("nwk-ready", "*"); }, skip:bye};
+  setTimeout(bye, 30000);                                                 // never block the app
+} catch(e){} })();
+</script>
 <header id="hdr"></header>
 <nav id="ptabs"></nav>
 <div id="main">
