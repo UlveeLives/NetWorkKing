@@ -386,3 +386,10 @@ async function printNow(){
     if (nb) setTimeout(() => { if (nb.isConnected && !document.querySelector(".layer")) nb.click(); }, 0);
   }, true);
 })();
+/* ---------- number fields keep to their limits ----------
+   min / max on an <input type="number"> only guide the arrows: a typed 99999 still went through and a 99999-port switch
+   or a 99999U rack could freeze the program. Every number field is clamped before any app reads it. */
+document.addEventListener("change", e => { const el = e.target; if (!el || el.tagName !== "INPUT" || el.type !== "number" || el.value === "") return;
+  let v = parseFloat(String(el.value).replace(",", ".")); if (!isFinite(v)){ el.value = ""; return; }
+  if (el.min !== "" && isFinite(+el.min) && v < +el.min) v = +el.min; if (el.max !== "" && isFinite(+el.max) && v > +el.max) v = +el.max;
+  if (String(v) !== el.value) el.value = String(v); }, true);

@@ -69,7 +69,7 @@ function apIn(b, d){
 function syncIn(){
   const b = B(), W = wset(b), n = b.floors.length;
   const floors = b.floors.slice().reverse().map((sf, i) => { const p = sf.plan;
-    return {id:sf.id, name:sf.name, desc:p.desc || "", color:p.color || Object.keys(FC)[(n - 1 - i) % 6], wm:num(p.wm, 40), hm:num(p.hm, 14), img:p.img || null, op:p.op ?? 60, idf:p.idf || null,
+    return {id:sf.id, name:sf.name, desc:p.desc || "", color:p.color || Object.keys(FC)[(n - 1 - i) % 6], wm:clamp(num(p.wm, 40), 2, 2000), hm:clamp(num(p.hm, 14), 2, 2000), img:p.img || null, op:p.op ?? 60, idf:p.idf || null,
       walls:p.walls, survey:p.survey, calibrated:!!p.cal,
       rooms:b.rooms.filter(r => r.floor === sf.id && r.geo).map(r => { const o = {id:r.id, label:r.name, wall:r.wall || "drywall", users:num(r.users), x:num(r.geo.x), y:num(r.geo.y), w:num(r.geo.w, 1), h:num(r.geo.h, 1)};
         // outline and name position drawn from a DXF drawing (kept as they are; only x / y / w / h are edited here)
@@ -209,7 +209,7 @@ function sigAt(d, b, A, x, y, walls){
 }
 const HCACHE = new Map();
 function heat(d, f, b, step){
-  const s = PW / f.wm, H = Math.round(f.hm * s), A = apsFor(d, f, b);
+  const s = PW / f.wm, H = Math.min(PW * 10, Math.round(f.hm * s)), A = apsFor(d, f, b);   // a very long, thin floor: the grid stays a sane size
   const key = JSON.stringify([b, step, f.wm, f.hm, f.rooms.map(r => [r.x, r.y, r.w, r.h, r.wall]), f.walls.map(w => [w.x1, w.y1, w.x2, w.y2, w.mat, w.kind, w.bend]), A.map(q => [q.a.id, q.a.x, q.a.y, q.k, q.dz, q.eirp, q.sp]), d.cfg.n, d.cfg.cg, d.cfg.fl[b]]);
   if (HCACHE.has(key)) return HCACHE.get(key);
   const cols = Math.ceil(PW / step), rows = Math.ceil(H / step), nA = A.length, R = new Float32Array(cols * rows * Math.max(1, nA)).fill(-200);

@@ -303,7 +303,7 @@ function onField(path, v){
   if (s.type === "bshape"){ const f = curFloor(b), o = f && (f.plan.shapes || []).find(x => x.id === s.id); if (!o) return; const k = path.split(".")[1];
     edit(() => { if (k === "room"){ o.room = v; return; } const x = num(String(v).replace(",", "."), NaN); if (!isFinite(x)) return; if (k === "rot") o.rot = ((x % 360) + 360) % 360; else if (k === "w" || k === "h") o[k] = Math.max(.05, r2(x)); else o[k] = r2(x); }); return; }
   if (s.type === "rack"){ const r = rackById(b, s.id); if (!r) return; edit(() => { const k = path.split(".")[1]; if (k === "name") r.name = String(v).trim() || r.name; else r.room = v; }); return; }
-  if (s.type === "bfloor"){ const f = floorById(b, s.id); if (!f) return; edit(() => { const k = path.split(".")[1]; if (k === "name") f.name = String(v).trim() || f.name; else if (k === "h") f.h = Math.max(2, n(v)); else if (k === "ext") f.plan.ext = clamp(n(v), 0, 500); else f.plan[k] = Math.max(2, n(v)); }); }
+  if (s.type === "bfloor"){ const f = floorById(b, s.id); if (!f) return; edit(() => { const k = path.split(".")[1]; if (k === "name") f.name = String(v).trim() || f.name; else if (k === "h") f.h = Math.max(2, n(v)); else if (k === "ext") f.plan.ext = clamp(n(v), 0, 500); else f.plan[k] = clamp(n(v), 2, 2000); }); }
 }
 async function onDrawerAct(k){
   const b = B(), s = UI.sel; if (!s) return; const f = curFloor(b);
