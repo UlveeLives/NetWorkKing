@@ -316,6 +316,9 @@ async function outro(me){
   [".cross", ".ring", ".flow", "#neur", ".spokes", "#pkg"].forEach(c => { const e = q(c); if (e) orbit.appendChild(e); }); lg.querySelectorAll(".nd").forEach(e => orbit.appendChild(e));
   const spin = orbit.animate([{transform:"rotate(0deg) scale(1)", opacity:1}, {transform:"rotate(150deg) scale(1)", opacity:1, offset:.4}, {transform:"rotate(1080deg) scale(.86)", opacity:0}],
     {duration:2700, easing:"cubic-bezier(.5,0,.9,.6)", fill:"forwards"});
+  // each circle turns back by the same angle round its own centre, so its symbol stays upright (top at 12 o'clock)
+  lg.querySelectorAll(".nd").forEach(n => n.animate([{transform:"rotate(0deg)"}, {transform:"rotate(-150deg)", offset:.4}, {transform:"rotate(-1080deg)"}],
+    {duration:2700, easing:"cubic-bezier(.5,0,.9,.6)", fill:"forwards"}));
   core.animate([{opacity:1}, {opacity:1, offset:.35}, {opacity:0}], {duration:2400, easing:"ease-in", fill:"forwards"});
   try { await spin.finished; } catch(e){} if (me !== run) return;
   await sleep(200); if (me !== run) return;
@@ -341,7 +344,7 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.10", BRIDGE = window.splashBridge || null;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.11", BRIDGE = window.splashBridge || null;
 let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {

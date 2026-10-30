@@ -1,17 +1,17 @@
-NETWORKKING 3.8.10 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.11 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
 
-3.8.4 – 3.8.10
+3.8.4 – 3.8.11
  - Açılış ekranı: kənarlara doğru itən yaşıl fon köhnə Windows açılışında olduğu kimi öz rəngində kənarlara doğru
    yavaş-yavaş parlayıb sönür (hər 2,8 saniyədə bir döyüntü); fon itib loqo yaxınlaşmağa başlayana qədər davam edir.
    Oval açılış fonu böyüdü: parıltı yazılardan və kod sətirlərindən azacıq aralıda başlayır, onların altına düşmür.
    Loqodakı 8 dairənin çərçivəsi və «Net», «King» sözləri narıncı neon; arxadakı plata xətləri çoxaldı və sola-sağa bərabər paylanır.
    Sonluq: loqo mərkəzə gələrkən çərçivəsi və yaşıl fonu digərləri ilə itir; 8 dairə xətləri ilə birlikdə saat əqrəbi
-   istiqamətində sürətlənərək fırlanıb yox olur; dairəsiz qalan N hərfi qısa qapanma kimi cızıltı səsi ilə sönür, eyni anda
+   istiqamətində sürətlənərək fırlanıb yox olur (içindəki simvollar düz qalır); dairəsiz qalan N hərfi qısa qapanma kimi cızıltı səsi ilə sönür, eyni anda
    altında NetWorkKing yazısı titrəyərək yanır (səslər: yükləmə zamanı dial-up modem, titrəyəndə statik elektrik cızıltısı); N-in kənar xətti və yazı proqram açılana qədər qalır, sonra yavaş itir.
 
 3.8.3
