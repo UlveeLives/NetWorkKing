@@ -82,9 +82,8 @@
   .name{font-size:30px;font-weight:800;letter-spacing:.3px;color:var(--ink);display:flex;align-items:center;gap:8px;margin-top:2px}
   .name b{color:var(--neon)}
   /* «Net» and «King» (and the frames of the eight symbol circles) glow orange neon; «Work» stays green */
-  .name > span:first-child{color:#ffa23a;text-shadow:0 0 6px rgba(255,140,30,.75),0 0 16px rgba(255,110,0,.45)}
-  .name > span:first-child b{text-shadow:none}
-  html.th-light .name > span:first-child{color:#ec7a12;text-shadow:0 0 6px rgba(255,140,30,.45)}
+  .name > span:first-child{color:#ffa23a}
+  html.th-light .name > span:first-child{color:#ec7a12}
   .lg .nd > circle{stroke:#ffa23a;filter:drop-shadow(0 0 5px rgba(255,130,20,.95)) drop-shadow(0 0 12px rgba(255,100,0,.55))}
   .beta{font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#fff;background:#e2572b;border-radius:6px;padding:2px 7px}
   .bar{width:100%;height:3px;border-radius:3px;background:rgba(22,255,90,.15);overflow:hidden}
@@ -114,6 +113,9 @@
   .splash.outro::before,.splash.outro > :not(.lg){opacity:0}
   .lg.fly{position:fixed;z-index:3;margin:0;transition:left 1.5s cubic-bezier(.45,0,.2,1),top 1.5s cubic-bezier(.45,0,.2,1),width 1.5s cubic-bezier(.45,0,.2,1),height 1.5s cubic-bezier(.45,0,.2,1),opacity .9s ease}
   .lg-gap{width:200px;height:200px;flex:none}
+  /* the name comes back under the N at the end (flickers on while the N tube flickers off) */
+  .name.again{position:fixed;z-index:4;left:0;right:0;justify-content:center;margin:0;opacity:0;transition:opacity 1s ease}
+  .lg .orbit{transform-box:view-box;transform-origin:256px 256px}
   /* data running along the ring between neighbours (no pads, just a stream) */
   .lg .flow path{stroke-dasharray:7 18 3 48;animation:flow 1.15s linear infinite}
   @keyframes flow{to{stroke-dashoffset:-76}}
@@ -247,8 +249,29 @@ function neurons(lg){
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 /* ---------- the way out: the logo (still moving) flies to the middle and grows, then everything stops, the N's neon
    stutters off leaving only the glow of its outline, and the logo fades away → the app opens ---------- */
+// «Short circuit» sound for the N tube: crackles at every flicker step, an electric buzz while the tube is lit and a few
+// dial-up modem chirps. Made with Web Audio (no sound file); quiet, and silent if audio is not allowed.
+function zapSound(){
+  let A; try { A = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){ return null; }
+  if (A.state === "suspended") A.resume().catch(() => {});
+  const master = A.createGain(); master.gain.value = .22; master.connect(A.destination);
+  const nb = A.createBuffer(1, A.sampleRate * .5, A.sampleRate), d = nb.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  // mains buzz: 100 Hz saw + its harmonics, its loudness follows the tube
+  const hum = A.createOscillator(), hf = A.createBiquadFilter(), hg = A.createGain(); hum.type = "sawtooth"; hum.frequency.value = 100; hf.type = "lowpass"; hf.frequency.value = 900;
+  hg.gain.value = 0; hum.connect(hf).connect(hg).connect(master); hum.start();
+  const crack = (len, f) => { const n = A.createBufferSource(), bp = A.createBiquadFilter(), g = A.createGain(), t = A.currentTime; n.buffer = nb;
+    bp.type = "bandpass"; bp.frequency.value = f; bp.Q.value = .8; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(1, t + .004); g.gain.exponentialRampToValueAtTime(.001, t + len);
+    n.connect(bp).connect(g).connect(master); n.start(t, Math.random() * .3); n.stop(t + len + .02); };
+  const chirp = (f1, f2, len) => { const o = A.createOscillator(), g = A.createGain(), t = A.currentTime; o.type = "square"; o.frequency.setValueAtTime(f1, t); o.frequency.linearRampToValueAtTime(f2, t + len);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.12, t + .01); g.gain.setValueAtTime(.12, t + len - .02); g.gain.linearRampToValueAtTime(0, t + len); o.connect(g).connect(master); o.start(t); o.stop(t + len + .02); };
+  return {
+    step(v){ crack(.03 + Math.random() * .09, 1500 + Math.random() * 4000); if (Math.random() < .5) crack(.02 + Math.random() * .04, 400 + Math.random() * 900);
+      if (Math.random() < .35) chirp([1200, 2100, 2400, 980][Math.floor(Math.random() * 4)], 900 + Math.random() * 2200, .05 + Math.random() * .08);
+      hg.gain.setTargetAtTime(v * .35, A.currentTime, .01); },
+    end(){ hg.gain.setTargetAtTime(0, A.currentTime, .05); setTimeout(() => { try { hum.stop(); A.close(); } catch(e){} }, 600); } };
+}
 async function outro(me){
-  const sp = document.getElementById("sp"), lg = sp.querySelector(".lg");
+  const sp = document.getElementById("sp"), lg = sp.querySelector(".lg"), q = c => lg.querySelector(c);
   sp.style.animation = "none";                                           // a running/filled transform animation would make "fixed" relative to the card
   const r = lg.getBoundingClientRect();
   const gap = document.createElement("div"); gap.className = "lg-gap"; lg.after(gap);
@@ -256,27 +279,42 @@ async function outro(me){
   lg.getBoundingClientRect();                                            // commit the start position before moving
   const S = Math.min(innerWidth, innerHeight) * .66;
   Object.assign(lg.style, {left:(innerWidth - S) / 2 + "px", top:(innerHeight - S) / 2 + "px", width:S + "px", height:S + "px"});
-  sp.classList.add("outro");
-  await sleep(1700); if (me !== run) return;
-  // stop: no new packets; the ones on their way finish, then all symbols come to rest
-  spk.stopAt = performance.now(); if (neu) neu.on = false; await sleep(DRAW + HOLD + WIPE + 80); if (me !== run) return;
-  pcbRun++; lg.classList.add("still"); await sleep(450);
-  // the neon tube stutters (a bad contact) and goes out; the outline stays lit
-  const tube = lg.querySelector(".n.neon"), hole = lg.querySelector(".n-hole"), out = lg.querySelector(".n-out");
-  const set = v => { tube.style.opacity = v; hole.style.opacity = v < .5 ? 1 - v : 0; };
-  const FL = [[0, 1], [70, .15], [130, 1], [430, .2], [480, .9], [540, .05], [620, .7], [680, 0], [860, .55], [900, 0], [1120, .3], [1150, .08], [1210, 0]];
-  for (let i = 0; i < FL.length; i++){ if (me !== run) return; await sleep((FL[i][0] - (i ? FL[i - 1][0] : 0)) * 1.3); set(FL[i][1]); }
+  sp.classList.add("outro"); pcbRun++;
+  // the square frame and its green background fade with everything else; the symbol circles with their lines spin
+  // clockwise round the centre, faster and faster, and vanish; the dark circle behind the N goes too
+  spk.stopAt = performance.now(); if (neu) neu.on = false; lg.classList.add("still");
+  const frame = q(".frame"), core = q(".core");
+  frame.style.transition = "opacity .9s ease"; frame.style.opacity = 0;
+  const orbit = document.createElementNS(SV, "g"); orbit.setAttribute("class", "orbit"); core.before(orbit);
+  [".cross", ".ring", ".flow", "#neur", ".spokes", "#pkg"].forEach(c => { const e = q(c); if (e) orbit.appendChild(e); }); lg.querySelectorAll(".nd").forEach(e => orbit.appendChild(e));
+  const spin = orbit.animate([{transform:"rotate(0deg) scale(1)", opacity:1}, {transform:"rotate(150deg) scale(1)", opacity:1, offset:.4}, {transform:"rotate(1080deg) scale(.86)", opacity:0}],
+    {duration:2700, easing:"cubic-bezier(.5,0,.9,.6)", fill:"forwards"});
+  core.animate([{opacity:1}, {opacity:1, offset:.35}, {opacity:0}], {duration:2400, easing:"ease-in", fill:"forwards"});
+  try { await spin.finished; } catch(e){} if (me !== run) return;
+  await sleep(200); if (me !== run) return;
+  // the name comes back under the N
+  const nm = document.getElementById("nm").cloneNode(true); nm.removeAttribute("id"); nm.classList.add("again"); nm.querySelectorAll("[hidden]").forEach(x => x.remove());
+  Object.assign(nm.style, {fontSize:Math.round(S * .085) + "px", top:(innerHeight / 2 + S * .13) + "px", transition:"none"}); document.body.appendChild(nm);
+  // the neon tube stutters (a bad contact) and goes out — with a crackle — while the name stutters on; the outline stays lit
+  const tube = q(".n.neon"), hole = q(".n-hole"), out = q(".n-out"), snd = zapSound();
+  const set = (v, w) => { tube.style.opacity = v; hole.style.opacity = v < .5 ? 1 - v : 0; nm.style.opacity = w; };
+  const FL = [[0, 1, 0], [70, .15, .7], [130, 1, 0], [430, .2, .8], [480, .9, .1], [540, .05, .95], [620, .7, .25], [680, 0, 1], [860, .55, .4], [900, 0, 1], [1120, .3, .6], [1150, .08, .9], [1210, 0, 1]];
+  for (let i = 0; i < FL.length; i++){ if (me !== run){ snd && snd.end(); return; } await sleep((FL[i][0] - (i ? FL[i - 1][0] : 0)) * 1.3); set(FL[i][1], FL[i][2]); if (snd && i) snd.step(FL[i][1]); }
+  snd && snd.end();
   out.style.transition = "stroke-opacity .5s"; out.setAttribute("stroke-opacity", "1");
-  await sleep(1400); if (me !== run) return;
-  // soft fade, a touch bigger
+  // N outline and the name stay until the program is ready behind, then fade softly (a touch bigger)
+  const t0 = performance.now();
+  if (BRIDGE) { try { await BRIDGE.waitReady(); } catch(e){} }
+  await sleep(Math.max(0, 1200 - (performance.now() - t0))); if (me !== run) return;
   const S2 = S * 1.05; Object.assign(lg.style, {transition:"opacity 1s ease, left 1s ease, top 1s ease, width 1s ease, height 1s ease",
     opacity:0, left:(innerWidth - S2) / 2 + "px", top:(innerHeight - S2) / 2 + "px", width:S2 + "px", height:S2 + "px"});
-  await sleep(1050);
+  nm.style.transition = "opacity 1s ease"; nm.style.opacity = 0;
+  await sleep(1050); nm.remove();
   return me === run;
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.8", BRIDGE = window.splashBridge || null;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.9", BRIDGE = window.splashBridge || null;
 let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {
@@ -327,8 +365,7 @@ const inWin = APP || Q.get("win") === "1"; if (inWin) document.body.className = 
 if (APP) addEventListener("mousedown", () => { SKIP = true; });
 async function start(){ const sp = document.getElementById("sp"); applyLook(); pcb(); spokes(sp.querySelector(".lg")); neurons(sp.querySelector(".lg"));
   const done = await play(); if (!done) return; const me = run; await sleep(SKIP ? 200 : 900); if (me !== run) return;
-  // the program must be loaded (behind) before the logo flies off
-  if (BRIDGE) { try { await BRIDGE.waitReady(); } catch(e){} }
+  // the outro waits for the program (loaded behind) before its final fade
   const end = await outro(me); if (!end) return;
   if (BRIDGE) BRIDGE.done(); else if (inWin) window.close(); }
 start();
@@ -336,6 +373,6 @@ document.querySelector(".ctl").addEventListener("click", e => { const b = e.targ
   if (b.dataset.bg){ document.body.dataset.bg = b.dataset.bg; document.querySelectorAll("[data-bg]").forEach(x => x.classList.toggle("on", x === b)); }
   if (b.dataset.th){ THEME = b.dataset.th; }
   if (b.dataset.lang){ LANG = b.dataset.lang; }
-  if (b.dataset.a === "replay" || b.dataset.th || b.dataset.lang){ run++; pcbRun++; const t = document.createElement("div"); t.innerHTML = PRISTINE; document.getElementById("sp").replaceWith(t.firstElementChild); start(); } });
+  if (b.dataset.a === "replay" || b.dataset.th || b.dataset.lang){ run++; pcbRun++; document.querySelectorAll(".name.again").forEach(x => x.remove()); const t = document.createElement("div"); t.innerHTML = PRISTINE; document.getElementById("sp").replaceWith(t.firstElementChild); start(); } });
 </script>
 </body></html>

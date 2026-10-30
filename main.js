@@ -78,7 +78,7 @@ function createSplash(p){
   splash = new BrowserWindow({ width: Math.round(1080 * k), height: Math.round(1000 * k), frame: false, transparent: true, resizable: false,
     maximizable: false, fullscreenable: false, skipTaskbar: true, show: false, hasShadow: false, backgroundColor: "#00000000", center: true,
     title: app.getName(), icon: path.join(__dirname, "build", p.theme === "light" ? "icon-light.png" : "icon-dark.png"),
-    webPreferences: { preload: path.join(__dirname, "splashpreload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true, zoomFactor: k } });
+    webPreferences: { preload: path.join(__dirname, "splashpreload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true, zoomFactor: k, autoplayPolicy: "no-user-gesture-required" } });
   splash.loadFile("splash.html", { search: `app=1&lang=${p.lang}&theme=${p.theme}&v=${encodeURIComponent(app.getVersion())}` });
   splash.once("ready-to-show", () => splash && !splash.isDestroyed() && splash.show());
   splash.webContents.on("did-fail-load", () => { splash.destroy(); });
