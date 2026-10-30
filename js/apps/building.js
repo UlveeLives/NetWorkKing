@@ -32,14 +32,14 @@ const plan = f => f.plan;
 const curFloor = b => { const S = st(); let f = b.floors.find(x => x.id === S.floor); if (!f){ f = b.floors[0] || null; S.floor = f ? f.id : null; } return f; };
 const roomsOf = (b, f) => b.rooms.filter(r => r.floor === f.id);
 const geoRooms = (b, f) => roomsOf(b, f).filter(r => r.geo);
-function normRoom(r){ r.type = RT[r.type] ? r.type : (/server|serv/i.test(r.name) ? "server" : /dəhliz|koridor|corridor|holl/i.test(r.name) ? "corridor" : "office"); r.req = r.req && typeof r.req === "object" ? r.req : {}; return r; }
+function normRoom(r){ r.type = RT[r.type] ? r.type : (/server|serv/i.test(r.name) ? "server" : /dəhliz|koridor|corridor|holl/i.test(r.name) ? "corridor" : "office"); r.req = r.req && typeof r.req === "object" ? r.req : {}; for (const k in r.req) r.req[k] = clamp(Math.round(num(r.req[k], 0)), 0, 200); return r; }
 function posOf(d){ if (d.kind === "ap") return d.ap && d.ap.x !== null && d.ap.x !== undefined && d.ap.x !== "" ? {x:num(d.ap.x), y:num(d.ap.y)} : null; return d.pos && d.pos.x !== undefined ? {x:num(d.pos.x), y:num(d.pos.y)} : null; }
 function setPos(d, x, y){ if (d.kind === "ap"){ d.ap.x = r1(x); d.ap.y = r1(y); } else d.pos = {x:r1(x), y:r1(y)}; }
 function clearPos(d){ if (d.kind === "ap"){ d.ap.x = null; d.ap.y = null; } else delete d.pos; }
 const devFloor = (b, d) => d.floor || (d.room && (roomById(b, d.room) || {}).floor) || "";
 const roomAtPt = (b, f, x, y) => { const L = geoRooms(b, f).filter(r => x >= r.geo.x && x <= r.geo.x + r.geo.w && y >= r.geo.y && y <= r.geo.y + r.geo.h); return L.filter(r => r.type !== "corridor")[0] || L[0] || null; };
 const placedIn = (b, r, k) => b.devices.filter(d => d.room === r.id && d.kind === k).length;
-const reqOf = (r, k) => num(r.req && r.req[k]);
+const reqOf = (r, k) => clamp(Math.round(num(r.req && r.req[k])), 0, 200);
 const area = r => !r.geo ? 0 : r.geo.area && r.geo.pw ? r1(r.geo.area * (r.geo.w / r.geo.pw) * (r.geo.h / r.geo.ph)) : r1(r.geo.w * r.geo.h);
 function fixFloorPlan(f){ const p = f.plan; p.items = Array.isArray(p.items) ? p.items : []; f.h = f.h || 3.5; return p; }
 function snap(v){ return st().grid ? Math.round(v * 2) / 2 : r1(v); }
@@ -289,7 +289,7 @@ function onField(path, v){
     edit(() => { const [g, k] = path.split(".");
       if (g === "r"){ if (k === "users") r.users = Math.round(n(v)); else if (k === "floor"){ r.floor = v; b.devices.forEach(d => { if (d.room === r.id) d.floor = v; }); } else r[k] = String(v).trim() || r[k]; }
       else if (g === "g"){ r.geo[k] = k === "w" || k === "h" ? Math.max(.5, n(v)) : n(v); delete r.geo.est; }
-      else if (g === "q"){ r.req[k] = Math.round(n(v)); } }); return; }
+      else if (g === "q"){ r.req[k] = clamp(Math.round(n(v)), 0, 200); } }); return; }   // at most 200 of a kind per room (a typed 99999 made 99999 devices)
   if (s.type === "bitem"){ const f = curFloor(b), it = f && f.plan.items.find(x => x.id === s.id); if (!it) return;
     edit(() => { const k = path.split(".")[1]; if (k === "text") it.text = v; else if (k === "style") it.style = v; else if (k === "rot") it.rot = ((num(String(v).replace(",", "."), 0) % 360) + 360) % 360; else it[k] = k === "w" || k === "h" ? Math.max(.1, n(v)) : k === "size" ? clamp(n(v), 8, 40) : n(v); }); return; }
   if (s.type === "bwall"){ const f = curFloor(b), w = f && (f.plan.walls || []).find(x => x.id === s.id); if (!w) return; const k = path.split(".")[1], x = num(String(v).replace(",", "."), NaN);
@@ -413,7 +413,7 @@ function wire(){
     if (el.dataset.brn){ const r = roomById(b, el.dataset.brn); if (r && el.value.trim()) edit(() => { r.name = el.value.trim(); }); return; }
     if (el.dataset.brt){ const r = roomById(b, el.dataset.brt); if (r) edit(() => { r.type = el.value; }); return; }
     if (el.dataset.bru){ const r = roomById(b, el.dataset.bru); if (r) edit(() => { r.users = Math.max(0, Math.round(num(el.value, 0))); }); return; }
-    if (el.dataset.brq){ const [id, k] = el.dataset.brq.split(":"), r = roomById(b, id); if (r) edit(() => { normRoom(r).req[k] = Math.max(0, Math.round(num(el.value, 0))); }); } });
+    if (el.dataset.brq){ const [id, k] = el.dataset.brq.split(":"), r = roomById(b, id); if (r) edit(() => { normRoom(r).req[k] = clamp(Math.round(num(el.value, 0)), 0, 200); }); } });
   document.addEventListener("pointerdown", e => {
     if (!onPlan() || (e.button !== 0 && e.pointerType !== "touch")) return; const svg = e.target.closest("svg.bplan"); if (!svg) return;
     const b = B(), f = curFloor(b); if (!f) return; const p = ptOf(e, svg, f);
@@ -541,7 +541,7 @@ function wizard(){
     for (let i = -W.under; i < W.floors; i++){ const o = old.find(x => x.lv === i) || {lv:i, name:i < 0 ? t("bd_floorB",{n:-i}) : t("floorN",{n:i + 1}), rooms:i < 0 ? 2 : 6, server:i === 0, area:W.area, R:[]};
       if (W.prevArea !== undefined && o.area === W.prevArea) o.area = W.area; W.F.push(o); }
     W.prevArea = W.area; };
-  const mkRooms = F => { const want = Math.max(0, Math.round(num(F.rooms))) + (F.server ? 1 : 0), old = F.R; F.R = [];
+  const mkRooms = F => { const want = clamp(Math.round(num(F.rooms)), 0, 300) + (F.server ? 1 : 0), old = F.R; F.R = [];
     if (F.server) F.R.push(old.find(r => r.type === "server") || {name:t("rt_server"), type:"server", users:0, req:Object.assign({}, RDEF.server)});
     for (let i = 0; F.R.length < want; i++){ const o = old.filter(r => r.type !== "server")[i] || {name:t("roomN",{n:i + 1}), type:"office", users:2, req:Object.assign({}, RDEF.office)}; F.R.push(o); } };
   const steps = [
@@ -567,7 +567,7 @@ function wizard(){
     if ($("#bw-fl")){ W.name = v("#bw-name").trim() || W.name; W.floors = clamp(Math.round(num(v("#bw-fl"), 1)), 1, 120); W.under = clamp(Math.round(num(v("#bw-un"), 0)), 0, 10); W.area = Math.max(10, num(String(v("#bw-ar")).replace(",", "."), 400)); W.h = Math.max(2, num(String(v("#bw-h")).replace(",", "."), 3.5)); mkFloors(); }
     $$("[data-wf]").forEach(el => { const [lv, k] = el.dataset.wf.split(":"), F = W.F.find(x => x.lv === +lv); if (!F) return; F[k] = el.type === "checkbox" ? el.checked : k === "name" ? el.value.trim() || F.name : num(String(el.value).replace(",", "."), F[k]); });
     $$("[data-wr]").forEach(el => { const [lv, i, k] = el.dataset.wr.split(":"), F = W.F.find(x => x.lv === +lv), r = F && F.R[+i]; if (!r) return;
-      if (k.startsWith("q.")) r.req[k.slice(2)] = Math.max(0, Math.round(num(el.value, 0))); else if (k === "users") r.users = Math.max(0, Math.round(num(el.value, 0)));
+      if (k.startsWith("q.")) r.req[k.slice(2)] = clamp(Math.round(num(el.value, 0)), 0, 200); else if (k === "users") r.users = Math.max(0, Math.round(num(el.value, 0)));
       else if (k === "type"){ if (r.type !== el.value){ r.type = el.value; r.req = Object.assign({}, RDEF[el.value]); } } else r[k] = el.value.trim() || r[k]; });
   };
   const draw = () => { modal(`<div class="wz">${steps[W.step]()}</div><div class="wzdots">${steps.map((_, i) => `<i class="${i === W.step ? "on" : ""}"></i>`).join("")}</div>
