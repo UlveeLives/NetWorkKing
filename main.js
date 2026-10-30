@@ -73,9 +73,9 @@ function showMain(){
   if (splash && !splash.isDestroyed()){ const s = splash; setTimeout(() => { try { if (!s.isDestroyed()) s.destroy(); } catch(e){} }, 60); }
 }
 function createSplash(p){
-  // 1020 × 960 at full size (room for the heartbeat glow round the panel); smaller screens get the same picture zoomed down
-  const wa = screen.getPrimaryDisplay().workAreaSize, k = Math.min(1, (wa.height - 24) / 960, (wa.width - 24) / 1020);
-  splash = new BrowserWindow({ width: Math.round(1020 * k), height: Math.round(960 * k), frame: false, transparent: true, resizable: false,
+  // 1080 × 1000 at full size (a big oval panel + room for the heartbeat glow round it); smaller screens get it zoomed down
+  const wa = screen.getPrimaryDisplay().workAreaSize, k = Math.min(1, (wa.height - 24) / 1000, (wa.width - 24) / 1080);
+  splash = new BrowserWindow({ width: Math.round(1080 * k), height: Math.round(1000 * k), frame: false, transparent: true, resizable: false,
     maximizable: false, fullscreenable: false, skipTaskbar: true, show: false, hasShadow: false, backgroundColor: "#00000000", center: true,
     title: app.getName(), icon: path.join(__dirname, "build", p.theme === "light" ? "icon-light.png" : "icon-dark.png"),
     webPreferences: { preload: path.join(__dirname, "splashpreload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true, zoomFactor: k } });
