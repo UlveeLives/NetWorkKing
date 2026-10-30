@@ -1,9 +1,15 @@
-NETWORKKING 3.8.2 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.3 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.8.3
+ - Etiketlərdəki QR kod indi keçiddir: telefonla skan edəndə NetWorkKing (PWA) açılır və birbaşa həmin porta /
+   cihaza / kabelə keçir. Layihə telefondakı proqrama idxal olunmalıdır. Keçiddə yalnız identifikatorlar var,
+   layihə məlumatı internetə çıxmır. Etiket pəncərəsində «QR kodun içində: Keçid / Yalnız mətn» seçimi və mobil
+   proqramın ünvanı (standart: https://ulveelives.github.io/NetWorkKing/) dəyişdirilə bilər.
 
 3.8.2
  - Port Map: «Kabelin arxa ucu məlum deyil» seçimi (switch portunda «Port nasazdır»-ın altında, patch panel portunda da).
