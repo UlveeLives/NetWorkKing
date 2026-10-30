@@ -1,9 +1,15 @@
-NETWORKKING 3.9.0 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.9.1 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.9.1
+ - FortiGate idxalı: LLDP qonşuları (diagnose switch-controller switch-info lldp neighbors-summary) FortiOS 7.4
+   formatında oxunur — switch-lər arası və FortiGate bağlantıları dəqiq portlarla, FortiAP-lar adı / yeri (location) /
+   MAC-ı ilə tanınır; AP siyahısı (diagnose wireless-controller wlac -c wtp və ya Managed FortiAPs export) əlavə
+   edilərsə, «FortiAP-231K» kimi görünən AP-lər də MAC-a görə öz portlarına bağlanır.
 
 3.9.0
  - FortiGate-dən idxal (Port Map → «⤓ FortiGate-dən», və ya yuxarıdakı «İdxal» ilə .conf faylı): bir və ya bir neçə faylı

@@ -71,7 +71,7 @@ function fromConfig(txt, R){
     // the ports of an ISL trunk lead to the switch named on the trunk
     Object.values(sw.trunks).forEach(tr => { if (!tr.isl) return; tr.members.forEach((m, i) => { const n = pNo(m); if (n && !port(sw, n).isl) port(sw, n).isl = {ser:tr.isl, port:i === 0 ? tr.islPort : ""}; }); }); });
   // FortiAPs
-  edits(root, "wireless-controller wtp").forEach(e => { const a = R.aps[e.name] = R.aps[e.name] || {ser:e.name}; a.name = uq(e.set.name) || a.name || e.name; a.model = apModel(e.name); a.profile = uq(e.set["wtp-profile"]); });
+  edits(root, "wireless-controller wtp").forEach(e => { const a = R.aps[e.name] = R.aps[e.name] || {ser:e.name}; a.name = uq(e.set.name) || a.name || e.name; a.loc = uq(e.set.location); a.model = apModel(e.name); a.profile = uq(e.set["wtp-profile"]); });
 }
 const sw0 = (R, ser) => R.sw[ser] = R.sw[ser] || {ser, name:"", model:"", ports:{}, trunks:{}, peer:"", macs:{}, lldp:{}};
 const port = (sw, n) => sw.ports[n] = sw.ports[n] || {};
@@ -79,11 +79,19 @@ const host = (R, mac, o) => { const h = R.hosts[mac] = R.hosts[mac] || {}; if (o
 
 /* ---------- CLI outputs: MAC tables, LLDP neighbours, ARP, DHCP leases ---------- */
 function fromText(txt, R){
-  let cur = null, any = false;
+  let cur = null, any = false, wtp = null;
   String(txt || "").replace(/\r/g, "").split("\n").forEach(l => { let m;
-    const s = l.match(SWSER); if (s && !/\bport\d+\b/i.test(l)){ cur = s[1]; sw0(R, cur); return; }             // «S248EPTF18000001 :» or «Managed Switch : S248…»
-    // LLDP neighbours summary: portN  Up  <device>  <ttl>  <capability> …
-    if ((m = l.match(/^\s*(port\d+)\s+(?:up|down)\s+(\S+)\s+\d+\s+([A-Z,]+|-)?/i)) && cur && !l.match(MACG)){ const n = pNo(m[1]); if (n && m[2] !== "-"){ sw0(R, cur).lldp[n] = {name:m[2], cap:m[3] || ""}; R.kinds.add("lldp"); any = true; } return; }
+    // «Managed Switch : S124EPTQ18000001  0» — FortiOS 7.4 writes the switch's own name here when it has one
+    if ((m = l.match(/managed\s+switch\s*:\s*(\S+)/i))){ cur = R.alias[m[1]] || m[1]; sw0(R, cur); return; }
+    const s = l.match(SWSER); if (s && !/\bport\d+\b/i.test(l)){ cur = s[1]; sw0(R, cur); return; }             // «S248EPTF18000001 :» (MAC table)
+    // LLDP neighbours summary: portN  Up  <device-name>  <ttl>  <capability>  <MED-type>  <port-id: a port name or the neighbour's MAC>
+    if ((m = l.match(/^\s*(port\d+)\s+(up|down)\s+(\S+)\s+(\d+|-)\s+(\S+)\s+(\S+)\s+(\S+)\s*$/i)) && cur){ const n = pNo(m[1]);
+      if (n && m[3] !== "-"){ const pid = m[7] === "-" ? "" : m[7]; sw0(R, cur).lldp[n] = {name:m[3], cap:m[5] === "-" ? "" : m[5], pid, mac:MACG.test(pid) ? nMac(pid) : ""}; MACG.lastIndex = 0; R.kinds.add("lldp"); any = true; }
+      return; }
+    // FortiAP list (diagnose wireless-controller wlac -c wtp / get wireless-controller wtp-status): serial and MAC of each AP
+    if ((m = l.match(APSER)) && !/\bport\d+\b/i.test(l)){ wtp = m[1]; const mm = l.replace(m[1], " ").match(MACG); if (mm){ const a = R.aps[wtp] = R.aps[wtp] || {ser:wtp, name:wtp, model:apModel(wtp)}; a.mac = nMac(mm[0]); R.kinds.add("ap"); any = true; } MACG.lastIndex = 0; return; }
+    if (wtp && (m = l.match(/^\s*(?:wtp[-\s]?)?name\s*:\s*(.+?)\s*$/i)) && R.aps[wtp] === undefined){ R.aps[wtp] = {ser:wtp, name:m[1], model:apModel(wtp)}; return; }
+    if (wtp && (m = l.match(/^\s*(?:base[-\s]?|wtp[-\s]?)?mac(?:[-\s]*addr(?:ess)?)?\s*[:=]\s*(\S+)/i)) && nMac(m[1])){ const a = R.aps[wtp] = R.aps[wtp] || {ser:wtp, name:wtp, model:apModel(wtp)}; a.mac = nMac(m[1]); R.kinds.add("ap"); any = true; return; }
     const macs = l.match(MACG); if (!macs) return; const mac = nMac(macs[0]); if (!mac || mac === "FF:FF:FF:FF:FF:FF" || mac === "00:00:00:00:00:00") return;
     const ips = (l.match(IPG) || []).filter(x => IP.toInt(x) !== null), pm = l.replace(macs[0], " ").match(/\bport(\d+)\b/i);
     if (pm && cur){ const sw = sw0(R, cur); (sw.macs[String(+pm[1])] = sw.macs[String(+pm[1])] || new Set()).add(mac); R.kinds.add("mac"); any = true; }
@@ -116,6 +124,9 @@ function fromRecords(list, R){
   list.forEach(r0 => { const r = r0 || {}, K = Object.keys(r), get = rx => { const k = K.find(x => rx.test(x)); return k === undefined ? undefined : r[k]; };
     const portV = listOf(get(/^port$/i) !== undefined ? get(/^port$/i) : r[K[0]]).join(" ").trim(), filled = K.filter(k => listOf(r[k]).join("").trim()).length;
     const pn = pNo(portV);
+    // the Managed FortiAPs page export: a row with an AP serial and its MAC (no switch port)
+    { const all = K.map(k => listOf(r[k]).join(" ")).join(" "), as = all.match(APSER), mm = all.replace(as ? as[1] : "", " ").match(MACG); MACG.lastIndex = 0;
+      if (as && !pn){ const a = R.aps[as[1]] = R.aps[as[1]] || {ser:as[1], name:as[1], model:apModel(as[1])}; const nk = K.find(k => /^name$/i.test(k)); if (nk && listOf(r[nk]).join("").trim()) a.name = listOf(r[nk]).join("").trim(); if (mm) a.mac = nMac(mm[0]); n++; return; } }
     if (!pn){ if (portV && filled === 1) cur = resolve(portV); return; }                                         // a CSV line with only the switch
     const swv = get(/^fortiswitch$|switch.?(id|name|serial)|^serial$/i), ser = swv !== undefined && listOf(swv).join("").trim() ? resolve(listOf(swv).join("").trim()) : cur;
     if (!ser) return; const sw = sw0(R, ser), o = port(sw, pn); n++;
@@ -200,11 +211,14 @@ function apply(R, opt){
       put("desc", o.desc); put("admin", o.admin); put("speed", o.speed); put("poe", o.poe);
       if (!PMx().hasCfg(d, n)) delete d.pcfg[n]; else Q.port++; }); });
   // FortiAPs
-  const AP = {};
+  const AP = {}, apUnk = new Set();
+  function regAp(a, d){ AP[a.ser.toUpperCase()] = d; if (a.name) AP["n:" + a.name] = d; if (a.loc) AP["n:" + a.loc] = d; if (a.mac || d.mac) AP["m:" + nMac(a.mac || d.mac)] = d; }
   if (opt.ap) Object.values(R.aps).forEach(a => { let d = b.devices.find(x => x.serial && x.serial.toUpperCase() === a.ser.toUpperCase()) || b.devices.find(x => x.kind === "ap" && x.name === a.name);
     if (!d){ d = newDevice("ap", {name:a.name && !b.devices.some(x => x.name === a.name) ? a.name : autoName(b, "ap"), brand:"Fortinet", model:a.model, serial:a.ser}); const r = a.model && catMatch(d); if (r) applySpec(d, r); b.devices.push(d); Q.ap++; }
-    AP[a.ser.toUpperCase()] = d; AP["n:" + a.name] = d; });
-  if (!opt.ap) Object.values(R.aps).forEach(a => { const d = b.devices.find(x => x.serial && x.serial.toUpperCase() === a.ser.toUpperCase()); if (d){ AP[a.ser.toUpperCase()] = d; AP["n:" + a.name] = d; } });
+    if (a.mac && !d.mac) d.mac = a.mac; regAp(a, d); });
+  if (!opt.ap) Object.values(R.aps).forEach(a => { const d = b.devices.find(x => x.serial && x.serial.toUpperCase() === a.ser.toUpperCase()); if (d) regAp(a, d); });
+  // an AP is known by its serial, its name, its location (LLDP shows that as the system name) and its MAC
+  b.devices.filter(x => x.kind === "ap" && x.mac).forEach(x => { AP["m:" + nMac(x.mac)] = x; });
   // links: FortiLink (switch → FortiGate), switch ↔ switch (ISL), LLDP neighbours
   if (opt.link){
     const fgMembers = ifn => { const I = R.ifaces[ifn]; return I && I.members.length ? I.members : ifn ? [ifn] : []; }, fgPort = m => pNo(m) || m;
@@ -220,16 +234,20 @@ function apply(R, opt){
         if (o.peer.fg){ if (fw){ const fm = fgMembers(s.peer || "fortilink"); linkTo(d, n, fw, fm.length === 1 ? fgPort(fm[0]) : "", "cat6"); } return; }
         const z = R.sw[o.peer.ser], zd = SW[o.peer.ser]; if (!zd) return; const back = z ? Object.entries(z.ports).filter(([, q]) => q.peer && q.peer.ser === s.ser).map(([k]) => k) : [];
         linkTo(d, n, zd, back.length === 1 ? back[0] : "", "cat6"); });
-      Object.entries(s.lldp).forEach(([n, nb]) => { const nm = String(nb.name || ""), up = nm.toUpperCase();
-        const z = SW[up] || SW[nm] || AP[up] || AP["n:" + nm] || b.devices.find(x => x.name === nm || (x.host && x.host === nm) || (x.serial && x.serial.toUpperCase() === up));
-        if (z){ if (z !== d) linkTo(d, n, z, "", "cat6"); return; }
-        if (!opt.newDev) return; const cap = String(nb.cap || ""), kind = /W/.test(cap) || APSER.test(up) ? "ap" : /T/.test(cap) ? "phone" : /B/.test(cap) || SWSER.test(up) ? "switch" : /R/.test(cap) ? "router" : "other";
+      Object.entries(s.lldp).forEach(([n, nb]) => { const nm = String(nb.name || ""), up = nm.toUpperCase(), cap = String(nb.cap || ""), ser = R.alias[nm] || nm;
+        const z = SW[ser] || SW[up] || AP[up] || AP["n:" + nm] || (nb.mac && AP["m:" + nb.mac]) || (nb.mac && b.devices.find(x => nMac(x.mac) === nb.mac)) || (fw && (nm === fw.name || nm === R.fw.hostname) ? fw : null)
+          || b.devices.find(x => x.name === nm || (x.host && x.host === nm) || (x.serial && x.serial.toUpperCase() === up));
+        if (z){ if (z !== d){ linkTo(d, n, z, nb.pid && !nb.mac ? (pNo(nb.pid) || nb.pid) : "", "cat6"); if (z.kind === "ap" && nb.mac && !z.mac) z.mac = nb.mac; } return; }
+        // a FortiAP that only says «FortiAP-231K»: which of the APs it is cannot be told without its MAC
+        if (/W/.test(cap) && /^FortiAP|^FP/i.test(nm)){ apUnk.add(s.ser + ":" + n); return; }
+        if (!opt.newDev) return; const kind = /W/.test(cap) || APSER.test(up) ? "ap" : /T/.test(cap) ? "phone" : /B/.test(cap) || SWSER.test(up) ? "switch" : /R/.test(cap) ? "router" : "other";
         const x = newDevice(kind, {name:b.devices.some(y => y.name === nm) ? autoName(b, kind) : nm, status:"installed"}); b.devices.push(x); Q.devNew++; linkTo(d, n, x, "", "cat6"); }); }); }
   // «Device Information» of the export: a FortiAP by its name, else one MAC and / or one host name = the device on the port
   if (opt.dev || opt.ap) Object.values(R.sw).forEach(s => { const d = SW[s.ser]; if (!d) return;
     Object.entries(s.ports).forEach(([n, o]) => { if (!o.info || o.peer || +n > num(d.ports)) return; const I = o.info;
       const ap = I.map(x => AP["n:" + x]).find(Boolean); if (ap){ if (opt.ap) linkTo(d, n, ap, "", "cat6"); s.macs[n] = new Set(); return; }
-      if (I.some(x => /^FortiAP-/i.test(x))){ Q.apUnknown++; s.macs[n] = new Set(); return; }
+      if (PMx().linksAt(b, d.id, n).length){ s.macs[n] = new Set(); return; }                               // already linked (LLDP)
+      if (I.some(x => /^FortiAP-/i.test(x))){ apUnk.add(s.ser + ":" + n); s.macs[n] = new Set(); return; }
       if (!opt.dev) return; const macs = I.filter(x => MACG.test(x) && !(MACG.lastIndex = 0)).map(x => nMac(x.match(MACG)[0])), names = I.filter(x => !MACG.test(x) && !(MACG.lastIndex = 0) && !IP.toInt(x));
       MACG.lastIndex = 0; if (macs.length > 1 || names.length > 1 || (!macs.length && !names.length)){ if (I.length > 1) Q.multi++; s.macs[n] = new Set(); return; }
       const mac = macs[0] || "", nm = names[0] || "", pr = PMx().parts(b, d.id, n), ed = pr.end && devById(b, pr.end.d);
@@ -241,7 +259,7 @@ function apply(R, opt){
       Q.dev++; s.macs[n] = new Set(); }); });
   // end devices from the MAC tables (one MAC on a port that leads to no other switch)
   if (opt.dev) Object.values(R.sw).forEach(s => { const d = SW[s.ser]; if (!d) return;
-    Object.entries(s.macs).forEach(([n, set]) => { if (set.size !== 1 || +n > num(d.ports)) return; const o = s.ports[n] || {}; if (o.isl || s.lldp[n] && (SWSER.test(String(s.lldp[n].name).toUpperCase()))) return;
+    Object.entries(s.macs).forEach(([n, set]) => { if (set.size !== 1 || +n > num(d.ports)) return; const o = s.ports[n] || {}; if (o.isl || o.peer || s.lldp[n] && (SWSER.test(String(s.lldp[n].name).toUpperCase()) || /[BRW]/.test(s.lldp[n].cap))) return;
       const mac = [...set][0], h = R.hosts[mac] || {}, pr = PMx().parts(b, d.id, n), ed = pr.end && devById(b, pr.end.d);
       if (ed && PMx().isNet(ed)) return;
       if (ed){ if (!ed.mac){ ed.mac = mac; Q.dev++; } if (h.ip && !ed.ip){ ed.ip = h.ip; Q.ip++; } return; }
@@ -251,6 +269,7 @@ function apply(R, opt){
       // through the patch panel when the port already leads to one
       if (!PMx().linksAt(b, x.id).length){ const tail = pr.after.filter(q => PMx().passive(devById(b, q.d))).slice(-1)[0] || {d:d.id, p:n}; linkTo(tail.d === d.id ? d : devById(b, tail.d), tail.p, x, "", "cat6"); }
       Q.dev++; }); });
+  Q.apUnknown = [...apUnk].filter(k => { const [ser, n] = k.split(":"), d = SW[ser]; return d && !PMx().linksAt(b, d.id, n).length; }).length;
   // IP / name for every device whose MAC is known (ARP, DHCP leases, reservations)
   if (opt.dev) b.devices.forEach(x => { const h = R.hosts[nMac(x.mac)]; if (!h) return; if (h.ip && !x.ip){ x.ip = h.ip; Q.ip++; } if (h.name && !x.host) x.host = h.name; });
   return Q;
