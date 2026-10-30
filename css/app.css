@@ -859,3 +859,4 @@ svg.rkcords .cord path.halo{stroke:rgba(10,14,22,.55);stroke-width:3.4;opacity:.
 .dgsvg .nb{opacity:.6}
 .fld input.need{outline:2px solid #f59e0b;outline-offset:1px;background:color-mix(in srgb,#f59e0b 12%,transparent)}
 .smf tr.smout>td{background:color-mix(in srgb,#22c55e 7%,transparent)}
+.bfchip.site{border-color:#2e9d57}.bfchip.site.on{background:#2e9d57;color:#fff}.bfcard.site{border-color:#2e9d57}

@@ -178,6 +178,18 @@ const floorName = (b, id) => id === "__later" ? t("later") : id === OUT_FLOOR ? 
 const OUT_FLOOR = "__out";
 // names that mean «outside»; a winter garden (kış bahçesi) is inside
 const OUTDOOR_RX = /həyət|heyet|(?<!k[ıi]ş |k[ıi]s |q[ıi]ş |winter )(bahçe|bahce|garden)|yard|çöl|outdoor|outside|exterior|dış mekan|dis mekan|perimeter|çevrə|cevre|parking|otopark|darvaza|gate/i;
+// the site plan of «Çevrə»: a drawing of the whole plot (yard, gate, parking, guard house, pool) kept apart from the floors —
+// it is not counted, ordered or stacked as a floor. Its devices and rooms are the ones on «Çevrə». Created on first use.
+function siteOf(b){
+  if (!b.site || typeof b.site !== "object") b.site = {};
+  const s = b.site; s.id = OUT_FLOOR; if (!s.name) s.name = t("sitePlan"); if (!s.h) s.h = 3;
+  const p = s.plan = s.plan && typeof s.plan === "object" ? s.plan : {};
+  if (!(num(p.wm) > 0)) p.wm = 60; if (!(num(p.hm) > 0)) p.hm = 45; if (p.img === undefined) p.img = null; if (p.op === undefined) p.op = 100;
+  ["items","walls","shapes","survey"].forEach(k => { if (!Array.isArray(p[k])) p[k] = []; }); if (p.ext === undefined) p.ext = 4; if (p.cal === undefined) p.cal = false; if (p.idf === undefined) p.idf = null;
+  return s;
+}
+// a floor, or the site plan for «Çevrə» (plan views only — lists of floors never include the site)
+const planFloor = (b, id) => id === OUT_FLOOR ? siteOf(b) : floorById(b, id);
 const roomOutside = rm => !!rm && (rm.type === "outdoor" || rm.floor === OUT_FLOOR);
 const devOutside = (b, d) => !!d && (d.floor === OUT_FLOOR || (d.kind === "camera" && d.camera && d.camera.loc === "out" && !d.room) || roomOutside(d.room && roomById(b, d.room)));
 const roomName = (b, id) => id === "__later" ? t("later") : (roomById(b, id) || {}).name || "";

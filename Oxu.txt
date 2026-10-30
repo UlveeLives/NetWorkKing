@@ -1,9 +1,18 @@
-NETWORKKING 3.9.4 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.9.5 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.9.5
+ - 🌳 Ərazi planı: «Çevrə (bina xarici)»-nin öz çertyoju — bütün ərazi (həyət, giriş, parkinq, mühafizə, hovuz).
+   Mərtəbə sayılmır, mərtəbə siyahılarına və sxemlərdəki mərtəbə qutularına düşmür. Bina strukturu, CCTV → Çertyoj və
+   Wi-Fi Plan-da mərtəbə düymələrinin yanında «🌳 Ərazi planı» düyməsi; Bina strukturu → Struktur və Tələblər-də ayrıca
+   bölmə; Xülasə → Mərtəbələr → Çevrə sətrində ölçü və «🏢 Planı aç». Çertyoj, otaq, divar, sərhəd, cihaz, rack —
+   mərtəbə planındakı bütün alətlər işləyir. Ərazi planına qoyulan kamera özü «Xarici» olur.
+ - Wi-Fi: ərazi planındakı AP-lər mərtəbələrə, mərtəbələrdəki AP-lər ərazi planına siqnal vermir (ayrı hesablanır).
+ - Sənəd / çap: Bina strukturu, CCTV, Wi-Fi və Xülasə sənədlərində ərazi planı ayrıca səhifədir (boş deyilsə).
 
 3.9.4
  - Port Map: patch panel portunun «Ön tərəf»-inə istənilən cihaz qoşula bilər (switch, digər panel, extender, dekoder…);

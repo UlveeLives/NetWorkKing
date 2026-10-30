@@ -222,7 +222,14 @@ document.addEventListener("pointerup", zpEnd, true); document.addEventListener("
 document.addEventListener("click", e => { const b = e.target.closest("[data-zpa]"); if (!b) return; const el = zpEl(b); if (!el) return; const k = b.dataset.zpa; if (k === "fit") zpFit(el); else zpZoom(el, k === "in" ? 1.25 : .8); });
 window.addEventListener("resize", debounce(() => $$(".zp").forEach(el => { if (!ZP.st[el.dataset.zp]) zpFit(el); }), 150));
 
+// a render started while another one runs (an input removed by the first render fires its own change / blur) waits for it
+let renderBusy = false, renderAgain = false;
 function render(){
+  if (renderBusy){ renderAgain = true; return; }
+  renderBusy = true; try { render0(); } finally { renderBusy = false; }
+  if (renderAgain){ renderAgain = false; render(); }
+}
+function render0(){
   if (!store) return;
   document.documentElement.lang = store.settings.lang;
   const a = curApp(), tab = curTab();

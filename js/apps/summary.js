@@ -150,9 +150,10 @@ function floorsView(){
           <td class="nw"><button class="btn small ghost" data-smfa="plan:${f.id}" title="${esc(t("bd_openPlan"))}">🏢</button><button type="button" class="epdel" data-smfa="del:${f.id}" title="${esc(t("delete"))}">−</button></td></tr>
           ${open[f.id] ? roomsSub(f.id, R) : ""}`; }).join("")}
       ${(() => { const L = outDevs(), R = b.rooms.filter(r => r.floor === OUT_FLOOR);   // the surroundings: rooms and devices outside the building
-        return `<tr class="smout"><td></td><td><b>🌳 ${esc(t("flOut"))}</b></td><td class="muted">—</td><td class="muted">—</td>
+        const sp = b.site && b.site.plan;
+        return `<tr class="smout"><td></td><td><b>🌳 ${esc(t("flOut"))}</b></td><td class="muted">—</td><td class="nw">${sp ? `<input data-smfl="${OUT_FLOOR}:wm" value="${esc(r1(num(sp.wm)))}" inputmode="decimal" style="width:58px"> × <input data-smfl="${OUT_FLOOR}:hm" value="${esc(r1(num(sp.hm)))}" inputmode="decimal" style="width:58px">` : `<span class="muted">—</span>`}</td>
           <td class="c"><button class="lnkb" data-smfa="rooms:${OUT_FLOOR}">${R.length} ${open[OUT_FLOOR] ? "▴" : "▾"}</button></td><td class="c"><b>${L.length}</b></td><td class="c">${b.racks.filter(r => r.floor === OUT_FLOOR).length || ""}</td>
-          <td class="c">${cnt(L, ["outlet"]) || ""}</td><td class="c">${cnt(L, ["ap"]) || ""}</td><td class="c">${cnt(L, ["camera"]) || ""}</td><td class="c muted">—</td><td></td></tr>
+          <td class="c">${cnt(L, ["outlet"]) || ""}</td><td class="c">${cnt(L, ["ap"]) || ""}</td><td class="c">${cnt(L, ["camera"]) || ""}</td><td class="c">${sp && sp.img ? "🖼" : "—"}</td><td class="nw"><button class="btn small ghost" data-smfa="plan:${OUT_FLOOR}" title="${esc(t("bd_openPlan"))}">🏢</button></td></tr>
           ${open[OUT_FLOOR] ? roomsSub(OUT_FLOOR, R) : ""}`; })()}
       <tr class="tot"><td></td><td>${esc(t("total"))}</td><td></td><td></td><td class="c">${b.rooms.length}</td><td class="c">${b.devices.filter(d => !isAcc(d)).length}</td><td class="c">${b.racks.length}</td><td colspan="5"></td></tr></table></div>` : `<div class="empty"><p>${esc(t("bd_emptyT"))}</p></div>`}</div>`;
 }
@@ -177,7 +178,7 @@ async function floorAct(k){
 document.addEventListener("change", async e => {
   if (UI.app !== "summary") return; const el = e.target, b = B();
   if (el.dataset.smf){ const S = st(), k = el.dataset.smf; S[k] = el.type === "checkbox" ? el.checked : el.value; render(); return; }
-  if (el.dataset.smfl){ const [id, k] = el.dataset.smfl.split(":"), f = floorById(b, id); if (!f) return; const v = el.value.trim();
+  if (el.dataset.smfl){ const [id, k] = el.dataset.smfl.split(":"), f = planFloor(b, id); if (!f) return; const v = el.value.trim();
     return edit(() => { if (k === "name") f.name = v || f.name; else if (k === "h") f.h = Math.max(2, num(v.replace(",", "."), f.h || 3.2)); else f.plan[k] = Math.max(2, num(v.replace(",", "."), f.plan[k])); }); }
   if (el.dataset.smrm){ const [id, k] = el.dataset.smrm.split(":"), r = roomById(b, id); if (!r) return; const v = el.value.trim();
     return edit(() => { if (k === "name") r.name = v || r.name; else if (k === "users") r.users = Math.max(0, Math.round(num(v, 0))); else r.type = v; }); }
@@ -209,6 +210,9 @@ function listCsv(){ const b = B();
     b.devices.map(d => { const u = up(b, d); return [d.name, kindName(d.kind), d.brand, d.model, t("st_" + d.status), floorName(b, d.floor), roomName(b, d.room), d.rack ? (rackById(b, d.rack) || {}).name : "", d.u || "", d.ip, d.mac, (vlanById(b, d.vlan) || {}).vid || "", d.serial, u.sw ? devLabel(u.sw) + ":" + u.p : "", gaps(b, d).map(g => t(g[1])).join("; "), d.notes]; })), "csv", "text/csv"); }
 function bomCsv(){ const b = B(); saveText(`${fileSafe(b.name)} - ${t("sm_bom")}.csv`, csvText([t("f_kind"), t("f_brand"), t("f_model"), t("sm_qty"), t("st_installed"), t("st_planned"), t("sm_where")], bomData(b, true).map(o => [kindName(o.kind), o.brand, o.model, o.n, (o.st.installed || 0) + (o.st.active || 0), o.st.planned || 0, [...o.fl].join(", ")])), "csv", "text/csv"); }
 function docBody(b){
+  return docList(b) + (window.BLD && BLD.siteUsed(b) ? BLD.sitePage(b, true) : "");
+}
+function docList(b){
   const L = b.devices.filter(d => !isAcc(d)).sort((x, y) => KIND_ORDER.indexOf(x.kind) - KIND_ORDER.indexOf(y.kind) || devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   return bomView(true).replace(/<button[^>]*>.*?<\/button>/g, "") + `<h3>${esc(t("sm_devList"))}</h3><table class="t"><tr><th>${esc(t("f_name"))}</th><th>${esc(t("f_kind"))}</th><th>${esc(t("f_brand"))} / ${esc(t("f_model"))}</th><th>${esc(t("f_floor"))} / ${esc(t("f_room"))}</th><th>Rack</th><th>IP</th><th>MAC</th><th>VLAN</th><th>${esc(t("f_serial"))}</th><th>${esc(t("f_status"))}</th></tr>
     ${L.map(d => `<tr><td>${esc(devLabel(d))}</td><td>${esc(kindName(d.kind))}</td><td>${esc([d.brand, d.model].filter(Boolean).join(" "))}</td><td>${esc([floorName(b, d.floor), roomName(b, d.room)].filter(Boolean).join(" · "))}</td><td>${esc(d.rack ? (rackById(b, d.rack) || {}).name + " U" + d.u : "")}</td><td class="mono">${esc(d.ip)}</td><td class="mono">${esc(d.mac)}</td><td>${esc((vlanById(b, d.vlan) || {}).vid || "")}</td><td>${esc(d.serial)}</td><td>${esc(t("st_" + d.status))}</td></tr>`).join("")}</table>`;

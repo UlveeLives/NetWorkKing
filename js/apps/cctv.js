@@ -138,7 +138,8 @@ function nvrView(b){
 }
 function camCsv(b){ saveText(`${fileSafe(b.name)} - CCTV.csv`, csvText([t("f_name"), t("f_brand"), t("f_model"), t("camStyle"), "MP", t("camLens"), t("camFov"), "DORI D/O/R/I (m)", t("f_floor"), t("f_room"), "IP", "MAC", "NVR", t("camCh"), "Switch", "Port", "Mbps", "TB", t("f_status")],
   cams(b).map(d => { const K = camCalc(b, d), nv = nvrOf(b, d), up = upOf(b, d); return [devLabel(d), d.brand, d.model, t("cs_" + d.camera.style), d.camera.mp, d.camera.lens, K.fov ? K.fov.toFixed(0) : "", K.dori ? K.dori.join("/") : "", floorName(b, d.floor), roomName(b, d.room), d.ip, d.mac, nvrsOf(b, d).map(devLabel).join(", "), nvrsOf(b, d).map(x => chOn(d, x)).join(", "), up.sw ? devLabel(up.sw) : "", up.p || "", K.mbps.toFixed(1), K.tb.toFixed(2), t("st_" + d.status)]; })), "csv", "text/csv"); }
-function docBody(b){
+function docBody(b){ return docMain(b) + (window.BLD && BLD.siteUsed(b) ? BLD.sitePage(b, true) : ""); }
+function docMain(b){
   const v = view(b, cfg.id), by = {};
   cams(b).forEach(d => { const k = [d.camera.loc, d.camera.style, d.brand + " " + d.model, d.camera.mp, d.camera.lens].join("|"); (by[k] = by[k] || {d, n:0}).n++; });
   return `${Object.keys(v.nodes).length || v.boxes.length ? `<div style="border:1px solid #c7d1e6;border-radius:6px;overflow:hidden">${dgSvg(b, cfg, {print:true}).replace(/width="[\d.]+" height="[\d.]+"/, 'width="100%"')}</div>` : ""}

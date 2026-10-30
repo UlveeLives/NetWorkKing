@@ -70,6 +70,7 @@ function normBuilding(b){
   b.tb = Object.assign({company:"", project:"", client:"", drawingNo:"", rev:"A", author:"", checked:"", approved:"", date:today(), scale:"NTS", sheet:"1 / 1", status:""}, b.tb || {});
   b.pagefmt = Object.assign({size:"A3", orient:"landscape"}, b.pagefmt || {});
   b.floors.forEach(f => { f.plan = Object.assign({img:null, wm:40, hm:14, op:60, cal:false, idf:null, walls:[], survey:[]}, f.plan || {}); f.plan.walls = f.plan.walls || []; f.plan.survey = f.plan.survey || []; f.lvl = f.lvl ?? 0; });
+  if (b.site && typeof siteOf === "function") siteOf(b);   // the site plan of «Çevrə» (only when it has been used)
   b.rooms.forEach(r => { r.users = r.users ?? 0; r.wall = r.wall || "drywall"; });
   b.racks.forEach(r => typeof normRack === "function" && normRack(r));
   b.devices.forEach(d => typeof normDevice === "function" && normDevice(d));

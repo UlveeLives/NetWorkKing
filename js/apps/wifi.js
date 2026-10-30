@@ -68,14 +68,15 @@ function apIn(b, d){
 }
 function syncIn(){
   const b = B(), W = wset(b), n = b.floors.length;
-  const floors = b.floors.slice().reverse().map((sf, i) => { const p = sf.plan;
-    return {id:sf.id, name:sf.name, desc:p.desc || "", color:p.color || Object.keys(FC)[(n - 1 - i) % 6], wm:clamp(num(p.wm, 40), 2, 2000), hm:clamp(num(p.hm, 14), 2, Math.min(2000, clamp(num(p.wm, 40), 2, 2000) * 20)),   /* depth ≤ 20 × width: the plan canvas stays drawable */ img:p.img || null, op:p.op ?? 60, idf:p.idf || null,
+  // the site plan («Çevrə») comes last, after the lowest floor; it is not stacked with the floors (no signal through it)
+  const floors = b.floors.slice().reverse().concat([siteOf(b)]).map((sf, i) => { const p = sf.plan;
+    return {id:sf.id, name:sf.name, desc:p.desc || "", color:p.color || (sf.id === OUT_FLOOR ? "green" : Object.keys(FC)[(n - 1 - i) % 6]), wm:clamp(num(p.wm, 40), 2, 2000), hm:clamp(num(p.hm, 14), 2, Math.min(2000, clamp(num(p.wm, 40), 2, 2000) * 20)),   /* depth ≤ 20 × width: the plan canvas stays drawable */ img:p.img || null, op:p.op ?? 60, idf:p.idf || null,
       walls:p.walls, survey:p.survey, calibrated:!!p.cal,
       rooms:b.rooms.filter(r => r.floor === sf.id && r.geo).map(r => { const o = {id:r.id, label:r.name, wall:r.wall || "drywall", users:num(r.users), x:num(r.geo.x), y:num(r.geo.y), w:num(r.geo.w, 1), h:num(r.geo.h, 1)};
         // outline and name position drawn from a DXF drawing (kept as they are; only x / y / w / h are edited here)
         ["poly","pw","ph","lx","ly"].forEach(k => { if (r.geo[k] !== undefined) Object.defineProperty(o, k, {value:r.geo[k], enumerable:false, writable:true}); }); return o; })}; });
   // the Building plan of each floor (an edited drawing is shown instead of the picture)
-  floors.forEach(f => { const sf = b.floors.find(x => x.id === f.id); Object.defineProperty(f, "pv", {value:sf && sf.plan, enumerable:false, writable:true}); });
+  floors.forEach(f => { const sf = planFloor(b, f.id); Object.defineProperty(f, "pv", {value:sf && sf.plan, enumerable:false, writable:true}); });
   const fids = new Set(floors.map(f => f.id));
   const aps = b.devices.filter(d => d.kind === "ap" && d.ap && d.ap.x !== null && d.ap.x !== undefined && d.ap.x !== "" && fids.has(d.floor)).map(d => apIn(b, d));
   FCD = {b, apIds:new Set(aps.map(a => a.id)), roomIds:new Set(floors.flatMap(f => f.rooms.map(r => r.id))),
@@ -87,10 +88,10 @@ function syncOut(){
   if (!FCD) return; const b = FCD.b, d = FCD.d, W = wset(b);
   W.cfg = d.cfg; W.view = d.view; W.ssid = d.tables.ssid; W.notes = d.notes; W.equip = d.equip;
   const byId = new Map(b.floors.map(f => [f.id, f])), out = [];
-  d.floors.slice().reverse().forEach(ff => { const sf = byId.get(ff.id) || {id:ff.id, name:ff.name, lvl:b.floors.length};
+  d.floors.slice().reverse().forEach(ff => { const site = ff.id === OUT_FLOOR, sf = site ? siteOf(b) : byId.get(ff.id) || {id:ff.id, name:ff.name, lvl:b.floors.length};
     sf.name = String(ff.name || "").trim() || sf.name;
     sf.plan = Object.assign(sf.plan || {}, {desc:ff.desc, color:ff.color, wm:ff.wm, hm:ff.hm, img:ff.img, op:ff.op, idf:ff.idf, walls:ff.walls, survey:ff.survey, cal:!!ff.calibrated});
-    out.push(sf); byId.delete(ff.id);
+    if (!site) out.push(sf); byId.delete(ff.id);
     ff.rooms.forEach(r => { let sr = roomById(b, r.id); if (!sr){ sr = {id:r.id}; b.rooms.push(sr); }
       sr.name = String(r.label || "").split("\n").join(" ").trim() || t("newRoom"); sr.floor = ff.id; sr.wall = r.wall; sr.users = num(r.users); sr.geo = Object.assign(sr.geo || {}, {x:r.x, y:r.y, w:r.w, h:r.h}); if (r.lx !== undefined){ sr.geo.lx = r.lx; sr.geo.ly = r.ly; } }); });
   byId.forEach(sf => { b.rooms.forEach(r => { if (r.floor === sf.id) r.floor = ""; }); b.devices.forEach(x => { if (x.floor === sf.id){ x.floor = ""; if (x.kind === "ap") x.ap.x = x.ap.y = null; } }); });
@@ -194,9 +195,10 @@ function wallLoss(W, ax, ay, bx, by){
   return sum;
 }
 // APs that can be heard on floor f (same floor and up to two floors above / below).
+const apart = (A, C) => A !== C && (A === OUT_FLOOR || C === OUT_FLOOR);   // the site plan and a floor do not hear each other
 function apsFor(d, f, b){
   const fi = d.floors.indexOf(f), out = [];
-  d.aps.forEach(a => { if (!radioOn(a, b)) return; const fj = d.floors.findIndex(x => x.id === a.floor); if (fj < 0) return; const k = Math.abs(fj - fi); if (k > 2) return;
+  d.aps.forEach(a => { if (!radioOn(a, b)) return; const fj = d.floors.findIndex(x => x.id === a.floor); if (fj < 0 || apart(a.floor, f.id)) return; const k = Math.abs(fj - fi); if (k > 2) return;
     const h = num(a.h, 3), ch = d.cfg.clientH, dz = k === 0 ? h - ch : fj < fi ? k * d.cfg.floorH + h - ch : k * d.cfg.floorH - h + ch;
     out.push({a, k, dz:Math.abs(dz), eirp:txOf(a, b) + gainOf(a, b), sp:rspan(a, b), w:b === "2.4" ? 20 : num(radio(a, b).w, 20)}); });
   return out;
@@ -283,7 +285,7 @@ function cableLen(d, a){
   const dv = devOf(a), l = dv && linksOf(B(), dv.id).find(x => num(x.len) > 0); if (l) return num(l.len);
   const fi = d.floors.findIndex(f => f.id === a.floor); if (fi < 0) return null;
   let best = null;
-  d.floors.forEach((f, j) => { if (!f.idf) return; const k = Math.abs(j - fi), dx = k ? 0 : Math.abs(a.x - f.idf.x) + Math.abs(a.y - f.idf.y), own = d.floors[fi];
+  d.floors.forEach((f, j) => { if (!f.idf || apart(f.id, a.floor)) return; const k = Math.abs(j - fi), dx = k ? 0 : Math.abs(a.x - f.idf.x) + Math.abs(a.y - f.idf.y), own = d.floors[fi];
     const run = k ? (own.idf ? null : Math.abs(a.x - f.idf.x) + Math.abs(a.y - f.idf.y) + k * d.cfg.floorH) : dx; if (run === null) return;
     const L = run + num(d.cfg.vert, 4) + num(d.cfg.slack, 3); if (best === null || L < best) best = L; });
   return best === null ? null : Math.round(best);
@@ -291,7 +293,7 @@ function cableLen(d, a){
 
 /* ---------- automatic channel plan (greedy, interference-weighted) ---------- */
 function apPairLoss(d, a, c, b){
-  const fa = d.floors.findIndex(f => f.id === a.floor), fc = d.floors.findIndex(f => f.id === c.floor); if (fa < 0 || fc < 0) return -200;
+  const fa = d.floors.findIndex(f => f.id === a.floor), fc = d.floors.findIndex(f => f.id === c.floor); if (fa < 0 || fc < 0 || apart(a.floor, c.floor)) return -200;
   const k = Math.abs(fa - fc); if (k > 2) return -200;
   const f = d.floors[fc], A = {a, k, dz:k * d.cfg.floorH, eirp:txOf(a, b) + gainOf(a, b)};
   return sigAt(d, b, A, c.x, c.y, k ? [] : wallsOf(f, b));
@@ -342,10 +344,11 @@ function exportCSV(name, header, rows){ saveText(fileSafe(B().name) + " - " + na
 /* ---------- plan rendering ---------- */
 function plansHtml(d, print){
   if (!d.floors.length) return `<div class="empty"><h3>${esc(t("wEmptyT"))}</h3><p>${esc(t("wEmpty"))}</p><div class="btns" style="justify-content:center"><button class="btn pri" data-wa="addFloor">＋ ${esc(t("addFloor"))}</button></div></div>`;
-  if (print) return `<div class="plans">${d.floors.map(f => floorRow(d, f, print)).join("")}</div>`;
+  // the site plan is printed only when something is on it
+  if (print) return `<div class="plans">${d.floors.filter(f => f.id !== OUT_FLOOR || f.img || f.rooms.length || d.aps.some(a => a.floor === OUT_FLOOR)).map(f => floorRow(d, f, print)).join("")}</div>`;
   // one floor at a time, chosen with the floor tabs (same as Building structure and CCTV)
   const cur = d.floors.find(f => f.id === UI.wfFloor) || d.floors[d.floors.length - 1]; UI.wfFloor = cur.id;
-  return `<div class="bfloors">${d.floors.map(f => `<button class="bfchip${f === cur ? " on" : ""}" data-wfl="${f.id}">🏬 ${esc(fName(f))} <small>${d.aps.filter(a => a.floor === f.id && a.status !== "removed").length} AP</small></button>`).join("")}</div><div class="plans">${floorRow(d, cur, print)}</div>`;
+  return `<div class="bfloors">${d.floors.map(f => `<button class="bfchip${f === cur ? " on" : ""}" data-wfl="${f.id}">${f.id === OUT_FLOOR ? "🌳" : "🏬"} ${esc(fName(f))} <small>${d.aps.filter(a => a.floor === f.id && a.status !== "removed").length} AP</small></button>`).join("")}</div><div class="plans">${floorRow(d, cur, print)}</div>`;
 }
 function legendHtml(d){
   const m = d.view.mode, P = prof(d), sw = (c, l) => `<div><i style="background:${c}"></i>${l}</div>`, rgb = c => `rgb(${c})`;
@@ -524,7 +527,7 @@ function wifiDrawer(){
     ${f.img ? `<div class="muted small" style="margin:-2px 0 6px">${(assetSize(f.img) / 1048576).toFixed(1)} MB</div>${field(t("f_opac"), "f.op", f.op, "number", ' min="0" max="100"')}` : ""}
     <div class="btns"><button class="btn" data-tool="calib">📏 ${esc(t("tl_calib"))}</button><button class="btn" data-tool="idf">🗄 ${esc(f.idf ? t("idfMove") : t("tl_idf"))}</button>${f.idf ? `<button class="btn dan" data-dr="rmIdf">× IDF</button>` : ""}</div>
     <div class="btns"><button class="btn" data-tool="room">▭ ${esc(t("addRoom"))}</button><button class="btn" data-tool="ap">📶 ${esc(t("addAP"))}</button></div>
-    <div class="btns"><button class="btn" data-dr="floorUp">${esc(t("up"))}</button><button class="btn" data-dr="floorDown">${esc(t("down"))}</button><button class="btn dan" data-dr="delSel">🗑 ${esc(t("delete"))}</button></div>`; }
+    ${f.id === OUT_FLOOR ? `<p class="muted small">${esc(t("sitePlanH"))}</p>` : `<div class="btns"><button class="btn" data-dr="floorUp">${esc(t("up"))}</button><button class="btn" data-dr="floorDown">${esc(t("down"))}</button><button class="btn dan" data-dr="delSel">🗑 ${esc(t("delete"))}</button></div>`}`; }
   if (s.kind === "room"){ const r = s.o;
     return `${head(t("room"), fName(s.f) + " · " + r1(r.w * r.h) + " m²")}
     ${field(t("f_label"), "r.label", r.label)}
@@ -589,8 +592,8 @@ function newAP(d, f, x, y){
 }
 const ACT = {
   addFloor(){ const b = B(); let id; edit(() => { id = uid("f"); b.floors.push({id, name:gt("floorN",{n:b.floors.length + 1}), lvl:b.floors.length}); normBuilding(b); b.floors[b.floors.length - 1].plan.color = Object.keys(FC)[(b.floors.length - 1) % 6]; UI.sel = {type:"wf", id}; }); },
-  floorUp(){ const d = D(), i = d.floors.findIndex(f => f.id === S()); if (i > 0) commit(() => { [d.floors[i-1], d.floors[i]] = [d.floors[i], d.floors[i-1]]; }); },
-  floorDown(){ const d = D(), i = d.floors.findIndex(f => f.id === S()); if (i >= 0 && i < d.floors.length - 1) commit(() => { [d.floors[i+1], d.floors[i]] = [d.floors[i], d.floors[i+1]]; }); },
+  floorUp(){ const d = D(), i = d.floors.findIndex(f => f.id === S()); if (S() === OUT_FLOOR) return; if (i > 0) commit(() => { [d.floors[i-1], d.floors[i]] = [d.floors[i], d.floors[i-1]]; }); },
+  floorDown(){ const d = D(), i = d.floors.findIndex(f => f.id === S()); if (S() === OUT_FLOOR || (d.floors[i + 1] || {}).id === OUT_FLOOR) return; if (i >= 0 && i < d.floors.length - 1) commit(() => { [d.floors[i+1], d.floors[i]] = [d.floors[i], d.floors[i+1]]; }); },
   async loadImg(){ const d = D(), s = find(d, S()); if (!s) return; const id = await pickImage(); if (id) commit(() => { s.f.img = id; }); },
   rmImg(){ const d = D(), s = find(d, S()); if (s) commit(() => { s.f.img = null; s.f.calibrated = false; }); },
   rmIdf(){ const d = D(), s = find(d, S()); if (s) commit(() => { s.f.idf = null; }); },
@@ -610,7 +613,7 @@ function wifiDup(){ const d = D(), s = find(d, S()); if (!s) return;
   if (s.kind === "wall"){ const w = Object.assign(clone(s.o), {id:uid("w"), x1:r1(s.o.x1 + .5), x2:r1(s.o.x2 + .5), y1:r1(s.o.y1 + .5), y2:r1(s.o.y2 + .5)}); commit(() => { s.f.walls.push(w); setSel(w.id); }); }
   if (s.kind === "ap"){ const a = Object.assign(clone(s.o), {id:uid("d"), name:nextAPName(d), ip:"", mac:"", serial:"", x:r1(s.o.x + 2)}); a.radios = clone(s.o.radios); a.__tpl = s.o.id; clampAP(d, a); commit(() => { d.aps.push(a); UI.sel = {type:"dev", id:a.id}; }); } }
 async function wifiDel(){ const d = D(), s = find(d, S()); if (!s) return;
-  if (s.kind === "floor"){ if (!await uiConfirm(t("confDelFloor",{n:fName(s.o)}), gt("delete"), true)) return; commit(() => { d.floors = d.floors.filter(f => f.id !== s.o.id); UI.sel = null; }); }
+  if (s.kind === "floor"){ if (s.o.id === OUT_FLOOR) return; if (!await uiConfirm(t("confDelFloor",{n:fName(s.o)}), gt("delete"), true)) return; commit(() => { d.floors = d.floors.filter(f => f.id !== s.o.id); UI.sel = null; }); }
   else if (s.kind === "room") commit(() => { s.f.rooms = s.f.rooms.filter(r => r.id !== s.o.id); UI.sel = null; });
   else if (s.kind === "wall") commit(() => { s.f.walls = s.f.walls.filter(r => r.id !== s.o.id); UI.sel = null; });
   else if (s.kind === "survey") commit(() => { s.f.survey = s.f.survey.filter(r => r.id !== s.o.id); UI.sel = null; });
