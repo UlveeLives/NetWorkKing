@@ -305,7 +305,7 @@ async function outro(me){
   const gap = document.createElement("div"); gap.className = "lg-gap"; lg.after(gap);
   Object.assign(lg.style, {left:r.left + "px", top:r.top + "px", width:r.width + "px", height:r.height + "px"}); lg.classList.add("fly");
   lg.getBoundingClientRect();                                            // commit the start position before moving
-  if (MOB) lg.style.transition = ["left", "top", "width", "height"].map(k => k + " .9s cubic-bezier(.45,0,.2,1)").join(",") + ",opacity .9s ease";
+  if (SHORT) lg.style.transition = ["left", "top", "width", "height"].map(k => k + " .9s cubic-bezier(.45,0,.2,1)").join(",") + ",opacity .9s ease";
   const S = Math.min(innerWidth, innerHeight) * .66;
   Object.assign(lg.style, {left:(innerWidth - S) / 2 + "px", top:(innerHeight - S) / 2 + "px", width:S + "px", height:S + "px"});
   sp.classList.add("outro"); pcbRun++; SND.dialStop();
@@ -346,10 +346,11 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.13";
-// m=1: the phone / tablet app (PWA) shows this page in a frame over itself — a shorter run (fewer code lines, quicker
-// steps, same order), no sound; it talks to the app through postMessage instead of the desktop bridge
-const MOB = Q.get("m") === "1", TM = MOB ? .6 : 1;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.14";
+// m=1: the web app (browser / PWA) shows this page in a frame over itself, without sound (browsers do not allow it
+// before a click); it talks to the app through postMessage instead of the desktop bridge
+// s=1: the short run for phones / tablets (fewer code lines, quicker steps, same order); a PC browser gets the full run
+const MOB = Q.get("m") === "1", SHORT = MOB && Q.get("s") === "1", TM = SHORT ? .6 : 1;
 const BRIDGE = window.splashBridge || (MOB && parent !== window ? {
   waitReady:() => new Promise(r => { const on = e => { if (e.data === "nwk-ready"){ removeEventListener("message", on); r(); } }; addEventListener("message", on); parent.postMessage("nwk-splash-wait", "*"); }),
   done:() => parent.postMessage("nwk-splash-done", "*")} : null);
@@ -376,7 +377,7 @@ const STEPS = () => { const T = TX[LANG], c = x => `<span class="c">// ${x}</spa
   [`fxWindow().warmUp()          ${c(T.fx)}`, 74],
   [`APP_ORDER.forEach(id =&gt; APPS[id].init())  ${c(T.apps)}`, 86],
   [`render(APPS.building)`, 94],
-  [`<span class="ok">${T.ok}</span> <span class="c">${T.hi}</span>`, 100]].filter((_, i) => !MOB || [0, 4, 5, 9, 11].includes(i)); };
+  [`<span class="ok">${T.ok}</span> <span class="c">${T.hi}</span>`, 100]].filter((_, i) => !SHORT || [0, 4, 5, 9, 11].includes(i)); };
 function applyLook(){ document.documentElement.classList.toggle("th-light", THEME === "light"); document.documentElement.lang = LANG;
   document.getElementById("ver").textContent = "v" + VER; document.getElementById("betap").hidden = !/beta/.test(VER);
   document.getElementById("by").innerHTML = TX[LANG].by; document.getElementById("cr").textContent = TX[LANG].cr;
@@ -391,7 +392,7 @@ async function play(){
     const line = document.createElement("div"); line.className = "l"; box.appendChild(line);
     while (box.children.length > 7) box.firstChild.remove();
     const plain = html.replace(/<[^>]+>/g, "").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-    for (let i = 1; i <= plain.length && !SKIP; i += 2){ if (me !== run) return; line.textContent = plain.slice(0, i); line.insertAdjacentHTML("beforeend", '<span class="cur"></span>'); await sleep(MOB ? 9 : 18); }
+    for (let i = 1; i <= plain.length && !SKIP; i += 2){ if (me !== run) return; line.textContent = plain.slice(0, i); line.insertAdjacentHTML("beforeend", '<span class="cur"></span>'); await sleep(SHORT ? 9 : 18); }
     line.innerHTML = html; bar.style.width = pct + "%"; await sleep(SKIP ? 30 : (260 + Math.random() * 260) * TM);
   }
   box.lastChild && box.lastChild.insertAdjacentHTML("beforeend", ' <span class="cur"></span>');
