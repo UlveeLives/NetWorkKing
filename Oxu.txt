@@ -7,7 +7,9 @@ bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
 
 3.9.4
  - Port Map: patch panel portunun «Ön tərəf»-inə istənilən cihaz qoşula bilər (switch, digər panel, extender, dekoder…);
-   sahənin adı «Qoşulan cihaz». Portu olmayan cihaz port nömrəsi yazmadan da qoşulur.
+   sahənin adı «Qoşulan cihaz». Data rozetkanın ön tərəfi də istənilən cihaza (switch-ə birbaşa, panelə, başqa rozetkaya)
+   qoşula bilər. Cihaz seçiləndə bağlantı onun port nömrəsi yazılandan sonra yaranır — proqram bunu xatırladır.
+ - Bina strukturu → Tələblər səhifəsində yardım balonu həmişə görünür.
  - Xəbərdarlıq: eyni hostname yalnız zavod adıdırsa (model adı, məs. «FortiAP-231K») xəta yox, tövsiyə kimi göstərilir.
 
 3.9.3

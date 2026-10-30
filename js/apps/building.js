@@ -194,12 +194,12 @@ function structView(){
 }
 /* ---------- needs page: what is required vs what is placed ---------- */
 function reqView(){
-  const b = B(); if (!b.rooms.length) return `<div class="empty"><p>${esc(t("bd_noRooms"))}</p></div>`;
+  const b = B(); if (!b.rooms.length) return `<div class="empty" data-tp="req"><p>${esc(t("bd_noRooms"))}</p></div>`;
   const tot = {}, totP = {}; RK.forEach(k => { tot[k] = 0; totP[k] = 0; });
   const rows = b.floors.slice().reverse().map(f => { const R = roomsOf(b, f); if (!R.length) return "";
     return `<tr class="tot"><td colspan="${RK.length + 2}">🏬 ${esc(f.name)}</td></tr>` + R.map(r => `<tr><td>${esc(r.name)}</td><td class="small">${esc(t("rt_" + normRoom(r).type))}</td>${RK.map(k => { const q = reqOf(r, k), pl = placedIn(b, r, k); tot[k] += q; totP[k] += pl; return `<td class="c ${q && pl < q ? "bad" : q ? "ok" : ""}">${q || pl ? `${pl}/${q}` : ""}</td>`; }).join("")}</tr>`).join(""); }).join("");
   const missing = RK.reduce((a, k) => a + Math.max(0, tot[k] - totP[k]), 0);
-  return `<div class="card"><h3>📋 ${esc(t("bd_reqT"))}<span class="grow"></span>${missing ? `<button class="btn pri small" data-ba="createAll">＋ ${esc(t("bd_createAll",{n:missing}))}</button>` : ""}<button class="btn small" data-ba="reqCsv">⤓ CSV</button></h3><p class="muted small">${esc(t("bd_reqHint"))}</p>
+  return `<div class="card"><h3 data-tp="req">📋 ${esc(t("bd_reqT"))}<span class="grow"></span>${missing ? `<button class="btn pri small" data-ba="createAll">＋ ${esc(t("bd_createAll",{n:missing}))}</button>` : ""}<button class="btn small" data-ba="reqCsv">⤓ CSV</button></h3><p class="muted small">${esc(t("bd_reqHint"))}</p>
     <div class="scroll"><table class="t"><tr><th>${esc(t("f_room"))}</th><th>${esc(t("bd_type"))}</th>${RK.map(k => `<th class="c" title="${esc(kindName(k))}">${RK_SHORT[k]}</th>`).join("")}</tr>${rows}
     <tr class="tot"><td colspan="2">${esc(t("total"))}</td>${RK.map(k => `<td class="c">${totP[k]}/${tot[k]}</td>`).join("")}</tr></table></div>
     <p class="muted small">${RK.map(k => `${RK_SHORT[k]} = ${kindName(k)}`).join(" · ")}</p></div>`;
@@ -801,7 +801,7 @@ registerApp({
     {id:"plan", label:"bd_tabPlan", icon:"🗺", palette, render:planView,
       tour:() => [{sel:"#appsw", title:t("tShellT1"), text:t("tShell1")}, {sel:".bfloors", title:t("bd_tT1"), text:t("bd_t1")}, {sel:"#pal .psec", title:t("bd_tT2"), text:t("bd_t2")}, {sel:"svg.bplan", title:t("bd_tT3"), text:t("bd_t3")}, {sel:'[data-tab="struct"]', title:t("bd_tT4"), text:t("bd_t4")}, tip('#pal [data-ba="wizard"]', "tp_bdWiz"), tip('#pal [data-ba="dxf"]', "tp_bdDxf"), tip('[data-ba="mergeDup"]', "tp_bdMerge"), TIPS.warn(), TIPS.places(), {sel:"#btabs", title:t("tShellT2"), text:t("tShell2")}]},
     {id:"struct", label:"bd_tabStruct", icon:"🏢", render:structView, tour:() => [tip(".btree", "tp_bdTree")]},
-    {id:"req", label:"bd_tabReq", icon:"📋", render:reqView, tour:() => [tip('[data-ba="createAll"]', "tp_bdCreate")]},
+    {id:"req", label:"bd_tabReq", icon:"📋", render:reqView, tour:() => [tip('[data-tp="req"]', "tp_bdReq"), tip('[data-ba="createAll"]', "tp_bdCreate")]},
     docTab("building", docBody)
   ],
   actions(tab){ return [{id:"wiz", icon:"🧭", label:"bd_wizard", fn:wizard}, {id:"addFloor", icon:"＋", label:"floorNew", fn:() => act("addFloor")}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },

@@ -264,8 +264,8 @@ function panelPortSec(b, d, p, pr){
   const front = pr.before.length ? pr.before[pr.before.length - 1] : null, fd = front && devById(b, front.d);
   const back = pr.after.length ? pr.after[0] : null, bd = back && devById(b, back.d);
   // the front of a panel / outlet port comes from a switch or from another panel (outlet ← patch panel ← switch)
-  // anything can be patched into the front of a panel port (switch, another panel, an extender, a decoder…); an outlet's front comes from a panel, so outlets are not offered
-  const nets = b.devices.filter(x => x.id !== d.id && x.kind !== "outlet" && x.kind !== "internet" && !(KINDS[x.kind] || {}).acc && x.kind !== "splice").sort((x, y) => (passive(x) - passive(y)) || devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
+  // anything can be patched into the front of a panel / outlet port (switch, another panel or outlet, an extender, a decoder…)
+  const nets = b.devices.filter(x => x.id !== d.id && x.kind !== "internet" && !(KINDS[x.kind] || {}).acc && x.kind !== "splice").sort((x, y) => (passive(x) - passive(y)) || devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const ends = b.devices.filter(x => x.id !== d.id && x.kind !== "internet" && (!isNet(x) || true)).sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const rearL = pr.after.length ? pr.after[0].link : null;
   return sec("plink", t("pmConn"), `<p class="small">🏷 TIA-606: <b class="mono">${esc(label606(b, d, p))}</b></p>
@@ -437,7 +437,9 @@ function wireDrawer(){
       return edit(() => { ed[k] = v; if (k === "kind") normDevice(ed); if (k === "floor") ed.room = ""; }); }
     if (el.dataset.pp){ const k = el.dataset.pp, pr = parts(b, d.id, p);
       if (k === "__fdev" || k === "__fport"){ const fdv = $('[data-pp="__fdev"]').value, fpt = $('[data-pp="__fport"]').value.trim(); const front = pr.before.length ? pr.before[pr.before.length - 1] : null;
-        if (fdv && !fpt && num((devById(b, fdv) || {}).ports) > 0) return; // wait for the port number (a device with no port list can be connected without one)
+        if (fdv && !fpt){ // a cable always ends in a port: wait for its number and say so
+          if (k === "__fdev"){ const inp = $('[data-pp="__fport"]'); toast("ℹ " + t("pmNeedPort", {n:devLabel(devById(b, fdv))})); if (inp){ inp.classList.add("need"); inp.placeholder = t("pmPortNo"); inp.focus(); } }
+          return; }
         const busy = fdv ? linksAt(b, fdv, fpt).filter(l => !front || l !== pr.chain[pr.me].link) : [];
         if (busy.length && !await uiConfirm(t("pmPortBusy",{p:devLabel(devById(b, fdv)) + " :" + fpt}), t("pmMove"))) return renderDrawer();
         return edit(() => { const myFront = pr.chain[pr.me].link; if (myFront) b.links = b.links.filter(l => l !== myFront); busy.forEach(l => b.links = b.links.filter(x => x !== l)); if (fdv) addLink(b, fdv, d.id, "patch", {pa:fpt, pb:p}); }); }
