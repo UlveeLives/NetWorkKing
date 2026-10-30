@@ -459,6 +459,7 @@ registerApp({
   ],
   actions(tab){ const n = dupGroups(B()).length; return [...(n ? [{id:"dups", icon:"⚠", label:"dupBtn", fn:dupTool}] : []), {id:"addRack", icon:"🗄", label:"rkAdd", fn:() => { const b = B(); edit(() => { const r = normRack({id:uid("k"), name:nextRackName(b)}); b.racks.push(r); }); }},
     {id:"addSw", icon:"＋", label:"pmAddDev", fn:async el => { const b = B(), kind = await uiChoice(t("rackAddWhat"), ["switch","pp","fpp","firewall","router","coresw","nvr","server"].map(x => [x, kindName(x)])); if (!kind) return; const r = b.racks[0]; let u = 0; if (r){ u = rackSpot(b, r, KINDS[kind].h || 1, 0); } edit(() => { const d = newDevice(kind, r && u ? {rack:r.id, u, floor:r.floor, room:r.room} : {}); b.devices.push(d); UI.sel = {type:"dev", id:d.id}; }); }},
+    {id:"fgImp", icon:"⤓", label:"fg_btn", fn:() => FGI.open()},
     {id:"labels", icon:"🏷", label:"lbBtn", fn:() => LABELS.open("ports")}, {id:"places", icon:"🏢", label:"places", fn:() => openPlaces()}]; },
   drawer(tab){ const b = B(), s = UI.sel; if (!s) return "";
     if (s.type === "port"){ const d = devById(b, s.id); return d ? portCard(b, d, s.p) : ""; }

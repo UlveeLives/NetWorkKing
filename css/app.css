@@ -849,3 +849,7 @@ svg.rkcords .cord path.halo{stroke:rgba(10,14,22,.55);stroke-width:3.4;opacity:.
 .snside{display:flex;flex-direction:column;gap:10px;min-width:0}.snside p{margin:0;color:var(--smu);font-size:13px}.snside .btns{display:flex;gap:8px;flex-wrap:wrap}
 .sndp .snplay.big{padding:8px 14px}
 .snnote{font-size:12px!important}
+
+/* FortiGate import */
+.fgsum{padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin:8px 0}.fgsum p{margin:2px 0}
+.fgopts{display:flex;flex-direction:column;gap:4px;margin-top:10px}.fgopts .chk.sub{margin-left:24px}

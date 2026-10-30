@@ -157,11 +157,12 @@ async function exportProject(){
   saveText(`${fileSafe(p.name)} ${today()}.networkking.json`, JSON.stringify({app:"networkking", v:1, exported:new Date().toISOString(), project:p, assets}), "json", "application/json");
 }
 async function importAny(){
-  const txt = await openTextFile(); if (!txt) return;
-  let j; try { j = JSON.parse(txt); } catch(e){ return toast("⚠ " + t("impBad")); }
+  const txt = await openTextFile(".json,.conf,.txt,.csv"); if (!txt) return;
+  let j; try { j = JSON.parse(txt); } catch(e){ if (typeof FGI !== "undefined" && FGI.looks(txt)) return FGI.open({text:txt}); return toast("⚠ " + t("impBad")); }
   try {
     if ((j.app === "networkking" || j.app === "networker" || j.app === "wolf-suite") && j.project){ await importProject(j); return; }
     if (typeof importLegacy === "function" && await importLegacy(j)) return;
+    if (typeof FGI !== "undefined" && FGI.looks(txt)) return FGI.open({text:txt});       // a FortiSwitch Ports export (JSON)
     toast("⚠ " + t("impBad"));
   } catch(e){ console.error(e); toast("⚠ " + t("impBad") + " " + (e.message || "")); }
 }

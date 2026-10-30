@@ -1,9 +1,17 @@
-NETWORKKING 3.8.16 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.9.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.9.0
+ - FortiGate-dən idxal (Port Map → «⤓ FortiGate-dən», və ya yuxarıdakı «İdxal» ilə .conf faylı): bir və ya bir neçə faylı
+   birlikdə oxuyur — konfiqurasiya backup-ı (FortiOS formatı, şifrəsiz), FortiSwitch Ports səhifəsinin JSON / CSV
+   export-u, CLI çıxışları (MAC cədvəli, LLDP, ARP, DHCP). Doldurur: FortiGate, VLAN-lar (alt şəbəkə, şlüz, DHCP diapazonu),
+   bütün FortiSwitch-lər (ad, seriya, model, port ayarları), switch → FortiGate və switch ↔ switch bağlantıları, FortiAP-lar,
+   portlardakı cihazlar (MAC, IP, ad; kamera VLAN-ındakılar kamera kimi). Hər switch-in hara düşəcəyi əvvəlcədən seçilir,
+   təkrar idxal dublikat yaratmır, hamısı bir addımla geri alınır.
 
 3.8.15 – 3.8.16
  - Ayarlar → Ümumi → Görünüş → 🔊 Açılış səsləri: yükləmə zamanı çalınan dial-up səsi (D1–D4 və ya səssiz), N və ad
