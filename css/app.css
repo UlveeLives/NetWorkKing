@@ -815,3 +815,6 @@ svg.rkcords .cord path.halo{stroke:rgba(10,14,22,.55);stroke-width:3.4;opacity:.
 .rkd .io .vg{width:9px;height:5px;background:#2f56b8;clip-path:polygon(0 0,100% 0,88% 100%,12% 100%)}
 .nmpv{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;margin:4px 0 8px;border:1px dashed var(--line);border-radius:10px;background:var(--bg2,rgba(0,0,0,.03))}
 .nmpv .dpic{zoom:1.9}
+
+/* Settings → Look → Splash sounds */
+.sndrow{display:flex;align-items:flex-end;gap:8px}.sndrow .fld{flex:1;margin:0}.sndrow .btn{margin-bottom:2px}

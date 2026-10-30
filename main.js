@@ -65,7 +65,9 @@ function splashPrefs(){
   let p = {}; try { p = JSON.parse(fs.readFileSync(spFile(), "utf8")) || {}; } catch(e){}
   const loc = (app.getLocale() || "").slice(0, 2).toLowerCase(), L = ["az", "tr", "en", "ru"];
   return { on: p.on !== false, lang: L.includes(p.lang) ? p.lang : (L.includes(loc) ? loc : "az"),
-    theme: p.theme === "light" || p.theme === "dark" ? p.theme : (nativeTheme.shouldUseDarkColors ? "dark" : "light") };
+    theme: p.theme === "light" || p.theme === "dark" ? p.theme : (nativeTheme.shouldUseDarkColors ? "dark" : "light"),
+    // splash sounds (Settings → Look → Splash sounds): variant or "0" = silent, volume 0–100
+    sd: /^(D[1-4]|0)$/.test(p.sd) ? p.sd : "D1", se: /^(E[1-4]|0)$/.test(p.se) ? p.se : "E4", sv: Number.isFinite(p.sv) ? Math.max(0, Math.min(100, p.sv)) : 60 };
 }
 function showMain(){
   if (shown || !win || win.isDestroyed()) return; shown = true;
@@ -79,7 +81,7 @@ function createSplash(p){
     maximizable: false, fullscreenable: false, skipTaskbar: true, show: false, hasShadow: false, backgroundColor: "#00000000", center: true,
     title: app.getName(), icon: path.join(__dirname, "build", p.theme === "light" ? "icon-light.png" : "icon-dark.png"),
     webPreferences: { preload: path.join(__dirname, "splashpreload.js"), contextIsolation: true, nodeIntegration: false, sandbox: true, zoomFactor: k, autoplayPolicy: "no-user-gesture-required" } });
-  splash.loadFile("splash.html", { search: `app=1&lang=${p.lang}&theme=${p.theme}&v=${encodeURIComponent(app.getVersion())}` });
+  splash.loadFile("splash.html", { search: `app=1&lang=${p.lang}&theme=${p.theme}&sd=${p.sd}&se=${p.se}&sv=${p.sv}&v=${encodeURIComponent(app.getVersion())}` });
   splash.once("ready-to-show", () => splash && !splash.isDestroyed() && splash.show());
   splash.webContents.on("did-fail-load", () => { splash.destroy(); });
   splash.on("closed", () => { splash = null; readyP.then(showMain); });
@@ -89,7 +91,7 @@ function createSplash(p){
 ipcMain.handle("splash-wait", () => readyP.then(() => true));
 ipcMain.on("splash-done", () => readyP.then(showMain));
 ipcMain.on("splash-prefs", (_e, p) => { fxOn = !p || p.fx !== false; try {
-  const cur = JSON.stringify(splashPrefs()), nu = JSON.stringify({ on: p.on !== false, lang: p.lang, theme: p.theme === "light" ? "light" : "dark" });
+  const cur = JSON.stringify(splashPrefs()), nu = JSON.stringify({ on: p.on !== false, lang: p.lang, theme: p.theme === "light" ? "light" : "dark", sd: p.sd, se: p.se, sv: p.sv });
   if (cur !== nu) fs.writeFileSync(spFile(), nu); } catch(e){} });
 /* ---------- minimise / restore effect (like the macOS "genie") ----------
    The window is photographed, a transparent window over the whole screen plays the picture flowing into the

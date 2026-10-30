@@ -12,10 +12,11 @@ function openSettings(tab){
     <label class="fld"><span>${esc(t("lang"))}</span><select id="s-lang">${LANGS.map(([k, l]) => opt(k, l, s.lang)).join("")}</select></label>
     <label class="chk"><input type="checkbox" id="s-boxed"${s.addBoxed ? " checked" : ""}> ${esc(t("setBoxed"))}</label></div>
     <div class="gsub" data-g="look" hidden>
-    <div class="seg" style="margin-bottom:10px"><button class="on" data-m="lsub:theme">${esc(t("setTheme"))}</button><button data-m="lsub:tbar">${esc(t("setTitleBar"))}</button></div>
+    <div class="seg" style="margin-bottom:10px"><button class="on" data-m="lsub:theme">${esc(t("setTheme"))}</button><button data-m="lsub:tbar">${esc(t("setTitleBar"))}</button><button data-m="lsub:snd">🔊 ${esc(t("snd_tab"))}</button></div>
     <div class="lsub" data-l="theme"><label class="fld"><span>${esc(t("theme"))}</span><select id="s-theme">${[["system", t("thSystem")], ["light", t("thLight")], ["dark", t("thDark")]].map(([k, l]) => opt(k, l, s.theme)).join("")}</select></label></div>
     <div class="lsub" data-l="tbar" hidden><p class="muted small">${esc(t("tbHint"))}</p>${tbPicker(s.tbStyle || "code")}
-      ${WINB ? `<label class="chk"><input type="checkbox" id="s-winfx"${s.winFx === false ? "" : " checked"}> ${esc(t("winFxOpt"))}</label><label class="chk"><input type="checkbox" id="s-splash"${s.splash === false ? "" : " checked"}> ${esc(t("splashOpt"))}</label>` : `<p class="muted small">${esc(t("winWebOnly"))}</p>`}</div></div></div>
+      ${WINB ? `<label class="chk"><input type="checkbox" id="s-winfx"${s.winFx === false ? "" : " checked"}> ${esc(t("winFxOpt"))}</label><label class="chk"><input type="checkbox" id="s-splash"${s.splash === false ? "" : " checked"}> ${esc(t("splashOpt"))}</label>` : `<p class="muted small">${esc(t("winWebOnly"))}</p>`}</div>
+    <div class="lsub" data-l="snd" hidden>${sndPane(s)}</div></div></div>
   <div class="tsec" data-t="help"${cur === "help" ? "" : " hidden"}><p class="muted small">${esc(t("setHelpHint"))}</p>
     <label class="chk"><input type="checkbox" id="s-alloff"${s.help.allOff ? " checked" : ""}> ${esc(t("setHelpAllOff"))}</label>
     <div class="scroll" style="max-height:40vh">${pages.map(([k, l]) => `<label class="chk"><input type="checkbox" class="s-pg" data-k="${esc(k)}"${s.help.off[k] ? "" : " checked"}> ${esc(l)}</label>`).join("")}</div>
@@ -43,6 +44,7 @@ function openSettings(tab){
   <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><button class="btn pri" data-m="save">${esc(t("save"))}</button></div>`, {
     eula: () => showEula(),
     gsub: (bt, e, k) => { $$(".subtabs button").forEach(x => x.classList.toggle("on", x === bt)); $$(".gsub").forEach(x => x.hidden = x.dataset.g !== k); },
+    sndPlay: (bt, e, k) => sndPlay(k), sndStop: () => { clearTimeout(sndT); NKSND.stopAll(); },
     lsub: (bt, e, k) => { bt.parentElement.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === bt)); $$(".lsub").forEach(x => x.hidden = x.dataset.l !== k); },
     tab: (bt, e, k) => { $$(".mbox .tabb").forEach(x => x.classList.toggle("on", x === bt)); $$(".mbox .tsec").forEach(x => x.hidden = x.dataset.t !== k); },
     save: () => { readSettings(); closeModal(); applyTheme(); render(); toast("✓ " + t("saved")); },
@@ -59,9 +61,29 @@ function openSettings(tab){
   }, {wide:true});
   if (navigator.storage && navigator.storage.estimate) navigator.storage.estimate().then(e => { const el = $("#s-storage"); if (el) el.textContent = t("storageUse",{u:(e.usage / 1048576).toFixed(1), q:(e.quota / 1073741824).toFixed(1)}); });
 }
+// Settings → Look → Splash sounds: choose the dial-up and the electric sound (or silent), the volume, and listen
+function sndPane(s){ const S = Object.assign({d:"D1", e:"E4", vol:60}, s.splashSnd || {});
+  const sel = (id, kind, cur) => `<select id="${id}">${opt("0", t("snd_off"), cur)}${NKSND[kind].map(k => opt(k, t("snd_" + k), cur)).join("")}</select>`;
+  return `<p class="muted small">${esc(t("snd_hint"))}</p>
+    <div class="sndrow"><label class="fld"><span>${esc(t("snd_load"))}</span>${sel("s-sd", "D", S.d)}</label><button class="btn small" data-m="sndPlay:d">▶ ${esc(t("snd_play"))}</button></div>
+    <p class="muted small" id="s-sdd">${S.d === "0" ? "" : esc(t("snd_" + S.d + "d"))}</p>
+    <div class="sndrow"><label class="fld"><span>${esc(t("snd_flick"))}</span>${sel("s-se", "E", S.e)}</label><button class="btn small" data-m="sndPlay:e">▶ ${esc(t("snd_play"))}</button></div>
+    <p class="muted small" id="s-sed">${S.e === "0" ? "" : esc(t("snd_" + S.e + "d"))}</p>
+    <label class="fld"><span>${esc(t("snd_vol"))} <b id="s-svn">${S.vol}%</b></span><input type="range" id="s-sv" min="0" max="100" step="5" value="${S.vol}"></label>
+    <div class="btns"><button class="btn" data-m="sndPlay:both">▶ ${esc(t("snd_both"))}</button><button class="btn" data-m="sndStop">■ ${esc(t("snd_stop"))}</button></div>
+    ${WINB ? "" : `<p class="muted small">${esc(t("snd_web"))}</p>`}`; }
+let sndT = null;
+function sndPlay(k){ clearTimeout(sndT); NKSND.stopAll(); const d = $("#s-sd").value, e = $("#s-se").value; NKSND.setVol(+$("#s-sv").value / 100);
+  if (k === "d" && d !== "0") NKSND.dialStart(d);
+  if (k === "e" && e !== "0") NKSND.crackle(e);
+  if (k === "both"){ const L = d !== "0" ? NKSND.dialStart(d) : 0; if (e !== "0") sndT = setTimeout(() => NKSND.crackle(e), (L + 1.2) * 1000); } }
+document.addEventListener("change", ev => { const x = ev.target; if (!x.id) return;
+  if (x.id === "s-sd" || x.id === "s-se"){ const p = $("#" + x.id + "d"); if (p) p.textContent = x.value === "0" ? "" : t("snd_" + x.value + "d"); } });
+document.addEventListener("input", ev => { if (ev.target.id === "s-sv"){ const n = $("#s-svn"); if (n) n.textContent = ev.target.value + "%"; NKSND.setVol(+ev.target.value / 100); } });
 function readSettings(){
   const s = store.settings, v = id => $("#" + id);
   if (v("s-winfx")) s.winFx = v("s-winfx").checked; if (v("s-splash")) s.splash = v("s-splash").checked;
+  if (v("s-sd")) s.splashSnd = {d:v("s-sd").value, e:v("s-se").value, vol:+v("s-sv").value};
   if (v("s-lang")) s.lang = v("s-lang").value; if (v("s-theme")) s.theme = v("s-theme").value; if (v("s-boxed")) s.addBoxed = v("s-boxed").checked;
   if (v("s-alloff")) s.help.allOff = v("s-alloff").checked;
   $$(".s-pg").forEach(x => { if (x.checked) delete s.help.off[x.dataset.k]; else s.help.off[x.dataset.k] = true; });
