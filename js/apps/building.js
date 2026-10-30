@@ -73,12 +73,15 @@ const rotHandle = (key, x, y) => `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 
 function labHit(r, g, s, x, y){ const fs = g.lx !== undefined ? clamp(s * .38, 9, 13) : clamp(s * .45, 10, 14), tw = String(r.name).length * fs * .62 + 18, th = fs + 14;
   const cx = g.lx !== undefined ? (g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s : x + 6 + tw / 2 - 9, cy = g.lx !== undefined ? (g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s - fs * .35 : y + 15 - fs * .35;
   return `<rect class="rlabh" data-rlab="${r.id}" x="${(cx - tw / 2).toFixed(1)}" y="${(cy - th / 2).toFixed(1)}" width="${tw.toFixed(1)}" height="${th.toFixed(1)}" fill="transparent"/>`; }
-// what blocks a camera's view on this plan: walls and windows (also those taken from a drawing, which are not shown), not
-// doors; outlines of the plot and houses
-function camObstacles(p){ const S = [];
-  // doors are open, windows and walls are not; each piece is stretched 15 cm at both ends so that joints of a drawing have no gaps
-  (p.walls || []).forEach(w => { if (w.kind === "door" || w.kind === "survey") return; const x1 = num(w.x1), y1 = num(w.y1), x2 = num(w.x2), y2 = num(w.y2), L = Math.hypot(x2 - x1, y2 - y1) || 1, ex = (x2 - x1) / L * .15, ey = (y2 - y1) / L * .15;
-    S.push([x1 - ex, y1 - ey, x2 + ex, y2 + ey]); });
+// what blocks a camera's view on this plan: walls and windows (also those taken from a drawing, which are not shown) and the
+// outlines of the plot and houses. Not blocking: low walls (a retaining wall or parapet the camera looks over) and, on floor
+// plans, doors; on the site plan doors block too (an outdoor camera does not look into the house through its doors).
+// Curved walls are followed in short pieces; each piece is stretched 30 cm at both ends so joints of a drawing leave no gaps.
+function camObstacles(p, site){ const S = [], ext = .3;
+  const push = (x1, y1, x2, y2) => { const L = Math.hypot(x2 - x1, y2 - y1) || 1, ex = (x2 - x1) / L * ext, ey = (y2 - y1) / L * ext; S.push([x1 - ex, y1 - ey, x2 + ex, y2 + ey]); };
+  (p.walls || []).forEach(w => { if (w.low || w.kind === "survey" || (w.kind === "door" && !site)) return;
+    const n = Math.abs(num(w.bend, 0)) > 1 ? 8 : 1; let q = DRAW.wallPt(w, 0);
+    for (let i = 1; i <= n; i++){ const r = DRAW.wallPt(w, i / n); push(num(q.x), num(q.y), num(r.x), num(r.y)); q = r; } });
   (p.items || []).filter(it => it.type === "boundary" && Array.isArray(it.pts)).forEach(it => { const P = it.pts, k = Math.floor(P.length / 2); for (let i = 0; i < k; i++){ const j = (i + 1) % k; S.push([P[2 * i], P[2 * i + 1], P[2 * j], P[2 * j + 1]]); } });
   return S; }
 // distance along a ray to the nearest obstacle (a camera on a wall does not see its own wall: hits closer than 25 cm are ignored)
@@ -131,7 +134,7 @@ function planSvg(b, f, opts = {}){
   b.racks.filter(r => r.floor === f.id && r.pos).forEach(r => { const x = r.pos.x * s, y = r.pos.y * s, on = isSel("rack", r.id);
     h += `<g class="bdev" data-brack="${r.id}" transform="translate(${x} ${y})"><rect x="-10" y="-13" width="20" height="26" rx="2" fill="#232a33" stroke="${on ? "#ffb703" : "#fff"}" stroke-width="${on ? 3 : 1.2}"/><path d="M-6 -8h12M-6 -3h12M-6 2h12M-6 7h12" stroke="#7fd1ff" stroke-width="1.6"/>
       ${S.labels ? `<text y="24" font-size="9" font-weight="700" text-anchor="middle" fill="#1d2433" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(r.name)}</text>` : ""}</g>`; });
-  const camsOn = (HO && HO.cams) || (opts.print && opts.cams) || S.cones, OBS = camsOn ? camObstacles(p) : [];
+  const camsOn = (HO && HO.cams) || (opts.print && opts.cams) || S.cones, OBS = camsOn ? camObstacles(p, isSite(f)) : [];
   if (camsOn) b.devices.filter(d => d.kind === "camera" && devFloor(b, d) === f.id && posOf(d)).forEach(d => { const P0 = posOf(d), C = window.CCTV && CCTV.camCalc ? CCTV.camCalc(b, d) : {}, fov = clamp(num(C.fov, 90), 10, 360), Rm = clamp(num(C.dori && C.dori[1], 20), 3, 60), R = Rm * s, a = num(d.camera && d.camera.dir, 0) * Math.PI / 180, h2 = fov * Math.PI / 360;
     const x = P0.x * s, y = P0.y * s, on = isSel("dev", d.id);
     // the view stops at walls, retaining walls and the plot boundary: rays every ~1° (shorter where something is in the way)
@@ -282,6 +285,7 @@ function drawer(tab){
       <div class="two"><label class="fld"><span>${esc(t("dw_len"))} (m)</span><input data-f="w.len" type="text" inputmode="decimal" value="${esc(r1(L))}"></label>${rotFld("w.ang", A, t("dw_ang"))}</div>
       <div class="two"><label class="fld"><span>${esc(t("dw_thick"))} (cm)</span><input data-f="w.t" type="text" inputmode="decimal" value="${esc(Math.round(DRAW.wallT(w) * 100))}"></label><label class="fld"><span>${esc(t("dw_bend"))} (°)</span><input data-f="w.bend" type="text" inputmode="decimal" value="${esc(num(w.bend, 0))}"></label></div>
       <label class="fld"><span>${esc(t("dw_mat"))}</span><select data-f="w.mat">${mats.map(m => opt(m, t("wf_mat_" + m), w.mat || "drywall")).join("")}</select></label>
+      <label class="chk" title="${esc(t("dw_lowH"))}"><input type="checkbox" data-f="w.low"${w.low ? " checked" : ""}> ${esc(t("dw_low"))}</label>
       <div class="two">${["x1","y1"].map(k => `<label class="fld"><span>${k.toUpperCase()} (m)</span><input data-f="w.${k}" type="text" inputmode="decimal" value="${esc(r1(w[k]))}"></label>`).join("")}</div>
       <p class="muted small">${esc(t("dw_wallInfo", {a:r1(DRAW.wallArc(w))}))}</p><p class="muted small">${esc(t("dw_wallHint2"))}</p>
       <div class="btns"><button class="btn" data-dr="bDupWall">⧉ ${esc(t("duplicate"))}</button><button class="btn" data-dr="bWallNext">↪ ${esc(t("dw_next"))}</button><button class="btn dan" data-dr="bDelWall">🗑 ${esc(t("delete"))}</button></div>`; }
@@ -315,7 +319,7 @@ function onField(path, v){
   if (s.type === "bitem"){ const f = curFloor(b), it = f && f.plan.items.find(x => x.id === s.id); if (!it) return;
     edit(() => { const k = path.split(".")[1]; if (k === "text") it.text = v; else if (k === "style") it.style = v; else if (k === "rot") it.rot = ((num(String(v).replace(",", "."), 0) % 360) + 360) % 360; else it[k] = k === "w" || k === "h" ? Math.max(.1, n(v)) : k === "size" ? clamp(n(v), 8, 40) : n(v); }); return; }
   if (s.type === "bwall"){ const f = curFloor(b), w = f && (f.plan.walls || []).find(x => x.id === s.id); if (!w) return; const k = path.split(".")[1], x = num(String(v).replace(",", "."), NaN);
-    edit(() => { if (k === "mat"){ w.mat = v; return; } if (!isFinite(x)) return;
+    edit(() => { if (k === "mat"){ w.mat = v; return; } if (k === "low"){ if (v === true || v === "true" || v === "on") w.low = true; else delete w.low; return; } if (!isFinite(x)) return;
       const L = DRAW.wallLen(w), A = Math.atan2(w.y2 - w.y1, w.x2 - w.x1);
       if (k === "len"){ const n = Math.max(.1, x); w.x2 = r2(w.x1 + Math.cos(A) * n); w.y2 = r2(w.y1 + Math.sin(A) * n); }
       else if (k === "ang"){ const a = x * Math.PI / 180; w.x2 = r2(w.x1 + Math.cos(a) * L); w.y2 = r2(w.y1 + Math.sin(a) * L); }
