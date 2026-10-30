@@ -149,7 +149,7 @@ function normDevice(d){
   if (!d.av || typeof d.av !== "object") d.av = Object.assign({hdmiOut:0, vgaOut:0, hdmiIn:0}, K.av || {});
   // counts read from older or imported files are never negative (a negative SFP count stopped the rack drawing)
   // sane limits whatever path a number came in by (field, table import, AI, sync fix): a 99999-port switch froze the program
-  d.ports = clamp(Math.round(num(d.ports, 0)), 0, 512); if (d.params.sfp !== undefined) d.params.sfp = clamp(Math.round(num(d.params.sfp, 0)), 0, 64); if (d.params.h !== undefined && d.params.h !== "") d.params.h = clamp(Math.round(num(d.params.h, 1)), 1, 60); ["sfp", "h", "psu", "poePorts"].forEach(k => { if (d.params[k] !== undefined && num(d.params[k], 0) < 0) d.params[k] = 0; });
+  d.ports = clamp(Math.round(num(d.ports, 0)), 0, 512); if (d.params.sfp !== undefined) d.params.sfp = clamp(Math.round(num(d.params.sfp, 0)), 0, 64); if (d.params.h !== undefined && d.params.h !== "") d.params.h = clamp(Math.round(num(d.params.h, 1)), 0, 60);   // 0 = 0U (side PDU) and non-rack devices ["sfp", "h", "psu", "poePorts"].forEach(k => { if (d.params[k] !== undefined && num(d.params[k], 0) < 0) d.params[k] = 0; });
   if (d.kind === "camera"){
     // one camera can record on several NVRs: nvrs = [nvr ids], chs = {nvr id: channel}; nvr / ch mirror the first one
     if (!Array.isArray(d.nvrs)) d.nvrs = d.nvr ? [d.nvr] : [];
