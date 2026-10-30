@@ -1,9 +1,20 @@
-NETWORKKING 3.9.2 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.9.3 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.9.3
+ - Xülasə: «Planlaşdırılır» statuslu cihazlarda IP, MAC və kabel natamam sayılmır; firewall, switch, router üçün IP
+   tələb olunmur (idarəetmə IP-si istəyə bağlıdır); cədvəlin başlığı sürüşdürəndə cihazların üstünə düşmür; markaya görə filtr.
+ - Yer: «🌳 Çevrə (bina xarici)» — mərtəbəsi olmayan həyət / perimetr cihazları üçün; otaq növü «Bina xarici (həyət, giriş,
+   mühafizə)». Topologiya və CCTV «Mərtəbələr üzrə düz» bunları «Bina xarici» qutusuna qoyur; «Kış bahçesi» artıq bina xarici sayılmır.
+ - Port Map: patch panel portunun «Arxa tərəf»-i kabeldə növbəti nöqtəni (rozetkanı) göstərir — port nömrəsi yazanda rozetka
+   zəncirdən itmir; rozetkanın «Ön tərəf» siyahısında patch panellər də var; kartdan karta keçəndə yuxarıda «‹ Geri» düyməsi.
+ - Topologiya / CCTV sxemi: seçilən cihaz ön planda, kabelləri aktiv, qarşı tərəfdəki cihazlar yarımşəffaf, qalanları
+   şəffaf; Ctrl + təkər ilə böyüdüb-kiçiltmək.
+ - Wi-Fi Nəticələr cədvəlində başlıqlar dəyərlərlə eyni sütunda.
 
 3.9.2
  - FortiGate idxalı: «diagnose wireless-controller wlac -c wtp» çıxışı oxunur — hər FortiAP-ın adı, IP-si, MAC-ı və

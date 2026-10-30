@@ -332,7 +332,7 @@ function drawHeat(d, f, step){ document.querySelectorAll(`canvas[data-heat="${f.
 const panel = (title, body, btns = "") => `<div class="card wpan"><h3>${esc(title)}<span class="grow"></span>${btns ? `<span class="noprint">${btns}</span>` : ""}</h3>${body}</div>`;
 const pill = (txt, cls) => `<span class="pill ${cls || ""}">${esc(txt)}</span>`;
 function tableRO(cols, rows){
-  return `<div class="scroll"><table class="t"><tr>${cols.map(c => `<th>${esc(c.label)}</th>`).join("")}</tr>${rows.map(r => `<tr${r._attr || ""}>${cols.map(c => `<td${c.c ? ' class="c"' : ""}${c.b ? ' style="font-weight:700"' : ""}${c.nw ? ' style="white-space:nowrap"' : ""}>${c.html ? (r[c.k] ?? "") : esc(r[c.k] ?? "")}</td>`).join("")}</tr>`).join("")}</table></div>`;
+  return `<div class="scroll"><table class="t"><tr>${cols.map(c => `<th${c.c ? ' class="c"' : ""}>${esc(c.label)}</th>`).join("")}</tr>${rows.map(r => `<tr${r._attr || ""}>${cols.map(c => `<td${c.c ? ' class="c"' : ""}${c.b ? ' style="font-weight:700"' : ""}${c.nw ? ' style="white-space:nowrap"' : ""}>${c.html ? (r[c.k] ?? "") : esc(r[c.k] ?? "")}</td>`).join("")}</tr>`).join("")}</table></div>`;
 }
 const field = (label, k, v, type = "text", extra = "") => type === "textarea" ? `<label class="fld"><span>${esc(label)}</span><textarea data-f="${k}"${extra}>${esc(v ?? "")}</textarea></label>` : `<label class="fld"><span>${esc(label)}</span><input data-f="${k}" type="${type}" value="${esc(v ?? "")}"${extra}></label>`;
 const selField = (label, k, v, opts) => `<label class="fld"><span>${esc(label)}</span><select data-f="${k}">${opts.map(([a, l]) => opt(a, l, v)).join("")}</select></label>`;

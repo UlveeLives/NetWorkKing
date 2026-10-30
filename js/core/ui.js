@@ -234,7 +234,7 @@ function render(){
   const view = $("#view"), keep = sameScreen(a, tab) ? scrollSave() : null; view.className = "view v-" + a.id + " t-" + tab.id;
   view.innerHTML = tab.render ? tab.render() : "";
   const dr = drawerHtml(a, tab);
-  $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}${drawerFoot()}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);
+  $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${selBackBar()}${dr}${drawerFoot()}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);
   if (UI.multi.size) $$("[data-sel]", view).forEach(el => { if (UI.multi.has(el.dataset.sel)){ const tr = el.closest("tr") || el; tr.classList.add("on"); } });
   zpAll(); refreshBrands();
   if (keep) scrollRestore(keep);
@@ -271,7 +271,13 @@ function drawerHtml(a, tab){
     return `<div class="dhead"><div><h3>${esc(t("multiSel",{n:UI.multi.size}))}</h3></div><button class="x" data-dr="close">×</button></div>${L.length > 1 ? multiEditor(B(), L) : ""}${extra}`; }
   return a.drawer ? a.drawer(tab) : "";
 }
-function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${dr}${drawerFoot()}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);  restoreFocus(); maybePanelTour(); }
+// the panel remembers the card it was opened from (a port card → its device, a chain item …) so ‹ Back can return to it
+const selSame = (a, b) => !!a && !!b && a.type === b.type && a.id === b.id && String(a.p || "") === String(b.p || "");
+function selGo(to){ const from = UI.sel; if (from && !selSame(from, to)) UI.selBack = {from, to, prev:UI.selBack && selSame(UI.selBack.to, from) ? UI.selBack : null}; UI.sel = to; render(); }
+function selBackBar(){ const B0 = UI.selBack; if (!B0 || !selSame(B0.to, UI.sel)) return ""; const f = B0.from, b = B(), d = f && devById(b, f.id);
+  const lab = f.type === "port" && d ? `${devLabel(d)} :${f.p}` : f.type === "link" ? t("tabCables") : d ? devLabel(d) : "";
+  return `<div class="selback"><button class="btn small" data-dr="selback">‹ ${esc(t("back"))}${lab ? ": " + esc(lab) : ""}</button></div>`; }
+function renderDrawer(){ const a = curApp(), dr = drawerHtml(a, curTab()); $("#drawer").innerHTML = dr ? `<div class="dhandle"></div>${selBackBar()}${dr}${drawerFoot()}` : ""; $("#drawer").hidden = !dr; document.body.classList.toggle("drawer-open", !!dr);  restoreFocus(); maybePanelTour(); }
 /* ---------- header / tab / building events ---------- */
 /* ---------- typing masks: IP fields take only an IPv4 address (digits, dots, "/mask"), MAC fields only hex with ":" added ---------- */
 const IP_FIELDS = '[data-f="ip"],[data-cf$=":ip"],#bk-ip,#ne-ip,#lk-ip,[data-c="gw"],[data-c="subnet"],[data-v="gw"],[data-v="subnet"],input[data-mask="ip"]';

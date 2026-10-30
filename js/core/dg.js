@@ -67,11 +67,20 @@ function dgContent(b, v, cfg){
   return {x:Math.min(...xs, 0) - 20, y:Math.min(...ys, 0) - 20, w:Math.max(...xs) - Math.min(...xs, 0) + 40, h:Math.max(...ys) - Math.min(...ys, 0) + 40};
 }
 function dgSvg(b, cfg, opts = {}){
-  const v = view(b, cfg.id), vb = dgContent(b, v, cfg), print = !!opts.print, S = v.show;
+  const v = view(b, cfg.id), vb = dgContent(b, v, cfg), print = !!opts.print, S = v.show, Z = print ? 1 : (UI.dgZ && UI.dgZ[cfg.id]) || 1;
   const sel = !print && UI.sel, isSel = (type, id) => sel && sel.type === type && sel.id === id || UI.multi.has(type + ":" + id);
   const hl0 = cfg.highlight ? cfg.highlight(b, v) : null, fv = dgVisible(b, v), hideF = fv && v.filter.hide;
-  const hl = hl0 && fv ? new Set([...hl0].filter(x => fv.has(x))) : hl0 || (fv && !hideF ? fv : null), dim = id => hl && !hl.has(id), gone = id => hideF && !fv.has(id);
-  let h = `<svg xmlns="http://www.w3.org/2000/svg" class="dgsvg" id="dg" viewBox="${vb.x} ${vb.y} ${vb.w} ${vb.h}" width="${vb.w}" height="${vb.h}" font-family="Segoe UI,Arial,sans-serif" data-app="${cfg.id}">
+  const hl = hl0 && fv ? new Set([...hl0].filter(x => fv.has(x))) : hl0 || (fv && !hideF ? fv : null), gone = id => hideF && !fv.has(id);
+  // a selected device (or rack) stands out: it is drawn on top with its cables; the devices at the other end of those cables
+  // stay half visible, everything else fades until it is clicked
+  let fx = null;
+  if (!print && sel && (sel.type === "dev" || sel.type === "rack")){ const sd = sel.type === "dev" ? devById(b, sel.id) : null;
+    const nodeOf = did => { if (v.nodes[did]) return did; const x = devById(b, did); return x && x.rack && v.nodes[x.rack] ? x.rack : did; };
+    const node = v.nodes[sel.id] ? sel.id : sd && sd.rack && v.nodes[sd.rack] ? sd.rack : null;
+    if (node){ const devs = sel.type === "rack" ? new Set(b.devices.filter(x => x.rack === sel.id).map(x => x.id)) : new Set([sel.id]), L = b.links.filter(l => devs.has(l.a.d) || devs.has(l.b.d));
+      fx = {node, links:new Set(L.map(l => l.id)), nb:new Set(L.flatMap(l => [l.a.d, l.b.d]).map(nodeOf))}; fx.nb.delete(node); } }
+  const dim = id => fx ? id !== fx.node && !fx.nb.has(id) : hl && !hl.has(id), half = id => fx && fx.nb.has(id);
+  let h = `<svg xmlns="http://www.w3.org/2000/svg" class="dgsvg" id="dg" viewBox="${vb.x} ${vb.y} ${vb.w} ${vb.h}" width="${vb.w * Z}" height="${vb.h * Z}" font-family="Segoe UI,Arial,sans-serif" data-app="${cfg.id}">
     <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" fill="context-stroke"/></marker>
     <pattern id="grid" width="${v.grid.size}" height="${v.grid.size}" patternUnits="userSpaceOnUse"><path d="M${v.grid.size} 0H0V${v.grid.size}" fill="none" stroke="#e6e9f0" stroke-width=".6"/></pattern></defs>
     <rect class="bg" x="${vb.x}" y="${vb.y}" width="${vb.w}" height="${vb.h}" fill="${!print && v.grid.show ? "url(#grid)" : "#fff"}"/>`;
@@ -95,7 +104,7 @@ function dgSvg(b, cfg, opts = {}){
   // cables
   const links = S.links === false ? [] : b.links.filter(l => (!cfg.linkFilter || cfg.linkFilter(l, b)) && !gone(l.a.d) && !gone(l.b.d));
   const G = layoutLinks(b, v, links);
-  links.forEach(l => { const g = G[l.id]; if (!g) return; const M = MEDIA[l.media] || MEDIA.cat6, p = linkPath(g), on = isSel("link", l.id), dd = dim(l.a.d) || dim(l.b.d);
+  links.forEach(l => { const g = G[l.id]; if (!g) return; const M = MEDIA[l.media] || MEDIA.cat6, p = linkPath(g), on = isSel("link", l.id), dd = fx ? !fx.links.has(l.id) : dim(l.a.d) || dim(l.b.d);
     const stc = l.status === "faulty" ? "#d63a3a" : M.c, dash = l.status === "planned" ? "6 4" : M.dash || "";
     h += `<g class="dl${dd ? " dim" : ""}" data-link="${l.id}"><path d="${p.d}" fill="none" stroke="transparent" stroke-width="12"/><path d="${p.d}" fill="none" stroke="${stc}" stroke-width="${M.w + (on ? 1.6 : 0)}"${dash ? ` stroke-dasharray="${dash}"` : ""} stroke-linejoin="round"/>`;
     const lab = [S.cid && l.cid, S.speed && l.speed, l.label].filter(Boolean).join(" · ");
@@ -104,10 +113,10 @@ function dgSvg(b, cfg, opts = {}){
     if (on && !print && p.ax) h += `<circle class="lh" data-lh="${l.id}:${p.ax}" cx="${p.mid.x}" cy="${p.mid.y}" r="6"/>`;
     h += `</g>`; });
   // racks and devices
-  for (const [id, n] of Object.entries(v.nodes)){
+  for (const [id, n] of Object.entries(v.nodes).sort((p, q) => fx ? (p[0] === fx.node) - (q[0] === fx.node) : 0)){
     if (gone(id)) continue; const g = nodeGeo(b, v, id); if (!g) continue;
     if (g.rack){ const r = g.rack, on = isSel("rack", id);
-      h += `<g class="dn drk${dim(id) ? " dim" : ""}" data-node="${id}"><rect x="${g.x}" y="${g.y}" width="${g.w}" height="${g.h}" rx="6" fill="#1d2433" stroke="${on ? "#ffb703" : "#0d1220"}" stroke-width="${on ? 3 : 1.5}"/>`
+      h += `<g class="dn drk${dim(id) ? " dim" : half(id) ? " nb" : ""}" data-node="${id}"><rect x="${g.x}" y="${g.y}" width="${g.w}" height="${g.h}" rx="6" fill="#1d2433" stroke="${on ? "#ffb703" : "#0d1220"}" stroke-width="${on ? 3 : 1.5}"/>`
         + svgt(g.x + 10, g.y + 18, r.name, {size:12, weight:800, fill:"#fff"}) + svgt(g.x + g.w - 10, g.y + 18, `${r.u}U`, {size:10, fill:"#9fb0d6", anchor:"end"});
       if (!g.rows.length) h += svgt(g.x + g.w / 2, g.y + RHEAD + 14, t("rackEmpty"), {size:10, fill:"#9fb0d6", anchor:"middle"});
       g.rows.forEach((d, i) => { const y = g.y + RHEAD + i * RROW, son = isSel("dev", d.id);
@@ -118,7 +127,7 @@ function dgSvg(b, cfg, opts = {}){
       h += `</g>`; continue; }
     const d = g.d, on = isSel("dev", id), st = d.status;
     const sub = (cfg.nodeLines ? cfg.nodeLines(b, d, v) : defaultLines(b, d, v)).filter(Boolean);
-    h += `<g class="dn${dim(id) ? " dim" : ""}${st === "planned" ? " planned" : ""}" data-node="${id}">`;
+    h += `<g class="dn${dim(id) ? " dim" : half(id) ? " nb" : ""}${st === "planned" ? " planned" : ""}" data-node="${id}">`;
     if (n.boxed){ h += `<rect x="${g.x}" y="${g.y}" width="${g.w}" height="${g.h}" rx="8" fill="#fff" stroke="${on ? "#ffb703" : st === "faulty" ? "#d63a3a" : "#33415f"}" stroke-width="${on ? 3 : 1.6}"${st === "planned" ? ' stroke-dasharray="5 3"' : ""}/>`;
       const s = Math.min(g.h - 12, 44); h += icn(devIcon(d), g.x + 8, g.y + (g.h - s) / 2, s);
       const fit = (txt, px, cw) => { const m = Math.max(4, Math.floor((g.w - s - 22) / (px * cw))); return txt.length > m ? txt.slice(0, m - 1) + "…" : txt; };
@@ -191,14 +200,16 @@ function dgPlaceAll(cfg){ const b = B(), v = view(b, cfg.id), boxed = store.sett
    the floor's devices (and racks) inside. Places outside the building (yard, guard house, outdoor cameras) get a box of
    their own on the right. "Put all on the diagram" uses this, and it can be run again at any time. */
 const FCOL = ["blue", "green", "orange", "purple", "teal", "red", "gray"];
-const OUT_RX = /həyət|heyet|bahçe|bahce|yard|garden|çöl|cöl|outdoor|outside|exterior|dış|dis mekan|mühafizə|muhafize|guard|security|post|kpp|darvaza|gate|parking|otopark/i;
+// outside: a room of type «outdoor» (Bina xarici), a device on «Çevrə», an outdoor camera with no room — and, for rooms whose
+// type was left as the default, a name that says so (a winter garden is inside)
+const OUT_RX = /həyət|heyet|(?<!k[ıi]ş |k[ıi]s |q[ıi]ş |winter )(bahçe|bahce|garden)|yard|çöl|cöl|outdoor|outside|exterior|dış mekan|dis mekan|mühafizə|muhafize|guard|kpp|darvaza|gate|parking|otopark/i;
 function dgFloorLayout(cfg, all){
   const b = B(), v = view(b, cfg.id), boxed = store.settings.addBoxed, inKinds = d => !cfg.kinds || cfg.kinds.includes(d.kind);
   // what goes on: racks holding devices of this app, devices of this app that are not shown inside such a rack
   const racks = b.racks.filter(r => v.nodes[r.id] || (all && rackDevices(b, r).some(inKinds)));
   const rackIds = new Set(racks.map(r => r.id));
   const devs = b.devices.filter(d => inKinds(d) && !(d.rack && rackIds.has(d.rack)) && (v.nodes[d.id] || all) && !(KINDS[d.kind] || {}).acc);
-  const outside = (d, rm) => (d && d.kind === "camera" && d.camera && d.camera.loc === "out") || (rm && OUT_RX.test(rm.name)) || (rm && rm.type === "outdoor");
+  const outside = (d, rm) => devOutside(b, d) || (d && d.kind === "camera" && d.camera && d.camera.loc === "out") || roomOutside(rm) || (rm && (!rm.type || rm.type === "office" || rm.type === "other") && OUT_RX.test(rm.name));
   const floorOf = it => it.r ? it.r.floor : devFloor0(b, it.d);
   const items = [...racks.map(r => ({id:r.id, r, room:r.room})), ...devs.map(d => ({id:d.id, d, room:d.room}))];
   items.forEach(it => { const rm = it.room && roomById(b, it.room); it.out = !it.r && outside(it.d, rm); it.f = it.out ? "__out" : floorOf(it) && floorById(b, floorOf(it)) ? floorOf(it) : "__none";
@@ -411,6 +422,12 @@ function dgWire(cfg){
   $("#pal").addEventListener("change", e => { if (curApp().dg !== cfg) return; const el = e.target.closest("[data-vopt]"); if (!el) return; const v = view(B(), cfg.id); edit(() => { setPath(v, el.dataset.vopt, el.checked); }); });
 }
 // Fast redraw while dragging (only the SVG).
+/* ---------- zoom: Ctrl + mouse wheel (or a touchpad pinch) on a diagram, at the cursor; kept per app while the program is open ---------- */
+document.addEventListener("wheel", e => { const host = e.target.closest && e.target.closest("#dgwrap"), svg = host && host.querySelector("#dg"); if (!svg || !(e.ctrlKey || e.metaKey)) return; e.preventDefault();
+  const app = svg.dataset.app; UI.dgZ = UI.dgZ || {}; const z = UI.dgZ[app] || 1, nz = clamp(z * Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0015)), .15, 4);
+  const R0 = host.getBoundingClientRect(), mx = e.clientX - R0.left, my = e.clientY - R0.top, cx = (host.scrollLeft + mx) / z, cy = (host.scrollTop + my) / z;
+  const vb = svg.viewBox.baseVal; svg.setAttribute("width", vb.width * nz); svg.setAttribute("height", vb.height * nz); UI.dgZ[app] = nz;
+  host.scrollLeft = cx * nz - mx; host.scrollTop = cy * nz - my; }, {passive:false});
 function quickRedraw(cfg){ const host = $("#dgwrap"); if (host) host.innerHTML = dgSvg(B(), cfg); }
 function dgKey(cfg, e){
   const b = B(), v = view(b, cfg.id), mod = e.ctrlKey || e.metaKey;

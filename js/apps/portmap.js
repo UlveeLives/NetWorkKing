@@ -262,8 +262,9 @@ function unkChk(b, d, p, c){ const pr = parts(b, d.id, p), known = !!pr.end, via
   return `<label class="chk" title="${esc(t("pmUnkH"))}"><input type="checkbox" data-pc="unk"${c.unk || viaPanel ? " checked" : ""}${known || viaPanel ? " disabled" : ""}> ${esc(t("pmUnk"))}${viaPanel ? ` <small class="muted">(${esc(devLabel(devById(b, pr.panel.d)) + " :" + pr.panel.p)})</small>` : ""}</label>`; }
 function panelPortSec(b, d, p, pr){
   const front = pr.before.length ? pr.before[pr.before.length - 1] : null, fd = front && devById(b, front.d);
-  const back = pr.after.length ? pr.after[pr.after.length - 1] : null, bd = back && devById(b, back.d);
-  const nets = b.devices.filter(x => !passive(x) && portDev(x)).sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
+  const back = pr.after.length ? pr.after[0] : null, bd = back && devById(b, back.d);
+  // the front of a panel / outlet port comes from a switch or from another panel (outlet ← patch panel ← switch)
+  const nets = b.devices.filter(x => x.id !== d.id && portDev(x) && x.kind !== "outlet" && num(x.ports) > 0).sort((x, y) => (passive(x) - passive(y)) || devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const ends = b.devices.filter(x => x.id !== d.id && x.kind !== "internet" && (!isNet(x) || true)).sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const rearL = pr.after.length ? pr.after[0].link : null;
   return sec("plink", t("pmConn"), `<p class="small">🏷 TIA-606: <b class="mono">${esc(label606(b, d, p))}</b></p>
@@ -356,7 +357,7 @@ function goPort(id, p){ UI.sel = {type:"port", id, p:String(p)}; UI.multi.clear(
 document.addEventListener("click", async e => {
   if (UI.app !== "portmap" || e.target.closest("#modal")) return;
   const pt = e.target.closest("[data-port]"); if (pt){ const [id, p] = pt.dataset.port.split(":"); goPort(id, p); return; }
-  const gp = e.target.closest("[data-goport]"); if (gp){ e.stopPropagation(); const [id, p] = gp.dataset.goport.split(":"); goPort(id, p); return; }
+  const gp = e.target.closest("[data-goport]"); if (gp){ e.stopPropagation(); const [id, p] = gp.dataset.goport.split(":"); if (gp.closest("#drawer") && UI.sel){ const from = UI.sel; goPort(id, p); if (!selSame(from, UI.sel)) UI.selBack = {from, to:UI.sel, prev:UI.selBack && selSame(UI.selBack.to, from) ? UI.selBack : null}; renderDrawer(); return; } goPort(id, p); return; }
   const nav = e.target.closest("[data-pmnav]"); if (nav && UI.sel && UI.sel.type === "port"){ const d = devById(B(), UI.sel.id), n = Math.round(num(d.ports)), p = clamp(+UI.sel.p + +nav.dataset.pmnav, 1, n); goPort(d.id, p); return; }
   const a = e.target.closest("[data-pma]"); if (!a) return; const b = B(), k = a.dataset.pma;
   if (k === "csv") return csv(b);

@@ -643,7 +643,7 @@ input.bad{border-color:#d63a3a!important}
 .smt input,.smt select{display:inline-block;font-size:12px;padding:3px 6px;min-height:0;height:28px;border:1px solid var(--line)!important;background:var(--surface)!important;border-radius:6px;color:var(--text)}
 .smt select{width:auto;max-width:140px}
 .smt td.miss input,.smt td.miss select{border-color:#d63a3a!important}
-.smt thead th{position:sticky;top:0;z-index:1}
+.smt thead th{position:sticky;top:0;z-index:3;background:var(--surface2,var(--surface));box-shadow:0 1px 0 var(--line)}
 .smt th.sortable{cursor:pointer;user-select:none}.smt th.sortable.on{color:var(--pri)}
 .smt td.miss{background:color-mix(in srgb,#d63a3a 13%,transparent)}
 .smt tr.planned td{background-image:linear-gradient(90deg,rgba(91,127,196,.08),transparent)}
@@ -853,3 +853,7 @@ svg.rkcords .cord path.halo{stroke:rgba(10,14,22,.55);stroke-width:3.4;opacity:.
 /* FortiGate import */
 .fgsum{padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin:8px 0}.fgsum p{margin:2px 0}
 .fgopts{display:flex;flex-direction:column;gap:4px;margin-top:10px}.fgopts .chk.sub{margin-left:24px}
+
+/* ‹ Back to the card the panel was opened from */
+.selback{padding:8px 12px 0}
+.dgsvg .nb{opacity:.6}

@@ -173,7 +173,13 @@ const linkById = (b, id) => b.links.find(l => l.id === id);
 const floorById = (b, id) => b.floors.find(f => f.id === id);
 const roomById = (b, id) => b.rooms.find(r => r.id === id);
 const vlanById = (b, id) => b.vlans.find(v => v.id === id);
-const floorName = (b, id) => id === "__later" ? t("later") : (floorById(b, id) || {}).name || "";
+const floorName = (b, id) => id === "__later" ? t("later") : id === OUT_FLOOR ? t("flOut") : (floorById(b, id) || {}).name || "";
+// «Çevrə» — around the building (yard, gate, perimeter cameras): a location for devices that is on no floor
+const OUT_FLOOR = "__out";
+// names that mean «outside»; a winter garden (kış bahçesi) is inside
+const OUTDOOR_RX = /həyət|heyet|(?<!k[ıi]ş |k[ıi]s |q[ıi]ş |winter )(bahçe|bahce|garden)|yard|çöl|outdoor|outside|exterior|dış mekan|dis mekan|perimeter|çevrə|cevre|parking|otopark|darvaza|gate/i;
+const roomOutside = rm => !!rm && (rm.type === "outdoor" || rm.floor === OUT_FLOOR);
+const devOutside = (b, d) => !!d && (d.floor === OUT_FLOOR || (d.kind === "camera" && d.camera && d.camera.loc === "out" && !d.room) || roomOutside(d.room && roomById(b, d.room)));
 const roomName = (b, id) => id === "__later" ? t("later") : (roomById(b, id) || {}).name || "";
 const vlanLabel = (b, id) => { const v = vlanById(b, id); return v ? `${v.vid} · ${v.name}` : ""; };
 const devLabel = d => d ? (d.name || [d.brand, d.model].filter(Boolean).join(" ") || kindName(d.kind)) : "?";
@@ -245,7 +251,7 @@ const LINK_FLOOR = /^(bağlant|baglant|əlaqə|elaqe|uplink|link|trunk|connectio
 function ensureFloor(b, name){ let f = b.floors.find(x => same(x.name, name)); if (!f){ f = {id:uid("f"), name, lvl:b.floors.length}; b.floors.push(f); normBuilding(b); } return f; }
 function ensureRoom(b, floorId, name){ let r = b.rooms.find(x => same(x.name, name) && (x.floor || "") === (floorId || "")); if (!r){ r = {id:uid("r"), name, floor:floorId || "", users:0, wall:"drywall"}; b.rooms.push(r); } return r; }
 const roomsOn = (b, fid) => b.rooms.filter(r => (r.floor || "") === (fid || ""));
-function floorOpts(b, cur, extra = true){ return opt("", t("none"), cur) + b.floors.map(f => opt(f.id, f.name, cur)).join("") + (extra ? opt("__later", t("later"), cur) + opt("__new", "＋ " + t("floorNew") + "…", "") : ""); }
+function floorOpts(b, cur, extra = true){ return opt("", t("none"), cur) + b.floors.map(f => opt(f.id, f.name, cur)).join("") + opt(OUT_FLOOR, "🌳 " + t("flOut"), cur) + (extra ? opt("__later", t("later"), cur) + opt("__new", "＋ " + t("floorNew") + "…", "") : ""); }
 function roomOpts(b, fid, cur, extra = true){ const L = fid && fid !== "__later" ? roomsOn(b, fid) : b.rooms; return opt("", t("none"), cur) + L.map(r => opt(r.id, r.name + (fid ? "" : r.floor ? " · " + floorName(b, r.floor) : ""), cur)).join("") + (extra ? opt("__later", t("later"), cur) + opt("__new", "＋ " + t("roomNew") + "…", "") : ""); }
 function vlanOpts(b, cur, extra = true){ return opt("", t("none"), cur) + b.vlans.map(v => opt(v.id, `${v.vid} · ${v.name}`, cur)).join("") + (extra ? opt("__new", "＋ " + t("vlanNew") + "…", "") : ""); }
 // Handles the "＋ new…" options of floor / room / VLAN selects. Resolves to the id to store (or null = cancelled).
@@ -547,9 +553,11 @@ function wireEditors(){
     const mx = e.target.closest("[data-mdr]"); if (mx){ e.stopPropagation(); multiAct(mx.dataset.mdr); return; }
     const x = e.target.closest("[data-dr]"); if (!x) return; e.stopPropagation();
     const k = x.dataset.dr, b = B(), s = UI.sel;
-    if (k === "close"){ UI.sel = null; UI.multi.clear(); render(); return; }
-    if (k.startsWith("link:")){ UI.sel = {type:"link", id:k.slice(5)}; render(); return; }
-    if (k.startsWith("sel:")){ UI.sel = {type:"dev", id:k.slice(4)}; render(); return; }
+    if (k === "close"){ UI.sel = null; UI.selBack = null; UI.multi.clear(); render(); return; }
+    // going from one card to another inside the panel remembers where we came from (‹ Back at the top of the new card)
+    if (k === "selback"){ const B0 = UI.selBack; UI.selBack = B0 && B0.prev || null; UI.sel = B0 ? B0.from : null; render(); return; }
+    if (k.startsWith("link:")){ selGo({type:"link", id:k.slice(5)}); return; }
+    if (k.startsWith("sel:")){ selGo({type:"dev", id:k.slice(4)}); return; }
     if (k.startsWith("unlink:")){ const id = k.slice(7); edit(() => { b.links = b.links.filter(l => l.id !== id); if (s && s.type === "link") UI.sel = null; }); return; }
     if (!s) return;
     const d = s.type === "dev" && devById(b, s.id);

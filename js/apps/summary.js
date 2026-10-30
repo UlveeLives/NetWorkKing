@@ -8,8 +8,11 @@ const CATS = ["net","wifi","cctv","compute","end","passive","fiber","power","rac
 const catOf = d => (KINDS[d.kind] || KINDS.other).cat || "end";
 const NO_IP = new Set(["outlet","pp","fpp","splice","cablemgr","brush","blank","vent","shelf","fan","pdu","monitor","videowall","sensor","tv","internet","mediaconv","poeinj"]);
 const needsIp = d => !NO_IP.has(d.kind) && !(KINDS[d.kind] || {}).passive && !(KINDS[d.kind] || {}).acc;
+// network devices can have a management IP, but it is not required: a FortiSwitch on FortiLink gets its own from the
+// FortiGate, a firewall's addresses are on its interfaces, a router's often come from the provider
+const IP_OPTIONAL = new Set(["firewall","switch","coresw","router","wlc","modem","ont"]);
 const isAcc = d => !!(KINDS[d.kind] || {}).acc;
-const st = () => { UI.sm = UI.sm || {q:"", cat:"", status:"", floor:"", miss:false, acc:false, sort:"name", dir:1}; return UI.sm; };
+const st = () => { UI.sm = UI.sm || {q:"", cat:"", status:"", floor:"", brand:"", miss:false, acc:false, sort:"name", dir:1}; return UI.sm; };
 const up = (b, d) => window.PM ? PM.upstream(b, d) : {};
 const linksOf = (b, d) => b.links.filter(l => l.a.d === d.id || l.b.d === d.id);
 const onPlan = d => window.BLD ? !!BLD.posOf(d) : false;
@@ -22,13 +25,15 @@ function gaps(b, d){
   const G = [], K = KINDS[d.kind] || KINDS.other;
   if (isAcc(d)) return G;
   if (!d.brand && !d.model && d.kind !== "outlet") G.push(["model", "sm_gModel", "here"]);
-  if (needsIp(d) && !d.ip && d.ipMode !== "dhcp") G.push(["ip", "sm_gIp", "here"]);
-  if (needsIp(d) && !d.mac && ["end","wifi","cctv","compute"].includes(K.cat)) G.push(["mac", "sm_gMac", "here"]);
+  // a planned device is not bought / mounted yet: no IP, MAC or cable to ask for
+  const planned = d.status === "planned";
+  if (!planned && needsIp(d) && !IP_OPTIONAL.has(d.kind) && !d.ip && d.ipMode !== "dhcp") G.push(["ip", "sm_gIp", "here"]);
+  if (!planned && needsIp(d) && !d.mac && ["end","wifi","cctv","compute"].includes(K.cat)) G.push(["mac", "sm_gMac", "here"]);
   if (!d.floor && !d.rack) G.push(["loc", "sm_gLoc", "here"]);
-  else if (!d.room && !d.rack && !camOut(d) && ["end","wifi","cctv","passive"].includes(K.cat)) G.push(["room", "sm_gRoom", "here"]);
+  else if (!d.room && !d.rack && !camOut(d) && d.floor !== OUT_FLOOR && ["end","wifi","cctv","passive"].includes(K.cat)) G.push(["room", "sm_gRoom", "here"]);
   if (K.rack && !d.rack && !["ups","pdu"].includes(d.kind) && !(d.kind === "nvr" || d.kind === "dvr") ) G.push(["rack", "sm_gRack", "rack"]);
   if ((d.kind === "ap" || d.kind === "camera" || d.kind === "outlet") && !onPlan(d)) G.push(["plan", "sm_gPlan", d.kind === "ap" ? "wifi" : d.kind === "camera" ? "cctv" : "building"]);
-  if (num(d.ports) > 0 && !K.passive && d.kind !== "internet" && !linksOf(b, d).length) G.push(["cable", "sm_gCable", "portmap"]);
+  if (!planned && num(d.ports) > 0 && !K.passive && d.kind !== "internet" && !linksOf(b, d).length) G.push(["cable", "sm_gCable", "portmap"]);
   if (d.kind === "camera" && !(d.nvrs || []).length && b.devices.filter(x => x.kind === "nvr" || x.kind === "dvr").length !== 1) G.push(["nvr", "sm_gNvr", "cctv"]);
   return G.filter(g => !isNa(d, g[0]));
 }
@@ -54,7 +59,7 @@ function appsFor(b, d){ const A = ["topology"];
 /* ---------- the list ---------- */
 function rows(b){
   const S = st(), q = nameKey(S.q || "");
-  let L = b.devices.filter(d => (S.acc || !isAcc(d)) && (!S.cat || catOf(d) === S.cat) && (!S.status || d.status === S.status) && (!S.floor || (S.floor === "__none" ? !d.floor : d.floor === S.floor)));
+  let L = b.devices.filter(d => (S.acc || !isAcc(d)) && (!S.cat || catOf(d) === S.cat) && (!S.status || d.status === S.status) && (!S.floor || (S.floor === "__none" ? !d.floor : d.floor === S.floor)) && (!S.brand || (S.brand === "__none" ? !d.brand : nameKey(d.brand) === nameKey(S.brand))));
   if (q) L = L.filter(d => nameKey([d.name, kindName(d.kind), d.brand, d.model, d.ip, d.mac, d.serial, floorName(b, d.floor), roomName(b, d.room), d.notes].join(" ")).includes(q));
   if (S.miss) L = L.filter(d => gaps(b, d).length);
   const key = {name:d => devLabel(d), kind:d => kindName(d.kind), brand:d => [d.brand, d.model].join(" "), status:d => d.status, floor:d => floorName(b, d.floor) + " " + roomName(b, d.room), ip:d => d.ip ? String(IP.host(d.ip) ?? d.ip).padStart(12, "0") : "~", mac:d => d.mac || "~", vlan:d => (vlanById(b, d.vlan) || {}).vid || "~", serial:d => d.serial || "~", gaps:d => -gaps(b, d).length}[S.sort] || (d => devLabel(d));
@@ -70,7 +75,8 @@ function listView(){
     <div class="smbar">${searchBox("q-sm")}
       <select data-smf="cat">${opt("", t("sm_allCats"), S.cat)}${CATS.filter(c => b.devices.some(d => catOf(d) === c)).map(c => opt(c, t("sm_cat_" + c), S.cat)).join("")}</select>
       <select data-smf="status">${opt("", t("sm_allStatus"), S.status)}${STATUSES.map(s => opt(s, t("st_" + s), S.status)).join("")}</select>
-      <select data-smf="floor">${opt("", t("sm_allFloors"), S.floor)}${b.floors.slice().reverse().map(f => opt(f.id, f.name, S.floor)).join("")}${opt("__none", t("sm_noFloor"), S.floor)}</select>
+      <select data-smf="floor">${opt("", t("sm_allFloors"), S.floor)}${b.floors.slice().reverse().map(f => opt(f.id, f.name, S.floor)).join("")}${opt(OUT_FLOOR, "🌳 " + t("flOut"), S.floor)}${opt("__none", t("sm_noFloor"), S.floor)}</select>
+      <select data-smf="brand" title="${esc(t("f_brand"))}">${opt("", t("sm_allBrands"), S.brand)}${[...new Map(b.devices.filter(d => d.brand && (S.acc || !isAcc(d))).map(d => [nameKey(d.brand), d.brand.trim()])).values()].sort((x, y) => x.localeCompare(y)).map(x => opt(x, x + " (" + b.devices.filter(d => nameKey(d.brand) === nameKey(x) && (S.acc || !isAcc(d))).length + ")", S.brand)).join("")}${opt("__none", t("sm_noBrand"), S.brand)}</select>
       <label class="chk"><input type="checkbox" data-smf="miss"${S.miss ? " checked" : ""}> ⚠ ${esc(t("sm_onlyGaps"))}</label>
       <label class="chk"><input type="checkbox" data-smf="acc"${S.acc ? " checked" : ""}> ${esc(t("sm_showAcc"))}</label>
       <span class="grow"></span><span class="muted small">${L.length} / ${b.devices.length}</span></div>
@@ -82,7 +88,7 @@ function listView(){
           <td>${inp(d, "name", d.name, ' style="width:150px"')}</td><td class="small nw">${esc(kindName(d.kind))}</td>
           <td${mc("model")}>${inp(d, "brand", d.brand, ` list="dl-brands" placeholder="${esc(t("f_brand"))}" style="width:90px"`)} ${inp(d, "model", d.model, ` list="dl-m-${d.kind}" placeholder="${esc(t("f_model"))}" style="width:110px"`)}</td>
           <td><select data-sm="${d.id}:status">${STATUSES.map(s => opt(s, t("st_" + s), d.status)).join("")}</select></td>
-          <td${mc("loc") || mc("room")}><select data-sm="${d.id}:floor">${opt("", "—", naOf(d).floor ? "x" : d.floor)}${NAO(d, "floor")}${b.floors.slice().reverse().map(f => opt(f.id, f.name, d.floor)).join("")}</select> <select data-sm="${d.id}:room">${opt("", "—", naOf(d).room ? "x" : d.room)}${NAO(d, "room")}${b.rooms.filter(r => !d.floor || r.floor === d.floor).map(r => opt(r.id, r.name, d.room)).join("")}</select></td>
+          <td${mc("loc") || mc("room")}><select data-sm="${d.id}:floor">${opt("", "—", naOf(d).floor ? "x" : d.floor)}${NAO(d, "floor")}${b.floors.slice().reverse().map(f => opt(f.id, f.name, d.floor)).join("")}${opt(OUT_FLOOR, "🌳 " + t("flOut"), d.floor)}</select> <select data-sm="${d.id}:room">${opt("", "—", naOf(d).room ? "x" : d.room)}${NAO(d, "room")}${b.rooms.filter(r => !d.floor || r.floor === d.floor || (d.floor === OUT_FLOOR && r.type === "outdoor")).map(r => opt(r.id, r.name, d.room)).join("")}</select></td>
           <td class="small nw${gk.has("rack") || gk.has("plan") ? " miss" : ""}">${esc(where) || "—"}</td>
           <td class="nw${gk.has("ip") ? " miss" : ""}">${needsIp(d) || d.ip || naOf(d).ip ? `<select data-sm="${d.id}:ipMode" class="ipm" title="${esc(t("f_ipMode"))}">${[["", "·"], ["static", "S"], ["dhcp", "D"]].map(([k, l]) => opt(k, l, d.ipMode || "")).join("")}</select>` + inp(d, "ip", d.ip, ` data-mask="ip" inputmode="decimal" style="width:118px" placeholder="${d.ipMode === "dhcp" ? "DHCP" : ""}"`) : `<span class="muted">—</span>`}</td>
           <td${mc("mac")}>${needsIp(d) || d.mac || naOf(d).mac ? inp(d, "mac", d.mac, ' data-mask="mac" style="width:128px" class="mono"') : `<span class="muted">—</span>`}</td>
@@ -123,7 +129,7 @@ function gapsView(){
         <td>${G.map(g => `<span class="gapw">` + (g[2] === "here" ? `<button class="gapb" data-sel="dev:${d.id}">${esc(t(g[1]))} ✎</button>` : `<button class="gapb go" data-smgo="${g[2]}:${d.id}">${esc(t(g[1]))} → ${APPICO[g[2]]} ${esc(t(APPS[g[2]].name))}</button>`) + `<button class="gapna" data-smna="${d.id}:${g[0]}" title="${esc(t("naT"))}">–</button></span>`).join("")}</td></tr>`).join("")}</table></div>` : `<p class="okc">✓ ${esc(t("sm_noGaps"))}</p>`}${(() => { const n = b.devices.filter(d => d.na && Object.keys(d.na).length).length; return n ? `<p class="muted small">– ${esc(t("naCount", {n}))} <button class="btn small ghost" data-smnaclr="1">↺ ${esc(t("naClr"))}</button></p>` : ""; })()}</div>`;
 }
 /* ---------- floors (and their rooms): edit, order, add, delete — no drawing needed ---------- */
-const RTYPES = ["office","meeting","server","corridor","lobby","kitchen","wc","storage","technical","other"];
+const RTYPES = ["office","meeting","server","corridor","lobby","kitchen","wc","storage","technical","outdoor","other"];
 function floorsView(){
   const b = B(), F = b.floors.slice().reverse(), devOn = f => b.devices.filter(d => !isAcc(d) && (d.floor === f.id || (d.room && (roomById(b, d.room) || {}).floor === f.id)));
   const cnt = (L, ks) => L.filter(d => ks.includes(d.kind)).length, open = UI.smOpen = UI.smOpen || {};

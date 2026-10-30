@@ -7,13 +7,13 @@
 "use strict";
 (function(){
 const RT = {office:["#e8f0ff","#2f5fc4"], meeting:["#f1e8ff","#6a3aa0"], server:["#ffe9e6","#b3262f"], corridor:["#f2f3f5","#7b8494"], lobby:["#e6f6ef","#1f8a5a"],
-  kitchen:["#fff4e0","#b26a00"], wc:["#e9f6fb","#11706f"], storage:["#f5efe6","#8a6d3b"], technical:["#eceff3","#3a4552"], other:["#f7f7f7","#59607a"]};
+  kitchen:["#fff4e0","#b26a00"], wc:["#e9f6fb","#11706f"], storage:["#f5efe6","#8a6d3b"], technical:["#eceff3","#3a4552"], outdoor:["#eef7e6","#3d7a1f"], other:["#f7f7f7","#59607a"]};
 const RTYPES = Object.keys(RT);
 // what a room can need (requirement counts), in this order everywhere
 const RK = ["outlet","ap","camera","tv","phone","printer","pc","access","intercom","touch","sensor","iot"];
 const RK_SHORT = {outlet:"D", ap:"AP", camera:"CAM", tv:"TV", phone:"TEL", printer:"PRN", pc:"PC", access:"ACS", intercom:"INT", touch:"TP", sensor:"SNS", iot:"IoT"};
 // default needs per room type (the set-up fills these in; the user changes them)
-const RDEF = {office:{outlet:4, phone:1}, meeting:{outlet:2, tv:1}, server:{outlet:2, camera:1, access:1}, corridor:{camera:1}, lobby:{outlet:2, camera:1, tv:1, access:1},
+const RDEF = {outdoor:{camera:1}, office:{outlet:4, phone:1}, meeting:{outlet:2, tv:1}, server:{outlet:2, camera:1, access:1}, corridor:{camera:1}, lobby:{outlet:2, camera:1, tv:1, access:1},
   kitchen:{outlet:1}, wc:{}, storage:{}, technical:{outlet:1}, other:{outlet:2}};
 // structure shapes (not devices)
 const ITEMS = {yard:{w:30, h:20}, stairs:{w:3, h:5}, elevator:{w:2, h:2}, shaft:{w:1, h:1}, door:{w:1, h:.2}, window:{w:1.5, h:.2}, column:{w:.5, h:.5}, label:{w:4, h:1}};
@@ -32,7 +32,7 @@ const plan = f => f.plan;
 const curFloor = b => { const S = st(); let f = b.floors.find(x => x.id === S.floor); if (!f){ f = b.floors[0] || null; S.floor = f ? f.id : null; } return f; };
 const roomsOf = (b, f) => b.rooms.filter(r => r.floor === f.id);
 const geoRooms = (b, f) => roomsOf(b, f).filter(r => r.geo);
-function normRoom(r){ r.type = RT[r.type] ? r.type : (/server|serv/i.test(r.name) ? "server" : /dəhliz|koridor|corridor|holl/i.test(r.name) ? "corridor" : "office"); r.req = r.req && typeof r.req === "object" ? r.req : {}; for (const k in r.req) r.req[k] = clamp(Math.round(num(r.req[k], 0)), 0, 200); return r; }
+function normRoom(r){ r.type = RT[r.type] ? r.type : (/server|serv/i.test(r.name) ? "server" : /dəhliz|koridor|corridor|holl/i.test(r.name) ? "corridor" : OUTDOOR_RX.test(r.name) ? "outdoor" : "office"); r.req = r.req && typeof r.req === "object" ? r.req : {}; for (const k in r.req) r.req[k] = clamp(Math.round(num(r.req[k], 0)), 0, 200); return r; }
 function posOf(d){ if (d.kind === "ap") return d.ap && d.ap.x !== null && d.ap.x !== undefined && d.ap.x !== "" ? {x:num(d.ap.x), y:num(d.ap.y)} : null; return d.pos && d.pos.x !== undefined ? {x:num(d.pos.x), y:num(d.pos.y)} : null; }
 function setPos(d, x, y){ if (d.kind === "ap"){ d.ap.x = r1(x); d.ap.y = r1(y); } else d.pos = {x:r1(x), y:r1(y)}; }
 function clearPos(d){ if (d.kind === "ap"){ d.ap.x = null; d.ap.y = null; } else delete d.pos; }
