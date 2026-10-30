@@ -601,16 +601,24 @@ function readPlaces(b){
   $$("#t-vl tr[data-i]").forEach(tr => { const v = b.vlans[+tr.dataset.i]; if (!v) return; ["color","vid","name","subnet","gw","dhcp"].forEach(k => { const el = tr.querySelector(`[data-c="${k}"]`); if (el) v[k] = el.value.trim(); }); });
 }
 /* ---------- checks shared by all apps ---------- */
+// a hostname that is just the model (with or without the brand), ignoring case, spaces and dashes: FortiAP-231K = "FortiAP 231K"
+const hnorm = x => String(x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+function hostIsFactory(d){ const h = hnorm(d.host), m = hnorm(d.model), br = hnorm(d.brand); if (!h || !m) return false;
+  return h === m || h === br + m || (!!br && h.endsWith(m) && h.startsWith(br.slice(0, 5)) && h.length - m.length <= 10); }
 function commonWarnings(b){
   const W = [], ips = {}, hosts = {}, macs = {}, sers = {}, ports = {}, cids = {};
   dupGroups(b).forEach(g => W.push(["err", t("w_nameDup",{n:g[0].name, k:g.length}), g[0].id]));
   b.devices.forEach(d => { const n = devLabel(d);
     if (d.ip){ if (!IP.valid(d.ip)) W.push(["err", t("w_ipBad",{n, ip:d.ip}), d.id]); else { const k = d.ip.split("/")[0]; if (ips[k]) W.push(["err", t("w_ipDup",{ip:k, a:ips[k], b:n}), d.id]); ips[k] = n;
       const v = vlanById(b, d.vlan), c = v && IP.cidr(v.subnet); if (c && !IP.inside(IP.host(d.ip), c)) W.push(["", t("w_ipVlan",{n, ip:k, v:v.vid, s:v.subnet}), d.id]); } }
-    if (d.host){ const k = d.host.toLowerCase(); if (hosts[k]) W.push(["err", t("w_hostDup",{h:d.host}), d.id]); hosts[k] = 1; }
+    if (d.host){ const k = d.host.trim().toLowerCase(); (hosts[k] = hosts[k] || []).push(d); }
     if (d.mac){ if (!macValid(d.mac)) W.push(["err", t("w_macBad",{n, m:d.mac}), d.id]); else { const k = macNorm(d.mac); if (macs[k]) W.push(["err", t("w_macDup",{m:d.mac, a:macs[k], b:n}), d.id]); macs[k] = n; } }
     if (d.serial){ const k = d.serial.toLowerCase(); if (sers[k]) W.push(["err", t("w_serDup",{s:d.serial}), d.id]); sers[k] = 1; }
   });
+  // same hostname: an error, unless it is only the factory name (the model name, e.g. FortiAP-231K) left on identical devices — then a soft hint
+  Object.values(hosts).filter(L => L.length > 1).forEach(L => { const h = L[0].host.trim();
+    if (L.every(hostIsFactory)) W.push(["", t("w_hostDef",{h, k:L.length}), L[1].id]);
+    else L.slice(1).forEach(d => W.push(["err", t("w_hostDup",{h}), d.id])); });
   b.links.forEach(l => {
     [l.a, l.b].forEach(e => { const p = String(e.p || "").trim(); if (!p) return; const d = devById(b, e.d), k = e.d + "|" + p.toLowerCase(); if (ports[k] && !(d && KINDS[d.kind] && KINDS[d.kind].passive && ports[k] < 2)) W.push(["err", t("w_portDup",{n:devLabel(d), p}), e.d]); ports[k] = (ports[k] || 0) + 1; });
     const c = String(l.cid || "").trim(); if (c){ if (cids[c]) W.push(["err", t("w_cidDup",{c}), null]); cids[c] = 1; }

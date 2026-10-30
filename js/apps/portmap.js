@@ -264,11 +264,12 @@ function panelPortSec(b, d, p, pr){
   const front = pr.before.length ? pr.before[pr.before.length - 1] : null, fd = front && devById(b, front.d);
   const back = pr.after.length ? pr.after[0] : null, bd = back && devById(b, back.d);
   // the front of a panel / outlet port comes from a switch or from another panel (outlet ← patch panel ← switch)
-  const nets = b.devices.filter(x => x.id !== d.id && portDev(x) && x.kind !== "outlet" && num(x.ports) > 0).sort((x, y) => (passive(x) - passive(y)) || devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
+  // anything can be patched into the front of a panel port (switch, another panel, an extender, a decoder…); an outlet's front comes from a panel, so outlets are not offered
+  const nets = b.devices.filter(x => x.id !== d.id && x.kind !== "outlet" && x.kind !== "internet" && !(KINDS[x.kind] || {}).acc && x.kind !== "splice").sort((x, y) => (passive(x) - passive(y)) || devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const ends = b.devices.filter(x => x.id !== d.id && x.kind !== "internet" && (!isNet(x) || true)).sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const rearL = pr.after.length ? pr.after[0].link : null;
   return sec("plink", t("pmConn"), `<p class="small">🏷 TIA-606: <b class="mono">${esc(label606(b, d, p))}</b></p>
-    <h4 class="sh">${esc(t("pmFront"))}</h4><div class="two"><label class="fld"><span>${esc(t("pmSwitch"))}</span><select data-pp="__fdev">${opt("", "—", fd ? fd.id : "")}${nets.map(x => opt(x.id, devFull(b, x), fd ? fd.id : "")).join("")}</select></label><label class="fld"><span>${esc(t("f_port"))}</span><input data-pp="__fport" value="${esc(front ? front.p : "")}"></label></div>
+    <h4 class="sh">${esc(t("pmFront"))}</h4><div class="two"><label class="fld"><span>${esc(t("pmFrontDev"))}</span><select data-pp="__fdev">${opt("", "—", fd ? fd.id : "")}${nets.map(x => opt(x.id, devFull(b, x), fd ? fd.id : "")).join("")}</select></label><label class="fld"><span>${esc(t("f_port"))}</span><input data-pp="__fport" value="${esc(front ? front.p : "")}"></label></div>
     <h4 class="sh">${esc(t("pmRear"))}</h4><div class="two"><label class="fld"><span>${esc(t("pmEnd"))}</span><select data-pp="__bdev">${opt("", "—", bd ? bd.id : laterHas(d, p, "end") ? "x" : "")}${opt("__later", "⏳ " + t("later"), bd ? "" : laterHas(d, p, "end") ? "__later" : "x")}${ends.map(x => opt(x.id, devFull(b, x) + (x.room ? " · " + roomName(b, x.room) : ""), bd ? bd.id : "")).join("")}${opt("__new", "＋ " + t("pmNewEnd") + "…", "")}</select></label><label class="fld"><span>${esc(t("f_port"))}</span><input data-pp="__bport" value="${esc(back ? back.p : "")}"></label></div>
     ${rearL ? `<div class="two"><label class="fld"><span>${esc(t("f_cid"))}</span><input data-plr="cid" value="${esc(rearL.cid)}"></label><label class="fld"><span>${esc(t("f_len"))}</span><input data-plr="len" type="number" min="0" step="0.1" value="${esc(rearL.len)}"></label></div>` : ""}`, true);
 }
@@ -436,7 +437,7 @@ function wireDrawer(){
       return edit(() => { ed[k] = v; if (k === "kind") normDevice(ed); if (k === "floor") ed.room = ""; }); }
     if (el.dataset.pp){ const k = el.dataset.pp, pr = parts(b, d.id, p);
       if (k === "__fdev" || k === "__fport"){ const fdv = $('[data-pp="__fdev"]').value, fpt = $('[data-pp="__fport"]').value.trim(); const front = pr.before.length ? pr.before[pr.before.length - 1] : null;
-        if (fdv && !fpt) return; // wait for the port number
+        if (fdv && !fpt && num((devById(b, fdv) || {}).ports) > 0) return; // wait for the port number (a device with no port list can be connected without one)
         const busy = fdv ? linksAt(b, fdv, fpt).filter(l => !front || l !== pr.chain[pr.me].link) : [];
         if (busy.length && !await uiConfirm(t("pmPortBusy",{p:devLabel(devById(b, fdv)) + " :" + fpt}), t("pmMove"))) return renderDrawer();
         return edit(() => { const myFront = pr.chain[pr.me].link; if (myFront) b.links = b.links.filter(l => l !== myFront); busy.forEach(l => b.links = b.links.filter(x => x !== l)); if (fdv) addLink(b, fdv, d.id, "patch", {pa:fpt, pb:p}); }); }
