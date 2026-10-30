@@ -97,7 +97,7 @@ function pmToBuilding(p, b){
     for (let i = 1; i <= num(s.ports); i++){
       const raw = p.ports[s.id + "-" + i]; if (!PM_HAS(raw)) continue; const r = rec(s, i), port = String(i);
       const c = {mode:r.mode || (r.vlan === "all" ? "trunk" : V[r.vlan] ? "access" : ""), vlan:V[r.vlan] || "", native:V[r.native] || "", allowed:r.allowed || "", speed:r.speed || "", poe:r.poe && r.poe !== "none" ? r.poe : "", admin:r.admin === "down" ? "down" : "up", desc:"", bad:!!r.bad, note:r.note || ""};
-      if (c.mode || c.vlan || c.allowed || c.speed || c.poe || c.admin === "down" || c.bad || c.note) sd.pcfg[port] = c;
+      if (c.mode || c.vlan || c.allowed || c.speed || c.poe || c.admin === "down" || c.bad || c.unk || c.note) sd.pcfg[port] = c;
       const floor = F[r.floor] || "", room = r.room && r.room !== "__later" ? ensureRoom(b, floor, r.room).id : "";
       if (isPeer(r.conn) && r.peerSw && SWD[r.peerSw]){
         const key = [s.id + ":" + i, r.peerSw + ":" + r.peerPort].sort().join("|"); if (peerDone.has(key)) continue; peerDone.add(key);

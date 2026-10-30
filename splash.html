@@ -254,7 +254,7 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.1", BRIDGE = window.splashBridge || null;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.2", BRIDGE = window.splashBridge || null;
 let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {

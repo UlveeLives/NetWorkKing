@@ -45,7 +45,9 @@ function parts(b, id, p){
   return {chain:c, me, before, after, panel:pas[0] || null, outlet:pas.find(h => devById(b, h.d).kind === "outlet") || null, end, endLink:end ? end.link : null};
 }
 const cfgOf = (d, p) => { d.pcfg[p] = Object.assign({mode:"", vlan:"", native:"", allowed:"", speed:"", poe:"", admin:"up", desc:"", bad:false, note:""}, d.pcfg[p] || {}); return d.pcfg[p]; };
-const hasCfg = (d, p) => { const c = d.pcfg[p]; return !!(c && (c.mode || c.vlan || c.native || c.allowed || c.speed || c.poe || c.admin === "down" || c.desc || c.bad || c.note || c.cli || c.later)); };
+const hasCfg = (d, p) => { const c = d.pcfg[p]; return !!(c && (c.mode || c.vlan || c.native || c.allowed || c.speed || c.poe || c.admin === "down" || c.desc || c.bad || c.unk || c.note || c.cli || c.later)); };
+// «cable far end unknown»: set on the port itself, or (for a switch port) on the patch-panel port it goes through; shown only while no end device is known
+function unkOf(b, d, p){ const c = d.pcfg[p]; const pr = parts(b, d.id, p); if (pr.end) return false; if (c && c.unk) return true; if (passive(d) || !pr.panel) return false; const pn = devById(b, pr.panel.d), pc = pn && pn.pcfg[pr.panel.p]; return !!(pc && pc.unk); }
 function label606(b, pp, port){ if (!pp || !port) return ""; const r = pp.rack && rackById(b, pp.rack); return `${r ? String(r.name).replace(/\s+/g, "") + "-" : ""}${String(pp.name).replace(/\s+/g, "")}-${String(port).padStart(2, "0")}`; }
 function portState(b, d, p){
   const c = d.pcfg[p] || {}, L = linksAt(b, d.id, p);
@@ -72,8 +74,8 @@ function grid(b, d){
   const n = Math.max(0, Math.round(num(d.ports))), sfp = clamp(Math.round(num(d.params.sfp)), 0, n), cu = n - sfp, s = UI.sel;
   const cell = (i, lab) => { const p = String(i), st = portState(b, d, p), c = d.pcfg[p] || {}, v = c.vlan && vlanById(b, c.vlan), on = s && s.type === "port" && s.id === d.id && s.p === p;
     const pr = st !== "free" ? parts(b, d.id, p) : null, ed = pr && pr.end && devById(b, pr.end.d), L = portLook(b, d, p, st);
-    const tip = [`${devLabel(d)} :${p}`, ed ? "→ " + devLabel(ed) + (ed.room ? " · " + roomName(b, ed.room) : "") : "", v ? "VLAN " + v.vid : c.mode === "trunk" ? "trunk" : "", c.poe ? "PoE " + c.poe : ""].filter(Boolean).join("\n");
-    return `<button class="p s-${st}${L.c ? " in" : ""}${L.dir ? " dir" : ""}${st === "half" ? " later" : ""}${i > cu ? " sfp" : ""}${on ? " sel" : ""}${c.mode === "trunk" ? " trunk" : ""}" data-port="${d.id}:${p}" title="${esc(tip)}"${L.c ? ` style="--pc:${L.c}"` : ""}>${esc(lab || p)}${c.poe ? "<i>⚡</i>" : ""}</button>`; };
+    const unk = unkOf(b, d, p), tip = [`${devLabel(d)} :${p}`, unk ? "? " + t("pmLgUnk") : "", ed ? "→ " + devLabel(ed) + (ed.room ? " · " + roomName(b, ed.room) : "") : "", v ? "VLAN " + v.vid : c.mode === "trunk" ? "trunk" : "", c.poe ? "PoE " + c.poe : ""].filter(Boolean).join("\n");
+    return `<button class="p s-${st}${L.c ? " in" : ""}${L.dir ? " dir" : ""}${st === "half" ? " later" : ""}${i > cu ? " sfp" : ""}${on ? " sel" : ""}${c.mode === "trunk" ? " trunk" : ""}${unk ? " unk" : ""}" data-port="${d.id}:${p}" title="${esc(tip)}"${L.c ? ` style="--pc:${L.c}"` : ""}>${esc(lab || p)}${c.poe ? "<i>⚡</i>" : ""}${unk ? "<b class=\"uq\">?</b>" : ""}</button>`; };
   // Patch panels are numbered left to right in one row (24 per row, as on the panel itself); switches odd / even in two rows.
   if (passive(d)){ const per = Math.min(24, Math.max(1, cu)), all = []; for (let i = 1; i <= n; i++) all.push(cell(i));
     return `<div class="pgr"><div class="pgc pp" style="grid-template-columns:repeat(${per},minmax(20px,30px))">${all.join("")}</div></div>`; }
@@ -92,7 +94,7 @@ function legend(b){
   const kinds = [...new Set(b.devices.filter(d => !portDev(d) || !isNet(d)).filter(d => linksOf(b, d.id).length && !passive(d)).map(d => d.kind))];
   const sw = (bg, l, cls = "") => `<span><i class="sw ${cls}" style="background:${bg}"></i>${esc(l)}</span>`;
   return `<div class="pmlegend">${kinds.length ? kinds.map(k => sw(tcol(k), kindName(k))).join("") + `<span class="sep"></span>` : `<span>${esc(t("pmLgTypes"))}</span><span class="sep"></span>`}
-    ${sw("var(--port)", t("pmLgFree"))}${sw("var(--filled)", t("pmLgCfg"))}${sw(UPLINK, t("pmLgUplink"))}${sw("var(--port)", t("pmLgDir"), "dirk")}${sw("var(--port)", t("pmLgHalf"), "laterk")}${sw("var(--port)", t("pmLgBad"), "badk")}<span><i class="sw trk"></i>trunk</span><span>⚡ PoE</span><span class="sep"></span><label class="row small">${esc(t("pmCords"))} <select id="pm-cords" style="width:auto">${[["all", t("pmCordsAll")], ["sel", t("pmCordsSel")], ["none", t("pmCordsNone")]].map(([k, l]) => opt(k, l, UI.cords)).join("")}</select></label></div>`;
+    ${sw("var(--port)", t("pmLgFree"))}${sw("var(--filled)", t("pmLgCfg"))}${sw(UPLINK, t("pmLgUplink"))}${sw("var(--port)", t("pmLgDir"), "dirk")}${sw("var(--port)", t("pmLgHalf"), "laterk")}${sw("var(--port)", t("pmLgBad"), "badk")}<span><i class="sw unkk">?</i>${esc(t("pmLgUnk"))}</span><span><i class="sw trk"></i>trunk</span><span>⚡ PoE</span><span class="sep"></span><label class="row small">${esc(t("pmCords"))} <select id="pm-cords" style="width:auto">${[["all", t("pmCordsAll")], ["sel", t("pmCordsSel")], ["none", t("pmCordsNone")]].map(([k, l]) => opt(k, l, UI.cords)).join("")}</select></label></div>`;
 }
 /* ---------- patch cords drawn between the ports of one rack (as in PortMap) ---------- */
 UI.cords = UI.cords || "all";
@@ -225,7 +227,7 @@ function portCard(b, d, p){
   const head = `<div class="dhead"><svg viewBox="0 0 48 48" width="42" height="42">${ICO[devIcon(d)] || ICO.box}</svg><div><h3>${esc(devLabel(d))} : ${esc(p)}</h3><div class="muted small">${esc(t("pmPortOf",{k:kindName(d.kind)}))}${d.rack ? " · " + esc(rackById(b, d.rack).name) + " U" + d.u : ""}</div></div><button class="x" data-dr="close">×</button></div>
     <div class="btns"><button class="btn small" data-pmnav="-1">‹ ${esc(t("pmPrev"))}</button><button class="btn small" data-pmnav="1">${esc(t("pmNext"))} ›</button><span class="grow"></span><button class="btn small" data-dr="sel:${d.id}">${esc(t("pmDevice"))}</button></div>${isNet(d) && window.PMT ? `<div class="btns pmtools">${PMT.toolBtns(d)}</div>` : ""}`;
   const chain = sec("pchain", t("pmChain"), chainHtml(b, pr.chain, pr.me), true);
-  if (pas) return head + chain + panelPortSec(b, d, p, pr) + `<label class="fld"><span>${esc(t("f_notes"))}</span><textarea data-pc="note" rows="2">${esc(c.note)}</textarea></label>` + savePortBtn();
+  if (pas) return head + chain + panelPortSec(b, d, p, pr) + unkChk(b, d, p, c) + `<label class="fld"><span>${esc(t("f_notes"))}</span><textarea data-pc="note" rows="2">${esc(c.note)}</textarea></label>` + savePortBtn();
   const panels = b.devices.filter(x => passive(x) && x.kind !== "outlet" && num(x.ports) > 0).sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
   const pnl = pr.panel ? devById(b, pr.panel.d) : null;
   const cand = b.devices.filter(x => x.id !== d.id && !passive(x) && x.kind !== "internet").sort((x, y) => devLabel(x).localeCompare(devLabel(y), undefined, {numeric:true}));
@@ -251,9 +253,13 @@ function portCard(b, d, p){
     <div class="two"><label class="fld"><span>${esc(t("f_speed"))}</span><select data-pc="speed">${["","auto","10M","100M","1G","2.5G","5G","10G","25G","40G","100G"].map(x => opt(x, x || "—", c.speed)).join("")}</select></label><label class="fld"><span>PoE</span><select data-pc="poe">${[["", "—"], ["af", "802.3af (15.4 W)"], ["at", "802.3at PoE+ (30 W)"], ["bt3", "802.3bt Type 3 (60 W)"], ["bt4", "802.3bt Type 4 (90 W)"]].map(([k, l]) => opt(k, l, c.poe)).join("")}</select></label></div>
     <div class="two"><label class="fld"><span>${esc(t("pmAdmin"))}</span><select data-pc="admin">${opt("up", t("pmUp"), c.admin)}${opt("down", t("pmDown"), c.admin)}</select></label><label class="fld"><span>${esc(t("pmDesc"))}</span><input data-pc="desc" value="${esc(c.desc)}" placeholder="${esc(ed ? devLabel(ed) : "")}"></label></div>
     <label class="chk"><input type="checkbox" data-pc="bad"${c.bad ? " checked" : ""}> ${esc(t("pmBad"))}</label>
+    ${unkChk(b, d, p, c)}
     <label class="fld"><span>${esc(t("f_notes"))}</span><textarea data-pc="note" rows="2">${esc(c.note)}</textarea></label>`, true);
   return head + chain + link + endSec + sp + savePortBtn() + `<div class="btns"><button class="btn small" data-pma="cliPort">⌨ ${esc(t("pmCli"))}</button><button class="btn small dan" data-pma="clearPort">⌫ ${esc(t("pmClear"))}</button></div>`;
 }
+// the checkbox is greyed out while the far end is known (the mark would not show anyway); a switch port behind a marked panel port shows that
+function unkChk(b, d, p, c){ const pr = parts(b, d.id, p), known = !!pr.end, viaPanel = !c.unk && !known && unkOf(b, d, p);
+  return `<label class="chk" title="${esc(t("pmUnkH"))}"><input type="checkbox" data-pc="unk"${c.unk || viaPanel ? " checked" : ""}${known || viaPanel ? " disabled" : ""}> ${esc(t("pmUnk"))}${viaPanel ? ` <small class="muted">(${esc(devLabel(devById(b, pr.panel.d)) + " :" + pr.panel.p)})</small>` : ""}</label>`; }
 function panelPortSec(b, d, p, pr){
   const front = pr.before.length ? pr.before[pr.before.length - 1] : null, fd = front && devById(b, front.d);
   const back = pr.after.length ? pr.after[pr.after.length - 1] : null, bd = back && devById(b, back.d);
@@ -315,7 +321,7 @@ function listView(b){
   return `<div class="row" style="margin-bottom:10px">${searchBox("q-pm")}<span class="grow"></span><button class="btn small" data-pma="csv">⤓ CSV</button></div>
     ${R.length ? `<div class="scroll"><table class="t"><tr><th>${esc(t("pmSwitch"))}</th><th>${esc(t("f_port"))}</th><th>${esc(t("pmPanel"))}</th><th>TIA-606</th><th>${esc(t("f_cid"))}</th><th>${esc(t("f_room"))}</th><th>${esc(t("pmEnd"))}</th><th>IP</th><th>MAC</th><th>VLAN</th><th>${esc(t("pmMode"))}</th><th>PoE</th><th>${esc(t("f_speed"))}</th></tr>
       ${R.map(r => `<tr class="click${s && s.type === "port" && s.id === r.d.id && s.p === r.p ? " on" : ""}" data-goport="${r.d.id}:${r.p}"><td class="nw"><b>${esc(devLabel(r.d))}</b></td><td class="c">${esc(r.p)}</td><td class="nw">${r.pn ? esc(devLabel(r.pn) + " :" + r.pp) : `<span class="muted">${esc(t("pmDirect"))}</span>`}</td><td class="mono nw">${esc(r.lab)}</td><td class="mono">${esc(r.cid)}</td><td>${r.ed ? esc([floorName(b, r.ed.floor), roomName(b, r.ed.room)].filter(Boolean).join(" · ")) : ""}</td>
-        <td>${r.ed ? esc(devLabel(r.ed) + (r.ep ? " :" + r.ep : "")) : ""}</td><td class="mono nw">${r.ed ? esc(r.ed.ip) : ""}</td><td class="mono nw">${r.ed ? esc(r.ed.mac) : ""}</td><td class="nw">${esc(r.c.mode === "trunk" ? "T · " + (vlanById(b, r.c.native) || {}).vid + (r.c.allowed ? " / " + r.c.allowed : "") : vlanLabel(b, r.c.vlan))}</td><td>${esc(r.c.mode || "")}${r.c.admin === "down" ? ` <span class="pill bad">${esc(t("pmDown"))}</span>` : ""}${r.c.bad ? ` <span class="pill bad">⚠</span>` : ""}</td><td>${esc(r.c.poe || "")}</td><td>${esc(r.c.speed || "")}</td></tr>`).join("")}</table></div>` : `<div class="empty"><p>${esc(t("pmNoPorts"))}</p></div>`}`;
+        <td>${r.ed ? esc(devLabel(r.ed) + (r.ep ? " :" + r.ep : "")) : ""}</td><td class="mono nw">${r.ed ? esc(r.ed.ip) : ""}</td><td class="mono nw">${r.ed ? esc(r.ed.mac) : ""}</td><td class="nw">${esc(r.c.mode === "trunk" ? "T · " + (vlanById(b, r.c.native) || {}).vid + (r.c.allowed ? " / " + r.c.allowed : "") : vlanLabel(b, r.c.vlan))}</td><td>${esc(r.c.mode || "")}${r.c.admin === "down" ? ` <span class="pill bad">${esc(t("pmDown"))}</span>` : ""}${r.c.bad ? ` <span class="pill bad">⚠</span>` : ""}${unkOf(b, r.d, r.p) ? ` <span class="pill warn" title="${esc(t("pmLgUnk"))}">?</span>` : ""}</td><td>${esc(r.c.poe || "")}</td><td>${esc(r.c.speed || "")}</td></tr>`).join("")}</table></div>` : `<div class="empty"><p>${esc(t("pmNoPorts"))}</p></div>`}`;
 }
 function roomsView(b){
   const ends = b.devices.filter(d => !passive(d) && !isNet(d) && d.kind !== "internet"), groups = {};
@@ -500,5 +506,5 @@ function wireUnitDrag(){
   document.addEventListener("pointerup", end); document.addEventListener("pointercancel", () => { if (D){ D.on = false; end(); } });
   document.addEventListener("click", e => { if (swallow){ e.stopPropagation(); e.preventDefault(); swallow = false; } }, true);
 }
-window.PM = {savePort, chainAt, parts, linksAt, label606, upstream, cliText, walk, passive, isNet, cfgOf, hasCfg, setLater, portDev};
+window.PM = {savePort, chainAt, parts, linksAt, label606, upstream, cliText, walk, passive, isNet, cfgOf, hasCfg, setLater, portDev, unkOf};
 })();

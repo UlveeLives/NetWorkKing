@@ -424,6 +424,8 @@ i.sw{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px so
 .p.later::before{content:"";position:absolute;inset:2px;border:1.5px dashed rgba(255,255,255,.9);border-radius:2px}
 .p.s-bad{box-shadow:inset 0 0 0 2px #e5484d;background-image:linear-gradient(to top right,transparent calc(50% - 1.5px),#e5484d calc(50% - 1.5px),#e5484d calc(50% + 1.5px),transparent calc(50% + 1.5px))}
 .p.s-down{opacity:.45;text-decoration:line-through}
+.p .uq{position:absolute;bottom:-3px;right:-3px;width:11px;height:11px;border-radius:50%;background:#f59f00;color:#1b1b1b;font:800 8px/11px var(--f-mono);text-align:center;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+.sw.unkk{background:var(--port);color:#f59f00;font:800 10px/1 var(--f-mono);font-style:normal;display:inline-grid;place-items:center}
 .p.sfp{border-radius:2px;outline:1px dashed #56648a;outline-offset:-1px}
 .p.trunk{box-shadow:inset 0 0 0 2px #ffb703}
 .p i{position:absolute;top:-3px;right:-2px;font-size:8px;font-style:normal}
