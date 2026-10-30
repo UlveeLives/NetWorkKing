@@ -73,6 +73,19 @@ const rotHandle = (key, x, y) => `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 
 function labHit(r, g, s, x, y){ const fs = g.lx !== undefined ? clamp(s * .38, 9, 13) : clamp(s * .45, 10, 14), tw = String(r.name).length * fs * .62 + 18, th = fs + 14;
   const cx = g.lx !== undefined ? (g.x + g.lx * (g.pw ? g.w / g.pw : 1)) * s : x + 6 + tw / 2 - 9, cy = g.lx !== undefined ? (g.y + g.ly * (g.ph ? g.h / g.ph : 1)) * s - fs * .35 : y + 15 - fs * .35;
   return `<rect class="rlabh" data-rlab="${r.id}" x="${(cx - tw / 2).toFixed(1)}" y="${(cy - th / 2).toFixed(1)}" width="${tw.toFixed(1)}" height="${th.toFixed(1)}" fill="transparent"/>`; }
+// what blocks a camera's view on this plan: walls and windows (also those taken from a drawing, which are not shown), not
+// doors; outlines of the plot and houses
+function camObstacles(p){ const S = [];
+  // doors are open, windows and walls are not; each piece is stretched 15 cm at both ends so that joints of a drawing have no gaps
+  (p.walls || []).forEach(w => { if (w.kind === "door" || w.kind === "survey") return; const x1 = num(w.x1), y1 = num(w.y1), x2 = num(w.x2), y2 = num(w.y2), L = Math.hypot(x2 - x1, y2 - y1) || 1, ex = (x2 - x1) / L * .15, ey = (y2 - y1) / L * .15;
+    S.push([x1 - ex, y1 - ey, x2 + ex, y2 + ey]); });
+  (p.items || []).filter(it => it.type === "boundary" && Array.isArray(it.pts)).forEach(it => { const P = it.pts, k = Math.floor(P.length / 2); for (let i = 0; i < k; i++){ const j = (i + 1) % k; S.push([P[2 * i], P[2 * i + 1], P[2 * j], P[2 * j + 1]]); } });
+  return S; }
+// distance along a ray to the nearest obstacle (a camera on a wall does not see its own wall: hits closer than 25 cm are ignored)
+function rayHit(S, x, y, dx, dy, R){ let best = R;
+  for (const [x1, y1, x2, y2] of S){ const ex = x2 - x1, ey = y2 - y1, den = dx * ey - dy * ex; if (Math.abs(den) < 1e-9) continue;
+    const t = ((x1 - x) * ey - (y1 - y) * ex) / den, u = ((x1 - x) * dy - (y1 - y) * dx) / den; if (t > .25 && t < best && u >= 0 && u <= 1) best = t; }
+  return best; }
 function planSvg(b, f, opts = {}){
   const p = fixFloorPlan(f), s = opts.s || scaleFor(f), W = p.wm * s, H = p.hm * s, sel = opts.print ? null : UI.sel, S = st(), HO = opts.print ? null : host();
   const isSel = (type, id) => sel && sel.type === type && sel.id === id;
@@ -83,7 +96,7 @@ function planSvg(b, f, opts = {}){
   const vec = !!p.vec, imgOp = vec ? num(p.bgop, 0) : num(p.op, 60);
   if (p.img && assetURL(p.img) && imgOp > 0) h += `<image href="${assetURL(p.img)}" x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="none" opacity="${imgOp / 100}" pointer-events="none"/>`;
   if (S.grid && !opts.print){ let g = ""; for (let x = 1; x < p.wm; x++) g += `M${x * s} 0V${H}`; for (let y = 1; y < p.hm; y++) g += `M0 ${y * s}H${W}`; h += `<path d="${g}" stroke="#e8ebf0" stroke-width="1"/>`; }
-  const drawn = p.img && assetURL(p.img), fo = vec ? ".3" : drawn ? (num(p.op, 60) >= 90 ? ".3" : ".5") : ".82", quiet = (drawn || vec) && !S.outlines;
+  const drawn = p.img && assetURL(p.img), site = isSite(f), fo = site ? ".55" : vec ? ".3" : drawn ? (num(p.op, 60) >= 90 ? ".3" : ".5") : ".82", quiet = !site && (drawn || vec) && !S.outlines;   // places on the site plan stay outlined
   // boundaries (yard, plot, house edge) under everything
   p.items.filter(it => it.type === "boundary").forEach(it => { h += DRAW.boundSvg(it, s, isSel("bitem", it.id), opts.print); });
   let labs = "";
@@ -118,10 +131,13 @@ function planSvg(b, f, opts = {}){
   b.racks.filter(r => r.floor === f.id && r.pos).forEach(r => { const x = r.pos.x * s, y = r.pos.y * s, on = isSel("rack", r.id);
     h += `<g class="bdev" data-brack="${r.id}" transform="translate(${x} ${y})"><rect x="-10" y="-13" width="20" height="26" rx="2" fill="#232a33" stroke="${on ? "#ffb703" : "#fff"}" stroke-width="${on ? 3 : 1.2}"/><path d="M-6 -8h12M-6 -3h12M-6 2h12M-6 7h12" stroke="#7fd1ff" stroke-width="1.6"/>
       ${S.labels ? `<text y="24" font-size="9" font-weight="700" text-anchor="middle" fill="#1d2433" stroke="#fff" stroke-width="2.5" paint-order="stroke">${esc(r.name)}</text>` : ""}</g>`; });
-  const camsOn = (HO && HO.cams) || (opts.print && opts.cams) || S.cones;
-  if (camsOn) b.devices.filter(d => d.kind === "camera" && devFloor(b, d) === f.id && posOf(d)).forEach(d => { const P0 = posOf(d), C = window.CCTV && CCTV.camCalc ? CCTV.camCalc(b, d) : {}, fov = clamp(num(C.fov, 90), 10, 360), R = clamp(num(C.dori && C.dori[1], 20), 3, 60) * s, a = num(d.camera && d.camera.dir, 0) * Math.PI / 180, h2 = fov * Math.PI / 360;
-    const x = P0.x * s, y = P0.y * s, ax = x + R * Math.cos(a - h2), ay = y + R * Math.sin(a - h2), bx = x + R * Math.cos(a + h2), by = y + R * Math.sin(a + h2), on = isSel("dev", d.id);
-    h += fov >= 359 ? `<circle cx="${x}" cy="${y}" r="${R}" fill="rgba(255,183,3,.14)" stroke="#e0a400" stroke-width="1" pointer-events="none"/>` : `<path d="M${x} ${y}L${ax} ${ay}A${R} ${R} 0 ${fov > 180 ? 1 : 0} 1 ${bx} ${by}Z" fill="rgba(255,183,3,${on ? .26 : .15})" stroke="#e0a400" stroke-width="${on ? 1.6 : 1}" pointer-events="none"/>`;
+  const camsOn = (HO && HO.cams) || (opts.print && opts.cams) || S.cones, OBS = camsOn ? camObstacles(p) : [];
+  if (camsOn) b.devices.filter(d => d.kind === "camera" && devFloor(b, d) === f.id && posOf(d)).forEach(d => { const P0 = posOf(d), C = window.CCTV && CCTV.camCalc ? CCTV.camCalc(b, d) : {}, fov = clamp(num(C.fov, 90), 10, 360), Rm = clamp(num(C.dori && C.dori[1], 20), 3, 60), R = Rm * s, a = num(d.camera && d.camera.dir, 0) * Math.PI / 180, h2 = fov * Math.PI / 360;
+    const x = P0.x * s, y = P0.y * s, on = isSel("dev", d.id);
+    // the view stops at walls, retaining walls and the plot boundary: rays every ~1° (shorter where something is in the way)
+    const n = Math.max(12, Math.round(fov)), pt = [];
+    for (let i = 0; i <= n; i++){ const t = a - h2 + 2 * h2 * i / n, dx = Math.cos(t), dy = Math.sin(t), L = rayHit(OBS, P0.x, P0.y, dx, dy, Rm); pt.push(`${(x + dx * L * s).toFixed(1)} ${(y + dy * L * s).toFixed(1)}`); }
+    h += `<path d="${fov >= 359 ? "M" + pt.join("L") : `M${x} ${y}L` + pt.join("L")}Z" fill="rgba(255,183,3,${on ? .26 : .15})" stroke="#e0a400" stroke-width="${on ? 1.6 : 1}" stroke-linejoin="round" pointer-events="none"/>`;
     if (on && !opts.print){ const hx = x + R * .55 * Math.cos(a), hy = y + R * .55 * Math.sin(a); h += `<line x1="${x}" y1="${y}" x2="${hx}" y2="${hy}" stroke="#e0a400" stroke-width="1.5" stroke-dasharray="4 3" pointer-events="none"/><circle class="camrot" data-camrot="${d.id}" cx="${hx}" cy="${hy}" r="8" fill="#ffb703" stroke="#7a5600" stroke-width="1.5"><title>${esc(t("camRotate"))}</title></circle>`; } });
   b.devices.filter(d => devFloor(b, d) === f.id && posOf(d)).forEach(d => { const P0 = posOf(d), x = P0.x * s, y = P0.y * s, on = isSel("dev", d.id) || UI.multi.has("dev:" + d.id), pl = d.status === "planned", fade = HO && HO.kinds && !HO.kinds.includes(d.kind);
     h += `<g class="bdev${fade ? " fade" : ""}" data-bdev="${d.id}" transform="translate(${x} ${y})"${fade ? ' opacity=".35"' : ""}><circle r="11" fill="#fff" stroke="${on ? "#ffb703" : pl ? "#5b7fc4" : "#1d2433"}" stroke-width="${on ? 3 : pl ? 1.6 : 1.1}"${pl ? ' stroke-dasharray="3 2"' : ""}/><g transform="translate(-9 -9) scale(.375)">${ICO[devIcon(d)] || ICO.box}</g>
