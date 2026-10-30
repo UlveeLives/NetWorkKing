@@ -29,6 +29,9 @@ bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
  - Mac üslubunda başlıq sətri (qırmızı / sarı / yaşıl), kiçiltmə effekti (macOS «genie»), başlıq sətrinin
    arxasında 7 kod fonu variantı; yeni loqo; ilk açılışda tünd / açıq mövzu seçimi.
  - branding qovluğu: loqonun böyük (2048 px) və SVG variantları; açılış ekranının ayrıca testi (splash-test.bat).
+ - Etibarlılıq: rəqəm sahələri öz hədlərində saxlanır (port ≤ 512, SFP ≤ 64, cihaz 0–60U, rack 1–60U, otaqda
+   bir növdən ≤ 200 cihaz, mərtəbə 2–2000 m) — səhvən yazılan 99999 proqramı dondurmur. Sxemin PNG / SVG ixracı
+   düzəldi; Port Map sənədi böyük binada çox sürətləndi.
  - Beta («NetWorkKing Beta») ayrıca proqram idi və öz məlumat qovluğunu işlədirdi. 3.8.0 stabil NetWorkKing-in
    öz məlumatı ilə açılır; beta-da yaradılan layihəni köçürmək üçün beta-da İxrac → layihə faylı, 3.8.0-da İdxal.
 
