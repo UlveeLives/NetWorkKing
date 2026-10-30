@@ -1,13 +1,13 @@
-NETWORKKING 3.8.4 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.8.5 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
 
-3.8.4
- - Açılış ekranı: kənarlara doğru itən yaşıl fon köhnə Windows açılışında olduğu kimi ürək döyüntüsü ritmində
-   («tuk-tuk») kənarlara doğru 4 dəfə parlayır, hər döyüntü əvvəlkindən zəif olur və sönür.
+3.8.4 / 3.8.5
+ - Açılış ekranı: kənarlara doğru itən yaşıl fon köhnə Windows açılışında olduğu kimi öz rəngində kənarlara doğru
+   yavaş-yavaş parlayıb sönür (hər 2,8 saniyədə bir döyüntü); fon itib loqo yaxınlaşmağa başlayana qədər davam edir.
 
 3.8.3
  - Etiketlərdəki QR kod indi keçiddir: telefonla skan edəndə NetWorkKing (PWA) açılır və birbaşa həmin porta /
