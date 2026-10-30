@@ -6,9 +6,9 @@
 <html lang="az"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NetWorkKing</title>
 <style>
-  :root{--bar:#0d2a1a;--neon:#16ff5a;--hi:#16ff5a;--code:#c8f5d8;--term:#7dffa8;--pk:#bfffe0;--ink:#e2f5e9;--pcb:143,224,176;--bgcode:var(--bgcode-d)}
+  :root{--bar:#0d2a1a;--neon:#16ff5a;--hi:#16ff5a;--code:#c8f5d8;--term:#7dffa8;--pk:#bfffe0;--ink:#e2f5e9;--pcb:143,224,176;--pulse:38,206,104;--bgcode:var(--bgcode-d)}
   /* light theme: pale green card, dark green text, the light logo (the black N disc stays — it is the logo's heart) */
-  html.th-light{--bar:#eef6f0;--hi:#1d9a52;--code:#1f4d33;--term:#2a7a4c;--pk:#0f6b3a;--ink:#173d28;--pcb:29,122,71;--bgcode:var(--bgcode-l)}
+  html.th-light{--bar:#eef6f0;--hi:#1d9a52;--code:#1f4d33;--term:#2a7a4c;--pk:#0f6b3a;--ink:#173d28;--pcb:29,122,71;--pulse:46,178,98;--bgcode:var(--bgcode-l)}
   html.th-light .name b,html.th-light .by b,html.th-light .code .p,html.th-light .code .ok{color:#169a4c}
   html.th-light .bar{background:rgba(29,154,82,.15)} html.th-light .bar i{background:#1bc25e;box-shadow:0 0 6px rgba(27,194,94,.6)}
   html.th-light .cur{background:#1d9a52}
@@ -25,6 +25,22 @@
   .splash{position:relative;width:520px;padding:58px 80px 52px;display:flex;flex-direction:column;align-items:center;gap:12px;animation:in .6s cubic-bezier(.2,.9,.3,1.2) both}
   .splash::before{content:"";position:absolute;inset:0;background-color:var(--bar);background-image:var(--bgcode);
     -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 76%,rgba(0,0,0,.55) 88%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 76%,rgba(0,0,0,.55) 88%,transparent 100%)}
+  /* heartbeat: like the old Windows start-up glow, but in the splash's own green — the faded edge flares outwards a few
+     times as a «lub-dub» and each beat is weaker than the one before; it sits behind the panel, so only the edges glow */
+  .splash{isolation:isolate}
+  .splash::after{content:"";position:absolute;inset:-105px -110px;z-index:-1;pointer-events:none;opacity:0;
+    background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(var(--pulse),.0) 40%,rgba(var(--pulse),.62) 54%,rgba(var(--pulse),.22) 70%,rgba(var(--pulse),0) 88%);
+    filter:blur(6px);animation:hb 5.6s cubic-bezier(.3,0,.4,1) .55s both}
+  @keyframes hb{
+    0%{opacity:0;transform:scale(.94)}
+    3%{opacity:1;transform:scale(1.03)} 7%{opacity:.35;transform:scale(.99)} 10%{opacity:.8;transform:scale(1.045)} 21%{opacity:0;transform:scale(1.07)}
+    25%{opacity:0;transform:scale(.95)}
+    28%{opacity:.72;transform:scale(1.025)} 32%{opacity:.25;transform:scale(.99)} 35%{opacity:.58;transform:scale(1.04)} 46%{opacity:0;transform:scale(1.065)}
+    50%{opacity:0;transform:scale(.96)}
+    53%{opacity:.46;transform:scale(1.02)} 57%{opacity:.16;transform:scale(.99)} 60%{opacity:.36;transform:scale(1.035)} 71%{opacity:0;transform:scale(1.06)}
+    75%{opacity:0;transform:scale(.97)}
+    78%{opacity:.24;transform:scale(1.015)} 82%{opacity:.08;transform:scale(.995)} 85%{opacity:.18;transform:scale(1.03)} 96%,100%{opacity:0;transform:scale(1.05)}}
+  @media (prefers-reduced-motion:reduce){.splash::after{animation:none}}
   @keyframes in{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
   .splash.out{animation:out .6s ease-in both}
   @keyframes out{to{opacity:0;transform:scale(1.04)}}
@@ -254,7 +270,7 @@ async function outro(me){
 }
 /* ---------- start-up steps as code ---------- */
 const Q = new URLSearchParams(location.search);
-const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.3", BRIDGE = window.splashBridge || null;
+const APP = Q.get("app") === "1", VER = Q.get("v") || "3.8.4", BRIDGE = window.splashBridge || null;
 let SKIP = false;
 let LANG = ["az", "tr", "en", "ru"].includes(Q.get("lang")) ? Q.get("lang") : "az", THEME = Q.get("theme") === "light" ? "light" : "dark";
 const TX = {
