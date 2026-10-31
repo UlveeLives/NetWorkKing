@@ -35,7 +35,7 @@ const roomsOf = (b, f) => b.rooms.filter(r => r.floor === f.id);
 const geoRooms = (b, f) => roomsOf(b, f).filter(r => r.geo);
 function normRoom(r){ r.type = RT[r.type] ? r.type : (/server|serv/i.test(r.name) ? "server" : /dəhliz|koridor|corridor|holl/i.test(r.name) ? "corridor" : OUTDOOR_RX.test(r.name) && !(r.geo && r.floor && r.floor !== OUT_FLOOR) ? "outdoor" : "office"); r.req = r.req && typeof r.req === "object" ? r.req : {}; for (const k in r.req) r.req[k] = clamp(Math.round(num(r.req[k], 0)), 0, 200); return r; }
 function posOf(d){ if (d.kind === "ap") return d.ap && d.ap.x !== null && d.ap.x !== undefined && d.ap.x !== "" ? {x:num(d.ap.x), y:num(d.ap.y)} : null; return d.pos && d.pos.x !== undefined ? {x:num(d.pos.x), y:num(d.pos.y)} : null; }
-function setPos(d, x, y){ if (d.kind === "ap"){ d.ap.x = r1(x); d.ap.y = r1(y); } else d.pos = {x:r1(x), y:r1(y)}; }
+function setPos(d, x, y){ if (d.kind === "ap"){ d.ap.x = r2(x); d.ap.y = r2(y); } else d.pos = {x:r2(x), y:r2(y)}; }
 function clearPos(d){ if (d.kind === "ap"){ d.ap.x = null; d.ap.y = null; } else delete d.pos; }
 const devFloor = (b, d) => d.floor || (d.room && (roomById(b, d.room) || {}).floor) || "";
 const roomAtPt = (b, f, x, y) => { const L = geoRooms(b, f).filter(r => x >= r.geo.x && x <= r.geo.x + r.geo.w && y >= r.geo.y && y <= r.geo.y + r.geo.h); return L.filter(r => r.type !== "corridor")[0] || L[0] || null; };
@@ -43,7 +43,11 @@ const placedIn = (b, r, k) => b.devices.filter(d => d.room === r.id && d.kind ==
 const reqOf = (r, k) => clamp(Math.round(num(r.req && r.req[k])), 0, 200);
 const area = r => !r.geo ? 0 : r.geo.area && r.geo.pw ? r1(r.geo.area * (r.geo.w / r.geo.pw) * (r.geo.h / r.geo.ph)) : r1(r.geo.w * r.geo.h);
 function fixFloorPlan(f){ const p = f.plan; p.items = Array.isArray(p.items) ? p.items : []; f.h = f.h || 3.5; return p; }
-function snap(v){ return st().grid ? Math.round(v * 2) / 2 : r1(v); }
+// the grid catches at 0,5 m; holding Alt (or Ctrl) while dragging, or with the grid off, a point goes to the centimetre
+let FINE = false;
+document.addEventListener("keydown", e => { FINE = e.altKey || e.ctrlKey || e.metaKey; }); document.addEventListener("keyup", e => { FINE = e.altKey || e.ctrlKey || e.metaKey; });
+document.addEventListener("pointermove", e => { FINE = e.altKey || e.ctrlKey || e.metaKey; }, true);
+function snap(v){ return st().grid && !FINE ? Math.round(v * 2) / 2 : r2(v); }
 // room outline from a drawing: points relative to the room box, stretched with it when the box is resized
 function polyPts(g, s){ const sx = g.pw ? g.w / g.pw : 1, sy = g.ph ? g.h / g.ph : 1, P = g.poly, o = []; for (let i = 0; i + 1 < P.length; i += 2) o.push(((g.x + P[i] * sx) * s).toFixed(1) + "," + ((g.y + P[i + 1] * sy) * s).toFixed(1)); return o.join(" "); }
 // room type from its name (Azerbaijani, Turkish, English, Russian)
@@ -301,16 +305,16 @@ function drawer(tab){
   if (s.type === "bwall"){ const f = curFloor(b), w = f && (f.plan.walls || []).find(x => x.id === s.id); if (!w) return "";
     const L = DRAW.wallLen(w), A = Math.round(Math.atan2(w.y2 - w.y1, w.x2 - w.x1) * 180 / Math.PI * 10) / 10, mats = ["drywall","brick","block","concrete","rcon","glass","wood","door","metal"];
     return `${head(t("dw_wall"), f.name)}
-      <div class="two"><label class="fld"><span>${esc(t("dw_len"))} (m)</span><input data-f="w.len" type="text" inputmode="decimal" value="${esc(r1(L))}"></label>${rotFld("w.ang", A, t("dw_ang"))}</div>
+      <div class="two"><label class="fld"><span>${esc(t("dw_len"))} (m)</span><input data-f="w.len" type="text" inputmode="decimal" value="${esc(r2(L))}"></label>${rotFld("w.ang", A, t("dw_ang"))}</div>
       <div class="two"><label class="fld"><span>${esc(t("dw_thick"))} (cm)</span><input data-f="w.t" type="text" inputmode="decimal" value="${esc(Math.round(DRAW.wallT(w) * 100))}"></label><label class="fld"><span>${esc(t("dw_bend"))} (°)</span><input data-f="w.bend" type="text" inputmode="decimal" value="${esc(num(w.bend, 0))}"></label></div>
       <label class="fld"><span>${esc(t("dw_mat"))}</span><select data-f="w.mat">${mats.map(m => opt(m, t("wf_mat_" + m), w.mat || "drywall")).join("")}</select></label>
       ${w.kind === "door" ? `<label class="chk" title="${esc(t("dw_openH"))}"><input type="checkbox" data-f="w.open"${w.open ? " checked" : ""}> 🚪 ${esc(t("dw_open"))}</label>` : `<label class="chk" title="${esc(t("dw_lowH"))}"><input type="checkbox" data-f="w.low"${w.low ? " checked" : ""}> ${esc(t("dw_low"))}</label>`}
-      <div class="two">${["x1","y1"].map(k => `<label class="fld"><span>${k.toUpperCase()} (m)</span><input data-f="w.${k}" type="text" inputmode="decimal" value="${esc(r1(w[k]))}"></label>`).join("")}</div>
+      <div class="two">${["x1","y1"].map(k => `<label class="fld"><span>${k.toUpperCase()} (m)</span><input data-f="w.${k}" type="text" inputmode="decimal" value="${esc(r2(w[k]))}"></label>`).join("")}</div>
       <p class="muted small">${esc(t("dw_wallInfo", {a:r1(DRAW.wallArc(w))}))}</p><p class="muted small">${esc(t("dw_wallHint2"))}</p>
       <div class="btns"><button class="btn" data-dr="bDupWall">⧉ ${esc(t("duplicate"))}</button><button class="btn" data-dr="bWallNext">↪ ${esc(t("dw_next"))}</button><button class="btn dan" data-dr="bDelWall">🗑 ${esc(t("delete"))}</button></div>`; }
   if (s.type === "bshape"){ const f = curFloor(b), o = f && (f.plan.shapes || []).find(x => x.id === s.id); if (!o) return "";
     return `${head(t("dw_pc_" + o.k) === "dw_pc_" + o.k ? o.k : t("dw_pc_" + o.k), f.name + (o.room && roomById(b, o.room) ? " · " + roomById(b, o.room).name : ""))}
-      <div class="two">${["x","y","w","h"].map(k => `<label class="fld"><span>${k === "w" ? esc(t("f_w")) : k === "h" ? esc(t("f_hgt")) : k.toUpperCase()} (m)</span><input data-f="o.${k}" type="text" inputmode="decimal" value="${esc(r1(o[k]))}"></label>`).join("")}</div>
+      <div class="two">${["x","y","w","h"].map(k => `<label class="fld"><span>${k === "w" ? esc(t("f_w")) : k === "h" ? esc(t("f_hgt")) : k.toUpperCase()} (m)</span><input data-f="o.${k}" type="text" inputmode="decimal" value="${esc(r2(o[k]))}"></label>`).join("")}</div>
       ${rotFld("o.rot", o.rot)}
       ${o.k === "rwall" ? `<label class="fld"><span>${esc(t("dw_pcRoom"))}</span><select data-f="o.room">${opt("", t("none"), o.room || "")}${roomsOf(b, f).map(r => opt(r.id, r.name, o.room || "")).join("")}</select></label><p class="muted small">${esc(t("dw_pcRoomH"))}</p>` : ""}
       ${(o.p || []).some(([k]) => k === "door") ? `<label class="chk" title="${esc(t("dw_openH"))}"><input type="checkbox" data-f="o.open"${o.open ? " checked" : ""}> 🚪 ${esc(t("dw_openSh"))}</label>` : ""}
@@ -330,7 +334,7 @@ function drawer(tab){
 }
 function onField(path, v){
   const b = B(), s = UI.sel; if (!s) return;
-  const n = x => r1(Math.max(0, num(String(x).replace(",", "."), 0)));
+  const n = x => r2(Math.max(0, num(String(x).replace(",", "."), 0)));   // to the centimetre
   if (s.type === "room"){ const r = roomById(b, s.id); if (!r) return;
     edit(() => { const [g, k] = path.split(".");
       if (g === "r"){ if (k === "users") r.users = Math.round(n(v)); else if (k === "floor"){ r.floor = v; b.devices.forEach(d => { if (d.room === r.id) d.floor = v; }); } else r[k] = String(v).trim() || r[k]; }
@@ -550,8 +554,8 @@ function onKey(e){
     if (s.type === "rack") return edit(() => { delete rackById(b, s.id).pos; UI.sel = null; });
     if (s.type === "bwall") return edit(() => { f.plan.walls = f.plan.walls.filter(x => x.id !== s.id); UI.sel = null; });
     if (s.type === "bshape") return edit(() => { f.plan.shapes = f.plan.shapes.filter(x => x.id !== s.id); UI.sel = null; }); }
-  if (e.key.startsWith("Arrow")){ e.preventDefault(); const k = e.shiftKey ? .1 : .5, dx = e.key === "ArrowLeft" ? -k : e.key === "ArrowRight" ? k : 0, dy = e.key === "ArrowUp" ? -k : e.key === "ArrowDown" ? k : 0;
-    edit(() => { if (s.type === "room"){ const g = roomById(b, s.id).geo; if (g){ g.x = r1(g.x + dx); g.y = r1(g.y + dy); } } else if (s.type === "bitem"){ const o = f.plan.items.find(x => x.id === s.id); o.x = r1(o.x + dx); o.y = r1(o.y + dy); }
+  if (e.key.startsWith("Arrow")){ e.preventDefault(); const k = e.ctrlKey || e.altKey || e.metaKey ? .01 : e.shiftKey ? .1 : .5, dx = e.key === "ArrowLeft" ? -k : e.key === "ArrowRight" ? k : 0, dy = e.key === "ArrowUp" ? -k : e.key === "ArrowDown" ? k : 0;
+    edit(() => { if (s.type === "room"){ const g = roomById(b, s.id).geo; if (g){ g.x = r2(g.x + dx); g.y = r2(g.y + dy); } } else if (s.type === "bitem"){ const o = f.plan.items.find(x => x.id === s.id); o.x = r2(o.x + dx); o.y = r2(o.y + dy); if (Array.isArray(o.pts)) for (let i = 0; i + 1 < o.pts.length; i += 2){ o.pts[i] = r2(o.pts[i] + dx); o.pts[i + 1] = r2(o.pts[i + 1] + dy); } }
       else if (s.type === "dev"){ const d = devById(b, s.id), P1 = posOf(d); if (P1) setPos(d, P1.x + dx, P1.y + dy); }
       else if (s.type === "bwall"){ const w = f.plan.walls.find(x => x.id === s.id); if (w){ w.x1 = r2(w.x1 + dx); w.x2 = r2(w.x2 + dx); w.y1 = r2(w.y1 + dy); w.y2 = r2(w.y2 + dy); } }
       else if (s.type === "bshape"){ const o = f.plan.shapes.find(x => x.id === s.id); if (o){ o.x = r2(o.x + dx); o.y = r2(o.y + dy); } } else if (s.type === "rack"){ const r = rackById(b, s.id); if (r.pos){ r.pos.x = r1(r.pos.x + dx); r.pos.y = r1(r.pos.y + dy); } } }); }
