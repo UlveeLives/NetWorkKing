@@ -59,7 +59,7 @@ function appsFor(b, d){ const A = ["topology"];
 /* ---------- the list ---------- */
 function rows(b){
   const S = st(), q = nameKey(S.q || "");
-  let L = b.devices.filter(d => (S.acc || !isAcc(d)) && (!S.cat || catOf(d) === S.cat) && (!S.status || d.status === S.status) && (!S.floor || (S.floor === "__none" ? !d.floor : d.floor === S.floor)) && (!S.brand || (S.brand === "__none" ? !d.brand : nameKey(d.brand) === nameKey(S.brand))));
+  let L = b.devices.filter(d => (S.acc || !isAcc(d)) && (!S.cat || catOf(d) === S.cat) && (!S.kind || d.kind === S.kind) && (!S.status || d.status === S.status) && (!S.floor || (S.floor === "__none" ? !d.floor : d.floor === S.floor)) && (!S.brand || (S.brand === "__none" ? !d.brand : nameKey(d.brand) === nameKey(S.brand))));
   if (q) L = L.filter(d => nameKey([d.name, kindName(d.kind), d.brand, d.model, d.ip, d.mac, d.serial, floorName(b, d.floor), roomName(b, d.room), d.notes].join(" ")).includes(q));
   if (S.miss) L = L.filter(d => gaps(b, d).length);
   const key = {name:d => devLabel(d), kind:d => kindName(d.kind), brand:d => [d.brand, d.model].join(" "), status:d => d.status, floor:d => floorName(b, d.floor) + " " + roomName(b, d.room), ip:d => d.ip ? String(IP.host(d.ip) ?? d.ip).padStart(12, "0") : "~", mac:d => d.mac || "~", vlan:d => (vlanById(b, d.vlan) || {}).vid || "~", serial:d => d.serial || "~", gaps:d => -gaps(b, d).length}[S.sort] || (d => devLabel(d));
@@ -74,6 +74,8 @@ function listView(){
   return `<div class="kpis">${kpi.map(([v, l], i) => `<div class="kpi${i === 5 && v ? " bad" : ""}"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("")}</div>
     <div class="smbar">${searchBox("q-sm")}
       <select data-smf="cat">${opt("", t("sm_allCats"), S.cat)}${CATS.filter(c => b.devices.some(d => catOf(d) === c)).map(c => opt(c, t("sm_cat_" + c), S.cat)).join("")}</select>
+      <select data-smf="kind" title="${esc(t("f_kind"))}">${opt("", t("sm_allKinds"), S.kind)}${(() => { const D = b.devices.filter(d => (S.acc || !isAcc(d)) && (!S.cat || catOf(d) === S.cat)), n = {}; D.forEach(d => { n[d.kind] = (n[d.kind] || 0) + 1; });
+        return Object.keys(n).sort((x, y) => kindName(x).localeCompare(kindName(y))).map(k => opt(k, kindName(k) + " (" + n[k] + ")", S.kind)).join(""); })()}</select>
       <select data-smf="status">${opt("", t("sm_allStatus"), S.status)}${STATUSES.map(s => opt(s, t("st_" + s), S.status)).join("")}</select>
       <select data-smf="floor">${opt("", t("sm_allFloors"), S.floor)}${b.floors.slice().reverse().map(f => opt(f.id, f.name, S.floor)).join("")}${opt(OUT_FLOOR, "🌳 " + t("flOut"), S.floor)}${opt("__none", t("sm_noFloor"), S.floor)}</select>
       <select data-smf="brand" title="${esc(t("f_brand"))}">${opt("", t("sm_allBrands"), S.brand)}${[...new Map(b.devices.filter(d => d.brand && (S.acc || !isAcc(d))).map(d => [nameKey(d.brand), d.brand.trim()])).values()].sort((x, y) => x.localeCompare(y)).map(x => opt(x, x + " (" + b.devices.filter(d => nameKey(d.brand) === nameKey(x) && (S.acc || !isAcc(d))).length + ")", S.brand)).join("")}${opt("__none", t("sm_noBrand"), S.brand)}</select>

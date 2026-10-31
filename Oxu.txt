@@ -1,9 +1,12 @@
-NETWORKKING 3.9.12 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.9.13 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.9.13
+ - Xülasə: cihaz siyahısı markadan əlavə növə görə də süzülür (hər növün yanında say göstərilir).
 
 3.9.12
  - Sürgülü darvaza: açılma istiqaməti (sola / sağa) kartda seçilir; açıq vəziyyətdə dayandığı yer qırıq xətlə göstərilir.
