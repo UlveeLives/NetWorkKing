@@ -85,11 +85,15 @@ function wallsSvg(p, s, sel, print){
 /* ---------- pieces of a DXF drawing ---------- */
 const PST = {wall:'stroke="#2b3240" stroke-width="1.6"', "wall:f":'stroke="#2b3240" stroke-width="1" fill="#6b7385"', wallExt:'stroke="#111722" stroke-width="2.2"', "wallExt:f":'stroke="#111722" stroke-width="1.2" fill="#3b4354"',
   door:'stroke="#a8641f" stroke-width="1.1"', window:'stroke="#2b7bd0" stroke-width="1.3"', furn:'stroke="#9aa1ad" stroke-width=".8"', stair:'stroke="#59607a" stroke-width="1"', column:'stroke="#1d2433" stroke-width="1"', "column:f":'stroke="#1d2433" stroke-width="1" fill="#59607a"',
-  site:'stroke="#2e9d57" stroke-width="1.6" stroke-dasharray="8 4"', other:'stroke="#7b8494" stroke-width=".8"'};
+  site:'stroke="#2e9d57" stroke-width="1.6" stroke-dasharray="8 4"', other:'stroke="#7b8494" stroke-width=".8"',
+  // landscape (site plan) pieces: they never block a camera
+  plant:'stroke="#6aa84f" stroke-width=".8"', light:'stroke="#c9a227" stroke-width=".9"', road:'stroke="#7b8494" stroke-width="1.4"', edge:'stroke="#2e7d4a" stroke-width="1.4"',
+  curb:'stroke="#9a7b5a" stroke-width="1"', pave:'stroke="#b5a38c" stroke-width=".8"', hard:'stroke="#4b5262" stroke-width="1"', "water:f":'stroke="#2b7bd0" stroke-width="1" fill="#7cc8f0" fill-opacity=".45"'};
+const SHB = new WeakMap(), SHH = new WeakMap();   // a piece's paths only change with its path list, kept between redraws
 function shapesSvg(p, s, sel, print){
   return (p.shapes || []).map(sh => { const on = sel && sel.type === "bshape" && sel.id === sh.id, W = sh.w * s, H = sh.h * s, kx = (s * sh.w / (sh.w0 || sh.w)).toFixed(4), ky = (s * sh.h / (sh.h0 || sh.h)).toFixed(4);
-    const body = sh.p.map(([k, d]) => `<path d="${d}" ${PST[k] || PST.other} fill="${/:f$/.test(k) ? "" : "none"}" vector-effect="non-scaling-stroke"/>`).join("").replace(/fill="" /g, "");
-    const hit = print ? "" : sh.p.map(([, d]) => `<path d="${d}" stroke="transparent" stroke-width="9" fill="none" vector-effect="non-scaling-stroke" pointer-events="stroke"/>`).join("");
+    const body = SHB.get(sh.p) || SHB.set(sh.p, sh.p.map(([k, d]) => `<path d="${d}" ${PST[k] || PST.other} fill="${/:f$/.test(k) ? "" : "none"}" vector-effect="non-scaling-stroke"/>`).join("").replace(/fill="" /g, "")).get(sh.p);
+    const hit = print ? "" : SHH.get(sh.p) || SHH.set(sh.p, `<path d="${sh.p.map(([, d]) => d).join("")}" stroke="transparent" stroke-width="9" fill="none" vector-effect="non-scaling-stroke" pointer-events="stroke"/>`).get(sh.p);   // one grab path per piece
     return `<g class="bsh" data-bshape="${sh.id}" transform="translate(${(sh.x * s).toFixed(1)} ${(sh.y * s).toFixed(1)})${sh.rot ? ` rotate(${sh.rot} ${(W / 2).toFixed(1)} ${(H / 2).toFixed(1)})` : ""}"><g transform="scale(${kx} ${ky})" stroke-linecap="round" stroke-linejoin="round">${body}${hit}</g>${on && !print ? `<rect width="${W}" height="${H}" fill="rgba(255,183,3,.06)" stroke="#ffb703" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>` : ""}</g>`; }).join("");
 }
 /* ---------- boundaries (closed outlines reshaped point by point) ---------- */

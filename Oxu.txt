@@ -1,9 +1,16 @@
-NETWORKKING 3.9.13 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 4.0.0 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+4.0.0
+ - Çertyoj hissələri üçün landşaft növləri: bitki, işıq, yol, sahə xətti, bordür, döşəmə, sərt örtük, hovuz suyu.
+   Ərazi planındakı ağac, kol, işıq, mebel, pilləkən kimi hissələr seçilir, sürüşdürülür, fırladılır, ölçüsü dəyişdirilir, silinir.
+ - Landşaft hissələri kameraların görüntüsünü bağlamır.
+ - Böyük planlarda tək hissəni və ya yazını sürüşdürmək indi səlis işləyir (bütün plan hər hərəkətdə yenidən çəkilmir).
+ - Fon şəkli olmayan, yalnız çertyoj hissələrindən ibarət planda da «✏ Redaktə olunan çertyoj» seçimi görünür.
 
 3.9.13
  - Xülasə: cihaz siyahısı markadan əlavə növə görə də süzülür (hər növün yanında say göstərilir).
