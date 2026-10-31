@@ -9,6 +9,10 @@ bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
  - Çertyoj hissələri üçün landşaft növləri: bitki, işıq, yol, sahə xətti, bordür, döşəmə, sərt örtük, hovuz suyu.
    Ərazi planındakı ağac, kol, işıq, mebel, pilləkən kimi hissələr seçilir, sürüşdürülür, fırladılır, ölçüsü dəyişdirilir, silinir.
  - Landşaft hissələri kameraların görüntüsünü bağlamır.
+ - Ərazi planı → «🌳 Landşaft layihəsi (DXF)»: peyzaj çertyojunu gətirir. Bina konturu tapılır və çertyoj mərtəbə
+   planlarına avtomatik uyğunlaşdırılır; hər blok (ağac, işıq, oturacaq…) ayrıca hissə olur; yazılar «Yazı» obyekti olur;
+   binanın içi və hasardan uzaqdakı simvollar (leqenda) atılır; layer növləri təxmin edilir və dəyişdirilə bilir.
+   «Landşaftı sürüşdür» düymələri (10 sm / 1 m) bütün landşaftı birlikdə düzəldir, «Landşaftı sil» hamısını silir.
  - Böyük planlarda tək hissəni və ya yazını sürüşdürmək indi səlis işləyir (bütün plan hər hərəkətdə yenidən çəkilmir).
  - Fon şəkli olmayan, yalnız çertyoj hissələrindən ibarət planda da «✏ Redaktə olunan çertyoj» seçimi görünür.
 

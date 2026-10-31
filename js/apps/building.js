@@ -216,7 +216,10 @@ function palette(){
     ${unplaced.length ? `<div class="psec"><h4>${esc(t("bd_unplaced"))} <span class="cnt">${unplaced.length}</span></h4><div class="ulist">${unplaced.slice(0, 60).map(d => `<button class="ub${place === "put:" + d.id ? " on" : ""}" data-bput="${d.id}">${esc(devLabel(d))}${d.room ? ` <small class="muted">${esc(roomName(b, d.room))}</small>` : ""}</button>`).join("")}</div></div>` : ""}
     <div class="psec"><h4>${esc(t("palView"))}</h4><label class="chk"><input type="checkbox" data-bopt="labels"${st().labels ? " checked" : ""}> ${esc(t("bd_labels"))}</label><label class="chk"><input type="checkbox" data-bopt="grid"${st().grid ? " checked" : ""}> ${esc(t("bd_grid"))}</label><label class="chk"><input type="checkbox" data-bopt="cones"${st().cones ? " checked" : ""}> ${esc(t("camCones"))}</label>${f.plan.img || f.plan.vec ? `<label class="chk"><input type="checkbox" data-bopt="outlines"${st().outlines ? " checked" : ""}> ${esc(t("dw_outlines"))}</label>` : ""}
       ${f.plan.img || (f.plan.shapes || []).length ? `<label class="chk"><input type="checkbox" data-bvec="1"${f.plan.vec ? " checked" : ""}> ✏ ${esc(t("dw_vec"))}</label>${f.plan.vec ? `<label class="chk" title="${esc(t("dw_moveRfH"))}"><input type="checkbox" data-bmoverf="1"${store.settings.moveRf !== false ? " checked" : ""}> ${esc(t("dw_moveRf"))}</label><p class="muted small">${esc(t("dw_moveRfH"))}</p><label class="fld"><span>${esc(t("dw_bgop"))}: ${num(f.plan.bgop, 0)}%</span><input type="range" min="0" max="100" step="5" value="${num(f.plan.bgop, 0)}" data-bbgop="1"></label>${(f.plan.shapes || []).length ? "" : `<p class="muted small">${esc(t("dw_vecNoPieces"))}</p>`}` : ""}` : ""}
-      <button class="btn small wfull" data-ba="wizard">🧭 ${esc(t("bd_wizard"))}</button><button class="btn small wfull" data-ba="dxf">📐 ${esc(t("dx_btn"))}</button></div>`;
+      <button class="btn small wfull" data-ba="wizard">🧭 ${esc(t("bd_wizard"))}</button><button class="btn small wfull" data-ba="dxf">📐 ${esc(t("dx_btn"))}</button>${isSite(f) ? `<button class="btn small wfull" data-ba="lndDxf" title="${esc(t("lx_btnH"))}">🌳 ${esc(t("lx_btn"))}</button>` : ""}
+      ${isSite(f) && ((f.plan.shapes || []).some(o => o.k === "lnd") || (f.plan.items || []).some(o => o.src === "lnd")) ? `<div class="lbox small"><b>🌳 ${esc(t("lx_moveT"))}</b><p class="muted small">${esc(t("lx_moveH"))}</p>
+        ${[[.1, "10 sm"], [1, "1 m"]].map(([d, l]) => `<div class="btns" style="gap:4px;margin:3px 0"><span class="muted small" style="width:38px">${l}</span>${[["←", -d, 0], ["→", d, 0], ["↑", 0, -d], ["↓", 0, d]].map(([a, x, y]) => `<button class="btn small ghost" data-ba="lndMv:${x},${y}">${a}</button>`).join("")}</div>`).join("")}
+        <button class="btn small ghost wfull" data-ba="lndDel">🗑 ${esc(t("lx_del"))}</button></div>` : ""}</div>`;
 }
 
 /* ---------- structure page: building → floors → rooms ---------- */
@@ -569,6 +572,10 @@ async function act(k){
   const b = B();
   if (k === "wizard") return wizard();
   if (k === "dxf") return dxfImport();
+  if (k === "lndDxf") return siteDxfImport();
+  if (k.startsWith("lndMv:")){ const [dx, dy] = k.slice(6).split(",").map(Number), p = siteOf(b).plan;   // the whole landscape drawing together
+    return edit(() => { (p.shapes || []).forEach(o => { if (o.k === "lnd"){ o.x = r2(o.x + dx); o.y = r2(o.y + dy); } }); (p.items || []).forEach(o => { if (o.src === "lnd"){ o.x = r2(o.x + dx); o.y = r2(o.y + dy); } }); }); }
+  if (k === "lndDel"){ if (!await uiConfirm(t("lx_delQ"))) return; const p = siteOf(b).plan; return edit(() => { p.shapes = (p.shapes || []).filter(o => o.k !== "lnd"); p.items = (p.items || []).filter(o => o.src !== "lnd"); UI.sel = null; }); }
   if (k === "addFloor"){ const n = await uiPrompt(t("floorNew"), t("floorN",{n:b.floors.length + 1})); if (n === null) return;
     return edit(() => { const f = {id:uid("f"), name:n.trim() || t("floorN",{n:b.floors.length + 1}), lvl:b.floors.length}; b.floors.push(f); normBuilding(b); const p = b.floors[b.floors.length - 2]; if (p){ f.plan.wm = p.plan.wm; f.plan.hm = p.plan.hm; } st().floor = f.id; UI.sel = {type:"bfloor", id:f.id}; }); }
   if (k === "mergeDup"){ const f = curFloor(b), L = f ? dupRooms(b, f) : []; if (!L.length) return;
@@ -662,6 +669,89 @@ function wizard(){
 }
 
 /* ---------- DXF drawing → floors, rooms, walls, doors, windows, outlets ---------- */
+/* ---------- a landscape project (DXF) on the site plan ---------- */
+// building walls already on the site plan: their box and the distance from a point to the nearest one (1 m grid)
+function siteWalls(p){ const S = [], W = /^(wall|wallExt)(:f)?$/; let bb = null; const grow = (x, y) => { if (!bb) bb = [x, y, x, y]; else { bb[0] = Math.min(bb[0], x); bb[1] = Math.min(bb[1], y); bb[2] = Math.max(bb[2], x); bb[3] = Math.max(bb[3], y); } };
+  (p.shapes || []).forEach(sh => { if (!sh.p.some(([k]) => W.test(k))) return; const kx = sh.w / (sh.w0 || sh.w), ky = sh.h / (sh.h0 || sh.h), a = (sh.rot || 0) * Math.PI / 180, ca = Math.cos(a), sa = Math.sin(a), cx = sh.w / 2, cy = sh.h / 2;
+    const T = (x, y) => { x *= kx; y *= ky; if (a){ const dx = x - cx, dy = y - cy; x = cx + dx * ca - dy * sa; y = cy + dx * sa + dy * ca; } return [sh.x + x, sh.y + y]; };
+    sh.p.forEach(([k, d]) => { if (!W.test(k)) return; String(d).split(/(?=M)/).forEach(part => { const n = part.match(/-?\d*\.?\d+(?:e-?\d+)?/g) || []; let pr = null; for (let i = 0; i + 1 < n.length; i += 2){ const q = T(+n[i], +n[i + 1]); grow(q[0], q[1]); if (pr) S.push([pr[0], pr[1], q[0], q[1]]); pr = q; } }); }); });
+  if (!S.length) (p.walls || []).forEach(w => { if (w.low) return; S.push([w.x1, w.y1, w.x2, w.y2]); grow(w.x1, w.y1); grow(w.x2, w.y2); });
+  if (!S.length) return null;
+  const G = new Map(); S.forEach((s, i) => { for (let gx = Math.floor(Math.min(s[0], s[2])); gx <= Math.floor(Math.max(s[0], s[2])); gx++) for (let gy = Math.floor(Math.min(s[1], s[3])); gy <= Math.floor(Math.max(s[1], s[3])); gy++){ const k = gx + "," + gy; (G.get(k) || G.set(k, []).get(k)).push(i); } });
+  const near = (x, y) => { let d = Infinity; for (let gx = Math.floor(x) - 1; gx <= Math.floor(x) + 1; gx++) for (let gy = Math.floor(y) - 1; gy <= Math.floor(y) + 1; gy++) (G.get(gx + "," + gy) || []).forEach(i => { const [x1, y1, x2, y2] = S[i], ex = x2 - x1, ey = y2 - y1, L2 = ex * ex + ey * ey || 1e-9, u = clamp(((x - x1) * ex + (y - y1) * ey) / L2, 0, 1); d = Math.min(d, Math.hypot(x - x1 - ex * u, y - y1 - ey * u)); }); return d; };
+  const pts = []; S.forEach(q => pts.push(q[0], q[1], q[2], q[3]));
+  return {bb, near, pts}; }
+async function siteDxfImport(){
+  const b = B(), f = siteOf(b), p = f.plan;
+  const file = await new Promise(res => { const i = document.createElement("input"); i.type = "file"; i.accept = ".dxf,.DXF"; i.onchange = () => res(i.files[0] || null); i.oncancel = () => res(null); i.click(); });
+  if (!file) return;
+  if (/\.dwg$/i.test(file.name)) return uiAlert(t("dx_dwg"));
+  toast("⏳ " + t("dx_reading",{f:file.name})); await new Promise(r => setTimeout(r, 60));
+  let doc, flat, A;
+  try { doc = DXF.parse(DXF.decode(await file.arrayBuffer())); flat = DXF.flatten(doc); A = DXF.analyze(doc, flat); }
+  catch(e){ console.error(e); return uiAlert(e.message === "binary" ? t("dx_binary") : t("dx_fail") + " " + e.message); }
+  if (!flat.segs.length) return uiAlert(t("dx_empty"));
+  const LR = ["plant","light","water","road","edge","curb","pave","stair","furn","hard","other","ignore"];
+  const S = {roles:{}, scale:A.scale, units:A.units, clip:true, replace:(p.shapes || []).some(o => o.k === "lnd") || (p.items || []).some(o => o.src === "lnd"), labels:true};
+  A.layers.forEach(l => S.roles[l.name] = l.hidden ? "ignore" : DXF.lroleOf(l.name));
+  // the floor whose pieces were copied onto the site plan (most identical pieces, one shift): the drawing is matched to that
+  // floor's walls alone (other floors' walls only confuse it) and moved by the same shift; else to the walls on the site plan
+  let base = null; const sig = o => [o.w0, o.h0, ((o.p || [])[0] || [])[1]].join("|").slice(0, 120);
+  b.floors.forEach(fl => { const m = new Map(); (fl.plan && fl.plan.shapes || []).forEach(o => m.set(sig(o), o)); const V = new Map();
+    (p.shapes || []).forEach(o => { const q = m.get(sig(o)); if (!q) return; const k = (o.x - q.x).toFixed(1) + "," + (o.y - q.y).toFixed(1); V.set(k, (V.get(k) || 0) + 1); });
+    const top = [...V.entries()].sort((x, y) => y[1] - x[1])[0]; if (top && top[1] >= 3 && (!base || top[1] > base.n)){ const [dx, dy] = top[0].split(",").map(Number); base = {f:fl, n:top[1], dx, dy}; } });
+  const target = base ? siteWalls(base.f.plan) : siteWalls(p);
+  const fit = () => { const r = DXF.siteFit(flat, S.scale, target); S.fit = r && base ? Object.assign(r, {M0:r.M, M:(X, Y) => { const q = r.M0(X, Y); return [q[0] + base.dx, q[1] + base.dy]; }, fl:base.f.name}) : r; };
+  fit();
+  const draw = () => {
+    const L = A.layers.filter(l => l.segs + l.texts > 0), cnt = r => L.filter(l => S.roles[l.name] === r).length;
+    modal(`<h3>🌳 ${esc(t("lx_title"))} <small class="muted">${esc(file.name)}</small></h3>
+      <p class="muted small">${esc(t("lx_intro"))}</p>
+      <div class="lbox">${S.fit ? `✅ ${esc(t("lx_fitOk",{l:S.fit.L, p:Math.round(S.fit.score * 100)}) + (S.fit.fl ? " (" + S.fit.fl + ")" : ""))}<br><small class="muted">${esc(t("lx_fitTune"))}</small>` : `⚠ ${esc(target ? t("lx_fitNo") : t("lx_fitNoWalls"))}`}</div>
+      <div class="two"><label class="fld"><span>${esc(t("dx_units"))}</span><select id="lx-u">${Object.values(DXF.UNITS).map(([u, k]) => opt(u, u + " (1 = " + k + " m)", S.units)).join("")}</select></label><span></span></div>
+      ${S.fit ? `<label class="chk"><input type="checkbox" id="lx-clip"${S.clip ? " checked" : ""}> ${esc(t("lx_clip"))}</label>` : ""}
+      <label class="chk"><input type="checkbox" id="lx-labels"${S.labels ? " checked" : ""}> ${esc(t("lx_labels"))}</label>
+      ${(p.shapes || []).some(o => o.k === "lnd") || (p.items || []).some(o => o.src === "lnd") ? `<label class="chk"><input type="checkbox" id="lx-replace"${S.replace ? " checked" : ""}> ${esc(t("lx_replace"))}</label>` : ""}
+      <details class="dsec" open><summary>🗂 ${esc(t("dx_layers"))} <span class="cnt">${L.length}</span> <small class="muted">${esc(["plant","light","pave","hard","ignore"].map(r => t("lxr_" + r) + " " + cnt(r)).join(" · "))}</small></summary>
+        <div class="dsb scroll" style="max-height:38vh"><p class="muted small">${esc(t("lx_layersH"))}</p><table class="t">${L.map(l => `<tr><td>${esc(l.name)}${l.hidden ? ` <small class="muted">(${esc(t("dx_hid"))})</small>` : ""}</td><td class="c small">${l.segs || ""}</td><td class="c small">${l.texts ? "T" + l.texts : ""}</td><td><select data-lxr="${esc(l.name)}">${LR.map(r => opt(r, t("lxr_" + r), S.roles[l.name])).join("")}</select></td></tr>`).join("")}</table></div></details>
+      <div class="mfoot"><button class="btn" data-m="close">${esc(t("cancel"))}</button><span class="grow"></span><button class="btn pri" data-m="go">✓ ${esc(t("lx_go"))}</button></div>`,
+      {go:() => { read(); create(); }}, {wide:true, nofocus:true});
+    $$("[data-lxr],#lx-u").forEach(el => el.addEventListener("change", () => { read(); if (el.id === "lx-u") fit(); draw(); }));
+  };
+  const read = () => {
+    $$("[data-lxr]").forEach(el => S.roles[el.dataset.lxr] = el.value);
+    const u = $("#lx-u"); if (u){ const U = Object.values(DXF.UNITS).find(x => x[0] === u.value); if (U){ S.units = U[0]; S.scale = U[1]; } }
+    ["clip","labels","replace"].forEach(k => { const c = $("#lx-" + k); if (c) S[k] = c.checked; });
+  };
+  const create = async () => {
+    closeModal(); toast("⏳ " + t("dx_building")); await new Promise(r => setTimeout(r, 60));
+    let M, box = null, grow = null;
+    if (S.fit){ M = S.fit.M;
+      // what lies on the plot (its boundary, else the site plan) and a little around it
+      const bd = (p.items || []).filter(it => it.type === "boundary"); let bb = null; bd.forEach(it => { DRAW.boundBox(it); const q = [it.x, it.y, it.x + it.w, it.y + it.h]; bb = bb ? [Math.min(bb[0], q[0]), Math.min(bb[1], q[1]), Math.max(bb[2], q[2]), Math.max(bb[3], q[3])] : q; });
+      box = bb ? [bb[0] - 3, bb[1] - 3, bb[2] + 3, bb[3] + 3] : [-1, -1, p.wm + 1, p.hm + 1]; }
+    else { // no building to match: the whole drawing in the corner of the site plan, the plan made big enough
+      const bb = DXF.bbox(flat.segs.filter(s => (S.roles[s.L] || "other") !== "ignore").flatMap(s => s.p)); if (!bb) return uiAlert(t("dx_empty"));
+      M = (X, Y) => [1 + (X - bb[0]) * S.scale, 1 + (bb[3] - Y) * S.scale]; grow = [Math.ceil((bb[2] - bb[0]) * S.scale + 2), Math.ceil((bb[3] - bb[1]) * S.scale + 2)]; }
+    const names = new Set(b.rooms.filter(r => r.floor === OUT_FLOOR).map(r => r.name.toLocaleUpperCase("tr")));
+    const plots = (p.items || []).filter(it => it.type === "boundary" && (it.pts || []).length >= 6).map(it => it.pts);
+    const inPlot = plots.length ? (x, y) => plots.some(P => { let c = false, d = Infinity; for (let i = 0, j = P.length - 2; i < P.length; j = i, i += 2){ const xi = P[i], yi = P[i + 1], xj = P[j], yj = P[j + 1];
+      if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; const ex = xi - xj, ey = yi - yj, L2 = ex * ex + ey * ey || 1e-9, u = clamp(((x - xj) * ex + (y - yj) * ey) / L2, 0, 1); d = Math.min(d, Math.hypot(x - xj - ex * u, y - yj - ey * u)); }
+      return c || d < 1.5; }) : null;
+    const R = DXF.landscape(flat, {roles:S.roles, M, box, inPlot, clip:S.fit && S.clip ? S.fit.poly : null, scale:S.scale, skipText:s => names.has(s.toLocaleUpperCase("tr"))});
+    if (!R.shapes.length && !R.labels.length) return uiAlert(t("lx_none"));
+    edit(() => {
+      if (S.replace){ p.shapes = (p.shapes || []).filter(o => o.k !== "lnd"); p.items = (p.items || []).filter(o => o.src !== "lnd"); }
+      if (grow){ p.wm = Math.max(num(p.wm, 0), grow[0]); p.hm = Math.max(num(p.hm, 0), grow[1]); }
+      // landscape under the building pieces
+      p.shapes = R.shapes.map(o => Object.assign(o, {id:uid("s")})).concat(p.shapes || []); p.vec = true; if (p.bgop === undefined) p.bgop = 0;
+      if (S.labels) R.labels.forEach(l => { const size = l.h > .3 ? 12 : 10, w = Math.round((l.text.length * size * .6 / scaleFor(f) + .2) * 100) / 100;
+        p.items.push({id:uid("i"), type:"label", src:"lnd", x:Math.round((l.x - w / 2) * 100) / 100, y:Math.round((l.y - .4) * 100) / 100, w, h:.8, rot:l.rot || 0, text:l.text, size}); });
+      p.lndDxf = file.name; UI.sel = null; });
+    toast("✓ " + t("lx_done",{n:R.shapes.length, l:S.labels ? R.labels.length : 0}) + (S.fit ? "" : " — " + t("lx_corner")));
+  };
+  draw();
+}
 async function dxfImport(){
   const file = await new Promise(res => { const i = document.createElement("input"); i.type = "file"; i.accept = ".dxf,.DXF"; i.onchange = () => res(i.files[0] || null); i.oncancel = () => res(null); i.click(); });
   if (!file) return;
@@ -871,5 +961,5 @@ registerApp({
 APPS.building.init = wire;
 // a building without floors opens the set-up once, the first time the app is shown for it
 APPS.building.afterRender = () => { const b = B(); if (b.floors.length || b.devices.length || b.racks.length || (b.struct && b.struct.wizard) || !store.settings.setupDone || !$("#modal").hidden || document.querySelector(".tour")) return; b.struct = Object.assign(b.struct || {}, {wizard:true}); persist(); setTimeout(wizard, 300); };
-window.BLD = {siteUsed, sitePage, wizard, createMissing, posOf, dxfImport, guessType, planSvg, overlayPlan, palette, planView, drawer, onField, onDrawerAct, onKey};
+window.BLD = {siteWalls, siteUsed, sitePage, wizard, createMissing, posOf, dxfImport, guessType, planSvg, overlayPlan, palette, planView, drawer, onField, onDrawerAct, onKey};
 })();
