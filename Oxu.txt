@@ -1,9 +1,13 @@
-NETWORKKING 3.9.9 — QURAŞDIRMA VƏ İSTİFADƏ
+NETWORKKING 3.9.10 — QURAŞDIRMA VƏ İSTİFADƏ
 
 NetWorkKing bir proqramda 8 tətbiqdir: Bina strukturu, Şəbəkə topologiyası, Port Map, Rack U-Layout,
 Fiber magistral, CCTV, Wi-Fi Plan və Xülasə. Yuxarı soldakı loqoya / ada basaraq tətbiqlər
 arasında keçid edilir. Bütün tətbiqlər eyni bina məlumatı ilə işləyir: bir cihazı
 bir yerdə dəyişəndə o biri tətbiqlərdə də dəyişir.
+
+3.9.10
+ - Qapı «açıq» seçimi: qapı divarının kartında «Qapı açıqdır» və çertyoj hissəsinin kartında «Bu hissədəki qapılar
+   açıqdır» — kamera açıq qapıdan arxasını görür. Bir hissədə bir neçə qapı varsa, «✂ Ayır» ilə ayırıb yalnız birini açın.
 
 3.9.9
  - CCTV görmə sahəsi çertyojun özündə görünən divar, pəncərə, qapı və sütun konturlarına görə kəsilir (çertyojdan

@@ -75,24 +75,25 @@ function labHit(r, g, s, x, y){ const fs = g.lx !== undefined ? clamp(s * .38, 9
   return `<rect class="rlabh" data-rlab="${r.id}" x="${(cx - tw / 2).toFixed(1)}" y="${(cy - th / 2).toFixed(1)}" width="${tw.toFixed(1)}" height="${th.toFixed(1)}" fill="transparent"/>`; }
 // what blocks a camera's view on this plan. With a vector drawing (from DXF): the drawn wall, outer wall, window, door and
 // column outlines — exactly what is seen; otherwise the walls (also those taken from a drawing, which are not shown). Doors
-// block too (a camera does not look through a closed door; a garage camera stays in the garage). Not blocking: low walls (a
+// block too (a camera does not look through a closed door; a garage camera stays in the garage) unless marked open on their
+// card (a door wall, or a drawn piece holding doors — split it to open one door). Not blocking: low walls (a
 // retaining wall or parapet the camera looks over). Also the outlines of the plot and houses. Curved walls go in short pieces.
 const SH_BLOCK = /^(wall|wallExt|window|door|column)(:f)?$/;
 // the blocking line pieces of a drawn shape in its own coordinates, read once per drawing (kept with the path list)
 const SHSEG = new WeakMap();
-function shapeSegs(sh){ const P = sh.p || []; let L = SHSEG.get(P); if (L) return L; L = [];
-  P.forEach(([k, d]) => { if (!SH_BLOCK.test(k)) return; let st = null, prev = null;
+function shapeSegs(sh, open){ const P = sh.p || [], C = SHSEG.get(P) || {}; if (C[+open]) return C[+open]; const L = [];
+  P.forEach(([k, d]) => { if (!SH_BLOCK.test(k) || (open && k === "door")) return; let st = null, prev = null;
     String(d).replace(/([MLZ])([^MLZ]*)/gi, (m, op, args) => { const v = args.trim().split(/[\s,]+/).filter(Boolean).map(Number), U = op.toUpperCase();
       if (U === "Z"){ if (prev && st && (prev[0] !== st[0] || prev[1] !== st[1])) L.push([prev[0], prev[1], st[0], st[1]]); prev = st; return ""; }
       for (let i = 0; i + 1 < v.length; i += 2){ const q = [v[i], v[i + 1]]; if (U === "M" && i === 0){ st = q; prev = q; } else { if (prev && (prev[0] !== q[0] || prev[1] !== q[1])) L.push([prev[0], prev[1], q[0], q[1]]); prev = q; } }
       return ""; }); });
-  SHSEG.set(P, L); return L; }
+  C[+open] = L; SHSEG.set(P, C); return L; }
 function camObstacles(p){ const S = [], vec = !!(p.vec && (p.shapes || []).length);
   const push = (x1, y1, x2, y2, ext = 0) => { if (ext){ const L = Math.hypot(x2 - x1, y2 - y1) || 1, ex = (x2 - x1) / L * ext, ey = (y2 - y1) / L * ext; x1 -= ex; y1 -= ey; x2 += ex; y2 += ey; } S.push([x1, y1, x2, y2]); };
   if (vec) (p.shapes || []).forEach(sh => { const kx = sh.w / (sh.w0 || sh.w || 1), ky = sh.h / (sh.h0 || sh.h || 1), cx = sh.w / 2, cy = sh.h / 2, r = num(sh.rot) * Math.PI / 180, c = Math.cos(r), sn = Math.sin(r);
     const T = (x, y) => { x = x * kx - cx; y = y * ky - cy; return [sh.x + cx + x * c - y * sn, sh.y + cy + x * sn + y * c]; };
-    shapeSegs(sh).forEach(g => { const a = T(g[0], g[1]), b = T(g[2], g[3]); push(a[0], a[1], b[0], b[1]); }); });
-  (p.walls || []).forEach(w => { if (w.low || w.kind === "survey" || (vec && w.src)) return;
+    shapeSegs(sh, !!sh.open).forEach(g => { const a = T(g[0], g[1]), b = T(g[2], g[3]); push(a[0], a[1], b[0], b[1]); }); });
+  (p.walls || []).forEach(w => { if (w.low || w.kind === "survey" || (w.kind === "door" && w.open) || (vec && w.src)) return;
     const n = Math.abs(num(w.bend, 0)) > 1 ? 8 : 1; let q = DRAW.wallPt(w, 0);
     for (let i = 1; i <= n; i++){ const r = DRAW.wallPt(w, i / n); push(num(q.x), num(q.y), num(r.x), num(r.y), .3); q = r; } });
   (p.items || []).filter(it => it.type === "boundary" && Array.isArray(it.pts)).forEach(it => { const P = it.pts, k = Math.floor(P.length / 2); for (let i = 0; i < k; i++){ const j = (i + 1) % k; push(P[2 * i], P[2 * i + 1], P[2 * j], P[2 * j + 1]); } });
@@ -303,7 +304,7 @@ function drawer(tab){
       <div class="two"><label class="fld"><span>${esc(t("dw_len"))} (m)</span><input data-f="w.len" type="text" inputmode="decimal" value="${esc(r1(L))}"></label>${rotFld("w.ang", A, t("dw_ang"))}</div>
       <div class="two"><label class="fld"><span>${esc(t("dw_thick"))} (cm)</span><input data-f="w.t" type="text" inputmode="decimal" value="${esc(Math.round(DRAW.wallT(w) * 100))}"></label><label class="fld"><span>${esc(t("dw_bend"))} (°)</span><input data-f="w.bend" type="text" inputmode="decimal" value="${esc(num(w.bend, 0))}"></label></div>
       <label class="fld"><span>${esc(t("dw_mat"))}</span><select data-f="w.mat">${mats.map(m => opt(m, t("wf_mat_" + m), w.mat || "drywall")).join("")}</select></label>
-      <label class="chk" title="${esc(t("dw_lowH"))}"><input type="checkbox" data-f="w.low"${w.low ? " checked" : ""}> ${esc(t("dw_low"))}</label>
+      ${w.kind === "door" ? `<label class="chk" title="${esc(t("dw_openH"))}"><input type="checkbox" data-f="w.open"${w.open ? " checked" : ""}> 🚪 ${esc(t("dw_open"))}</label>` : `<label class="chk" title="${esc(t("dw_lowH"))}"><input type="checkbox" data-f="w.low"${w.low ? " checked" : ""}> ${esc(t("dw_low"))}</label>`}
       <div class="two">${["x1","y1"].map(k => `<label class="fld"><span>${k.toUpperCase()} (m)</span><input data-f="w.${k}" type="text" inputmode="decimal" value="${esc(r1(w[k]))}"></label>`).join("")}</div>
       <p class="muted small">${esc(t("dw_wallInfo", {a:r1(DRAW.wallArc(w))}))}</p><p class="muted small">${esc(t("dw_wallHint2"))}</p>
       <div class="btns"><button class="btn" data-dr="bDupWall">⧉ ${esc(t("duplicate"))}</button><button class="btn" data-dr="bWallNext">↪ ${esc(t("dw_next"))}</button><button class="btn dan" data-dr="bDelWall">🗑 ${esc(t("delete"))}</button></div>`; }
@@ -312,6 +313,7 @@ function drawer(tab){
       <div class="two">${["x","y","w","h"].map(k => `<label class="fld"><span>${k === "w" ? esc(t("f_w")) : k === "h" ? esc(t("f_hgt")) : k.toUpperCase()} (m)</span><input data-f="o.${k}" type="text" inputmode="decimal" value="${esc(r1(o[k]))}"></label>`).join("")}</div>
       ${rotFld("o.rot", o.rot)}
       ${o.k === "rwall" ? `<label class="fld"><span>${esc(t("dw_pcRoom"))}</span><select data-f="o.room">${opt("", t("none"), o.room || "")}${roomsOf(b, f).map(r => opt(r.id, r.name, o.room || "")).join("")}</select></label><p class="muted small">${esc(t("dw_pcRoomH"))}</p>` : ""}
+      ${(o.p || []).some(([k]) => k === "door") ? `<label class="chk" title="${esc(t("dw_openH"))}"><input type="checkbox" data-f="o.open"${o.open ? " checked" : ""}> 🚪 ${esc(t("dw_openSh"))}</label>` : ""}
       <p class="muted small">${esc(t("dw_pcHint"))}</p>
       <div class="btns">${o.w !== o.w0 || o.h !== o.h0 ? `<button class="btn" data-dr="bShReset">↺ ${esc(t("dw_pcReset"))}</button>` : ""}<button class="btn" data-dr="bSplit" title="${esc(t("dw_splitH"))}">✂ ${esc(t("dw_split"))}</button><button class="btn" data-dr="bDupShape">⧉ ${esc(t("duplicate"))}</button><button class="btn dan" data-dr="bDelShape">🗑 ${esc(t("delete"))}</button></div>`; }
   if (s.type === "rack"){ const r = rackById(b, s.id); if (!r) return "";
@@ -337,7 +339,7 @@ function onField(path, v){
   if (s.type === "bitem"){ const f = curFloor(b), it = f && f.plan.items.find(x => x.id === s.id); if (!it) return;
     edit(() => { const k = path.split(".")[1]; if (k === "text") it.text = v; else if (k === "style") it.style = v; else if (k === "rot") it.rot = ((num(String(v).replace(",", "."), 0) % 360) + 360) % 360; else it[k] = k === "w" || k === "h" ? Math.max(.1, n(v)) : k === "size" ? clamp(n(v), 8, 40) : n(v); }); return; }
   if (s.type === "bwall"){ const f = curFloor(b), w = f && (f.plan.walls || []).find(x => x.id === s.id); if (!w) return; const k = path.split(".")[1], x = num(String(v).replace(",", "."), NaN);
-    edit(() => { if (k === "mat"){ w.mat = v; return; } if (k === "low"){ if (v === true || v === "true" || v === "on") w.low = true; else delete w.low; return; } if (!isFinite(x)) return;
+    edit(() => { if (k === "mat"){ w.mat = v; return; } if (k === "low" || k === "open"){ if (v === true || v === "true" || v === "on") w[k] = true; else delete w[k]; return; } if (!isFinite(x)) return;
       const L = DRAW.wallLen(w), A = Math.atan2(w.y2 - w.y1, w.x2 - w.x1);
       if (k === "len"){ const n = Math.max(.1, x); w.x2 = r2(w.x1 + Math.cos(A) * n); w.y2 = r2(w.y1 + Math.sin(A) * n); }
       else if (k === "ang"){ const a = x * Math.PI / 180; w.x2 = r2(w.x1 + Math.cos(a) * L); w.y2 = r2(w.y1 + Math.sin(a) * L); }
@@ -345,6 +347,7 @@ function onField(path, v){
       else if (k === "bend") w.bend = clamp(Math.round(x), -300, 300);
       else if (k === "x1" || k === "y1"){ const d = x - w[k], o = k === "x1" ? "x2" : "y2"; w[k] = r2(x); w[o] = r2(w[o] + d); } }); return; }
   if (s.type === "bshape"){ const f = curFloor(b), o = f && (f.plan.shapes || []).find(x => x.id === s.id); if (!o) return; const k = path.split(".")[1];
+    if (k === "open") return edit(() => { if (v === true || v === "true" || v === "on") o.open = true; else delete o.open; });
     edit(() => { if (k === "room"){ o.room = v; return; } const x = num(String(v).replace(",", "."), NaN); if (!isFinite(x)) return; if (k === "rot") o.rot = ((x % 360) + 360) % 360; else if (k === "w" || k === "h") o[k] = Math.max(.05, r2(x)); else o[k] = r2(x); }); return; }
   if (s.type === "rack"){ const r = rackById(b, s.id); if (!r) return; edit(() => { const k = path.split(".")[1]; if (k === "name") r.name = String(v).trim() || r.name; else r.room = v; }); return; }
   if (s.type === "bfloor"){ const f = planFloor(b, s.id); if (!f) return; edit(() => { const k = path.split(".")[1]; if (k === "name") f.name = String(v).trim() || f.name; else if (k === "h") f.h = Math.max(2, n(v)); else if (k === "ext") f.plan.ext = clamp(n(v), 0, 500); else f.plan[k] = clamp(n(v), 2, 2000); }); }

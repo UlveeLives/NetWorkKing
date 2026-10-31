@@ -118,7 +118,7 @@ function splitShape(sh){
   return groups.map(L => { let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity; L.forEach(u => { x0 = Math.min(x0, u.b[0]); y0 = Math.min(y0, u.b[1]); x1 = Math.max(x1, u.b[2]); y1 = Math.max(y1, u.b[3]); });
     const w = Math.max(.05, x1 - x0), h = Math.max(.05, y1 - y0), by = {};
     L.forEach(u => { let d = ""; for (let i = 0; i < u.P.length; i += 2) d += (i ? "L" : "M") + rr(u.P[i] - x0) + " " + rr(u.P[i + 1] - y0); by[u.k] = (by[u.k] || "") + d + (u.z ? "Z" : ""); });
-    return {id:uid("s"), k:sh.k, room:sh.room || "", x:rr(x0), y:rr(y0), w:rr(w), h:rr(h), w0:rr(w), h0:rr(h), rot:0, p:Object.entries(by)}; });
+    return Object.assign({id:uid("s"), k:sh.k, room:sh.room || "", x:rr(x0), y:rr(y0), w:rr(w), h:rr(h), w0:rr(w), h0:rr(h), rot:0, p:Object.entries(by)}, sh.open ? {open:true} : {}); });
 }
 return {splitShape, bgSvg, SYM, GROUPS, isSym, symSvg, icon, WT, wallT, wallD, wallPt, wallLen, wallArc, shownWalls, wallsSvg, shapesSvg, boundSvg, boundBox, boundInsert};
 })();
