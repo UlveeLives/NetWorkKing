@@ -12,7 +12,7 @@ if exist "dist\win-unpacked\NetWorkKing.exe" (
   if errorlevel 8 goto :err
 )
 echo.
-echo HAZIRDIR: dist\NetWorkKing-Setup-3.9.11.exe
+echo HAZIRDIR: dist\NetWorkKing-Setup-3.9.12.exe
 echo           portable\NetWorkKing.exe (qurasdirmadan isleyen versiya)
 start "" "%~dp0dist"
 pause

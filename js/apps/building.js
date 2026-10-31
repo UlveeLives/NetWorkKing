@@ -298,6 +298,7 @@ function drawer(tab){
       <div class="btns"><button class="btn" data-dr="bDupItem">⧉ ${esc(t("duplicate"))}</button><button class="btn dan" data-dr="bDelItem">🗑 ${esc(t("delete"))}</button></div>`;
     return `${head(itemName(it.type), f.name)}
       ${it.type === "yard" || DRAW.isSym(it.type) ? `<label class="fld"><span>${esc(t("f_text"))}</span><input data-f="i.text" value="${esc(it.text || (it.type === "yard" ? t("bi_yard") : ""))}"></label>` : ""}
+      ${it.type === "sgate" ? `<label class="fld"><span>${esc(t("sg_side"))}</span><select data-f="i.side">${opt("l", "⬅ " + t("sg_left"), it.side || "l")}${opt("r", t("sg_right") + " ➡", it.side || "l")}</select></label><p class="muted small">${esc(t("sg_sideH"))}</p>` : ""}
       ${it.type === "label" ? `<label class="fld"><span>${esc(t("f_text"))}</span><input data-f="i.text" value="${esc(it.text || "")}"></label><label class="fld"><span>${esc(t("bd_fsize"))}</span><input data-f="i.size" type="text" inputmode="numeric" value="${esc(it.size || 12)}"></label>` : ""}
       <div class="two">${["x","y","w","h"].map(k => `<label class="fld"><span>${k === "w" ? esc(t("f_w")) : k === "h" ? esc(t("f_hgt")) : k.toUpperCase()} (m)</span><input data-f="i.${k}" type="text" inputmode="decimal" value="${esc(it[k])}"></label>`).join("")}</div>
       ${rotFld("i.rot", it.rot)}
@@ -341,7 +342,7 @@ function onField(path, v){
       else if (g === "g"){ r.geo[k] = k === "w" || k === "h" ? Math.max(.5, n(v)) : n(v); delete r.geo.est; }
       else if (g === "q"){ r.req[k] = clamp(Math.round(n(v)), 0, 200); } }); return; }   // at most 200 of a kind per room (a typed 99999 made 99999 devices)
   if (s.type === "bitem"){ const f = curFloor(b), it = f && f.plan.items.find(x => x.id === s.id); if (!it) return;
-    edit(() => { const k = path.split(".")[1]; if (k === "text") it.text = v; else if (k === "style") it.style = v; else if (k === "rot") it.rot = ((num(String(v).replace(",", "."), 0) % 360) + 360) % 360; else it[k] = k === "w" || k === "h" ? Math.max(.1, n(v)) : k === "size" ? clamp(n(v), 8, 40) : n(v); }); return; }
+    edit(() => { const k = path.split(".")[1]; if (k === "text") it.text = v; else if (k === "style") it.style = v; else if (k === "side") it.side = v === "r" ? "r" : "l"; else if (k === "rot") it.rot = ((num(String(v).replace(",", "."), 0) % 360) + 360) % 360; else it[k] = k === "w" || k === "h" ? Math.max(.1, n(v)) : k === "size" ? clamp(n(v), 8, 40) : n(v); }); return; }
   if (s.type === "bwall"){ const f = curFloor(b), w = f && (f.plan.walls || []).find(x => x.id === s.id); if (!w) return; const k = path.split(".")[1], x = num(String(v).replace(",", "."), NaN);
     edit(() => { if (k === "mat"){ w.mat = v; return; } if (k === "low" || k === "open"){ if (v === true || v === "true" || v === "on") w[k] = true; else delete w[k]; return; } if (!isFinite(x)) return;
       const L = DRAW.wallLen(w), A = Math.atan2(w.y2 - w.y1, w.x2 - w.x1);
